@@ -1,0 +1,25 @@
+{
+  "id": "claude-code",
+  "displayName": "Claude Code",
+  "installRootStrategy": "repo-root",
+  "pathMappings": {
+    "AGENTS.md": "CLAUDE.md",
+    "templates/tasks/implement-feature.md": ".claude/templates/tasks/implement-feature.md",
+    "templates/tasks/fix-bug.md": ".claude/templates/tasks/fix-bug.md",
+    "templates/workflows/research-plan-implement-validate.md": ".claude/templates/workflows/research-plan-implement-validate.md",
+    "templates/workflows/triage-reproduce-fix-verify.md": ".claude/templates/workflows/triage-reproduce-fix-verify.md"
+  },
+  "mergeRules": {
+    "AGENTS.md": "copy"
+  },
+  "supportsHooks": true,
+  "supportsCommands": true,
+  "supportsAgents": true,
+  "supportsContexts": true,
+  "supportsPlugins": true,
+  "capabilityMatrix": {
+    "templates": true,
+    "workflow-validation": true
+  },
+  "guidanceTemplate": "claude-code"
+}

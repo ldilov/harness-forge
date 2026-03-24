@@ -1,0 +1,68 @@
+{
+  "name": "@harness-forge/cli",
+  "version": "0.1.0",
+  "description": "Harness Forge: modular agentic AI workspace installer, catalog, and workflow runtime.",
+  "type": "module",
+  "bin": {
+    "hforge": "./dist/cli/index.js"
+  },
+  "files": [
+    "dist",
+    ".agents",
+    ".specify",
+    "AGENTS.md",
+    "agents",
+    "commands",
+    "contexts",
+    "docs",
+    "examples",
+    "hooks",
+    "knowledge-bases",
+    "manifests",
+    "mcp",
+    "profiles",
+    "rules",
+    "schemas",
+    "scripts/ci",
+    "skills",
+    "targets",
+    "templates",
+    "scripts/templates",
+    "install.sh",
+    "install.ps1",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "node --enable-source-maps dist/cli/index.js",
+    "lint": "eslint .",
+    "test": "vitest run --coverage",
+    "test:watch": "vitest",
+    "smoke": "node scripts/ci/release-smoke.mjs",
+    "validate:templates": "node dist/cli/index.js template validate",
+    "validate:catalog": "node scripts/ci/validate-pack-dependencies.mjs",
+    "validate:content-metadata": "node scripts/ci/validate-content-metadata.mjs",
+    "validate:seeded-coverage": "node scripts/ci/validate-seeded-knowledge-coverage.mjs",
+    "validate:generated-sync": "node scripts/ci/validate-generated-sync.mjs",
+    "validate:package-surface": "node scripts/ci/validate-packed-install-surface.mjs",
+    "validate:release": "node scripts/ci/release-smoke.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "commander": "^13.1.0",
+    "fast-glob": "^3.3.3",
+    "yaml": "^2.7.1",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.14",
+    "@vitest/coverage-v8": "^3.0.8",
+    "eslint": "^9.22.0",
+    "typescript": "^5.8.2",
+    "vitest": "^3.0.8"
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "bundles": [
+    {
+      "id": "baseline:agents",
+      "family": "baseline",
+      "version": 1,
+      "description": "Core agent guidance and planner support.",
+      "paths": ["AGENTS.md", "agents/planner.md", ".agents/skills"],
+      "targets": ["codex", "claude-code", "cursor", "opencode"],
+      "dependencies": [],
+      "conflicts": [],
+      "optional": false,
+      "defaultInstall": true,
+      "stability": "stable",
+      "tags": ["baseline", "agents"],
+      "owner": "core",
+      "usageCues": ["Use for general project guidance and planning."]
+    },
+    {
+      "id": "baseline:commands",
+      "family": "baseline",
+      "version": 1,
+      "description": "Core command guidance and usage patterns.",
+      "paths": ["commands/plan.md", "commands/test.md", "contexts/dev.md"],
+      "targets": ["codex", "claude-code", "cursor", "opencode"],
+      "dependencies": [],
+      "conflicts": [],
+      "optional": false,
+      "defaultInstall": true,
+      "stability": "stable",
+      "tags": ["baseline", "commands"],
+      "owner": "core",
+      "usageCues": ["Use when starting, testing, or validating work."]
+    },
+    {
+      "id": "capability:workflow-quality",
+      "family": "capability",
+      "version": 1,
+      "description": "Workflow templates and validators for quality-guided execution.",
+      "paths": [
+        ".specify",
+        "templates/tasks/implement-feature.md",
+        "templates/tasks/fix-bug.md",
+        "templates/workflows/research-plan-implement-validate.md",
+        "templates/workflows/triage-reproduce-fix-verify.md",
+        "scripts/templates/README.md",
+        "scripts/templates/config/required-sections.json",
+        "scripts/templates/shell/check-template-links.sh",
+        "scripts/templates/shell/list-missing-template-sections.sh",
+        "scripts/templates/shell/generate-template-index.sh",
+        "scripts/templates/shell/verify-workflow-contracts.sh",
+        "scripts/templates/shell/check-template-frontmatter.sh",
+        "scripts/templates/powershell/Check-TemplateLinks.ps1",
+        "scripts/templates/powershell/Get-MissingTemplateSections.ps1",
+        "scripts/templates/powershell/New-TemplateIndex.ps1",
+        "scripts/templates/powershell/Test-WorkflowContracts.ps1",
+        "scripts/templates/powershell/Check-TemplateFrontmatter.ps1"
+      ],
+      "targets": ["codex", "claude-code", "cursor", "opencode"],
+      "dependencies": ["baseline:agents", "baseline:commands"],
+      "conflicts": [],
+      "optional": false,
+      "defaultInstall": true,
+      "stability": "stable",
+      "tags": ["workflow", "templates", "validation"],
+      "owner": "core",
+      "usageCues": ["Use when implementing, fixing, or validating work."]
+    }
+  ]
+}

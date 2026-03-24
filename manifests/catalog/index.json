@@ -1,0 +1,24 @@
+{
+  "bundles": [
+    "manifests/bundles/core.json",
+    "manifests/bundles/languages-seeded.json",
+    "manifests/bundles/languages-v1.json",
+    "manifests/bundles/frameworks.json"
+  ],
+  "profiles": [
+    "manifests/profiles/core.json"
+  ],
+  "targets": [
+    "manifests/targets/core.json"
+  ],
+  "catalogs": [
+    "manifests/catalog/language-assets.json",
+    "manifests/catalog/package-surface.json",
+    "manifests/catalog/seeded-knowledge-files.json"
+  ],
+  "schemas": [
+    "schemas/content/content-metadata.schema.json",
+    "schemas/manifests/seeded-knowledge-files.schema.json",
+    "schemas/manifests/package-surface.schema.json"
+  ]
+}

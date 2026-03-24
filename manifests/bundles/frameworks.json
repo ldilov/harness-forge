@@ -1,0 +1,36 @@
+{
+  "bundles": [
+    {
+      "id": "framework:nextjs",
+      "family": "framework",
+      "version": 1,
+      "description": "Next.js framework guidance.",
+      "paths": ["docs/catalog/frameworks/nextjs.md"],
+      "targets": ["codex", "claude-code", "cursor", "opencode"],
+      "dependencies": ["lang:typescript"],
+      "conflicts": [],
+      "optional": true,
+      "defaultInstall": false,
+      "stability": "beta",
+      "tags": ["nextjs", "framework"],
+      "owner": "core",
+      "usageCues": ["Recommend when next.config.* is present."]
+    },
+    {
+      "id": "framework:laravel",
+      "family": "framework",
+      "version": 1,
+      "description": "Laravel framework guidance.",
+      "paths": ["docs/catalog/frameworks/laravel.md"],
+      "targets": ["codex", "claude-code", "cursor", "opencode"],
+      "dependencies": ["lang:php"],
+      "conflicts": [],
+      "optional": true,
+      "defaultInstall": false,
+      "stability": "beta",
+      "tags": ["laravel", "framework"],
+      "owner": "core",
+      "usageCues": ["Recommend when artisan or composer.json is present."]
+    }
+  ]
+}

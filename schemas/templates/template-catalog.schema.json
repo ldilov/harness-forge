@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://harness-forge.dev/schemas/templates/template-catalog.schema.json",
+  "title": "Harness Forge Template Catalog Entry",
+  "type": "object",
+  "required": [
+    "id",
+    "kind",
+    "title",
+    "status",
+    "version",
+    "supported_targets",
+    "supported_languages",
+    "owner",
+    "generated"
+  ],
+  "properties": {
+    "id": { "type": "string" },
+    "kind": {
+      "type": "string",
+      "enum": ["task-template", "workflow-template"]
+    },
+    "title": { "type": "string" },
+    "status": { "type": "string", "enum": ["draft", "stable", "deprecated"] },
+    "version": { "type": "number" },
+    "supported_targets": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "supported_languages": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "owner": { "type": "string" },
+    "generated": { "type": "boolean" }
+  },
+  "additionalProperties": true
+}

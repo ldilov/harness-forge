@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://harness-forge.dev/schemas/manifests/seeded-knowledge-files.schema.json",
+  "title": "Harness Forge Seeded Knowledge Coverage Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["archive", "generatedOn", "languages", "files"],
+  "properties": {
+    "archive": {
+      "type": "string",
+      "minLength": 1
+    },
+    "generatedOn": {
+      "type": "string",
+      "minLength": 1
+    },
+    "languages": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "language",
+          "archivePath",
+          "relativePath",
+          "packagePath",
+          "delivery",
+          "contentKind"
+        ],
+        "properties": {
+          "language": {
+            "type": "string",
+            "minLength": 1
+          },
+          "archivePath": {
+            "type": "string",
+            "minLength": 1
+          },
+          "relativePath": {
+            "type": "string",
+            "minLength": 1
+          },
+          "packagePath": {
+            "type": "string",
+            "minLength": 1
+          },
+          "delivery": {
+            "type": "string",
+            "enum": ["direct", "transformed"]
+          },
+          "contentKind": {
+            "type": "string",
+            "minLength": 1
+          },
+          "notes": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

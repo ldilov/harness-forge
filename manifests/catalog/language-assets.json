@@ -1,0 +1,134 @@
+{
+  "languages": {
+    "typescript": {
+      "maturity": "seeded",
+      "knowledgeBase": "knowledge-bases/seeded/typescript",
+      "docs": [
+        "docs/catalog/languages/typescript.md",
+        "knowledge-bases/seeded/typescript/docs/overview.md",
+        "knowledge-bases/seeded/typescript/docs/review-checklist.md",
+        "knowledge-bases/seeded/typescript/docs/frameworks.md"
+      ],
+      "rules": ["rules/typescript/README.md"],
+      "examples": [
+        "knowledge-bases/seeded/typescript/examples/01-node-api.md",
+        "knowledge-bases/seeded/typescript/examples/02-react-component-library.md",
+        "knowledge-bases/seeded/typescript/examples/03-nextjs-app.md",
+        "knowledge-bases/seeded/typescript/examples/04-monorepo-shared-types-and-validation.md"
+      ]
+    },
+    "java": {
+      "maturity": "seeded",
+      "knowledgeBase": "knowledge-bases/seeded/java",
+      "docs": [
+        "docs/catalog/languages/java.md",
+        "knowledge-bases/seeded/java/docs/overview.md",
+        "knowledge-bases/seeded/java/docs/review-checklist.md",
+        "knowledge-bases/seeded/java/docs/frameworks.md"
+      ],
+      "rules": ["rules/java/README.md"],
+      "examples": [
+        "knowledge-bases/seeded/java/examples/01-spring-boot-rest-api.md",
+        "knowledge-bases/seeded/java/examples/02-event-consumer-service.md",
+        "knowledge-bases/seeded/java/examples/03-gradle-multi-module-backend.md",
+        "knowledge-bases/seeded/java/examples/04-library-module-with-strong-domain-tests.md"
+      ]
+    },
+    "dotnet": {
+      "maturity": "seeded",
+      "knowledgeBase": "knowledge-bases/seeded/dotnet",
+      "docs": [
+        "docs/catalog/languages/dotnet.md",
+        "knowledge-bases/seeded/dotnet/docs/overview.md",
+        "knowledge-bases/seeded/dotnet/docs/review-checklist.md",
+        "knowledge-bases/seeded/dotnet/docs/frameworks.md"
+      ],
+      "rules": ["rules/dotnet/README.md"],
+      "examples": [
+        "knowledge-bases/seeded/dotnet/examples/01-aspnet-core-crud-api.md",
+        "knowledge-bases/seeded/dotnet/examples/02-background-worker-with-queue-processing.md",
+        "knowledge-bases/seeded/dotnet/examples/03-shared-domain-library.md",
+        "knowledge-bases/seeded/dotnet/examples/04-cli-automation-tool.md"
+      ]
+    },
+    "lua": {
+      "maturity": "seeded",
+      "knowledgeBase": "knowledge-bases/seeded/lua",
+      "docs": [
+        "docs/catalog/languages/lua.md",
+        "knowledge-bases/seeded/lua/docs/overview.md",
+        "knowledge-bases/seeded/lua/docs/review-checklist.md",
+        "knowledge-bases/seeded/lua/docs/frameworks.md"
+      ],
+      "rules": ["rules/lua/README.md"],
+      "examples": [
+        "knowledge-bases/seeded/lua/examples/01-neovim-plugin.md",
+        "knowledge-bases/seeded/lua/examples/02-openresty-request-handler.md",
+        "knowledge-bases/seeded/lua/examples/03-löve-gameplay-module.md",
+        "knowledge-bases/seeded/lua/examples/04-embedded-automation-script.md"
+      ]
+    },
+    "powershell": {
+      "maturity": "seeded",
+      "knowledgeBase": "knowledge-bases/seeded/powershell",
+      "docs": [
+        "docs/catalog/languages/powershell.md",
+        "knowledge-bases/seeded/powershell/docs/overview.md",
+        "knowledge-bases/seeded/powershell/docs/review-checklist.md",
+        "knowledge-bases/seeded/powershell/docs/frameworks.md"
+      ],
+      "rules": ["rules/powershell/README.md"],
+      "examples": [
+        "knowledge-bases/seeded/powershell/examples/01-script-module.md",
+        "knowledge-bases/seeded/powershell/examples/02-ci-admin-automation-script.md",
+        "knowledge-bases/seeded/powershell/examples/03-remote-fleet-maintenance-command.md",
+        "knowledge-bases/seeded/powershell/examples/04-developer-bootstrap-utility.md"
+      ]
+    },
+    "python": {
+      "maturity": "expanding",
+      "docs": ["docs/catalog/languages/python.md"],
+      "rules": ["rules/python/README.md"]
+    },
+    "go": {
+      "maturity": "expanding",
+      "docs": ["docs/catalog/languages/go.md"],
+      "rules": ["rules/golang/README.md"]
+    },
+    "kotlin": {
+      "maturity": "expanding",
+      "docs": ["docs/catalog/languages/kotlin.md"],
+      "rules": ["rules/kotlin/README.md"]
+    },
+    "rust": {
+      "maturity": "expanding",
+      "docs": ["docs/catalog/languages/rust.md"],
+      "rules": ["rules/rust/README.md"]
+    },
+    "cpp": {
+      "maturity": "expanding",
+      "docs": ["docs/catalog/languages/cpp.md"],
+      "rules": ["rules/cpp/README.md"]
+    },
+    "php": {
+      "maturity": "expanding",
+      "docs": ["docs/catalog/languages/php.md"],
+      "rules": ["rules/php/README.md"]
+    },
+    "perl": {
+      "maturity": "expanding",
+      "docs": ["docs/catalog/languages/perl.md"],
+      "rules": ["rules/perl/README.md"]
+    },
+    "swift": {
+      "maturity": "expanding",
+      "docs": ["docs/catalog/languages/swift.md"],
+      "rules": ["rules/swift/README.md"]
+    },
+    "shell": {
+      "maturity": "expanding",
+      "docs": ["docs/catalog/languages/shell.md"],
+      "rules": ["rules/shell/README.md"]
+    }
+  }
+}

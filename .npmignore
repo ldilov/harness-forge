@@ -1,0 +1,10 @@
+node_modules/
+coverage/
+tests/
+specs/
+tmp/
+.hforge/
+*.log
+*.tmp
+.vscode/
+.idea/

@@ -1,0 +1,25 @@
+{
+  "id": "codex",
+  "displayName": "Codex",
+  "installRootStrategy": "repo-root",
+  "pathMappings": {
+    "AGENTS.md": "AGENTS.md",
+    "templates/tasks/implement-feature.md": ".hforge/templates/tasks/implement-feature.md",
+    "templates/tasks/fix-bug.md": ".hforge/templates/tasks/fix-bug.md",
+    "templates/workflows/research-plan-implement-validate.md": ".hforge/templates/workflows/research-plan-implement-validate.md",
+    "templates/workflows/triage-reproduce-fix-verify.md": ".hforge/templates/workflows/triage-reproduce-fix-verify.md"
+  },
+  "mergeRules": {
+    "AGENTS.md": "append-once"
+  },
+  "supportsHooks": false,
+  "supportsCommands": true,
+  "supportsAgents": true,
+  "supportsContexts": true,
+  "supportsPlugins": false,
+  "capabilityMatrix": {
+    "templates": true,
+    "workflow-validation": true
+  },
+  "guidanceTemplate": "codex"
+}
