@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://harness-forge.dev/schemas/manifests/catalog.schema.json",
+  "title": "Harness Forge Catalog",
+  "type": "object",
+  "required": ["bundles", "profiles", "targets"],
+  "properties": {
+    "bundles": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "profiles": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "targets": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "additionalProperties": false
+}

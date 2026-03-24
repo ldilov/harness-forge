@@ -1,0 +1,112 @@
+{
+  "$schema": "../../schemas/manifests/package-surface.schema.json",
+  "requiredPaths": [
+    "README.md",
+    "AGENTS.md",
+    "install.sh",
+    "install.ps1",
+    ".specify/scripts/powershell/check-prerequisites.ps1",
+    ".specify/templates/plan-template.md",
+    ".agents/skills/speckit-implement/SKILL.md",
+    ".agents/skills/speckit-plan/SKILL.md",
+    ".agents/skills/speckit-specify/SKILL.md",
+    ".agents/skills/speckit-tasks/SKILL.md",
+    "docs/catalog/language-packs.md",
+    "docs/templates/authoring.md",
+    "knowledge-bases/seeded/README.md",
+    "scripts/templates/README.md",
+    "scripts/templates/config/required-sections.json",
+    "scripts/templates/shell/check-template-frontmatter.sh",
+    "scripts/templates/shell/check-template-links.sh",
+    "scripts/templates/shell/list-missing-template-sections.sh",
+    "scripts/templates/shell/generate-template-index.sh",
+    "scripts/templates/shell/verify-workflow-contracts.sh",
+    "scripts/templates/powershell/Check-TemplateFrontmatter.ps1",
+    "scripts/templates/powershell/Check-TemplateLinks.ps1",
+    "scripts/templates/powershell/Get-MissingTemplateSections.ps1",
+    "scripts/templates/powershell/New-TemplateIndex.ps1",
+    "scripts/templates/powershell/Test-WorkflowContracts.ps1",
+    "knowledge-bases/seeded/typescript",
+    "knowledge-bases/seeded/java",
+    "knowledge-bases/seeded/dotnet",
+    "knowledge-bases/seeded/lua",
+    "knowledge-bases/seeded/powershell",
+    "manifests/catalog/seeded-knowledge-files.json",
+    "manifests/catalog/package-surface.json"
+  ],
+  "groups": [
+    {
+      "id": "root-docs",
+      "description": "Front-door and install guidance required for supported harnesses.",
+      "paths": [
+        "README.md",
+        "AGENTS.md",
+        ".specify",
+        "docs/quickstart.md",
+        "docs/installation.md",
+        "docs/targets.md",
+        "docs/languages.md",
+        "docs/commands.md",
+        "docs/agents.md",
+        "docs/hooks.md",
+        "docs/troubleshooting.md",
+        "docs/versioning-and-migration.md"
+      ]
+    },
+    {
+      "id": "seeded-knowledge",
+      "description": "Seeded language packs shipped directly in the package.",
+      "paths": [
+        "knowledge-bases/seeded/README.md",
+        "knowledge-bases/seeded/typescript",
+        "knowledge-bases/seeded/java",
+        "knowledge-bases/seeded/dotnet",
+        "knowledge-bases/seeded/lua",
+        "knowledge-bases/seeded/powershell"
+      ]
+    },
+    {
+      "id": "validator-bundle",
+      "description": "Shipped task and workflow validation bundle.",
+      "paths": [
+        "scripts/templates/README.md",
+        "scripts/templates/config/required-sections.json",
+        "scripts/templates/shell",
+        "scripts/templates/powershell"
+      ]
+    },
+    {
+      "id": "catalog-and-contracts",
+      "description": "Manifest and schema files required for packaging and release checks.",
+      "paths": [
+        "manifests/catalog/index.json",
+        "manifests/catalog/language-assets.json",
+        "manifests/catalog/seeded-knowledge-files.json",
+        "manifests/catalog/package-surface.json",
+        "schemas/content/content-metadata.schema.json",
+        "schemas/manifests/seeded-knowledge-files.schema.json",
+        "schemas/manifests/package-surface.schema.json"
+      ]
+    }
+  ],
+  "targetSurfaces": [
+    {
+      "target": "codex",
+      "paths": [
+        "AGENTS.md",
+        ".specify",
+        ".agents/skills",
+        "targets/codex/adapter.json"
+      ]
+    },
+    {
+      "target": "claude-code",
+      "paths": [
+        "AGENTS.md",
+        ".specify",
+        ".agents/skills",
+        "targets/claude-code/adapter.json"
+      ]
+    }
+  ]
+}

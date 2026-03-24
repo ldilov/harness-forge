@@ -1,0 +1,8 @@
+{
+  "id": "powershell-knowledge-base",
+  "language": "powershell",
+  "title": "PowerShell",
+  "intended_use": "starter knowledge base for language rules, examples, hooks, and review guidance",
+  "includes_common_rules": true,
+  "seeded_from_existing_package": false
+}

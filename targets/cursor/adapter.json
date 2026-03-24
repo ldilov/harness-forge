@@ -1,0 +1,16 @@
+{
+  "id": "cursor",
+  "displayName": "Cursor",
+  "installRootStrategy": "repo-root",
+  "pathMappings": {},
+  "mergeRules": {},
+  "supportsHooks": true,
+  "supportsCommands": true,
+  "supportsAgents": true,
+  "supportsContexts": true,
+  "supportsPlugins": true,
+  "capabilityMatrix": {
+    "templates": true,
+    "workflow-validation": true
+  }
+}

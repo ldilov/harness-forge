@@ -1,0 +1,104 @@
+{
+  "bundles": [
+    {
+      "id": "lang:typescript",
+      "family": "language",
+      "version": 1,
+      "description": "Seed TypeScript knowledge base from the supplied archive.",
+      "paths": [
+        "knowledge-bases/seeded/typescript",
+        "rules/typescript/README.md",
+        "docs/catalog/languages/typescript.md"
+      ],
+      "targets": ["codex", "claude-code", "cursor", "opencode"],
+      "dependencies": ["baseline:commands"],
+      "conflicts": [],
+      "optional": true,
+      "defaultInstall": false,
+      "stability": "stable",
+      "tags": ["typescript", "seeded"],
+      "owner": "core",
+      "usageCues": ["Recommend when the repo contains .ts or .tsx files."]
+    },
+    {
+      "id": "lang:java",
+      "family": "language",
+      "version": 1,
+      "description": "Seed Java knowledge base from the supplied archive.",
+      "paths": [
+        "knowledge-bases/seeded/java",
+        "rules/java/README.md",
+        "docs/catalog/languages/java.md"
+      ],
+      "targets": ["codex", "claude-code", "cursor", "opencode"],
+      "dependencies": ["baseline:commands"],
+      "conflicts": [],
+      "optional": true,
+      "defaultInstall": false,
+      "stability": "stable",
+      "tags": ["java", "seeded"],
+      "owner": "core",
+      "usageCues": ["Recommend when the repo contains .java files."]
+    },
+    {
+      "id": "lang:dotnet",
+      "family": "language",
+      "version": 1,
+      "description": "Seed .NET knowledge base from the supplied archive.",
+      "paths": [
+        "knowledge-bases/seeded/dotnet",
+        "rules/dotnet/README.md",
+        "docs/catalog/languages/dotnet.md"
+      ],
+      "targets": ["codex", "claude-code", "cursor", "opencode"],
+      "dependencies": ["baseline:commands"],
+      "conflicts": [],
+      "optional": true,
+      "defaultInstall": false,
+      "stability": "stable",
+      "tags": ["dotnet", "seeded"],
+      "owner": "core",
+      "usageCues": ["Recommend when the repo contains .cs files or .sln files."]
+    },
+    {
+      "id": "lang:lua",
+      "family": "language",
+      "version": 1,
+      "description": "Seed Lua knowledge base from the supplied archive.",
+      "paths": [
+        "knowledge-bases/seeded/lua",
+        "rules/lua/README.md",
+        "docs/catalog/languages/lua.md"
+      ],
+      "targets": ["codex", "claude-code", "cursor", "opencode"],
+      "dependencies": ["baseline:commands"],
+      "conflicts": [],
+      "optional": true,
+      "defaultInstall": false,
+      "stability": "stable",
+      "tags": ["lua", "seeded"],
+      "owner": "core",
+      "usageCues": ["Recommend when the repo contains .lua files."]
+    },
+    {
+      "id": "lang:powershell",
+      "family": "language",
+      "version": 1,
+      "description": "Seed PowerShell knowledge base from the supplied archive.",
+      "paths": [
+        "knowledge-bases/seeded/powershell",
+        "rules/powershell/README.md",
+        "docs/catalog/languages/powershell.md"
+      ],
+      "targets": ["codex", "claude-code", "cursor", "opencode"],
+      "dependencies": ["baseline:commands"],
+      "conflicts": [],
+      "optional": true,
+      "defaultInstall": false,
+      "stability": "stable",
+      "tags": ["powershell", "seeded"],
+      "owner": "core",
+      "usageCues": ["Recommend when the repo contains .ps1 files."]
+    }
+  ]
+}

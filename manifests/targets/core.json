@@ -1,0 +1,78 @@
+{
+  "targets": [
+    {
+      "id": "codex",
+      "displayName": "Codex",
+      "installRootStrategy": "repo-root",
+      "pathMappings": {
+        "AGENTS.md": "AGENTS.md"
+      },
+      "mergeRules": {
+        "AGENTS.md": "append-once"
+      },
+      "supportsHooks": false,
+      "supportsCommands": true,
+      "supportsAgents": true,
+      "supportsContexts": true,
+      "supportsPlugins": false,
+      "capabilityMatrix": {
+        "templates": true,
+        "workflow-validation": true
+      },
+      "postInstallGuidanceStrategy": "codex"
+    },
+    {
+      "id": "claude-code",
+      "displayName": "Claude Code",
+      "installRootStrategy": "repo-root",
+      "pathMappings": {
+        "AGENTS.md": "CLAUDE.md"
+      },
+      "mergeRules": {
+        "AGENTS.md": "copy"
+      },
+      "supportsHooks": true,
+      "supportsCommands": true,
+      "supportsAgents": true,
+      "supportsContexts": true,
+      "supportsPlugins": true,
+      "capabilityMatrix": {
+        "templates": true,
+        "workflow-validation": true
+      },
+      "postInstallGuidanceStrategy": "claude-code"
+    },
+    {
+      "id": "cursor",
+      "displayName": "Cursor",
+      "installRootStrategy": "repo-root",
+      "pathMappings": {},
+      "mergeRules": {},
+      "supportsHooks": true,
+      "supportsCommands": true,
+      "supportsAgents": true,
+      "supportsContexts": true,
+      "supportsPlugins": true,
+      "capabilityMatrix": {
+        "templates": true,
+        "workflow-validation": true
+      }
+    },
+    {
+      "id": "opencode",
+      "displayName": "OpenCode",
+      "installRootStrategy": "repo-root",
+      "pathMappings": {},
+      "mergeRules": {},
+      "supportsHooks": true,
+      "supportsCommands": true,
+      "supportsAgents": true,
+      "supportsContexts": true,
+      "supportsPlugins": true,
+      "capabilityMatrix": {
+        "templates": true,
+        "workflow-validation": true
+      }
+    }
+  ]
+}

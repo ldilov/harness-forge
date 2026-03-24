@@ -1,0 +1,20 @@
+{
+  "profiles": [
+    {
+      "id": "core",
+      "description": "Minimal baseline with agent guidance, commands, and workflow quality support.",
+      "bundleIds": ["baseline:agents", "baseline:commands", "capability:workflow-quality"],
+      "recommendedTargets": ["codex", "claude-code"],
+      "recommendedLanguages": [],
+      "recommendedCapabilities": ["workflow-quality"]
+    },
+    {
+      "id": "developer",
+      "description": "Default engineering profile with baseline workflow support.",
+      "bundleIds": ["baseline:agents", "baseline:commands", "capability:workflow-quality"],
+      "recommendedTargets": ["codex", "claude-code"],
+      "recommendedLanguages": ["typescript", "java", "dotnet", "lua", "powershell"],
+      "recommendedCapabilities": ["workflow-quality"]
+    }
+  ]
+}

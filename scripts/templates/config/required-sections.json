@@ -1,0 +1,37 @@
+{
+  "task-template": [
+    "## Purpose",
+    "## When to Use",
+    "## Inputs",
+    "## Optional Inputs",
+    "## Constraints",
+    "## Expected Outputs",
+    "## Acceptance Criteria",
+    "## Quality Gates",
+    "## Suggested Workflow",
+    "## Related Commands",
+    "## Related Agents",
+    "## Examples"
+  ],
+  "workflow-template": [
+    "## Purpose",
+    "## When to Use",
+    "## Entry Conditions",
+    "## Workflow Stages",
+    "## Handoff Contracts",
+    "## Exit Conditions",
+    "## Failure Modes",
+    "## Escalation Rules",
+    "## Artifacts Produced",
+    "## Human Approval Points",
+    "## Examples"
+  ],
+  "workflow-stage-fields": [
+    "**Goal**",
+    "**Consumes**",
+    "**Produces**",
+    "**Exit Criteria**",
+    "**Failure Conditions**",
+    "**Next Trigger**"
+  ]
+}
