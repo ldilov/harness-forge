@@ -5,4 +5,17 @@ description: Auto-discoverable wrapper for `skills/kotlin-engineering/SKILL.md`.
 
 # Kotlin Engineering
 
-Use `skills/kotlin-engineering/SKILL.md` as the canonical packaged reference.
+## Activation
+
+- trigger when Kotlin source or Gradle Kotlin DSL dominates the task
+
+## Use These Surfaces
+
+- `skills/kotlin-engineering/SKILL.md`
+- `rules/common/`
+- `rules/kotlin/`
+- `templates/workflows/implement-kotlin-change.md`
+
+## Expected Output
+
+- a Kotlin-specific implementation and validation path grounded in the canonical skill

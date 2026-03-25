@@ -21,3 +21,10 @@ export function formatPlanSummary(plan: InstallPlan): string {
 export function toJson<T>(value: T): string {
   return JSON.stringify(value, null, 2);
 }
+
+export function toMarkdownTable(headers: string[], rows: string[][]): string {
+  const header = `| ${headers.join(" | ")} |`;
+  const separator = `| ${headers.map(() => "---").join(" | ")} |`;
+  const body = rows.map((row) => `| ${row.join(" | ")} |`);
+  return [header, separator, ...body].join("\n");
+}

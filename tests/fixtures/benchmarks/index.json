@@ -1,0 +1,92 @@
+{
+  "scenarios": [
+    {
+      "id": "typescript-web-app",
+      "repoArchetype": "app",
+      "fixturePath": "tests/fixtures/benchmarks/typescript-web-app",
+      "expectedSignals": ["lang:typescript", "framework:react", "framework:vite"],
+      "expectedRecommendations": ["lang:typescript", "framework:react", "framework:vite"],
+      "expectedInstructionScopes": ["AGENTS.md"],
+      "expectedObservabilityEvents": ["recommendation-run"],
+      "expectedParallelDecision": "local-isolated",
+      "validationFocus": "frontend app and framework-aware recommendation coverage"
+    },
+    {
+      "id": "python-service",
+      "repoArchetype": "service",
+      "fixturePath": "tests/fixtures/benchmarks/python-service",
+      "expectedSignals": ["lang:python", "framework:fastapi"],
+      "expectedRecommendations": ["lang:python", "framework:fastapi"],
+      "expectedInstructionScopes": ["AGENTS.md"],
+      "expectedObservabilityEvents": ["recommendation-run"],
+      "expectedParallelDecision": "single-thread",
+      "validationFocus": "Python service detection and API validation guidance"
+    },
+    {
+      "id": "java-service",
+      "repoArchetype": "service",
+      "fixturePath": "tests/fixtures/benchmarks/java-service",
+      "expectedSignals": ["lang:java", "framework:spring-boot"],
+      "expectedRecommendations": ["lang:java", "framework:spring-boot"],
+      "expectedInstructionScopes": ["AGENTS.md"],
+      "expectedObservabilityEvents": ["recommendation-run"],
+      "expectedParallelDecision": "single-thread",
+      "validationFocus": "JVM service detection"
+    },
+    {
+      "id": "dotnet-api",
+      "repoArchetype": "service",
+      "fixturePath": "tests/fixtures/benchmarks/dotnet-api",
+      "expectedSignals": ["lang:dotnet", "framework:aspnet-core"],
+      "expectedRecommendations": ["lang:dotnet", "framework:aspnet-core"],
+      "expectedInstructionScopes": ["AGENTS.md"],
+      "expectedObservabilityEvents": ["recommendation-run"],
+      "expectedParallelDecision": "single-thread",
+      "validationFocus": ".NET API detection"
+    },
+    {
+      "id": "go-cli",
+      "repoArchetype": "cli",
+      "fixturePath": "tests/fixtures/benchmarks/go-cli",
+      "expectedSignals": ["lang:go"],
+      "expectedRecommendations": ["lang:go"],
+      "expectedInstructionScopes": ["AGENTS.md"],
+      "expectedObservabilityEvents": ["recommendation-run"],
+      "expectedParallelDecision": "single-thread",
+      "validationFocus": "CLI-oriented repo typing"
+    },
+    {
+      "id": "monorepo",
+      "repoArchetype": "monorepo",
+      "fixturePath": "tests/fixtures/benchmarks/monorepo",
+      "expectedSignals": ["lang:typescript", "framework:nextjs"],
+      "expectedRecommendations": ["lang:typescript", "framework:nextjs"],
+      "expectedInstructionScopes": ["AGENTS.md", "apps/web/AGENTS.md"],
+      "expectedObservabilityEvents": ["recommendation-run"],
+      "expectedParallelDecision": "local-isolated",
+      "validationFocus": "workspace model detection"
+    },
+    {
+      "id": "legacy-repo",
+      "repoArchetype": "legacy",
+      "fixturePath": "tests/fixtures/benchmarks/legacy-repo",
+      "expectedSignals": ["risk:legacy"],
+      "expectedRecommendations": ["skill:repo-onboarding", "validation:missing-tests"],
+      "expectedInstructionScopes": ["AGENTS.md"],
+      "expectedObservabilityEvents": ["recommendation-run"],
+      "expectedParallelDecision": "single-thread",
+      "validationFocus": "legacy and missing-validation cues"
+    },
+    {
+      "id": "security-service",
+      "repoArchetype": "service",
+      "fixturePath": "tests/fixtures/benchmarks/security-service",
+      "expectedSignals": ["risk:security", "framework:express"],
+      "expectedRecommendations": ["skill:security-scan", "framework:express"],
+      "expectedInstructionScopes": ["AGENTS.md"],
+      "expectedObservabilityEvents": ["recommendation-run"],
+      "expectedParallelDecision": "single-thread",
+      "validationFocus": "security-sensitive recommendation routing"
+    }
+  ]
+}

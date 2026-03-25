@@ -4,6 +4,7 @@ import path from "node:path";
 
 import { loadBundleManifests, loadProfileManifests, loadTargetManifests } from "../../domain/manifests/index.js";
 import { loadTargetAdapter } from "../../domain/targets/adapter.js";
+import { bootstrapWorkspace } from "../../application/install/bootstrap-workspace.js";
 import { createInstallPlan } from "../../application/install/plan-install.js";
 import { applyInstall } from "../../application/install/apply-install.js";
 import { validateEnvironment } from "../../application/install/validate-environment.js";
@@ -98,6 +99,66 @@ export function registerInstallCommands(program: Command): void {
         console.log(`Guidance written to ${result.guidancePath}`);
       } else {
         console.log('Preview only. Re-run with "--yes" to apply the plan.');
+      }
+    });
+
+  program
+    .command("bootstrap")
+    .option("--target <target>", "explicit target override", collect, [])
+    .option("--profile <profile>")
+    .option("--lang <lang>", "language bundle", collect, [])
+    .option("--framework <framework>", "framework bundle", collect, [])
+    .option("--with <capability>", "capability bundle", collect, [])
+    .option("--bundle <bundle>", "explicit bundle", collect, [])
+    .option("--root <root>", "workspace root", DEFAULT_WORKSPACE_ROOT)
+    .option("--dry-run", "show bootstrap plans only", false)
+    .option("--yes", "apply detected bootstrap plans", false)
+    .option("--json", "json output", false)
+    .action(async (options) => {
+      const workspaceRoot = path.resolve(options.root);
+      const result = await bootstrapWorkspace({
+        packageRoot: PACKAGE_ROOT,
+        workspaceRoot,
+        profileId: options.profile,
+        targetIds: options.target,
+        bundleIds: options.bundle,
+        languageIds: options.lang,
+        frameworkIds: options.framework,
+        capabilityIds: options.with,
+        mode: options.yes && !options.dryRun ? "apply" : "dry-run"
+      });
+
+      if (options.json) {
+        console.log(toJson(result));
+        return;
+      }
+
+      console.log(`Workspace: ${result.workspaceRoot}`);
+      console.log(`Targets: ${result.targetIds.join(", ")}`);
+      console.log(`Profile: ${result.recommendedProfileId}`);
+      console.log(`Recommended bundles: ${result.recommendedBundleIds.join(", ") || "none"}`);
+      if (result.discoveredTargets.length > 0) {
+        console.log("Discovered targets:");
+        for (const target of result.discoveredTargets) {
+          const evidence = target.evidence.length > 0 ? ` via ${target.evidence.join(", ")}` : "";
+          console.log(`- ${target.targetId} (${target.source}, ${target.confidence.toFixed(2)}): ${target.reason}${evidence}`);
+        }
+      }
+
+      for (const plan of result.plans) {
+        console.log("");
+        console.log(formatPlanSummary(plan));
+      }
+
+      if (result.applied.length > 0) {
+        for (const applied of result.applied) {
+          console.log("");
+          console.log(`Applied ${applied.targetId}`);
+          console.log(applied.messages.join("\n"));
+          console.log(`Guidance written to ${applied.guidancePath}`);
+        }
+      } else {
+        console.log('Preview only. Re-run with "--yes" to apply the bootstrap plans.');
       }
     });
 }

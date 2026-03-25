@@ -29,6 +29,17 @@ the task involves Spring Boot services, backend modules, or JVM tooling.
 - `knowledge-bases/seeded/java/docs/frameworks.md`
 - `knowledge-bases/seeded/java/examples/`
 
+## Supplemental engineering references
+
+- `skills/java-engineering/references/repo-exploration.md`
+- `skills/java-engineering/references/output-templates.md`
+- `skills/java-engineering/references/agent-patterns.md`
+- `skills/java-engineering/references/debugging-playbook.md`
+- `skills/java-engineering/references/build-and-structure.md`
+- `skills/java-engineering/references/spring-patterns.md`
+- `skills/java-engineering/references/testing-concurrency-performance.md`
+- `skills/java-engineering/references/examples.md`
+
 ## Assistant expectations
 
 - prefer clear domain boundaries, small services, and explicit contracts

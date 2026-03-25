@@ -1,0 +1,24 @@
+{
+  "profiles": [
+    {
+      "id": "reviewer",
+      "displayName": "Reviewer",
+      "description": "Review-heavy profile that emphasizes safety, compatibility, and evidence-backed validation.",
+      "bundleIds": ["baseline:agents", "baseline:commands", "capability:workflow-quality", "capability:lifecycle-governance"],
+      "recommendedTargets": ["codex", "claude-code"],
+      "recommendedLanguages": [],
+      "recommendedCapabilities": ["lifecycle-governance"],
+      "preferredSkills": ["security-scan", "release-readiness", "api-contract-review"],
+      "recommendedHooks": ["quality-gate.release-smoke"],
+      "validationStrictness": "strict",
+      "reviewDepth": "deep",
+      "riskAppetite": "low",
+      "targetCompatibility": {
+        "codex": "full",
+        "claude-code": "full",
+        "cursor": "partial",
+        "opencode": "partial"
+      }
+    }
+  ]
+}

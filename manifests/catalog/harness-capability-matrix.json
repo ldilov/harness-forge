@@ -1,0 +1,429 @@
+{
+  "$schema": "../../schemas/manifests/harness-capability-matrix.schema.json",
+  "version": 1,
+  "generatedAt": "2026-03-25T00:00:00.000Z",
+  "targets": [
+    {
+      "targetId": "codex",
+      "displayName": "Codex",
+      "supportLevel": "full",
+      "capabilities": [
+        {
+          "capabilityId": "templates",
+          "supportLevel": "full",
+          "supportMode": "native",
+          "evidenceSource": [
+            "targets/codex/adapter.json",
+            "manifests/targets/core.json"
+          ],
+          "lastValidatedAt": "2026-03-25T00:00:00.000Z",
+          "validationMethod": "adapter-and-manifest-review",
+          "confidence": 0.99,
+          "notes": "Codex ships first-class guidance and runtime packaging.",
+          "fallbackBehavior": "Use the shipped AGENTS.md and .codex runtime surfaces."
+        },
+        {
+          "capabilityId": "workflow-validation",
+          "supportLevel": "full",
+          "supportMode": "native",
+          "evidenceSource": [
+            "scripts/templates/powershell/Test-WorkflowContracts.ps1",
+            "targets/codex/adapter.json"
+          ],
+          "lastValidatedAt": "2026-03-25T00:00:00.000Z",
+          "validationMethod": "runtime-validator-review",
+          "confidence": 0.94,
+          "notes": "Codex can consume the shipped workflow validation surfaces.",
+          "fallbackBehavior": "Run the package validators directly from the repository."
+        },
+        {
+          "capabilityId": "repo-intelligence",
+          "supportLevel": "full",
+          "supportMode": "native",
+          "evidenceSource": [
+            "scripts/intelligence/score-recommendations.mjs",
+            "src/cli/commands/recommend.ts"
+          ],
+          "lastValidatedAt": "2026-03-25T00:00:00.000Z",
+          "validationMethod": "cli-and-script-review",
+          "confidence": 0.97,
+          "notes": "Repo intelligence is a first-class Codex surface.",
+          "fallbackBehavior": "Run the intelligence scripts directly if the CLI is unavailable."
+        },
+        {
+          "capabilityId": "flow-orchestration",
+          "supportLevel": "full",
+          "supportMode": "native",
+          "evidenceSource": [
+            "src/cli/commands/flow.ts",
+            "scripts/runtime/flow-status.mjs"
+          ],
+          "lastValidatedAt": "2026-03-25T00:00:00.000Z",
+          "validationMethod": "flow-command-review",
+          "confidence": 0.95,
+          "notes": "Flow status and recovery are available for Codex workflows.",
+          "fallbackBehavior": "Inspect .specify/state/flow-state.json and generated flow docs directly."
+        },
+        {
+          "capabilityId": "typed-hooks",
+          "supportLevel": "partial",
+          "supportMode": "documentation-only",
+          "evidenceSource": [
+            "docs/hooks/catalog.md",
+            "targets/codex/adapter.json"
+          ],
+          "lastValidatedAt": "2026-03-25T00:00:00.000Z",
+          "validationMethod": "docs-and-runtime-gap-review",
+          "confidence": 0.84,
+          "notes": "Codex ships hook authoring guidance, but not the same native runtime hook model as Claude Code.",
+          "fallbackBehavior": "Use the docs and packaged hook manifests as references, then wire execution manually in the Codex target."
+        },
+        {
+          "capabilityId": "maintenance",
+          "supportLevel": "full",
+          "supportMode": "native",
+          "evidenceSource": [
+            "src/cli/commands/doctor.ts",
+            "src/cli/commands/audit.ts",
+            "src/cli/commands/diff-install.ts"
+          ],
+          "lastValidatedAt": "2026-03-25T00:00:00.000Z",
+          "validationMethod": "maintenance-command-review",
+          "confidence": 0.96,
+          "notes": "Codex is a first-class maintenance target.",
+          "fallbackBehavior": "Use the CLI maintenance commands directly from the packaged runtime."
+        },
+        {
+          "capabilityId": "observability",
+          "supportLevel": "full",
+          "supportMode": "native",
+          "evidenceSource": [
+            "scripts/runtime/report-effectiveness.mjs",
+            "src/infrastructure/observability/local-metrics-store.ts"
+          ],
+          "lastValidatedAt": "2026-03-25T00:00:00.000Z",
+          "validationMethod": "local-runtime-review",
+          "confidence": 0.93,
+          "notes": "Local observability is available for Codex workflows.",
+          "fallbackBehavior": "Inspect .hforge/observability artifacts directly."
+        }
+      ]
+    },
+    {
+      "targetId": "claude-code",
+      "displayName": "Claude Code",
+      "supportLevel": "full",
+      "capabilities": [
+        {
+          "capabilityId": "templates",
+          "supportLevel": "full",
+          "supportMode": "native",
+          "evidenceSource": [
+            "targets/claude-code/adapter.json",
+            "manifests/targets/core.json"
+          ],
+          "lastValidatedAt": "2026-03-25T00:00:00.000Z",
+          "validationMethod": "adapter-and-manifest-review",
+          "confidence": 0.99,
+          "notes": "Claude Code ships first-class guidance and runtime packaging.",
+          "fallbackBehavior": "Use the shipped CLAUDE.md and .claude runtime surfaces."
+        },
+        {
+          "capabilityId": "workflow-validation",
+          "supportLevel": "full",
+          "supportMode": "native",
+          "evidenceSource": [
+            "scripts/templates/powershell/Test-WorkflowContracts.ps1",
+            "targets/claude-code/adapter.json"
+          ],
+          "lastValidatedAt": "2026-03-25T00:00:00.000Z",
+          "validationMethod": "runtime-validator-review",
+          "confidence": 0.95,
+          "notes": "Workflow validation is available through the packaged validation bundle.",
+          "fallbackBehavior": "Run the package validators directly from the repository."
+        },
+        {
+          "capabilityId": "repo-intelligence",
+          "supportLevel": "full",
+          "supportMode": "native",
+          "evidenceSource": [
+            "scripts/intelligence/score-recommendations.mjs",
+            "src/cli/commands/recommend.ts"
+          ],
+          "lastValidatedAt": "2026-03-25T00:00:00.000Z",
+          "validationMethod": "cli-and-script-review",
+          "confidence": 0.97,
+          "notes": "Repo intelligence is a first-class Claude Code surface.",
+          "fallbackBehavior": "Run the intelligence scripts directly if the CLI is unavailable."
+        },
+        {
+          "capabilityId": "flow-orchestration",
+          "supportLevel": "full",
+          "supportMode": "native",
+          "evidenceSource": [
+            "src/cli/commands/flow.ts",
+            "scripts/runtime/flow-status.mjs"
+          ],
+          "lastValidatedAt": "2026-03-25T00:00:00.000Z",
+          "validationMethod": "flow-command-review",
+          "confidence": 0.96,
+          "notes": "Flow status and recovery are available for Claude Code workflows.",
+          "fallbackBehavior": "Inspect .specify/state/flow-state.json and generated flow docs directly."
+        },
+        {
+          "capabilityId": "typed-hooks",
+          "supportLevel": "full",
+          "supportMode": "native",
+          "evidenceSource": [
+            "manifests/hooks/index.json",
+            "targets/claude-code/adapter.json"
+          ],
+          "lastValidatedAt": "2026-03-25T00:00:00.000Z",
+          "validationMethod": "hook-runtime-review",
+          "confidence": 0.97,
+          "notes": "Claude Code has the strongest native hook story in the current package.",
+          "fallbackBehavior": "Use the shipped hook catalog and runtime docs."
+        },
+        {
+          "capabilityId": "maintenance",
+          "supportLevel": "full",
+          "supportMode": "native",
+          "evidenceSource": [
+            "src/cli/commands/doctor.ts",
+            "src/cli/commands/audit.ts",
+            "src/cli/commands/diff-install.ts"
+          ],
+          "lastValidatedAt": "2026-03-25T00:00:00.000Z",
+          "validationMethod": "maintenance-command-review",
+          "confidence": 0.96,
+          "notes": "Claude Code is a first-class maintenance target.",
+          "fallbackBehavior": "Use the CLI maintenance commands directly from the packaged runtime."
+        },
+        {
+          "capabilityId": "observability",
+          "supportLevel": "full",
+          "supportMode": "native",
+          "evidenceSource": [
+            "scripts/runtime/report-effectiveness.mjs",
+            "src/infrastructure/observability/local-metrics-store.ts"
+          ],
+          "lastValidatedAt": "2026-03-25T00:00:00.000Z",
+          "validationMethod": "local-runtime-review",
+          "confidence": 0.93,
+          "notes": "Local observability is available for Claude Code workflows.",
+          "fallbackBehavior": "Inspect .hforge/observability artifacts directly."
+        }
+      ]
+    },
+    {
+      "targetId": "cursor",
+      "displayName": "Cursor",
+      "supportLevel": "partial",
+      "capabilities": [
+        {
+          "capabilityId": "templates",
+          "supportLevel": "partial",
+          "supportMode": "documentation-only",
+          "evidenceSource": [
+            "targets/cursor/adapter.json",
+            "docs/target-support-matrix.md"
+          ],
+          "lastValidatedAt": "2026-03-25T00:00:00.000Z",
+          "validationMethod": "docs-and-adapter-review",
+          "confidence": 0.88,
+          "notes": "Cursor can consume packaged docs and portable guidance, but not a first-class runtime mapping.",
+          "fallbackBehavior": "Use generated docs and manifests as the support surface instead of expecting a native Cursor runtime install."
+        },
+        {
+          "capabilityId": "workflow-validation",
+          "supportLevel": "partial",
+          "supportMode": "documentation-only",
+          "evidenceSource": [
+            "targets/cursor/adapter.json",
+            "scripts/templates/powershell/Test-WorkflowContracts.ps1"
+          ],
+          "lastValidatedAt": "2026-03-25T00:00:00.000Z",
+          "validationMethod": "validator-portability-review",
+          "confidence": 0.71,
+          "notes": "Validation guidance is portable, but no Cursor-native runtime wiring is shipped.",
+          "fallbackBehavior": "Run the validators from the repository rather than relying on a Cursor-specific runtime integration."
+        },
+        {
+          "capabilityId": "repo-intelligence",
+          "supportLevel": "partial",
+          "supportMode": "translated",
+          "evidenceSource": [
+            "scripts/intelligence/score-recommendations.mjs",
+            "targets/cursor/adapter.json"
+          ],
+          "lastValidatedAt": "2026-03-25T00:00:00.000Z",
+          "validationMethod": "script-portability-review",
+          "confidence": 0.82,
+          "notes": "Repo intelligence is available as portable scripts and docs rather than a native Cursor runtime surface.",
+          "fallbackBehavior": "Run the intelligence scripts directly and treat the output as operator guidance."
+        },
+        {
+          "capabilityId": "flow-orchestration",
+          "supportLevel": "unsupported",
+          "supportMode": "unsupported",
+          "evidenceSource": [
+            "targets/cursor/adapter.json",
+            "docs/flow-orchestration.md"
+          ],
+          "lastValidatedAt": "2026-03-25T00:00:00.000Z",
+          "validationMethod": "runtime-gap-review",
+          "confidence": 0.94,
+          "notes": "No first-class Cursor flow-state recovery surface is shipped.",
+          "fallbackBehavior": "Do not rely on packaged flow recovery for Cursor; use the portable docs only."
+        },
+        {
+          "capabilityId": "typed-hooks",
+          "supportLevel": "unsupported",
+          "supportMode": "unsupported",
+          "evidenceSource": [
+            "targets/cursor/adapter.json",
+            "manifests/hooks/index.json"
+          ],
+          "lastValidatedAt": "2026-03-25T00:00:00.000Z",
+          "validationMethod": "runtime-gap-review",
+          "confidence": 0.95,
+          "notes": "Cursor does not have a packaged native hook runtime in this repository.",
+          "fallbackBehavior": "Use hook docs as references only; do not claim native Cursor hook execution."
+        },
+        {
+          "capabilityId": "maintenance",
+          "supportLevel": "partial",
+          "supportMode": "documentation-only",
+          "evidenceSource": [
+            "targets/cursor/adapter.json",
+            "src/cli/commands/doctor.ts"
+          ],
+          "lastValidatedAt": "2026-03-25T00:00:00.000Z",
+          "validationMethod": "command-portability-review",
+          "confidence": 0.73,
+          "notes": "Maintenance guidance is portable, but a Cursor-native runtime surface is not shipped.",
+          "fallbackBehavior": "Run the maintenance commands from the repository rather than expecting Cursor-specific runtime integration."
+        },
+        {
+          "capabilityId": "observability",
+          "supportLevel": "partial",
+          "supportMode": "documentation-only",
+          "evidenceSource": [
+            "targets/cursor/adapter.json",
+            "scripts/runtime/report-effectiveness.mjs"
+          ],
+          "lastValidatedAt": "2026-03-25T00:00:00.000Z",
+          "validationMethod": "script-portability-review",
+          "confidence": 0.74,
+          "notes": "Observability artifacts are portable, but no native Cursor runtime surface is shipped.",
+          "fallbackBehavior": "Inspect the local observability artifacts directly from the repository."
+        }
+      ]
+    },
+    {
+      "targetId": "opencode",
+      "displayName": "OpenCode",
+      "supportLevel": "partial",
+      "capabilities": [
+        {
+          "capabilityId": "templates",
+          "supportLevel": "partial",
+          "supportMode": "documentation-only",
+          "evidenceSource": [
+            "targets/opencode/adapter.json",
+            "docs/target-support-matrix.md"
+          ],
+          "lastValidatedAt": "2026-03-25T00:00:00.000Z",
+          "validationMethod": "docs-and-adapter-review",
+          "confidence": 0.88,
+          "notes": "OpenCode can consume packaged docs and portable guidance, but not a first-class runtime mapping.",
+          "fallbackBehavior": "Use generated docs and manifests as the support surface instead of expecting a native OpenCode runtime install."
+        },
+        {
+          "capabilityId": "workflow-validation",
+          "supportLevel": "partial",
+          "supportMode": "documentation-only",
+          "evidenceSource": [
+            "targets/opencode/adapter.json",
+            "scripts/templates/powershell/Test-WorkflowContracts.ps1"
+          ],
+          "lastValidatedAt": "2026-03-25T00:00:00.000Z",
+          "validationMethod": "validator-portability-review",
+          "confidence": 0.71,
+          "notes": "Validation guidance is portable, but no OpenCode-native runtime wiring is shipped.",
+          "fallbackBehavior": "Run the validators from the repository rather than relying on an OpenCode-specific runtime integration."
+        },
+        {
+          "capabilityId": "repo-intelligence",
+          "supportLevel": "partial",
+          "supportMode": "translated",
+          "evidenceSource": [
+            "scripts/intelligence/score-recommendations.mjs",
+            "targets/opencode/adapter.json"
+          ],
+          "lastValidatedAt": "2026-03-25T00:00:00.000Z",
+          "validationMethod": "script-portability-review",
+          "confidence": 0.82,
+          "notes": "Repo intelligence is available as portable scripts and docs rather than a native OpenCode runtime surface.",
+          "fallbackBehavior": "Run the intelligence scripts directly and treat the output as operator guidance."
+        },
+        {
+          "capabilityId": "flow-orchestration",
+          "supportLevel": "unsupported",
+          "supportMode": "unsupported",
+          "evidenceSource": [
+            "targets/opencode/adapter.json",
+            "docs/flow-orchestration.md"
+          ],
+          "lastValidatedAt": "2026-03-25T00:00:00.000Z",
+          "validationMethod": "runtime-gap-review",
+          "confidence": 0.94,
+          "notes": "No first-class OpenCode flow-state recovery surface is shipped.",
+          "fallbackBehavior": "Do not rely on packaged flow recovery for OpenCode; use the portable docs only."
+        },
+        {
+          "capabilityId": "typed-hooks",
+          "supportLevel": "unsupported",
+          "supportMode": "unsupported",
+          "evidenceSource": [
+            "targets/opencode/adapter.json",
+            "manifests/hooks/index.json"
+          ],
+          "lastValidatedAt": "2026-03-25T00:00:00.000Z",
+          "validationMethod": "runtime-gap-review",
+          "confidence": 0.95,
+          "notes": "OpenCode does not have a packaged native hook runtime in this repository.",
+          "fallbackBehavior": "Use hook docs as references only; do not claim native OpenCode hook execution."
+        },
+        {
+          "capabilityId": "maintenance",
+          "supportLevel": "partial",
+          "supportMode": "documentation-only",
+          "evidenceSource": [
+            "targets/opencode/adapter.json",
+            "src/cli/commands/doctor.ts"
+          ],
+          "lastValidatedAt": "2026-03-25T00:00:00.000Z",
+          "validationMethod": "command-portability-review",
+          "confidence": 0.73,
+          "notes": "Maintenance guidance is portable, but an OpenCode-native runtime surface is not shipped.",
+          "fallbackBehavior": "Run the maintenance commands from the repository rather than expecting OpenCode-specific runtime integration."
+        },
+        {
+          "capabilityId": "observability",
+          "supportLevel": "partial",
+          "supportMode": "documentation-only",
+          "evidenceSource": [
+            "targets/opencode/adapter.json",
+            "scripts/runtime/report-effectiveness.mjs"
+          ],
+          "lastValidatedAt": "2026-03-25T00:00:00.000Z",
+          "validationMethod": "script-portability-review",
+          "confidence": 0.74,
+          "notes": "Observability artifacts are portable, but no native OpenCode runtime surface is shipped.",
+          "fallbackBehavior": "Inspect the local observability artifacts directly from the repository."
+        }
+      ]
+    }
+  ]
+}

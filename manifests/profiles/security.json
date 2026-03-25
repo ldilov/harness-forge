@@ -1,0 +1,24 @@
+{
+  "profiles": [
+    {
+      "id": "security",
+      "displayName": "Security",
+      "description": "Security-first profile for trust boundaries, secret handling, and risk-sensitive services.",
+      "bundleIds": ["baseline:agents", "baseline:commands", "capability:workflow-quality", "capability:lifecycle-governance", "capability:repo-intelligence"],
+      "recommendedTargets": ["codex", "claude-code"],
+      "recommendedLanguages": ["typescript", "python", "go", "java", "dotnet", "php"],
+      "recommendedCapabilities": ["repo-intelligence", "lifecycle-governance"],
+      "preferredSkills": ["security-scan", "api-contract-review", "db-migration-review"],
+      "recommendedHooks": ["quality-gate.release-smoke", "scan.repo-intelligence"],
+      "validationStrictness": "strict",
+      "reviewDepth": "deep",
+      "riskAppetite": "low",
+      "targetCompatibility": {
+        "codex": "full",
+        "claude-code": "full",
+        "cursor": "partial",
+        "opencode": "partial"
+      }
+    }
+  ]
+}

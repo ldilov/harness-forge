@@ -1,0 +1,24 @@
+{
+  "profiles": [
+    {
+      "id": "developer",
+      "displayName": "Developer",
+      "description": "Engineering-first profile for active implementation, recommendations, and flow recovery.",
+      "bundleIds": ["baseline:agents", "baseline:commands", "capability:workflow-quality", "capability:repo-intelligence", "capability:flow-orchestration"],
+      "recommendedTargets": ["codex", "claude-code"],
+      "recommendedLanguages": ["typescript", "python", "go", "java", "dotnet"],
+      "recommendedCapabilities": ["workflow-quality", "repo-intelligence", "flow-orchestration"],
+      "preferredSkills": ["repo-onboarding", "documentation-lookup", "test-strategy-and-coverage"],
+      "recommendedHooks": ["scan.repo-intelligence", "checkpoint.flow-summary"],
+      "validationStrictness": "standard",
+      "reviewDepth": "standard",
+      "riskAppetite": "balanced",
+      "targetCompatibility": {
+        "codex": "full",
+        "claude-code": "full",
+        "cursor": "partial",
+        "opencode": "partial"
+      }
+    }
+  ]
+}

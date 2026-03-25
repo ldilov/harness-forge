@@ -1,0 +1,21 @@
+{
+  "featureId": "003-platform-enhancements",
+  "currentStage": "implement",
+  "status": "active",
+  "lastArtifact": "specs/003-platform-enhancements/tasks.md",
+  "nextAction": "Continue implementation and keep specs/003-platform-enhancements/tasks.md updated.",
+  "updatedAt": "2026-03-25T06:12:03.963Z",
+  "artifactLineage": [
+    "specs/003-platform-enhancements/spec.md",
+    "specs/003-platform-enhancements/checklists/requirements.md",
+    "specs/003-platform-enhancements/plan.md",
+    "specs/003-platform-enhancements/research.md",
+    "specs/003-platform-enhancements/data-model.md",
+    "specs/003-platform-enhancements/quickstart.md",
+    "specs/003-platform-enhancements/contracts/repo-intelligence-contract.md",
+    "specs/003-platform-enhancements/contracts/flow-state-contract.md",
+    "specs/003-platform-enhancements/contracts/hook-manifest-contract.md",
+    "specs/003-platform-enhancements/contracts/compatibility-matrix-contract.md",
+    "specs/003-platform-enhancements/tasks.md"
+  ]
+}

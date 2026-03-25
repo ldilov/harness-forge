@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://harness-forge.dev/schemas/runtime/worktree-plan.schema.json",
+  "title": "Parallel execution plan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "planId",
+    "featureId",
+    "strategy",
+    "rootTask",
+    "shards",
+    "dependencies",
+    "sharedRiskPaths",
+    "expectedArtifacts",
+    "validationGates",
+    "mergeCriteria"
+  ],
+  "properties": {
+    "planId": { "type": "string" },
+    "featureId": { "type": "string" },
+    "strategy": { "type": "string" },
+    "rootTask": { "type": "string" },
+    "shards": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["shardId", "taskIds"],
+        "properties": {
+          "shardId": { "type": "string" },
+          "taskIds": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "worktreePath": { "type": "string" },
+          "risk": { "type": "string" }
+        }
+      }
+    },
+    "dependencies": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["before", "after"],
+        "properties": {
+          "before": { "type": "string" },
+          "after": { "type": "string" }
+        }
+      }
+    },
+    "sharedRiskPaths": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "expectedArtifacts": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "validationGates": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "mergeCriteria": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "rollbackPlan": { "type": "string" },
+    "fallbackToSingleThreadReason": { "type": ["string", "null"] }
+  }
+}

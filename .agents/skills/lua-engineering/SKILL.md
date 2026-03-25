@@ -12,6 +12,7 @@ mentions Neovim, OpenResty, Love2D, or embedded Lua automation.
 ## Use these surfaces
 
 - `skills/lua-engineering/SKILL.md`
+- `skills/lua-engineering/references/`
 - `rules/common/`
 - `rules/lua/`
 - `knowledge-bases/seeded/lua/`

@@ -1,0 +1,24 @@
+{
+  "profiles": [
+    {
+      "id": "rapid-prototyping",
+      "displayName": "Rapid Prototyping",
+      "description": "Fast iteration profile that favors speed while still keeping basic recovery and recommendation surfaces on.",
+      "bundleIds": ["baseline:agents", "baseline:commands", "capability:repo-intelligence", "capability:flow-orchestration"],
+      "recommendedTargets": ["codex", "claude-code"],
+      "recommendedLanguages": ["typescript", "python", "go"],
+      "recommendedCapabilities": ["repo-intelligence", "flow-orchestration"],
+      "preferredSkills": ["repo-onboarding", "performance-profiling"],
+      "recommendedHooks": ["checkpoint.flow-summary"],
+      "validationStrictness": "lenient",
+      "reviewDepth": "shallow",
+      "riskAppetite": "aggressive",
+      "targetCompatibility": {
+        "codex": "full",
+        "claude-code": "full",
+        "cursor": "partial",
+        "opencode": "partial"
+      }
+    }
+  ]
+}

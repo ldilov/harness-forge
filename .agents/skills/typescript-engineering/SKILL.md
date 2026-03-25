@@ -12,6 +12,7 @@ files or when the task mentions TypeScript, JavaScript, Node.js, React, or Next.
 ## Use these surfaces
 
 - `skills/typescript-engineering/SKILL.md`
+- `skills/typescript-engineering/references/`
 - `rules/common/`
 - `rules/typescript/`
 - `knowledge-bases/seeded/typescript/`

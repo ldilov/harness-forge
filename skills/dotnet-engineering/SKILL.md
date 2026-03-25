@@ -29,6 +29,17 @@ when a task involves ASP.NET Core, workers, libraries, or .NET CLI tooling.
 - `knowledge-bases/seeded/dotnet/docs/frameworks.md`
 - `knowledge-bases/seeded/dotnet/examples/`
 
+## Supplemental engineering references
+
+- `skills/dotnet-engineering/references/repo-exploration.md`
+- `skills/dotnet-engineering/references/output-templates.md`
+- `skills/dotnet-engineering/references/agent-patterns.md`
+- `skills/dotnet-engineering/references/debugging-playbook.md`
+- `skills/dotnet-engineering/references/architecture-and-di.md`
+- `skills/dotnet-engineering/references/aspnet-and-efcore.md`
+- `skills/dotnet-engineering/references/testing-and-performance.md`
+- `skills/dotnet-engineering/references/examples.md`
+
 ## Assistant expectations
 
 - prefer explicit layering, strong typing, and dependency injection discipline

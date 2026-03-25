@@ -137,3 +137,39 @@ Validate behavior against the structured review and testing guidance.
 
 **Next Trigger**
 End the workflow or hand off follow-up tasks.
+
+## Handoff Contracts
+
+- record which `rules/common/` and `rules/php/` files were applied
+- note the commands or manual checks used to validate the change
+
+## Exit Conditions
+
+- the implementation aligns with the promoted PHP rules and structured references
+- verification results or blockers are captured clearly
+
+## Failure Modes
+
+- changing framework or service boundaries without checking the PHP rules first
+- finishing without running or documenting the repo's verification path
+
+## Escalation Rules
+
+- escalate when the task depends on framework conventions not covered by the current pack
+- escalate when routing, DI, or migration behavior remains ambiguous
+
+## Artifacts Produced
+
+- changed source files
+- validation output
+- implementation summary
+
+## Human Approval Points
+
+- approve framework-wide configuration or architecture shifts
+- approve deviations from the promoted PHP conventions
+
+## Examples
+
+- update a controller or service class with focused validation
+- refactor a PHP module using the structured reference scenario

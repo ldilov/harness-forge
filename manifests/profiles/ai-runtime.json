@@ -1,0 +1,24 @@
+{
+  "profiles": [
+    {
+      "id": "ai-runtime",
+      "displayName": "AI Runtime",
+      "description": "Profile for agentic runtimes, orchestration code, and evaluation-heavy backends.",
+      "bundleIds": ["baseline:agents", "baseline:commands", "capability:repo-intelligence", "capability:flow-orchestration", "capability:lifecycle-governance"],
+      "recommendedTargets": ["codex", "claude-code"],
+      "recommendedLanguages": ["typescript", "python", "go"],
+      "recommendedCapabilities": ["repo-intelligence", "flow-orchestration", "lifecycle-governance"],
+      "preferredSkills": ["documentation-lookup", "test-strategy-and-coverage", "observability-setup"],
+      "recommendedHooks": ["scan.repo-intelligence", "quality-gate.release-smoke"],
+      "validationStrictness": "strict",
+      "reviewDepth": "deep",
+      "riskAppetite": "balanced",
+      "targetCompatibility": {
+        "codex": "full",
+        "claude-code": "full",
+        "cursor": "partial",
+        "opencode": "partial"
+      }
+    }
+  ]
+}

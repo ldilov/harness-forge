@@ -1,0 +1,84 @@
+{
+  "artifacts": [
+    {
+      "id": "spec",
+      "stage": "specify",
+      "pathPattern": "specs/*/spec.md",
+      "generatedBy": "speckit-specify",
+      "required": true,
+      "lineageRole": "requirements-source"
+    },
+    {
+      "id": "requirements-checklist",
+      "stage": "specify",
+      "pathPattern": "specs/*/checklists/*.md",
+      "generatedBy": "speckit-checklist",
+      "required": false,
+      "lineageRole": "quality-gate"
+    },
+    {
+      "id": "plan",
+      "stage": "plan",
+      "pathPattern": "specs/*/plan.md",
+      "generatedBy": "speckit-plan",
+      "required": true,
+      "lineageRole": "delivery-design"
+    },
+    {
+      "id": "research",
+      "stage": "plan",
+      "pathPattern": "specs/*/research.md",
+      "generatedBy": "speckit-plan",
+      "required": false,
+      "lineageRole": "decision-record"
+    },
+    {
+      "id": "data-model",
+      "stage": "plan",
+      "pathPattern": "specs/*/data-model.md",
+      "generatedBy": "speckit-plan",
+      "required": false,
+      "lineageRole": "entity-contract"
+    },
+    {
+      "id": "contracts",
+      "stage": "plan",
+      "pathPattern": "specs/*/contracts/*.md",
+      "generatedBy": "speckit-plan",
+      "required": false,
+      "lineageRole": "runtime-contract"
+    },
+    {
+      "id": "tasks",
+      "stage": "tasks",
+      "pathPattern": "specs/*/tasks.md",
+      "generatedBy": "speckit-tasks",
+      "required": true,
+      "lineageRole": "execution-backlog"
+    },
+    {
+      "id": "issue-export",
+      "stage": "tasks",
+      "pathPattern": "specs/*/issues/*.md",
+      "generatedBy": "speckit-taskstoissues",
+      "required": false,
+      "lineageRole": "issue-export"
+    },
+    {
+      "id": "agent-context",
+      "stage": "shared",
+      "pathPattern": ".specify/state/agent-context.md",
+      "generatedBy": "update-agent-context",
+      "required": true,
+      "lineageRole": "reentry-context"
+    },
+    {
+      "id": "flow-state",
+      "stage": "shared",
+      "pathPattern": ".specify/state/flow-state.json",
+      "generatedBy": "hforge flow status",
+      "required": false,
+      "lineageRole": "flow-reentry-state"
+    }
+  ]
+}

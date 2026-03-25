@@ -1,6 +1,6 @@
 # Skills
 
-Harness Forge now ships four skill families.
+Harness Forge ships four major skill families.
 
 ## Seeded language skills
 
@@ -22,6 +22,10 @@ Harness Forge now ships four skill families.
 - `skills/swift-engineering/`
 - `skills/shell-engineering/`
 
+Several of these language skills now also ship supplemental `references/`
+packs so agents can pull repo-exploration, debugging, output-template, and
+ecosystem heuristics without leaving the project package.
+
 ## Workflow orchestration skills
 
 - `skills/speckit-analyze/`
@@ -41,3 +45,30 @@ Harness Forge now ships four skill families.
 - `skills/security-scan/`
 - `skills/release-readiness/`
 - `skills/architecture-decision-records/`
+
+## Workload-specialized skills
+
+- `skills/incident-triage/`
+- `skills/dependency-upgrade-safety/`
+- `skills/performance-profiling/`
+- `skills/test-strategy-and-coverage/`
+- `skills/api-contract-review/`
+- `skills/db-migration-review/`
+- `skills/pr-triage-and-summary/`
+- `skills/observability-setup/`
+- `skills/repo-modernization/`
+- `skills/cloud-architect/`
+
+## Supplemental engineering reference skills
+
+- `skills/javascript-engineering/`
+
+## Depth expectations
+
+Operational and workload skills should expose:
+
+- trigger signals
+- the repo surfaces to inspect first
+- a stable output contract
+- clear failure modes
+- escalation behavior

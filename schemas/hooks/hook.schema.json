@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://harness-forge.dev/schemas/hooks/hook.schema.json",
+  "title": "Harness Forge Hook Manifest",
+  "type": "object",
+  "required": [
+    "id",
+    "family",
+    "triggerStage",
+    "executionOrder",
+    "mode",
+    "timeoutBudget",
+    "retryPolicy",
+    "failurePolicy",
+    "requiredInputs",
+    "expectedOutputs",
+    "observabilityFields",
+    "targetCompatibility"
+  ],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "family": { "type": "string", "minLength": 1 },
+    "triggerStage": { "type": "string", "minLength": 1 },
+    "executionOrder": { "type": "integer", "minimum": 0 },
+    "mode": { "type": "string", "enum": ["blocking", "advisory"] },
+    "timeoutBudget": { "type": "string", "pattern": "^PT" },
+    "retryPolicy": { "type": "string", "minLength": 1 },
+    "failurePolicy": { "type": "string", "minLength": 1 },
+    "requiredInputs": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "expectedOutputs": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "observabilityFields": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "targetCompatibility": {
+      "type": "object",
+      "propertyNames": { "type": "string", "minLength": 1 },
+      "additionalProperties": {
+        "type": "string",
+        "enum": ["full", "partial", "emulated", "unsupported"]
+      }
+    },
+    "notes": { "type": "string" }
+  },
+  "additionalProperties": false
+}

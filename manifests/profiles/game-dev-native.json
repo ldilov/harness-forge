@@ -1,0 +1,24 @@
+{
+  "profiles": [
+    {
+      "id": "game-dev-native",
+      "displayName": "Game Dev Native",
+      "description": "Profile for native or scripting-heavy game development loops.",
+      "bundleIds": ["baseline:agents", "baseline:commands", "capability:workflow-quality", "capability:flow-orchestration"],
+      "recommendedTargets": ["codex", "claude-code"],
+      "recommendedLanguages": ["cpp", "rust", "lua", "swift"],
+      "recommendedCapabilities": ["workflow-quality", "flow-orchestration"],
+      "preferredSkills": ["performance-profiling", "repo-onboarding"],
+      "recommendedHooks": ["checkpoint.flow-summary"],
+      "validationStrictness": "standard",
+      "reviewDepth": "standard",
+      "riskAppetite": "balanced",
+      "targetCompatibility": {
+        "codex": "full",
+        "claude-code": "full",
+        "cursor": "partial",
+        "opencode": "partial"
+      }
+    }
+  ]
+}

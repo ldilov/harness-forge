@@ -1,0 +1,64 @@
+{
+  "hooks": [
+    {
+      "id": "quality-gate.release-smoke",
+      "family": "quality-gate",
+      "triggerStage": "validate",
+      "executionOrder": 100,
+      "mode": "blocking",
+      "timeoutBudget": "PT5M",
+      "retryPolicy": "never",
+      "failurePolicy": "stop-and-report",
+      "requiredInputs": ["workspaceRoot", "packageRoot"],
+      "expectedOutputs": ["releaseValidationResult"],
+      "observabilityFields": ["durationMs", "result", "target"],
+      "notes": "Run before release or publish to catch packaging, template, and manifest drift.",
+      "targetCompatibility": {
+        "codex": "full",
+        "claude-code": "full",
+        "cursor": "partial",
+        "opencode": "partial"
+      }
+    },
+    {
+      "id": "checkpoint.flow-summary",
+      "family": "checkpoint",
+      "triggerStage": "implement",
+      "executionOrder": 200,
+      "mode": "advisory",
+      "timeoutBudget": "PT30S",
+      "retryPolicy": "once",
+      "failurePolicy": "warn-and-continue",
+      "requiredInputs": ["featureId", "currentStage"],
+      "expectedOutputs": ["flowStatusSummary"],
+      "observabilityFields": ["result", "featureId"],
+      "notes": "Checkpoint the current implementation stage so an interrupted session can resume cleanly.",
+      "targetCompatibility": {
+        "codex": "full",
+        "claude-code": "full",
+        "cursor": "emulated",
+        "opencode": "emulated"
+      }
+    },
+    {
+      "id": "scan.repo-intelligence",
+      "family": "scan",
+      "triggerStage": "specify",
+      "executionOrder": 50,
+      "mode": "advisory",
+      "timeoutBudget": "PT2M",
+      "retryPolicy": "once",
+      "failurePolicy": "warn-and-continue",
+      "requiredInputs": ["workspaceRoot"],
+      "expectedOutputs": ["repoIntelligenceResult"],
+      "observabilityFields": ["repoType", "recommendationCount"],
+      "notes": "Run early to capture repo shape before the install or planning surface drifts.",
+      "targetCompatibility": {
+        "codex": "full",
+        "claude-code": "full",
+        "cursor": "partial",
+        "opencode": "partial"
+      }
+    }
+  ]
+}

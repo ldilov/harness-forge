@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://harness-forge.dev/schemas/runtime/observability-summary.schema.json",
+  "title": "Observability summary",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "generatedAt",
+    "totalEvents",
+    "byEventType",
+    "byResult",
+    "driftFindings"
+  ],
+  "properties": {
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "totalEvents": { "type": "integer", "minimum": 0 },
+    "byEventType": {
+      "type": "object",
+      "additionalProperties": { "type": "integer", "minimum": 0 }
+    },
+    "byResult": {
+      "type": "object",
+      "additionalProperties": { "type": "integer", "minimum": 0 }
+    },
+    "recommendationAcceptanceRate": { "type": "number", "minimum": 0, "maximum": 1 },
+    "benchmarkPassRate": { "type": "number", "minimum": 0, "maximum": 1 },
+    "driftFindings": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

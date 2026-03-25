@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "capabilities": [
+    {
+      "id": "templates",
+      "family": "authoring",
+      "displayName": "Templates and docs",
+      "description": "Shipped instructions, templates, and target-facing docs that operators rely on directly."
+    },
+    {
+      "id": "workflow-validation",
+      "family": "authoring",
+      "displayName": "Workflow validation",
+      "description": "Validation surfaces that check packaged workflows, templates, and related runtime contracts."
+    },
+    {
+      "id": "repo-intelligence",
+      "family": "intelligence",
+      "displayName": "Repo intelligence",
+      "description": "Repository scanning, framework detection, and evidence-backed recommendation output."
+    },
+    {
+      "id": "flow-orchestration",
+      "family": "orchestration",
+      "displayName": "Flow orchestration",
+      "description": "Spec flow state, recovery, and higher-level execution guidance."
+    },
+    {
+      "id": "typed-hooks",
+      "family": "automation",
+      "displayName": "Typed hooks",
+      "description": "Hook packaging, target runtime hook execution, and related operator guidance."
+    },
+    {
+      "id": "maintenance",
+      "family": "operations",
+      "displayName": "Maintenance commands",
+      "description": "Doctor, audit, diff-install, upgrade, and other maintenance workflows."
+    },
+    {
+      "id": "observability",
+      "family": "operations",
+      "displayName": "Local observability",
+      "description": "Local-first diagnostic and effectiveness reporting surfaces."
+    }
+  ]
+}

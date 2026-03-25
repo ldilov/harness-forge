@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://harness-forge.dev/schemas/runtime/worktree-state.schema.json",
+  "title": "Worktree shard state",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "shardId",
+    "assignedTasks",
+    "executionLocation",
+    "status",
+    "validationStatus",
+    "mergeReadiness",
+    "blockers"
+  ],
+  "properties": {
+    "shardId": { "type": "string" },
+    "assignedTasks": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "executionLocation": { "type": "string" },
+    "status": {
+      "type": "string",
+      "enum": ["planned", "active", "blocked", "complete", "abandoned"]
+    },
+    "lastCheckIn": { "type": "string", "format": "date-time" },
+    "validationStatus": {
+      "type": "string",
+      "enum": ["pending", "passing", "failing", "stale"]
+    },
+    "mergeReadiness": {
+      "type": "string",
+      "enum": ["ready", "blocked", "unknown"]
+    },
+    "blockers": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://harness-forge.dev/schemas/runtime/instruction-plan.schema.json",
+  "title": "Instruction plan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "workspaceId",
+    "targetId",
+    "scopeStrategy",
+    "recommendations",
+    "recommendedProfiles",
+    "recommendedSkills",
+    "generatedArtifacts",
+    "riskNotes"
+  ],
+  "properties": {
+    "workspaceId": { "type": "string" },
+    "targetId": { "type": "string" },
+    "scopeStrategy": {
+      "type": "string",
+      "enum": ["root-only", "mixed-scope", "scoped-heavy"]
+    },
+    "recommendations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "surfaceType", "reason", "confidence", "evidence", "writeMode"],
+        "properties": {
+          "path": { "type": "string" },
+          "surfaceType": { "type": "string" },
+          "reason": { "type": "string" },
+          "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+          "evidence": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "writeMode": {
+            "type": "string",
+            "enum": ["recommend-only", "diff", "write"]
+          }
+        }
+      }
+    },
+    "recommendedProfiles": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "recommendedSkills": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "generatedArtifacts": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "riskNotes": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

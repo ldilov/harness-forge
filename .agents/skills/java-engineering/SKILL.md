@@ -12,6 +12,7 @@ mentions Java, Spring Boot, Gradle, or Maven.
 ## Use these surfaces
 
 - `skills/java-engineering/SKILL.md`
+- `skills/java-engineering/references/`
 - `rules/common/`
 - `rules/java/`
 - `knowledge-bases/seeded/java/`

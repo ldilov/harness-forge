@@ -15,7 +15,7 @@ describe("docs front door contract", () => {
       "docs/languages.md",
       "docs/commands.md",
       "docs/agents.md",
-      "docs/hooks.md",
+      "docs/hooks/catalog.md",
       "docs/troubleshooting.md",
       "docs/versioning-and-migration.md"
     ];
@@ -27,6 +27,8 @@ describe("docs front door contract", () => {
     const readme = await fs.readFile(path.join(root, "README.md"), "utf8");
     expect(readme).toContain("knowledge-bases/seeded/");
     expect(readme).toContain("npm run validate:release");
+    expect(readme).toContain("npx @harness-forge/cli bootstrap --root . --yes");
+    expect(readme).toContain("does not");
     expect(readme).toContain("Codex");
     expect(readme).toContain("Claude Code");
   });

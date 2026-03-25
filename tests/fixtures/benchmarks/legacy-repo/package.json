@@ -1,0 +1,7 @@
+{
+  "name": "legacy-repo",
+  "private": true,
+  "scripts": {
+    "start": "node src/legacy-service.js"
+  }
+}

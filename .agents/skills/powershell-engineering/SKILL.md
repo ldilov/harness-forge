@@ -12,6 +12,7 @@ files or when the task mentions PowerShell, automation, or Windows scripting.
 ## Use these surfaces
 
 - `skills/powershell-engineering/SKILL.md`
+- `skills/powershell-engineering/references/`
 - `rules/common/`
 - `rules/powershell/`
 - `knowledge-bases/seeded/powershell/`

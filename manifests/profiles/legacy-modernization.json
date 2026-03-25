@@ -1,0 +1,24 @@
+{
+  "profiles": [
+    {
+      "id": "legacy-modernization",
+      "displayName": "Legacy Modernization",
+      "description": "Profile for gradual cleanup of legacy repositories without losing the current operating path.",
+      "bundleIds": ["baseline:agents", "baseline:commands", "capability:workflow-quality", "capability:repo-intelligence", "capability:flow-orchestration", "capability:lifecycle-governance"],
+      "recommendedTargets": ["codex", "claude-code"],
+      "recommendedLanguages": ["perl", "php", "cpp", "python"],
+      "recommendedCapabilities": ["repo-intelligence", "flow-orchestration", "lifecycle-governance"],
+      "preferredSkills": ["repo-modernization", "repo-onboarding", "architecture-decision-records"],
+      "recommendedHooks": ["scan.repo-intelligence", "checkpoint.flow-summary"],
+      "validationStrictness": "strict",
+      "reviewDepth": "deep",
+      "riskAppetite": "low",
+      "targetCompatibility": {
+        "codex": "full",
+        "claude-code": "full",
+        "cursor": "partial",
+        "opencode": "partial"
+      }
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://harness-forge.dev/schemas/runtime/observability-event.schema.json",
+  "title": "Observability event",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "eventId",
+    "eventType",
+    "recordedAt",
+    "workspaceId",
+    "target",
+    "result"
+  ],
+  "properties": {
+    "eventId": { "type": "string" },
+    "eventType": { "type": "string" },
+    "recordedAt": { "type": "string", "format": "date-time" },
+    "workspaceId": { "type": "string" },
+    "target": { "type": "string" },
+    "featureId": { "type": "string" },
+    "result": { "type": "string" },
+    "durationMs": { "type": "number", "minimum": 0 },
+    "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+    "inputs": { "type": "object" },
+    "outputs": { "type": "object" },
+    "artifacts": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "evidence": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

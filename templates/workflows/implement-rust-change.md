@@ -137,3 +137,39 @@ Validate behavior against the structured review and testing guidance.
 
 **Next Trigger**
 End the workflow or hand off follow-up tasks.
+
+## Handoff Contracts
+
+- record which `rules/common/` and `rules/rust/` files were applied
+- note the commands or manual checks used to validate the change
+
+## Exit Conditions
+
+- the implementation aligns with the promoted Rust rules and structured references
+- verification results or blockers are captured clearly
+
+## Failure Modes
+
+- changing ownership or error-handling patterns without checking the Rust rules first
+- finishing without running or documenting the repo's verification path
+
+## Escalation Rules
+
+- escalate when unsafe code or performance-sensitive changes appear
+- escalate when trait or ownership boundaries stay unclear after design
+
+## Artifacts Produced
+
+- changed source files
+- validation output
+- implementation summary
+
+## Human Approval Points
+
+- approve architecture shifts across crates or runtime layers
+- approve any use of unsafe or non-idiomatic ownership tradeoffs
+
+## Examples
+
+- add a new command to a Rust CLI while preserving error handling
+- refactor a service module using the structured Rust reference scenario

@@ -1,0 +1,24 @@
+{
+  "profiles": [
+    {
+      "id": "research-first",
+      "displayName": "Research First",
+      "description": "Profile for decision-heavy work where discovery and documentation should happen before implementation.",
+      "bundleIds": ["baseline:agents", "baseline:commands", "capability:repo-intelligence", "capability:flow-orchestration"],
+      "recommendedTargets": ["codex", "claude-code"],
+      "recommendedLanguages": [],
+      "recommendedCapabilities": ["repo-intelligence", "flow-orchestration"],
+      "preferredSkills": ["documentation-lookup", "architecture-decision-records", "repo-onboarding"],
+      "recommendedHooks": ["scan.repo-intelligence"],
+      "validationStrictness": "standard",
+      "reviewDepth": "deep",
+      "riskAppetite": "balanced",
+      "targetCompatibility": {
+        "codex": "full",
+        "claude-code": "full",
+        "cursor": "partial",
+        "opencode": "partial"
+      }
+    }
+  ]
+}

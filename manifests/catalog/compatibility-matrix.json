@@ -1,0 +1,4157 @@
+{
+  "generatedAt": "2026-03-25T14:15:07.352Z",
+  "entries": [
+    {
+      "subjectType": "language",
+      "subjectId": "dotnet",
+      "relationType": "extends",
+      "relatedType": "framework",
+      "relatedId": "aspnet-core",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "language",
+      "subjectId": "go",
+      "relationType": "extends",
+      "relatedType": "framework",
+      "relatedId": "gin",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "language",
+      "subjectId": "java",
+      "relationType": "extends",
+      "relatedType": "framework",
+      "relatedId": "spring-boot",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "language",
+      "subjectId": "kotlin",
+      "relationType": "extends",
+      "relatedType": "framework",
+      "relatedId": "ktor",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "language",
+      "subjectId": "php",
+      "relationType": "extends",
+      "relatedType": "framework",
+      "relatedId": "laravel",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "language",
+      "subjectId": "php",
+      "relationType": "extends",
+      "relatedType": "framework",
+      "relatedId": "symfony",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "language",
+      "subjectId": "python",
+      "relationType": "extends",
+      "relatedType": "framework",
+      "relatedId": "django",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "language",
+      "subjectId": "python",
+      "relationType": "extends",
+      "relatedType": "framework",
+      "relatedId": "fastapi",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "language",
+      "subjectId": "typescript",
+      "relationType": "extends",
+      "relatedType": "framework",
+      "relatedId": "express",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "language",
+      "subjectId": "typescript",
+      "relationType": "extends",
+      "relatedType": "framework",
+      "relatedId": "nextjs",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "language",
+      "subjectId": "typescript",
+      "relationType": "extends",
+      "relatedType": "framework",
+      "relatedId": "react",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "language",
+      "subjectId": "typescript",
+      "relationType": "extends",
+      "relatedType": "framework",
+      "relatedId": "vite",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "ai-runtime",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "claude-code",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "ai-runtime",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "codex",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "ai-runtime",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "cursor",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial profile support for ai-runtime."
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "ai-runtime",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "opencode",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial profile support for ai-runtime."
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "core",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "claude-code",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "core",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "codex",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "core",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "cursor",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial profile support for core."
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "core",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "opencode",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial profile support for core."
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "developer",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "claude-code",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "developer",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "codex",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "developer",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "cursor",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial profile support for developer."
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "developer",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "opencode",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial profile support for developer."
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "game-dev-native",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "claude-code",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "game-dev-native",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "codex",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "game-dev-native",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "cursor",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial profile support for game-dev-native."
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "game-dev-native",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "opencode",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial profile support for game-dev-native."
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "legacy-modernization",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "claude-code",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "legacy-modernization",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "codex",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "legacy-modernization",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "cursor",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial profile support for legacy-modernization."
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "legacy-modernization",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "opencode",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial profile support for legacy-modernization."
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "rapid-prototyping",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "claude-code",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "rapid-prototyping",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "codex",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "rapid-prototyping",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "cursor",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial profile support for rapid-prototyping."
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "rapid-prototyping",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "opencode",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial profile support for rapid-prototyping."
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "release-manager",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "claude-code",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "release-manager",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "codex",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "release-manager",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "cursor",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial profile support for release-manager."
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "release-manager",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "opencode",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial profile support for release-manager."
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "research-first",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "claude-code",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "research-first",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "codex",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "research-first",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "cursor",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial profile support for research-first."
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "research-first",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "opencode",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial profile support for research-first."
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "reviewer",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "claude-code",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "reviewer",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "codex",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "reviewer",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "cursor",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial profile support for reviewer."
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "reviewer",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "opencode",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial profile support for reviewer."
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "security",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "claude-code",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "security",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "codex",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "security",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "cursor",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial profile support for security."
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "security",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "opencode",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial profile support for security."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "baseline:agents",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "baseline:commands",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "capability:flow-orchestration",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "capability:lifecycle-governance",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "capability:local-observability",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "capability:repo-intelligence",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "capability:workflow-quality",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "capability:workload-skills",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:aspnet-core",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:django",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:express",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:fastapi",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:gin",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:ktor",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:laravel",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:nextjs",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:react",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:spring-boot",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:symfony",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:vite",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:cpp",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:dotnet",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:go",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:java",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:kotlin",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:lua",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:perl",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:php",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:powershell",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:python",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:rust",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:shell",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:swift",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:typescript",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "target-runtime:claude-code",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "target-runtime:codex",
+      "supportLevel": "unsupported",
+      "notes": "Claude Code does not ship bundle support for target-runtime:codex."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports-capability",
+      "relatedType": "capability",
+      "relatedId": "flow-orchestration",
+      "supportLevel": "full",
+      "supportMode": "native",
+      "confidence": 0.96,
+      "evidenceSource": [
+        "src/cli/commands/flow.ts",
+        "scripts/runtime/flow-status.mjs"
+      ],
+      "fallbackBehavior": "Inspect .specify/state/flow-state.json and generated flow docs directly.",
+      "notes": "Flow status and recovery are available for Claude Code workflows."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports-capability",
+      "relatedType": "capability",
+      "relatedId": "maintenance",
+      "supportLevel": "full",
+      "supportMode": "native",
+      "confidence": 0.96,
+      "evidenceSource": [
+        "src/cli/commands/doctor.ts",
+        "src/cli/commands/audit.ts",
+        "src/cli/commands/diff-install.ts"
+      ],
+      "fallbackBehavior": "Use the CLI maintenance commands directly from the packaged runtime.",
+      "notes": "Claude Code is a first-class maintenance target."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports-capability",
+      "relatedType": "capability",
+      "relatedId": "observability",
+      "supportLevel": "full",
+      "supportMode": "native",
+      "confidence": 0.93,
+      "evidenceSource": [
+        "scripts/runtime/report-effectiveness.mjs",
+        "src/infrastructure/observability/local-metrics-store.ts"
+      ],
+      "fallbackBehavior": "Inspect .hforge/observability artifacts directly.",
+      "notes": "Local observability is available for Claude Code workflows."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports-capability",
+      "relatedType": "capability",
+      "relatedId": "repo-intelligence",
+      "supportLevel": "full",
+      "supportMode": "native",
+      "confidence": 0.97,
+      "evidenceSource": [
+        "scripts/intelligence/score-recommendations.mjs",
+        "src/cli/commands/recommend.ts"
+      ],
+      "fallbackBehavior": "Run the intelligence scripts directly if the CLI is unavailable.",
+      "notes": "Repo intelligence is a first-class Claude Code surface."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports-capability",
+      "relatedType": "capability",
+      "relatedId": "templates",
+      "supportLevel": "full",
+      "supportMode": "native",
+      "confidence": 0.99,
+      "evidenceSource": [
+        "targets/claude-code/adapter.json",
+        "manifests/targets/core.json"
+      ],
+      "fallbackBehavior": "Use the shipped CLAUDE.md and .claude runtime surfaces.",
+      "notes": "Claude Code ships first-class guidance and runtime packaging."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports-capability",
+      "relatedType": "capability",
+      "relatedId": "typed-hooks",
+      "supportLevel": "full",
+      "supportMode": "native",
+      "confidence": 0.97,
+      "evidenceSource": [
+        "manifests/hooks/index.json",
+        "targets/claude-code/adapter.json"
+      ],
+      "fallbackBehavior": "Use the shipped hook catalog and runtime docs.",
+      "notes": "Claude Code has the strongest native hook story in the current package."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports-capability",
+      "relatedType": "capability",
+      "relatedId": "workflow-validation",
+      "supportLevel": "full",
+      "supportMode": "native",
+      "confidence": 0.95,
+      "evidenceSource": [
+        "scripts/templates/powershell/Test-WorkflowContracts.ps1",
+        "targets/claude-code/adapter.json"
+      ],
+      "fallbackBehavior": "Run the package validators directly from the repository.",
+      "notes": "Workflow validation is available through the packaged validation bundle."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "hook",
+      "relatedId": "checkpoint.flow-summary",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "hook",
+      "relatedId": "quality-gate.release-smoke",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "hook",
+      "relatedId": "scan.repo-intelligence",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "api-contract-review",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "architecture-decision-records",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "cpp-engineering",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "db-migration-review",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "dependency-upgrade-safety",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "documentation-lookup",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "dotnet-engineering",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "go-engineering",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "incident-triage",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "java-engineering",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "kotlin-engineering",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "lua-engineering",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "observability-and-eval",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "observability-setup",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "parallel-worktree-supervisor",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "performance-profiling",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "perl-engineering",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "php-engineering",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "powershell-engineering",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "pr-triage-and-summary",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "python-engineering",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "release-readiness",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "repo-cartographer",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "repo-modernization",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "repo-onboarding",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "rust-engineering",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "security-scan",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "shell-engineering",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "speckit-analyze",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "speckit-checklist",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "speckit-clarify",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "speckit-constitution",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "speckit-implement",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "speckit-plan",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "speckit-specify",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "speckit-tasks",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "speckit-taskstoissues",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "swift-engineering",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "test-strategy-and-coverage",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "typescript-engineering",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "baseline:agents",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "baseline:commands",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "capability:flow-orchestration",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "capability:lifecycle-governance",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "capability:local-observability",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "capability:repo-intelligence",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "capability:workflow-quality",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "capability:workload-skills",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:aspnet-core",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:django",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:express",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:fastapi",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:gin",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:ktor",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:laravel",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:nextjs",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:react",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:spring-boot",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:symfony",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:vite",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:cpp",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:dotnet",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:go",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:java",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:kotlin",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:lua",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:perl",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:php",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:powershell",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:python",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:rust",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:shell",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:swift",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:typescript",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "target-runtime:claude-code",
+      "supportLevel": "unsupported",
+      "notes": "Codex does not ship bundle support for target-runtime:claude-code."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "target-runtime:codex",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports-capability",
+      "relatedType": "capability",
+      "relatedId": "flow-orchestration",
+      "supportLevel": "full",
+      "supportMode": "native",
+      "confidence": 0.95,
+      "evidenceSource": [
+        "src/cli/commands/flow.ts",
+        "scripts/runtime/flow-status.mjs"
+      ],
+      "fallbackBehavior": "Inspect .specify/state/flow-state.json and generated flow docs directly.",
+      "notes": "Flow status and recovery are available for Codex workflows."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports-capability",
+      "relatedType": "capability",
+      "relatedId": "maintenance",
+      "supportLevel": "full",
+      "supportMode": "native",
+      "confidence": 0.96,
+      "evidenceSource": [
+        "src/cli/commands/doctor.ts",
+        "src/cli/commands/audit.ts",
+        "src/cli/commands/diff-install.ts"
+      ],
+      "fallbackBehavior": "Use the CLI maintenance commands directly from the packaged runtime.",
+      "notes": "Codex is a first-class maintenance target."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports-capability",
+      "relatedType": "capability",
+      "relatedId": "observability",
+      "supportLevel": "full",
+      "supportMode": "native",
+      "confidence": 0.93,
+      "evidenceSource": [
+        "scripts/runtime/report-effectiveness.mjs",
+        "src/infrastructure/observability/local-metrics-store.ts"
+      ],
+      "fallbackBehavior": "Inspect .hforge/observability artifacts directly.",
+      "notes": "Local observability is available for Codex workflows."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports-capability",
+      "relatedType": "capability",
+      "relatedId": "repo-intelligence",
+      "supportLevel": "full",
+      "supportMode": "native",
+      "confidence": 0.97,
+      "evidenceSource": [
+        "scripts/intelligence/score-recommendations.mjs",
+        "src/cli/commands/recommend.ts"
+      ],
+      "fallbackBehavior": "Run the intelligence scripts directly if the CLI is unavailable.",
+      "notes": "Repo intelligence is a first-class Codex surface."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports-capability",
+      "relatedType": "capability",
+      "relatedId": "templates",
+      "supportLevel": "full",
+      "supportMode": "native",
+      "confidence": 0.99,
+      "evidenceSource": [
+        "targets/codex/adapter.json",
+        "manifests/targets/core.json"
+      ],
+      "fallbackBehavior": "Use the shipped AGENTS.md and .codex runtime surfaces.",
+      "notes": "Codex ships first-class guidance and runtime packaging."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports-capability",
+      "relatedType": "capability",
+      "relatedId": "typed-hooks",
+      "supportLevel": "partial",
+      "supportMode": "documentation-only",
+      "confidence": 0.84,
+      "evidenceSource": [
+        "docs/hooks/catalog.md",
+        "targets/codex/adapter.json"
+      ],
+      "fallbackBehavior": "Use the docs and packaged hook manifests as references, then wire execution manually in the Codex target.",
+      "notes": "Codex ships hook authoring guidance, but not the same native runtime hook model as Claude Code."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports-capability",
+      "relatedType": "capability",
+      "relatedId": "workflow-validation",
+      "supportLevel": "full",
+      "supportMode": "native",
+      "confidence": 0.94,
+      "evidenceSource": [
+        "scripts/templates/powershell/Test-WorkflowContracts.ps1",
+        "targets/codex/adapter.json"
+      ],
+      "fallbackBehavior": "Run the package validators directly from the repository.",
+      "notes": "Codex can consume the shipped workflow validation surfaces."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "hook",
+      "relatedId": "checkpoint.flow-summary",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "hook",
+      "relatedId": "quality-gate.release-smoke",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "hook",
+      "relatedId": "scan.repo-intelligence",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "api-contract-review",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "architecture-decision-records",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "cpp-engineering",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "db-migration-review",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "dependency-upgrade-safety",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "documentation-lookup",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "dotnet-engineering",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "go-engineering",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "incident-triage",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "java-engineering",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "kotlin-engineering",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "lua-engineering",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "observability-and-eval",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "observability-setup",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "parallel-worktree-supervisor",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "performance-profiling",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "perl-engineering",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "php-engineering",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "powershell-engineering",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "pr-triage-and-summary",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "python-engineering",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "release-readiness",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "repo-cartographer",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "repo-modernization",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "repo-onboarding",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "rust-engineering",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "security-scan",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "shell-engineering",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "speckit-analyze",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "speckit-checklist",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "speckit-clarify",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "speckit-constitution",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "speckit-implement",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "speckit-plan",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "speckit-specify",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "speckit-tasks",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "speckit-taskstoissues",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "swift-engineering",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "test-strategy-and-coverage",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "typescript-engineering",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "baseline:agents",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial bundle support for baseline:agents."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "baseline:commands",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial bundle support for baseline:commands."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "capability:flow-orchestration",
+      "supportLevel": "unsupported",
+      "notes": "Cursor does not ship bundle support for capability:flow-orchestration."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "capability:lifecycle-governance",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial bundle support for capability:lifecycle-governance."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "capability:local-observability",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial bundle support for capability:local-observability."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "capability:repo-intelligence",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial bundle support for capability:repo-intelligence."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "capability:workflow-quality",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial bundle support for capability:workflow-quality."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "capability:workload-skills",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial bundle support for capability:workload-skills."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:aspnet-core",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial bundle support for framework:aspnet-core."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:django",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial bundle support for framework:django."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:express",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial bundle support for framework:express."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:fastapi",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial bundle support for framework:fastapi."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:gin",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial bundle support for framework:gin."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:ktor",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial bundle support for framework:ktor."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:laravel",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial bundle support for framework:laravel."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:nextjs",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial bundle support for framework:nextjs."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:react",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial bundle support for framework:react."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:spring-boot",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial bundle support for framework:spring-boot."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:symfony",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial bundle support for framework:symfony."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:vite",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial bundle support for framework:vite."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:cpp",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial bundle support for lang:cpp."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:dotnet",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial bundle support for lang:dotnet."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:go",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial bundle support for lang:go."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:java",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial bundle support for lang:java."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:kotlin",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial bundle support for lang:kotlin."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:lua",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial bundle support for lang:lua."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:perl",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial bundle support for lang:perl."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:php",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial bundle support for lang:php."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:powershell",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial bundle support for lang:powershell."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:python",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial bundle support for lang:python."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:rust",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial bundle support for lang:rust."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:shell",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial bundle support for lang:shell."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:swift",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial bundle support for lang:swift."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:typescript",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial bundle support for lang:typescript."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "target-runtime:claude-code",
+      "supportLevel": "unsupported",
+      "notes": "Cursor does not ship bundle support for target-runtime:claude-code."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "target-runtime:codex",
+      "supportLevel": "unsupported",
+      "notes": "Cursor does not ship bundle support for target-runtime:codex."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports-capability",
+      "relatedType": "capability",
+      "relatedId": "flow-orchestration",
+      "supportLevel": "unsupported",
+      "supportMode": "unsupported",
+      "confidence": 0.94,
+      "evidenceSource": [
+        "targets/cursor/adapter.json",
+        "docs/flow-orchestration.md"
+      ],
+      "fallbackBehavior": "Do not rely on packaged flow recovery for Cursor; use the portable docs only.",
+      "notes": "No first-class Cursor flow-state recovery surface is shipped."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports-capability",
+      "relatedType": "capability",
+      "relatedId": "maintenance",
+      "supportLevel": "partial",
+      "supportMode": "documentation-only",
+      "confidence": 0.73,
+      "evidenceSource": [
+        "targets/cursor/adapter.json",
+        "src/cli/commands/doctor.ts"
+      ],
+      "fallbackBehavior": "Run the maintenance commands from the repository rather than expecting Cursor-specific runtime integration.",
+      "notes": "Maintenance guidance is portable, but a Cursor-native runtime surface is not shipped."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports-capability",
+      "relatedType": "capability",
+      "relatedId": "observability",
+      "supportLevel": "partial",
+      "supportMode": "documentation-only",
+      "confidence": 0.74,
+      "evidenceSource": [
+        "targets/cursor/adapter.json",
+        "scripts/runtime/report-effectiveness.mjs"
+      ],
+      "fallbackBehavior": "Inspect the local observability artifacts directly from the repository.",
+      "notes": "Observability artifacts are portable, but no native Cursor runtime surface is shipped."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports-capability",
+      "relatedType": "capability",
+      "relatedId": "repo-intelligence",
+      "supportLevel": "partial",
+      "supportMode": "translated",
+      "confidence": 0.82,
+      "evidenceSource": [
+        "scripts/intelligence/score-recommendations.mjs",
+        "targets/cursor/adapter.json"
+      ],
+      "fallbackBehavior": "Run the intelligence scripts directly and treat the output as operator guidance.",
+      "notes": "Repo intelligence is available as portable scripts and docs rather than a native Cursor runtime surface."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports-capability",
+      "relatedType": "capability",
+      "relatedId": "templates",
+      "supportLevel": "partial",
+      "supportMode": "documentation-only",
+      "confidence": 0.88,
+      "evidenceSource": [
+        "targets/cursor/adapter.json",
+        "docs/target-support-matrix.md"
+      ],
+      "fallbackBehavior": "Use generated docs and manifests as the support surface instead of expecting a native Cursor runtime install.",
+      "notes": "Cursor can consume packaged docs and portable guidance, but not a first-class runtime mapping."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports-capability",
+      "relatedType": "capability",
+      "relatedId": "typed-hooks",
+      "supportLevel": "unsupported",
+      "supportMode": "unsupported",
+      "confidence": 0.95,
+      "evidenceSource": [
+        "targets/cursor/adapter.json",
+        "manifests/hooks/index.json"
+      ],
+      "fallbackBehavior": "Use hook docs as references only; do not claim native Cursor hook execution.",
+      "notes": "Cursor does not have a packaged native hook runtime in this repository."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports-capability",
+      "relatedType": "capability",
+      "relatedId": "workflow-validation",
+      "supportLevel": "partial",
+      "supportMode": "documentation-only",
+      "confidence": 0.71,
+      "evidenceSource": [
+        "targets/cursor/adapter.json",
+        "scripts/templates/powershell/Test-WorkflowContracts.ps1"
+      ],
+      "fallbackBehavior": "Run the validators from the repository rather than relying on a Cursor-specific runtime integration.",
+      "notes": "Validation guidance is portable, but no Cursor-native runtime wiring is shipped."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "hook",
+      "relatedId": "checkpoint.flow-summary",
+      "supportLevel": "emulated",
+      "notes": "Cursor only emulates hook support for checkpoint.flow-summary."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "hook",
+      "relatedId": "quality-gate.release-smoke",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial hook support for quality-gate.release-smoke."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "hook",
+      "relatedId": "scan.repo-intelligence",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial hook support for scan.repo-intelligence."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "api-contract-review",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial skill support for api-contract-review."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "architecture-decision-records",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial skill support for architecture-decision-records."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "cpp-engineering",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial skill support for cpp-engineering."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "db-migration-review",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial skill support for db-migration-review."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "dependency-upgrade-safety",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial skill support for dependency-upgrade-safety."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "documentation-lookup",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial skill support for documentation-lookup."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "dotnet-engineering",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial skill support for dotnet-engineering."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "go-engineering",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial skill support for go-engineering."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "incident-triage",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial skill support for incident-triage."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "java-engineering",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial skill support for java-engineering."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "kotlin-engineering",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial skill support for kotlin-engineering."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "lua-engineering",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial skill support for lua-engineering."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "observability-and-eval",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial skill support for observability-and-eval."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "observability-setup",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial skill support for observability-setup."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "parallel-worktree-supervisor",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial skill support for parallel-worktree-supervisor."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "performance-profiling",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial skill support for performance-profiling."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "perl-engineering",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial skill support for perl-engineering."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "php-engineering",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial skill support for php-engineering."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "powershell-engineering",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial skill support for powershell-engineering."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "pr-triage-and-summary",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial skill support for pr-triage-and-summary."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "python-engineering",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial skill support for python-engineering."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "release-readiness",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial skill support for release-readiness."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "repo-cartographer",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial skill support for repo-cartographer."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "repo-modernization",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial skill support for repo-modernization."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "repo-onboarding",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial skill support for repo-onboarding."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "rust-engineering",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial skill support for rust-engineering."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "security-scan",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial skill support for security-scan."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "shell-engineering",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial skill support for shell-engineering."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "speckit-analyze",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial skill support for speckit-analyze."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "speckit-checklist",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial skill support for speckit-checklist."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "speckit-clarify",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial skill support for speckit-clarify."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "speckit-constitution",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial skill support for speckit-constitution."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "speckit-implement",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial skill support for speckit-implement."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "speckit-plan",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial skill support for speckit-plan."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "speckit-specify",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial skill support for speckit-specify."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "speckit-tasks",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial skill support for speckit-tasks."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "speckit-taskstoissues",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial skill support for speckit-taskstoissues."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "swift-engineering",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial skill support for swift-engineering."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "test-strategy-and-coverage",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial skill support for test-strategy-and-coverage."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "typescript-engineering",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial skill support for typescript-engineering."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "baseline:agents",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial bundle support for baseline:agents."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "baseline:commands",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial bundle support for baseline:commands."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "capability:flow-orchestration",
+      "supportLevel": "unsupported",
+      "notes": "OpenCode does not ship bundle support for capability:flow-orchestration."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "capability:lifecycle-governance",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial bundle support for capability:lifecycle-governance."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "capability:local-observability",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial bundle support for capability:local-observability."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "capability:repo-intelligence",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial bundle support for capability:repo-intelligence."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "capability:workflow-quality",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial bundle support for capability:workflow-quality."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "capability:workload-skills",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial bundle support for capability:workload-skills."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:aspnet-core",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial bundle support for framework:aspnet-core."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:django",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial bundle support for framework:django."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:express",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial bundle support for framework:express."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:fastapi",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial bundle support for framework:fastapi."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:gin",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial bundle support for framework:gin."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:ktor",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial bundle support for framework:ktor."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:laravel",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial bundle support for framework:laravel."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:nextjs",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial bundle support for framework:nextjs."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:react",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial bundle support for framework:react."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:spring-boot",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial bundle support for framework:spring-boot."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:symfony",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial bundle support for framework:symfony."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:vite",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial bundle support for framework:vite."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:cpp",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial bundle support for lang:cpp."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:dotnet",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial bundle support for lang:dotnet."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:go",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial bundle support for lang:go."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:java",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial bundle support for lang:java."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:kotlin",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial bundle support for lang:kotlin."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:lua",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial bundle support for lang:lua."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:perl",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial bundle support for lang:perl."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:php",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial bundle support for lang:php."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:powershell",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial bundle support for lang:powershell."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:python",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial bundle support for lang:python."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:rust",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial bundle support for lang:rust."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:shell",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial bundle support for lang:shell."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:swift",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial bundle support for lang:swift."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:typescript",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial bundle support for lang:typescript."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "target-runtime:claude-code",
+      "supportLevel": "unsupported",
+      "notes": "OpenCode does not ship bundle support for target-runtime:claude-code."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "target-runtime:codex",
+      "supportLevel": "unsupported",
+      "notes": "OpenCode does not ship bundle support for target-runtime:codex."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports-capability",
+      "relatedType": "capability",
+      "relatedId": "flow-orchestration",
+      "supportLevel": "unsupported",
+      "supportMode": "unsupported",
+      "confidence": 0.94,
+      "evidenceSource": [
+        "targets/opencode/adapter.json",
+        "docs/flow-orchestration.md"
+      ],
+      "fallbackBehavior": "Do not rely on packaged flow recovery for OpenCode; use the portable docs only.",
+      "notes": "No first-class OpenCode flow-state recovery surface is shipped."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports-capability",
+      "relatedType": "capability",
+      "relatedId": "maintenance",
+      "supportLevel": "partial",
+      "supportMode": "documentation-only",
+      "confidence": 0.73,
+      "evidenceSource": [
+        "targets/opencode/adapter.json",
+        "src/cli/commands/doctor.ts"
+      ],
+      "fallbackBehavior": "Run the maintenance commands from the repository rather than expecting OpenCode-specific runtime integration.",
+      "notes": "Maintenance guidance is portable, but an OpenCode-native runtime surface is not shipped."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports-capability",
+      "relatedType": "capability",
+      "relatedId": "observability",
+      "supportLevel": "partial",
+      "supportMode": "documentation-only",
+      "confidence": 0.74,
+      "evidenceSource": [
+        "targets/opencode/adapter.json",
+        "scripts/runtime/report-effectiveness.mjs"
+      ],
+      "fallbackBehavior": "Inspect the local observability artifacts directly from the repository.",
+      "notes": "Observability artifacts are portable, but no native OpenCode runtime surface is shipped."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports-capability",
+      "relatedType": "capability",
+      "relatedId": "repo-intelligence",
+      "supportLevel": "partial",
+      "supportMode": "translated",
+      "confidence": 0.82,
+      "evidenceSource": [
+        "scripts/intelligence/score-recommendations.mjs",
+        "targets/opencode/adapter.json"
+      ],
+      "fallbackBehavior": "Run the intelligence scripts directly and treat the output as operator guidance.",
+      "notes": "Repo intelligence is available as portable scripts and docs rather than a native OpenCode runtime surface."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports-capability",
+      "relatedType": "capability",
+      "relatedId": "templates",
+      "supportLevel": "partial",
+      "supportMode": "documentation-only",
+      "confidence": 0.88,
+      "evidenceSource": [
+        "targets/opencode/adapter.json",
+        "docs/target-support-matrix.md"
+      ],
+      "fallbackBehavior": "Use generated docs and manifests as the support surface instead of expecting a native OpenCode runtime install.",
+      "notes": "OpenCode can consume packaged docs and portable guidance, but not a first-class runtime mapping."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports-capability",
+      "relatedType": "capability",
+      "relatedId": "typed-hooks",
+      "supportLevel": "unsupported",
+      "supportMode": "unsupported",
+      "confidence": 0.95,
+      "evidenceSource": [
+        "targets/opencode/adapter.json",
+        "manifests/hooks/index.json"
+      ],
+      "fallbackBehavior": "Use hook docs as references only; do not claim native OpenCode hook execution.",
+      "notes": "OpenCode does not have a packaged native hook runtime in this repository."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports-capability",
+      "relatedType": "capability",
+      "relatedId": "workflow-validation",
+      "supportLevel": "partial",
+      "supportMode": "documentation-only",
+      "confidence": 0.71,
+      "evidenceSource": [
+        "targets/opencode/adapter.json",
+        "scripts/templates/powershell/Test-WorkflowContracts.ps1"
+      ],
+      "fallbackBehavior": "Run the validators from the repository rather than relying on an OpenCode-specific runtime integration.",
+      "notes": "Validation guidance is portable, but no OpenCode-native runtime wiring is shipped."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "hook",
+      "relatedId": "checkpoint.flow-summary",
+      "supportLevel": "emulated",
+      "notes": "OpenCode only emulates hook support for checkpoint.flow-summary."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "hook",
+      "relatedId": "quality-gate.release-smoke",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial hook support for quality-gate.release-smoke."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "hook",
+      "relatedId": "scan.repo-intelligence",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial hook support for scan.repo-intelligence."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "api-contract-review",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial skill support for api-contract-review."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "architecture-decision-records",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial skill support for architecture-decision-records."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "cpp-engineering",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial skill support for cpp-engineering."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "db-migration-review",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial skill support for db-migration-review."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "dependency-upgrade-safety",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial skill support for dependency-upgrade-safety."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "documentation-lookup",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial skill support for documentation-lookup."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "dotnet-engineering",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial skill support for dotnet-engineering."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "go-engineering",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial skill support for go-engineering."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "incident-triage",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial skill support for incident-triage."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "java-engineering",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial skill support for java-engineering."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "kotlin-engineering",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial skill support for kotlin-engineering."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "lua-engineering",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial skill support for lua-engineering."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "observability-and-eval",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial skill support for observability-and-eval."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "observability-setup",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial skill support for observability-setup."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "parallel-worktree-supervisor",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial skill support for parallel-worktree-supervisor."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "performance-profiling",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial skill support for performance-profiling."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "perl-engineering",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial skill support for perl-engineering."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "php-engineering",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial skill support for php-engineering."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "powershell-engineering",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial skill support for powershell-engineering."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "pr-triage-and-summary",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial skill support for pr-triage-and-summary."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "python-engineering",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial skill support for python-engineering."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "release-readiness",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial skill support for release-readiness."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "repo-cartographer",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial skill support for repo-cartographer."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "repo-modernization",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial skill support for repo-modernization."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "repo-onboarding",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial skill support for repo-onboarding."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "rust-engineering",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial skill support for rust-engineering."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "security-scan",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial skill support for security-scan."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "shell-engineering",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial skill support for shell-engineering."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "speckit-analyze",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial skill support for speckit-analyze."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "speckit-checklist",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial skill support for speckit-checklist."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "speckit-clarify",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial skill support for speckit-clarify."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "speckit-constitution",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial skill support for speckit-constitution."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "speckit-implement",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial skill support for speckit-implement."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "speckit-plan",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial skill support for speckit-plan."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "speckit-specify",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial skill support for speckit-specify."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "speckit-tasks",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial skill support for speckit-tasks."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "speckit-taskstoissues",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial skill support for speckit-taskstoissues."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "swift-engineering",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial skill support for swift-engineering."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "test-strategy-and-coverage",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial skill support for test-strategy-and-coverage."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "typescript-engineering",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial skill support for typescript-engineering."
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-cpp-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "claude-code",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-cpp-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "codex",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-cpp-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "cursor",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial workflow support for implement-cpp-change."
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-cpp-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "opencode",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial workflow support for implement-cpp-change."
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-dotnet-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "claude-code",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-dotnet-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "codex",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-dotnet-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "cursor",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial workflow support for implement-dotnet-change."
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-dotnet-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "opencode",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial workflow support for implement-dotnet-change."
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-go-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "claude-code",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-go-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "codex",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-go-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "cursor",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial workflow support for implement-go-change."
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-go-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "opencode",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial workflow support for implement-go-change."
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-java-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "claude-code",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-java-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "codex",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-java-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "cursor",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial workflow support for implement-java-change."
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-java-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "opencode",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial workflow support for implement-java-change."
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-kotlin-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "claude-code",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-kotlin-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "codex",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-kotlin-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "cursor",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial workflow support for implement-kotlin-change."
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-kotlin-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "opencode",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial workflow support for implement-kotlin-change."
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-lua-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "claude-code",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-lua-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "codex",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-lua-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "cursor",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial workflow support for implement-lua-change."
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-lua-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "opencode",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial workflow support for implement-lua-change."
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-perl-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "claude-code",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-perl-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "codex",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-perl-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "cursor",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial workflow support for implement-perl-change."
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-perl-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "opencode",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial workflow support for implement-perl-change."
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-php-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "claude-code",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-php-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "codex",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-php-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "cursor",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial workflow support for implement-php-change."
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-php-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "opencode",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial workflow support for implement-php-change."
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-powershell-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "claude-code",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-powershell-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "codex",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-powershell-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "cursor",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial workflow support for implement-powershell-change."
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-powershell-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "opencode",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial workflow support for implement-powershell-change."
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-python-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "claude-code",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-python-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "codex",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-python-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "cursor",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial workflow support for implement-python-change."
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-python-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "opencode",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial workflow support for implement-python-change."
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-rust-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "claude-code",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-rust-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "codex",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-rust-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "cursor",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial workflow support for implement-rust-change."
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-rust-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "opencode",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial workflow support for implement-rust-change."
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-shell-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "claude-code",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-shell-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "codex",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-shell-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "cursor",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial workflow support for implement-shell-change."
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-shell-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "opencode",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial workflow support for implement-shell-change."
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-swift-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "claude-code",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-swift-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "codex",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-swift-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "cursor",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial workflow support for implement-swift-change."
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-swift-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "opencode",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial workflow support for implement-swift-change."
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-typescript-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "claude-code",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-typescript-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "codex",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-typescript-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "cursor",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial workflow support for implement-typescript-change."
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-typescript-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "opencode",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial workflow support for implement-typescript-change."
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "parallel-implement-and-merge",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "claude-code",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "parallel-implement-and-merge",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "codex",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "parallel-implement-and-merge",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "cursor",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial workflow support for parallel-implement-and-merge."
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "parallel-implement-and-merge",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "opencode",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial workflow support for parallel-implement-and-merge."
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "research-plan-implement-validate",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "claude-code",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "research-plan-implement-validate",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "codex",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "research-plan-implement-validate",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "cursor",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial workflow support for research-plan-implement-validate."
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "research-plan-implement-validate",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "opencode",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial workflow support for research-plan-implement-validate."
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "triage-reproduce-fix-verify",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "claude-code",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "triage-reproduce-fix-verify",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "codex",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "triage-reproduce-fix-verify",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "cursor",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial workflow support for triage-reproduce-fix-verify."
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "triage-reproduce-fix-verify",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "opencode",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial workflow support for triage-reproduce-fix-verify."
+    }
+  ]
+}

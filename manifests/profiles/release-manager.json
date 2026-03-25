@@ -1,0 +1,24 @@
+{
+  "profiles": [
+    {
+      "id": "release-manager",
+      "displayName": "Release Manager",
+      "description": "Profile for release readiness, package integrity, compatibility, and support-surface reviews.",
+      "bundleIds": ["baseline:agents", "baseline:commands", "capability:workflow-quality", "capability:lifecycle-governance", "capability:flow-orchestration"],
+      "recommendedTargets": ["codex", "claude-code"],
+      "recommendedLanguages": [],
+      "recommendedCapabilities": ["lifecycle-governance", "flow-orchestration"],
+      "preferredSkills": ["release-readiness", "pr-triage-and-summary", "architecture-decision-records"],
+      "recommendedHooks": ["quality-gate.release-smoke", "checkpoint.flow-summary"],
+      "validationStrictness": "strict",
+      "reviewDepth": "deep",
+      "riskAppetite": "low",
+      "targetCompatibility": {
+        "codex": "full",
+        "claude-code": "full",
+        "cursor": "partial",
+        "opencode": "partial"
+      }
+    }
+  ]
+}

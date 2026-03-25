@@ -24,6 +24,12 @@ export async function writeJsonFile(filePath: string, value: unknown): Promise<v
   await fs.writeFile(filePath, `${JSON.stringify(value, null, 2)}\n`, "utf8");
 }
 
+export async function appendJsonArrayItem<T>(filePath: string, value: T): Promise<void> {
+  const existing = (await exists(filePath)) ? await readJsonFile<T[]>(filePath) : [];
+  existing.push(value);
+  await writeJsonFile(filePath, existing);
+}
+
 export async function readTextFile(filePath: string): Promise<string> {
   return fs.readFile(filePath, "utf8");
 }

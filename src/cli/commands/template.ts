@@ -80,8 +80,8 @@ export function registerTemplateCommands(program: Command): void {
       console.log(await workflowGraph(contentRoot, id));
     });
 
-  program
-    .command("recommend")
+  template
+    .command("suggest")
     .argument("<intent>")
     .action((intent) => {
       console.log(JSON.stringify(recommendTemplates(intent), null, 2));

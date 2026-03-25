@@ -137,3 +137,39 @@ Validate behavior against the structured review and testing guidance.
 
 **Next Trigger**
 End the workflow or hand off follow-up tasks.
+
+## Handoff Contracts
+
+- record which `rules/common/` and `rules/cpp/` files were applied
+- note the commands or manual checks used to validate the change
+
+## Exit Conditions
+
+- the implementation aligns with the promoted C++ rules and structured references
+- verification results or blockers are captured clearly
+
+## Failure Modes
+
+- changing ownership or ABI-sensitive surfaces without checking the C++ rules first
+- finishing without running or documenting the repo's verification path
+
+## Escalation Rules
+
+- escalate when the task touches threading, memory ownership, or platform-specific code
+- escalate when interface compatibility risks remain unresolved
+
+## Artifacts Produced
+
+- changed source files
+- validation output
+- implementation summary
+
+## Human Approval Points
+
+- approve ABI or public-header changes
+- approve deviations from the promoted modern C++ guidance
+
+## Examples
+
+- update a library header and implementation pair with focused verification
+- refactor a C++ module using the structured reference scenario

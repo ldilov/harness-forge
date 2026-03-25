@@ -137,3 +137,39 @@ Validate behavior against the structured review and testing guidance.
 
 **Next Trigger**
 End the workflow or hand off follow-up tasks.
+
+## Handoff Contracts
+
+- record which `rules/common/` and `rules/shell/` files were applied
+- note the commands or manual checks used to validate the change
+
+## Exit Conditions
+
+- the implementation aligns with the promoted shell rules and structured references
+- verification results or blockers are captured clearly
+
+## Failure Modes
+
+- changing command semantics or platform assumptions without checking the shell rules first
+- finishing without running or documenting the repo's verification path
+
+## Escalation Rules
+
+- escalate when portability, shell compatibility, or destructive operations are unclear
+- escalate when deployment scripts affect production-like environments
+
+## Artifacts Produced
+
+- changed scripts
+- validation output
+- implementation summary
+
+## Human Approval Points
+
+- approve destructive operation changes
+- approve deviations from the promoted shell safety conventions
+
+## Examples
+
+- harden a bootstrap script and verify behavior in dry-run mode
+- refactor shell helper functions using the structured reference scenario

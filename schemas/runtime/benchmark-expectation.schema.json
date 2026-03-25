@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://harness-forge.dev/schemas/runtime/benchmark-expectation.schema.json",
+  "title": "Benchmark expectation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "fixtureId",
+    "repoArchetype"
+  ],
+  "properties": {
+    "fixtureId": { "type": "string" },
+    "repoArchetype": { "type": "string" },
+    "expectedRepoMap": { "type": "object" },
+    "expectedRecommendations": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "expectedInstructionScopes": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "expectedQualityGaps": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "expectedObservabilityEvents": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "expectedParallelDecision": { "type": "string" }
+  }
+}

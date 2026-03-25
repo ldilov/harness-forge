@@ -2,19 +2,23 @@
   "profiles": [
     {
       "id": "core",
+      "displayName": "Core",
       "description": "Minimal baseline with agent guidance, commands, and workflow quality support.",
       "bundleIds": ["baseline:agents", "baseline:commands", "capability:workflow-quality"],
       "recommendedTargets": ["codex", "claude-code"],
       "recommendedLanguages": [],
-      "recommendedCapabilities": ["workflow-quality"]
-    },
-    {
-      "id": "developer",
-      "description": "Default engineering profile with baseline workflow support.",
-      "bundleIds": ["baseline:agents", "baseline:commands", "capability:workflow-quality"],
-      "recommendedTargets": ["codex", "claude-code"],
-      "recommendedLanguages": ["typescript", "java", "dotnet", "lua", "powershell"],
-      "recommendedCapabilities": ["workflow-quality"]
+      "recommendedCapabilities": ["workflow-quality"],
+      "preferredSkills": ["repo-onboarding"],
+      "recommendedHooks": ["checkpoint.flow-summary"],
+      "validationStrictness": "standard",
+      "reviewDepth": "standard",
+      "riskAppetite": "balanced",
+      "targetCompatibility": {
+        "codex": "full",
+        "claude-code": "full",
+        "cursor": "partial",
+        "opencode": "partial"
+      }
     }
   ]
 }

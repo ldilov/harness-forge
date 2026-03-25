@@ -12,6 +12,7 @@ files or when the task mentions C#, .NET, or ASP.NET Core.
 ## Use these surfaces
 
 - `skills/dotnet-engineering/SKILL.md`
+- `skills/dotnet-engineering/references/`
 - `rules/common/`
 - `rules/dotnet/`
 - `knowledge-bases/seeded/dotnet/`

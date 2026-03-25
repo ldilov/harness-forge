@@ -16,8 +16,20 @@
     ".agents/skills/dotnet-engineering/SKILL.md",
     ".agents/skills/lua-engineering/SKILL.md",
     ".agents/skills/powershell-engineering/SKILL.md",
+    ".agents/skills/javascript-engineering/SKILL.md",
+    ".agents/skills/cloud-architect/SKILL.md",
     "docs/catalog/language-packs.md",
+    "docs/catalog/framework-packs.md",
     "docs/templates/authoring.md",
+    "docs/authoring/skills.md",
+    "docs/flow-orchestration.md",
+    "docs/generated-artifacts.md",
+    "docs/hooks/catalog.md",
+    "docs/profile-guide.md",
+    "docs/target-support-matrix.md",
+    "docs/maintenance-lifecycle.md",
+    "docs/observability.md",
+    "docs/benchmark-scenarios.md",
     "knowledge-bases/seeded/README.md",
     "rules/common/README.md",
     "skills/README.md",
@@ -26,6 +38,22 @@
     "skills/dotnet-engineering/SKILL.md",
     "skills/lua-engineering/SKILL.md",
     "skills/powershell-engineering/SKILL.md",
+    "skills/javascript-engineering",
+    "skills/cloud-architect",
+    "skills/repo-onboarding/SKILL.md",
+    "skills/documentation-lookup/SKILL.md",
+    "skills/security-scan/SKILL.md",
+    "skills/release-readiness/SKILL.md",
+    "skills/architecture-decision-records/SKILL.md",
+    "skills/incident-triage/SKILL.md",
+    "skills/dependency-upgrade-safety/SKILL.md",
+    "skills/performance-profiling/SKILL.md",
+    "skills/test-strategy-and-coverage/SKILL.md",
+    "skills/api-contract-review/SKILL.md",
+    "skills/db-migration-review/SKILL.md",
+    "skills/pr-triage-and-summary/SKILL.md",
+    "skills/observability-setup/SKILL.md",
+    "skills/repo-modernization/SKILL.md",
     "templates/workflows/implement-typescript-change.md",
     "templates/workflows/implement-java-change.md",
     "templates/workflows/implement-dotnet-change.md",
@@ -43,29 +71,57 @@
     "scripts/templates/powershell/Get-MissingTemplateSections.ps1",
     "scripts/templates/powershell/New-TemplateIndex.ps1",
     "scripts/templates/powershell/Test-WorkflowContracts.ps1",
+    "scripts/intelligence/scan-repo.mjs",
+    "scripts/intelligence/detect-frameworks.mjs",
+    "scripts/intelligence/score-recommendations.mjs",
+    "scripts/runtime/flow-status.mjs",
+    "scripts/runtime/report-effectiveness.mjs",
+    "scripts/knowledge/import-pack.mjs",
+    "scripts/knowledge/normalize-pack.mjs",
+    "scripts/knowledge/report-coverage.mjs",
+    "scripts/knowledge/report-drift.mjs",
+    "scripts/ci/generate-compatibility-matrix.mjs",
+    "scripts/ci/validate-no-placeholders.mjs",
+    "scripts/ci/validate-skill-depth.mjs",
+    "scripts/ci/validate-framework-coverage.mjs",
+    "scripts/ci/validate-doc-command-alignment.mjs",
+    "scripts/ci/validate-manifest-runtime-consistency.mjs",
     "knowledge-bases/seeded/typescript",
     "knowledge-bases/seeded/java",
     "knowledge-bases/seeded/dotnet",
     "knowledge-bases/seeded/lua",
     "knowledge-bases/seeded/powershell",
+    "manifests/catalog/index.json",
+    "manifests/catalog/language-assets.json",
+    "manifests/catalog/framework-assets.json",
+    "manifests/catalog/compatibility-matrix.json",
+    "manifests/catalog/flow-artifacts.json",
     "manifests/catalog/seeded-knowledge-files.json",
     "manifests/catalog/package-surface.json",
+    "manifests/hooks/index.json",
+    "manifests/profiles/core.json",
+    "manifests/profiles/developer.json",
+    "manifests/profiles/reviewer.json",
+    "manifests/profiles/security.json",
+    "manifests/profiles/release-manager.json",
+    "manifests/profiles/rapid-prototyping.json",
+    "manifests/profiles/legacy-modernization.json",
+    "manifests/profiles/research-first.json",
+    "manifests/profiles/game-dev-native.json",
+    "manifests/profiles/ai-runtime.json",
     "hooks/README.md",
     "mcp/README.md",
     "profiles/README.md",
     "scripts/codex/apply-home-config.mjs",
     "targets/claude-code/runtime/.claude/settings.json",
     "targets/codex/runtime/.codex/config.toml",
-    "skills/repo-onboarding/SKILL.md",
-    "skills/documentation-lookup/SKILL.md",
-    "skills/security-scan/SKILL.md",
-    "skills/release-readiness/SKILL.md",
-    "skills/architecture-decision-records/SKILL.md"
+    "targets/cursor/adapter.json",
+    "targets/opencode/adapter.json"
   ],
   "groups": [
     {
       "id": "root-docs",
-      "description": "Front-door and install guidance required for supported harnesses.",
+      "description": "Front-door, lifecycle, and compatibility docs required for supported harnesses.",
       "paths": [
         "README.md",
         "AGENTS.md",
@@ -76,7 +132,14 @@
         "docs/languages.md",
         "docs/commands.md",
         "docs/agents.md",
-        "docs/hooks.md",
+        "docs/hooks/catalog.md",
+        "docs/flow-orchestration.md",
+        "docs/generated-artifacts.md",
+        "docs/profile-guide.md",
+        "docs/target-support-matrix.md",
+        "docs/maintenance-lifecycle.md",
+        "docs/observability.md",
+        "docs/benchmark-scenarios.md",
         "docs/troubleshooting.md",
         "docs/versioning-and-migration.md",
         "hooks",
@@ -115,13 +178,23 @@
       ]
     },
     {
+      "id": "operational-runtime",
+      "description": "Recommendation, flow, observability, and knowledge-maintenance scripts.",
+      "paths": [
+        "scripts/intelligence",
+        "scripts/runtime",
+        "scripts/knowledge"
+      ]
+    },
+    {
       "id": "validator-bundle",
-      "description": "Shipped task and workflow validation bundle.",
+      "description": "Shipped task, workflow, and release validation bundle.",
       "paths": [
         "scripts/templates/README.md",
         "scripts/templates/config/required-sections.json",
         "scripts/templates/shell",
-        "scripts/templates/powershell"
+        "scripts/templates/powershell",
+        "scripts/ci"
       ]
     },
     {
@@ -130,19 +203,28 @@
       "paths": [
         "manifests/catalog/index.json",
         "manifests/catalog/language-assets.json",
+        "manifests/catalog/framework-assets.json",
+        "manifests/catalog/compatibility-matrix.json",
+        "manifests/catalog/flow-artifacts.json",
         "manifests/catalog/seeded-knowledge-files.json",
         "manifests/catalog/package-surface.json",
+        "manifests/hooks/index.json",
+        "manifests/profiles",
         "schemas/content/content-metadata.schema.json",
+        "schemas/hooks/hook.schema.json",
         "schemas/manifests/seeded-knowledge-files.schema.json",
-        "schemas/manifests/package-surface.schema.json"
+        "schemas/manifests/package-surface.schema.json",
+        "schemas/runtime/flow-state.schema.json"
       ]
     },
     {
       "id": "target-runtime",
-      "description": "Target-native runtime surfaces for Claude Code and Codex.",
+      "description": "Target-native runtime surfaces plus support-honesty adapters.",
       "paths": [
         "targets/claude-code/runtime/.claude",
         "targets/codex/runtime/.codex",
+        "targets/cursor/adapter.json",
+        "targets/opencode/adapter.json",
         "scripts/codex"
       ]
     }
@@ -159,6 +241,8 @@
         ".agents/skills/dotnet-engineering/SKILL.md",
         ".agents/skills/lua-engineering/SKILL.md",
         ".agents/skills/powershell-engineering/SKILL.md",
+        ".agents/skills/javascript-engineering/SKILL.md",
+        ".agents/skills/cloud-architect/SKILL.md",
         "targets/codex/adapter.json",
         "targets/codex/runtime/.codex",
         "scripts/codex/apply-home-config.mjs",
@@ -176,9 +260,27 @@
         ".agents/skills/dotnet-engineering/SKILL.md",
         ".agents/skills/lua-engineering/SKILL.md",
         ".agents/skills/powershell-engineering/SKILL.md",
+        ".agents/skills/javascript-engineering/SKILL.md",
+        ".agents/skills/cloud-architect/SKILL.md",
         "targets/claude-code/adapter.json",
         "targets/claude-code/runtime/.claude",
         "hooks"
+      ]
+    },
+    {
+      "target": "cursor",
+      "paths": [
+        "docs/target-support-matrix.md",
+        "manifests/catalog/compatibility-matrix.json",
+        "targets/cursor/adapter.json"
+      ]
+    },
+    {
+      "target": "opencode",
+      "paths": [
+        "docs/target-support-matrix.md",
+        "manifests/catalog/compatibility-matrix.json",
+        "targets/opencode/adapter.json"
       ]
     }
   ]

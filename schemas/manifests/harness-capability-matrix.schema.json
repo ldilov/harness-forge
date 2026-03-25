@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://harness-forge.dev/schemas/manifests/harness-capability-matrix.schema.json",
+  "title": "Harness capability matrix",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "generatedAt",
+    "targets"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "targets": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "targetId",
+          "displayName",
+          "supportLevel",
+          "capabilities"
+        ],
+        "properties": {
+          "targetId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "displayName": {
+            "type": "string",
+            "minLength": 1
+          },
+          "supportLevel": {
+            "type": "string",
+            "enum": [
+              "full",
+              "partial",
+              "emulated",
+              "unsupported"
+            ]
+          },
+          "capabilities": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "capabilityId",
+                "supportLevel",
+                "supportMode",
+                "evidenceSource",
+                "lastValidatedAt",
+                "validationMethod",
+                "confidence"
+              ],
+              "properties": {
+                "capabilityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "supportLevel": {
+                  "type": "string",
+                  "enum": [
+                    "full",
+                    "partial",
+                    "emulated",
+                    "unsupported"
+                  ]
+                },
+                "supportMode": {
+                  "type": "string",
+                  "enum": [
+                    "native",
+                    "translated",
+                    "emulated",
+                    "documentation-only",
+                    "unsupported"
+                  ]
+                },
+                "evidenceSource": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "lastValidatedAt": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "validationMethod": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "confidence": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "notes": {
+                  "type": "string"
+                },
+                "fallbackBehavior": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

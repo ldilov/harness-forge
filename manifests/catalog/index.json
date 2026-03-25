@@ -6,19 +6,49 @@
     "manifests/bundles/frameworks.json"
   ],
   "profiles": [
-    "manifests/profiles/core.json"
+    "manifests/profiles/core.json",
+    "manifests/profiles/developer.json",
+    "manifests/profiles/reviewer.json",
+    "manifests/profiles/security.json",
+    "manifests/profiles/release-manager.json",
+    "manifests/profiles/rapid-prototyping.json",
+    "manifests/profiles/legacy-modernization.json",
+    "manifests/profiles/research-first.json",
+    "manifests/profiles/game-dev-native.json",
+    "manifests/profiles/ai-runtime.json"
   ],
   "targets": [
     "manifests/targets/core.json"
   ],
   "catalogs": [
     "manifests/catalog/language-assets.json",
+    "manifests/catalog/framework-assets.json",
+    "manifests/catalog/capability-taxonomy.json",
+    "manifests/catalog/harness-capability-matrix.json",
+    "manifests/catalog/compatibility-matrix.json",
+    "manifests/catalog/flow-artifacts.json",
     "manifests/catalog/package-surface.json",
     "manifests/catalog/seeded-knowledge-files.json"
   ],
   "schemas": [
     "schemas/content/content-metadata.schema.json",
+    "schemas/hooks/hook.schema.json",
+    "schemas/manifests/harness-capability-matrix.schema.json",
     "schemas/manifests/seeded-knowledge-files.schema.json",
-    "schemas/manifests/package-surface.schema.json"
+    "schemas/manifests/package-surface.schema.json",
+    "schemas/runtime/flow-state.schema.json",
+    "schemas/runtime/repo-map.schema.json",
+    "schemas/runtime/instruction-plan.schema.json",
+    "schemas/runtime/observability-event.schema.json",
+    "schemas/runtime/observability-summary.schema.json",
+    "schemas/runtime/benchmark-expectation.schema.json",
+    "schemas/runtime/worktree-plan.schema.json",
+    "schemas/runtime/worktree-state.schema.json"
+  ],
+  "hooks": [
+    "manifests/hooks/index.json"
+  ],
+  "fixtures": [
+    "tests/fixtures/benchmarks/index.json"
   ]
 }

@@ -2,8 +2,9 @@ import path from "node:path";
 
 import type { InstallPlan } from "../../domain/operations/install-plan.js";
 import { applyOperation } from "../../infrastructure/filesystem/apply-operation.js";
-import { saveInstallState } from "../../domain/state/install-state.js";
-import { writeTextFile } from "../../shared/index.js";
+import { loadInstallState, saveInstallState } from "../../domain/state/install-state.js";
+import { PACKAGE_ROOT, writeTextFile } from "../../shared/index.js";
+import { writeAgentCommandCatalog } from "../runtime/command-catalog.js";
 import { generateGuidance } from "./generate-guidance.js";
 
 export async function applyInstall(root: string, plan: InstallPlan): Promise<{ messages: string[]; guidancePath: string }> {
@@ -16,19 +17,24 @@ export async function applyInstall(root: string, plan: InstallPlan): Promise<{ m
   const guidancePath = path.join(root, ".hforge", "state", "post-install-guidance.txt");
   await writeTextFile(guidancePath, guidance);
 
+  const existingState = await loadInstallState(root);
   await saveInstallState(root, {
     version: 1,
-    installedTargets: [plan.selection.targetId],
-    installedBundles: [...new Set(plan.operations.map((operation) => operation.bundleId))],
+    installedTargets: [...new Set([...(existingState?.installedTargets ?? []), plan.selection.targetId])],
+    installedBundles: [
+      ...new Set([...(existingState?.installedBundles ?? []), ...plan.operations.map((operation) => operation.bundleId)])
+    ],
     appliedPlanHash: plan.hash,
-    fileWrites: plan.operations.map((operation) => operation.destinationPath),
-    backupSnapshots: plan.backupRequirements,
+    fileWrites: [...new Set([...(existingState?.fileWrites ?? []), ...plan.operations.map((operation) => operation.destinationPath)])],
+    backupSnapshots: [...new Set([...(existingState?.backupSnapshots ?? []), ...plan.backupRequirements])],
     timestamps: {
-      createdAt: new Date().toISOString(),
+      createdAt: existingState?.timestamps.createdAt ?? new Date().toISOString(),
       updatedAt: new Date().toISOString()
     },
     lastValidationStatus: "unknown"
   });
+  const commandCatalog = await writeAgentCommandCatalog(root, PACKAGE_ROOT);
+  messages.push(`Agent command catalog written to ${commandCatalog.jsonPath}`);
 
   return { messages, guidancePath };
 }

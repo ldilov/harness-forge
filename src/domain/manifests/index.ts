@@ -2,6 +2,8 @@ import path from "node:path";
 import fg from "fast-glob";
 
 import { readJsonFile } from "../../shared/index.js";
+import type { CapabilityTaxonomyDocument } from "../capabilities/capability-taxonomy.js";
+import type { HarnessCapabilityMatrixDocument } from "../capabilities/capability-record.js";
 
 export interface BundleManifest {
   id: string;
@@ -27,6 +29,13 @@ export interface ProfileManifest {
   recommendedTargets: string[];
   recommendedLanguages: string[];
   recommendedCapabilities: string[];
+  displayName?: string;
+  preferredSkills?: string[];
+  recommendedHooks?: string[];
+  validationStrictness?: "lenient" | "standard" | "strict";
+  reviewDepth?: "shallow" | "standard" | "deep";
+  riskAppetite?: "aggressive" | "balanced" | "low";
+  targetCompatibility?: Record<string, "full" | "partial" | "emulated" | "unsupported">;
 }
 
 export interface TargetManifest {
@@ -42,6 +51,9 @@ export interface TargetManifest {
   supportsPlugins: boolean;
   capabilityMatrix: Record<string, boolean>;
   postInstallGuidanceStrategy?: string;
+  supportLevel?: "full" | "partial" | "emulated" | "unsupported";
+  supportNotes?: string[];
+  capabilitySupportRef?: string;
 }
 
 export interface CatalogIndex {
@@ -70,4 +82,16 @@ export async function loadTargetManifests(root: string): Promise<TargetManifest[
   const files = await fg("manifests/targets/*.json", { cwd: root, absolute: true });
   const all = await Promise.all(files.map((file) => readJsonFile<{ targets: TargetManifest[] }>(file)));
   return all.flatMap((entry) => entry.targets);
+}
+
+export async function loadCapabilityTaxonomy(root: string): Promise<CapabilityTaxonomyDocument> {
+  return readJsonFile<CapabilityTaxonomyDocument>(
+    path.join(root, "manifests", "catalog", "capability-taxonomy.json")
+  );
+}
+
+export async function loadHarnessCapabilityMatrix(root: string): Promise<HarnessCapabilityMatrixDocument> {
+  return readJsonFile<HarnessCapabilityMatrixDocument>(
+    path.join(root, "manifests", "catalog", "harness-capability-matrix.json")
+  );
 }

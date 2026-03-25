@@ -4,6 +4,7 @@ export function generateGuidance(plan: InstallPlan): string {
   const lines = [
     `Harness Forge install ready for ${plan.selection.targetId}.`,
     'Use "hforge status" to inspect current state.',
+    'Use "hforge commands --json" to inspect CLI commands and npm scripts exposed to agents.',
     'Use "hforge catalog --json" to review installed bundles.',
     'Use "hforge template list" to discover starter task and workflow templates.'
   ];

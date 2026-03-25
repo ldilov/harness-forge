@@ -137,3 +137,39 @@ Validate behavior against the structured review and testing guidance.
 
 **Next Trigger**
 End the workflow or hand off follow-up tasks.
+
+## Handoff Contracts
+
+- record which `rules/common/` and `rules/python/` files were applied
+- note the commands or manual checks used to validate the change
+
+## Exit Conditions
+
+- the implementation aligns with the promoted Python rules and structured references
+- verification results or blockers are captured clearly
+
+## Failure Modes
+
+- changing module or API boundaries without checking the Python rules first
+- finishing without running or documenting the repo's verification path
+
+## Escalation Rules
+
+- escalate when the task needs framework-specific behavior not covered by the pack
+- escalate when typing, dependency, or deployment constraints stay unclear
+
+## Artifacts Produced
+
+- changed source files
+- validation output
+- implementation summary
+
+## Human Approval Points
+
+- approve architecture shifts across services or package boundaries
+- approve deviations from the promoted Python conventions
+
+## Examples
+
+- add a FastAPI endpoint and verify request and response behavior
+- refactor a Python module using the structured reference scenario

@@ -1,0 +1,10 @@
+{
+  "name": "security-service",
+  "private": true,
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "scripts": {
+    "start": "node src/server.ts"
+  }
+}

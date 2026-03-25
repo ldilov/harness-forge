@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://harness-forge.dev/schemas/runtime/flow-state.schema.json",
+  "title": "Harness Forge Flow State",
+  "type": "object",
+  "required": [
+    "featureId",
+    "currentStage",
+    "status",
+    "lastArtifact",
+    "nextAction",
+    "updatedAt"
+  ],
+  "properties": {
+    "featureId": { "type": "string", "minLength": 1 },
+    "currentStage": {
+      "type": "string",
+      "enum": ["clarify", "specify", "plan", "analyze", "tasks", "implement", "validate"]
+    },
+    "status": {
+      "type": "string",
+      "enum": ["active", "blocked", "paused", "complete"]
+    },
+    "lastArtifact": { "type": "string", "minLength": 1 },
+    "nextAction": { "type": "string", "minLength": 1 },
+    "updatedAt": { "type": "string", "format": "date-time" },
+    "blockers": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "artifactLineage": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "notes": { "type": "string" },
+    "targetContext": { "type": "string" }
+  },
+  "additionalProperties": false
+}

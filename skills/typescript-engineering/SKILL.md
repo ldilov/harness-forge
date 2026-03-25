@@ -29,6 +29,17 @@ when a task touches Node.js, React, Next.js, or shared TypeScript tooling.
 - `knowledge-bases/seeded/typescript/docs/frameworks.md`
 - `knowledge-bases/seeded/typescript/examples/`
 
+## Supplemental engineering references
+
+- `skills/typescript-engineering/references/repo-exploration.md`
+- `skills/typescript-engineering/references/output-templates.md`
+- `skills/typescript-engineering/references/agent-patterns.md`
+- `skills/typescript-engineering/references/debugging-playbook.md`
+- `skills/typescript-engineering/references/type-system-patterns.md`
+- `skills/typescript-engineering/references/tsconfig-and-build.md`
+- `skills/typescript-engineering/references/frontend-and-backend-patterns.md`
+- `skills/typescript-engineering/references/examples.md`
+
 ## Assistant expectations
 
 - favor strict typing, explicit validation, and small composable modules

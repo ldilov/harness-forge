@@ -137,3 +137,39 @@ Validate behavior against the structured review and testing guidance.
 
 **Next Trigger**
 End the workflow or hand off follow-up tasks.
+
+## Handoff Contracts
+
+- record which `rules/common/` and `rules/kotlin/` files were applied
+- note the commands or manual checks used to validate the change
+
+## Exit Conditions
+
+- the implementation aligns with the promoted Kotlin rules and structured references
+- verification results or blockers are captured clearly
+
+## Failure Modes
+
+- changing coroutine, DI, or module boundaries without checking the Kotlin rules first
+- finishing without running or documenting the repo's verification path
+
+## Escalation Rules
+
+- escalate when the task needs Android or KMP guidance beyond the shipped pack
+- escalate when state or concurrency behavior remains ambiguous after design
+
+## Artifacts Produced
+
+- changed source files
+- validation output
+- implementation summary
+
+## Human Approval Points
+
+- approve architecture shifts across modules or platform layers
+- approve deviations from the promoted Kotlin conventions
+
+## Examples
+
+- update a Ktor route while preserving serialization and plugin setup
+- refactor a Kotlin module using the structured reference scenario

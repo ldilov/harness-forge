@@ -29,6 +29,17 @@ when the task involves automation, administration, CI scripting, or Windows-focu
 - `knowledge-bases/seeded/powershell/docs/frameworks.md`
 - `knowledge-bases/seeded/powershell/examples/`
 
+## Supplemental engineering references
+
+- `skills/powershell-engineering/references/repo-exploration.md`
+- `skills/powershell-engineering/references/output-templates.md`
+- `skills/powershell-engineering/references/agent-patterns.md`
+- `skills/powershell-engineering/references/debugging-playbook.md`
+- `skills/powershell-engineering/references/scripting-and-modules.md`
+- `skills/powershell-engineering/references/remoting-and-ops.md`
+- `skills/powershell-engineering/references/testing-and-ci.md`
+- `skills/powershell-engineering/references/examples.md`
+
 ## Assistant expectations
 
 - write scripts that are explicit, safe, and compatible with modern PowerShell

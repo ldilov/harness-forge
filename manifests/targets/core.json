@@ -18,9 +18,20 @@
       "supportsPlugins": false,
       "capabilityMatrix": {
         "templates": true,
-        "workflow-validation": true
+        "workflow-validation": true,
+        "repo-intelligence": true,
+        "flow-orchestration": true,
+        "typed-hooks": false,
+        "maintenance": true,
+        "observability": true
       },
-      "postInstallGuidanceStrategy": "codex"
+      "postInstallGuidanceStrategy": "codex",
+      "capabilitySupportRef": "manifests/catalog/harness-capability-matrix.json",
+      "supportLevel": "full",
+      "supportNotes": [
+        "Codex is a first-class target for install guidance, repo intelligence, maintenance commands, and flow recovery.",
+        "Hook authoring ships, but native hook execution remains documentation-driven because Codex does not expose the same runtime hook model as Claude Code."
+      ]
     },
     {
       "id": "claude-code",
@@ -40,9 +51,19 @@
       "supportsPlugins": true,
       "capabilityMatrix": {
         "templates": true,
-        "workflow-validation": true
+        "workflow-validation": true,
+        "repo-intelligence": true,
+        "flow-orchestration": true,
+        "typed-hooks": true,
+        "maintenance": true,
+        "observability": true
       },
-      "postInstallGuidanceStrategy": "claude-code"
+      "postInstallGuidanceStrategy": "claude-code",
+      "capabilitySupportRef": "manifests/catalog/harness-capability-matrix.json",
+      "supportLevel": "full",
+      "supportNotes": [
+        "Claude Code is a first-class target for packaged skills, hooks, repo intelligence, maintenance commands, and flow recovery."
+      ]
     },
     {
       "id": "cursor",
@@ -50,15 +71,27 @@
       "installRootStrategy": "repo-root",
       "pathMappings": {},
       "mergeRules": {},
-      "supportsHooks": true,
+      "supportsHooks": false,
       "supportsCommands": true,
-      "supportsAgents": true,
-      "supportsContexts": true,
-      "supportsPlugins": true,
+      "supportsAgents": false,
+      "supportsContexts": false,
+      "supportsPlugins": false,
       "capabilityMatrix": {
         "templates": true,
-        "workflow-validation": true
-      }
+        "workflow-validation": false,
+        "repo-intelligence": true,
+        "flow-orchestration": false,
+        "typed-hooks": false,
+        "maintenance": false,
+        "observability": false
+      },
+      "postInstallGuidanceStrategy": "partial",
+      "capabilitySupportRef": "manifests/catalog/harness-capability-matrix.json",
+      "supportLevel": "partial",
+      "supportNotes": [
+        "Cursor can consume published docs, manifests, and recommendation output.",
+        "No first-class runtime mapping, hook execution, or flow-state recovery is shipped for Cursor yet."
+      ]
     },
     {
       "id": "opencode",
@@ -66,15 +99,27 @@
       "installRootStrategy": "repo-root",
       "pathMappings": {},
       "mergeRules": {},
-      "supportsHooks": true,
+      "supportsHooks": false,
       "supportsCommands": true,
-      "supportsAgents": true,
-      "supportsContexts": true,
-      "supportsPlugins": true,
+      "supportsAgents": false,
+      "supportsContexts": false,
+      "supportsPlugins": false,
       "capabilityMatrix": {
         "templates": true,
-        "workflow-validation": true
-      }
+        "workflow-validation": false,
+        "repo-intelligence": true,
+        "flow-orchestration": false,
+        "typed-hooks": false,
+        "maintenance": false,
+        "observability": false
+      },
+      "postInstallGuidanceStrategy": "partial",
+      "capabilitySupportRef": "manifests/catalog/harness-capability-matrix.json",
+      "supportLevel": "partial",
+      "supportNotes": [
+        "OpenCode can consume published docs, manifests, and recommendation output.",
+        "No first-class runtime mapping, hook execution, or flow-state recovery is shipped for OpenCode yet."
+      ]
     }
   ]
 }

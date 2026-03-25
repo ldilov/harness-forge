@@ -4,13 +4,24 @@
   "installRootStrategy": "repo-root",
   "pathMappings": {},
   "mergeRules": {},
-  "supportsHooks": true,
+  "supportsHooks": false,
   "supportsCommands": true,
-  "supportsAgents": true,
-  "supportsContexts": true,
-  "supportsPlugins": true,
+  "supportsAgents": false,
+  "supportsContexts": false,
+  "supportsPlugins": false,
+  "capabilitySupportRef": "manifests/catalog/harness-capability-matrix.json",
   "capabilityMatrix": {
     "templates": true,
-    "workflow-validation": true
-  }
+    "workflow-validation": false,
+    "repo-intelligence": true,
+    "flow-orchestration": false,
+    "typed-hooks": false,
+    "maintenance": false,
+    "observability": false
+  },
+  "supportLevel": "partial",
+  "supportNotes": [
+    "Content, manifests, and recommendation metadata are portable.",
+    "No first-class OpenCode runtime mapping, hooks, or flow-state recovery surface ships in this package."
+  ]
 }

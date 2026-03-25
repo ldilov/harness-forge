@@ -137,3 +137,39 @@ Validate behavior against the structured review and testing guidance.
 
 **Next Trigger**
 End the workflow or hand off follow-up tasks.
+
+## Handoff Contracts
+
+- record which `rules/common/` and `rules/swift/` files were applied
+- note the commands or manual checks used to validate the change
+
+## Exit Conditions
+
+- the implementation aligns with the promoted Swift rules and structured references
+- verification results or blockers are captured clearly
+
+## Failure Modes
+
+- changing module or platform boundaries without checking the Swift rules first
+- finishing without running or documenting the repo's verification path
+
+## Escalation Rules
+
+- escalate when Apple-platform lifecycle behavior or cross-platform constraints are unclear
+- escalate when concurrency or ownership concerns remain unresolved
+
+## Artifacts Produced
+
+- changed source files
+- validation output
+- implementation summary
+
+## Human Approval Points
+
+- approve module boundary changes
+- approve deviations from the promoted Swift conventions
+
+## Examples
+
+- update a Swift package target with focused validation
+- refactor a Swift module using the structured reference scenario

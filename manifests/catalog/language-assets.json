@@ -35,6 +35,12 @@
         "knowledge-bases/seeded/typescript/examples/02-react-component-library.md",
         "knowledge-bases/seeded/typescript/examples/03-nextjs-app.md",
         "knowledge-bases/seeded/typescript/examples/04-monorepo-shared-types-and-validation.md"
+      ],
+      "frameworkBundles": [
+        "framework:react",
+        "framework:vite",
+        "framework:express",
+        "framework:nextjs"
       ]
     },
     "java": {
@@ -72,6 +78,9 @@
         "knowledge-bases/seeded/java/examples/02-event-consumer-service.md",
         "knowledge-bases/seeded/java/examples/03-gradle-multi-module-backend.md",
         "knowledge-bases/seeded/java/examples/04-library-module-with-strong-domain-tests.md"
+      ],
+      "frameworkBundles": [
+        "framework:spring-boot"
       ]
     },
     "dotnet": {
@@ -109,6 +118,9 @@
         "knowledge-bases/seeded/dotnet/examples/02-background-worker-with-queue-processing.md",
         "knowledge-bases/seeded/dotnet/examples/03-shared-domain-library.md",
         "knowledge-bases/seeded/dotnet/examples/04-cli-automation-tool.md"
+      ],
+      "frameworkBundles": [
+        "framework:aspnet-core"
       ]
     },
     "lua": {
@@ -212,6 +224,10 @@
       ],
       "examples": [
         "knowledge-bases/structured/python/examples/01-reference-scenario.md"
+      ],
+      "frameworkBundles": [
+        "framework:fastapi",
+        "framework:django"
       ]
     },
     "go": {
@@ -241,6 +257,9 @@
       ],
       "examples": [
         "knowledge-bases/structured/go/examples/01-reference-scenario.md"
+      ],
+      "frameworkBundles": [
+        "framework:gin"
       ]
     },
     "kotlin": {
@@ -270,6 +289,9 @@
       ],
       "examples": [
         "knowledge-bases/structured/kotlin/examples/01-reference-scenario.md"
+      ],
+      "frameworkBundles": [
+        "framework:ktor"
       ]
     },
     "rust": {
@@ -357,6 +379,10 @@
       ],
       "examples": [
         "knowledge-bases/structured/php/examples/01-reference-scenario.md"
+      ],
+      "frameworkBundles": [
+        "framework:symfony",
+        "framework:laravel"
       ]
     },
     "perl": {

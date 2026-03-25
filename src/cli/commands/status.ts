@@ -2,7 +2,6 @@ import { Command } from "commander";
 import path from "node:path";
 
 import { loadInstallState } from "../../domain/state/install-state.js";
-import { reconcileState } from "../../application/install/reconcile-state.js";
 import { DEFAULT_WORKSPACE_ROOT } from "../../shared/index.js";
 import { toJson } from "../../infrastructure/diagnostics/reporter.js";
 
@@ -19,14 +18,5 @@ export function registerStatusCommands(program: Command): void {
         return;
       }
       console.log(state ? JSON.stringify(state, null, 2) : `No install state found at ${workspaceRoot}.`);
-    });
-
-  program
-    .command("doctor")
-    .option("--root <root>", "workspace root", DEFAULT_WORKSPACE_ROOT)
-    .action(async (options) => {
-      const workspaceRoot = path.resolve(options.root);
-      const result = await reconcileState(workspaceRoot);
-      console.log(JSON.stringify(result, null, 2));
     });
 }

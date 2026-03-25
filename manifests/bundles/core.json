@@ -173,6 +173,212 @@
       "usageCues": [
         "Install when the selected target is claude-code."
       ]
+    },
+    {
+      "id": "capability:repo-intelligence",
+      "family": "capability",
+      "version": 1,
+      "description": "Repo scanning, framework detection, benchmark fixtures, and evidence-backed recommendations.",
+      "paths": [
+        "scripts/intelligence",
+        "docs/catalog/framework-packs.md",
+        "docs/benchmark-scenarios.md",
+        "manifests/catalog/framework-assets.json",
+        "manifests/catalog/language-assets.json",
+        "manifests/bundles/frameworks.json",
+        "skills/repo-onboarding",
+        "skills/documentation-lookup"
+      ],
+      "targets": [
+        "codex",
+        "claude-code",
+        "cursor",
+        "opencode"
+      ],
+      "dependencies": [
+        "baseline:agents",
+        "baseline:commands"
+      ],
+      "conflicts": [],
+      "optional": false,
+      "defaultInstall": false,
+      "stability": "stable",
+      "tags": [
+        "recommendation",
+        "intelligence",
+        "benchmarks"
+      ],
+      "owner": "core",
+      "usageCues": [
+        "Install when repository-aware setup guidance matters more than language-only defaults."
+      ]
+    },
+    {
+      "id": "capability:flow-orchestration",
+      "family": "capability",
+      "version": 1,
+      "description": "Recoverable Speckit flow state, artifact lineage, and implementation re-entry guidance.",
+      "paths": [
+        ".specify/state",
+        "docs/flow-orchestration.md",
+        "docs/generated-artifacts.md",
+        "manifests/catalog/flow-artifacts.json",
+        "schemas/runtime/flow-state.schema.json",
+        "scripts/runtime/flow-status.mjs",
+        "skills/speckit-analyze",
+        "skills/speckit-checklist",
+        "skills/speckit-clarify",
+        "skills/speckit-constitution",
+        "skills/speckit-implement",
+        "skills/speckit-plan",
+        "skills/speckit-specify",
+        "skills/speckit-tasks",
+        "skills/speckit-taskstoissues"
+      ],
+      "targets": [
+        "codex",
+        "claude-code"
+      ],
+      "dependencies": [
+        "baseline:agents",
+        "baseline:commands",
+        "capability:workflow-quality"
+      ],
+      "conflicts": [],
+      "optional": false,
+      "defaultInstall": false,
+      "stability": "stable",
+      "tags": [
+        "flow",
+        "speckit",
+        "recovery"
+      ],
+      "owner": "core",
+      "usageCues": [
+        "Install when spec-to-implementation recovery and artifact lineage need to be first-class."
+      ]
+    },
+    {
+      "id": "capability:lifecycle-governance",
+      "family": "capability",
+      "version": 1,
+      "description": "Typed hooks, profiles, maintenance commands, compatibility reporting, and release validation.",
+      "paths": [
+        "docs/hooks",
+        "docs/profile-guide.md",
+        "docs/target-support-matrix.md",
+        "docs/maintenance-lifecycle.md",
+        "docs/quality-gates.md",
+        "manifests/hooks/index.json",
+        "manifests/profiles",
+        "manifests/catalog/compatibility-matrix.json",
+        "schemas/hooks/hook.schema.json",
+        "scripts/ci",
+        "targets/cursor/adapter.json",
+        "targets/opencode/adapter.json"
+      ],
+      "targets": [
+        "codex",
+        "claude-code",
+        "cursor",
+        "opencode"
+      ],
+      "dependencies": [
+        "baseline:agents",
+        "baseline:commands"
+      ],
+      "conflicts": [],
+      "optional": false,
+      "defaultInstall": false,
+      "stability": "stable",
+      "tags": [
+        "governance",
+        "profiles",
+        "compatibility"
+      ],
+      "owner": "core",
+      "usageCues": [
+        "Install when release safety, support honesty, and maintenance diagnostics are required."
+      ]
+    },
+    {
+      "id": "capability:workload-skills",
+      "family": "capability",
+      "version": 1,
+      "description": "Operational and workload-specialized skills with explicit output contracts and references.",
+      "paths": [
+        "skills/README.md",
+        "skills/repo-onboarding",
+        "skills/security-scan",
+        "skills/release-readiness",
+        "skills/documentation-lookup",
+        "skills/architecture-decision-records",
+        "skills/incident-triage",
+        "skills/dependency-upgrade-safety",
+        "skills/performance-profiling",
+        "skills/test-strategy-and-coverage",
+        "skills/api-contract-review",
+        "skills/db-migration-review",
+        "skills/pr-triage-and-summary",
+        "skills/observability-setup",
+        "skills/repo-modernization"
+      ],
+      "targets": [
+        "codex",
+        "claude-code",
+        "cursor",
+        "opencode"
+      ],
+      "dependencies": [
+        "baseline:agents"
+      ],
+      "conflicts": [],
+      "optional": false,
+      "defaultInstall": false,
+      "stability": "stable",
+      "tags": [
+        "skills",
+        "operations",
+        "workloads"
+      ],
+      "owner": "core",
+      "usageCues": [
+        "Install when tasks are dominated by triage, release, security, profiling, or modernization work."
+      ]
+    },
+    {
+      "id": "capability:local-observability",
+      "family": "capability",
+      "version": 1,
+      "description": "Local-first effectiveness tracking and reporting for recommendations, maintenance, and flow recovery.",
+      "paths": [
+        "docs/observability.md",
+        "scripts/runtime/report-effectiveness.mjs",
+        "scripts/knowledge/report-coverage.mjs",
+        "scripts/knowledge/report-drift.mjs"
+      ],
+      "targets": [
+        "codex",
+        "claude-code",
+        "cursor",
+        "opencode"
+      ],
+      "dependencies": [
+        "baseline:commands"
+      ],
+      "conflicts": [],
+      "optional": false,
+      "defaultInstall": false,
+      "stability": "stable",
+      "tags": [
+        "observability",
+        "local-first",
+        "diagnostics"
+      ],
+      "owner": "core",
+      "usageCues": [
+        "Install when you need local evidence for recommendation uptake, maintenance activity, and flow recovery."
+      ]
     }
   ]
 }

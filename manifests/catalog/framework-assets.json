@@ -1,0 +1,124 @@
+{
+  "frameworks": [
+    {
+      "id": "react",
+      "displayName": "React",
+      "baseLanguage": "typescript",
+      "bundleId": "framework:react",
+      "docPath": "docs/catalog/frameworks/react.md",
+      "supportedTargets": ["codex", "claude-code", "cursor", "opencode"],
+      "detectionSignals": ["package.json dependency react", "src/**/*.tsx"],
+      "qualityScore": 0.9
+    },
+    {
+      "id": "vite",
+      "displayName": "Vite",
+      "baseLanguage": "typescript",
+      "bundleId": "framework:vite",
+      "docPath": "docs/catalog/frameworks/vite.md",
+      "supportedTargets": ["codex", "claude-code", "cursor", "opencode"],
+      "detectionSignals": ["package.json dependency vite", "vite.config.*"],
+      "qualityScore": 0.86
+    },
+    {
+      "id": "express",
+      "displayName": "Express",
+      "baseLanguage": "typescript",
+      "bundleId": "framework:express",
+      "docPath": "docs/catalog/frameworks/express.md",
+      "supportedTargets": ["codex", "claude-code", "cursor", "opencode"],
+      "detectionSignals": ["package.json dependency express", "src/**/*server*"],
+      "qualityScore": 0.83
+    },
+    {
+      "id": "fastapi",
+      "displayName": "FastAPI",
+      "baseLanguage": "python",
+      "bundleId": "framework:fastapi",
+      "docPath": "docs/catalog/frameworks/fastapi.md",
+      "supportedTargets": ["codex", "claude-code", "cursor", "opencode"],
+      "detectionSignals": ["pyproject.toml dependency fastapi", "app = FastAPI("],
+      "qualityScore": 0.88
+    },
+    {
+      "id": "django",
+      "displayName": "Django",
+      "baseLanguage": "python",
+      "bundleId": "framework:django",
+      "docPath": "docs/catalog/frameworks/django.md",
+      "supportedTargets": ["codex", "claude-code", "cursor", "opencode"],
+      "detectionSignals": ["pyproject.toml dependency django", "manage.py"],
+      "qualityScore": 0.85
+    },
+    {
+      "id": "spring-boot",
+      "displayName": "Spring Boot",
+      "baseLanguage": "java",
+      "bundleId": "framework:spring-boot",
+      "docPath": "docs/catalog/frameworks/spring-boot.md",
+      "supportedTargets": ["codex", "claude-code", "cursor", "opencode"],
+      "detectionSignals": ["pom.xml spring-boot", "build.gradle spring-boot"],
+      "qualityScore": 0.89
+    },
+    {
+      "id": "aspnet-core",
+      "displayName": "ASP.NET Core",
+      "baseLanguage": "dotnet",
+      "bundleId": "framework:aspnet-core",
+      "docPath": "docs/catalog/frameworks/aspnet-core.md",
+      "supportedTargets": ["codex", "claude-code", "cursor", "opencode"],
+      "detectionSignals": ["*.csproj Microsoft.NET.Sdk.Web", "Program.cs WebApplication"],
+      "qualityScore": 0.88
+    },
+    {
+      "id": "gin",
+      "displayName": "Gin",
+      "baseLanguage": "go",
+      "bundleId": "framework:gin",
+      "docPath": "docs/catalog/frameworks/gin.md",
+      "supportedTargets": ["codex", "claude-code", "cursor", "opencode"],
+      "detectionSignals": ["go.mod gin-gonic/gin", "gin.Default()"],
+      "qualityScore": 0.81
+    },
+    {
+      "id": "ktor",
+      "displayName": "Ktor",
+      "baseLanguage": "kotlin",
+      "bundleId": "framework:ktor",
+      "docPath": "docs/catalog/frameworks/ktor.md",
+      "supportedTargets": ["codex", "claude-code", "cursor", "opencode"],
+      "detectionSignals": ["build.gradle ktor", "embeddedServer("],
+      "qualityScore": 0.82
+    },
+    {
+      "id": "symfony",
+      "displayName": "Symfony",
+      "baseLanguage": "php",
+      "bundleId": "framework:symfony",
+      "docPath": "docs/catalog/frameworks/symfony.md",
+      "supportedTargets": ["codex", "claude-code", "cursor", "opencode"],
+      "detectionSignals": ["composer.json symfony/", "bin/console"],
+      "qualityScore": 0.8
+    },
+    {
+      "id": "nextjs",
+      "displayName": "Next.js",
+      "baseLanguage": "typescript",
+      "bundleId": "framework:nextjs",
+      "docPath": "docs/catalog/frameworks/nextjs.md",
+      "supportedTargets": ["codex", "claude-code", "cursor", "opencode"],
+      "detectionSignals": ["package.json dependency next", "next.config.*"],
+      "qualityScore": 0.9
+    },
+    {
+      "id": "laravel",
+      "displayName": "Laravel",
+      "baseLanguage": "php",
+      "bundleId": "framework:laravel",
+      "docPath": "docs/catalog/frameworks/laravel.md",
+      "supportedTargets": ["codex", "claude-code", "cursor", "opencode"],
+      "detectionSignals": ["composer.json laravel/framework", "artisan"],
+      "qualityScore": 0.88
+    }
+  ]
+}

@@ -137,3 +137,39 @@ Validate behavior against the structured review and testing guidance.
 
 **Next Trigger**
 End the workflow or hand off follow-up tasks.
+
+## Handoff Contracts
+
+- record which `rules/common/` and `rules/perl/` files were applied
+- note the commands or manual checks used to validate the change
+
+## Exit Conditions
+
+- the implementation aligns with the promoted Perl rules and structured references
+- verification results or blockers are captured clearly
+
+## Failure Modes
+
+- changing module boundaries or package exports without checking the Perl rules first
+- finishing without running or documenting the repo's verification path
+
+## Escalation Rules
+
+- escalate when the task depends on legacy runtime constraints or unclear module ownership
+- escalate when compatibility expectations remain unresolved
+
+## Artifacts Produced
+
+- changed source files
+- validation output
+- implementation summary
+
+## Human Approval Points
+
+- approve broad module reorganizations
+- approve deviations from the promoted Perl conventions
+
+## Examples
+
+- add a Perl module method with targeted tests
+- refactor a script and package boundary using the structured reference scenario

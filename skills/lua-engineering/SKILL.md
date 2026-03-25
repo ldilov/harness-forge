@@ -29,6 +29,17 @@ Neovim plugins, OpenResty, Love2D, embedded scripting, or Lua automation.
 - `knowledge-bases/seeded/lua/docs/frameworks.md`
 - `knowledge-bases/seeded/lua/examples/`
 
+## Supplemental engineering references
+
+- `skills/lua-engineering/references/repo-exploration.md`
+- `skills/lua-engineering/references/output-templates.md`
+- `skills/lua-engineering/references/agent-patterns.md`
+- `skills/lua-engineering/references/debugging-playbook.md`
+- `skills/lua-engineering/references/language-idioms.md`
+- `skills/lua-engineering/references/game-and-addon-patterns.md`
+- `skills/lua-engineering/references/debugging-and-testing.md`
+- `skills/lua-engineering/references/examples.md`
+
 ## Assistant expectations
 
 - keep modules small, readable, and compatible with the target runtime

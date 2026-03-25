@@ -18,6 +18,7 @@
   "supportsAgents": true,
   "supportsContexts": true,
   "supportsPlugins": true,
+  "capabilitySupportRef": "manifests/catalog/harness-capability-matrix.json",
   "capabilityMatrix": {
     "templates": true,
     "workflow-validation": true

@@ -19,10 +19,18 @@ const scriptRuns = [
   ["scripts/ci/validate-content-metadata.mjs"],
   ["scripts/ci/validate-seeded-knowledge-coverage.mjs"],
   ["scripts/ci/validate-generated-sync.mjs"],
-  ["scripts/ci/validate-packed-install-surface.mjs"]
-].map(([relativePath]) => ({
+  ["scripts/ci/validate-packed-install-surface.mjs"],
+  ["scripts/ci/validate-capability-matrix.mjs"],
+  ["scripts/ci/validate-no-placeholders.mjs"],
+  ["scripts/ci/validate-skill-depth.mjs"],
+  ["scripts/ci/validate-framework-coverage.mjs"],
+  ["scripts/ci/validate-doc-command-alignment.mjs"],
+  ["scripts/ci/validate-manifest-runtime-consistency.mjs"],
+  ["scripts/knowledge/report-coverage.mjs", "--json"],
+  ["scripts/knowledge/report-drift.mjs", "--json"]
+].map(([relativePath, ...extraArgs]) => ({
   name: relativePath,
-  result: run(nodeCommand, [path.join(root, relativePath)])
+  result: run(nodeCommand, [path.join(root, relativePath), ...extraArgs])
 }));
 
 const powerShell = powerShellCandidates.find((candidate) => (run(candidate, ["-NoProfile", "-Command", "$PSVersionTable.PSVersion.ToString()"]).status ?? 1) === 0);
@@ -42,7 +50,10 @@ const distCliPath = path.join(root, "dist", "cli", "index.js");
 const cliRuns = fs.existsSync(distCliPath)
   ? [
       { name: "catalog", result: run(nodeCommand, [distCliPath, "catalog", "--json"]) },
-      { name: "template-validate", result: run(nodeCommand, [distCliPath, "template", "validate", "--json"]) }
+      { name: "template-validate", result: run(nodeCommand, [distCliPath, "template", "validate", "--json"]) },
+      { name: "flow-status", result: run(nodeCommand, [distCliPath, "flow", "status", "--json"]) },
+      { name: "doctor", result: run(nodeCommand, [distCliPath, "doctor", "--json"]) },
+      { name: "audit", result: run(nodeCommand, [distCliPath, "audit", "--json"]) }
     ]
   : [];
 
