@@ -9,4 +9,6 @@ export const TEMPLATE_REQUIRED_SECTIONS = "scripts/templates/config/required-sec
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-export const REPO_ROOT = path.resolve(__dirname, "..", "..");
+export const PACKAGE_ROOT = path.resolve(__dirname, "..", "..");
+export const REPO_ROOT = PACKAGE_ROOT;
+export const DEFAULT_WORKSPACE_ROOT = process.cwd();

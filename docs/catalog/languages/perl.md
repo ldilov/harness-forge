@@ -1,10 +1,10 @@
-# Perl Language Pack
+# Perl
 
-Status: expanding
+`knowledge-bases/structured/perl/` is the structured knowledge pack for Perl.
 
-Use for Perl automation, legacy service maintenance, and scripting-heavy repos.
+## What ships
 
-- rule entry: `rules/perl/README.md`
-- maturity: docs and rule entrypoint exist; deeper examples are still expanding
-
-Scaffolded v1 language pack for modern Perl maintenance and scripting work.
+- overview, review checklist, and framework notes
+- promoted rules in `rules/perl/`
+- canonical skill in `skills/perl-engineering/SKILL.md`
+- workflow template in `templates/workflows/implement-perl-change.md`

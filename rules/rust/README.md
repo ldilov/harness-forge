@@ -1,3 +1,5 @@
-# Rust Rules
+# Rust rules
 
-Rust coding, testing, and review guidance lives here.
+Start with `rules/common/`, then apply the Rust-specific guidance in this directory.
+
+See also `knowledge-bases/structured/rust/docs/`.

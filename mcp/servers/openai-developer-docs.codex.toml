@@ -1,0 +1,3 @@
+[mcp_servers.openai_docs]
+command = "npx"
+args = ["mcp-remote", "https://developers.openai.com/mcp"]

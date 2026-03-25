@@ -11,9 +11,26 @@
     ".agents/skills/speckit-plan/SKILL.md",
     ".agents/skills/speckit-specify/SKILL.md",
     ".agents/skills/speckit-tasks/SKILL.md",
+    ".agents/skills/typescript-engineering/SKILL.md",
+    ".agents/skills/java-engineering/SKILL.md",
+    ".agents/skills/dotnet-engineering/SKILL.md",
+    ".agents/skills/lua-engineering/SKILL.md",
+    ".agents/skills/powershell-engineering/SKILL.md",
     "docs/catalog/language-packs.md",
     "docs/templates/authoring.md",
     "knowledge-bases/seeded/README.md",
+    "rules/common/README.md",
+    "skills/README.md",
+    "skills/typescript-engineering/SKILL.md",
+    "skills/java-engineering/SKILL.md",
+    "skills/dotnet-engineering/SKILL.md",
+    "skills/lua-engineering/SKILL.md",
+    "skills/powershell-engineering/SKILL.md",
+    "templates/workflows/implement-typescript-change.md",
+    "templates/workflows/implement-java-change.md",
+    "templates/workflows/implement-dotnet-change.md",
+    "templates/workflows/implement-lua-change.md",
+    "templates/workflows/implement-powershell-change.md",
     "scripts/templates/README.md",
     "scripts/templates/config/required-sections.json",
     "scripts/templates/shell/check-template-frontmatter.sh",
@@ -32,7 +49,18 @@
     "knowledge-bases/seeded/lua",
     "knowledge-bases/seeded/powershell",
     "manifests/catalog/seeded-knowledge-files.json",
-    "manifests/catalog/package-surface.json"
+    "manifests/catalog/package-surface.json",
+    "hooks/README.md",
+    "mcp/README.md",
+    "profiles/README.md",
+    "scripts/codex/apply-home-config.mjs",
+    "targets/claude-code/runtime/.claude/settings.json",
+    "targets/codex/runtime/.codex/config.toml",
+    "skills/repo-onboarding/SKILL.md",
+    "skills/documentation-lookup/SKILL.md",
+    "skills/security-scan/SKILL.md",
+    "skills/release-readiness/SKILL.md",
+    "skills/architecture-decision-records/SKILL.md"
   ],
   "groups": [
     {
@@ -50,7 +78,10 @@
         "docs/agents.md",
         "docs/hooks.md",
         "docs/troubleshooting.md",
-        "docs/versioning-and-migration.md"
+        "docs/versioning-and-migration.md",
+        "hooks",
+        "mcp",
+        "profiles"
       ]
     },
     {
@@ -63,6 +94,24 @@
         "knowledge-bases/seeded/dotnet",
         "knowledge-bases/seeded/lua",
         "knowledge-bases/seeded/powershell"
+      ]
+    },
+    {
+      "id": "promoted-language-surfaces",
+      "description": "Operational rule, skill, and workflow surfaces promoted from the seeded language packs.",
+      "paths": [
+        "rules/common",
+        "rules/typescript",
+        "rules/java",
+        "rules/dotnet",
+        "rules/lua",
+        "rules/powershell",
+        "skills",
+        "templates/workflows/implement-typescript-change.md",
+        "templates/workflows/implement-java-change.md",
+        "templates/workflows/implement-dotnet-change.md",
+        "templates/workflows/implement-lua-change.md",
+        "templates/workflows/implement-powershell-change.md"
       ]
     },
     {
@@ -87,6 +136,15 @@
         "schemas/manifests/seeded-knowledge-files.schema.json",
         "schemas/manifests/package-surface.schema.json"
       ]
+    },
+    {
+      "id": "target-runtime",
+      "description": "Target-native runtime surfaces for Claude Code and Codex.",
+      "paths": [
+        "targets/claude-code/runtime/.claude",
+        "targets/codex/runtime/.codex",
+        "scripts/codex"
+      ]
     }
   ],
   "targetSurfaces": [
@@ -96,7 +154,15 @@
         "AGENTS.md",
         ".specify",
         ".agents/skills",
-        "targets/codex/adapter.json"
+        ".agents/skills/typescript-engineering/SKILL.md",
+        ".agents/skills/java-engineering/SKILL.md",
+        ".agents/skills/dotnet-engineering/SKILL.md",
+        ".agents/skills/lua-engineering/SKILL.md",
+        ".agents/skills/powershell-engineering/SKILL.md",
+        "targets/codex/adapter.json",
+        "targets/codex/runtime/.codex",
+        "scripts/codex/apply-home-config.mjs",
+        "mcp"
       ]
     },
     {
@@ -105,7 +171,14 @@
         "AGENTS.md",
         ".specify",
         ".agents/skills",
-        "targets/claude-code/adapter.json"
+        ".agents/skills/typescript-engineering/SKILL.md",
+        ".agents/skills/java-engineering/SKILL.md",
+        ".agents/skills/dotnet-engineering/SKILL.md",
+        ".agents/skills/lua-engineering/SKILL.md",
+        ".agents/skills/powershell-engineering/SKILL.md",
+        "targets/claude-code/adapter.json",
+        "targets/claude-code/runtime/.claude",
+        "hooks"
       ]
     }
   ]

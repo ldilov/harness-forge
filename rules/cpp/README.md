@@ -1,3 +1,5 @@
-# C++ Rules
+# C++ rules
 
-C++ coding, testing, and review guidance lives here.
+Start with `rules/common/`, then apply the C++-specific guidance in this directory.
+
+See also `knowledge-bases/structured/cpp/docs/`.

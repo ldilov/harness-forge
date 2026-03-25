@@ -1,10 +1,10 @@
-# Python Language Pack
+# Python
 
-Status: expanding
+`knowledge-bases/structured/python/` is the structured knowledge pack for Python.
 
-Use for Python applications, automation, data tooling, and backend services.
+## What ships
 
-- rule entry: `rules/python/README.md`
-- maturity: docs and rule entrypoint exist; deeper examples are still expanding
-
-Scaffolded v1 language pack for Python application, service, and library work.
+- overview, review checklist, and framework notes
+- promoted rules in `rules/python/`
+- canonical skill in `skills/python-engineering/SKILL.md`
+- workflow template in `templates/workflows/implement-python-change.md`

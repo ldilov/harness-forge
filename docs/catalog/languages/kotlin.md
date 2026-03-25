@@ -1,10 +1,10 @@
-# Kotlin Language Pack
+# Kotlin
 
-Status: expanding
+`knowledge-bases/structured/kotlin/` is the structured knowledge pack for Kotlin.
 
-Use for Kotlin services, Android code, and multiplatform projects.
+## What ships
 
-- rule entry: `rules/kotlin/README.md`
-- maturity: docs and rule entrypoint exist; deeper examples are still expanding
-
-Scaffolded v1 language pack for Kotlin JVM, Android, and multiplatform work.
+- overview, review checklist, and framework notes
+- promoted rules in `rules/kotlin/`
+- canonical skill in `skills/kotlin-engineering/SKILL.md`
+- workflow template in `templates/workflows/implement-kotlin-change.md`

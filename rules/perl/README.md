@@ -1,3 +1,5 @@
-# Perl Rules
+# Perl rules
 
-Perl coding, testing, and review guidance lives here.
+Start with `rules/common/`, then apply the Perl-specific guidance in this directory.
+
+See also `knowledge-bases/structured/perl/docs/`.

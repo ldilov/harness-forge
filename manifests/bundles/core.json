@@ -5,32 +5,62 @@
       "family": "baseline",
       "version": 1,
       "description": "Core agent guidance and planner support.",
-      "paths": ["AGENTS.md", "agents/planner.md", ".agents/skills"],
-      "targets": ["codex", "claude-code", "cursor", "opencode"],
+      "paths": [
+        "AGENTS.md",
+        "agents/planner.md",
+        ".agents/skills",
+        "skills"
+      ],
+      "targets": [
+        "codex",
+        "claude-code",
+        "cursor",
+        "opencode"
+      ],
       "dependencies": [],
       "conflicts": [],
       "optional": false,
       "defaultInstall": true,
       "stability": "stable",
-      "tags": ["baseline", "agents"],
+      "tags": [
+        "baseline",
+        "agents"
+      ],
       "owner": "core",
-      "usageCues": ["Use for general project guidance and planning."]
+      "usageCues": [
+        "Use for general project guidance and planning."
+      ]
     },
     {
       "id": "baseline:commands",
       "family": "baseline",
       "version": 1,
       "description": "Core command guidance and usage patterns.",
-      "paths": ["commands/plan.md", "commands/test.md", "contexts/dev.md"],
-      "targets": ["codex", "claude-code", "cursor", "opencode"],
+      "paths": [
+        "commands/plan.md",
+        "commands/test.md",
+        "contexts/dev.md",
+        "profiles"
+      ],
+      "targets": [
+        "codex",
+        "claude-code",
+        "cursor",
+        "opencode"
+      ],
       "dependencies": [],
       "conflicts": [],
       "optional": false,
       "defaultInstall": true,
       "stability": "stable",
-      "tags": ["baseline", "commands"],
+      "tags": [
+        "baseline",
+        "commands"
+      ],
       "owner": "core",
-      "usageCues": ["Use when starting, testing, or validating work."]
+      "usageCues": [
+        "Use when starting, testing, or validating work."
+      ]
     },
     {
       "id": "capability:workflow-quality",
@@ -54,17 +84,95 @@
         "scripts/templates/powershell/Get-MissingTemplateSections.ps1",
         "scripts/templates/powershell/New-TemplateIndex.ps1",
         "scripts/templates/powershell/Test-WorkflowContracts.ps1",
-        "scripts/templates/powershell/Check-TemplateFrontmatter.ps1"
+        "scripts/templates/powershell/Check-TemplateFrontmatter.ps1",
+        "hooks",
+        "mcp",
+        "skills/speckit-analyze",
+        "skills/speckit-checklist",
+        "skills/speckit-clarify",
+        "skills/speckit-constitution",
+        "skills/speckit-implement",
+        "skills/speckit-plan",
+        "skills/speckit-specify",
+        "skills/speckit-tasks",
+        "skills/speckit-taskstoissues"
       ],
-      "targets": ["codex", "claude-code", "cursor", "opencode"],
-      "dependencies": ["baseline:agents", "baseline:commands"],
+      "targets": [
+        "codex",
+        "claude-code",
+        "cursor",
+        "opencode"
+      ],
+      "dependencies": [
+        "baseline:agents",
+        "baseline:commands"
+      ],
       "conflicts": [],
       "optional": false,
       "defaultInstall": true,
       "stability": "stable",
-      "tags": ["workflow", "templates", "validation"],
+      "tags": [
+        "workflow",
+        "templates",
+        "validation"
+      ],
       "owner": "core",
-      "usageCues": ["Use when implementing, fixing, or validating work."]
+      "usageCues": [
+        "Use when implementing, fixing, or validating work."
+      ]
+    },
+    {
+      "id": "target-runtime:codex",
+      "family": "target-runtime",
+      "version": 1,
+      "description": "Project-owned runtime files for Codex.",
+      "paths": [
+        "targets/codex/runtime/.codex",
+        "scripts/codex"
+      ],
+      "targets": [
+        "codex"
+      ],
+      "dependencies": [],
+      "conflicts": [],
+      "optional": false,
+      "defaultInstall": false,
+      "stability": "stable",
+      "tags": [
+        "target",
+        "codex",
+        "runtime"
+      ],
+      "owner": "core",
+      "usageCues": [
+        "Install when the selected target is codex."
+      ]
+    },
+    {
+      "id": "target-runtime:claude-code",
+      "family": "target-runtime",
+      "version": 1,
+      "description": "Project-owned runtime files for Claude Code.",
+      "paths": [
+        "targets/claude-code/runtime/.claude"
+      ],
+      "targets": [
+        "claude-code"
+      ],
+      "dependencies": [],
+      "conflicts": [],
+      "optional": false,
+      "defaultInstall": false,
+      "stability": "stable",
+      "tags": [
+        "target",
+        "claude-code",
+        "runtime"
+      ],
+      "owner": "core",
+      "usageCues": [
+        "Install when the selected target is claude-code."
+      ]
     }
   ]
 }

@@ -1,10 +1,10 @@
-# Rust Language Pack
+# Rust
 
-Status: expanding
+`knowledge-bases/structured/rust/` is the structured knowledge pack for Rust.
 
-Use for performance-sensitive services, tooling, and safety-critical systems.
+## What ships
 
-- rule entry: `rules/rust/README.md`
-- maturity: docs and rule entrypoint exist; deeper examples are still expanding
-
-Scaffolded v1 language pack for Rust services, libraries, and CLI projects.
+- overview, review checklist, and framework notes
+- promoted rules in `rules/rust/`
+- canonical skill in `skills/rust-engineering/SKILL.md`
+- workflow template in `templates/workflows/implement-rust-change.md`

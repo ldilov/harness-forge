@@ -16,15 +16,23 @@ generated: false
 ---
 # Java Rules
 
-## Baseline guidance
+## Promoted baseline guidance
 
-- `knowledge-bases/seeded/java/rules/common/coding-style.md`
-- `knowledge-bases/seeded/java/rules/common/patterns.md`
-- `knowledge-bases/seeded/java/rules/common/testing.md`
-- `knowledge-bases/seeded/java/rules/common/security.md`
-- `knowledge-bases/seeded/java/rules/common/hooks.md`
+- `rules/common/coding-style.md`
+- `rules/common/patterns.md`
+- `rules/common/testing.md`
+- `rules/common/security.md`
+- `rules/common/hooks.md`
 
-## Language-specific guidance
+## Promoted language-specific guidance
+
+- `rules/java/coding-style.md`
+- `rules/java/patterns.md`
+- `rules/java/testing.md`
+- `rules/java/security.md`
+- `rules/java/hooks.md`
+
+## Canonical seed source
 
 - `knowledge-bases/seeded/java/rules/java/coding-style.md`
 - `knowledge-bases/seeded/java/rules/java/patterns.md`

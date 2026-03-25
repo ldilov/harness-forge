@@ -7,6 +7,11 @@
       "description": "Seed TypeScript knowledge base from the supplied archive.",
       "paths": [
         "knowledge-bases/seeded/typescript",
+        "rules/common",
+        "rules/typescript",
+        "skills/typescript-engineering",
+        ".agents/skills/typescript-engineering",
+        "templates/workflows/implement-typescript-change.md",
         "rules/typescript/README.md",
         "docs/catalog/languages/typescript.md"
       ],
@@ -27,6 +32,11 @@
       "description": "Seed Java knowledge base from the supplied archive.",
       "paths": [
         "knowledge-bases/seeded/java",
+        "rules/common",
+        "rules/java",
+        "skills/java-engineering",
+        ".agents/skills/java-engineering",
+        "templates/workflows/implement-java-change.md",
         "rules/java/README.md",
         "docs/catalog/languages/java.md"
       ],
@@ -47,6 +57,11 @@
       "description": "Seed .NET knowledge base from the supplied archive.",
       "paths": [
         "knowledge-bases/seeded/dotnet",
+        "rules/common",
+        "rules/dotnet",
+        "skills/dotnet-engineering",
+        ".agents/skills/dotnet-engineering",
+        "templates/workflows/implement-dotnet-change.md",
         "rules/dotnet/README.md",
         "docs/catalog/languages/dotnet.md"
       ],
@@ -67,6 +82,11 @@
       "description": "Seed Lua knowledge base from the supplied archive.",
       "paths": [
         "knowledge-bases/seeded/lua",
+        "rules/common",
+        "rules/lua",
+        "skills/lua-engineering",
+        ".agents/skills/lua-engineering",
+        "templates/workflows/implement-lua-change.md",
         "rules/lua/README.md",
         "docs/catalog/languages/lua.md"
       ],
@@ -87,6 +107,11 @@
       "description": "Seed PowerShell knowledge base from the supplied archive.",
       "paths": [
         "knowledge-bases/seeded/powershell",
+        "rules/common",
+        "rules/powershell",
+        "skills/powershell-engineering",
+        ".agents/skills/powershell-engineering",
+        "templates/workflows/implement-powershell-change.md",
         "rules/powershell/README.md",
         "docs/catalog/languages/powershell.md"
       ],

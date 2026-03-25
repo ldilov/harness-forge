@@ -1,0 +1,13 @@
+{
+  "id": "kotlin-structured-pack",
+  "language": "kotlin",
+  "maturity": "structured",
+  "docs": [
+    "docs/overview.md",
+    "docs/review-checklist.md",
+    "docs/frameworks.md"
+  ],
+  "examples": [
+    "examples/01-reference-scenario.md"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "cpp-structured-pack",
+  "language": "cpp",
+  "maturity": "structured",
+  "docs": [
+    "docs/overview.md",
+    "docs/review-checklist.md",
+    "docs/frameworks.md"
+  ],
+  "examples": [
+    "examples/01-reference-scenario.md"
+  ]
+}

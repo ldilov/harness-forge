@@ -5,7 +5,8 @@
       "displayName": "Codex",
       "installRootStrategy": "repo-root",
       "pathMappings": {
-        "AGENTS.md": "AGENTS.md"
+        "AGENTS.md": "AGENTS.md",
+        "targets/codex/runtime/.codex": ".codex"
       },
       "mergeRules": {
         "AGENTS.md": "append-once"
@@ -26,7 +27,8 @@
       "displayName": "Claude Code",
       "installRootStrategy": "repo-root",
       "pathMappings": {
-        "AGENTS.md": "CLAUDE.md"
+        "AGENTS.md": "CLAUDE.md",
+        "targets/claude-code/runtime/.claude": ".claude"
       },
       "mergeRules": {
         "AGENTS.md": "copy"

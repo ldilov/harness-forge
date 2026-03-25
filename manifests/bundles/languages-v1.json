@@ -4,145 +4,307 @@
       "id": "lang:python",
       "family": "language",
       "version": 1,
-      "description": "Python knowledge pack.",
-      "paths": ["rules/python/README.md", "docs/catalog/languages/python.md"],
-      "targets": ["codex", "claude-code", "cursor", "opencode"],
-      "dependencies": ["baseline:commands"],
+      "description": "Python structured knowledge pack.",
+      "paths": [
+        "knowledge-bases/structured/python",
+        "rules/python",
+        "docs/catalog/languages/python.md",
+        "skills/python-engineering",
+        ".agents/skills/python-engineering",
+        "templates/workflows/implement-python-change.md"
+      ],
+      "targets": [
+        "codex",
+        "claude-code",
+        "cursor",
+        "opencode"
+      ],
+      "dependencies": [
+        "baseline:commands"
+      ],
       "conflicts": [],
       "optional": true,
       "defaultInstall": false,
-      "stability": "beta",
-      "tags": ["python"],
+      "stability": "stable",
+      "tags": [
+        "python"
+      ],
       "owner": "core",
-      "usageCues": ["Recommend when the repo contains .py files."]
+      "usageCues": [
+        "Recommend when the repo contains .py files."
+      ]
     },
     {
       "id": "lang:go",
       "family": "language",
       "version": 1,
-      "description": "Go knowledge pack.",
-      "paths": ["rules/golang/README.md", "docs/catalog/languages/go.md"],
-      "targets": ["codex", "claude-code", "cursor", "opencode"],
-      "dependencies": ["baseline:commands"],
+      "description": "Go structured knowledge pack.",
+      "paths": [
+        "knowledge-bases/structured/go",
+        "rules/golang",
+        "docs/catalog/languages/go.md",
+        "skills/go-engineering",
+        ".agents/skills/go-engineering",
+        "templates/workflows/implement-go-change.md"
+      ],
+      "targets": [
+        "codex",
+        "claude-code",
+        "cursor",
+        "opencode"
+      ],
+      "dependencies": [
+        "baseline:commands"
+      ],
       "conflicts": [],
       "optional": true,
       "defaultInstall": false,
-      "stability": "beta",
-      "tags": ["go"],
+      "stability": "stable",
+      "tags": [
+        "go"
+      ],
       "owner": "core",
-      "usageCues": ["Recommend when the repo contains .go files."]
+      "usageCues": [
+        "Recommend when the repo contains .go files."
+      ]
     },
     {
       "id": "lang:kotlin",
       "family": "language",
       "version": 1,
-      "description": "Kotlin knowledge pack.",
-      "paths": ["rules/kotlin/README.md", "docs/catalog/languages/kotlin.md"],
-      "targets": ["codex", "claude-code", "cursor", "opencode"],
-      "dependencies": ["baseline:commands"],
+      "description": "Kotlin structured knowledge pack.",
+      "paths": [
+        "knowledge-bases/structured/kotlin",
+        "rules/kotlin",
+        "docs/catalog/languages/kotlin.md",
+        "skills/kotlin-engineering",
+        ".agents/skills/kotlin-engineering",
+        "templates/workflows/implement-kotlin-change.md"
+      ],
+      "targets": [
+        "codex",
+        "claude-code",
+        "cursor",
+        "opencode"
+      ],
+      "dependencies": [
+        "baseline:commands"
+      ],
       "conflicts": [],
       "optional": true,
       "defaultInstall": false,
-      "stability": "beta",
-      "tags": ["kotlin"],
+      "stability": "stable",
+      "tags": [
+        "kotlin"
+      ],
       "owner": "core",
-      "usageCues": ["Recommend when the repo contains .kt files."]
+      "usageCues": [
+        "Recommend when the repo contains .kt files."
+      ]
     },
     {
       "id": "lang:rust",
       "family": "language",
       "version": 1,
-      "description": "Rust knowledge pack.",
-      "paths": ["rules/rust/README.md", "docs/catalog/languages/rust.md"],
-      "targets": ["codex", "claude-code", "cursor", "opencode"],
-      "dependencies": ["baseline:commands"],
+      "description": "Rust structured knowledge pack.",
+      "paths": [
+        "knowledge-bases/structured/rust",
+        "rules/rust",
+        "docs/catalog/languages/rust.md",
+        "skills/rust-engineering",
+        ".agents/skills/rust-engineering",
+        "templates/workflows/implement-rust-change.md"
+      ],
+      "targets": [
+        "codex",
+        "claude-code",
+        "cursor",
+        "opencode"
+      ],
+      "dependencies": [
+        "baseline:commands"
+      ],
       "conflicts": [],
       "optional": true,
       "defaultInstall": false,
-      "stability": "beta",
-      "tags": ["rust"],
+      "stability": "stable",
+      "tags": [
+        "rust"
+      ],
       "owner": "core",
-      "usageCues": ["Recommend when the repo contains .rs files."]
+      "usageCues": [
+        "Recommend when the repo contains .rs files."
+      ]
     },
     {
       "id": "lang:cpp",
       "family": "language",
       "version": 1,
-      "description": "C++ knowledge pack.",
-      "paths": ["rules/cpp/README.md", "docs/catalog/languages/cpp.md"],
-      "targets": ["codex", "claude-code", "cursor", "opencode"],
-      "dependencies": ["baseline:commands"],
+      "description": "C++ structured knowledge pack.",
+      "paths": [
+        "knowledge-bases/structured/cpp",
+        "rules/cpp",
+        "docs/catalog/languages/cpp.md",
+        "skills/cpp-engineering",
+        ".agents/skills/cpp-engineering",
+        "templates/workflows/implement-cpp-change.md"
+      ],
+      "targets": [
+        "codex",
+        "claude-code",
+        "cursor",
+        "opencode"
+      ],
+      "dependencies": [
+        "baseline:commands"
+      ],
       "conflicts": [],
       "optional": true,
       "defaultInstall": false,
-      "stability": "beta",
-      "tags": ["cpp"],
+      "stability": "stable",
+      "tags": [
+        "cpp"
+      ],
       "owner": "core",
-      "usageCues": ["Recommend when the repo contains .cpp or .hpp files."]
+      "usageCues": [
+        "Recommend when the repo contains .cpp or .hpp files."
+      ]
     },
     {
       "id": "lang:php",
       "family": "language",
       "version": 1,
-      "description": "PHP knowledge pack.",
-      "paths": ["rules/php/README.md", "docs/catalog/languages/php.md"],
-      "targets": ["codex", "claude-code", "cursor", "opencode"],
-      "dependencies": ["baseline:commands"],
+      "description": "PHP structured knowledge pack.",
+      "paths": [
+        "knowledge-bases/structured/php",
+        "rules/php",
+        "docs/catalog/languages/php.md",
+        "skills/php-engineering",
+        ".agents/skills/php-engineering",
+        "templates/workflows/implement-php-change.md"
+      ],
+      "targets": [
+        "codex",
+        "claude-code",
+        "cursor",
+        "opencode"
+      ],
+      "dependencies": [
+        "baseline:commands"
+      ],
       "conflicts": [],
       "optional": true,
       "defaultInstall": false,
-      "stability": "beta",
-      "tags": ["php"],
+      "stability": "stable",
+      "tags": [
+        "php"
+      ],
       "owner": "core",
-      "usageCues": ["Recommend when the repo contains .php files."]
+      "usageCues": [
+        "Recommend when the repo contains .php files."
+      ]
     },
     {
       "id": "lang:perl",
       "family": "language",
       "version": 1,
-      "description": "Perl knowledge pack.",
-      "paths": ["rules/perl/README.md", "docs/catalog/languages/perl.md"],
-      "targets": ["codex", "claude-code", "cursor", "opencode"],
-      "dependencies": ["baseline:commands"],
+      "description": "Perl structured knowledge pack.",
+      "paths": [
+        "knowledge-bases/structured/perl",
+        "rules/perl",
+        "docs/catalog/languages/perl.md",
+        "skills/perl-engineering",
+        ".agents/skills/perl-engineering",
+        "templates/workflows/implement-perl-change.md"
+      ],
+      "targets": [
+        "codex",
+        "claude-code",
+        "cursor",
+        "opencode"
+      ],
+      "dependencies": [
+        "baseline:commands"
+      ],
       "conflicts": [],
       "optional": true,
       "defaultInstall": false,
-      "stability": "beta",
-      "tags": ["perl"],
+      "stability": "stable",
+      "tags": [
+        "perl"
+      ],
       "owner": "core",
-      "usageCues": ["Recommend when the repo contains .pl files."]
+      "usageCues": [
+        "Recommend when the repo contains .pl files."
+      ]
     },
     {
       "id": "lang:swift",
       "family": "language",
       "version": 1,
-      "description": "Swift knowledge pack.",
-      "paths": ["rules/swift/README.md", "docs/catalog/languages/swift.md"],
-      "targets": ["codex", "claude-code", "cursor", "opencode"],
-      "dependencies": ["baseline:commands"],
+      "description": "Swift structured knowledge pack.",
+      "paths": [
+        "knowledge-bases/structured/swift",
+        "rules/swift",
+        "docs/catalog/languages/swift.md",
+        "skills/swift-engineering",
+        ".agents/skills/swift-engineering",
+        "templates/workflows/implement-swift-change.md"
+      ],
+      "targets": [
+        "codex",
+        "claude-code",
+        "cursor",
+        "opencode"
+      ],
+      "dependencies": [
+        "baseline:commands"
+      ],
       "conflicts": [],
       "optional": true,
       "defaultInstall": false,
-      "stability": "beta",
-      "tags": ["swift"],
+      "stability": "stable",
+      "tags": [
+        "swift"
+      ],
       "owner": "core",
-      "usageCues": ["Recommend when the repo contains .swift files."]
+      "usageCues": [
+        "Recommend when the repo contains .swift files."
+      ]
     },
     {
       "id": "lang:shell",
       "family": "language",
       "version": 1,
-      "description": "Shell knowledge pack.",
-      "paths": ["rules/shell/README.md", "docs/catalog/languages/shell.md"],
-      "targets": ["codex", "claude-code", "cursor", "opencode"],
-      "dependencies": ["baseline:commands"],
+      "description": "Shell structured knowledge pack.",
+      "paths": [
+        "knowledge-bases/structured/shell",
+        "rules/shell",
+        "docs/catalog/languages/shell.md",
+        "skills/shell-engineering",
+        ".agents/skills/shell-engineering",
+        "templates/workflows/implement-shell-change.md"
+      ],
+      "targets": [
+        "codex",
+        "claude-code",
+        "cursor",
+        "opencode"
+      ],
+      "dependencies": [
+        "baseline:commands"
+      ],
       "conflicts": [],
       "optional": true,
       "defaultInstall": false,
-      "stability": "beta",
-      "tags": ["shell"],
+      "stability": "stable",
+      "tags": [
+        "shell"
+      ],
       "owner": "core",
-      "usageCues": ["Recommend when the repo contains .sh files."]
+      "usageCues": [
+        "Recommend when the repo contains .sh files."
+      ]
     }
   ]
 }

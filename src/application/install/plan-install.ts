@@ -7,7 +7,17 @@ import type { InstallPlan, InstallSelection, InstallOperation } from "../../doma
 import { normalizeTargetPath } from "../../infrastructure/filesystem/normalize-target-path.js";
 import { resolveBundles } from "../planning/resolve-bundles.js";
 
-function createOperation(root: string, target: TargetAdapter, bundle: BundleManifest, assetPath: string): InstallOperation {
+interface CreateInstallPlanOptions {
+  workspaceRoot?: string;
+}
+
+function createOperation(
+  contentRoot: string,
+  workspaceRoot: string,
+  target: TargetAdapter,
+  bundle: BundleManifest,
+  assetPath: string
+): InstallOperation {
   const destinationHint = target.pathMappings[assetPath] ?? assetPath;
   const mergeStrategy = target.mergeRules[assetPath] ?? "copy";
   return {
@@ -22,8 +32,8 @@ function createOperation(root: string, target: TargetAdapter, bundle: BundleMani
               ? "merge"
               : "copy",
     bundleId: bundle.id,
-    sourcePath: path.join(root, assetPath),
-    destinationPath: normalizeTargetPath(root, destinationHint),
+    sourcePath: path.join(contentRoot, assetPath),
+    destinationPath: normalizeTargetPath(workspaceRoot, destinationHint),
     mergeStrategy,
     reason: `${bundle.id}:${assetPath}`,
     riskLevel: "low",
@@ -36,8 +46,12 @@ export function createInstallPlan(
   selection: InstallSelection,
   bundles: BundleManifest[],
   profiles: ProfileManifest[],
-  target: TargetAdapter
+  target: TargetAdapter,
+  options: CreateInstallPlanOptions = {}
 ): InstallPlan {
+  const contentRoot = root;
+  const workspaceRoot = options.workspaceRoot ?? selection.rootPath ?? root;
+
   const requestedBundleIds = [
     ...selection.bundleIds,
     ...selection.languageIds.map((id) => `lang:${id}`),
@@ -45,21 +59,37 @@ export function createInstallPlan(
     ...selection.capabilityIds.map((id) => `capability:${id}`)
   ];
 
+  const targetRuntimeBundle = `target-runtime:${selection.targetId}`;
+  if (bundles.some((bundle) => bundle.id === targetRuntimeBundle) && !requestedBundleIds.includes(targetRuntimeBundle)) {
+    requestedBundleIds.push(targetRuntimeBundle);
+  }
+
   const resolved = resolveBundles(bundles, profiles, selection.profileId, requestedBundleIds);
-  const operations = resolved.selected.flatMap((bundle) => bundle.paths.map((assetPath) => createOperation(root, target, bundle, assetPath)));
-  const hash = crypto.createHash("sha256").update(JSON.stringify({ selection, operations })).digest("hex");
+  const operations = resolved.selected.flatMap((bundle) => {
+    if (bundle.targets.length > 0 && !bundle.targets.includes(selection.targetId)) {
+      resolved.warnings.push(`${bundle.id} does not target ${selection.targetId} and was skipped.`);
+      return [];
+    }
+    return bundle.paths.map((assetPath) => createOperation(contentRoot, workspaceRoot, target, bundle, assetPath));
+  });
+  const hash = crypto
+    .createHash("sha256")
+    .update(JSON.stringify({ selection: { ...selection, rootPath: workspaceRoot }, operations }))
+    .digest("hex");
 
   return {
     planId: crypto.randomUUID(),
-    selection,
+    selection: { ...selection, rootPath: workspaceRoot },
     operations,
-    warnings: resolved.warnings,
+    warnings: [...new Set(resolved.warnings)],
     conflicts: resolved.conflicts,
     backupRequirements: operations.filter((item) => item.backupRequired).map((item) => item.destinationPath),
     hash,
     validationSummary: [
       `${resolved.selected.length} bundles selected`,
-      `${operations.length} operations planned`
+      `${operations.length} operations planned`,
+      `content root: ${contentRoot}`,
+      `workspace root: ${workspaceRoot}`
     ]
   };
 }

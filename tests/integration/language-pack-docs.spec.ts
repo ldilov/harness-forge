@@ -11,10 +11,17 @@ describe("language pack docs integration", () => {
     for (const language of seededLanguages) {
       const doc = await fs.readFile(path.join(root, `docs/catalog/languages/${language}.md`), "utf8");
       const rules = await fs.readFile(path.join(root, `rules/${language}/README.md`), "utf8");
+      const skill = await fs.readFile(path.join(root, `skills/${language}-engineering/SKILL.md`), "utf8");
+      const agentSkill = await fs.readFile(path.join(root, `.agents/skills/${language}-engineering/SKILL.md`), "utf8");
+      const workflow = await fs.readFile(path.join(root, `templates/workflows/implement-${language}-change.md`), "utf8");
 
       expect(doc).toContain(`knowledge-bases/seeded/${language}`);
-      expect(rules).toContain(`knowledge-bases/seeded/${language}/rules/common/`);
+      expect(rules).toContain("rules/common/");
+      expect(rules).toContain(`rules/${language}/`);
       expect(rules).toContain(`knowledge-bases/seeded/${language}/rules/${language}/`);
+      expect(skill).toContain(`rules/${language}/`);
+      expect(agentSkill).toContain(`skills/${language}-engineering/SKILL.md`);
+      expect(workflow).toContain(`rules/${language}/`);
     }
   });
 });

@@ -1,10 +1,10 @@
-# Go Language Pack
+# Go
 
-Status: expanding
+`knowledge-bases/structured/go/` is the structured knowledge pack for Go.
 
-Use for Go services, CLIs, and concurrency-heavy backend systems.
+## What ships
 
-- rule entry: `rules/golang/README.md`
-- maturity: docs and rule entrypoint exist; deeper examples are still expanding
-
-Scaffolded v1 language pack for Go services, tooling, and library projects.
+- overview, review checklist, and framework notes
+- promoted rules in `rules/golang/`
+- canonical skill in `skills/go-engineering/SKILL.md`
+- workflow template in `templates/workflows/implement-go-change.md`

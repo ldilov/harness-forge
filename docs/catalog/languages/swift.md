@@ -1,10 +1,10 @@
-# Swift Language Pack
+# Swift
 
-Status: expanding
+`knowledge-bases/structured/swift/` is the structured knowledge pack for Swift.
 
-Use for Swift app code, packages, and Apple-platform tooling.
+## What ships
 
-- rule entry: `rules/swift/README.md`
-- maturity: docs and rule entrypoint exist; deeper examples are still expanding
-
-Scaffolded v1 language pack for Swift package and application development.
+- overview, review checklist, and framework notes
+- promoted rules in `rules/swift/`
+- canonical skill in `skills/swift-engineering/SKILL.md`
+- workflow template in `templates/workflows/implement-swift-change.md`

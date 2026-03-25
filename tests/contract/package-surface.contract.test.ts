@@ -15,6 +15,7 @@ describe("package surface contract", () => {
     expect(packageJson.files).toContain("scripts/templates");
     expect(packageJson.files).toContain("scripts/ci");
     expect(packageJson.files).toContain("AGENTS.md");
+    expect(packageJson.files).toContain("skills");
   });
 
   it("declares required package-surface paths", async () => {
@@ -23,6 +24,10 @@ describe("package surface contract", () => {
     expect(manifest.requiredPaths).toContain("knowledge-bases/seeded/typescript");
     expect(manifest.requiredPaths).toContain(".specify/scripts/powershell/check-prerequisites.ps1");
     expect(manifest.requiredPaths).toContain(".agents/skills/speckit-implement/SKILL.md");
+    expect(manifest.requiredPaths).toContain(".agents/skills/typescript-engineering/SKILL.md");
+    expect(manifest.requiredPaths).toContain("rules/common/README.md");
+    expect(manifest.requiredPaths).toContain("skills/typescript-engineering/SKILL.md");
+    expect(manifest.requiredPaths).toContain("templates/workflows/implement-typescript-change.md");
     expect(manifest.requiredPaths).toContain("scripts/templates/README.md");
   });
 });

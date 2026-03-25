@@ -1,3 +1,5 @@
-# Python Rules
+# Python rules
 
-Python coding, testing, and review guidance lives here.
+Start with `rules/common/`, then apply the Python-specific guidance in this directory.
+
+See also `knowledge-bases/structured/python/docs/`.

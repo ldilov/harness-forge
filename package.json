@@ -31,7 +31,8 @@
     "install.sh",
     "install.ps1",
     "LICENSE",
-    "README.md"
+    "README.md",
+    "scripts/codex"
   ],
   "scripts": {
     "build": "tsc -p tsconfig.json",

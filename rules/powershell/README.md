@@ -16,15 +16,23 @@ generated: false
 ---
 # PowerShell Rules
 
-## Baseline guidance
+## Promoted baseline guidance
 
-- `knowledge-bases/seeded/powershell/rules/common/coding-style.md`
-- `knowledge-bases/seeded/powershell/rules/common/patterns.md`
-- `knowledge-bases/seeded/powershell/rules/common/testing.md`
-- `knowledge-bases/seeded/powershell/rules/common/security.md`
-- `knowledge-bases/seeded/powershell/rules/common/hooks.md`
+- `rules/common/coding-style.md`
+- `rules/common/patterns.md`
+- `rules/common/testing.md`
+- `rules/common/security.md`
+- `rules/common/hooks.md`
 
-## Language-specific guidance
+## Promoted language-specific guidance
+
+- `rules/powershell/coding-style.md`
+- `rules/powershell/patterns.md`
+- `rules/powershell/testing.md`
+- `rules/powershell/security.md`
+- `rules/powershell/hooks.md`
+
+## Canonical seed source
 
 - `knowledge-bases/seeded/powershell/rules/powershell/coding-style.md`
 - `knowledge-bases/seeded/powershell/rules/powershell/patterns.md`

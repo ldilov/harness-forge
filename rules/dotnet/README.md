@@ -16,15 +16,23 @@ generated: false
 ---
 # .NET Rules
 
-## Baseline guidance
+## Promoted baseline guidance
 
-- `knowledge-bases/seeded/dotnet/rules/common/coding-style.md`
-- `knowledge-bases/seeded/dotnet/rules/common/patterns.md`
-- `knowledge-bases/seeded/dotnet/rules/common/testing.md`
-- `knowledge-bases/seeded/dotnet/rules/common/security.md`
-- `knowledge-bases/seeded/dotnet/rules/common/hooks.md`
+- `rules/common/coding-style.md`
+- `rules/common/patterns.md`
+- `rules/common/testing.md`
+- `rules/common/security.md`
+- `rules/common/hooks.md`
 
-## Language-specific guidance
+## Promoted language-specific guidance
+
+- `rules/dotnet/coding-style.md`
+- `rules/dotnet/patterns.md`
+- `rules/dotnet/testing.md`
+- `rules/dotnet/security.md`
+- `rules/dotnet/hooks.md`
+
+## Canonical seed source
 
 - `knowledge-bases/seeded/dotnet/rules/dotnet/coding-style.md`
 - `knowledge-bases/seeded/dotnet/rules/dotnet/patterns.md`

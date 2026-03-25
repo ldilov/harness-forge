@@ -8,7 +8,7 @@ import { createInstallPlan } from "../../application/install/plan-install.js";
 import { applyInstall } from "../../application/install/apply-install.js";
 import { validateEnvironment } from "../../application/install/validate-environment.js";
 import { formatPlanSummary, toJson } from "../../infrastructure/diagnostics/reporter.js";
-import { ensureDir, REPO_ROOT, STATE_DIR } from "../../shared/index.js";
+import { ensureDir, PACKAGE_ROOT, DEFAULT_WORKSPACE_ROOT, STATE_DIR } from "../../shared/index.js";
 
 function collect(value: string, previous: string[]): string[] {
   previous.push(value);
@@ -18,18 +18,19 @@ function collect(value: string, previous: string[]): string[] {
 export function registerInstallCommands(program: Command): void {
   program
     .command("init")
-    .option("--root <root>", "workspace root", ".")
+    .option("--root <root>", "workspace root", DEFAULT_WORKSPACE_ROOT)
     .option("--json", "json output", false)
     .action(async (options) => {
+      const workspaceRoot = path.resolve(options.root);
       const [profiles, targets] = await Promise.all([
-        loadProfileManifests(options.root),
-        loadTargetManifests(options.root)
+        loadProfileManifests(PACKAGE_ROOT),
+        loadTargetManifests(PACKAGE_ROOT)
       ]);
-      const stateDir = path.join(options.root, STATE_DIR);
+      const stateDir = path.join(workspaceRoot, STATE_DIR);
       await ensureDir(stateDir);
 
       const result = {
-        root: options.root,
+        root: workspaceRoot,
         stateDir,
         profiles: profiles.map((profile) => profile.id),
         targets: targets.map((target) => target.id)
@@ -40,7 +41,7 @@ export function registerInstallCommands(program: Command): void {
         return;
       }
 
-      console.log(`Initialized Harness Forge workspace at ${options.root}`);
+      console.log(`Initialized Harness Forge workspace at ${workspaceRoot}`);
       console.log(`Available targets: ${result.targets.join(", ")}`);
       console.log(`Starter profiles: ${result.profiles.join(", ")}`);
     });
@@ -53,21 +54,21 @@ export function registerInstallCommands(program: Command): void {
     .option("--framework <framework>", "framework bundle", collect, [])
     .option("--with <capability>", "capability bundle", collect, [])
     .option("--bundle <bundle>", "explicit bundle", collect, [])
-    .option("--root <root>", "workspace root", REPO_ROOT)
+    .option("--root <root>", "workspace root", DEFAULT_WORKSPACE_ROOT)
     .option("--dry-run", "show plan only", false)
     .option("--yes", "apply plan", false)
     .option("--json", "json output", false)
     .action(async (options) => {
-      const root = options.root;
-      const warnings = await validateEnvironment(root, options.target);
+      const workspaceRoot = path.resolve(options.root);
+      const warnings = await validateEnvironment(PACKAGE_ROOT, options.target);
       const [bundles, profiles, target] = await Promise.all([
-        loadBundleManifests(root),
-        loadProfileManifests(root),
-        loadTargetAdapter(root, options.target)
+        loadBundleManifests(PACKAGE_ROOT),
+        loadProfileManifests(PACKAGE_ROOT),
+        loadTargetAdapter(PACKAGE_ROOT, options.target)
       ]);
 
       const plan = createInstallPlan(
-        root,
+        PACKAGE_ROOT,
         {
           targetId: options.target,
           profileId: options.profile,
@@ -75,12 +76,13 @@ export function registerInstallCommands(program: Command): void {
           languageIds: options.lang,
           frameworkIds: options.framework,
           capabilityIds: options.with,
-          rootPath: root,
+          rootPath: workspaceRoot,
           mode: options.yes && !options.dryRun ? "apply" : "dry-run"
         },
         bundles,
         profiles,
-        target
+        target,
+        { workspaceRoot }
       );
 
       plan.warnings.push(...warnings);
@@ -91,7 +93,7 @@ export function registerInstallCommands(program: Command): void {
 
       console.log(formatPlanSummary(plan));
       if (!options.dryRun && options.yes) {
-        const result = await applyInstall(root, plan);
+        const result = await applyInstall(workspaceRoot, plan);
         console.log(result.messages.join("\n"));
         console.log(`Guidance written to ${result.guidancePath}`);
       } else {

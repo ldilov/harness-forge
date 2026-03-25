@@ -16,15 +16,23 @@ generated: false
 ---
 # TypeScript Rules
 
-## Baseline guidance
+## Promoted baseline guidance
 
-- `knowledge-bases/seeded/typescript/rules/common/coding-style.md`
-- `knowledge-bases/seeded/typescript/rules/common/patterns.md`
-- `knowledge-bases/seeded/typescript/rules/common/testing.md`
-- `knowledge-bases/seeded/typescript/rules/common/security.md`
-- `knowledge-bases/seeded/typescript/rules/common/hooks.md`
+- `rules/common/coding-style.md`
+- `rules/common/patterns.md`
+- `rules/common/testing.md`
+- `rules/common/security.md`
+- `rules/common/hooks.md`
 
-## Language-specific guidance
+## Promoted language-specific guidance
+
+- `rules/typescript/coding-style.md`
+- `rules/typescript/patterns.md`
+- `rules/typescript/testing.md`
+- `rules/typescript/security.md`
+- `rules/typescript/hooks.md`
+
+## Canonical seed source
 
 - `knowledge-bases/seeded/typescript/rules/typescript/coding-style.md`
 - `knowledge-bases/seeded/typescript/rules/typescript/patterns.md`

@@ -16,15 +16,23 @@ generated: false
 ---
 # Lua Rules
 
-## Baseline guidance
+## Promoted baseline guidance
 
-- `knowledge-bases/seeded/lua/rules/common/coding-style.md`
-- `knowledge-bases/seeded/lua/rules/common/patterns.md`
-- `knowledge-bases/seeded/lua/rules/common/testing.md`
-- `knowledge-bases/seeded/lua/rules/common/security.md`
-- `knowledge-bases/seeded/lua/rules/common/hooks.md`
+- `rules/common/coding-style.md`
+- `rules/common/patterns.md`
+- `rules/common/testing.md`
+- `rules/common/security.md`
+- `rules/common/hooks.md`
 
-## Language-specific guidance
+## Promoted language-specific guidance
+
+- `rules/lua/coding-style.md`
+- `rules/lua/patterns.md`
+- `rules/lua/testing.md`
+- `rules/lua/security.md`
+- `rules/lua/hooks.md`
+
+## Canonical seed source
 
 - `knowledge-bases/seeded/lua/rules/lua/coding-style.md`
 - `knowledge-bases/seeded/lua/rules/lua/patterns.md`

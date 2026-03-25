@@ -1,3 +1,5 @@
-# Swift Rules
+# Swift rules
 
-Swift coding, testing, and review guidance lives here.
+Start with `rules/common/`, then apply the Swift-specific guidance in this directory.
+
+See also `knowledge-bases/structured/swift/docs/`.

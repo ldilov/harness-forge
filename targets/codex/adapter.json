@@ -7,7 +7,8 @@
     "templates/tasks/implement-feature.md": ".hforge/templates/tasks/implement-feature.md",
     "templates/tasks/fix-bug.md": ".hforge/templates/tasks/fix-bug.md",
     "templates/workflows/research-plan-implement-validate.md": ".hforge/templates/workflows/research-plan-implement-validate.md",
-    "templates/workflows/triage-reproduce-fix-verify.md": ".hforge/templates/workflows/triage-reproduce-fix-verify.md"
+    "templates/workflows/triage-reproduce-fix-verify.md": ".hforge/templates/workflows/triage-reproduce-fix-verify.md",
+    "targets/codex/runtime/.codex": ".codex"
   },
   "mergeRules": {
     "AGENTS.md": "append-once"

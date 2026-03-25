@@ -7,7 +7,8 @@
     "templates/tasks/implement-feature.md": ".claude/templates/tasks/implement-feature.md",
     "templates/tasks/fix-bug.md": ".claude/templates/tasks/fix-bug.md",
     "templates/workflows/research-plan-implement-validate.md": ".claude/templates/workflows/research-plan-implement-validate.md",
-    "templates/workflows/triage-reproduce-fix-verify.md": ".claude/templates/workflows/triage-reproduce-fix-verify.md"
+    "templates/workflows/triage-reproduce-fix-verify.md": ".claude/templates/workflows/triage-reproduce-fix-verify.md",
+    "targets/claude-code/runtime/.claude": ".claude"
   },
   "mergeRules": {
     "AGENTS.md": "copy"

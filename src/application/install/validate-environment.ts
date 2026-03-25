@@ -17,5 +17,9 @@ export async function validateEnvironment(root: string, targetId: string): Promi
     warnings.push("Template catalog directory is missing.");
   }
 
+  if (!(await exists(path.join(root, ".specify")))) {
+    warnings.push(".specify is missing, so workflow-quality installs will be incomplete.");
+  }
+
   return warnings;
 }

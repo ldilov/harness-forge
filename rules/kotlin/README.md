@@ -1,3 +1,5 @@
-# Kotlin Rules
+# Kotlin rules
 
-Kotlin coding, testing, and review guidance lives here.
+Start with `rules/common/`, then apply the Kotlin-specific guidance in this directory.
+
+See also `knowledge-bases/structured/kotlin/docs/`.

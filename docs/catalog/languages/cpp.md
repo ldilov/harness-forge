@@ -1,10 +1,10 @@
-# C++ Language Pack
+# C++
 
-Status: expanding
+`knowledge-bases/structured/cpp/` is the structured knowledge pack for C++.
 
-Use for native C++ systems, libraries, tools, and performance-critical runtime code.
+## What ships
 
-- rule entry: `rules/cpp/README.md`
-- maturity: docs and rule entrypoint exist; deeper examples are still expanding
-
-Scaffolded v1 language pack for modern C++ application and systems work.
+- overview, review checklist, and framework notes
+- promoted rules in `rules/cpp/`
+- canonical skill in `skills/cpp-engineering/SKILL.md`
+- workflow template in `templates/workflows/implement-cpp-change.md`

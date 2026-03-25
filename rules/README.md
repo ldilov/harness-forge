@@ -45,3 +45,14 @@ Harness Forge separates seeded first-class packs from expanding rule packs.
 First-class language packs expose coding style, patterns, testing, security,
 and hooks guidance, then link back to the full seeded source material under
 `knowledge-bases/seeded/`.
+
+## Shared baseline
+
+- `rules/common/README.md`
+- `rules/common/coding-style.md`
+- `rules/common/patterns.md`
+- `rules/common/testing.md`
+- `rules/common/security.md`
+
+The shared baseline is promoted from the seeded archive so assistants can use a
+stable top-level rule surface without skipping the canonical seed source.

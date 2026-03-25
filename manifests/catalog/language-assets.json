@@ -9,7 +9,27 @@
         "knowledge-bases/seeded/typescript/docs/review-checklist.md",
         "knowledge-bases/seeded/typescript/docs/frameworks.md"
       ],
-      "rules": ["rules/typescript/README.md"],
+      "rules": [
+        "rules/common/README.md",
+        "rules/common/coding-style.md",
+        "rules/common/patterns.md",
+        "rules/common/testing.md",
+        "rules/common/security.md",
+        "rules/common/hooks.md",
+        "rules/typescript/README.md",
+        "rules/typescript/coding-style.md",
+        "rules/typescript/patterns.md",
+        "rules/typescript/testing.md",
+        "rules/typescript/security.md",
+        "rules/typescript/hooks.md"
+      ],
+      "skills": [
+        "skills/typescript-engineering/SKILL.md",
+        ".agents/skills/typescript-engineering/SKILL.md"
+      ],
+      "workflows": [
+        "templates/workflows/implement-typescript-change.md"
+      ],
       "examples": [
         "knowledge-bases/seeded/typescript/examples/01-node-api.md",
         "knowledge-bases/seeded/typescript/examples/02-react-component-library.md",
@@ -26,7 +46,27 @@
         "knowledge-bases/seeded/java/docs/review-checklist.md",
         "knowledge-bases/seeded/java/docs/frameworks.md"
       ],
-      "rules": ["rules/java/README.md"],
+      "rules": [
+        "rules/common/README.md",
+        "rules/common/coding-style.md",
+        "rules/common/patterns.md",
+        "rules/common/testing.md",
+        "rules/common/security.md",
+        "rules/common/hooks.md",
+        "rules/java/README.md",
+        "rules/java/coding-style.md",
+        "rules/java/patterns.md",
+        "rules/java/testing.md",
+        "rules/java/security.md",
+        "rules/java/hooks.md"
+      ],
+      "skills": [
+        "skills/java-engineering/SKILL.md",
+        ".agents/skills/java-engineering/SKILL.md"
+      ],
+      "workflows": [
+        "templates/workflows/implement-java-change.md"
+      ],
       "examples": [
         "knowledge-bases/seeded/java/examples/01-spring-boot-rest-api.md",
         "knowledge-bases/seeded/java/examples/02-event-consumer-service.md",
@@ -43,7 +83,27 @@
         "knowledge-bases/seeded/dotnet/docs/review-checklist.md",
         "knowledge-bases/seeded/dotnet/docs/frameworks.md"
       ],
-      "rules": ["rules/dotnet/README.md"],
+      "rules": [
+        "rules/common/README.md",
+        "rules/common/coding-style.md",
+        "rules/common/patterns.md",
+        "rules/common/testing.md",
+        "rules/common/security.md",
+        "rules/common/hooks.md",
+        "rules/dotnet/README.md",
+        "rules/dotnet/coding-style.md",
+        "rules/dotnet/patterns.md",
+        "rules/dotnet/testing.md",
+        "rules/dotnet/security.md",
+        "rules/dotnet/hooks.md"
+      ],
+      "skills": [
+        "skills/dotnet-engineering/SKILL.md",
+        ".agents/skills/dotnet-engineering/SKILL.md"
+      ],
+      "workflows": [
+        "templates/workflows/implement-dotnet-change.md"
+      ],
       "examples": [
         "knowledge-bases/seeded/dotnet/examples/01-aspnet-core-crud-api.md",
         "knowledge-bases/seeded/dotnet/examples/02-background-worker-with-queue-processing.md",
@@ -60,7 +120,27 @@
         "knowledge-bases/seeded/lua/docs/review-checklist.md",
         "knowledge-bases/seeded/lua/docs/frameworks.md"
       ],
-      "rules": ["rules/lua/README.md"],
+      "rules": [
+        "rules/common/README.md",
+        "rules/common/coding-style.md",
+        "rules/common/patterns.md",
+        "rules/common/testing.md",
+        "rules/common/security.md",
+        "rules/common/hooks.md",
+        "rules/lua/README.md",
+        "rules/lua/coding-style.md",
+        "rules/lua/patterns.md",
+        "rules/lua/testing.md",
+        "rules/lua/security.md",
+        "rules/lua/hooks.md"
+      ],
+      "skills": [
+        "skills/lua-engineering/SKILL.md",
+        ".agents/skills/lua-engineering/SKILL.md"
+      ],
+      "workflows": [
+        "templates/workflows/implement-lua-change.md"
+      ],
       "examples": [
         "knowledge-bases/seeded/lua/examples/01-neovim-plugin.md",
         "knowledge-bases/seeded/lua/examples/02-openresty-request-handler.md",
@@ -77,7 +157,27 @@
         "knowledge-bases/seeded/powershell/docs/review-checklist.md",
         "knowledge-bases/seeded/powershell/docs/frameworks.md"
       ],
-      "rules": ["rules/powershell/README.md"],
+      "rules": [
+        "rules/common/README.md",
+        "rules/common/coding-style.md",
+        "rules/common/patterns.md",
+        "rules/common/testing.md",
+        "rules/common/security.md",
+        "rules/common/hooks.md",
+        "rules/powershell/README.md",
+        "rules/powershell/coding-style.md",
+        "rules/powershell/patterns.md",
+        "rules/powershell/testing.md",
+        "rules/powershell/security.md",
+        "rules/powershell/hooks.md"
+      ],
+      "skills": [
+        "skills/powershell-engineering/SKILL.md",
+        ".agents/skills/powershell-engineering/SKILL.md"
+      ],
+      "workflows": [
+        "templates/workflows/implement-powershell-change.md"
+      ],
       "examples": [
         "knowledge-bases/seeded/powershell/examples/01-script-module.md",
         "knowledge-bases/seeded/powershell/examples/02-ci-admin-automation-script.md",
@@ -86,49 +186,265 @@
       ]
     },
     "python": {
-      "maturity": "expanding",
-      "docs": ["docs/catalog/languages/python.md"],
-      "rules": ["rules/python/README.md"]
+      "maturity": "structured",
+      "knowledgeBase": "knowledge-bases/structured/python",
+      "docs": [
+        "docs/catalog/languages/python.md",
+        "knowledge-bases/structured/python/docs/overview.md",
+        "knowledge-bases/structured/python/docs/review-checklist.md",
+        "knowledge-bases/structured/python/docs/frameworks.md"
+      ],
+      "rules": [
+        "rules/common/README.md",
+        "rules/python/README.md",
+        "rules/python/coding-style.md",
+        "rules/python/patterns.md",
+        "rules/python/testing.md",
+        "rules/python/security.md",
+        "rules/python/tooling.md"
+      ],
+      "skills": [
+        "skills/python-engineering/SKILL.md",
+        ".agents/skills/python-engineering/SKILL.md"
+      ],
+      "workflows": [
+        "templates/workflows/implement-python-change.md"
+      ],
+      "examples": [
+        "knowledge-bases/structured/python/examples/01-reference-scenario.md"
+      ]
     },
     "go": {
-      "maturity": "expanding",
-      "docs": ["docs/catalog/languages/go.md"],
-      "rules": ["rules/golang/README.md"]
+      "maturity": "structured",
+      "knowledgeBase": "knowledge-bases/structured/go",
+      "docs": [
+        "docs/catalog/languages/go.md",
+        "knowledge-bases/structured/go/docs/overview.md",
+        "knowledge-bases/structured/go/docs/review-checklist.md",
+        "knowledge-bases/structured/go/docs/frameworks.md"
+      ],
+      "rules": [
+        "rules/common/README.md",
+        "rules/golang/README.md",
+        "rules/golang/coding-style.md",
+        "rules/golang/patterns.md",
+        "rules/golang/testing.md",
+        "rules/golang/security.md",
+        "rules/golang/tooling.md"
+      ],
+      "skills": [
+        "skills/go-engineering/SKILL.md",
+        ".agents/skills/go-engineering/SKILL.md"
+      ],
+      "workflows": [
+        "templates/workflows/implement-go-change.md"
+      ],
+      "examples": [
+        "knowledge-bases/structured/go/examples/01-reference-scenario.md"
+      ]
     },
     "kotlin": {
-      "maturity": "expanding",
-      "docs": ["docs/catalog/languages/kotlin.md"],
-      "rules": ["rules/kotlin/README.md"]
+      "maturity": "structured",
+      "knowledgeBase": "knowledge-bases/structured/kotlin",
+      "docs": [
+        "docs/catalog/languages/kotlin.md",
+        "knowledge-bases/structured/kotlin/docs/overview.md",
+        "knowledge-bases/structured/kotlin/docs/review-checklist.md",
+        "knowledge-bases/structured/kotlin/docs/frameworks.md"
+      ],
+      "rules": [
+        "rules/common/README.md",
+        "rules/kotlin/README.md",
+        "rules/kotlin/coding-style.md",
+        "rules/kotlin/patterns.md",
+        "rules/kotlin/testing.md",
+        "rules/kotlin/security.md",
+        "rules/kotlin/tooling.md"
+      ],
+      "skills": [
+        "skills/kotlin-engineering/SKILL.md",
+        ".agents/skills/kotlin-engineering/SKILL.md"
+      ],
+      "workflows": [
+        "templates/workflows/implement-kotlin-change.md"
+      ],
+      "examples": [
+        "knowledge-bases/structured/kotlin/examples/01-reference-scenario.md"
+      ]
     },
     "rust": {
-      "maturity": "expanding",
-      "docs": ["docs/catalog/languages/rust.md"],
-      "rules": ["rules/rust/README.md"]
+      "maturity": "structured",
+      "knowledgeBase": "knowledge-bases/structured/rust",
+      "docs": [
+        "docs/catalog/languages/rust.md",
+        "knowledge-bases/structured/rust/docs/overview.md",
+        "knowledge-bases/structured/rust/docs/review-checklist.md",
+        "knowledge-bases/structured/rust/docs/frameworks.md"
+      ],
+      "rules": [
+        "rules/common/README.md",
+        "rules/rust/README.md",
+        "rules/rust/coding-style.md",
+        "rules/rust/patterns.md",
+        "rules/rust/testing.md",
+        "rules/rust/security.md",
+        "rules/rust/tooling.md"
+      ],
+      "skills": [
+        "skills/rust-engineering/SKILL.md",
+        ".agents/skills/rust-engineering/SKILL.md"
+      ],
+      "workflows": [
+        "templates/workflows/implement-rust-change.md"
+      ],
+      "examples": [
+        "knowledge-bases/structured/rust/examples/01-reference-scenario.md"
+      ]
     },
     "cpp": {
-      "maturity": "expanding",
-      "docs": ["docs/catalog/languages/cpp.md"],
-      "rules": ["rules/cpp/README.md"]
+      "maturity": "structured",
+      "knowledgeBase": "knowledge-bases/structured/cpp",
+      "docs": [
+        "docs/catalog/languages/cpp.md",
+        "knowledge-bases/structured/cpp/docs/overview.md",
+        "knowledge-bases/structured/cpp/docs/review-checklist.md",
+        "knowledge-bases/structured/cpp/docs/frameworks.md"
+      ],
+      "rules": [
+        "rules/common/README.md",
+        "rules/cpp/README.md",
+        "rules/cpp/coding-style.md",
+        "rules/cpp/patterns.md",
+        "rules/cpp/testing.md",
+        "rules/cpp/security.md",
+        "rules/cpp/tooling.md"
+      ],
+      "skills": [
+        "skills/cpp-engineering/SKILL.md",
+        ".agents/skills/cpp-engineering/SKILL.md"
+      ],
+      "workflows": [
+        "templates/workflows/implement-cpp-change.md"
+      ],
+      "examples": [
+        "knowledge-bases/structured/cpp/examples/01-reference-scenario.md"
+      ]
     },
     "php": {
-      "maturity": "expanding",
-      "docs": ["docs/catalog/languages/php.md"],
-      "rules": ["rules/php/README.md"]
+      "maturity": "structured",
+      "knowledgeBase": "knowledge-bases/structured/php",
+      "docs": [
+        "docs/catalog/languages/php.md",
+        "knowledge-bases/structured/php/docs/overview.md",
+        "knowledge-bases/structured/php/docs/review-checklist.md",
+        "knowledge-bases/structured/php/docs/frameworks.md"
+      ],
+      "rules": [
+        "rules/common/README.md",
+        "rules/php/README.md",
+        "rules/php/coding-style.md",
+        "rules/php/patterns.md",
+        "rules/php/testing.md",
+        "rules/php/security.md",
+        "rules/php/tooling.md"
+      ],
+      "skills": [
+        "skills/php-engineering/SKILL.md",
+        ".agents/skills/php-engineering/SKILL.md"
+      ],
+      "workflows": [
+        "templates/workflows/implement-php-change.md"
+      ],
+      "examples": [
+        "knowledge-bases/structured/php/examples/01-reference-scenario.md"
+      ]
     },
     "perl": {
-      "maturity": "expanding",
-      "docs": ["docs/catalog/languages/perl.md"],
-      "rules": ["rules/perl/README.md"]
+      "maturity": "structured",
+      "knowledgeBase": "knowledge-bases/structured/perl",
+      "docs": [
+        "docs/catalog/languages/perl.md",
+        "knowledge-bases/structured/perl/docs/overview.md",
+        "knowledge-bases/structured/perl/docs/review-checklist.md",
+        "knowledge-bases/structured/perl/docs/frameworks.md"
+      ],
+      "rules": [
+        "rules/common/README.md",
+        "rules/perl/README.md",
+        "rules/perl/coding-style.md",
+        "rules/perl/patterns.md",
+        "rules/perl/testing.md",
+        "rules/perl/security.md",
+        "rules/perl/tooling.md"
+      ],
+      "skills": [
+        "skills/perl-engineering/SKILL.md",
+        ".agents/skills/perl-engineering/SKILL.md"
+      ],
+      "workflows": [
+        "templates/workflows/implement-perl-change.md"
+      ],
+      "examples": [
+        "knowledge-bases/structured/perl/examples/01-reference-scenario.md"
+      ]
     },
     "swift": {
-      "maturity": "expanding",
-      "docs": ["docs/catalog/languages/swift.md"],
-      "rules": ["rules/swift/README.md"]
+      "maturity": "structured",
+      "knowledgeBase": "knowledge-bases/structured/swift",
+      "docs": [
+        "docs/catalog/languages/swift.md",
+        "knowledge-bases/structured/swift/docs/overview.md",
+        "knowledge-bases/structured/swift/docs/review-checklist.md",
+        "knowledge-bases/structured/swift/docs/frameworks.md"
+      ],
+      "rules": [
+        "rules/common/README.md",
+        "rules/swift/README.md",
+        "rules/swift/coding-style.md",
+        "rules/swift/patterns.md",
+        "rules/swift/testing.md",
+        "rules/swift/security.md",
+        "rules/swift/tooling.md"
+      ],
+      "skills": [
+        "skills/swift-engineering/SKILL.md",
+        ".agents/skills/swift-engineering/SKILL.md"
+      ],
+      "workflows": [
+        "templates/workflows/implement-swift-change.md"
+      ],
+      "examples": [
+        "knowledge-bases/structured/swift/examples/01-reference-scenario.md"
+      ]
     },
     "shell": {
-      "maturity": "expanding",
-      "docs": ["docs/catalog/languages/shell.md"],
-      "rules": ["rules/shell/README.md"]
+      "maturity": "structured",
+      "knowledgeBase": "knowledge-bases/structured/shell",
+      "docs": [
+        "docs/catalog/languages/shell.md",
+        "knowledge-bases/structured/shell/docs/overview.md",
+        "knowledge-bases/structured/shell/docs/review-checklist.md",
+        "knowledge-bases/structured/shell/docs/frameworks.md"
+      ],
+      "rules": [
+        "rules/common/README.md",
+        "rules/shell/README.md",
+        "rules/shell/coding-style.md",
+        "rules/shell/patterns.md",
+        "rules/shell/testing.md",
+        "rules/shell/security.md",
+        "rules/shell/tooling.md"
+      ],
+      "skills": [
+        "skills/shell-engineering/SKILL.md",
+        ".agents/skills/shell-engineering/SKILL.md"
+      ],
+      "workflows": [
+        "templates/workflows/implement-shell-change.md"
+      ],
+      "examples": [
+        "knowledge-bases/structured/shell/examples/01-reference-scenario.md"
+      ]
     }
   }
 }

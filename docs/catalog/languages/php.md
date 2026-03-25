@@ -1,10 +1,10 @@
-# PHP Language Pack
+# PHP
 
-Status: expanding
+`knowledge-bases/structured/php/` is the structured knowledge pack for PHP.
 
-Use for PHP web applications, APIs, and framework-heavy service stacks.
+## What ships
 
-- rule entry: `rules/php/README.md`
-- maturity: docs and rule entrypoint exist; deeper examples are still expanding
-
-Scaffolded v1 language pack for PHP applications and framework-based services.
+- overview, review checklist, and framework notes
+- promoted rules in `rules/php/`
+- canonical skill in `skills/php-engineering/SKILL.md`
+- workflow template in `templates/workflows/implement-php-change.md`

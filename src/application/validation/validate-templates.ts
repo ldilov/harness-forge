@@ -60,14 +60,11 @@ const REQUIRED_WORKFLOW_STAGE_FIELDS = [
 ];
 
 function parseFrontMatter(content: string): Record<string, unknown> {
-  if (!content.startsWith("---\n")) {
+  const match = content.match(/^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/);
+  if (!match) {
     return {};
   }
-  const closingIndex = content.indexOf("\n---", 4);
-  if (closingIndex === -1) {
-    return {};
-  }
-  return YAML.parse(content.slice(4, closingIndex)) as Record<string, unknown>;
+  return YAML.parse(match[1] ?? "") as Record<string, unknown>;
 }
 
 async function collectTemplateEntries(root: string, patterns: string[]): Promise<Array<{ file: string; content: string; frontMatter: Record<string, unknown> }>> {
