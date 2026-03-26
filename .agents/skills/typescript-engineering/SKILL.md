@@ -13,6 +13,9 @@ files or when the task mentions TypeScript, JavaScript, Node.js, React, or Next.
 
 - `skills/typescript-engineering/SKILL.md`
 - `skills/typescript-engineering/references/`
+- `docs/authoring/enhanced-skill-import.md` for import provenance and the added runtime-boundary and monorepo guidance context
+- `RESEARCH-SOURCES.md` for the pack-level research summary
+- `VALIDATION.md` for the pack-level validation notes
 - `rules/common/`
 - `rules/typescript/`
 - `knowledge-bases/seeded/typescript/`
@@ -21,4 +24,5 @@ files or when the task mentions TypeScript, JavaScript, Node.js, React, or Next.
 ## Operating rule
 
 Start from the promoted root rules, then pull deeper examples and review notes
-from the seeded knowledge base as needed.
+from the seeded knowledge base as needed. Treat this wrapper as discovery-only;
+the canonical execution surface lives in `skills/typescript-engineering/`.

@@ -1,42 +1,38 @@
-# Repo Exploration Guide
+# Repo Exploration
 
-## Goal
-Help the agent map an unfamiliar repository fast without re-researching standard heuristics.
+## Inspect these files first
 
-## Exploration Order
-1. Read `README*`, `package.json`, `pyproject.toml`, `pom.xml`, `*.csproj`, `go.mod`, `Cargo.toml`, or equivalent manifest.
-2. Identify entrypoints: CLI, service bootstrap, app host, worker, lambda/function handlers, tests.
-3. Locate dependency boundaries: core domain, infrastructure, adapters, UI, shared libraries.
-4. Inspect CI and automation: `.github/workflows`, `azure-pipelines.yml`, `Jenkinsfile`, `Dockerfile`, IaC.
-5. Inspect tests to infer intended behavior before modifying implementation.
-6. Search for configuration, feature flags, secrets handling, and environment assumptions.
-7. Trace hot paths from public API or command surface inward.
+- `global.json` for SDK pinning
+- `Directory.Build.props` and `Directory.Build.targets` for shared compiler and analyzer rules
+- `Directory.Packages.props` for central package management
+- solution files and project references to map the dependency graph
+- `appsettings*.json`, secrets wiring, or environment-specific configuration surfaces
+- migration folders, test projects, container definitions, and deployment manifests
 
-## What to Extract
-- build system and package manager
-- runtime versions and compatibility constraints
-- architecture style (layered, modular monolith, microservice, plugin, hexagonal)
-- naming conventions and folder semantics
-- state boundaries: persistence, cache, external APIs, queues
-- extension points and anti-corruption layers
-- risky areas: reflection, dynamic imports, generated files, migrations, security-sensitive code
+## Classify the repo shape
 
-## Output Template
-### Repository Map
-- Purpose:
-- Entry points:
-- Build/test commands:
-- Main modules:
-- Persistence/external systems:
-- Cross-cutting concerns:
-- High-risk areas:
+- **Single service**: one startup project plus a few supporting libraries
+- **Library pack**: multiple publishable packages with test suites and sample apps
+- **Distributed app**: AppHost or service-orchestration surfaces, often with shared service defaults
+- **Worker or automation**: background scheduling, queue processing, or CLI execution with minimal HTTP surface
+- **Legacy mixed solution**: older csproj formats, partial framework upgrades, or custom build targets
 
-### Change Strategy
-- Safe insertion point:
-- Code paths affected:
-- Tests to add/update:
-- Rollback strategy:
+## Find the composition root
 
-## Example
-Input: "Add rate limiting to a Node API repo"
-Output should identify middleware composition, framework bootstrap, shared error handling, config loading, and observability hooks before suggesting a patch.
+Look for one of these first:
+
+- `Program.cs`
+- `Startup.cs`
+- service-registration extensions such as `AddApplication`, `AddInfrastructure`, or `ConfigureServices`
+- worker bootstrap code or CLI command registration
+
+This tells you where dependencies, configuration, and middleware are assembled. Keep new dependencies visible there unless the repo clearly centralizes them elsewhere.
+
+## High-signal risk surfaces
+
+- custom middleware, auth handlers, or filters
+- source generators, analyzers, Roslyn-based tooling, or codegen
+- EF Core migration history and database startup behavior
+- background services, timers, or queue consumers
+- solution-wide props files that can affect every project in one edit
+- publish profiles, trimming or AOT settings, and container build stages

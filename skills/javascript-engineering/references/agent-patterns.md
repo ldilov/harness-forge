@@ -1,23 +1,22 @@
 # Agent Patterns
 
-## General Rules
-- Prefer concrete repository evidence over generic advice.
-- Reuse existing abstractions before introducing new ones.
-- Match surrounding style, naming, and error handling.
-- Produce small reversible changes unless the user asks for a redesign.
-- Call out uncertainty explicitly when repository evidence is missing.
+## Non-negotiables
 
-## Research Compression
-When the task looks familiar, do not re-derive common patterns from scratch. Start from these reusable checklists:
-- module layout heuristics
-- dependency injection/composition root detection
-- config loading patterns
-- testing pyramid expectations for the ecosystem
-- release/build/deploy touchpoints
+- reason from the real runtime, not from file extensions alone
+- treat package contract changes as semver-sensitive until proven otherwise
+- keep global side effects explicit and localize them to startup or setup modules
+- prefer small reversible edits over sweeping rewrites
 
-## Examples
-### Good
-"This repo uses a service-repository split; add the feature in the service layer and keep controllers thin."
+## Default implementation bias
 
-### Weak
-"You could add a class somewhere in the project."
+- use JSDoc or lightweight schema validation when contracts need clarity
+- keep framework glue separate from reusable core logic
+- centralize environment access and process-level side effects
+- make async startup and shutdown behavior explicit in services and CLIs
+
+## Review questions
+
+- where does this code actually run?
+- which entrypoint or package surface owns the behavior?
+- what consumer contracts might break if imports or exports move?
+- what test or smoke command proves the runtime path still works?

@@ -1,13 +1,13 @@
-# Testing and Debugging
+# Testing And Debugging
 
-## Test Defaults
-- `vitest` or `jest` depending on repository
-- `supertest` for HTTP endpoints when Express/Fastify style apps are used
-- browser tests only when the repo already uses Playwright/Cypress/Webdriver flows
+## Testing layers
 
-## Debugging Hotspots
-- ESM/CJS import mismatch
-- undefined due to circular dependency timing
-- event-loop starvation or unawaited promises
-- serialization mismatch across API boundaries
-- bundler alias/resolution differences between build and test
+- unit tests for pure modules and boundary adapters
+- integration tests for HTTP, filesystem, process, or browser boundaries
+- smoke tests for published CLI or bundle behavior
+
+## Tooling notes
+
+- ESLint is the baseline static analysis surface for JS repos
+- Vitest is a good fit when the repo already uses Vite because it reuses Vite config and plugins
+- when the repo is Jest-first, extend the existing harness instead of forcing a tool migration inside a feature patch

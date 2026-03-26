@@ -9,6 +9,7 @@ const operationalSkills = [
   "release-readiness",
   "documentation-lookup",
   "architecture-decision-records",
+  "parallel-worktree-supervisor",
   "incident-triage",
   "dependency-upgrade-safety",
   "performance-profiling",
@@ -29,9 +30,25 @@ const languageSkills = [
   "php-engineering",
   "perl-engineering",
   "swift-engineering",
-  "shell-engineering"
+  "shell-engineering",
+  "javascript-engineering"
 ];
 const failures = [];
+
+for (const requiredPath of [
+  "manifests/catalog/enhanced-skill-import-inventory.json",
+  "docs/authoring/enhanced-skill-import.md"
+]) {
+  try {
+    await fs.access(path.join(root, requiredPath));
+  } catch {
+    failures.push({
+      skillId: "enhanced-skill-governance",
+      file: requiredPath,
+      issue: "Missing required import governance surface"
+    });
+  }
+}
 
 for (const skillId of operationalSkills) {
   const filePath = path.join(root, "skills", skillId, "SKILL.md");

@@ -1,24 +1,21 @@
 # Debugging Playbook
 
-## Triage Flow
-1. Reproduce with the narrowest failing command or input.
-2. Classify: build failure, runtime exception, wrong output, performance regression, flaky behavior.
-3. Inspect the closest automated test or create one.
-4. Trace input -> transformation -> side effects -> output.
-5. Confirm before fixing: logs, assertions, debugger, profiling, or targeted instrumentation.
+## Startup fails before first request
 
-## Root Cause Buckets
-- environment/config mismatch
-- type or shape mismatch
-- async/concurrency ordering
-- serialization/deserialization drift
-- contract mismatch across module boundaries
-- dependency/version assumptions
-- hidden mutable state or caching
+Check DI registration, options binding, and environment-dependent configuration first. Startup exceptions often come from missing configuration values, invalid options, or a service lifetime mismatch.
 
-## Fix Quality Bar
-A strong fix should include:
-- minimal blast radius
-- a regression test or reproducible verification
-- removal of dead code or misleading comments when relevant
-- notes on whether backporting is safe
+## Request succeeds locally but fails in integration or staging
+
+Inspect middleware order, auth configuration, serialization options, culture or timezone assumptions, and reverse-proxy headers. Many ASP.NET issues are environment-shape problems, not controller logic bugs.
+
+## Data behavior is wrong
+
+Inspect generated SQL, tracking mode, transaction scope, and whether a migration changed the data shape the code expects. Prefer reproducing with the actual query rather than guessing from LINQ alone.
+
+## Background worker looks idle or duplicated
+
+Trace startup registration, host lifetime, queue polling cadence, and cancellation handling. Look for scoped services captured by singletons, unbounded retries, or swallowed exceptions inside loops.
+
+## CI-only failures
+
+Compare SDK version, analyzer severity, OS path behavior, and test ordering. Many .NET CI regressions come from stricter analyzers, pinned SDK differences, or tests that share state.

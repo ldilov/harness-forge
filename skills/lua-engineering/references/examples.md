@@ -1,17 +1,15 @@
 # Examples
 
-## Example: Add command handler
-- find command registration
-- validate argument parsing
-- keep side effects in dedicated service function
-- update help text or metadata source
+## Add a Neovim feature safely
 
-## Example: Fix intermittent nil access
-- identify lifecycle ordering
-- add explicit guard + initialization sequence
-- verify no silent fallback masks real state bug
+1. split setup wiring from core behavior
+2. keep keymaps and commands near startup code
+3. test pure logic separately from editor state
+4. validate with a real editor session or health check
 
-## Example: Split giant config script
-- extract reusable helpers
-- keep config tables declarative
-- centralize validation of required keys
+## Fix an OpenResty bug
+
+1. identify request phase and shared state use
+2. confirm the APIs are nonblocking for that phase
+3. add the smallest fix that preserves worker and request behavior
+4. run the repo's integration or smoke path

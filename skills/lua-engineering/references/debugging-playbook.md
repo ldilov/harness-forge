@@ -1,24 +1,17 @@
 # Debugging Playbook
 
-## Triage Flow
-1. Reproduce with the narrowest failing command or input.
-2. Classify: build failure, runtime exception, wrong output, performance regression, flaky behavior.
-3. Inspect the closest automated test or create one.
-4. Trace input -> transformation -> side effects -> output.
-5. Confirm before fixing: logs, assertions, debugger, profiling, or targeted instrumentation.
+## Plugin or script loads but behavior is wrong
 
-## Root Cause Buckets
-- environment/config mismatch
-- type or shape mismatch
-- async/concurrency ordering
-- serialization/deserialization drift
-- contract mismatch across module boundaries
-- dependency/version assumptions
-- hidden mutable state or caching
+Check module load order, returned tables, accidental globals, and whether the host loaded a stale compiled or cached artifact.
 
-## Fix Quality Bar
-A strong fix should include:
-- minimal blast radius
-- a regression test or reproducible verification
-- removal of dead code or misleading comments when relevant
-- notes on whether backporting is safe
+## Coroutine or async bug
+
+Trace where a coroutine is created, resumed, and awaited by the host. Many Lua bugs come from assuming a scheduling model the host does not guarantee.
+
+## Host-only failure
+
+Look for editor, web-server, or game-loop lifecycle assumptions. A module that works in isolation can still fail because the host callback order differs from what the code expects.
+
+## Native or FFI issue
+
+Confirm runtime flavor, platform, and library availability before reasoning about Lua logic. Native-boundary bugs often look like ordinary Lua failures until you inspect the binding layer.

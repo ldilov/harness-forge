@@ -1,15 +1,15 @@
 # Node Service Patterns
 
-## Typical Layers
-- transport/controller/router
-- validation
-- service/use-case
-- data access/integration adapter
-- observability and error translation
+## Service boundaries
 
-## Common Checks
-- async error propagation through middleware
-- config normalization at startup
-- graceful shutdown
-- retry policy around external calls
-- backpressure or queue semantics where relevant
+- keep request parsing and auth near the transport edge
+- isolate domain logic from framework glue
+- centralize configuration, logging, and shutdown behavior
+- make retries, timeouts, and concurrency visible in code rather than implicit in nested helpers
+
+## Operational concerns
+
+- validate env vars before startup continues
+- handle process signals and graceful shutdown explicitly
+- avoid unbounded background work tied to request handlers
+- surface health and readiness checks where deployment expects them

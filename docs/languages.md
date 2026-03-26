@@ -8,6 +8,10 @@ Harness Forge has two language-pack tiers:
 Each language pack is expected to expose docs, rules, skills, examples, and at
 least one workflow surface that can be recommended or installed intentionally.
 
+Agent runtimes should discover language packs through `.agents/skills/` and
+then execute against the canonical `skills/` surface plus any attached
+`references/` depth.
+
 ## How recommendations use them
 
 - dominant repo language signals drive `lang:*` bundle recommendations

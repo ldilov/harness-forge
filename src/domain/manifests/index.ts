@@ -60,10 +60,53 @@ export interface CatalogIndex {
   bundles: string[];
   profiles: string[];
   targets: string[];
+  catalogs: string[];
+  schemas: string[];
+  hooks: string[];
+  fixtures: string[];
+}
+
+export interface EnhancedSkillImportInventoryEntry {
+  resourcePath: string;
+  resourceType: "skill" | "wrapper" | "reference" | "provenance";
+  skillId: string | null;
+  existingProjectSurface: string | null;
+  decision: "merge" | "promote" | "provenance-only" | "unchanged" | "excluded";
+  decisionReason: string;
+  destinationPath: string;
+  reviewStatus: "pending" | "accepted" | "rejected";
+}
+
+export interface EmbeddingRule {
+  ruleId: string;
+  matchCriteria: string;
+  preferredOutcome: "merge" | "promote" | "provenance-only" | "exclude";
+  requiredFollowUps: string[];
+  exceptions: string[];
+}
+
+export interface EnhancedSkillImportInventoryDocument {
+  packId: string;
+  sourceName: string;
+  sourceVersion: string;
+  resourceRoots: string[];
+  summary: string;
+  validationScope: string;
+  researchScope: string;
+  entries: EnhancedSkillImportInventoryEntry[];
+  embeddingRules: EmbeddingRule[];
 }
 
 export async function loadCatalogIndex(root: string): Promise<CatalogIndex> {
   return readJsonFile<CatalogIndex>(path.join(root, "manifests", "catalog", "index.json"));
+}
+
+export async function loadEnhancedSkillImportInventory(
+  root: string
+): Promise<EnhancedSkillImportInventoryDocument> {
+  return readJsonFile<EnhancedSkillImportInventoryDocument>(
+    path.join(root, "manifests", "catalog", "enhanced-skill-import-inventory.json")
+  );
 }
 
 export async function loadBundleManifests(root: string): Promise<BundleManifest[]> {

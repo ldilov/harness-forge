@@ -1,42 +1,24 @@
-# Repo Exploration Guide
+# Repo Exploration
 
-## Goal
-Help the agent map an unfamiliar repository fast without re-researching standard heuristics.
+## Inspect these files first
 
-## Exploration Order
-1. Read `README*`, `package.json`, `pyproject.toml`, `pom.xml`, `*.csproj`, `go.mod`, `Cargo.toml`, or equivalent manifest.
-2. Identify entrypoints: CLI, service bootstrap, app host, worker, lambda/function handlers, tests.
-3. Locate dependency boundaries: core domain, infrastructure, adapters, UI, shared libraries.
-4. Inspect CI and automation: `.github/workflows`, `azure-pipelines.yml`, `Jenkinsfile`, `Dockerfile`, IaC.
-5. Inspect tests to infer intended behavior before modifying implementation.
-6. Search for configuration, feature flags, secrets handling, and environment assumptions.
-7. Trace hot paths from public API or command surface inward.
+- `package.json` and lockfiles
+- bundler and test config such as Vite, Webpack, Rollup, Vitest, Jest, or Playwright config
+- CLI entrypoint scripts, `bin` declarations, and publish config
+- SSR, serverless, worker, or browser deployment config
+- package `exports`, `imports`, and top-level `type`
 
-## What to Extract
-- build system and package manager
-- runtime versions and compatibility constraints
-- architecture style (layered, modular monolith, microservice, plugin, hexagonal)
-- naming conventions and folder semantics
-- state boundaries: persistence, cache, external APIs, queues
-- extension points and anti-corruption layers
-- risky areas: reflection, dynamic imports, generated files, migrations, security-sensitive code
+## Classify the runtime shape
 
-## Output Template
-### Repository Map
-- Purpose:
-- Entry points:
-- Build/test commands:
-- Main modules:
-- Persistence/external systems:
-- Cross-cutting concerns:
-- High-risk areas:
+- **Node service**: request handling, env loading, and operational behavior matter most
+- **Browser app**: bundler, code-splitting, asset handling, and hydration matter
+- **CLI or tooling**: shebangs, path handling, cross-platform spawn behavior, and package publishing matter
+- **Library**: public entrypoints, side effects, tree shaking, and semver matter
 
-### Change Strategy
-- Safe insertion point:
-- Code paths affected:
-- Tests to add/update:
-- Rollback strategy:
+## High-signal risk surfaces
 
-## Example
-Input: "Add rate limiting to a Node API repo"
-Output should identify middleware composition, framework bootstrap, shared error handling, config loading, and observability hooks before suggesting a patch.
+- mixed `.cjs` and `.mjs` modules
+- private internal files consumed by downstream imports
+- shared code that assumes both Node and browser globals
+- build output checked into source or consumed by tests
+- root scripts that orchestrate many packages with hidden dependencies

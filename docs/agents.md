@@ -6,9 +6,11 @@ Harness Forge ships both product-facing agent guidance and repo-local skills.
 
 - `AGENTS.md` for shared workspace guidance
 - `agents/planner.md` for planning expectations
-- `.agents/skills/` for the shipped Spec Kit skills used in Codex-style flows
-- `.agents/skills/*-engineering/` for language-aware seeded skill activation
-- `skills/` for the canonical published language skill library
+- `.agents/skills/` for discovery wrappers that route agent runtimes into the canonical skills
+- `.agents/skills/*-engineering/` for language-aware activation that still resolves into `skills/`
+- `skills/` for the canonical published skill library and runtime-facing references
+- `docs/authoring/enhanced-skill-import.md` for curated research and validation provenance behind imported skill upgrades
+- `RESEARCH-SOURCES.md` and `VALIDATION.md` for optional pack-level provenance detail
 
 ## When agents should use Harness Forge
 
@@ -19,3 +21,10 @@ Harness Forge ships both product-facing agent guidance and repo-local skills.
   from file extensions
 - when implementation should follow spec, plan, task, and validation loops
 - when templates or workflow docs reference the shipped validator bundle
+
+## Discovery rule
+
+- use `.agents/skills/<skill>/SKILL.md` to discover the right flow quickly
+- load `skills/<skill>/SKILL.md` for the actual execution contract
+- load `skills/<skill>/references/` when the task needs deeper heuristics
+- use `docs/authoring/enhanced-skill-import.md`, `RESEARCH-SOURCES.md`, and `VALIDATION.md` only when provenance or import rationale matters

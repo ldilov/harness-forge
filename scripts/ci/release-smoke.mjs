@@ -5,6 +5,10 @@ import { spawnSync } from "node:child_process";
 const root = process.cwd();
 const nodeCommand = process.execPath;
 const powerShellCandidates = process.platform === "win32" ? ["pwsh", "powershell"] : ["pwsh"];
+const requiredSurfaces = [
+  "manifests/catalog/enhanced-skill-import-inventory.json",
+  "docs/authoring/enhanced-skill-import.md"
+];
 
 function run(command, args) {
   return spawnSync(command, args, {
@@ -12,6 +16,12 @@ function run(command, args) {
     stdio: "pipe",
     encoding: "utf8"
   });
+}
+
+const missingSurfaces = requiredSurfaces.filter((relativePath) => !fs.existsSync(path.join(root, relativePath)));
+if (missingSurfaces.length > 0) {
+  console.error(JSON.stringify({ ok: false, failures: missingSurfaces.map((name) => ({ name, stderr: "Missing required surface" })) }, null, 2));
+  process.exit(1);
 }
 
 const scriptRuns = [

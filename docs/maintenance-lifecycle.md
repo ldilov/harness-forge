@@ -43,3 +43,12 @@ node dist/cli/index.js prune --json
 - drift should point to concrete files or bundle ids
 - upgrade guidance should tell the operator what to rerun next
 - prune should never remove state silently without explicit opt-in
+
+## Imported skill maintenance
+
+- review `manifests/catalog/enhanced-skill-import-inventory.json` before
+  refreshing or pruning any embedded skill-pack content
+- keep `docs/authoring/enhanced-skill-import.md` aligned with the actual
+  embedded scope and provenance
+- run `npm run validate:skill-depth` after any skill-pack refresh so missing
+  sections or sentinel references fail fast

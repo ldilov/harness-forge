@@ -23,6 +23,19 @@ prompt fragments.
 - include references when the skill depends on deeper heuristics or checklists
 - if a skill is safety-sensitive, call out explicit stop conditions
 
+## Imported skill packs
+
+- inventory every imported runtime surface in
+  `manifests/catalog/enhanced-skill-import-inventory.json`
+- merge overlapping responsibilities into the existing canonical skill instead
+  of creating duplicates
+- promote a new skill only when it owns a distinct runtime responsibility that
+  should remain discoverable on its own
+- keep pack provenance in maintainer-facing docs such as
+  `docs/authoring/enhanced-skill-import.md`, not in runtime entrypoints
+- update wrappers, package-surface coverage, and validation in the same feature
+  lineage so imports do not drift silently
+
 ## Good operational artifact examples
 
 - onboarding summary with repo map, risks, and next actions

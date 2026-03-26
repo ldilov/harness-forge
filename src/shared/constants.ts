@@ -13,6 +13,9 @@ export const FLOW_STATE_FILE = "flow-state.json";
 export const DEFAULT_BUNDLE_MANIFEST = "manifests/catalog/index.json";
 export const CAPABILITY_TAXONOMY_FILE = "manifests/catalog/capability-taxonomy.json";
 export const HARNESS_CAPABILITY_MATRIX_FILE = "manifests/catalog/harness-capability-matrix.json";
+export const ENHANCED_SKILL_IMPORT_INVENTORY_FILE =
+  "manifests/catalog/enhanced-skill-import-inventory.json";
+export const ENHANCED_SKILL_IMPORT_PROVENANCE_FILE = "docs/authoring/enhanced-skill-import.md";
 export const REPO_MAP_SCHEMA_FILE = "schemas/runtime/repo-map.schema.json";
 export const INSTRUCTION_PLAN_SCHEMA_FILE = "schemas/runtime/instruction-plan.schema.json";
 export const OBSERVABILITY_EVENT_SCHEMA_FILE = "schemas/runtime/observability-event.schema.json";

@@ -1,16 +1,19 @@
-# JavaScript Ecosystem Guide
+# Ecosystem Guide
 
-## Default Assumptions
-- Check whether the repo is CommonJS, ESM, or mixed before editing imports.
-- Identify runtime target: Node, browser, Electron, edge runtime, or hybrid.
-- Prefer small framework-aligned changes rather than introducing custom abstractions.
+## Module systems
 
-## Package Signals
-- `package.json`: scripts, engines, type field, exports, workspaces
-- lockfile: npm, pnpm, yarn
-- bundler/runtime config: webpack, rollup, vite, esbuild, tsup
+Node has both CommonJS and ECMAScript modules. The package `type` field and file extensions such as `.mjs` and `.cjs` decide how source is interpreted.
 
-## Design Rules
-- Keep side effects out of reusable modules.
-- Be explicit about environment assumptions.
-- Avoid hidden singleton state unless the project already embraces it.
+## Packaging
+
+For modern packages, `exports` is the preferred way to define the public interface. It supports multiple entrypoints and encapsulates internal files. Adding it later can be a breaking change if consumers relied on private paths.
+
+## Tooling signals
+
+- ESLint remains the baseline linter for JS projects
+- Vitest is a strong default when the repo is already Vite-oriented
+- browser apps often hide runtime assumptions inside bundler config rather than source files
+
+## Semver note
+
+Public entrypoints, file paths, default vs named export shape, and env-variable behavior are consumer-facing contracts even when the repo does not describe them formally.

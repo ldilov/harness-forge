@@ -1,23 +1,23 @@
 # Agent Patterns
 
-## General Rules
-- Prefer concrete repository evidence over generic advice.
-- Reuse existing abstractions before introducing new ones.
-- Match surrounding style, naming, and error handling.
-- Produce small reversible changes unless the user asks for a redesign.
-- Call out uncertainty explicitly when repository evidence is missing.
+## Non-negotiables
 
-## Research Compression
-When the task looks familiar, do not re-derive common patterns from scratch. Start from these reusable checklists:
-- module layout heuristics
-- dependency injection/composition root detection
-- config loading patterns
-- testing pyramid expectations for the ecosystem
-- release/build/deploy touchpoints
+- prefer repository evidence over generic ecosystem fashion
+- protect runtime behavior even when the type system looks satisfied
+- keep public exports explicit and intentional
+- choose the smallest change that preserves local conventions
 
-## Examples
-### Good
-"This repo uses a service-repository split; add the feature in the service layer and keep controllers thin."
+## Default implementation bias
 
-### Weak
-"You could add a class somewhere in the project."
+- push untrusted data through validation at the boundary
+- model domain states with discriminated unions or explicit tagged objects
+- keep type helpers readable; favor clarity over type-level novelty
+- keep async flows explicit and avoid hidden promise fan-out in request paths
+- move shared contracts into a stable package only when multiple consumers already need them
+
+## Review questions
+
+- what is the real runtime boundary here?
+- which package or module owns this contract?
+- does the type change alter emitted JS, declaration output, or bundle shape?
+- how will the change behave under the active module system and bundler?

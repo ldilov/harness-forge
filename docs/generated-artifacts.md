@@ -15,6 +15,10 @@ explicit and recoverable.
   profiles, hooks, workflows, skills, languages, and framework metadata
 - `manifests/catalog/seeded-knowledge-files.json` is generated from the seeded
   archive mapping
+- `manifests/catalog/enhanced-skill-import-inventory.json` is authored
+  governance data for imported skill packs, not a generated artifact
+- `docs/authoring/enhanced-skill-import.md` is curated provenance for imported
+  skill packs, not a runtime skill entrypoint
 - `.specify/state/flow-state.json` is runtime state, not an authored source
 
 ## Artifact lineage rules

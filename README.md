@@ -25,13 +25,13 @@ package content with workspace state.
 | Knowledge packs | `knowledge-bases/seeded/`, structured language packs, framework packs, examples, and rules | Gives agents deeper language and framework context with file-traceable sources |
 | Profiles and bundles | Target manifests, profiles, capability bundles, hooks, workflows, and catalogs | Lets operators install only the surfaces a repo needs |
 | Intelligence and maintenance | Recommendation scoring, flow status, doctor, audit, diff-install, upgrade, sync, and prune surfaces | Supports installation, verification, and long-term maintenance |
-| Observability and release gates | Local observability scripts, compatibility generation, release smoke validation, doc/runtime alignment checks | Keeps shipped behavior inspectable and release-safe |
+| Observability and release gates | Local observability scripts, compatibility generation, release smoke validation, doc/runtime alignment checks, and provenance companions such as `RESEARCH-SOURCES.md` and `VALIDATION.md` | Keeps shipped behavior inspectable and release-safe |
 
 ## Repository layout
 
 | Folder | What it contains | Why it matters |
 | --- | --- | --- |
-| `.agents/` | Auto-discoverable skill wrappers and target-facing agent integration surfaces | Lets Codex-style runtimes discover packaged skills without manual wiring |
+| `.agents/` | Auto-discoverable skill wrappers and target-facing agent integration surfaces | Lets agent runtimes discover packaged skills while deferring execution to canonical `skills/` surfaces |
 | `.hforge/` | Local runtime state, observability outputs, generated artifacts, and post-install guidance | This is the package-managed local state surface after installation and operation |
 | `.specify/` | Spec-kit flow assets, templates, scripts, and state for spec -> plan -> tasks -> implement | Provides the structured delivery workflow used by agent operators |
 | `agents/` | Supplemental agent-facing assets and package-owned integration surfaces | Holds package-shipped agent content outside runtime workspace state |
@@ -48,7 +48,7 @@ package content with workspace state.
 | `rules/` | Common and language-specific implementation rules | Gives agents explicit engineering constraints instead of informal preferences |
 | `schemas/` | JSON schemas for manifests, runtime artifacts, hooks, and generated outputs | Enables validation, release gates, and contract testing |
 | `scripts/` | CI, intelligence, knowledge, runtime, Codex, and template-validation scripts | The operational backbone for generation, validation, maintenance, and reporting |
-| `skills/` | Canonical packaged skills used by supported agent targets | One of the most important shipped surfaces for real agent behavior |
+| `skills/` | Canonical packaged skills and deeper reference packs used by supported agent targets | This is the source of truth for real agent behavior after discovery resolves |
 | `specs/` | Feature-level specifications, plans, research, contracts, and tasks | Captures implementation intent and delivery artifacts for ongoing feature work |
 | `src/` | TypeScript source code for the CLI, domain model, application layer, and infrastructure | This is the implementation source for the built package runtime |
 | `targets/` | Target adapters and runtime payloads for Codex, Claude Code, Cursor, and OpenCode | Defines what each harness actually receives and what support level it gets |
@@ -112,6 +112,8 @@ If you need the full content matrix, start with:
   workspace state.
 - It gives the agent real files to work from: rules, skills, workflows,
   manifests, and target runtime surfaces.
+- It keeps discovery and execution clean: `.agents/skills/` finds the right
+  flow, while `skills/` holds the actual runtime contract and reference depth.
 - It helps the agent choose relevant packs through repo-intelligence instead of
   assuming the stack from one config file.
 - It gives maintainers a way to audit, repair, diff, and validate the install
@@ -243,6 +245,8 @@ together.
 | Zero-build `npx` bootstrap | `npx @harness-forge/cli bootstrap --root . --yes` | The repo is bootstrapped without a prior local Harness Forge build |
 | Install state | `node dist/cli/index.js status --root /path/to/your/workspace --json` | `installedTargets`, `installedBundles`, timestamps, and file writes are present |
 | Agent command catalog | `/path/to/your/workspace/.hforge/generated/agent-command-catalog.json` | Agents can inspect shipped CLI commands and npm scripts without guessing |
+| Skill discovery layer | `/path/to/your/workspace/.agents/skills/` | Wrapper skills are present and point to canonical `skills/` surfaces |
+| Canonical skill layer | `/path/to/your/workspace/skills/` | Project-owned runtime skill contracts and `references/` packs are present |
 | Health check | `node dist/cli/index.js doctor --root /path/to/your/workspace --json` | `status` is `clean` or a warning with explicit remediation details |
 | Audit | `node dist/cli/index.js audit --root /path/to/your/workspace --json` | No unexpected `missingManagedPaths` or `missingBundles` |
 | Guidance output | `/path/to/your/workspace/.hforge/state/post-install-guidance.txt` | Post-install guidance was written for the selected target |

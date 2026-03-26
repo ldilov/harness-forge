@@ -1,42 +1,25 @@
-# Repo Exploration Guide
+# Repo Exploration
 
-## Goal
-Help the agent map an unfamiliar repository fast without re-researching standard heuristics.
+## Inspect these files first
 
-## Exploration Order
-1. Read `README*`, `package.json`, `pyproject.toml`, `pom.xml`, `*.csproj`, `go.mod`, `Cargo.toml`, or equivalent manifest.
-2. Identify entrypoints: CLI, service bootstrap, app host, worker, lambda/function handlers, tests.
-3. Locate dependency boundaries: core domain, infrastructure, adapters, UI, shared libraries.
-4. Inspect CI and automation: `.github/workflows`, `azure-pipelines.yml`, `Jenkinsfile`, `Dockerfile`, IaC.
-5. Inspect tests to infer intended behavior before modifying implementation.
-6. Search for configuration, feature flags, secrets handling, and environment assumptions.
-7. Trace hot paths from public API or command surface inward.
+- `package.json` and lockfiles to identify package manager and scripts
+- root and package-level `tsconfig*.json`
+- workspace manifests such as `pnpm-workspace.yaml`, npm or yarn workspace definitions, or monorepo config
+- framework config such as `next.config.*`, `vite.config.*`, `vitest.config.*`, bundler config, and lint config
+- generated API or schema clients, shared types packages, and codegen settings
 
-## What to Extract
-- build system and package manager
-- runtime versions and compatibility constraints
-- architecture style (layered, modular monolith, microservice, plugin, hexagonal)
-- naming conventions and folder semantics
-- state boundaries: persistence, cache, external APIs, queues
-- extension points and anti-corruption layers
-- risky areas: reflection, dynamic imports, generated files, migrations, security-sensitive code
+## Classify the runtime shape
 
-## Output Template
-### Repository Map
-- Purpose:
-- Entry points:
-- Build/test commands:
-- Main modules:
-- Persistence/external systems:
-- Cross-cutting concerns:
-- High-risk areas:
+- **Node service or CLI**: entrypoint scripts, env loading, and package exports matter most
+- **React or Next app**: client and server boundaries, bundler behavior, and route conventions matter
+- **Library or SDK**: public exports, declaration output, dual-package support, and semver matter
+- **Workspace or monorepo**: project references, incremental builds, and shared package contracts matter
 
-### Change Strategy
-- Safe insertion point:
-- Code paths affected:
-- Tests to add/update:
-- Rollback strategy:
+## High-signal risk surfaces
 
-## Example
-Input: "Add rate limiting to a Node API repo"
-Output should identify middleware composition, framework bootstrap, shared error handling, config loading, and observability hooks before suggesting a patch.
+- package `exports` or `imports`
+- tsconfig inheritance and path aliasing
+- generated clients or schema-derived types
+- SSR and browser boundary crossings
+- dynamic imports, loaders, and environment-specific entrypoints
+- shared packages consumed by many apps in the workspace

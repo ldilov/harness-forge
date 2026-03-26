@@ -1,35 +1,33 @@
 # Output Templates
 
-## Design Review
-### Summary
+## Patch Proposal
+
 - objective
-- constraints
-- recommendation
+- affected projects and why they own the change
+- key code moves or API changes
+- validation path
+- rollout note if runtime behavior changes
 
-### Trade-offs
-- chosen path
-- rejected alternatives
-- operational cost
-- migration complexity
+## Design Review
 
-## Refactor Plan
-1. Current pain points
-2. Safe seams for change
-3. Stepwise plan
-4. Required tests
-5. Regression risks
+- current behavior
+- decision drivers
+- recommended approach
+- alternatives rejected
+- operational impact
+
+## Migration Note
+
+- schema change summary
+- mixed-version compatibility window
+- deployment order
+- rollback or forward-fix plan
+- post-deploy verification
 
 ## Debugging Report
-- symptom
-- likely root causes
-- evidence to collect
-- fastest confirmation steps
+
+- symptom and exact failing surface
+- likely root causes ranked by probability
+- fastest confirmation step for each cause
 - proposed fix
 - validation steps
-
-## Patch Proposal
-- scope
-- files likely touched
-- pseudocode or code sketch
-- backward compatibility notes
-- tests

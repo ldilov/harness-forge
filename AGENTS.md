@@ -21,6 +21,20 @@ Use the promoted root surfaces first:
 
 - prefer `skills/cloud-architect/` when the task is about deployment topology, distributed systems, reliability, observability, or cloud trade-offs across services
 
+## Imported skill governance
+
+- treat `manifests/catalog/enhanced-skill-import-inventory.json` as the review
+  ledger for embedded skill packs and use it before changing imported skill
+  surfaces
+- treat `.agents/skills/` as the discovery layer and `skills/` as the canonical
+  execution layer
+- keep maintainer-facing provenance in
+  `docs/authoring/enhanced-skill-import.md`
+- use `RESEARCH-SOURCES.md` and `VALIDATION.md` only as additional provenance,
+  not as replacements for the canonical skill surfaces
+- prefer the project-owned canonical `skills/` surfaces over any raw imported
+  archive layout
+
 ## Runtime notes
 
 - Claude Code installs map target runtime files into `.claude/`

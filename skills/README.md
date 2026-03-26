@@ -2,6 +2,13 @@
 
 Harness Forge ships four major skill families.
 
+## Discovery model
+
+- `.agents/skills/` wrappers are the lightweight discovery layer for supported agent runtimes
+- `skills/` directories are the canonical execution layer
+- `references/` directories hold deeper runtime-facing guidance
+- `docs/authoring/enhanced-skill-import.md` preserves maintainer-facing provenance for imported upgrades
+
 ## Seeded language skills
 
 - `skills/typescript-engineering/`
@@ -25,6 +32,10 @@ Harness Forge ships four major skill families.
 Several of these language skills now also ship supplemental `references/`
 packs so agents can pull repo-exploration, debugging, output-template, and
 ecosystem heuristics without leaving the project package.
+
+The March 2026 enhanced-skills import also deepened the TypeScript, .NET, Lua,
+and JavaScript packs with additional runtime-boundary, packaging, onboarding,
+and modernization guidance sourced into project-owned `references/` directories.
 
 ## Workflow orchestration skills
 
@@ -56,6 +67,7 @@ ecosystem heuristics without leaving the project package.
 - `skills/db-migration-review/`
 - `skills/pr-triage-and-summary/`
 - `skills/observability-setup/`
+- `skills/parallel-worktree-supervisor/`
 - `skills/repo-modernization/`
 - `skills/cloud-architect/`
 
@@ -72,3 +84,6 @@ Operational and workload skills should expose:
 - a stable output contract
 - clear failure modes
 - escalation behavior
+
+Imported upgrades should also keep an auditable inventory record and preserve
+maintainer-facing provenance instead of shipping duplicate skill identities.

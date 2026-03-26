@@ -1,42 +1,25 @@
-# Repo Exploration Guide
+# Repo Exploration
 
-## Goal
-Help the agent map an unfamiliar repository fast without re-researching standard heuristics.
+## Inspect these files first
 
-## Exploration Order
-1. Read `README*`, `package.json`, `pyproject.toml`, `pom.xml`, `*.csproj`, `go.mod`, `Cargo.toml`, or equivalent manifest.
-2. Identify entrypoints: CLI, service bootstrap, app host, worker, lambda/function handlers, tests.
-3. Locate dependency boundaries: core domain, infrastructure, adapters, UI, shared libraries.
-4. Inspect CI and automation: `.github/workflows`, `azure-pipelines.yml`, `Jenkinsfile`, `Dockerfile`, IaC.
-5. Inspect tests to infer intended behavior before modifying implementation.
-6. Search for configuration, feature flags, secrets handling, and environment assumptions.
-7. Trace hot paths from public API or command surface inward.
+- top-level Lua entrypoints and module layout
+- host config for Neovim, OpenResty, game loops, or embedded runtimes
+- test config, formatter config, and language-server settings
+- any FFI bindings, C modules, or native build steps
+- README or docs that describe runtime version and startup order
 
-## What to Extract
-- build system and package manager
-- runtime versions and compatibility constraints
-- architecture style (layered, modular monolith, microservice, plugin, hexagonal)
-- naming conventions and folder semantics
-- state boundaries: persistence, cache, external APIs, queues
-- extension points and anti-corruption layers
-- risky areas: reflection, dynamic imports, generated files, migrations, security-sensitive code
+## Classify the runtime shape
 
-## Output Template
-### Repository Map
-- Purpose:
-- Entry points:
-- Build/test commands:
-- Main modules:
-- Persistence/external systems:
-- Cross-cutting concerns:
-- High-risk areas:
+- **Pure Lua library**: module boundaries and table contracts matter most
+- **Neovim plugin**: editor lifecycle, autocmds, user commands, and LSP integration matter
+- **OpenResty**: request phases, worker lifecycle, and nonblocking behavior matter
+- **Love2D or game code**: frame loop, input, and asset lifecycle matter
+- **Embedded automation**: host callbacks, sandboxing, and IO limits matter
 
-### Change Strategy
-- Safe insertion point:
-- Code paths affected:
-- Tests to add/update:
-- Rollback strategy:
+## High-signal risk surfaces
 
-## Example
-Input: "Add rate limiting to a Node API repo"
-Output should identify middleware composition, framework bootstrap, shared error handling, config loading, and observability hooks before suggesting a patch.
+- accidental globals and mutable shared tables
+- coroutine scheduling across host callbacks
+- runtime-version-specific syntax or library use
+- metatable behavior that changes public contracts implicitly
+- FFI or native-boundary code paths

@@ -1,35 +1,25 @@
 # Output Templates
 
-## Design Review
-### Summary
+## Patch Proposal
+
 - objective
-- constraints
-- recommendation
+- affected packages or apps
+- type or runtime boundary changed
+- validation path
+- compatibility note
 
-### Trade-offs
-- chosen path
-- rejected alternatives
-- operational cost
-- migration complexity
+## Design Review
 
-## Refactor Plan
-1. Current pain points
-2. Safe seams for change
-3. Stepwise plan
-4. Required tests
-5. Regression risks
+- current contract shape
+- decision drivers
+- recommended approach
+- alternatives rejected
+- build and runtime impact
 
 ## Debugging Report
-- symptom
-- likely root causes
-- evidence to collect
-- fastest confirmation steps
-- proposed fix
-- validation steps
 
-## Patch Proposal
-- scope
-- files likely touched
-- pseudocode or code sketch
-- backward compatibility notes
-- tests
+- symptom
+- compile-time vs runtime mismatch check
+- likely root causes ranked by probability
+- fastest confirmation steps
+- proposed fix and validation

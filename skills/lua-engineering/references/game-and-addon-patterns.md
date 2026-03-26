@@ -1,11 +1,15 @@
-# Game and Addon Patterns
+# Game And Addon Patterns
 
-## Focus Areas
-- event registration and lifecycle
-- saved/config state shape
-- frame or UI update throttling
-- secure or restricted execution zones where applicable
-- avoiding taint-like side effects in constrained runtimes
+## Love2D and frame-loop code
 
-## Agent Guidance
-Before changing behavior, map the event flow and identify whether updates are pull-based, push-based, or frame-driven.
+Keep update, draw, input, and asset lifecycle concerns explicit. Avoid hidden cross-frame mutation that makes gameplay or UI bugs hard to reproduce.
+
+## Addon or mod ecosystems
+
+Respect host load order, config discovery, and sandbox rules. Prefer additive hooks and stable extension points over monkey-patching shared globals unless the host ecosystem already expects that pattern.
+
+## State management
+
+- isolate frame or tick updates
+- keep save-data schema changes explicit
+- document deterministic vs time-based behavior when debugging gameplay issues
