@@ -22,12 +22,16 @@ guidance surface cannot cover well on its own.
 ## When to Use
 
 Use when the repo map identifies a stable service, app, or subsystem that needs
-local constraints beyond the repo root.
+local constraints beyond the repo root while still inheriting the shared
+`.hforge/runtime/` intelligence layer and the hidden canonical `.hforge/`
+knowledge surfaces.
 
 ## Inputs
 
 - repo map with service boundaries
 - chosen target harness
+- shared runtime index or equivalent runtime summary
+- hidden canonical AI-layer paths under `.hforge/library/` and `.hforge/templates/`
 - existing root guidance surface
 
 ## Optional Inputs
@@ -45,6 +49,7 @@ local constraints beyond the repo root.
 ## Expected Outputs
 
 - one scoped guidance recommendation or draft
+- one scoped bridge that still points back to the shared runtime and hidden canonical AI layer
 - evidence for the boundary choice
 - risk notes for any target-specific limitations
 
@@ -64,7 +69,7 @@ local constraints beyond the repo root.
 
 1. Confirm the boundary from cartography output.
 2. State why the root surface is not enough.
-3. Draft only the local constraints that differ materially.
+3. Draft only the local constraints that differ materially while preserving the shared runtime pointer and hidden-layer authority.
 4. Keep the write mode conservative unless explicitly approved.
 
 ## Related Commands

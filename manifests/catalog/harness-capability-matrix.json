@@ -20,7 +20,7 @@
           "validationMethod": "adapter-and-manifest-review",
           "confidence": 0.99,
           "notes": "Codex ships first-class guidance and runtime packaging.",
-          "fallbackBehavior": "Use the shipped AGENTS.md and .codex runtime surfaces."
+          "fallbackBehavior": "Use AGENTS.md, .agents/skills/, and the hidden .hforge AI layer."
         },
         {
           "capabilityId": "workflow-validation",
@@ -47,8 +47,8 @@
           "lastValidatedAt": "2026-03-25T00:00:00.000Z",
           "validationMethod": "cli-and-script-review",
           "confidence": 0.97,
-          "notes": "Repo intelligence is a first-class Codex surface.",
-          "fallbackBehavior": "Run the intelligence scripts directly if the CLI is unavailable."
+          "notes": "Repo intelligence is a first-class Codex surface and compiles into the hidden `.hforge/` AI layer.",
+          "fallbackBehavior": "Inspect `.hforge/runtime/index.json` and `.hforge/library/`, or run the intelligence scripts directly if the CLI is unavailable."
         },
         {
           "capabilityId": "flow-orchestration",
@@ -61,8 +61,8 @@
           "lastValidatedAt": "2026-03-25T00:00:00.000Z",
           "validationMethod": "flow-command-review",
           "confidence": 0.95,
-          "notes": "Flow status and recovery are available for Codex workflows.",
-          "fallbackBehavior": "Inspect .specify/state/flow-state.json and generated flow docs directly."
+          "notes": "Flow status and recovery are available for Codex workflows and should route through the hidden `.hforge/` AI layer rather than isolated target notes.",
+          "fallbackBehavior": "Inspect `.hforge/runtime/index.json`, `.hforge/library/`, `.specify/state/flow-state.json`, and the generated flow docs directly."
         },
         {
           "capabilityId": "typed-hooks",
@@ -126,7 +126,7 @@
           "validationMethod": "adapter-and-manifest-review",
           "confidence": 0.99,
           "notes": "Claude Code ships first-class guidance and runtime packaging.",
-          "fallbackBehavior": "Use the shipped CLAUDE.md and .claude runtime surfaces."
+          "fallbackBehavior": "Use CLAUDE.md, .agents/skills/, and the hidden .hforge AI layer."
         },
         {
           "capabilityId": "workflow-validation",
@@ -153,8 +153,8 @@
           "lastValidatedAt": "2026-03-25T00:00:00.000Z",
           "validationMethod": "cli-and-script-review",
           "confidence": 0.97,
-          "notes": "Repo intelligence is a first-class Claude Code surface.",
-          "fallbackBehavior": "Run the intelligence scripts directly if the CLI is unavailable."
+          "notes": "Repo intelligence is a first-class Claude Code surface and compiles into the hidden `.hforge/` AI layer.",
+          "fallbackBehavior": "Inspect `.hforge/runtime/index.json` and `.hforge/library/`, or run the intelligence scripts directly if the CLI is unavailable."
         },
         {
           "capabilityId": "flow-orchestration",
@@ -167,8 +167,8 @@
           "lastValidatedAt": "2026-03-25T00:00:00.000Z",
           "validationMethod": "flow-command-review",
           "confidence": 0.96,
-          "notes": "Flow status and recovery are available for Claude Code workflows.",
-          "fallbackBehavior": "Inspect .specify/state/flow-state.json and generated flow docs directly."
+          "notes": "Flow status and recovery are available for Claude Code workflows and should route through the hidden `.hforge/` AI layer rather than isolated target notes.",
+          "fallbackBehavior": "Inspect `.hforge/runtime/index.json`, `.hforge/library/`, `.specify/state/flow-state.json`, and the generated flow docs directly."
         },
         {
           "capabilityId": "typed-hooks",
@@ -259,8 +259,8 @@
           "lastValidatedAt": "2026-03-25T00:00:00.000Z",
           "validationMethod": "script-portability-review",
           "confidence": 0.82,
-          "notes": "Repo intelligence is available as portable scripts and docs rather than a native Cursor runtime surface.",
-          "fallbackBehavior": "Run the intelligence scripts directly and treat the output as operator guidance."
+          "notes": "Repo intelligence is available as thin bridges, portable scripts, and generated hidden `.hforge/` state rather than a native Cursor runtime surface.",
+          "fallbackBehavior": "Inspect `.hforge/runtime/index.json` and `.hforge/library/`, then run the intelligence scripts directly and treat the output as operator guidance."
         },
         {
           "capabilityId": "flow-orchestration",
@@ -273,8 +273,8 @@
           "lastValidatedAt": "2026-03-25T00:00:00.000Z",
           "validationMethod": "runtime-gap-review",
           "confidence": 0.94,
-          "notes": "No first-class Cursor flow-state recovery surface is shipped.",
-          "fallbackBehavior": "Do not rely on packaged flow recovery for Cursor; use the portable docs only."
+          "notes": "No first-class Cursor flow-state recovery surface is shipped beyond the hidden `.hforge/` runtime summary and bridge surfaces.",
+          "fallbackBehavior": "Do not rely on packaged flow recovery for Cursor; use `.hforge/runtime/index.json` and the thin bridge surfaces only."
         },
         {
           "capabilityId": "typed-hooks",
@@ -364,8 +364,8 @@
           "lastValidatedAt": "2026-03-25T00:00:00.000Z",
           "validationMethod": "script-portability-review",
           "confidence": 0.82,
-          "notes": "Repo intelligence is available as portable scripts and docs rather than a native OpenCode runtime surface.",
-          "fallbackBehavior": "Run the intelligence scripts directly and treat the output as operator guidance."
+          "notes": "Repo intelligence is available as thin bridges, portable scripts, and generated hidden `.hforge/` state rather than a native OpenCode runtime surface.",
+          "fallbackBehavior": "Inspect `.hforge/runtime/index.json` and `.hforge/library/`, then run the intelligence scripts directly and treat the output as operator guidance."
         },
         {
           "capabilityId": "flow-orchestration",
@@ -378,8 +378,8 @@
           "lastValidatedAt": "2026-03-25T00:00:00.000Z",
           "validationMethod": "runtime-gap-review",
           "confidence": 0.94,
-          "notes": "No first-class OpenCode flow-state recovery surface is shipped.",
-          "fallbackBehavior": "Do not rely on packaged flow recovery for OpenCode; use the portable docs only."
+          "notes": "No first-class OpenCode flow-state recovery surface is shipped beyond the hidden `.hforge/` runtime summary and bridge surfaces.",
+          "fallbackBehavior": "Do not rely on packaged flow recovery for OpenCode; use `.hforge/runtime/index.json` and the thin bridge surfaces only."
         },
         {
           "capabilityId": "typed-hooks",

@@ -1,6 +1,6 @@
 ---
 name: shell-engineering
-description: Auto-discoverable wrapper for `skills/shell-engineering/SKILL.md`.
+description: Auto-discoverable wrapper for `.hforge/library/skills/shell-engineering/SKILL.md`.
 ---
 
 # Shell Engineering
@@ -11,10 +11,10 @@ description: Auto-discoverable wrapper for `skills/shell-engineering/SKILL.md`.
 
 ## Use These Surfaces
 
-- `skills/shell-engineering/SKILL.md`
-- `rules/common/`
-- `rules/shell/`
-- `templates/workflows/implement-shell-change.md`
+- `.hforge/library/skills/shell-engineering/SKILL.md`
+- `.hforge/library/rules/common/`
+- `.hforge/library/rules/shell/`
+- `.hforge/templates/workflows/implement-shell-change.md`
 
 ## Expected Output
 

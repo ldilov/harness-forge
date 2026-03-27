@@ -35,8 +35,8 @@ describe("enhanced skill discovery integration", () => {
         "utf8"
       );
 
-      expect(wrapperContent).toContain(`skills/${skillId}/SKILL.md`);
-      expect(wrapperContent).toContain("docs/authoring/enhanced-skill-import.md");
+      expect(wrapperContent).toContain(`.hforge/library/skills/${skillId}/SKILL.md`);
+      expect(wrapperContent).toContain(".hforge/library/docs/authoring/enhanced-skill-import.md");
       expect(wrapperContent).toContain("RESEARCH-SOURCES.md");
       expect(wrapperContent).toContain("VALIDATION.md");
     }

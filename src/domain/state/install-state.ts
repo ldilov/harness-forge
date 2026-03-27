@@ -1,5 +1,6 @@
 import path from "node:path";
 
+import type { InstallVisibilityMode } from "../operations/install-plan.js";
 import { ensureDir, exists, INSTALL_STATE_FILE, readJsonFile, STATE_DIR, writeJsonFile } from "../../shared/index.js";
 
 export interface InstallStateRecord {
@@ -14,6 +15,10 @@ export interface InstallStateRecord {
     updatedAt: string;
   };
   lastValidationStatus: "pass" | "fail" | "unknown";
+  visibilityMode?: InstallVisibilityMode;
+  aiLayerRoot?: string;
+  hiddenCanonicalRoots?: string[];
+  visibleBridgePaths?: string[];
 }
 
 export async function loadInstallState(root: string): Promise<InstallStateRecord | null> {

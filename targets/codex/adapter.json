@@ -4,6 +4,8 @@
   "installRootStrategy": "repo-root",
   "pathMappings": {
     "AGENTS.md": "AGENTS.md",
+    ".agents/skills": ".agents/skills",
+    ".specify": ".specify",
     "templates/tasks/implement-feature.md": ".hforge/templates/tasks/implement-feature.md",
     "templates/tasks/fix-bug.md": ".hforge/templates/tasks/fix-bug.md",
     "templates/workflows/research-plan-implement-validate.md": ".hforge/templates/workflows/research-plan-implement-validate.md",
@@ -22,6 +24,33 @@
   "capabilityMatrix": {
     "templates": true,
     "workflow-validation": true
+  },
+  "sharedRuntimeBridge": {
+    "instructionSurfaces": [
+      "AGENTS.md",
+      ".agents/skills",
+      ".codex/config.toml"
+    ],
+    "runtimeSurfaces": [
+      ".hforge/runtime/index.json",
+      ".hforge/runtime/README.md"
+    ],
+    "supportMode": "native",
+    "notes": "Codex keeps repo-root bridges thin and routes canonical AI content through the hidden .hforge library, template, and runtime layer.",
+    "authoritativeSurfaces": [
+      ".hforge/library/skills",
+      ".hforge/library/rules",
+      ".hforge/library/knowledge",
+      ".hforge/templates",
+      ".hforge/runtime"
+    ],
+    "visibleBridgePaths": [
+      "AGENTS.md",
+      ".agents/skills",
+      ".specify",
+      ".codex"
+    ],
+    "visibilityMode": "hidden-ai-layer"
   },
   "guidanceTemplate": "codex"
 }

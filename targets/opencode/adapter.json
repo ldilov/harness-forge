@@ -2,7 +2,11 @@
   "id": "opencode",
   "displayName": "OpenCode",
   "installRootStrategy": "repo-root",
-  "pathMappings": {},
+  "pathMappings": {
+    "AGENTS.md": "AGENTS.md",
+    ".agents/skills": ".agents/skills",
+    ".specify": ".specify"
+  },
   "mergeRules": {},
   "supportsHooks": false,
   "supportsCommands": true,
@@ -23,5 +27,30 @@
   "supportNotes": [
     "Content, manifests, and recommendation metadata are portable.",
     "No first-class OpenCode runtime mapping, hooks, or flow-state recovery surface ships in this package."
-  ]
+  ],
+  "sharedRuntimeBridge": {
+    "instructionSurfaces": [
+      "AGENTS.md",
+      ".agents/skills"
+    ],
+    "runtimeSurfaces": [
+      ".hforge/runtime/index.json",
+      ".hforge/runtime/README.md"
+    ],
+    "supportMode": "translated",
+    "notes": "OpenCode relies on thin visible bridges and the hidden .hforge runtime instead of a native runtime payload or root-visible canonical content.",
+    "authoritativeSurfaces": [
+      ".hforge/library/skills",
+      ".hforge/library/rules",
+      ".hforge/library/knowledge",
+      ".hforge/templates",
+      ".hforge/runtime"
+    ],
+    "visibleBridgePaths": [
+      "AGENTS.md",
+      ".agents/skills",
+      ".specify"
+    ],
+    "visibilityMode": "hidden-ai-layer"
+  }
 }

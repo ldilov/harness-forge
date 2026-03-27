@@ -73,6 +73,110 @@
       "lineageRole": "reentry-context"
     },
     {
+      "id": "shared-runtime-index",
+      "stage": "shared",
+      "pathPattern": ".hforge/runtime/index.json",
+      "generatedBy": "bootstrap-workspace",
+      "required": false,
+      "lineageRole": "shared-runtime-state"
+    },
+    {
+      "id": "shared-runtime-readme",
+      "stage": "shared",
+      "pathPattern": ".hforge/runtime/README.md",
+      "generatedBy": "bootstrap-workspace",
+      "required": false,
+      "lineageRole": "shared-runtime-doc"
+    },
+    {
+      "id": "hidden-ai-layer-skills",
+      "stage": "shared",
+      "pathPattern": ".hforge/library/skills/**/*",
+      "generatedBy": "install",
+      "required": false,
+      "lineageRole": "hidden-canonical-skills"
+    },
+    {
+      "id": "hidden-ai-layer-rules",
+      "stage": "shared",
+      "pathPattern": ".hforge/library/rules/**/*",
+      "generatedBy": "install",
+      "required": false,
+      "lineageRole": "hidden-canonical-rules"
+    },
+    {
+      "id": "hidden-ai-layer-knowledge",
+      "stage": "shared",
+      "pathPattern": ".hforge/library/knowledge/**/*",
+      "generatedBy": "install",
+      "required": false,
+      "lineageRole": "hidden-canonical-knowledge"
+    },
+    {
+      "id": "hidden-ai-layer-templates",
+      "stage": "shared",
+      "pathPattern": ".hforge/templates/**/*",
+      "generatedBy": "install",
+      "required": false,
+      "lineageRole": "hidden-canonical-templates"
+    },
+    {
+      "id": "shared-runtime-repo-map",
+      "stage": "shared",
+      "pathPattern": ".hforge/runtime/repo/repo-map.json",
+      "generatedBy": "bootstrap-workspace",
+      "required": false,
+      "lineageRole": "shared-runtime-repo-map"
+    },
+    {
+      "id": "shared-runtime-recommendations",
+      "stage": "shared",
+      "pathPattern": ".hforge/runtime/repo/recommendations.json",
+      "generatedBy": "bootstrap-workspace",
+      "required": false,
+      "lineageRole": "shared-runtime-recommendations"
+    },
+    {
+      "id": "shared-runtime-target-support",
+      "stage": "shared",
+      "pathPattern": ".hforge/runtime/repo/target-support.json",
+      "generatedBy": "bootstrap-workspace",
+      "required": false,
+      "lineageRole": "shared-runtime-target-support"
+    },
+    {
+      "id": "shared-runtime-instruction-plan",
+      "stage": "shared",
+      "pathPattern": ".hforge/runtime/repo/instruction-plan.json",
+      "generatedBy": "bootstrap-workspace",
+      "required": false,
+      "lineageRole": "shared-runtime-instruction-plan"
+    },
+    {
+      "id": "shared-runtime-scan-summary",
+      "stage": "shared",
+      "pathPattern": ".hforge/runtime/repo/scan-summary.json",
+      "generatedBy": "bootstrap-workspace",
+      "required": false,
+      "lineageRole": "shared-runtime-scan-summary"
+    },
+    {
+      "id": "shared-runtime-validation-gaps",
+      "stage": "shared",
+      "pathPattern": ".hforge/runtime/findings/validation-gaps.json",
+      "generatedBy": "bootstrap-workspace",
+      "required": false,
+      "lineageRole": "shared-runtime-validation-gaps"
+    },
+    {
+      "id": "shared-runtime-risk-signals",
+      "stage": "shared",
+      "pathPattern": ".hforge/runtime/findings/risk-signals.json",
+      "generatedBy": "bootstrap-workspace",
+      "required": false,
+      "lineageRole": "shared-runtime-risk-signals"
+    },
+    {
       "id": "flow-state",
       "stage": "shared",
       "pathPattern": ".specify/state/flow-state.json",

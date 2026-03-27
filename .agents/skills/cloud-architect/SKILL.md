@@ -1,6 +1,6 @@
 ---
 name: cloud-architect
-description: Auto-discoverable wrapper for `skills/cloud-architect/SKILL.md`.
+description: Auto-discoverable wrapper for `.hforge/library/skills/cloud-architect/SKILL.md`.
 origin: Harness Forge
 ---
 
@@ -13,8 +13,8 @@ origin: Harness Forge
 
 ## Use These Surfaces
 
-- `skills/cloud-architect/SKILL.md`
-- `skills/cloud-architect/references/`
+- `.hforge/library/skills/cloud-architect/SKILL.md`
+- `.hforge/library/skills/cloud-architect/references/`
 
 ## Expected Output
 

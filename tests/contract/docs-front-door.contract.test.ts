@@ -25,9 +25,11 @@ describe("docs front door contract", () => {
 
   it("explains the seeded knowledge and release validation surface", async () => {
     const readme = await fs.readFile(path.join(root, "README.md"), "utf8");
-    expect(readme).toContain("knowledge-bases/seeded/");
+    expect(readme).toContain(".hforge/library/knowledge/");
     expect(readme).toContain("npm run validate:release");
     expect(readme).toContain("npx @harness-forge/cli bootstrap --root . --yes");
+    expect(readme).toContain("target inspect");
+    expect(readme).toContain("cartograph");
     expect(readme).toContain("does not");
     expect(readme).toContain("Codex");
     expect(readme).toContain("Claude Code");

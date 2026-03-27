@@ -14,7 +14,7 @@ describe("docs and package release integration", () => {
 
     expect(readme).toContain("npm run validate:release");
     expect(agents).toContain("npm run validate:release");
-    expect(agents).toContain("knowledge-bases/seeded/typescript/");
+    expect(agents).toContain(".hforge/library/knowledge/seeded/typescript/");
   });
 
   it("keeps codex and claude target surfaces in the package manifest", async () => {

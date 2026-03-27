@@ -1,0 +1,10 @@
+{
+  "name": "contained-install-fixture",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "test": "vitest run"
+  }
+}

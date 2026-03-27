@@ -3,6 +3,16 @@
     "typescript": {
       "maturity": "seeded",
       "knowledgeBase": "knowledge-bases/seeded/typescript",
+      "installedSurfaces": {
+        "knowledgeBase": ".hforge/library/knowledge/seeded/typescript",
+        "rules": [
+          ".hforge/library/rules/common",
+          ".hforge/library/rules/typescript"
+        ],
+        "canonicalSkill": ".hforge/library/skills/typescript-engineering/SKILL.md",
+        "discoverySkill": ".agents/skills/typescript-engineering/SKILL.md",
+        "workflow": ".hforge/templates/workflows/implement-typescript-change.md"
+      },
       "docs": [
         "docs/catalog/languages/typescript.md",
         "knowledge-bases/seeded/typescript/docs/overview.md",
@@ -46,6 +56,16 @@
     "java": {
       "maturity": "seeded",
       "knowledgeBase": "knowledge-bases/seeded/java",
+      "installedSurfaces": {
+        "knowledgeBase": ".hforge/library/knowledge/seeded/java",
+        "rules": [
+          ".hforge/library/rules/common",
+          ".hforge/library/rules/java"
+        ],
+        "canonicalSkill": ".hforge/library/skills/java-engineering/SKILL.md",
+        "discoverySkill": ".agents/skills/java-engineering/SKILL.md",
+        "workflow": ".hforge/templates/workflows/implement-java-change.md"
+      },
       "docs": [
         "docs/catalog/languages/java.md",
         "knowledge-bases/seeded/java/docs/overview.md",
@@ -86,6 +106,16 @@
     "dotnet": {
       "maturity": "seeded",
       "knowledgeBase": "knowledge-bases/seeded/dotnet",
+      "installedSurfaces": {
+        "knowledgeBase": ".hforge/library/knowledge/seeded/dotnet",
+        "rules": [
+          ".hforge/library/rules/common",
+          ".hforge/library/rules/dotnet"
+        ],
+        "canonicalSkill": ".hforge/library/skills/dotnet-engineering/SKILL.md",
+        "discoverySkill": ".agents/skills/dotnet-engineering/SKILL.md",
+        "workflow": ".hforge/templates/workflows/implement-dotnet-change.md"
+      },
       "docs": [
         "docs/catalog/languages/dotnet.md",
         "knowledge-bases/seeded/dotnet/docs/overview.md",
@@ -126,6 +156,16 @@
     "lua": {
       "maturity": "seeded",
       "knowledgeBase": "knowledge-bases/seeded/lua",
+      "installedSurfaces": {
+        "knowledgeBase": ".hforge/library/knowledge/seeded/lua",
+        "rules": [
+          ".hforge/library/rules/common",
+          ".hforge/library/rules/lua"
+        ],
+        "canonicalSkill": ".hforge/library/skills/lua-engineering/SKILL.md",
+        "discoverySkill": ".agents/skills/lua-engineering/SKILL.md",
+        "workflow": ".hforge/templates/workflows/implement-lua-change.md"
+      },
       "docs": [
         "docs/catalog/languages/lua.md",
         "knowledge-bases/seeded/lua/docs/overview.md",
@@ -163,6 +203,16 @@
     "powershell": {
       "maturity": "seeded",
       "knowledgeBase": "knowledge-bases/seeded/powershell",
+      "installedSurfaces": {
+        "knowledgeBase": ".hforge/library/knowledge/seeded/powershell",
+        "rules": [
+          ".hforge/library/rules/common",
+          ".hforge/library/rules/powershell"
+        ],
+        "canonicalSkill": ".hforge/library/skills/powershell-engineering/SKILL.md",
+        "discoverySkill": ".agents/skills/powershell-engineering/SKILL.md",
+        "workflow": ".hforge/templates/workflows/implement-powershell-change.md"
+      },
       "docs": [
         "docs/catalog/languages/powershell.md",
         "knowledge-bases/seeded/powershell/docs/overview.md",
@@ -200,6 +250,16 @@
     "python": {
       "maturity": "structured",
       "knowledgeBase": "knowledge-bases/structured/python",
+      "installedSurfaces": {
+        "knowledgeBase": ".hforge/library/knowledge/structured/python",
+        "rules": [
+          ".hforge/library/rules/common",
+          ".hforge/library/rules/python"
+        ],
+        "canonicalSkill": ".hforge/library/skills/python-engineering/SKILL.md",
+        "discoverySkill": ".agents/skills/python-engineering/SKILL.md",
+        "workflow": ".hforge/templates/workflows/implement-python-change.md"
+      },
       "docs": [
         "docs/catalog/languages/python.md",
         "knowledge-bases/structured/python/docs/overview.md",
@@ -233,6 +293,16 @@
     "go": {
       "maturity": "structured",
       "knowledgeBase": "knowledge-bases/structured/go",
+      "installedSurfaces": {
+        "knowledgeBase": ".hforge/library/knowledge/structured/go",
+        "rules": [
+          ".hforge/library/rules/common",
+          ".hforge/library/rules/golang"
+        ],
+        "canonicalSkill": ".hforge/library/skills/go-engineering/SKILL.md",
+        "discoverySkill": ".agents/skills/go-engineering/SKILL.md",
+        "workflow": ".hforge/templates/workflows/implement-go-change.md"
+      },
       "docs": [
         "docs/catalog/languages/go.md",
         "knowledge-bases/structured/go/docs/overview.md",
@@ -265,6 +335,16 @@
     "kotlin": {
       "maturity": "structured",
       "knowledgeBase": "knowledge-bases/structured/kotlin",
+      "installedSurfaces": {
+        "knowledgeBase": ".hforge/library/knowledge/structured/kotlin",
+        "rules": [
+          ".hforge/library/rules/common",
+          ".hforge/library/rules/kotlin"
+        ],
+        "canonicalSkill": ".hforge/library/skills/kotlin-engineering/SKILL.md",
+        "discoverySkill": ".agents/skills/kotlin-engineering/SKILL.md",
+        "workflow": ".hforge/templates/workflows/implement-kotlin-change.md"
+      },
       "docs": [
         "docs/catalog/languages/kotlin.md",
         "knowledge-bases/structured/kotlin/docs/overview.md",
@@ -297,6 +377,16 @@
     "rust": {
       "maturity": "structured",
       "knowledgeBase": "knowledge-bases/structured/rust",
+      "installedSurfaces": {
+        "knowledgeBase": ".hforge/library/knowledge/structured/rust",
+        "rules": [
+          ".hforge/library/rules/common",
+          ".hforge/library/rules/rust"
+        ],
+        "canonicalSkill": ".hforge/library/skills/rust-engineering/SKILL.md",
+        "discoverySkill": ".agents/skills/rust-engineering/SKILL.md",
+        "workflow": ".hforge/templates/workflows/implement-rust-change.md"
+      },
       "docs": [
         "docs/catalog/languages/rust.md",
         "knowledge-bases/structured/rust/docs/overview.md",
@@ -326,6 +416,16 @@
     "cpp": {
       "maturity": "structured",
       "knowledgeBase": "knowledge-bases/structured/cpp",
+      "installedSurfaces": {
+        "knowledgeBase": ".hforge/library/knowledge/structured/cpp",
+        "rules": [
+          ".hforge/library/rules/common",
+          ".hforge/library/rules/cpp"
+        ],
+        "canonicalSkill": ".hforge/library/skills/cpp-engineering/SKILL.md",
+        "discoverySkill": ".agents/skills/cpp-engineering/SKILL.md",
+        "workflow": ".hforge/templates/workflows/implement-cpp-change.md"
+      },
       "docs": [
         "docs/catalog/languages/cpp.md",
         "knowledge-bases/structured/cpp/docs/overview.md",
@@ -355,6 +455,16 @@
     "php": {
       "maturity": "structured",
       "knowledgeBase": "knowledge-bases/structured/php",
+      "installedSurfaces": {
+        "knowledgeBase": ".hforge/library/knowledge/structured/php",
+        "rules": [
+          ".hforge/library/rules/common",
+          ".hforge/library/rules/php"
+        ],
+        "canonicalSkill": ".hforge/library/skills/php-engineering/SKILL.md",
+        "discoverySkill": ".agents/skills/php-engineering/SKILL.md",
+        "workflow": ".hforge/templates/workflows/implement-php-change.md"
+      },
       "docs": [
         "docs/catalog/languages/php.md",
         "knowledge-bases/structured/php/docs/overview.md",
@@ -388,6 +498,16 @@
     "perl": {
       "maturity": "structured",
       "knowledgeBase": "knowledge-bases/structured/perl",
+      "installedSurfaces": {
+        "knowledgeBase": ".hforge/library/knowledge/structured/perl",
+        "rules": [
+          ".hforge/library/rules/common",
+          ".hforge/library/rules/perl"
+        ],
+        "canonicalSkill": ".hforge/library/skills/perl-engineering/SKILL.md",
+        "discoverySkill": ".agents/skills/perl-engineering/SKILL.md",
+        "workflow": ".hforge/templates/workflows/implement-perl-change.md"
+      },
       "docs": [
         "docs/catalog/languages/perl.md",
         "knowledge-bases/structured/perl/docs/overview.md",
@@ -417,6 +537,16 @@
     "swift": {
       "maturity": "structured",
       "knowledgeBase": "knowledge-bases/structured/swift",
+      "installedSurfaces": {
+        "knowledgeBase": ".hforge/library/knowledge/structured/swift",
+        "rules": [
+          ".hforge/library/rules/common",
+          ".hforge/library/rules/swift"
+        ],
+        "canonicalSkill": ".hforge/library/skills/swift-engineering/SKILL.md",
+        "discoverySkill": ".agents/skills/swift-engineering/SKILL.md",
+        "workflow": ".hforge/templates/workflows/implement-swift-change.md"
+      },
       "docs": [
         "docs/catalog/languages/swift.md",
         "knowledge-bases/structured/swift/docs/overview.md",
@@ -446,6 +576,16 @@
     "shell": {
       "maturity": "structured",
       "knowledgeBase": "knowledge-bases/structured/shell",
+      "installedSurfaces": {
+        "knowledgeBase": ".hforge/library/knowledge/structured/shell",
+        "rules": [
+          ".hforge/library/rules/common",
+          ".hforge/library/rules/shell"
+        ],
+        "canonicalSkill": ".hforge/library/skills/shell-engineering/SKILL.md",
+        "discoverySkill": ".agents/skills/shell-engineering/SKILL.md",
+        "workflow": ".hforge/templates/workflows/implement-shell-change.md"
+      },
       "docs": [
         "docs/catalog/languages/shell.md",
         "knowledge-bases/structured/shell/docs/overview.md",

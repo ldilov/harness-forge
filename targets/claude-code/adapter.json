@@ -4,6 +4,8 @@
   "installRootStrategy": "repo-root",
   "pathMappings": {
     "AGENTS.md": "CLAUDE.md",
+    ".agents/skills": ".agents/skills",
+    ".specify": ".specify",
     "templates/tasks/implement-feature.md": ".claude/templates/tasks/implement-feature.md",
     "templates/tasks/fix-bug.md": ".claude/templates/tasks/fix-bug.md",
     "templates/workflows/research-plan-implement-validate.md": ".claude/templates/workflows/research-plan-implement-validate.md",
@@ -22,6 +24,33 @@
   "capabilityMatrix": {
     "templates": true,
     "workflow-validation": true
+  },
+  "sharedRuntimeBridge": {
+    "instructionSurfaces": [
+      "CLAUDE.md",
+      ".agents/skills",
+      ".claude/settings.json"
+    ],
+    "runtimeSurfaces": [
+      ".hforge/runtime/index.json",
+      ".hforge/runtime/README.md"
+    ],
+    "supportMode": "native",
+    "notes": "Claude Code keeps repo-root and .claude bridges thin while canonical skills, rules, knowledge, and templates live under the hidden .hforge layer.",
+    "authoritativeSurfaces": [
+      ".hforge/library/skills",
+      ".hforge/library/rules",
+      ".hforge/library/knowledge",
+      ".hforge/templates",
+      ".hforge/runtime"
+    ],
+    "visibleBridgePaths": [
+      "CLAUDE.md",
+      ".agents/skills",
+      ".specify",
+      ".claude"
+    ],
+    "visibilityMode": "hidden-ai-layer"
   },
   "guidanceTemplate": "claude-code"
 }

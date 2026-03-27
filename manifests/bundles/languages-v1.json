@@ -1,4 +1,11 @@
 {
+  "installLayout": {
+    "knowledgeRoot": ".hforge/library/knowledge/structured",
+    "rulesRoot": ".hforge/library/rules",
+    "canonicalSkillRoot": ".hforge/library/skills",
+    "discoveryRoot": ".agents/skills",
+    "workflowRoot": ".hforge/templates/workflows"
+  },
   "bundles": [
     {
       "id": "lang:python",

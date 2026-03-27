@@ -1,6 +1,6 @@
 ---
 name: go-engineering
-description: Auto-discoverable wrapper for `skills/go-engineering/SKILL.md`.
+description: Auto-discoverable wrapper for `.hforge/library/skills/go-engineering/SKILL.md`.
 ---
 
 # Go Engineering
@@ -11,10 +11,10 @@ description: Auto-discoverable wrapper for `skills/go-engineering/SKILL.md`.
 
 ## Use These Surfaces
 
-- `skills/go-engineering/SKILL.md`
-- `rules/common/`
-- `rules/golang/`
-- `templates/workflows/implement-go-change.md`
+- `.hforge/library/skills/go-engineering/SKILL.md`
+- `.hforge/library/rules/common/`
+- `.hforge/library/rules/golang/`
+- `.hforge/templates/workflows/implement-go-change.md`
 
 ## Expected Output
 

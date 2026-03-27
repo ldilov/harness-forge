@@ -11,6 +11,7 @@ export interface RepoServiceBoundary {
 }
 
 export interface RepoMap {
+  generatedAt?: string;
   workspaceId: string;
   workspaceType: string;
   dominantLanguages: RepoFact[];
@@ -19,6 +20,12 @@ export interface RepoMap {
   criticalPaths: string[];
   highRiskPaths: string[];
   existingInstructionSurfaces: string[];
+  sharedRuntimeRoot?: string;
+  sharedRuntimeBridges?: string[];
+  sharedRuntimeArtifacts?: string[];
+  authoritativeAiLayerRoot?: string;
+  authoritativeHiddenSurfaces?: string[];
+  visibleBridgePaths?: string[];
   qualityGaps: RepoFact[];
   supportingEvidence: string[];
 }

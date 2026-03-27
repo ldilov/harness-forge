@@ -4,8 +4,19 @@ import fg from "fast-glob";
 import { readJsonFile } from "../../shared/index.js";
 import type { TargetManifest } from "../manifests/index.js";
 
+export interface SharedRuntimeBridgeConfig {
+  instructionSurfaces: string[];
+  runtimeSurfaces?: string[];
+  supportMode: "native" | "translated" | "documentation-only" | "unsupported";
+  notes?: string;
+  authoritativeSurfaces?: string[];
+  visibleBridgePaths?: string[];
+  visibilityMode?: "hidden-ai-layer";
+}
+
 export interface TargetAdapter extends TargetManifest {
   guidanceTemplate?: string;
+  sharedRuntimeBridge?: SharedRuntimeBridgeConfig;
 }
 
 export async function loadTargetAdapters(root: string): Promise<TargetAdapter[]> {

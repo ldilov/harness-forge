@@ -1,6 +1,6 @@
 ---
 name: architecture-decision-records
-description: Auto-discoverable wrapper for `skills/architecture-decision-records/SKILL.md`.
+description: Auto-discoverable wrapper for `.hforge/library/skills/architecture-decision-records/SKILL.md`.
 ---
 
 # Architecture Decision Records
@@ -12,12 +12,12 @@ description: Auto-discoverable wrapper for `skills/architecture-decision-records
 
 ## Use These Surfaces
 
-- `skills/architecture-decision-records/SKILL.md`
-- `skills/architecture-decision-records/references/`
-- `docs/authoring/enhanced-skill-import.md` for the import research and validation provenance behind the richer ADR guidance
+- `.hforge/library/skills/architecture-decision-records/SKILL.md`
+- `.hforge/library/skills/architecture-decision-records/references/`
+- `.hforge/library/docs/authoring/enhanced-skill-import.md` for the import research and validation provenance behind the richer ADR guidance
 - `RESEARCH-SOURCES.md` for the pack-level research summary
 - `VALIDATION.md` for the pack-level validation notes
 
 ## Operating Rule
 
-Use the canonical ADR skill under `skills/` for the actual workflow. This wrapper exists so agents can discover the flow quickly and then load the deeper project-owned guidance.
+Use the canonical ADR skill under `.hforge/library/skills/` for the actual workflow. This wrapper exists so agents can discover the flow quickly and then load the deeper project-owned guidance.

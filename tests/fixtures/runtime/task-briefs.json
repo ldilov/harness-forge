@@ -1,0 +1,5 @@
+{
+  "feature": "Generate a shared runtime that survives codex and claude-code bootstrap in one workspace.",
+  "bugfix": "Fix the last-write-wins shared runtime overwrite during multi-target install.",
+  "refactor": "Hydrate baseline repo-intelligence runtime artifacts instead of creating only a summary shell."
+}

@@ -11,12 +11,12 @@ mentions Java, Spring Boot, Gradle, or Maven.
 
 ## Use these surfaces
 
-- `skills/java-engineering/SKILL.md`
-- `skills/java-engineering/references/`
-- `rules/common/`
-- `rules/java/`
-- `knowledge-bases/seeded/java/`
-- `templates/workflows/implement-java-change.md`
+- `.hforge/library/skills/java-engineering/SKILL.md`
+- `.hforge/library/skills/java-engineering/references/`
+- `.hforge/library/rules/common/`
+- `.hforge/library/rules/java/`
+- `.hforge/library/knowledge/seeded/java/`
+- `.hforge/templates/workflows/implement-java-change.md`
 
 ## Operating rule
 

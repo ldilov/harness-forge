@@ -24,8 +24,9 @@ into Harness Forge.
 ## Discovery model
 
 - `.agents/skills/<skill>/SKILL.md` is the lightweight discovery layer for agent runtimes
-- `skills/<skill>/SKILL.md` is the canonical execution contract
-- `skills/<skill>/references/` provides deeper runtime-facing heuristics and templates
+- installed workspaces treat `.hforge/library/skills/<skill>/SKILL.md` as the canonical execution contract
+- installed workspaces treat `.hforge/library/skills/<skill>/references/` as the deeper runtime-facing heuristics and templates
+- this package source repo still authors those same canonical skill surfaces under `skills/<skill>/` before install remaps them into `.hforge/`
 - `RESEARCH-SOURCES.md` and `VALIDATION.md` are project-owned pack-level provenance companions for additional maintainer detail
 - this document carries curated research and validation provenance so agents do
   not need to depend on raw imported archive files
@@ -48,6 +49,10 @@ The imported archive upgraded these canonical skills directly:
 Most of those were merges into existing responsibilities. `javascript-engineering`
 stays promoted as a distinct runtime-focused engineering skill rather than a
 TypeScript appendix.
+
+Published and local installed workspaces remap those canonical outcomes into
+`.hforge/library/skills/` while leaving `.agents/skills/` as the thin visible
+discovery layer.
 
 ## Provenance summary
 

@@ -1,6 +1,6 @@
 ---
 name: rust-engineering
-description: Auto-discoverable wrapper for `skills/rust-engineering/SKILL.md`.
+description: Auto-discoverable wrapper for `.hforge/library/skills/rust-engineering/SKILL.md`.
 ---
 
 # Rust Engineering
@@ -11,10 +11,10 @@ description: Auto-discoverable wrapper for `skills/rust-engineering/SKILL.md`.
 
 ## Use These Surfaces
 
-- `skills/rust-engineering/SKILL.md`
-- `rules/common/`
-- `rules/rust/`
-- `templates/workflows/implement-rust-change.md`
+- `.hforge/library/skills/rust-engineering/SKILL.md`
+- `.hforge/library/rules/common/`
+- `.hforge/library/rules/rust/`
+- `.hforge/templates/workflows/implement-rust-change.md`
 
 ## Expected Output
 

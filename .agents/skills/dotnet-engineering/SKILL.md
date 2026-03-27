@@ -11,19 +11,19 @@ files or when the task mentions C#, .NET, or ASP.NET Core.
 
 ## Use these surfaces
 
-- `skills/dotnet-engineering/SKILL.md`
-- `skills/dotnet-engineering/references/`
-- `docs/authoring/enhanced-skill-import.md` for import provenance and the added cloud-native and migration review context
+- `.hforge/library/skills/dotnet-engineering/SKILL.md`
+- `.hforge/library/skills/dotnet-engineering/references/`
+- `.hforge/library/docs/authoring/enhanced-skill-import.md` for import provenance and the added cloud-native and migration review context
 - `RESEARCH-SOURCES.md` for the pack-level research summary
 - `VALIDATION.md` for the pack-level validation notes
-- `rules/common/`
-- `rules/dotnet/`
-- `knowledge-bases/seeded/dotnet/`
-- `templates/workflows/implement-dotnet-change.md`
+- `.hforge/library/rules/common/`
+- `.hforge/library/rules/dotnet/`
+- `.hforge/library/knowledge/seeded/dotnet/`
+- `.hforge/templates/workflows/implement-dotnet-change.md`
 
 ## Operating rule
 
 Lean on the promoted root rules for direct execution and the seeded content for
 examples, review checklists, and framework-specific reference material. The
-canonical execution surface is `skills/dotnet-engineering/`; this wrapper just
+canonical execution surface is `.hforge/library/skills/dotnet-engineering/`; this wrapper just
 routes discovery there.

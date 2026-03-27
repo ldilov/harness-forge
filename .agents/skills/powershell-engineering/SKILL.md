@@ -11,12 +11,12 @@ files or when the task mentions PowerShell, automation, or Windows scripting.
 
 ## Use these surfaces
 
-- `skills/powershell-engineering/SKILL.md`
-- `skills/powershell-engineering/references/`
-- `rules/common/`
-- `rules/powershell/`
-- `knowledge-bases/seeded/powershell/`
-- `templates/workflows/implement-powershell-change.md`
+- `.hforge/library/skills/powershell-engineering/SKILL.md`
+- `.hforge/library/skills/powershell-engineering/references/`
+- `.hforge/library/rules/common/`
+- `.hforge/library/rules/powershell/`
+- `.hforge/library/knowledge/seeded/powershell/`
+- `.hforge/templates/workflows/implement-powershell-change.md`
 
 ## Operating rule
 

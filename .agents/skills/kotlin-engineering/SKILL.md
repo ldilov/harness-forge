@@ -1,6 +1,6 @@
 ---
 name: kotlin-engineering
-description: Auto-discoverable wrapper for `skills/kotlin-engineering/SKILL.md`.
+description: Auto-discoverable wrapper for `.hforge/library/skills/kotlin-engineering/SKILL.md`.
 ---
 
 # Kotlin Engineering
@@ -11,10 +11,10 @@ description: Auto-discoverable wrapper for `skills/kotlin-engineering/SKILL.md`.
 
 ## Use These Surfaces
 
-- `skills/kotlin-engineering/SKILL.md`
-- `rules/common/`
-- `rules/kotlin/`
-- `templates/workflows/implement-kotlin-change.md`
+- `.hforge/library/skills/kotlin-engineering/SKILL.md`
+- `.hforge/library/rules/common/`
+- `.hforge/library/rules/kotlin/`
+- `.hforge/templates/workflows/implement-kotlin-change.md`
 
 ## Expected Output
 

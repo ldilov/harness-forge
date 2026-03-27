@@ -1,5 +1,25 @@
 {
   "$schema": "../../schemas/manifests/package-surface.schema.json",
+  "installModel": {
+    "defaultTrackingMode": "local-first",
+    "canonicalHiddenRoots": [
+      ".hforge/library/skills",
+      ".hforge/library/rules",
+      ".hforge/library/knowledge",
+      ".hforge/templates",
+      ".hforge/runtime",
+      ".hforge/state",
+      ".hforge/generated"
+    ],
+    "visibleBridgeRoots": [
+      "AGENTS.md",
+      "CLAUDE.md",
+      ".agents/skills",
+      ".specify",
+      ".codex",
+      ".claude"
+    ]
+  },
   "requiredPaths": [
     "README.md",
     "AGENTS.md",
@@ -30,6 +50,7 @@
     "docs/catalog/framework-packs.md",
     "docs/templates/authoring.md",
     "docs/authoring/skills.md",
+    "docs/authoring/engineering-assistant-port.md",
     "docs/authoring/enhanced-skill-import.md",
     "docs/flow-orchestration.md",
     "docs/generated-artifacts.md",
@@ -42,6 +63,7 @@
     "knowledge-bases/seeded/README.md",
     "rules/common/README.md",
     "skills/README.md",
+    "skills/engineering-assistant/SKILL.md",
     "skills/typescript-engineering/SKILL.md",
     "skills/java-engineering/SKILL.md",
     "skills/dotnet-engineering/SKILL.md",
@@ -82,8 +104,11 @@
     "scripts/templates/powershell/New-TemplateIndex.ps1",
     "scripts/templates/powershell/Test-WorkflowContracts.ps1",
     "scripts/intelligence/scan-repo.mjs",
+    "scripts/intelligence/cartograph-repo.mjs",
+    "scripts/intelligence/classify-boundaries.mjs",
     "scripts/intelligence/detect-frameworks.mjs",
     "scripts/intelligence/score-recommendations.mjs",
+    "scripts/intelligence/synthesize-instructions.mjs",
     "scripts/runtime/flow-status.mjs",
     "scripts/runtime/report-effectiveness.mjs",
     "scripts/knowledge/import-pack.mjs",
@@ -106,6 +131,9 @@
     "skills/dotnet-engineering/references/cloud-native-and-aspire.md",
     "skills/lua-engineering/references/runtime-profiles.md",
     "skills/javascript-engineering/references/package-contracts.md",
+    "skills/engineering-assistant/references/architecture.md",
+    "skills/engineering-assistant/references/project-notes.md",
+    "skills/engineering-assistant/references/change-discipline.md",
     "knowledge-bases/seeded/typescript",
     "knowledge-bases/seeded/java",
     "knowledge-bases/seeded/dotnet",
@@ -116,6 +144,7 @@
     "manifests/catalog/framework-assets.json",
     "manifests/catalog/compatibility-matrix.json",
     "manifests/catalog/flow-artifacts.json",
+    "manifests/catalog/engineering-assistant-import-inventory.json",
     "manifests/catalog/enhanced-skill-import-inventory.json",
     "manifests/catalog/seeded-knowledge-files.json",
     "manifests/catalog/package-surface.json",
@@ -161,6 +190,7 @@
         "docs/profile-guide.md",
         "docs/target-support-matrix.md",
         "docs/maintenance-lifecycle.md",
+        "docs/authoring/engineering-assistant-port.md",
         "docs/observability.md",
         "docs/benchmark-scenarios.md",
         "docs/troubleshooting.md",
@@ -192,6 +222,7 @@
         "rules/dotnet",
         "rules/lua",
         "rules/powershell",
+        "skills/engineering-assistant",
         "skills",
         "templates/workflows/implement-typescript-change.md",
         "templates/workflows/implement-java-change.md",
@@ -202,11 +233,25 @@
     },
     {
       "id": "operational-runtime",
-      "description": "Recommendation, flow, observability, and knowledge-maintenance scripts.",
+      "description": "Recommendation, shared-runtime hydration, flow, observability, and knowledge-maintenance scripts.",
       "paths": [
         "scripts/intelligence",
         "scripts/runtime",
         "scripts/knowledge"
+      ]
+    },
+    {
+      "id": "shared-runtime-sources",
+      "description": "Shipped guidance and runtime sources that compile into the hidden `.hforge/` AI layer during install.",
+      "paths": [
+        "docs/installation.md",
+        "docs/install/targets.md",
+        "docs/flow-orchestration.md",
+        "docs/generated-artifacts.md",
+        "docs/repo-cartography.md",
+        "templates/instructions",
+        "scripts/intelligence",
+        "scripts/runtime"
       ]
     },
     {
@@ -244,6 +289,11 @@
       "id": "embedded-skill-governance",
       "description": "Inventory, provenance, and sentinel references that keep imported skill packs reviewable and shippable.",
       "paths": [
+        "manifests/catalog/engineering-assistant-import-inventory.json",
+        "docs/authoring/engineering-assistant-port.md",
+        "skills/engineering-assistant/references/architecture.md",
+        "skills/engineering-assistant/references/project-notes.md",
+        "skills/engineering-assistant/references/change-discipline.md",
         "manifests/catalog/enhanced-skill-import-inventory.json",
         "docs/authoring/enhanced-skill-import.md",
         "skills/repo-onboarding/references/discovery-checklist.md",
@@ -260,7 +310,7 @@
     },
     {
       "id": "target-runtime",
-      "description": "Target-native runtime surfaces plus support-honesty adapters.",
+      "description": "Target-native runtime bridges plus support-honesty adapters that route into the hidden `.hforge/` AI layer.",
       "paths": [
         "targets/claude-code/runtime/.claude",
         "targets/codex/runtime/.codex",

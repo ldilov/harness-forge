@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-25T14:15:07.352Z",
+  "generatedAt": "2026-03-27T13:25:14.115Z",
   "entries": [
     {
       "subjectType": "language",
@@ -739,8 +739,8 @@
         "src/cli/commands/flow.ts",
         "scripts/runtime/flow-status.mjs"
       ],
-      "fallbackBehavior": "Inspect .specify/state/flow-state.json and generated flow docs directly.",
-      "notes": "Flow status and recovery are available for Claude Code workflows."
+      "fallbackBehavior": "Inspect `.hforge/runtime/index.json`, `.hforge/library/`, `.specify/state/flow-state.json`, and the generated flow docs directly.",
+      "notes": "Flow status and recovery are available for Claude Code workflows and should route through the hidden `.hforge/` AI layer rather than isolated target notes."
     },
     {
       "subjectType": "target",
@@ -788,8 +788,8 @@
         "scripts/intelligence/score-recommendations.mjs",
         "src/cli/commands/recommend.ts"
       ],
-      "fallbackBehavior": "Run the intelligence scripts directly if the CLI is unavailable.",
-      "notes": "Repo intelligence is a first-class Claude Code surface."
+      "fallbackBehavior": "Inspect `.hforge/runtime/index.json` and `.hforge/library/`, or run the intelligence scripts directly if the CLI is unavailable.",
+      "notes": "Repo intelligence is a first-class Claude Code surface and compiles into the hidden `.hforge/` AI layer."
     },
     {
       "subjectType": "target",
@@ -804,7 +804,7 @@
         "targets/claude-code/adapter.json",
         "manifests/targets/core.json"
       ],
-      "fallbackBehavior": "Use the shipped CLAUDE.md and .claude runtime surfaces.",
+      "fallbackBehavior": "Use CLAUDE.md, .agents/skills/, and the hidden .hforge AI layer.",
       "notes": "Claude Code ships first-class guidance and runtime packaging."
     },
     {
@@ -884,6 +884,14 @@
       "subjectId": "claude-code",
       "relationType": "supports",
       "relatedType": "skill",
+      "relatedId": "cloud-architect",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "skill",
       "relatedId": "cpp-engineering",
       "supportLevel": "full"
     },
@@ -924,6 +932,14 @@
       "subjectId": "claude-code",
       "relationType": "supports",
       "relatedType": "skill",
+      "relatedId": "engineering-assistant",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "skill",
       "relatedId": "go-engineering",
       "supportLevel": "full"
     },
@@ -941,6 +957,14 @@
       "relationType": "supports",
       "relatedType": "skill",
       "relatedId": "java-engineering",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "javascript-engineering",
       "supportLevel": "full"
     },
     {
@@ -1485,8 +1509,8 @@
         "src/cli/commands/flow.ts",
         "scripts/runtime/flow-status.mjs"
       ],
-      "fallbackBehavior": "Inspect .specify/state/flow-state.json and generated flow docs directly.",
-      "notes": "Flow status and recovery are available for Codex workflows."
+      "fallbackBehavior": "Inspect `.hforge/runtime/index.json`, `.hforge/library/`, `.specify/state/flow-state.json`, and the generated flow docs directly.",
+      "notes": "Flow status and recovery are available for Codex workflows and should route through the hidden `.hforge/` AI layer rather than isolated target notes."
     },
     {
       "subjectType": "target",
@@ -1534,8 +1558,8 @@
         "scripts/intelligence/score-recommendations.mjs",
         "src/cli/commands/recommend.ts"
       ],
-      "fallbackBehavior": "Run the intelligence scripts directly if the CLI is unavailable.",
-      "notes": "Repo intelligence is a first-class Codex surface."
+      "fallbackBehavior": "Inspect `.hforge/runtime/index.json` and `.hforge/library/`, or run the intelligence scripts directly if the CLI is unavailable.",
+      "notes": "Repo intelligence is a first-class Codex surface and compiles into the hidden `.hforge/` AI layer."
     },
     {
       "subjectType": "target",
@@ -1550,7 +1574,7 @@
         "targets/codex/adapter.json",
         "manifests/targets/core.json"
       ],
-      "fallbackBehavior": "Use the shipped AGENTS.md and .codex runtime surfaces.",
+      "fallbackBehavior": "Use AGENTS.md, .agents/skills/, and the hidden .hforge AI layer.",
       "notes": "Codex ships first-class guidance and runtime packaging."
     },
     {
@@ -1630,6 +1654,14 @@
       "subjectId": "codex",
       "relationType": "supports",
       "relatedType": "skill",
+      "relatedId": "cloud-architect",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "skill",
       "relatedId": "cpp-engineering",
       "supportLevel": "full"
     },
@@ -1670,6 +1702,14 @@
       "subjectId": "codex",
       "relationType": "supports",
       "relatedType": "skill",
+      "relatedId": "engineering-assistant",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "skill",
       "relatedId": "go-engineering",
       "supportLevel": "full"
     },
@@ -1687,6 +1727,14 @@
       "relationType": "supports",
       "relatedType": "skill",
       "relatedId": "java-engineering",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "javascript-engineering",
       "supportLevel": "full"
     },
     {
@@ -2266,8 +2314,8 @@
         "targets/cursor/adapter.json",
         "docs/flow-orchestration.md"
       ],
-      "fallbackBehavior": "Do not rely on packaged flow recovery for Cursor; use the portable docs only.",
-      "notes": "No first-class Cursor flow-state recovery surface is shipped."
+      "fallbackBehavior": "Do not rely on packaged flow recovery for Cursor; use `.hforge/runtime/index.json` and the thin bridge surfaces only.",
+      "notes": "No first-class Cursor flow-state recovery surface is shipped beyond the hidden `.hforge/` runtime summary and bridge surfaces."
     },
     {
       "subjectType": "target",
@@ -2314,8 +2362,8 @@
         "scripts/intelligence/score-recommendations.mjs",
         "targets/cursor/adapter.json"
       ],
-      "fallbackBehavior": "Run the intelligence scripts directly and treat the output as operator guidance.",
-      "notes": "Repo intelligence is available as portable scripts and docs rather than a native Cursor runtime surface."
+      "fallbackBehavior": "Inspect `.hforge/runtime/index.json` and `.hforge/library/`, then run the intelligence scripts directly and treat the output as operator guidance.",
+      "notes": "Repo intelligence is available as thin bridges, portable scripts, and generated hidden `.hforge/` state rather than a native Cursor runtime surface."
     },
     {
       "subjectType": "target",
@@ -2415,6 +2463,15 @@
       "subjectId": "cursor",
       "relationType": "supports",
       "relatedType": "skill",
+      "relatedId": "cloud-architect",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial skill support for cloud-architect."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "skill",
       "relatedId": "cpp-engineering",
       "supportLevel": "partial",
       "notes": "Cursor only provides partial skill support for cpp-engineering."
@@ -2460,6 +2517,15 @@
       "subjectId": "cursor",
       "relationType": "supports",
       "relatedType": "skill",
+      "relatedId": "engineering-assistant",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial skill support for engineering-assistant."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "skill",
       "relatedId": "go-engineering",
       "supportLevel": "partial",
       "notes": "Cursor only provides partial skill support for go-engineering."
@@ -2481,6 +2547,15 @@
       "relatedId": "java-engineering",
       "supportLevel": "partial",
       "notes": "Cursor only provides partial skill support for java-engineering."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "javascript-engineering",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial skill support for javascript-engineering."
     },
     {
       "subjectType": "target",
@@ -3089,8 +3164,8 @@
         "targets/opencode/adapter.json",
         "docs/flow-orchestration.md"
       ],
-      "fallbackBehavior": "Do not rely on packaged flow recovery for OpenCode; use the portable docs only.",
-      "notes": "No first-class OpenCode flow-state recovery surface is shipped."
+      "fallbackBehavior": "Do not rely on packaged flow recovery for OpenCode; use `.hforge/runtime/index.json` and the thin bridge surfaces only.",
+      "notes": "No first-class OpenCode flow-state recovery surface is shipped beyond the hidden `.hforge/` runtime summary and bridge surfaces."
     },
     {
       "subjectType": "target",
@@ -3137,8 +3212,8 @@
         "scripts/intelligence/score-recommendations.mjs",
         "targets/opencode/adapter.json"
       ],
-      "fallbackBehavior": "Run the intelligence scripts directly and treat the output as operator guidance.",
-      "notes": "Repo intelligence is available as portable scripts and docs rather than a native OpenCode runtime surface."
+      "fallbackBehavior": "Inspect `.hforge/runtime/index.json` and `.hforge/library/`, then run the intelligence scripts directly and treat the output as operator guidance.",
+      "notes": "Repo intelligence is available as thin bridges, portable scripts, and generated hidden `.hforge/` state rather than a native OpenCode runtime surface."
     },
     {
       "subjectType": "target",
@@ -3238,6 +3313,15 @@
       "subjectId": "opencode",
       "relationType": "supports",
       "relatedType": "skill",
+      "relatedId": "cloud-architect",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial skill support for cloud-architect."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "skill",
       "relatedId": "cpp-engineering",
       "supportLevel": "partial",
       "notes": "OpenCode only provides partial skill support for cpp-engineering."
@@ -3283,6 +3367,15 @@
       "subjectId": "opencode",
       "relationType": "supports",
       "relatedType": "skill",
+      "relatedId": "engineering-assistant",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial skill support for engineering-assistant."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "skill",
       "relatedId": "go-engineering",
       "supportLevel": "partial",
       "notes": "OpenCode only provides partial skill support for go-engineering."
@@ -3304,6 +3397,15 @@
       "relatedId": "java-engineering",
       "supportLevel": "partial",
       "notes": "OpenCode only provides partial skill support for java-engineering."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "javascript-engineering",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial skill support for javascript-engineering."
     },
     {
       "subjectType": "target",

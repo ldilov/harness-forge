@@ -14,12 +14,20 @@ import { loadInstallState, saveInstallState } from "../../src/domain/state/insta
 
 const repoRoot = process.cwd();
 const tempRoots: string[] = [];
+const fixtureRoot = path.join(repoRoot, "tests", "fixtures", "runtime");
 
 afterEach(async () => {
   await Promise.all(tempRoots.splice(0).map((tempRoot) => fs.rm(tempRoot, { recursive: true, force: true })));
 });
 
 describe("maintenance lifecycle integration", () => {
+  it("ships a local-first gitignore fixture for the hidden ai layer", async () => {
+    const gitignore = await fs.readFile(path.join(fixtureRoot, "local-first-gitignore", ".gitignore"), "utf8");
+    expect(gitignore).toContain(".hforge/");
+    expect(gitignore).toContain(".hforge/cache/");
+    expect(gitignore).toContain(".hforge/exports/");
+  });
+
   it("diagnoses drift and supports sync, prune, and upgrade reporting", async () => {
     const tempRoot = await fs.mkdtemp(path.join(os.tmpdir(), "hforge-maint-"));
     tempRoots.push(tempRoot);

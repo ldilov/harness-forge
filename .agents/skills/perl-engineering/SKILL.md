@@ -1,6 +1,6 @@
 ---
 name: perl-engineering
-description: Auto-discoverable wrapper for `skills/perl-engineering/SKILL.md`.
+description: Auto-discoverable wrapper for `.hforge/library/skills/perl-engineering/SKILL.md`.
 ---
 
 # Perl Engineering
@@ -11,10 +11,10 @@ description: Auto-discoverable wrapper for `skills/perl-engineering/SKILL.md`.
 
 ## Use These Surfaces
 
-- `skills/perl-engineering/SKILL.md`
-- `rules/common/`
-- `rules/perl/`
-- `templates/workflows/implement-perl-change.md`
+- `.hforge/library/skills/perl-engineering/SKILL.md`
+- `.hforge/library/rules/common/`
+- `.hforge/library/rules/perl/`
+- `.hforge/templates/workflows/implement-perl-change.md`
 
 ## Expected Output
 

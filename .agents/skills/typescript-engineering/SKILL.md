@@ -11,18 +11,18 @@ files or when the task mentions TypeScript, JavaScript, Node.js, React, or Next.
 
 ## Use these surfaces
 
-- `skills/typescript-engineering/SKILL.md`
-- `skills/typescript-engineering/references/`
-- `docs/authoring/enhanced-skill-import.md` for import provenance and the added runtime-boundary and monorepo guidance context
+- `.hforge/library/skills/typescript-engineering/SKILL.md`
+- `.hforge/library/skills/typescript-engineering/references/`
+- `.hforge/library/docs/authoring/enhanced-skill-import.md` for import provenance and the added runtime-boundary and monorepo guidance context
 - `RESEARCH-SOURCES.md` for the pack-level research summary
 - `VALIDATION.md` for the pack-level validation notes
-- `rules/common/`
-- `rules/typescript/`
-- `knowledge-bases/seeded/typescript/`
-- `templates/workflows/implement-typescript-change.md`
+- `.hforge/library/rules/common/`
+- `.hforge/library/rules/typescript/`
+- `.hforge/library/knowledge/seeded/typescript/`
+- `.hforge/templates/workflows/implement-typescript-change.md`
 
 ## Operating rule
 
 Start from the promoted root rules, then pull deeper examples and review notes
 from the seeded knowledge base as needed. Treat this wrapper as discovery-only;
-the canonical execution surface lives in `skills/typescript-engineering/`.
+the canonical execution surface lives in `.hforge/library/skills/typescript-engineering/`.

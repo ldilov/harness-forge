@@ -20,7 +20,7 @@ describe("language pack docs integration", () => {
       expect(rules).toContain(`rules/${language}/`);
       expect(rules).toContain(`knowledge-bases/seeded/${language}/rules/${language}/`);
       expect(skill).toContain(`rules/${language}/`);
-      expect(agentSkill).toContain(`skills/${language}-engineering/SKILL.md`);
+      expect(agentSkill).toContain(`.hforge/library/skills/${language}-engineering/SKILL.md`);
       expect(workflow).toContain(`rules/${language}/`);
     }
   });

@@ -1,6 +1,6 @@
 ---
 name: cpp-engineering
-description: Auto-discoverable wrapper for `skills/cpp-engineering/SKILL.md`.
+description: Auto-discoverable wrapper for `.hforge/library/skills/cpp-engineering/SKILL.md`.
 ---
 
 # C++ Engineering
@@ -11,10 +11,10 @@ description: Auto-discoverable wrapper for `skills/cpp-engineering/SKILL.md`.
 
 ## Use These Surfaces
 
-- `skills/cpp-engineering/SKILL.md`
-- `rules/common/`
-- `rules/cpp/`
-- `templates/workflows/implement-cpp-change.md`
+- `.hforge/library/skills/cpp-engineering/SKILL.md`
+- `.hforge/library/rules/common/`
+- `.hforge/library/rules/cpp/`
+- `.hforge/templates/workflows/implement-cpp-change.md`
 
 ## Expected Output
 

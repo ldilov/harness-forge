@@ -1,6 +1,6 @@
 ---
 name: python-engineering
-description: Auto-discoverable wrapper for `skills/python-engineering/SKILL.md`.
+description: Auto-discoverable wrapper for `.hforge/library/skills/python-engineering/SKILL.md`.
 ---
 
 # Python Engineering
@@ -11,11 +11,11 @@ description: Auto-discoverable wrapper for `skills/python-engineering/SKILL.md`.
 
 ## Use These Surfaces
 
-- `skills/python-engineering/SKILL.md`
-- `skills/python-engineering/references/`
-- `rules/common/`
-- `rules/python/`
-- `templates/workflows/implement-python-change.md`
+- `.hforge/library/skills/python-engineering/SKILL.md`
+- `.hforge/library/skills/python-engineering/references/`
+- `.hforge/library/rules/common/`
+- `.hforge/library/rules/python/`
+- `.hforge/templates/workflows/implement-python-change.md`
 
 ## Expected Output
 

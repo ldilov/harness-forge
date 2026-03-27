@@ -1,6 +1,6 @@
 ---
 name: php-engineering
-description: Auto-discoverable wrapper for `skills/php-engineering/SKILL.md`.
+description: Auto-discoverable wrapper for `.hforge/library/skills/php-engineering/SKILL.md`.
 ---
 
 # PHP Engineering
@@ -11,10 +11,10 @@ description: Auto-discoverable wrapper for `skills/php-engineering/SKILL.md`.
 
 ## Use These Surfaces
 
-- `skills/php-engineering/SKILL.md`
-- `rules/common/`
-- `rules/php/`
-- `templates/workflows/implement-php-change.md`
+- `.hforge/library/skills/php-engineering/SKILL.md`
+- `.hforge/library/rules/common/`
+- `.hforge/library/rules/php/`
+- `.hforge/templates/workflows/implement-php-change.md`
 
 ## Expected Output
 

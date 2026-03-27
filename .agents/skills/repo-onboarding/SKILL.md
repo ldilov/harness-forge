@@ -1,6 +1,6 @@
 ---
 name: repo-onboarding
-description: Auto-discoverable wrapper for `skills/repo-onboarding/SKILL.md`.
+description: Auto-discoverable wrapper for `.hforge/library/skills/repo-onboarding/SKILL.md`.
 ---
 
 # Repository Onboarding
@@ -12,12 +12,12 @@ description: Auto-discoverable wrapper for `skills/repo-onboarding/SKILL.md`.
 
 ## Use These Surfaces
 
-- `skills/repo-onboarding/SKILL.md`
-- `skills/repo-onboarding/references/`
-- `docs/authoring/enhanced-skill-import.md` for import provenance, research summary, and validation notes behind the upgraded pack
+- `.hforge/library/skills/repo-onboarding/SKILL.md`
+- `.hforge/library/skills/repo-onboarding/references/`
+- `.hforge/library/docs/authoring/enhanced-skill-import.md` for import provenance, research summary, and validation notes behind the upgraded pack
 - `RESEARCH-SOURCES.md` for the pack-level research summary
 - `VALIDATION.md` for the pack-level validation notes
 
 ## Operating Rule
 
-Use the canonical skill under `skills/` for execution. Treat this wrapper as a discovery entrypoint only, and use the provenance doc when you need maintainer-facing context about why the onboarding guidance was deepened.
+Use the canonical skill under `.hforge/library/skills/` for execution. Treat this wrapper as a discovery entrypoint only, and use the provenance doc when you need maintainer-facing context about why the onboarding guidance was deepened.

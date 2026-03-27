@@ -1,6 +1,6 @@
 ---
 name: db-migration-review
-description: Auto-discoverable wrapper for `skills/db-migration-review/SKILL.md`.
+description: Auto-discoverable wrapper for `.hforge/library/skills/db-migration-review/SKILL.md`.
 ---
 
 # DB Migration Review
@@ -12,12 +12,12 @@ description: Auto-discoverable wrapper for `skills/db-migration-review/SKILL.md`
 
 ## Use These Surfaces
 
-- `skills/db-migration-review/SKILL.md`
-- `skills/db-migration-review/references/`
-- `docs/authoring/enhanced-skill-import.md` for import provenance and the research summary behind the migration-risk guidance
+- `.hforge/library/skills/db-migration-review/SKILL.md`
+- `.hforge/library/skills/db-migration-review/references/`
+- `.hforge/library/docs/authoring/enhanced-skill-import.md` for import provenance and the research summary behind the migration-risk guidance
 - `RESEARCH-SOURCES.md` for the pack-level research summary
 - `VALIDATION.md` for the pack-level validation notes
 
 ## Operating Rule
 
-Use the canonical `skills/db-migration-review/` workflow for the actual review. This wrapper only exposes the project-owned skill and its references to agent discovery.
+Use the canonical `.hforge/library/skills/db-migration-review/` workflow for the actual review. This wrapper only exposes the project-owned skill and its references to agent discovery.

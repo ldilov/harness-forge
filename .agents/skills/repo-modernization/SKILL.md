@@ -1,6 +1,6 @@
 ---
 name: repo-modernization
-description: Auto-discoverable wrapper for `skills/repo-modernization/SKILL.md`.
+description: Auto-discoverable wrapper for `.hforge/library/skills/repo-modernization/SKILL.md`.
 ---
 
 # Repo Modernization
@@ -12,12 +12,12 @@ description: Auto-discoverable wrapper for `skills/repo-modernization/SKILL.md`.
 
 ## Use These Surfaces
 
-- `skills/repo-modernization/SKILL.md`
-- `skills/repo-modernization/references/`
-- `docs/authoring/enhanced-skill-import.md` for import provenance and the research summary behind the modernization references
+- `.hforge/library/skills/repo-modernization/SKILL.md`
+- `.hforge/library/skills/repo-modernization/references/`
+- `.hforge/library/docs/authoring/enhanced-skill-import.md` for import provenance and the research summary behind the modernization references
 - `RESEARCH-SOURCES.md` for the pack-level research summary
 - `VALIDATION.md` for the pack-level validation notes
 
 ## Operating Rule
 
-Use the canonical `skills/repo-modernization/` surface for execution. This wrapper should only help agents discover the proper project-owned skill and its deeper references.
+Use the canonical `.hforge/library/skills/repo-modernization/` surface for execution. This wrapper should only help agents discover the proper project-owned skill and its deeper references.

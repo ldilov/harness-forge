@@ -28,8 +28,8 @@ describe("enhanced wrapper alignment scaffolding", () => {
 
       const absolutePath = path.join(root, entry.destinationPath);
       const content = await fs.readFile(absolutePath, "utf8");
-      expect(content).toContain(`skills/${entry.skillId}/SKILL.md`);
-      expect(content).toContain("docs/authoring/enhanced-skill-import.md");
+      expect(content).toContain(`.hforge/library/skills/${entry.skillId}/SKILL.md`);
+      expect(content).toContain(".hforge/library/docs/authoring/enhanced-skill-import.md");
       expect(content).toContain("RESEARCH-SOURCES.md");
       expect(content).toContain("VALIDATION.md");
     }

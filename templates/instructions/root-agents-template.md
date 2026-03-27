@@ -22,12 +22,15 @@ surface useful without creating avoidable instruction sprawl.
 ## When to Use
 
 Use when a repository can be served primarily by one root guidance file such as
-`AGENTS.md`.
+`AGENTS.md` that points back to the hidden `.hforge/` AI layer and the shared
+`.hforge/runtime/` intelligence runtime.
 
 ## Inputs
 
 - repo map or equivalent repository evidence
 - chosen target harness
+- shared runtime index or equivalent runtime summary
+- hidden canonical AI-layer paths under `.hforge/library/` and `.hforge/templates/`
 - existing root guidance files, if any
 
 ## Optional Inputs
@@ -45,6 +48,7 @@ Use when a repository can be served primarily by one root guidance file such as
 ## Expected Outputs
 
 - one root guidance recommendation or draft
+- explicit pointer back to `.hforge/runtime/index.json` plus the hidden canonical `.hforge/library/` surfaces
 - explicit risk notes for any degraded target capability
 - evidence showing why root-only guidance is sufficient
 
@@ -63,7 +67,7 @@ Use when a repository can be served primarily by one root guidance file such as
 ## Suggested Workflow
 
 1. Inspect the repo map and existing instruction surfaces.
-2. Draft one root guidance surface.
+2. Draft one root guidance surface that routes back to the hidden AI layer instead of duplicating canonical content at the repo root.
 3. Call out risk areas and validation commands.
 4. Stop if scoped guidance is not clearly justified.
 

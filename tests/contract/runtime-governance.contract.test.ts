@@ -18,10 +18,35 @@ describe("runtime governance contract", () => {
     const hooksManifest = JSON.parse(await fs.readFile(path.join(root, "manifests", "hooks", "index.json"), "utf8")) as {
       hooks: Array<Record<string, unknown>>;
     };
+    const flowArtifacts = JSON.parse(
+      await fs.readFile(path.join(root, "manifests", "catalog", "flow-artifacts.json"), "utf8")
+    ) as {
+      artifacts: Array<{ id: string }>;
+    };
     const compatibilityMatrix = JSON.parse(
       await fs.readFile(path.join(root, "manifests", "catalog", "compatibility-matrix.json"), "utf8")
     ) as {
       entries: Array<{ subjectType: string; relatedType: string; supportLevel: string; notes?: string }>;
+    };
+    const codexAdapter = JSON.parse(await fs.readFile(path.join(root, "targets", "codex", "adapter.json"), "utf8")) as {
+      sharedRuntimeBridge?: {
+        instructionSurfaces?: string[];
+        runtimeSurfaces?: string[];
+        authoritativeSurfaces?: string[];
+        visibleBridgePaths?: string[];
+        visibilityMode?: string;
+      };
+    };
+    const claudeAdapter = JSON.parse(
+      await fs.readFile(path.join(root, "targets", "claude-code", "adapter.json"), "utf8")
+    ) as {
+      sharedRuntimeBridge?: {
+        instructionSurfaces?: string[];
+        runtimeSurfaces?: string[];
+        authoritativeSurfaces?: string[];
+        visibleBridgePaths?: string[];
+        visibilityMode?: string;
+      };
     };
     const bundleFiles = await fs.readdir(path.join(root, "manifests", "bundles"));
     const profileFiles = await fs.readdir(path.join(root, "manifests", "profiles"));
@@ -49,6 +74,7 @@ describe("runtime governance contract", () => {
     const validate = ajv.compile(schema);
     const bundleIds = new Set(bundles.map((bundle) => bundle.id));
     const hookIds = new Set(hooksManifest.hooks.map((hook) => String(hook.id)));
+    const flowArtifactIds = new Set(flowArtifacts.artifacts.map((artifact) => artifact.id));
 
     for (const hook of hooksManifest.hooks) {
       expect(validate(hook), JSON.stringify(validate.errors)).toBe(true);
@@ -68,6 +94,14 @@ describe("runtime governance contract", () => {
     expect(compatibilityMatrix.entries.some((entry) => entry.relatedType === "skill")).toBe(true);
     expect(compatibilityMatrix.entries.some((entry) => entry.relatedType === "target")).toBe(true);
     expect(compatibilityMatrix.entries.some((entry) => entry.relatedType === "framework")).toBe(true);
+    expect(codexAdapter.sharedRuntimeBridge?.instructionSurfaces?.length ?? 0).toBeGreaterThan(0);
+    expect(claudeAdapter.sharedRuntimeBridge?.runtimeSurfaces).toContain(".hforge/runtime/index.json");
+    expect(codexAdapter.sharedRuntimeBridge?.authoritativeSurfaces).toContain(".hforge/library/skills");
+    expect(codexAdapter.sharedRuntimeBridge?.visibleBridgePaths).toContain(".agents/skills");
+    expect(codexAdapter.sharedRuntimeBridge?.visibilityMode).toBe("hidden-ai-layer");
+    expect(flowArtifactIds.has("shared-runtime-repo-map")).toBe(true);
+    expect(flowArtifactIds.has("shared-runtime-risk-signals")).toBe(true);
+    expect(flowArtifactIds.has("hidden-ai-layer-skills")).toBe(true);
     expect(
       compatibilityMatrix.entries.every(
         (entry) => entry.supportLevel === "full" || Boolean(entry.notes)
