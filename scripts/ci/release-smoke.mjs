@@ -5,6 +5,7 @@ import { spawnSync } from "node:child_process";
 const root = process.cwd();
 const nodeCommand = process.execPath;
 const powerShellCandidates = process.platform === "win32" ? ["pwsh", "powershell"] : ["pwsh"];
+const shellCandidates = process.platform === "win32" ? ["bash"] : ["bash", "sh"];
 const requiredSurfaces = [
   "manifests/catalog/enhanced-skill-import-inventory.json",
   "docs/authoring/enhanced-skill-import.md",
@@ -78,7 +79,20 @@ const cliRuns = fs.existsSync(distCliPath)
     ]
   : [];
 
-const results = [...scriptRuns, ...powerShellRuns, ...cliRuns];
+const shellRuntime = shellCandidates.find((candidate) => (run(candidate, ["-lc", "printf ok"]).status ?? 1) === 0);
+const shellRuns = shellRuntime
+  ? [
+      ["scripts/templates/shell/check-template-frontmatter.sh", ["."]],
+      ["scripts/templates/shell/check-template-links.sh", ["."]],
+      ["scripts/templates/shell/list-missing-template-sections.sh", ["."]],
+      ["scripts/templates/shell/verify-workflow-contracts.sh", ["."]]
+    ].map(([scriptPath, args]) => ({
+      name: scriptPath,
+      result: run(shellRuntime, [path.join(root, scriptPath), ...args])
+    }))
+  : [];
+
+const results = [...scriptRuns, ...shellRuns, ...powerShellRuns, ...cliRuns];
 const failures = results
   .filter(({ result }) => (result.status ?? 1) !== 0)
   .map(({ name, result }) => ({
@@ -97,6 +111,7 @@ console.log(
     {
       ok: true,
       scripts: scriptRuns.length,
+      shell: shellRuns.length,
       powerShell: powerShellRuns.length,
       cli: cliRuns.length
     },

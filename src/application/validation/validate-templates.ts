@@ -2,6 +2,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import fg from "fast-glob";
 import YAML from "yaml";
+import { TEMPLATE_REQUIRED_SECTIONS } from "../../shared/constants.js";
 
 export interface TemplateValidationFinding {
   file: string;
@@ -59,6 +60,12 @@ const REQUIRED_WORKFLOW_STAGE_FIELDS = [
   "**Next Trigger**"
 ];
 
+interface RequiredSectionsConfig {
+  "task-template": string[];
+  "workflow-template": string[];
+  "workflow-stage-fields"?: string[];
+}
+
 function parseFrontMatter(content: string): Record<string, unknown> {
   const match = content.match(/^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/);
   if (!match) {
@@ -85,7 +92,8 @@ function validateTemplateEntry(
   root: string,
   file: string,
   content: string,
-  frontMatter: Record<string, unknown>
+  frontMatter: Record<string, unknown>,
+  requiredSections: RequiredSectionsConfig
 ): TemplateValidationFinding[] {
   const findings: TemplateValidationFinding[] = [];
   const relativeFile = path.relative(root, file);
@@ -100,6 +108,12 @@ function validateTemplateEntry(
   for (const field of requiredFields) {
     if (!(field in frontMatter)) {
       findings.push({ file: relativeFile, message: `Missing front matter field ${field}` });
+    }
+  }
+
+  for (const section of requiredSections[kind as keyof RequiredSectionsConfig] ?? []) {
+    if (!content.includes(section)) {
+      findings.push({ file: relativeFile, message: `Missing required section ${section}` });
     }
   }
 
@@ -121,6 +135,11 @@ function validateTemplateEntry(
   return findings;
 }
 
+async function loadRequiredSections(root: string): Promise<RequiredSectionsConfig> {
+  const configPath = path.join(root, TEMPLATE_REQUIRED_SECTIONS);
+  return JSON.parse(await fs.readFile(configPath, "utf8")) as RequiredSectionsConfig;
+}
+
 export async function listTemplateCatalog(root: string): Promise<TemplateCatalogEntry[]> {
   const entries = await collectTemplateEntries(root, ["templates/tasks/*.md", "templates/workflows/*.md"]);
   return entries
@@ -135,10 +154,11 @@ export async function listTemplateCatalog(root: string): Promise<TemplateCatalog
 
 export async function validateTemplateCatalog(root: string): Promise<TemplateValidationReport> {
   const entries = await collectTemplateEntries(root, ["templates/tasks/*.md", "templates/workflows/*.md"]);
+  const requiredSections = await loadRequiredSections(root);
   const findings: TemplateValidationFinding[] = [];
 
   for (const entry of entries) {
-    findings.push(...validateTemplateEntry(root, entry.file, entry.content, entry.frontMatter));
+    findings.push(...validateTemplateEntry(root, entry.file, entry.content, entry.frontMatter, requiredSections));
   }
 
   return {
@@ -149,12 +169,13 @@ export async function validateTemplateCatalog(root: string): Promise<TemplateVal
 
 export async function validateWorkflowTemplate(root: string, workflowId: string): Promise<TemplateValidationReport> {
   const entries = await collectTemplateEntries(root, ["templates/workflows/*.md"]);
+  const requiredSections = await loadRequiredSections(root);
   const entry = entries.find(({ frontMatter }) => frontMatter.id === workflowId);
   if (!entry) {
     throw new Error(`Unknown workflow: ${workflowId}`);
   }
 
-  const findings = validateTemplateEntry(root, entry.file, entry.content, entry.frontMatter);
+  const findings = validateTemplateEntry(root, entry.file, entry.content, entry.frontMatter, requiredSections);
   return { ok: findings.length === 0, findings };
 }
 

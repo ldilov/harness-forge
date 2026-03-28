@@ -34,9 +34,10 @@ Get-ChildItem -Path $TemplateDir -Recurse -Filter *.md | Sort-Object FullName | 
   }
 
   $requiredFields = @($requiredCommonFields)
-  if ($file.FullName -like "*\templates\tasks\*") {
+  $normalizedPath = $file.FullName -replace '\\', '/'
+  if ($normalizedPath -like "*/templates/tasks/*") {
     $requiredFields += $requiredTaskFields
-  } elseif ($file.FullName -like "*\templates\workflows\*") {
+  } elseif ($normalizedPath -like "*/templates/workflows/*") {
     $requiredFields += $requiredWorkflowFields
   }
 

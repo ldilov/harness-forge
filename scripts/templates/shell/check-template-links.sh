@@ -4,8 +4,8 @@ set -euo pipefail
 ROOT="${1:-.}"
 FAIL=0
 
-find "$ROOT/templates" -type f -name '*.md' | sort | while IFS= read -r file; do
-  grep -o '\[[^]]*\]([^)]*)' "$file" | while IFS= read -r link; do
+while IFS= read -r file; do
+  while IFS= read -r link; do
     target="$(printf '%s' "$link" | sed -E 's/.*\(([^)]+)\)/\1/')"
     case "$target" in
       http*|mailto:*|'#'*) continue ;;
@@ -15,8 +15,8 @@ find "$ROOT/templates" -type f -name '*.md' | sort | while IFS= read -r file; do
       echo "[FAIL] Broken link in $file -> $target"
       FAIL=1
     fi
-  done
-done
+  done < <(grep -o '\[[^]]*\]([^)]*)' "$file" || true)
+done < <(find "$ROOT/templates" -type f -name '*.md' | sort)
 
 if [ "$FAIL" -ne 0 ]; then
   exit 1

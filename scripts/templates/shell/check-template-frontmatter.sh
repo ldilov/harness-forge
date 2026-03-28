@@ -10,7 +10,7 @@ if [ ! -d "$TEMPLATE_DIR" ]; then
   exit 2
 fi
 
-find "$TEMPLATE_DIR" -type f -name '*.md' | sort | while IFS= read -r file; do
+while IFS= read -r file; do
   first_line="$(head -n 1 "$file" || true)"
   if [ "$first_line" != "---" ]; then
     echo "[FAIL] Missing front matter start: $file"
@@ -30,7 +30,7 @@ find "$TEMPLATE_DIR" -type f -name '*.md' | sort | while IFS= read -r file; do
       FAIL=1
     fi
   done
-done
+done < <(find "$TEMPLATE_DIR" -type f -name '*.md' | sort)
 
 if [ "$FAIL" -ne 0 ]; then
   exit 1
