@@ -48,7 +48,7 @@ jobs:
       - run: npm publish --access public --provenance
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-   
+
   publish-github:
     needs: package
     runs-on: ubuntu-latest
@@ -63,10 +63,23 @@ jobs:
           node-version: 22
           cache: npm
           registry-url: https://npm.pkg.github.com
-          scope: "@harness-forge"
+          scope: "@ldilov"
 
       - run: npm ci
       - run: npm run build
+
+      - name: Rewrite package.json for GitHub Packages
+        run: |
+          node -e "
+            const fs = require('fs');
+            const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+
+            pkg.name = '@ldilov/harness-forge-cli';
+            delete pkg.publishConfig;
+
+            fs.writeFileSync('package.json', JSON.stringify(pkg, null, 2));
+          "
+
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GH_TOKEN }}

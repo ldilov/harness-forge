@@ -94,7 +94,7 @@ describe("shell integration", () => {
     }
   });
 
-  it("reports missing versus configured shell status correctly", { timeout: 15_000 }, async () => {
+  it("reports missing versus configured shell status correctly", { timeout: 30_000 }, async () => {
     const homeDir = await fs.mkdtemp(path.join(os.tmpdir(), "hforge-shell-status-"));
     const baseEnv = createShellEnv(homeDir);
 

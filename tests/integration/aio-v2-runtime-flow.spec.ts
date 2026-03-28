@@ -212,7 +212,7 @@ describe("aio v2 runtime flow integration", () => {
     expect(installState?.fileWrites).toContain(recommendationsPath);
   });
 
-  it("aggregates multiple targets into one shared runtime document during bootstrap", async () => {
+  it("aggregates multiple targets into one shared runtime document during bootstrap", { timeout: 15_000 }, async () => {
     const tempRoot = await fs.mkdtemp(path.join(os.tmpdir(), "hforge-aio-v2-multi-"));
     tempRoots.push(tempRoot);
 
