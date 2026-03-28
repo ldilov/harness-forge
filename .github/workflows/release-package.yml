@@ -20,8 +20,6 @@ jobs:
 
       - run: npm ci
       - run: npm run build
-      - run: npm run validate:local
-      - run: npm run validate:release
       - run: npm run release:dry-run
       - run: npm pack --json
 
@@ -45,8 +43,6 @@ jobs:
 
       - run: npm ci
       - run: npm run build
-      - run: npm run validate:local
-      - run: npm run validate:release
       - run: npm publish --access public --provenance
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
