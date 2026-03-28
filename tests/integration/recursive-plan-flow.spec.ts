@@ -44,6 +44,8 @@ describe("recursive plan flow integration", () => {
     expect(result.session.handles.some((handle) => handle.targetRef.endsWith("repo/repo-map.json"))).toBe(true);
     expect(result.session.handles.some((handle) => handle.targetRef.endsWith("tasks/TASK-REC-001/task-pack.json"))).toBe(true);
     expect(await fs.readFile(result.artifactPaths.sessionPath, "utf8")).toContain("\"status\": \"draft\"");
+    expect(await fs.readFile(result.artifactPaths.executionPolicyPath, "utf8")).toContain("\"allowStructuredRun\": true");
+    expect(await fs.readFile(result.artifactPaths.capabilitiesPath, "utf8")).toContain("\"languageId\": \"typescript\"");
     expect(await fs.readFile(result.artifactPaths.summaryPath, "utf8")).toContain("\"outcome\": \"draft\"");
     expect(await fs.readFile(result.artifactPaths.tracePath, "utf8")).toContain("\"eventType\":\"tool-call\"");
     expect(await fs.readFile(taskPaths.recursiveSessionLinkPath, "utf8")).toContain(result.session.sessionId);

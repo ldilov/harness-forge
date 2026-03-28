@@ -25,6 +25,8 @@ for (const command of [
   "shell setup",
   "shell status",
   "refresh",
+  "update",
+  "upgrade",
   "task list",
   "task inspect",
   "pack inspect",
@@ -42,6 +44,10 @@ for (const command of [
   "template validate",
   "template suggest",
   "flow status",
+  "recursive capabilities",
+  "recursive run",
+  "recursive runs",
+  "recursive inspect-run",
   "observability summarize",
   "observability report",
   "parallel plan",
@@ -59,7 +65,18 @@ for (const command of [
   }
 }
 
-for (const fragment of ["doctor", "audit", "cartograph", "target inspect", "shell setup", "validate:release", "validate:local", "release:dry-run"]) {
+for (const fragment of [
+  "doctor",
+  "audit",
+  "cartograph",
+  "target inspect",
+  "shell setup",
+  "recursive capabilities",
+  "update --root",
+  "validate:release",
+  "validate:local",
+  "release:dry-run"
+]) {
   if (!readme.includes(fragment)) {
     failures.push({ file: "README.md", issue: `Missing README reference ${fragment}` });
   }
@@ -72,7 +89,7 @@ if (!includesAny(readme, ["flow status", "flow recovery"])) {
   });
 }
 
-for (const fragment of ["doctor", "audit", "refresh", "diff-install", "sync", "upgrade-surface", "prune"]) {
+for (const fragment of ["doctor", "audit", "refresh", "update", "upgrade", "diff-install", "sync", "upgrade-surface", "prune"]) {
   if (!maintenanceDoc.includes(fragment)) {
     failures.push({ file: "docs/maintenance-lifecycle.md", issue: `Missing maintenance command ${fragment}` });
   }

@@ -75,7 +75,18 @@ for (const hook of hooksManifest.hooks ?? []) {
   }
 }
 
-for (const requiredArtifactId of ["spec", "plan", "tasks", "flow-state", "issue-export"]) {
+for (const requiredArtifactId of [
+  "spec",
+  "plan",
+  "tasks",
+  "flow-state",
+  "issue-export",
+  "recursive-runtime-language-capabilities",
+  "recursive-runtime-execution-policy",
+  "recursive-runtime-session-capabilities",
+  "recursive-runtime-run-meta",
+  "recursive-runtime-run-result"
+]) {
   if (!(flowArtifacts.artifacts ?? []).some((artifact) => artifact.id === requiredArtifactId)) {
     failures.push({ issue: "Flow artifact catalog is missing a required artifact.", artifactId: requiredArtifactId });
   }

@@ -24,7 +24,7 @@ export interface InstallStateRecord {
   preferredTargets?: string[];
   setupProfile?: string;
   enabledModules?: string[];
-  lastAction?: "init" | "install" | "refresh" | "bootstrap";
+  lastAction?: "init" | "install" | "refresh" | "bootstrap" | "update";
   recoveryHints?: string[];
 }
 

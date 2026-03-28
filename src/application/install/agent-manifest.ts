@@ -74,6 +74,15 @@ export interface AgentManifest {
     runtimeSurfaces: string[];
   }>;
   localLaunchers: string[];
+  commandExecution: {
+    preferredOrder: string[];
+    modes: Array<{
+      id: string;
+      platform: "any" | "windows" | "posix";
+      commandPrefix: string;
+      whenToUse: string;
+    }>;
+  };
   surfaces: AgentManifestSurface[];
   guidance: string[];
 }
@@ -174,6 +183,24 @@ function buildSurfaceIndex(runtime: RuntimeIndexDocument | null, launchers: stri
     AGENT_MANIFEST_FILE,
     createSurface(AGENT_MANIFEST_FILE, "generated", "generated", "Machine-readable custom-agent manifest describing bridges, canonical roots, and safe command discovery.")
   );
+  surfaces.set(
+    ".hforge/runtime/recursive/language-capabilities.json",
+    createSurface(
+      ".hforge/runtime/recursive/language-capabilities.json",
+      "runtime-state",
+      "generated",
+      "Canonical recursive structured-analysis capability map for language adapter depth and execution posture."
+    )
+  );
+  surfaces.set(
+    ".hforge/runtime/recursive/sessions",
+    createSurface(
+      ".hforge/runtime/recursive/sessions",
+      "runtime-state",
+      "hidden-canonical",
+      "Session-scoped recursive runtime state, including structured runs, policy, summaries, and future promotion traces."
+    )
+  );
 
   for (const launcherPath of launchers) {
     surfaces.set(
@@ -252,12 +279,51 @@ export async function writeAgentManifest(
       ]),
     installedTargets,
     localLaunchers: launcherPaths,
+    commandExecution: {
+      preferredOrder: ["workspace-launcher-windows", "workspace-launcher-powershell", "workspace-launcher-posix", "bare-hforge", "npx-package"],
+      modes: [
+        {
+          id: "workspace-launcher-windows",
+          platform: "windows",
+          commandPrefix: ".\\.hforge\\generated\\bin\\hforge.cmd",
+          whenToUse: "Preferred in installed Windows workspaces when bare hforge is unavailable on PATH."
+        },
+        {
+          id: "workspace-launcher-powershell",
+          platform: "windows",
+          commandPrefix: ".\\.hforge\\generated\\bin\\hforge.ps1",
+          whenToUse: "Use in PowerShell when the CMD launcher is not the preferred shell entrypoint."
+        },
+        {
+          id: "workspace-launcher-posix",
+          platform: "posix",
+          commandPrefix: "./.hforge/generated/bin/hforge",
+          whenToUse: "Preferred in installed POSIX workspaces when bare hforge is unavailable on PATH."
+        },
+        {
+          id: "bare-hforge",
+          platform: "any",
+          commandPrefix: "hforge",
+          whenToUse: "Use when hforge is already available on PATH through shell setup or global install."
+        },
+        {
+          id: "npx-package",
+          platform: "any",
+          commandPrefix: "npx @harness-forge/cli",
+          whenToUse: "Fallback when no local launcher is available yet or when the agent is operating before install."
+        }
+      ]
+    },
     surfaces: buildSurfaceIndex(runtimeIndex, launcherPaths),
     guidance: [
       "Treat AGENTS.md as the primary human-readable instruction entrypoint.",
       "Use .agents/skills/ for discovery and .hforge/library/skills/ for canonical execution contracts.",
       "Treat .hforge/library/, .hforge/templates/, .hforge/runtime/, .hforge/state/, and .hforge/generated/ as AI-layer surfaces rather than product code.",
-      "Use .hforge/generated/agent-command-catalog.json to discover safe CLI commands before inventing your own execution path."
+      "Use .hforge/generated/agent-command-catalog.json to discover safe CLI commands before inventing your own execution path.",
+      "Resolve command execution in this order: workspace launcher, bare hforge on PATH, then npx @harness-forge/cli.",
+      "Use .hforge/runtime/recursive/language-capabilities.json to discover recursive structured-analysis support before attempting repository-wide recursive analysis.",
+      "Use hforge recursive capabilities --root . --json, hforge recursive run <sessionId> --file <snippet> --json, hforge recursive run <sessionId> --stdin --json, hforge recursive runs <sessionId> --json, and hforge recursive inspect-run <sessionId> <runId> --json as the promoted recursive structured-analysis command family.",
+      "Use hforge update --root . --yes or hforge update --root . --dry-run --yes to refresh managed Harness Forge surfaces without discarding gathered runtime state."
     ]
   };
 

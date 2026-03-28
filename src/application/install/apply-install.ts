@@ -10,8 +10,12 @@ import { generateGuidance } from "./generate-guidance.js";
 import { rewriteInstalledAiLayerReferences } from "./rewrite-installed-ai-layer.js";
 import { writeSharedRuntime } from "./shared-runtime.js";
 
-export async function applyInstall(root: string, plan: InstallPlan): Promise<{ messages: string[]; guidancePath: string }> {
-  const packageJson = await readJsonFile<{ version: string }>(path.join(PACKAGE_ROOT, "package.json"));
+export async function applyInstall(
+  root: string,
+  plan: InstallPlan,
+  packageRoot = PACKAGE_ROOT
+): Promise<{ messages: string[]; guidancePath: string }> {
+  const packageJson = await readJsonFile<{ version: string }>(path.join(packageRoot, "package.json"));
   const visibilityPolicy = plan.visibilityPolicy ?? {
     mode: "hidden-ai-layer" as const,
     aiLayerRoot: path.join(root, ".hforge"),
@@ -28,10 +32,10 @@ export async function applyInstall(root: string, plan: InstallPlan): Promise<{ m
   const guidance = generateGuidance(plan);
   const guidancePath = path.join(root, ".hforge", "state", "post-install-guidance.txt");
   await writeTextFile(guidancePath, guidance);
-  const sharedRuntime = await writeSharedRuntime(root, plan);
+  const sharedRuntime = await writeSharedRuntime(root, plan, packageRoot);
 
   const existingState = await loadInstallState(root);
-  const commandCatalog = await writeAgentCommandCatalog(root, PACKAGE_ROOT);
+  const commandCatalog = await writeAgentCommandCatalog(root, packageRoot);
   const agentManifestPath = path.join(root, ".hforge", "agent-manifest.json");
   const generatedFiles = [
     guidancePath,
@@ -76,7 +80,7 @@ export async function applyInstall(root: string, plan: InstallPlan): Promise<{ m
         `Use "hforge refresh --root ${root}" to rewrite shared runtime summaries after install changes.`
       ]
   });
-  const agentManifest = await writeAgentManifest(root, PACKAGE_ROOT);
+  const agentManifest = await writeAgentManifest(root, packageRoot);
   messages.push(`Agent command catalog written to ${commandCatalog.jsonPath}`);
   messages.push(`Agent manifest written to ${agentManifest.path}`);
   if (sharedRuntime) {

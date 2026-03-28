@@ -12,6 +12,7 @@ export function generateGuidance(plan: InstallPlan): string {
     "Use .hforge/runtime/findings/risk-signals.json to inspect baseline risk signals captured for the workspace.",
     'Use "hforge shell status --json" to inspect whether bare hforge is available on PATH.',
     'Use "hforge shell setup --yes" to add a user-level shim and supported shell profile block without forcing a global npm install.',
+    'Agents should resolve commands in this order: ".hforge/generated/bin/hforge(.cmd|.ps1)", then bare "hforge", then "npx @harness-forge/cli".',
     'Use "hforge commands --json" to inspect CLI commands and npm scripts exposed to agents.',
     'Use "hforge catalog --json" to review installed bundles.',
     'Use "hforge template list" to discover starter task and workflow templates.'

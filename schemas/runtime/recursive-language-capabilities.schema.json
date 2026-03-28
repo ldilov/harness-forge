@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://harness-forge.dev/schemas/runtime/recursive-language-capabilities.schema.json",
+  "title": "Recursive language capabilities",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "generatedAt", "workspaceRoot", "summary", "languages"],
+  "properties": {
+    "version": { "type": "integer", "minimum": 1 },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "workspaceRoot": { "type": "string" },
+    "summary": { "type": "string" },
+    "languages": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/languageCapability" }
+    }
+  },
+  "$defs": {
+    "languageCapability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["languageId", "displayName", "adapterStatus", "analysisDepth", "nativeExecutionStatus", "notes"],
+      "properties": {
+        "languageId": { "type": "string" },
+        "displayName": { "type": "string" },
+        "adapterStatus": {
+          "type": "string",
+          "enum": ["unavailable", "available", "degraded"]
+        },
+        "analysisDepth": {
+          "type": "string",
+          "enum": ["none", "syntax-aware", "build-aware", "semantic"]
+        },
+        "nativeExecutionStatus": {
+          "type": "string",
+          "enum": ["unsupported", "disabled", "available"]
+        },
+        "notes": { "type": "string" },
+        "evidenceRefs": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    }
+  }
+}

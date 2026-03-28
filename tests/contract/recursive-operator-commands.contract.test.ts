@@ -17,7 +17,7 @@ describe("recursive operator commands contract", () => {
     const recursive = program.commands.find((command) => command.name() === "recursive");
     expect(recursive).toBeTruthy();
     expect(recursive?.commands.map((command) => command.name())).toEqual(
-      expect.arrayContaining(["plan", "inspect", "adr", "resume", "finalize", "compact", "repl"])
+      expect.arrayContaining(["plan", "capabilities", "run", "runs", "inspect-run", "inspect", "adr", "resume", "finalize", "compact", "repl"])
     );
   });
 
@@ -26,8 +26,10 @@ describe("recursive operator commands contract", () => {
     const catalog = await loadAgentCommandCatalog(root);
 
     expect(docsCommands).toContain("recursive plan");
+    expect(docsCommands).toContain("recursive capabilities");
     expect(docsCommands).toContain("recursive inspect");
     expect(catalog.cliCommands.some((entry) => entry.command.includes("recursive plan"))).toBe(true);
+    expect(catalog.cliCommands.some((entry) => entry.command.includes("recursive capabilities"))).toBe(true);
     expect(catalog.cliCommands.some((entry) => entry.command.includes("recursive inspect"))).toBe(true);
   });
 });

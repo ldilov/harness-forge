@@ -1,0 +1,15 @@
+{
+  "policyId": "recursive-structured-analysis-default",
+  "sessionId": "RS-123",
+  "isolationLevel": "read-only-inspection",
+  "allowStructuredRun": true,
+  "allowedInputs": ["file", "stdin"],
+  "restrictedBehaviors": ["write-product-code", "network"],
+  "budgetSummary": {
+    "maxDurationMs": 300000,
+    "maxRuns": 10,
+    "notes": "Structured analysis remains bounded and read-oriented."
+  },
+  "createdAt": "2026-03-28T00:00:00.000Z",
+  "updatedAt": "2026-03-28T00:00:00.000Z"
+}

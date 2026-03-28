@@ -71,7 +71,7 @@ export async function refreshWorkspaceRuntime(
     plan.sharedRuntime = createSharedRuntimePlan(workspaceRoot, targetId, adapter);
     plan.visibilityPolicy.hiddenCanonicalRoots = plan.sharedRuntime.authoritativeSurfaces;
     plan.visibilityPolicy.visibleBridgePaths = plan.sharedRuntime.visibleBridgePaths;
-    await writeSharedRuntime(workspaceRoot, plan);
+    await writeSharedRuntime(workspaceRoot, plan, packageRoot);
   }
   await writeAgentManifest(workspaceRoot, packageRoot);
 

@@ -35,10 +35,11 @@
     ],
     "runtimeSurfaces": [
       ".hforge/runtime/index.json",
-      ".hforge/runtime/README.md"
+      ".hforge/runtime/README.md",
+      ".hforge/runtime/recursive/language-capabilities.json"
     ],
     "supportMode": "translated",
-    "notes": "OpenCode relies on thin visible bridges and the hidden .hforge runtime instead of a native runtime payload or root-visible canonical content.",
+    "notes": "OpenCode relies on thin visible bridges and the hidden .hforge runtime instead of a native runtime payload or root-visible canonical content, including translated recursive structured-analysis discovery through the shared runtime capability map and durable session artifacts.",
     "authoritativeSurfaces": [
       ".hforge/library/skills",
       ".hforge/library/rules",

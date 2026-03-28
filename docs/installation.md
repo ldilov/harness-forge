@@ -47,7 +47,14 @@ After install changes, use:
 
 ```bash
 hforge refresh --root /path/to/your/workspace --json
+hforge update --root /path/to/your/workspace --dry-run --yes
+hforge update --root /path/to/your/workspace --yes
 ```
+
+The non-destructive updater downloads the requested published Harness Forge
+version or dist-tag, reapplies managed surfaces, writes an install-state backup
+under `.hforge/state/`, and preserves gathered runtime state such as task
+artifacts, decision records, recursive sessions, and observability outputs.
 
 Every successful install also writes a shared runtime summary under
 `.hforge/runtime/` and materializes the canonical hidden AI layer under
@@ -76,6 +83,8 @@ Every successful install also writes a shared runtime summary under
 - `.hforge/runtime/recursive/sessions/RS-XXX/session.json` appears only when an
   operator explicitly escalates hard work into recursive mode and records the
   durable draft session, budget, handles, and promotion state
+- `.hforge/runtime/recursive/language-capabilities.json` records the canonical
+  recursive structured-analysis capability truth for the workspace
 
 ## Shell integration vs global install
 

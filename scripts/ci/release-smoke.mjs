@@ -71,9 +71,13 @@ const cliRuns = fs.existsSync(distCliPath)
       { name: "pack", result: run(nodeCommand, [distCliPath, "pack", "--help"]) },
       { name: "review", result: run(nodeCommand, [distCliPath, "review", "--help"]) },
       { name: "export", result: run(nodeCommand, [distCliPath, "export", "--help"]) },
+      { name: "update", result: run(nodeCommand, [distCliPath, "update", "--help"]) },
+      { name: "upgrade", result: run(nodeCommand, [distCliPath, "upgrade", "--help"]) },
       { name: "catalog", result: run(nodeCommand, [distCliPath, "catalog", "--json"]) },
       { name: "template-validate", result: run(nodeCommand, [distCliPath, "template", "validate", "--json"]) },
       { name: "flow-status", result: run(nodeCommand, [distCliPath, "flow", "status", "--json"]) },
+      { name: "recursive-capabilities", result: run(nodeCommand, [distCliPath, "recursive", "capabilities", "--help"]) },
+      { name: "recursive-run", result: run(nodeCommand, [distCliPath, "recursive", "run", "--help"]) },
       { name: "doctor", result: run(nodeCommand, [distCliPath, "doctor", "--json"]) },
       { name: "audit", result: run(nodeCommand, [distCliPath, "audit", "--json"]) }
     ]

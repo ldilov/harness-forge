@@ -16,6 +16,14 @@ const requiredPaths = new Set([
 
 const failures = [];
 const packageFiles = packageJson.files ?? [];
+const explicitlyRequiredRecursivePaths = [
+  ".agents/skills/recursive-structured-analysis/SKILL.md",
+  "skills/recursive-structured-analysis/SKILL.md",
+  "schemas/runtime/recursive-execution-policy.schema.json",
+  "schemas/runtime/recursive-language-capabilities.schema.json",
+  "schemas/runtime/recursive-run-meta.schema.json",
+  "schemas/runtime/recursive-run-result.schema.json"
+];
 
 function isCoveredByPackageFiles(requiredPath) {
   return packageFiles.some((entry) => requiredPath === entry || requiredPath.startsWith(`${entry}/`));
@@ -31,6 +39,12 @@ for (const requiredPath of requiredPaths) {
 
   if (!isCoveredByPackageFiles(requiredPath)) {
     failures.push({ issue: "Required package-surface path is not covered by package.json files.", path: requiredPath });
+  }
+}
+
+for (const requiredPath of explicitlyRequiredRecursivePaths) {
+  if (!requiredPaths.has(requiredPath)) {
+    failures.push({ issue: "Recursive structured-analysis path is missing from package-surface manifest.", path: requiredPath });
   }
 }
 

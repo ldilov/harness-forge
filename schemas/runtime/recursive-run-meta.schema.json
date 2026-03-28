@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://harness-forge.dev/schemas/runtime/recursive-run-meta.schema.json",
+  "title": "Recursive structured run metadata",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["runId", "sessionId", "submissionMode", "status", "startedAt", "policyRef", "summary"],
+  "properties": {
+    "runId": { "type": "string" },
+    "sessionId": { "type": "string" },
+    "submissionMode": {
+      "type": "string",
+      "enum": ["file", "stdin"]
+    },
+    "sourceRef": { "type": "string" },
+    "status": {
+      "type": "string",
+      "enum": ["pending", "running", "success", "failure", "rejection", "interrupted", "degraded"]
+    },
+    "startedAt": { "type": "string", "format": "date-time" },
+    "completedAt": { "type": "string", "format": "date-time" },
+    "policyRef": { "type": "string" },
+    "resultRef": { "type": "string" },
+    "summary": { "type": "string" },
+    "warningCount": { "type": "integer", "minimum": 0 },
+    "failureReason": { "type": "string" }
+  }
+}

@@ -13,6 +13,7 @@ import type {
   SharedRuntimeTarget
 } from "../../domain/operations/install-plan.js";
 import type { TargetAdapter } from "../../domain/targets/adapter.js";
+import type { RecursiveLanguageCapabilities } from "../../domain/recursive/language-capabilities.js";
 import {
   AI_LAYER_LIBRARY_DIR,
   AI_LAYER_VISIBLE_MODE,
@@ -37,6 +38,7 @@ import {
   RUNTIME_REPO_MAP_FILE,
   RUNTIME_RISK_SIGNALS_FILE,
   RUNTIME_RECURSIVE_DIR,
+  RUNTIME_RECURSIVE_LANGUAGE_CAPABILITIES_FILE,
   RUNTIME_RECURSIVE_SESSION_FILE,
   RUNTIME_RECURSIVE_SESSIONS_DIR,
   RUNTIME_RECURSIVE_SUMMARY_FILE,
@@ -48,6 +50,7 @@ import {
   writeTextFile
 } from "../../shared/index.js";
 import { recommendFromIntelligence } from "../recommendations/recommend-from-intelligence.js";
+import { deriveRecursiveLanguageCapabilities } from "../recursive/derive-language-capabilities.js";
 
 const execFileAsync = promisify(execFile);
 
@@ -193,7 +196,15 @@ export function createSharedRuntimePlan(
       createArtifact(rootDir, "instruction-plan", "instruction", `${RUNTIME_REPO_DIR}/${RUNTIME_INSTRUCTION_PLAN_FILE}`, "Target-aware instruction bridge plans for installed runtimes.", "hforge synthesize-instructions --json"),
       createArtifact(rootDir, "scan-summary", "repo", `${RUNTIME_REPO_DIR}/${RUNTIME_SCAN_SUMMARY_FILE}`, "Baseline repository scan signals and detected stack evidence.", "hforge scan --json"),
       createArtifact(rootDir, "validation-gaps", "finding", `${RUNTIME_FINDINGS_DIR}/${RUNTIME_VALIDATION_GAPS_FILE}`, "Detected validation gaps that should influence runtime guidance.", "hforge scan --json"),
-      createArtifact(rootDir, "risk-signals", "finding", `${RUNTIME_FINDINGS_DIR}/${RUNTIME_RISK_SIGNALS_FILE}`, "Detected risk signals that should influence runtime guidance.", "hforge scan --json")
+      createArtifact(rootDir, "risk-signals", "finding", `${RUNTIME_FINDINGS_DIR}/${RUNTIME_RISK_SIGNALS_FILE}`, "Detected risk signals that should influence runtime guidance.", "hforge scan --json"),
+      createArtifact(
+        rootDir,
+        "recursive-language-capabilities",
+        "repo",
+        `${RUNTIME_RECURSIVE_DIR}/${RUNTIME_RECURSIVE_LANGUAGE_CAPABILITIES_FILE}`,
+        "Canonical recursive structured-analysis capability map for supported languages and execution posture.",
+        "hforge recursive capabilities --json"
+      )
     ]
   };
 }
@@ -425,6 +436,8 @@ async function writeRuntimeBaselineArtifacts(
     testSignals: baselines.repoIntelligence.testSignals,
     deploymentSignals: baselines.repoIntelligence.deploymentSignals
   };
+  const recursiveCapabilities = await deriveRecursiveLanguageCapabilities(workspaceRoot, baselines.repoIntelligence);
+  recursiveCapabilities.generatedAt = baselines.generatedAt;
 
   await Promise.all([
     writeJsonFile(artifactsById.get("repo-map")!.path, baselines.repoMap),
@@ -450,7 +463,8 @@ async function writeRuntimeBaselineArtifacts(
     writeJsonFile(artifactsById.get("risk-signals")!.path, {
       generatedAt: baselines.generatedAt,
       items: baselines.repoIntelligence.riskSignals
-    })
+    }),
+    writeJsonFile(artifactsById.get("recursive-language-capabilities")!.path, recursiveCapabilities)
   ]);
 }
 
@@ -486,6 +500,7 @@ function renderSharedRuntimeReadme(runtime: PersistedSharedRuntimeDocument): str
     `- \`.hforge/runtime/tasks/TASK-XXX/${RUNTIME_IMPACT_ANALYSIS_FILE}\` - Derived impact analysis for an active task`,
     `- \`.hforge/runtime/recursive/${RUNTIME_RECURSIVE_SESSIONS_DIR}/RS-XXX/${RUNTIME_RECURSIVE_SESSION_FILE}\` - Optional recursive draft session with budget, handles, and promotion state`,
     `- \`.hforge/runtime/recursive/${RUNTIME_RECURSIVE_SESSIONS_DIR}/RS-XXX/${RUNTIME_RECURSIVE_SUMMARY_FILE}\` - Deterministic recursive handoff summary for the session`,
+    `- \`.hforge/runtime/recursive/${RUNTIME_RECURSIVE_LANGUAGE_CAPABILITIES_FILE}\` - Canonical recursive structured-analysis capability map for language adapter depth and execution posture`,
     "",
     "## Short-Term Cache",
     ...runtime.cacheSurfaces.map((surface) => `- \`${surface.path}/\` - ${surface.description}`),
@@ -502,12 +517,16 @@ function renderSharedRuntimeReadme(runtime: PersistedSharedRuntimeDocument): str
   return `${lines.join("\n")}\n`;
 }
 
-export async function writeSharedRuntime(workspaceRoot: string, plan: InstallPlan): Promise<SharedRuntimePlan | null> {
+export async function writeSharedRuntime(
+  workspaceRoot: string,
+  plan: InstallPlan,
+  packageRoot = PACKAGE_ROOT
+): Promise<SharedRuntimePlan | null> {
   const runtime = plan.sharedRuntime;
   if (!runtime) {
     return null;
   }
-  const packageJson = await readJsonFile<{ version: string }>(path.join(PACKAGE_ROOT, "package.json"));
+  const packageJson = await readJsonFile<{ version: string }>(path.join(packageRoot, "package.json"));
 
   await ensureDir(runtime.rootDir);
   for (const surface of [...runtime.durableSurfaces, ...runtime.cacheSurfaces]) {

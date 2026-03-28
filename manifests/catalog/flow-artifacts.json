@@ -289,6 +289,30 @@
       "lineageRole": "recursive-session"
     },
     {
+      "id": "recursive-runtime-language-capabilities",
+      "stage": "shared",
+      "pathPattern": ".hforge/runtime/recursive/language-capabilities.json",
+      "generatedBy": "recursive-runtime",
+      "required": false,
+      "lineageRole": "recursive-language-capabilities"
+    },
+    {
+      "id": "recursive-runtime-execution-policy",
+      "stage": "shared",
+      "pathPattern": ".hforge/runtime/recursive/sessions/*/execution-policy.json",
+      "generatedBy": "recursive-runtime",
+      "required": false,
+      "lineageRole": "recursive-execution-policy"
+    },
+    {
+      "id": "recursive-runtime-session-capabilities",
+      "stage": "shared",
+      "pathPattern": ".hforge/runtime/recursive/sessions/*/capabilities.json",
+      "generatedBy": "recursive-runtime",
+      "required": false,
+      "lineageRole": "recursive-session-capabilities"
+    },
+    {
       "id": "recursive-runtime-memory",
       "stage": "shared",
       "pathPattern": ".hforge/runtime/recursive/sessions/*/memory.json",
@@ -311,6 +335,22 @@
       "generatedBy": "recursive-runtime",
       "required": false,
       "lineageRole": "recursive-summary"
+    },
+    {
+      "id": "recursive-runtime-run-meta",
+      "stage": "shared",
+      "pathPattern": ".hforge/runtime/recursive/sessions/*/runs/*/meta.json",
+      "generatedBy": "recursive-runtime",
+      "required": false,
+      "lineageRole": "recursive-structured-run"
+    },
+    {
+      "id": "recursive-runtime-run-result",
+      "stage": "shared",
+      "pathPattern": ".hforge/runtime/recursive/sessions/*/runs/*/result.json",
+      "generatedBy": "recursive-runtime",
+      "required": false,
+      "lineageRole": "recursive-structured-run-result"
     },
     {
       "id": "flow-state",

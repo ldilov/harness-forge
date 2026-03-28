@@ -23,6 +23,7 @@ maintenance commands through the `hforge` CLI.
 - `shell setup` and `shell status` for optional PATH integration without forcing a global npm install
 - `status` for current workspace state
 - `refresh` for shared runtime regeneration after install or maintenance work
+- `update` and `upgrade` for non-destructive package refresh from the latest published Harness Forge version while preserving gathered runtime state
 - `task` for task-runtime inspection
 - `pack` for task-pack inspection
 - `review` for runtime and decision-health summaries
@@ -36,9 +37,11 @@ maintenance commands through the `hforge` CLI.
   Cursor, and OpenCode support inspection
 - `template validate` and `template suggest` for template and workflow flows
 - `flow status` for recoverable Speckit state
-- `recursive plan`, `recursive inspect`, `recursive adr`, `recursive resume`,
-  `recursive finalize`, `recursive compact`, and `recursive repl` for optional
-  recursive-runtime operation on difficult work
+- `recursive plan`, `recursive capabilities`, `recursive run`,
+  `recursive runs`, `recursive inspect-run`, `recursive inspect`,
+  `recursive adr`, `recursive resume`, `recursive finalize`,
+  `recursive compact`, and `recursive repl` for optional recursive-runtime
+  operation on difficult work
 - `observability summarize` and `observability report` for local metrics and
   effectiveness review
 - `parallel plan`, `parallel status`, and `parallel merge-check` for shard
@@ -53,6 +56,12 @@ maintenance commands through the `hforge` CLI.
 Use bare `hforge` after `shell setup`, after a global install, or by replacing
 it with the workspace-local launcher under `.hforge/generated/bin/`.
 
+For agents inside an installed workspace, the safest execution order is:
+
+1. `.hforge/generated/bin/hforge.cmd` or `.ps1` on Windows, or `./.hforge/generated/bin/hforge` on POSIX
+2. bare `hforge`
+3. `npx @harness-forge/cli`
+
 ```bash
 npx @harness-forge/cli
 npx @harness-forge/cli shell setup --yes
@@ -63,6 +72,8 @@ hforge shell status --json
 hforge init --root . --json
 hforge bootstrap --root . --yes
 hforge refresh --root . --json
+hforge update --root . --dry-run --yes
+hforge update --root . --yes
 hforge task list --root . --json
 hforge task inspect TASK-001 --root . --json
 hforge pack inspect TASK-001 --root . --json
@@ -81,6 +92,10 @@ hforge template validate --json
 hforge template suggest bugfix
 hforge flow status --json
 hforge recursive plan "investigate billing retry behavior" --task-id TASK-001 --json
+hforge recursive capabilities --root . --json
+hforge recursive run RS-123 --file analyze-billing.mjs --json
+hforge recursive runs RS-123 --json
+hforge recursive inspect-run RS-123 RUN-001 --json
 hforge recursive inspect RS-123 --json
 hforge observability summarize --json
 hforge observability report . --json
@@ -94,6 +109,12 @@ hforge sync --json
 hforge upgrade-surface --json
 hforge prune --json
 ```
+
+The `update` and `upgrade` commands download the requested published package
+version or dist-tag, reapply managed surfaces, write an install-state backup
+under `.hforge/state/`, and intentionally preserve gathered runtime state such
+as task artifacts, decision records, recursive sessions, and observability
+signals.
 
 ## Maintainer source-checkout examples
 
@@ -177,6 +198,10 @@ hforge parallel merge-check --json
 
 ```bash
 hforge recursive plan "investigate billing retry behavior across the route and service" --task-id TASK-001 --json
+hforge recursive capabilities --root . --json
+hforge recursive run RS-123 --file analyze-billing.mjs --json
+hforge recursive runs RS-123 --json
+hforge recursive inspect-run RS-123 RUN-001 --json
 hforge recursive inspect RS-123 --json
 hforge recursive compact RS-123 --json
 hforge recursive finalize RS-123 --json
@@ -186,6 +211,11 @@ The `recursive plan` entrypoint writes a durable draft session under
 `.hforge/runtime/recursive/sessions/`, reports the session id, the active
 budget policy, the seeded handles, and the current promotion state, and leaves
 ordinary non-recursive task/runtime flows untouched.
+
+The promoted recursive structured-analysis path uses
+`.hforge/runtime/recursive/language-capabilities.json` as the canonical
+workspace capability map and records run artifacts under
+`.hforge/runtime/recursive/sessions/<sessionId>/runs/`.
 
 ### Inspect the hidden runtime after initialization
 

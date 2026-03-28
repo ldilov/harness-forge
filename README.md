@@ -101,11 +101,11 @@ Instead of relying on one-off prompts or tribal setup knowledge, it gives you a 
 | 🎯 Runtime targets | 4 target surfaces: Codex, Claude Code, Cursor, OpenCode |
 | 🧠 Knowledge system | 14 language packs total: 5 seeded + 9 structured |
 | 🧩 Framework coverage | 12 framework packs including React, Next.js, Vite, Express, FastAPI, Django, ASP.NET Core, Spring Boot, Laravel, Symfony, Gin, and Ktor |
-| 🛠 Skills | 43 packaged skills across language engineering, workflow orchestration, operational helpers, and workload-specialized flows |
+| 🛠 Skills | 44 packaged skills across language engineering, workflow orchestration, operational helpers, and workload-specialized flows |
 | 🔁 Flow support | `.specify/` spec → plan → tasks → implement flow plus flow-state recovery |
 | 🔬 Intelligence | `scan`, `recommend`, `cartograph`, `classify-boundaries`, and `synthesize-instructions` |
 | 📊 Local observability | Effectiveness summaries, recommendation acceptance, hook runs, maintenance traces, and runtime summaries |
-| 🧱 Hard-task support | Recursive runtime sessions, parallel planning, merge-checks, and decision recording |
+| 🧱 Hard-task support | Recursive runtime sessions, structured recursive analysis, parallel planning, merge-checks, and decision recording |
 
 ---
 
@@ -519,7 +519,9 @@ That gives you:
 
 - a durable session identity
 - budget and promotion state
+- a canonical language-capability map for recursive structured analysis
 - compact working memory
+- session-scoped structured analysis runs with durable run records
 - append-only trace output
 - resumable investigation flow
 
@@ -561,6 +563,12 @@ In practice, that means teams can understand:
 2. what drifted
 3. what is safe to refresh, repair, prune, or upgrade
 
+Recursive structured analysis also stays intentionally honest about support:
+
+- structured runs are host-executed and session-bounded rather than arbitrary native code execution
+- language capability truth lives in `.hforge/runtime/recursive/language-capabilities.json`
+- Codex and Claude Code promote the recursive surface directly, while Cursor and OpenCode rely on translated shared-runtime guidance instead of claiming native parity
+
 ---
 
 ## ✅ Verify Everything Is Healthy
@@ -593,6 +601,13 @@ hforge review --root /path/to/your/workspace --json
 
 ## 📚 Operator Cheat Sheet
 
+Agents should not assume bare `hforge` is on `PATH`. In installed workspaces,
+resolve commands in this order:
+
+1. `.hforge/generated/bin/hforge.cmd` or `.ps1` on Windows, or `./.hforge/generated/bin/hforge` on POSIX
+2. bare `hforge`
+3. `npx @harness-forge/cli`
+
 | Goal | Command |
 | --- | --- |
 | Initialize the hidden runtime in a repo | `npx @harness-forge/cli init --root /path/to/your/workspace --json` |
@@ -602,6 +617,7 @@ hforge review --root /path/to/your/workspace --json
 | List commands agents can use | `hforge commands --json` |
 | Inspect what is installed | `hforge status --root /path/to/your/workspace --json` |
 | Refresh runtime summaries | `hforge refresh --root /path/to/your/workspace --json` |
+| Update Harness Forge safely in place | `hforge update --root /path/to/your/workspace --yes` |
 | Summarize runtime health | `hforge review --root /path/to/your/workspace --json` |
 | Export runtime state | `hforge export --root /path/to/your/workspace --json` |
 | Generate repo-aware recommendations | `hforge recommend /path/to/your/workspace --json` |
@@ -611,6 +627,10 @@ hforge review --root /path/to/your/workspace --json
 | Compare install state vs workspace | `hforge diff-install --root /path/to/your/workspace --json` |
 | Inspect flow recovery state | `hforge flow status --json` |
 | Review observability effectiveness | `hforge observability summarize --json` |
+| Inspect recursive structured-analysis support | `hforge recursive capabilities --root /path/to/your/workspace --json` |
+| Submit one structured recursive analysis run | `hforge recursive run <sessionId> --file /path/to/snippet.mjs --root /path/to/your/workspace --json` |
+| List prior structured recursive runs | `hforge recursive runs <sessionId> --root /path/to/your/workspace --json` |
+| Inspect one structured recursive run | `hforge recursive inspect-run <sessionId> <runId> --root /path/to/your/workspace --json` |
 
 ---
 

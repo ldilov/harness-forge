@@ -6,7 +6,7 @@ import { describe, expect, it } from "vitest";
 const root = process.cwd();
 
 describe("release dry-run integration", () => {
-  it("keeps the smoke and docs-alignment release checks executable", () => {
+  it("keeps the smoke and docs-alignment release checks executable", { timeout: 20_000 }, () => {
     const smoke = spawnSync(process.execPath, [path.join(root, "scripts", "ci", "smoke-runner.mjs")], {
       cwd: root,
       encoding: "utf8"

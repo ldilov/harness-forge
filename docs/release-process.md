@@ -16,6 +16,8 @@
 - `npm run validate:doc-command-alignment`
 - `npm run validate:runtime-consistency`
 - `npm run validate:release`
+- confirm recursive structured-analysis docs and generated-artifact surfaces stay aligned
+- confirm `hforge update --root <repo> --dry-run --yes` still previews a safe non-destructive refresh path
 
 ## Publish posture
 

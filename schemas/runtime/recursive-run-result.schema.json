@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://harness-forge.dev/schemas/runtime/recursive-run-result.schema.json",
+  "title": "Recursive structured run result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["runId", "outcome", "findings", "warnings", "artifactsRead", "artifactsWritten", "diagnostics", "completedAt"],
+  "properties": {
+    "runId": { "type": "string" },
+    "outcome": {
+      "type": "string",
+      "enum": ["success", "failure", "rejection", "interrupted", "degraded"]
+    },
+    "findings": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "warnings": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "artifactsRead": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "artifactsWritten": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "diagnostics": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "completedAt": { "type": "string", "format": "date-time" }
+  }
+}

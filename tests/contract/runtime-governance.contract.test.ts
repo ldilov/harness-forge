@@ -110,11 +110,20 @@ describe("runtime governance contract", () => {
     expect(flowArtifactIds.has("task-runtime-decision-record")).toBe(true);
     expect(flowArtifactIds.has("task-runtime-decision-index")).toBe(true);
     expect(flowArtifactIds.has("recursive-runtime-session")).toBe(true);
+    expect(flowArtifactIds.has("recursive-runtime-language-capabilities")).toBe(true);
+    expect(flowArtifactIds.has("recursive-runtime-execution-policy")).toBe(true);
+    expect(flowArtifactIds.has("recursive-runtime-session-capabilities")).toBe(true);
+    expect(flowArtifactIds.has("recursive-runtime-run-meta")).toBe(true);
+    expect(flowArtifactIds.has("recursive-runtime-run-result")).toBe(true);
     expect(flowArtifactIds.has("recursive-runtime-summary")).toBe(true);
     expect(packageSurface.requiredPaths).toContain("schemas/runtime/architecture-significance.schema.json");
     expect(packageSurface.requiredPaths).toContain("schemas/runtime/decision-record.schema.json");
     expect(packageSurface.requiredPaths).toContain("schemas/runtime/decision-coverage-summary.schema.json");
     expect(packageSurface.requiredPaths).toContain("schemas/runtime/recursive-session.schema.json");
+    expect(packageSurface.requiredPaths).toContain("schemas/runtime/recursive-execution-policy.schema.json");
+    expect(packageSurface.requiredPaths).toContain("schemas/runtime/recursive-language-capabilities.schema.json");
+    expect(packageSurface.requiredPaths).toContain("schemas/runtime/recursive-run-result.schema.json");
+    expect(packageSurface.requiredPaths).toContain("schemas/runtime/recursive-run-meta.schema.json");
     expect(packageSurface.requiredPaths).toContain("schemas/templates/recursive-template-registry.schema.json");
     expect(
       compatibilityMatrix.entries.every(

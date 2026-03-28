@@ -34,10 +34,11 @@
     ],
     "runtimeSurfaces": [
       ".hforge/runtime/index.json",
-      ".hforge/runtime/README.md"
+      ".hforge/runtime/README.md",
+      ".hforge/runtime/recursive/language-capabilities.json"
     ],
     "supportMode": "native",
-    "notes": "Claude Code keeps repo-root and .claude bridges thin while canonical skills, rules, knowledge, and templates live under the hidden .hforge layer.",
+    "notes": "Claude Code keeps repo-root and .claude bridges thin while canonical skills, rules, knowledge, and templates live under the hidden .hforge layer, including promoted recursive structured-analysis discovery through the shared runtime.",
     "authoritativeSurfaces": [
       ".hforge/library/skills",
       ".hforge/library/rules",

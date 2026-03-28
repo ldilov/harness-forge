@@ -20,6 +20,12 @@
       "description": "Repository scanning, framework detection, and evidence-backed recommendation output."
     },
     {
+      "id": "recursive-structured-analysis",
+      "family": "orchestration",
+      "displayName": "Recursive structured analysis",
+      "description": "Session-scoped structured recursive analysis, capability truth, durable run records, and related bridge guidance."
+    },
+    {
       "id": "flow-orchestration",
       "family": "orchestration",
       "displayName": "Flow orchestration",

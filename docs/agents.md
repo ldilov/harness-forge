@@ -14,6 +14,9 @@ AI content into the hidden `.hforge/` layer.
 - `.hforge/library/rules/` and `.hforge/library/knowledge/` for hidden installed rule and knowledge surfaces
 - `.hforge/runtime/recursive/sessions/` for optional hard-task recursive
   sessions that stay hidden alongside the rest of the AI layer
+- `.hforge/runtime/recursive/language-capabilities.json` for the canonical
+  recursive structured-analysis capability map before deeper recursive
+  investigation begins
 - `docs/authoring/enhanced-skill-import.md` for curated research and validation provenance behind imported skill upgrades
 - `RESEARCH-SOURCES.md` and `VALIDATION.md` for optional pack-level provenance detail
 
@@ -29,6 +32,8 @@ AI content into the hidden `.hforge/` layer.
 - when the application repo should stay clean and treat AI-only content as a hidden support layer
 - when a task is multi-hop, ambiguous, or architecture-heavy enough to justify
   an explicit recursive session instead of growing the prompt
+- when a recursive session needs one bounded structured analysis step with a
+  durable run record instead of chat-only reasoning
 
 ## Discovery rule
 
@@ -39,6 +44,14 @@ AI content into the hidden `.hforge/` layer.
 - in installed workspaces, recursive runtime state lives under
   `.hforge/runtime/recursive/sessions/<sessionId>/` and should be treated as
   hidden operational state rather than product code
+- use recursive structured analysis as the promoted execution surface for
+  recursive investigation, and treat the REPL as optional rather than
+  authoritative
+- treat `.hforge/runtime/recursive/language-capabilities.json` as the honest
+  recursive support contract before claiming a language has deep or native
+  structured-analysis support
+- treat Cursor and OpenCode recursive promotion as translated shared-runtime
+  guidance, not native parity with Codex or Claude Code
 - for custom agents that do not want to parse prose only, load
   `.hforge/agent-manifest.json` first and treat every surface it marks
   `treatAsProductCode: false` as AI-layer content rather than application code

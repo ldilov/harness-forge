@@ -17,6 +17,7 @@ The runtime now hydrates baseline repo-intelligence artifacts during bootstrap:
 - `.hforge/runtime/repo/recommendations.json`
 - `.hforge/runtime/repo/instruction-plan.json`
 - `.hforge/runtime/findings/risk-signals.json`
+- `.hforge/runtime/recursive/language-capabilities.json`
 
 Canonical target support truth lives in
 `manifests/catalog/harness-capability-matrix.json`.
@@ -27,3 +28,5 @@ Use it when you need to answer:
 - what fallback behavior degraded support requires
 - whether a support claim is still aligned with the generated
   `docs/target-support-matrix.md` surface
+- whether recursive structured analysis is promoted natively or only through
+  translated shared-runtime guidance for the selected target

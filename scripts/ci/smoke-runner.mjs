@@ -57,6 +57,18 @@ const scenarios = [
     args: ["refresh", "--root", tempRoot],
     expectStatus: 1,
     expectStderr: "No installed targets were found"
+  },
+  {
+    name: "update-help",
+    args: ["update", "--help"],
+    expectStatus: 0,
+    expectStdout: "Usage: hforge update"
+  },
+  {
+    name: "recursive-capabilities-help",
+    args: ["recursive", "capabilities", "--help"],
+    expectStatus: 0,
+    expectStdout: "Usage: hforge recursive capabilities"
   }
 ];
 

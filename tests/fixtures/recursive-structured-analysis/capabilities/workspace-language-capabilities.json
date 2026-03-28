@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "generatedAt": "2026-03-28T00:00:00.000Z",
+  "workspaceRoot": "/tmp/hforge-recursive-structured-analysis",
+  "summary": "Canonical recursive structured-analysis capability map for this workspace.",
+  "languages": [
+    {
+      "languageId": "typescript",
+      "displayName": "TypeScript",
+      "adapterStatus": "available",
+      "analysisDepth": "semantic",
+      "nativeExecutionStatus": "disabled",
+      "notes": "Host-executed structured analysis can inspect TypeScript-rich repositories with semantic support."
+    },
+    {
+      "languageId": "python",
+      "displayName": "Python",
+      "adapterStatus": "degraded",
+      "analysisDepth": "build-aware",
+      "nativeExecutionStatus": "unsupported",
+      "notes": "Repository analysis is available, but native Python execution is not promoted in this phase."
+    }
+  ]
+}

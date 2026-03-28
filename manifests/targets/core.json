@@ -30,7 +30,8 @@
       "supportLevel": "full",
       "supportNotes": [
         "Codex is a first-class target for install guidance, repo intelligence, maintenance commands, and flow recovery.",
-        "Hook authoring ships, but native hook execution remains documentation-driven because Codex does not expose the same runtime hook model as Claude Code."
+        "Hook authoring ships, but native hook execution remains documentation-driven because Codex does not expose the same runtime hook model as Claude Code.",
+        "Codex installs also promote recursive structured-analysis discovery through AGENTS.md, the command catalog, and the shared runtime capability map."
       ]
     },
     {
@@ -63,7 +64,8 @@
       "supportLevel": "full",
       "supportNotes": [
         "Claude Code is a first-class target for packaged skills, hooks, repo intelligence, maintenance commands, and flow recovery.",
-        "Claude installs keep both CLAUDE.md and AGENTS.md available so Claude-native and cross-agent entrypoints stay discoverable."
+        "Claude installs keep both CLAUDE.md and AGENTS.md available so Claude-native and cross-agent entrypoints stay discoverable.",
+        "Claude installs also promote recursive structured-analysis discovery through shared runtime capability surfaces instead of hiding it behind target-only wording."
       ]
     },
     {
@@ -91,7 +93,8 @@
       "supportLevel": "partial",
       "supportNotes": [
         "Cursor can consume published docs, manifests, and recommendation output.",
-        "No first-class runtime mapping, hook execution, or flow-state recovery is shipped for Cursor yet."
+        "No first-class runtime mapping, hook execution, or flow-state recovery is shipped for Cursor yet.",
+        "Cursor still receives translated recursive structured-analysis promotion through the shared runtime capability map and recursive session artifacts."
       ]
     },
     {
@@ -119,7 +122,8 @@
       "supportLevel": "partial",
       "supportNotes": [
         "OpenCode can consume published docs, manifests, and recommendation output.",
-        "No first-class runtime mapping, hook execution, or flow-state recovery is shipped for OpenCode yet."
+        "No first-class runtime mapping, hook execution, or flow-state recovery is shipped for OpenCode yet.",
+        "OpenCode still receives translated recursive structured-analysis promotion through the shared runtime capability map and recursive session artifacts."
       ]
     }
   ]

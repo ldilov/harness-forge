@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://harness-forge.dev/schemas/runtime/recursive-execution-policy.schema.json",
+  "title": "Recursive structured execution policy",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "policyId",
+    "sessionId",
+    "isolationLevel",
+    "allowStructuredRun",
+    "allowedInputs",
+    "restrictedBehaviors",
+    "budgetSummary",
+    "createdAt",
+    "updatedAt"
+  ],
+  "properties": {
+    "policyId": { "type": "string" },
+    "sessionId": { "type": "string" },
+    "isolationLevel": {
+      "type": "string",
+      "enum": ["metadata-only", "read-only-inspection", "read-only-repl", "isolated-execution"]
+    },
+    "allowStructuredRun": { "type": "boolean" },
+    "allowedInputs": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "restrictedBehaviors": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "budgetSummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["maxDurationMs", "maxRuns", "notes"],
+      "properties": {
+        "maxDurationMs": { "type": "integer", "minimum": 1 },
+        "maxRuns": { "type": "integer", "minimum": 1 },
+        "notes": { "type": "string" }
+      }
+    },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "updatedAt": { "type": "string", "format": "date-time" }
+  }
+}

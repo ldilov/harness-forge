@@ -1,0 +1,16 @@
+{
+  "runId": "RUN-001",
+  "outcome": "success",
+  "findings": [
+    "Billing retries are coordinated across the route and worker layers."
+  ],
+  "warnings": [],
+  "artifactsRead": [
+    ".hforge/runtime/repo/repo-map.json"
+  ],
+  "artifactsWritten": [
+    ".hforge/runtime/recursive/sessions/RS-123/runs/RUN-001/result.json"
+  ],
+  "diagnostics": [],
+  "completedAt": "2026-03-28T00:00:00.000Z"
+}

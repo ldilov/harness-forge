@@ -21,6 +21,11 @@ describe("agent command catalog integration", () => {
     expect(catalog.cliCommands.some((entry) => entry.command.includes("target inspect"))).toBe(true);
     expect(catalog.cliCommands.some((entry) => entry.command.includes("cartograph"))).toBe(true);
     expect(catalog.cliCommands.some((entry) => entry.command.includes("parallel plan"))).toBe(true);
+    expect(catalog.cliCommands.some((entry) => entry.command.includes("recursive capabilities"))).toBe(true);
+    expect(catalog.cliCommands.some((entry) => entry.command.includes("recursive inspect-run"))).toBe(true);
+    expect(catalog.executionModes.some((entry) => entry.commandPrefix.includes(".hforge/generated/bin/hforge"))).toBe(true);
+    expect(catalog.preferredExecutionOrder[0]).toContain("workspace-launcher");
+    expect(catalog.agentSafeCliCommands.some((entry) => entry.id === "status" && entry.variants.some((variant) => variant.command.includes("npx @harness-forge/cli status")))).toBe(true);
     expect(catalog.npmScripts["validate:release"]).toBeTruthy();
     expect(catalog.npmScripts["validate:local"]).toBeTruthy();
     expect(catalog.npmScripts["smoke:cli"]).toBeTruthy();
@@ -79,11 +84,14 @@ describe("agent command catalog integration", () => {
     expect(catalog.npmScripts["validate:release"]).toBeTruthy();
     expect(catalog.npmScripts["validate:local"]).toBeTruthy();
     expect(catalog.cliCommands.some((entry: { command: string }) => entry.command.includes("commands --json"))).toBe(true);
+    expect(catalog.agentSafeCliCommands.some((entry: { id: string; variants: Array<{ command: string }> }) => entry.id === "status" && entry.variants.some((variant) => variant.command.includes(".hforge")))).toBe(true);
 
     const manifestPath = path.join(tempRoot, ".hforge", "agent-manifest.json");
     const manifest = JSON.parse(await fs.readFile(manifestPath, "utf8"));
     expect(manifest.entrypoints.canonicalInstructionFile).toBe("AGENTS.md");
     expect(manifest.entrypoints.commandCatalog).toBe(".hforge/generated/agent-command-catalog.json");
+    expect(manifest.commandExecution.preferredOrder[0]).toContain("workspace-launcher");
+    expect(manifest.commandExecution.modes.some((mode: { commandPrefix: string }) => mode.commandPrefix.includes(".hforge"))).toBe(true);
     expect(manifest.installedTargets.map((entry: { targetId: string }) => entry.targetId)).toEqual(
       expect.arrayContaining(["codex", "claude-code"])
     );

@@ -4,6 +4,7 @@ import fs from "node:fs/promises";
 
 import { scanReferenceInstall } from "../../application/migration/scan-reference-install.js";
 import { reconcileState } from "../../application/install/reconcile-state.js";
+import { updateWorkspace } from "../../application/install/update-workspace.js";
 import { loadInstallState, saveInstallState } from "../../domain/state/install-state.js";
 import { INSTALL_STATE_FILE, DEFAULT_WORKSPACE_ROOT, STATE_DIR, ValidationError } from "../../shared/index.js";
 
@@ -66,21 +67,26 @@ export function registerMaintenanceCommands(program: Command): void {
       console.log(JSON.stringify({ dryRun: options.dryRun, files }, null, 2));
     });
 
-  program
-    .command("upgrade")
-    .option("--dry-run", "preview only", false)
-    .option("--root <root>", "workspace root", DEFAULT_WORKSPACE_ROOT)
-    .action(async (options) => {
-      const workspaceRoot = path.resolve(options.root);
-      const state = await loadInstallState(workspaceRoot);
-      const result = {
-        dryRun: options.dryRun,
-        target: state?.installedTargets[0] ?? null,
-        bundles: state?.installedBundles ?? [],
-        recommendation: state ? "Run install again with the current target and bundle set to refresh shipped assets." : "No existing install state found."
-      };
-      console.log(JSON.stringify(result, null, 2));
-    });
+  const registerWorkspaceUpdateCommand = (name: "upgrade" | "update"): void => {
+    program
+      .command(name)
+      .option("--dry-run", "preview only", false)
+      .option("--root <root>", "workspace root", DEFAULT_WORKSPACE_ROOT)
+      .option("--package-tag <tag>", "npm dist-tag or version to install before reapplying managed surfaces", "latest")
+      .option("--yes", "apply the update instead of previewing it", false)
+      .action(async (options) => {
+        const workspaceRoot = path.resolve(options.root);
+        const result = await updateWorkspace({
+          workspaceRoot,
+          packageTag: options.packageTag,
+          dryRun: options.dryRun || !options.yes
+        });
+        console.log(JSON.stringify(result, null, 2));
+      });
+  };
+
+  registerWorkspaceUpdateCommand("upgrade");
+  registerWorkspaceUpdateCommand("update");
 
   program
     .command("migrate")

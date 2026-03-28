@@ -33,10 +33,11 @@
     ],
     "runtimeSurfaces": [
       ".hforge/runtime/index.json",
-      ".hforge/runtime/README.md"
+      ".hforge/runtime/README.md",
+      ".hforge/runtime/recursive/language-capabilities.json"
     ],
     "supportMode": "native",
-    "notes": "Codex keeps repo-root bridges thin and routes canonical AI content through the hidden .hforge library, template, and runtime layer.",
+    "notes": "Codex keeps repo-root bridges thin and routes canonical AI content through the hidden .hforge library, template, and runtime layer, including promoted recursive structured-analysis discovery through the shared runtime.",
     "authoritativeSurfaces": [
       ".hforge/library/skills",
       ".hforge/library/rules",

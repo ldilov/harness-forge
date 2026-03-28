@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-28T16:55:31.339Z",
+  "generatedAt": "2026-03-28T21:42:25.027Z",
   "entries": [
     {
       "subjectType": "language",
@@ -780,6 +780,23 @@
       "subjectId": "claude-code",
       "relationType": "supports-capability",
       "relatedType": "capability",
+      "relatedId": "recursive-structured-analysis",
+      "supportLevel": "full",
+      "supportMode": "native",
+      "confidence": 0.96,
+      "evidenceSource": [
+        "src/cli/commands/recursive.ts",
+        "src/application/recursive/run-structured-analysis.ts",
+        "targets/claude-code/adapter.json"
+      ],
+      "fallbackBehavior": "Use `.hforge/runtime/recursive/language-capabilities.json`, recursive session artifacts, and the promoted recursive CLI surfaces.",
+      "notes": "Claude Code promotes recursive structured analysis through the shared runtime capability map, structured run commands, and durable session artifacts."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports-capability",
+      "relatedType": "capability",
       "relatedId": "repo-intelligence",
       "supportLevel": "full",
       "supportMode": "native",
@@ -1053,6 +1070,14 @@
       "relationType": "supports",
       "relatedType": "skill",
       "relatedId": "python-engineering",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "recursive-structured-analysis",
       "supportLevel": "full"
     },
     {
@@ -1550,6 +1575,23 @@
       "subjectId": "codex",
       "relationType": "supports-capability",
       "relatedType": "capability",
+      "relatedId": "recursive-structured-analysis",
+      "supportLevel": "full",
+      "supportMode": "native",
+      "confidence": 0.95,
+      "evidenceSource": [
+        "src/cli/commands/recursive.ts",
+        "src/application/recursive/run-structured-analysis.ts",
+        "targets/codex/adapter.json"
+      ],
+      "fallbackBehavior": "Use `.hforge/runtime/recursive/language-capabilities.json`, recursive session artifacts, and the promoted recursive CLI surfaces.",
+      "notes": "Codex promotes recursive structured analysis through the shared runtime capability map, structured run commands, and durable session artifacts."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports-capability",
+      "relatedType": "capability",
       "relatedId": "repo-intelligence",
       "supportLevel": "full",
       "supportMode": "native",
@@ -1823,6 +1865,14 @@
       "relationType": "supports",
       "relatedType": "skill",
       "relatedId": "python-engineering",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "recursive-structured-analysis",
       "supportLevel": "full"
     },
     {
@@ -2354,6 +2404,23 @@
       "subjectId": "cursor",
       "relationType": "supports-capability",
       "relatedType": "capability",
+      "relatedId": "recursive-structured-analysis",
+      "supportLevel": "partial",
+      "supportMode": "translated",
+      "confidence": 0.84,
+      "evidenceSource": [
+        "targets/cursor/adapter.json",
+        "src/cli/commands/recursive.ts",
+        "docs/agents.md"
+      ],
+      "fallbackBehavior": "Use `.hforge/runtime/recursive/language-capabilities.json` and recursive session artifacts as the honest support surface instead of claiming native Cursor parity.",
+      "notes": "Cursor receives recursive structured-analysis promotion through shared-runtime capability maps and durable session artifacts rather than a native target runtime payload."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports-capability",
+      "relatedType": "capability",
       "relatedId": "repo-intelligence",
       "supportLevel": "partial",
       "supportMode": "translated",
@@ -2655,6 +2722,15 @@
       "relatedId": "python-engineering",
       "supportLevel": "partial",
       "notes": "Cursor only provides partial skill support for python-engineering."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "recursive-structured-analysis",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial skill support for recursive-structured-analysis."
     },
     {
       "subjectType": "target",
@@ -3204,6 +3280,23 @@
       "subjectId": "opencode",
       "relationType": "supports-capability",
       "relatedType": "capability",
+      "relatedId": "recursive-structured-analysis",
+      "supportLevel": "partial",
+      "supportMode": "translated",
+      "confidence": 0.84,
+      "evidenceSource": [
+        "targets/opencode/adapter.json",
+        "src/cli/commands/recursive.ts",
+        "docs/agents.md"
+      ],
+      "fallbackBehavior": "Use `.hforge/runtime/recursive/language-capabilities.json` and recursive session artifacts as the honest support surface instead of claiming native OpenCode parity.",
+      "notes": "OpenCode receives recursive structured-analysis promotion through shared-runtime capability maps and durable session artifacts rather than a native target runtime payload."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports-capability",
+      "relatedType": "capability",
       "relatedId": "repo-intelligence",
       "supportLevel": "partial",
       "supportMode": "translated",
@@ -3505,6 +3598,15 @@
       "relatedId": "python-engineering",
       "supportLevel": "partial",
       "notes": "OpenCode only provides partial skill support for python-engineering."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "recursive-structured-analysis",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial skill support for recursive-structured-analysis."
     },
     {
       "subjectType": "target",

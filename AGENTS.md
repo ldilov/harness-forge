@@ -39,6 +39,7 @@ Use the thin visible bridge surfaces first in installed workspaces:
 - use `.hforge/runtime/tasks/<taskId>/` for task-runtime artifacts such as file-interest, impact-analysis, and task-pack linkage
 - use `.hforge/runtime/decisions/` for ASR and ADR records plus machine-readable decision indexes when governance support is installed
 - use `.hforge/runtime/recursive/sessions/` for recursive-session state, handles, and promotion traces when recursive mode is enabled
+- use `.hforge/runtime/recursive/language-capabilities.json` for the canonical recursive structured-analysis capability map before assuming language support
 - use `.hforge/observability/` for local-only effectiveness summaries and recommendation or maintenance signals
 - use `.hforge/generated/bin/` for workspace-local launchers when bare `hforge` is not already available on `PATH`
 
@@ -84,17 +85,22 @@ Use the thin visible bridge surfaces first in installed workspaces:
 - installed workspaces compile the shared intelligence runtime into `.hforge/runtime/`
 - target-facing files such as `AGENTS.md`, `.agents/skills/`, `.codex/`, and `.claude/` are thin bridges back to the hidden canonical AI layer rather than separate knowledge systems
 - recursive runtime state, when present, lives under `.hforge/runtime/recursive/sessions/` and should be treated as hidden operational state rather than product code
+- recursive structured analysis is the promoted execution surface for recursive repository investigation; treat the REPL as optional and non-authoritative
 
 ## Command discovery and execution
 
 - for first use in a repo, prefer `npx @harness-forge/cli`
 - prefer `hforge commands --json` or `.hforge/generated/agent-command-catalog.json` to discover shipped CLI commands and npm scripts before inventing a command path
+- resolve CLI execution in this order inside an installed workspace: `.hforge/generated/bin/hforge(.cmd|.ps1)` first, bare `hforge` second, and `npx @harness-forge/cli` last
 - prefer `hforge status --root . --json` to inspect the installed workspace state
 - prefer `hforge catalog --json` to review installed bundles, packs, and profiles
 - prefer `hforge bootstrap --root . --yes` when the repository needs target autodiscovery and one-pass Harness Forge setup
 - prefer `hforge task list --root . --json`, `hforge task inspect <taskId> --root . --json`, and `hforge pack inspect <taskId> --root . --json` when task-runtime artifacts are relevant
+- prefer `hforge recursive capabilities --root . --json` before claiming recursive structured-analysis support for a language
+- prefer `hforge recursive run <sessionId> --file <snippet> --root . --json`, `hforge recursive run <sessionId> --stdin --root . --json`, `hforge recursive runs <sessionId> --root . --json`, and `hforge recursive inspect-run <sessionId> <runId> --root . --json` for promoted recursive structured-analysis flows
 - prefer `hforge flow status --root . --json` when flow recovery state matters
 - prefer `hforge review --root . --json`, `hforge export --root . --json`, `hforge doctor --root . --json`, and `hforge audit --root . --json` for runtime health and handoff checks
+- prefer `hforge update --root . --dry-run --yes` before a managed package refresh and `hforge update --root . --yes` when you want to reapply the latest published Harness Forge surfaces without discarding gathered runtime state
 - when bare `hforge` is unavailable, use the workspace-local launcher under `.hforge/generated/bin/` instead of reaching for package-source entrypoints such as `node dist/cli/index.js`
 - `hforge shell setup --yes` is the preferred way to make bare `hforge` available without forcing a global npm mutation
 - `npm install -g @harness-forge/cli` is optional convenience, not the default requirement

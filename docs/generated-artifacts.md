@@ -85,8 +85,19 @@ explicit and recoverable.
   template registry for task-time artifacts
 - `.hforge/runtime/recursive/sessions/RS-XXX/session.json` is the durable draft
   or active recursive session identity, budget, handles, and tool surface
+- `.hforge/runtime/recursive/language-capabilities.json` is the canonical
+  recursive structured-analysis capability map for language adapter depth,
+  degraded states, and native-execution posture
+- `.hforge/runtime/recursive/sessions/RS-XXX/execution-policy.json` is the
+  session-scoped structured-execution posture for recursive analysis runs
+- `.hforge/runtime/recursive/sessions/RS-XXX/capabilities.json` is the
+  session-visible recursive capability snapshot used by structured runs
 - `.hforge/runtime/recursive/sessions/RS-XXX/memory.json` is compact
   recursive-session working memory for the current investigation
+- `.hforge/runtime/recursive/sessions/RS-XXX/runs/RUN-XXX/meta.json` is the
+  durable metadata record for one structured recursive analysis run
+- `.hforge/runtime/recursive/sessions/RS-XXX/runs/RUN-XXX/result.json` is the
+  machine-readable result for one structured recursive analysis run
 - `.hforge/runtime/recursive/sessions/RS-XXX/trace.jsonl` is append-only
   recursive trace output for operator auditability
 - `.hforge/runtime/recursive/sessions/RS-XXX/summary.json` is the deterministic
@@ -94,6 +105,8 @@ explicit and recoverable.
 - `.specify/state/flow-state.json` is runtime state, not an authored source
 - `.hforge/state/install-state.json` is generated install-state and runtime-version metadata, not authored product content
 - `.hforge/state/post-install-guidance.txt` is generated operator guidance for init, install, and recovery flows
+- `.hforge/state/update-backup-*.json` is the pre-update install-state snapshot
+  written before a non-destructive `hforge update` or `hforge upgrade` apply run
 
 ## Artifact lineage rules
 
