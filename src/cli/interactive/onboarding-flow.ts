@@ -1,5 +1,7 @@
 import path from "node:path";
 
+import { installHarnessForgeGlobally } from "../../application/install/global-cli-install.js";
+import { getShellIntegrationStatus } from "../../application/install/shell-integration.js";
 import { createRecoveryNotice } from "./recovery-notices.js";
 import { applySetupIntent, buildReviewPlan } from "./review-plan.js";
 import { createPromptSession } from "./prompt-io.js";
@@ -111,6 +113,42 @@ export async function runInteractiveOnboarding(startRoot: string): Promise<Execu
       applyChanges: !dryRun,
       source: "interactive"
     });
+
+    if (summary.status === "success" && !dryRun) {
+      const shellStatus = await getShellIntegrationStatus();
+      if (!shellStatus.bareHforgeResolvable) {
+        const globalInstallAction = await promptSession.askChoice(
+          "globalInstallAction",
+          "Harness Forge is not available as a global command yet. Install the published package globally with npm now?",
+          [
+            {
+              value: "skip",
+              label: "Skip (Recommended)",
+              description: "Keep using the workspace launcher or run shell setup later."
+            },
+            {
+              value: "install-global",
+              label: "Install globally",
+              description: "Run npm install -g @harness-forge/cli now."
+            }
+          ],
+          "skip"
+        );
+
+        if (globalInstallAction === "install-global") {
+          const installResult = installHarnessForgeGlobally();
+          if (installResult.succeeded) {
+            summary.operatorMessage = `${summary.operatorMessage} Global npm install completed.`;
+            summary.nextSuggestedCommands = summary.nextSuggestedCommands.filter(
+              (command) => command !== "npm install -g @harness-forge/cli"
+            );
+            summary.nextSuggestedCommands.unshift("hforge --help");
+          } else {
+            summary.operatorMessage = `${summary.operatorMessage} Global npm install failed; keep using the workspace launcher or run shell setup.`;
+          }
+        }
+      }
+    }
     completed = true;
   }
 

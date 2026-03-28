@@ -21,6 +21,7 @@ type PromptChoiceInput = string | PromptChoiceOption;
 export interface PromptSession {
   script: PromptScript;
   capabilities: TerminalCapabilityProfile;
+  scripted: boolean;
   askText(stepId: string, prompt: string, fallback?: string): Promise<string>;
   askChoice(stepId: string, prompt: string, choices: readonly PromptChoiceInput[], fallback: string): Promise<string>;
   askMultiChoice(stepId: string, prompt: string, choices: readonly PromptChoiceInput[], fallback: string[]): Promise<string[]>;
@@ -96,14 +97,19 @@ function normalizeChoice(value: string, choices: PromptChoiceOption[], fallback:
 
 export function createPromptSession(capabilities: TerminalCapabilityProfile): PromptSession {
   const script = parsePromptScript();
+  const scripted = Object.keys(script).length > 0;
 
   return {
     script,
     capabilities,
+    scripted,
     async askText(stepId, prompt, fallback = "") {
       const scripted = script[stepId];
       if (typeof scripted === "string") {
         return scripted;
+      }
+      if (scripted && fallback) {
+        return fallback;
       }
       if (!capabilities.supportsInteractiveInput) {
         if (fallback) {
@@ -119,6 +125,9 @@ export function createPromptSession(capabilities: TerminalCapabilityProfile): Pr
       const scripted = script[stepId];
       if (typeof scripted === "string") {
         return normalizeChoice(scripted, normalizedChoices, fallback);
+      }
+      if (scripted && fallback) {
+        return fallback;
       }
       if (!capabilities.supportsInteractiveInput) {
         return fallback;
@@ -143,6 +152,9 @@ export function createPromptSession(capabilities: TerminalCapabilityProfile): Pr
           .filter((item) => normalizedChoices.some((choice) => choice.value === item));
         return values.length > 0 ? [...new Set(values)] : fallback;
       }
+      if (scripted) {
+        return fallback;
+      }
       if (!capabilities.supportsInteractiveInput) {
         return fallback;
       }
@@ -162,6 +174,9 @@ export function createPromptSession(capabilities: TerminalCapabilityProfile): Pr
       }
       if (typeof scripted === "string") {
         return ["1", "true", "yes", "y", "confirm"].includes(scripted.toLowerCase());
+      }
+      if (scripted) {
+        return fallback;
       }
       if (!capabilities.supportsInteractiveInput) {
         return fallback;

@@ -28,7 +28,8 @@ describe("interactive onboarding flow", () => {
           setupProfile: "recommended",
           modules: ["working-memory", "task-pack-support", "export-support"],
           dryRun: false,
-          confirmAction: "confirm"
+          confirmAction: "confirm",
+          globalInstallAction: "skip"
         })
       }
     });
