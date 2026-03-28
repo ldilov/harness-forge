@@ -107,3 +107,7 @@ Use the thin visible bridge surfaces first in installed workspaces:
 - prefer the machine-readable command catalog and capability matrix over guessing or prose-only interpretation
 - treat stale or missing runtime artifacts as signals to run `status`, `refresh`, `doctor`, or `audit` rather than inventing a recovery path
 - keep support claims honest: if a target or surface is partial, translated, or non-authoritative, say so explicitly
+
+## Release gate
+
+- run `npm run validate:release` before publish, handoff, or release-signoff work
