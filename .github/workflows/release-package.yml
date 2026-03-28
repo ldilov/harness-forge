@@ -29,7 +29,6 @@ jobs:
           path: "*.tgz"
 
   publish:
-    if: startsWith(github.ref, 'refs/tags/v')
     needs: package
     runs-on: ubuntu-latest
     steps:
