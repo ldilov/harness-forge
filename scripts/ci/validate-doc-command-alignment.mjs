@@ -14,6 +14,10 @@ const contributingDoc = await fs.readFile(path.join(root, "CONTRIBUTING.md"), "u
 const packageJson = JSON.parse(await fs.readFile(path.join(root, "package.json"), "utf8"));
 
 const failures = [];
+function includesAny(haystack, fragments) {
+  return fragments.some((fragment) => haystack.includes(fragment));
+}
+
 for (const command of [
   "init",
   "install",
@@ -55,10 +59,17 @@ for (const command of [
   }
 }
 
-for (const fragment of ["flow status", "doctor", "audit", "cartograph", "target inspect", "shell setup", "validate:release", "validate:local", "release:dry-run"]) {
+for (const fragment of ["doctor", "audit", "cartograph", "target inspect", "shell setup", "validate:release", "validate:local", "release:dry-run"]) {
   if (!readme.includes(fragment)) {
     failures.push({ file: "README.md", issue: `Missing README reference ${fragment}` });
   }
+}
+
+if (!includesAny(readme, ["flow status", "flow recovery"])) {
+  failures.push({
+    file: "README.md",
+    issue: "Missing README reference for flow status or equivalent flow recovery guidance"
+  });
 }
 
 for (const fragment of ["doctor", "audit", "refresh", "diff-install", "sync", "upgrade-surface", "prune"]) {
