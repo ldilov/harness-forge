@@ -62,7 +62,7 @@ export function detectTerminalCapabilities(
   const forcedTty = parseForcedTty(env.HFORGE_FORCE_TTY);
   const stdinIsTTY = forcedTty ?? options.stdinIsTTY ?? process.stdin.isTTY ?? false;
   const stdoutIsTTY = forcedTty ?? options.stdoutIsTTY ?? process.stdout.isTTY ?? false;
-  const supportsInteractiveInput = stdinIsTTY && stdoutIsTTY && env.CI !== "true";
+  const supportsInteractiveInput = stdinIsTTY && stdoutIsTTY && (env.CI !== "true" || forcedTty === true);
   const terminalWidth = Number.parseInt(env.HFORGE_TERM_WIDTH ?? `${options.columns ?? process.stdout.columns ?? 80}`, 10);
   const colorLevel = detectColorLevel(env, stdoutIsTTY);
   const platform = options.platform ?? process.platform;
