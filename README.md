@@ -250,7 +250,7 @@ This helps with:
 - lower chance of repeating earlier mistakes
 - cleaner handoff between humans and agents
 
-### 4. Will it improve decision-making?
+### Will it improve decision-making?
 
 Yes - mostly by constraining bad choices and improving context quality
 AI agents make worse decisions when they have:
@@ -271,6 +271,7 @@ Harness Forge can lower token burn because it gives the agent:
 - repo-aware recommendations
 - structured entrypoints instead of blind exploration
 
+---
 
 ### For senior engineers
 
