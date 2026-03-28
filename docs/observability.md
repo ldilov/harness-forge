@@ -22,11 +22,11 @@ flow recovery are actually working without sending data to an external service.
 - `.hforge/state/install-state.json`
 - `.hforge/runtime/index.json`
 - `node scripts/runtime/report-effectiveness.mjs --json`
-- `node dist/cli/index.js observability summarize --json`
-- `node dist/cli/index.js observability report . --json`
-- `node dist/cli/index.js recommend <repo> --json`
-- `node dist/cli/index.js flow status --json`
-- `node dist/cli/index.js review --root <repo> --json`
+- `hforge observability summarize --json`
+- `hforge observability report . --json`
+- `hforge recommend <repo> --json`
+- `hforge flow status --json`
+- `hforge review --root <repo> --json`
 
 ## Design constraints
 

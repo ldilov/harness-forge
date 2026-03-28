@@ -31,13 +31,13 @@ Harness Forge maintenance should answer three questions quickly:
 ## Example commands
 
 ```bash
-node dist/cli/index.js doctor --json
-node dist/cli/index.js audit --json
-node dist/cli/index.js refresh --root . --json
-node dist/cli/index.js diff-install --json
-node dist/cli/index.js sync --json
-node dist/cli/index.js upgrade-surface --json
-node dist/cli/index.js prune --json
+hforge doctor --json
+hforge audit --json
+hforge refresh --root . --json
+hforge diff-install --json
+hforge sync --json
+hforge upgrade-surface --json
+hforge prune --json
 ```
 
 ## Operator expectations

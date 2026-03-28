@@ -67,6 +67,7 @@ export function registerInstallCommands(program: Command): void {
         const result = await applyInstall(workspaceRoot, plan);
         console.log(result.messages.join("\n"));
         console.log(`Guidance written to ${result.guidancePath}`);
+        console.log('Next: npx @harness-forge/cli shell setup --yes | npm install -g @harness-forge/cli');
       } else {
         console.log('Preview only. Re-run with "--yes" to apply the plan.');
       }
@@ -127,6 +128,7 @@ export function registerInstallCommands(program: Command): void {
           console.log(applied.messages.join("\n"));
           console.log(`Guidance written to ${applied.guidancePath}`);
         }
+        console.log('Next: npx @harness-forge/cli shell setup --yes | npm install -g @harness-forge/cli');
       } else {
         console.log('Preview only. Re-run with "--yes" to apply the bootstrap plans.');
       }

@@ -10,6 +10,7 @@ describe("docs quickstart integration", () => {
     const quickstart = await fs.readFile(path.join(root, "docs", "quickstart.md"), "utf8");
 
     expect(quickstart).toContain("npx @harness-forge/cli");
+    expect(quickstart).toContain("shell setup --yes");
     expect(quickstart).toContain("npm run build");
     expect(quickstart).toContain("catalog --json");
     expect(quickstart).toContain("--agent codex --dry-run");

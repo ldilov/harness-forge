@@ -37,6 +37,7 @@ describe("interactive onboarding flow", () => {
     expect(result.stdout).toContain("Harness Forge Setup");
     expect(result.stdout).toContain("Review before write");
     expect(result.stdout).toContain("Harness Forge setup complete");
+    expect(result.stdout).toContain("shell setup");
     await expect(fs.readFile(path.join(workspaceRoot, ".hforge", "runtime", "index.json"), "utf8")).resolves.toContain("\"runtimeSchemaVersion\"");
     await expect(fs.readFile(path.join(workspaceRoot, ".hforge", "agent-manifest.json"), "utf8")).resolves.toContain("\"resolutionOrder\"");
     await expect(fs.readFile(path.join(workspaceRoot, ".hforge", "generated", "bin", "hforge.cmd"), "utf8")).resolves.toContain(

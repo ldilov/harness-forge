@@ -26,6 +26,7 @@ describe("interactive command compatibility", () => {
     expect(result.stdout).toContain("\"status\": \"success\"");
     expect(result.stdout).toContain("\"appliedTargets\"");
     expect(result.stdout).toContain("hforge.cmd");
+    expect(result.stdout).toContain("shell setup");
   });
 
   it("supports prompt-free direct dry-run previews", async () => {

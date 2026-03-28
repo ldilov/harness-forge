@@ -44,6 +44,8 @@ export async function loadAgentCommandCatalog(packageRoot: string): Promise<Agen
       { command: "hforge pack inspect <taskId> --root <repo> --json", description: "Inspect the canonical task-pack artifact for one task." },
       { command: "hforge review --root <repo> --json", description: "Summarize runtime health, decision coverage, and stale task artifacts." },
       { command: "hforge export --root <repo> --json", description: "Export install-state, runtime index, doctor, and audit summaries for review or handoff." },
+      { command: "hforge shell setup --yes", description: "Create user-level shims and update supported shell profiles so bare hforge is available on PATH." },
+      { command: "hforge shell status --json", description: "Inspect shell integration status, shim presence, profile wiring, and bare hforge availability." },
       { command: "hforge commands --json", description: "List CLI commands and npm scripts that agents can use safely." },
       { command: "hforge recommend <repo> --json", description: "Inspect a repository and return evidence-backed recommendations." },
       { command: "hforge scan <repo> --json", description: "Collect a human- or machine-readable baseline scan of a repository." },

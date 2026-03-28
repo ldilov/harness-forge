@@ -20,6 +20,7 @@ maintenance commands through the `hforge` CLI.
 - `install` for initial target bootstrap
 - `init` for deterministic first-run runtime initialization
 - `bootstrap` for autodiscovery-driven installation into the current repo
+- `shell setup` and `shell status` for optional PATH integration without forcing a global npm install
 - `status` for current workspace state
 - `refresh` for shared runtime regeneration after install or maintenance work
 - `task` for task-runtime inspection
@@ -49,44 +50,61 @@ maintenance commands through the `hforge` CLI.
 
 ## Common examples
 
+Use bare `hforge` after `shell setup`, after a global install, or by replacing
+it with the workspace-local launcher under `.hforge/generated/bin/`.
+
 ```bash
 npx @harness-forge/cli
+npx @harness-forge/cli shell setup --yes
 npx @harness-forge/cli init --root . --agent codex --setup-profile recommended --yes
 npx @harness-forge/cli init --root . --agent codex --dry-run
 npx @harness-forge/cli bootstrap --root . --yes
-node dist/cli/index.js init --root . --json
-node dist/cli/index.js bootstrap --root . --yes
-node dist/cli/index.js refresh --root . --json
-node dist/cli/index.js task list --root . --json
-node dist/cli/index.js task inspect TASK-001 --root . --json
-node dist/cli/index.js pack inspect TASK-001 --root . --json
-node dist/cli/index.js review --root . --json
-node dist/cli/index.js export --root . --json
-node dist/cli/index.js commands --json
-node dist/cli/index.js catalog --json
-node dist/cli/index.js recommend tests/fixtures/benchmarks/typescript-web-app --json
-node dist/cli/index.js scan . --json
+hforge shell status --json
+hforge init --root . --json
+hforge bootstrap --root . --yes
+hforge refresh --root . --json
+hforge task list --root . --json
+hforge task inspect TASK-001 --root . --json
+hforge pack inspect TASK-001 --root . --json
+hforge review --root . --json
+hforge export --root . --json
+hforge commands --json
+hforge catalog --json
+hforge recommend tests/fixtures/benchmarks/typescript-web-app --json
+hforge scan . --json
+hforge cartograph . --json
+hforge classify-boundaries . --json
+hforge synthesize-instructions . --target codex --json
+hforge target inspect codex --json
+hforge capabilities --target claude-code --json
+hforge template validate --json
+hforge template suggest bugfix
+hforge flow status --json
+hforge recursive plan "investigate billing retry behavior" --task-id TASK-001 --json
+hforge recursive inspect RS-123 --json
+hforge observability summarize --json
+hforge observability report . --json
+hforge parallel plan specs/005-enhanced-skills-embedding/tasks.md --json
+hforge parallel status --json
+hforge parallel merge-check --json
+hforge doctor --json
+hforge audit --json
+hforge diff-install --json
+hforge sync --json
+hforge upgrade-surface --json
+hforge prune --json
+```
+
+## Maintainer source-checkout examples
+
+When developing Harness Forge itself from a source checkout, the equivalent
+repo-local entrypoint remains:
+
+```bash
+node dist/cli/index.js --help
+node dist/cli/index.js recommend . --json
 node dist/cli/index.js cartograph . --json
-node dist/cli/index.js classify-boundaries . --json
-node dist/cli/index.js synthesize-instructions . --target codex --json
 node dist/cli/index.js target inspect codex --json
-node dist/cli/index.js capabilities --target claude-code --json
-node dist/cli/index.js template validate --json
-node dist/cli/index.js template suggest bugfix
-node dist/cli/index.js flow status --json
-node dist/cli/index.js recursive plan "investigate billing retry behavior" --task-id TASK-001 --json
-node dist/cli/index.js recursive inspect RS-123 --json
-node dist/cli/index.js observability summarize --json
-node dist/cli/index.js observability report . --json
-node dist/cli/index.js parallel plan specs/005-enhanced-skills-embedding/tasks.md --json
-node dist/cli/index.js parallel status --json
-node dist/cli/index.js parallel merge-check --json
-node dist/cli/index.js doctor --json
-node dist/cli/index.js audit --json
-node dist/cli/index.js diff-install --json
-node dist/cli/index.js sync --json
-node dist/cli/index.js upgrade-surface --json
-node dist/cli/index.js prune --json
 ```
 
 ## Script-level validation and reporting

@@ -31,6 +31,7 @@ describe("docs front door contract", () => {
     expect(readme).toContain("--dry-run");
     expect(readme).toContain("project hub");
     expect(readme).toContain("npx @harness-forge/cli bootstrap --root . --yes");
+    expect(readme).toContain("shell setup");
     expect(readme).toContain("target inspect");
     expect(readme).toContain("cartograph");
     expect(readme).toContain("does not");

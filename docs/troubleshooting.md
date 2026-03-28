@@ -16,6 +16,8 @@
 ## Node runtime issues
 
 - confirm Node.js 22+ is available on the PATH
+- if bare `hforge` is not found after setup, run `npx @harness-forge/cli shell status --json`
+  or use the workspace-local launcher under `.hforge/generated/bin/`
 - rebuild with `npm run build` before using `install.sh` or `install.ps1`
 - run `hforge --help` to confirm the built entrypoint still starts cleanly
 

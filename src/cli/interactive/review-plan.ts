@@ -130,7 +130,7 @@ export async function applySetupIntent(intent: SetupIntent): Promise<ExecutionSu
       appliedTargets: intent.targetIds,
       writtenArtifacts: reviewPlan.plannedWrites.map((item) => item.path),
       preservedArtifacts: [],
-      nextSuggestedCommands: [reviewPlan.directCommandPreview, `hforge status --root ${intent.workspaceRoot}`],
+      nextSuggestedCommands: [reviewPlan.directCommandPreview, `hforge status --root ${intent.workspaceRoot}`, `hforge shell setup --yes`],
       importantPaths: [
         path.join(intent.workspaceRoot, ".hforge", "runtime", "index.json"),
         path.join(intent.workspaceRoot, ".hforge", "state", "install-state.json")
@@ -176,7 +176,9 @@ export async function applySetupIntent(intent: SetupIntent): Promise<ExecutionSu
     nextSuggestedCommands: [
       `${localLauncher} status --root ${intent.workspaceRoot}`,
       `${localLauncher} refresh --root ${intent.workspaceRoot}`,
-      `${localLauncher} review --root ${intent.workspaceRoot}`
+      `${localLauncher} review --root ${intent.workspaceRoot}`,
+      `${localLauncher} shell setup --yes`,
+      "npm install -g @harness-forge/cli"
     ],
     importantPaths: [
       initializeResult.agentManifestPath,
@@ -185,6 +187,6 @@ export async function applySetupIntent(intent: SetupIntent): Promise<ExecutionSu
       ...initializeResult.launcherPaths,
       path.join(intent.workspaceRoot, ".hforge", "generated", "agent-command-catalog.json")
     ],
-    operatorMessage: `Initialized Harness Forge at ${intent.workspaceRoot} with ${intent.targetIds.length} target${intent.targetIds.length === 1 ? "" : "s"}.`
+    operatorMessage: `Initialized Harness Forge at ${intent.workspaceRoot} with ${intent.targetIds.length} target${intent.targetIds.length === 1 ? "" : "s"}. Run shell setup if you want bare hforge on PATH without a global install.`
   };
 }

@@ -99,5 +99,6 @@ export function registerInitCommands(program: Command): void {
       console.log(`Runtime schema version: ${result.installState.runtimeSchemaVersion}`);
       console.log(`Install state: ${result.statePath}`);
       console.log(`Runtime index: ${result.runtimeIndexPath}`);
+      console.log('Next: npx @harness-forge/cli shell setup --yes | npm install -g @harness-forge/cli');
     });
 }

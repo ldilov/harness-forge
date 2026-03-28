@@ -18,6 +18,8 @@ for (const command of [
   "init",
   "install",
   "bootstrap",
+  "shell setup",
+  "shell status",
   "refresh",
   "task list",
   "task inspect",
@@ -53,7 +55,7 @@ for (const command of [
   }
 }
 
-for (const fragment of ["flow status", "doctor", "audit", "cartograph", "target inspect", "validate:release", "validate:local", "release:dry-run"]) {
+for (const fragment of ["flow status", "doctor", "audit", "cartograph", "target inspect", "shell setup", "validate:release", "validate:local", "release:dry-run"]) {
   if (!readme.includes(fragment)) {
     failures.push({ file: "README.md", issue: `Missing README reference ${fragment}` });
   }

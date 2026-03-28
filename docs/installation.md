@@ -40,13 +40,13 @@ Git-sourced npm and `npx` installs are also supported through the package
 For a deterministic first-run workspace setup before target installation, use:
 
 ```bash
-node dist/cli/index.js init --root /path/to/your/workspace --json
+npx @harness-forge/cli init --root /path/to/your/workspace --json
 ```
 
 After install changes, use:
 
 ```bash
-node dist/cli/index.js refresh --root /path/to/your/workspace --json
+hforge refresh --root /path/to/your/workspace --json
 ```
 
 Every successful install also writes a shared runtime summary under
@@ -76,3 +76,23 @@ Every successful install also writes a shared runtime summary under
 - `.hforge/runtime/recursive/sessions/RS-XXX/session.json` appears only when an
   operator explicitly escalates hard work into recursive mode and records the
   durable draft session, budget, handles, and promotion state
+
+## Shell integration vs global install
+
+If you want bare `hforge` to work after project setup, prefer:
+
+```bash
+npx @harness-forge/cli shell setup --yes
+```
+
+That writes a user-level shim and updates a supported shell profile so the
+command is available without forcing a machine-wide npm mutation from inside a
+project bootstrap.
+
+Global install is still optional:
+
+```bash
+npm install -g @harness-forge/cli
+```
+
+Use that only if you explicitly want npm-managed machine-wide availability.

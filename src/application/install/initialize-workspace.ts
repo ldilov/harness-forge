@@ -205,6 +205,8 @@ export async function initializeWorkspace(
     '- run "hforge install --target codex --root <repo> --yes" for an explicit target install',
     '- or run "hforge bootstrap --root <repo> --yes" to autodetect and install recommended surfaces',
     '- use the generated local launcher when you do not want a global npm install',
+    '- run "hforge shell setup --yes" if you want bare hforge available on PATH without a global install',
+    '- or run "npm install -g @harness-forge/cli" if you prefer a global npm-managed install',
     '- rerun "hforge init --root <repo>" safely if setup was interrupted',
     '- use "hforge doctor --root <repo>" if runtime state looks incomplete'
   ].join("\n") + "\n";

@@ -17,7 +17,7 @@ describe("public cli surface contract", () => {
       fs.readFile(path.join(root, "docs", "commands.md"), "utf8")
     ]);
 
-    for (const command of ["hforge", "init", "refresh", "task list", "pack inspect", "review", "export"]) {
+    for (const command of ["hforge", "init", "refresh", "task list", "pack inspect", "review", "export", "shell setup", "shell status"]) {
       expect(catalog.cliCommands.some((entry) => entry.command.includes(command))).toBe(true);
       expect(docsCommands).toContain(command);
     }

@@ -70,8 +70,8 @@ but they are not full runtime targets today.
 | --- | --- | --- | --- | --- |
 | Codex | First-class | Partial, documentation-driven | First-class | Default choice when you want full install, recommendation, maintenance, and flow support |
 | Claude Code | First-class | First-class | First-class | Best choice when native hook support is required |
-| Cursor | Partial portability | Unsupported | Unsupported | Use for docs, manifests, and recommendation output only |
-| OpenCode | Partial portability | Unsupported | Unsupported | Use for docs, manifests, and recommendation output only |
+| Cursor | Partial | Partial | Partial | Use for docs, manifests, and recommendation output only |
+| OpenCode | Partial | Partial | Partial | Use for docs, manifests, and recommendation output only |
 
 Canonical target support truth lives in
 `manifests/catalog/harness-capability-matrix.json`. The broader
@@ -187,6 +187,10 @@ npm install
 npm run build
 ```
 
+This source-checkout path is for developing Harness Forge itself. Package
+consumers should prefer `npx @harness-forge/cli ...`, the generated workspace
+launcher, or bare `hforge` after `shell setup`.
+
 ### 3. Initialize the destination workspace
 
 ```bash
@@ -299,7 +303,21 @@ After setup, Harness Forge also writes local launchers under
 
 That means you do not need a global install just to reuse the CLI inside the
 workspace. If you want plain `hforge` without a path prefix, you still need a
-global npm install or a shell `PATH` alias.
+global npm install or shell integration.
+
+Preferred way to enable bare `hforge` after setup:
+
+```bash
+npx @harness-forge/cli shell setup --yes
+```
+
+That adds a user-level shim and a supported shell profile block without forcing
+a machine-wide npm mutation from a repo bootstrap. If you prefer npm-managed
+global availability, you can still run:
+
+```bash
+npm install -g @harness-forge/cli
+```
 
 For custom-agent integration, use this read order:
 
@@ -318,14 +336,14 @@ together.
 | Check | Command or file | What success looks like |
 | --- | --- | --- |
 | Zero-build `npx` bootstrap | `npx @harness-forge/cli bootstrap --root . --yes` | The repo is bootstrapped without a prior local Harness Forge build |
-| Install state | `node dist/cli/index.js status --root /path/to/your/workspace --json` | `installedTargets`, `installedBundles`, timestamps, and file writes are present |
+| Install state | `hforge status --root /path/to/your/workspace --json` | `installedTargets`, `installedBundles`, timestamps, and file writes are present |
 | Agent command catalog | `/path/to/your/workspace/.hforge/generated/agent-command-catalog.json` | Agents can inspect shipped CLI commands and npm scripts without guessing |
 | Custom-agent manifest | `/path/to/your/workspace/.hforge/agent-manifest.json` | Custom agents get one machine-readable contract for bridge files, canonical roots, launchers, and safe command discovery |
 | Skill discovery layer | `/path/to/your/workspace/.agents/skills/` | Wrapper skills are present and point to the hidden canonical AI layer |
 | Canonical skill layer | `/path/to/your/workspace/.hforge/library/skills/` | Installed runtime skill contracts and `references/` packs are present without cluttering the repo root |
 | Hidden rule and knowledge layer | `/path/to/your/workspace/.hforge/library/rules/` and `/path/to/your/workspace/.hforge/library/knowledge/` | Installed rules and knowledge packs stay authoritative without looking like product code |
-| Health check | `node dist/cli/index.js doctor --root /path/to/your/workspace --json` | `status` is `clean` or a warning with explicit remediation details |
-| Audit | `node dist/cli/index.js audit --root /path/to/your/workspace --json` | No unexpected `missingManagedPaths` or `missingBundles` |
+| Health check | `hforge doctor --root /path/to/your/workspace --json` | `status` is `clean` or a warning with explicit remediation details |
+| Audit | `hforge audit --root /path/to/your/workspace --json` | No unexpected `missingManagedPaths` or `missingBundles` |
 | Guidance output | `/path/to/your/workspace/.hforge/state/post-install-guidance.txt` | Post-install guidance was written for the selected target |
 | State file | `/path/to/your/workspace/.hforge/state/install-state.json` | Managed install state exists and tracks installed targets and bundles |
 | Shared runtime index | `/path/to/your/workspace/.hforge/runtime/index.json` | One workspace-level runtime document records all installed targets and bridge contributions |
@@ -338,39 +356,45 @@ together.
 If you want a fast confidence check after installation:
 
 ```bash
-node dist/cli/index.js init --root /path/to/your/workspace --json
-node dist/cli/index.js status --root /path/to/your/workspace --json
-node dist/cli/index.js refresh --root /path/to/your/workspace --json
-node dist/cli/index.js commands --json
-node dist/cli/index.js doctor --root /path/to/your/workspace --json
-node dist/cli/index.js audit --root /path/to/your/workspace --json
-node dist/cli/index.js review --root /path/to/your/workspace --json
+npx @harness-forge/cli init --root /path/to/your/workspace --json
+npx @harness-forge/cli shell setup --yes
+hforge status --root /path/to/your/workspace --json
+hforge refresh --root /path/to/your/workspace --json
+hforge commands --json
+hforge doctor --root /path/to/your/workspace --json
+hforge audit --root /path/to/your/workspace --json
+hforge review --root /path/to/your/workspace --json
 ```
 
 ## Common operator commands
 
+Use `hforge ...` below after `shell setup`, after a global install, or by
+swapping in the workspace-local launcher under `.hforge/generated/bin/`.
+
 | Goal | Command |
 | --- | --- |
-| Initialize the hidden runtime in a repo | `node dist/cli/index.js init --root /path/to/your/workspace --json` |
-| Autodetect targets and bootstrap the repo | `node dist/cli/index.js bootstrap --root /path/to/your/workspace --yes` |
-| Inspect the available catalog | `node dist/cli/index.js catalog --json` |
-| List commands and npm scripts that agents can use | `node dist/cli/index.js commands --json` |
-| See what is installed and versioned | `node dist/cli/index.js status --root /path/to/your/workspace --json` |
-| Refresh shared runtime summaries after install changes | `node dist/cli/index.js refresh --root /path/to/your/workspace --json` |
-| Inspect active task-runtime folders | `node dist/cli/index.js task list --root /path/to/your/workspace --json` |
-| Inspect one task pack | `node dist/cli/index.js pack inspect TASK-001 --root /path/to/your/workspace --json` |
-| Summarize runtime health and decision coverage | `node dist/cli/index.js review --root /path/to/your/workspace --json` |
-| Export runtime state for review or handoff | `node dist/cli/index.js export --root /path/to/your/workspace --json` |
-| Generate repo-aware recommendations | `node dist/cli/index.js recommend /path/to/your/workspace --json` |
-| Build a repo map and service boundary picture | `node dist/cli/index.js cartograph /path/to/your/workspace --json` |
-| Synthesize target-aware instructions for Codex or Claude Code | `node dist/cli/index.js synthesize-instructions /path/to/your/workspace --target codex --json` |
-| Inspect what a target actually supports | `node dist/cli/index.js target inspect codex --json` |
-| Review local observability effectiveness | `node dist/cli/index.js observability summarize --json` |
-| Plan or check parallel shard work | `node dist/cli/index.js parallel plan specs/<feature>/tasks.md --json` |
-| Escalate a hard task into recursive mode | `node dist/cli/index.js recursive plan "investigate billing retry behavior" --task-id TASK-001 --root /path/to/your/workspace --json` |
-| Inspect flow recovery state | `node dist/cli/index.js flow status --root /path/to/your/workspace --json` |
-| Validate shipped templates | `node dist/cli/index.js template validate --json` |
-| Compare managed install state against the workspace | `node dist/cli/index.js diff-install --root /path/to/your/workspace --json` |
+| Initialize the hidden runtime in a repo | `npx @harness-forge/cli init --root /path/to/your/workspace --json` |
+| Enable bare `hforge` on PATH without a global npm install | `npx @harness-forge/cli shell setup --yes` |
+| Check shell integration status | `hforge shell status --json` |
+| Autodetect targets and bootstrap the repo | `npx @harness-forge/cli bootstrap --root /path/to/your/workspace --yes` |
+| Inspect the available catalog | `hforge catalog --json` |
+| List commands and npm scripts that agents can use | `hforge commands --json` |
+| See what is installed and versioned | `hforge status --root /path/to/your/workspace --json` |
+| Refresh shared runtime summaries after install changes | `hforge refresh --root /path/to/your/workspace --json` |
+| Inspect active task-runtime folders | `hforge task list --root /path/to/your/workspace --json` |
+| Inspect one task pack | `hforge pack inspect TASK-001 --root /path/to/your/workspace --json` |
+| Summarize runtime health and decision coverage | `hforge review --root /path/to/your/workspace --json` |
+| Export runtime state for review or handoff | `hforge export --root /path/to/your/workspace --json` |
+| Generate repo-aware recommendations | `hforge recommend /path/to/your/workspace --json` |
+| Build a repo map and service boundary picture | `hforge cartograph /path/to/your/workspace --json` |
+| Synthesize target-aware instructions for Codex or Claude Code | `hforge synthesize-instructions /path/to/your/workspace --target codex --json` |
+| Inspect what a target actually supports | `hforge target inspect codex --json` |
+| Review local observability effectiveness | `hforge observability summarize --json` |
+| Plan or check parallel shard work | `hforge parallel plan specs/<feature>/tasks.md --json` |
+| Escalate a hard task into recursive mode | `hforge recursive plan "investigate billing retry behavior" --task-id TASK-001 --root /path/to/your/workspace --json` |
+| Inspect flow recovery state | `hforge flow status --root /path/to/your/workspace --json` |
+| Validate shipped templates | `hforge template validate --json` |
+| Compare managed install state against the workspace | `hforge diff-install --root /path/to/your/workspace --json` |
 
 ## Repo intelligence and guidance synthesis
 
@@ -378,13 +402,10 @@ Harness Forge can inspect a repository and recommend packs, profiles, skills,
 and missing validation surfaces with evidence:
 
 ```bash
-node scripts/intelligence/score-recommendations.mjs tests/fixtures/benchmarks/typescript-web-app --json
-node dist/cli/index.js recommend tests/fixtures/benchmarks/typescript-web-app --json
-node dist/cli/index.js cartograph tests/fixtures/benchmarks/monorepo --json
-node dist/cli/index.js classify-boundaries tests/fixtures/benchmarks/monorepo --json
-node dist/cli/index.js synthesize-instructions tests/fixtures/benchmarks/monorepo --target codex --dry-run --json
-node scripts/intelligence/cartograph-repo.mjs tests/fixtures/benchmarks/monorepo --json
-node scripts/intelligence/synthesize-instructions.mjs tests/fixtures/benchmarks/monorepo --dry-run --json
+hforge recommend tests/fixtures/benchmarks/typescript-web-app --json
+hforge cartograph tests/fixtures/benchmarks/monorepo --json
+hforge classify-boundaries tests/fixtures/benchmarks/monorepo --json
+hforge synthesize-instructions tests/fixtures/benchmarks/monorepo --target codex --json
 ```
 
 ## Target-specific self-service commands
