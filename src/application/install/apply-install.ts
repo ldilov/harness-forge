@@ -3,13 +3,21 @@ import path from "node:path";
 import type { InstallPlan } from "../../domain/operations/install-plan.js";
 import { applyOperation } from "../../infrastructure/filesystem/apply-operation.js";
 import { loadInstallState, saveInstallState } from "../../domain/state/install-state.js";
-import { PACKAGE_ROOT, writeTextFile } from "../../shared/index.js";
+import { PACKAGE_ROOT, RUNTIME_SCHEMA_VERSION, readJsonFile, writeTextFile } from "../../shared/index.js";
 import { writeAgentCommandCatalog } from "../runtime/command-catalog.js";
+import { writeAgentManifest } from "./agent-manifest.js";
 import { generateGuidance } from "./generate-guidance.js";
 import { rewriteInstalledAiLayerReferences } from "./rewrite-installed-ai-layer.js";
 import { writeSharedRuntime } from "./shared-runtime.js";
 
 export async function applyInstall(root: string, plan: InstallPlan): Promise<{ messages: string[]; guidancePath: string }> {
+  const packageJson = await readJsonFile<{ version: string }>(path.join(PACKAGE_ROOT, "package.json"));
+  const visibilityPolicy = plan.visibilityPolicy ?? {
+    mode: "hidden-ai-layer" as const,
+    aiLayerRoot: path.join(root, ".hforge"),
+    hiddenCanonicalRoots: [],
+    visibleBridgePaths: []
+  };
   const messages: string[] = [];
   for (const operation of plan.operations) {
     messages.push(await applyOperation(operation));
@@ -24,6 +32,7 @@ export async function applyInstall(root: string, plan: InstallPlan): Promise<{ m
 
   const existingState = await loadInstallState(root);
   const commandCatalog = await writeAgentCommandCatalog(root, PACKAGE_ROOT);
+  const agentManifestPath = path.join(root, ".hforge", "agent-manifest.json");
   const generatedFiles = [
     guidancePath,
     commandCatalog.jsonPath,
@@ -32,9 +41,10 @@ export async function applyInstall(root: string, plan: InstallPlan): Promise<{ m
       ? [sharedRuntime.indexPath, sharedRuntime.readmePath, ...sharedRuntime.baselineArtifacts.map((artifact) => artifact.path)]
       : [])
   ];
-
   await saveInstallState(root, {
-    version: 1,
+    version: existingState?.version ?? 2,
+    packageVersion: packageJson.version,
+    runtimeSchemaVersion: RUNTIME_SCHEMA_VERSION,
     installedTargets: [...new Set([...(existingState?.installedTargets ?? []), plan.selection.targetId])],
     installedBundles: [
       ...new Set([...(existingState?.installedBundles ?? []), ...plan.operations.map((operation) => operation.bundleId)])
@@ -45,7 +55,8 @@ export async function applyInstall(root: string, plan: InstallPlan): Promise<{ m
         ...(existingState?.fileWrites ?? []),
         ...plan.operations.map((operation) => operation.destinationPath),
         ...rewrittenFiles,
-        ...generatedFiles
+        ...generatedFiles,
+        agentManifestPath
       ])
     ],
     backupSnapshots: [...new Set([...(existingState?.backupSnapshots ?? []), ...plan.backupRequirements])],
@@ -54,12 +65,20 @@ export async function applyInstall(root: string, plan: InstallPlan): Promise<{ m
       updatedAt: new Date().toISOString()
     },
     lastValidationStatus: "unknown",
-    visibilityMode: plan.visibilityPolicy.mode,
-    aiLayerRoot: plan.visibilityPolicy.aiLayerRoot,
-    hiddenCanonicalRoots: plan.visibilityPolicy.hiddenCanonicalRoots,
-    visibleBridgePaths: plan.visibilityPolicy.visibleBridgePaths
+    visibilityMode: visibilityPolicy.mode,
+    aiLayerRoot: visibilityPolicy.aiLayerRoot,
+    hiddenCanonicalRoots: visibilityPolicy.hiddenCanonicalRoots,
+    visibleBridgePaths: visibilityPolicy.visibleBridgePaths,
+    lastAction: "install",
+    recoveryHints:
+      existingState?.recoveryHints ?? [
+        `Use "hforge doctor --root ${root}" to inspect missing or drifted managed surfaces.`,
+        `Use "hforge refresh --root ${root}" to rewrite shared runtime summaries after install changes.`
+      ]
   });
+  const agentManifest = await writeAgentManifest(root, PACKAGE_ROOT);
   messages.push(`Agent command catalog written to ${commandCatalog.jsonPath}`);
+  messages.push(`Agent manifest written to ${agentManifest.path}`);
   if (sharedRuntime) {
     messages.push(`Shared runtime written to ${sharedRuntime.indexPath}`);
   }

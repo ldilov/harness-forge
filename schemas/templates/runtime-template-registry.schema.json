@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://harness-forge.dev/schemas/templates/runtime-template-registry.schema.json",
+  "title": "Runtime template registry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "entries"],
+  "properties": {
+    "version": { "type": "integer", "minimum": 1 },
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "kind", "file", "format", "scope", "description", "variables", "supportedTargets"],
+        "properties": {
+          "id": { "type": "string" },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "task-pack",
+              "requirement",
+              "implementation-note",
+              "review-pack",
+              "working-memory",
+              "adr"
+            ]
+          },
+          "file": { "type": "string" },
+          "format": {
+            "type": "string",
+            "enum": ["md", "json"]
+          },
+          "scope": {
+            "type": "string",
+            "enum": ["runtime", "task", "cache", "decision", "review"]
+          },
+          "description": { "type": "string" },
+          "variables": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "supportedTargets": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "overrideTargets": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        }
+      }
+    }
+  }
+}

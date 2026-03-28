@@ -14,5 +14,11 @@ describe("package lifecycle contract", () => {
     expect(packageJson.scripts?.prepare).toBe("npm run build");
     expect(packageJson.scripts?.prepack).toBe("npm run build");
     expect(packageJson.scripts?.prepublishOnly).toContain("npm run validate:release");
+    expect(packageJson.scripts?.["smoke:cli"]).toContain("smoke-runner");
+    expect(packageJson.scripts?.["validate:local"]).toContain("validate:package-surface");
+    expect(packageJson.scripts?.["release:dry-run"]).toContain("npm pack --json --dry-run");
+    expect(packageJson.scripts?.["recommend:current"]).toContain("recommend");
+    expect(packageJson.scripts?.["target:codex"]).toContain("target inspect codex");
+    expect(packageJson.scripts?.["observability:summary"]).toContain("observability summarize");
   });
 });

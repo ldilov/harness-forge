@@ -24,7 +24,8 @@ generated: false
 
 ## Purpose
 
-Move a task from discovery to validated implementation with explicit handoffs.
+Move a task from discovery to validated implementation with explicit handoffs
+and a shared-runtime-aware view of repo context.
 
 ## When to Use
 
@@ -46,12 +47,14 @@ Understand the problem, constraints, and existing repo context.
 **Consumes**
 - task brief
 - repo context
+- shared runtime summary when available
 - existing docs
 
 **Produces**
 - decision notes
 - risks
 - assumptions
+- updated understanding of which bridges and runtime surfaces matter
 
 **Exit Criteria**
 - relevant constraints are identified
@@ -72,11 +75,13 @@ Translate research into file-level execution steps and verification strategy.
 **Consumes**
 - decision notes
 - accepted scope
+- shared runtime summary or bridge metadata when target behavior matters
 
 **Produces**
 - implementation plan
 - validation strategy
 - ordered task list
+- explicit note on whether the root surface or scoped bridges should change
 
 **Exit Criteria**
 - file touch points are identified
@@ -140,7 +145,8 @@ Stop after validation report is complete.
 ## Handoff Contracts
 
 - Research -> Plan: decision notes, assumptions, and risk list must exist
-- Plan -> Implement: file touch list and validation strategy must exist
+- Plan -> Implement: file touch list, validation strategy, and shared-runtime
+  touch points must exist
 - Implement -> Validate: change summary and executed checks must exist
 
 ## Exit Conditions

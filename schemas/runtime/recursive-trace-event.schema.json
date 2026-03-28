@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://harness-forge.dev/schemas/runtime/recursive-trace-event.schema.json",
+  "title": "Recursive trace event",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["eventId", "sessionId", "eventType", "occurredAt", "actor", "status"],
+  "properties": {
+    "eventId": { "type": "string" },
+    "sessionId": { "type": "string" },
+    "eventType": {
+      "type": "string",
+      "enum": ["tool-call", "batch-start", "batch-end", "subcall", "promotion", "budget-breach", "compact", "finalize", "resume"]
+    },
+    "occurredAt": { "type": "string", "format": "date-time" },
+    "actor": {
+      "type": "string",
+      "enum": ["runtime", "operator", "child-session"]
+    },
+    "inputRefs": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "outputRefs": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "status": {
+      "type": "string",
+      "enum": ["success", "partial", "blocked", "failed"]
+    },
+    "budgetImpact": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "iterationsUsed": { "type": "integer", "minimum": 0 },
+        "subcallsUsed": { "type": "integer", "minimum": 0 },
+        "batchWidthUsed": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "notes": { "type": "string" }
+  }
+}

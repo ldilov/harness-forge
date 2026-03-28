@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://harness-forge.dev/schemas/runtime/recursive-session.schema.json",
+  "title": "Recursive session",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "sessionId",
+    "status",
+    "createdAt",
+    "updatedAt",
+    "budgetPolicy",
+    "handles",
+    "tools",
+    "promotionState"
+  ],
+  "properties": {
+    "sessionId": { "type": "string" },
+    "taskId": { "type": "string" },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "running", "paused", "finalized", "failed"]
+    },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "updatedAt": { "type": "string", "format": "date-time" },
+    "rootObjective": { "type": "string" },
+    "budgetPolicy": { "$ref": "recursive-budget.schema.json" },
+    "handles": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/artifactHandle" }
+    },
+    "tools": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "compactedSummary": { "type": "string" },
+    "parentSessionId": { "type": "string" },
+    "promotionState": {
+      "type": "string",
+      "enum": ["draft-only", "partially-promoted", "fully-promoted"]
+    }
+  },
+  "$defs": {
+    "artifactHandle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["handleId", "handleType", "targetRef", "label", "summary", "stalenessState"],
+      "properties": {
+        "handleId": { "type": "string" },
+        "handleType": {
+          "type": "string",
+          "enum": ["repo-file", "repo-slice", "task-artifact", "decision-artifact", "template", "summary", "search-result"]
+        },
+        "targetRef": { "type": "string" },
+        "label": { "type": "string" },
+        "summary": { "type": "string" },
+        "stalenessState": {
+          "type": "string",
+          "enum": ["fresh", "unknown", "stale"]
+        },
+        "sourceArtifactType": { "type": "string" }
+      }
+    }
+  }
+}

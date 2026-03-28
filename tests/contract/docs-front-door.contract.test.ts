@@ -27,6 +27,9 @@ describe("docs front door contract", () => {
     const readme = await fs.readFile(path.join(root, "README.md"), "utf8");
     expect(readme).toContain(".hforge/library/knowledge/");
     expect(readme).toContain("npm run validate:release");
+    expect(readme).toContain("npx @harness-forge/cli");
+    expect(readme).toContain("--dry-run");
+    expect(readme).toContain("project hub");
     expect(readme).toContain("npx @harness-forge/cli bootstrap --root . --yes");
     expect(readme).toContain("target inspect");
     expect(readme).toContain("cartograph");

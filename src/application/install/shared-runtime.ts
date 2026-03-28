@@ -24,15 +24,22 @@ import {
   readJsonFile,
   RUNTIME_CACHE_DIR,
   RUNTIME_DECISIONS_DIR,
+  RUNTIME_FILE_INTEREST_FILE,
   RUNTIME_DIR,
   RUNTIME_FINDINGS_DIR,
+  RUNTIME_IMPACT_ANALYSIS_FILE,
   RUNTIME_INDEX_FILE,
   RUNTIME_INSTRUCTION_PLAN_FILE,
   RUNTIME_README_FILE,
+  RUNTIME_SCHEMA_VERSION,
   RUNTIME_RECOMMENDATIONS_FILE,
   RUNTIME_REPO_DIR,
   RUNTIME_REPO_MAP_FILE,
   RUNTIME_RISK_SIGNALS_FILE,
+  RUNTIME_RECURSIVE_DIR,
+  RUNTIME_RECURSIVE_SESSION_FILE,
+  RUNTIME_RECURSIVE_SESSIONS_DIR,
+  RUNTIME_RECURSIVE_SUMMARY_FILE,
   RUNTIME_SCAN_SUMMARY_FILE,
   RUNTIME_TARGET_SUPPORT_FILE,
   RUNTIME_TASKS_DIR,
@@ -46,7 +53,10 @@ const execFileAsync = promisify(execFile);
 
 interface PersistedSharedRuntimeDocument {
   version: number;
+  runtimeSchemaVersion?: number;
+  packageVersion?: string;
   runtimeId: string;
+  initializedAt?: string;
   generatedAt: string;
   rootDir: string;
   visibilityMode: InstallPlan["visibilityPolicy"]["mode"];
@@ -168,7 +178,8 @@ export function createSharedRuntimePlan(
       createSurface(rootDir, "repo", RUNTIME_REPO_DIR, "Structured repository understanding and architecture anchors."),
       createSurface(rootDir, "findings", RUNTIME_FINDINGS_DIR, "Durable findings, risks, and evidence-backed observations."),
       createSurface(rootDir, "tasks", RUNTIME_TASKS_DIR, "Task packs, requirements, implementation notes, and review context."),
-      createSurface(rootDir, "decisions", RUNTIME_DECISIONS_DIR, "Durable decision records and maintainership rationale.")
+      createSurface(rootDir, "decisions", RUNTIME_DECISIONS_DIR, "Durable decision records and maintainership rationale."),
+      createSurface(rootDir, "recursive", RUNTIME_RECURSIVE_DIR, "Optional recursive session runtime for difficult work.")
     ],
     cacheSurfaces: [
       createSurface(rootDir, "cache", RUNTIME_CACHE_DIR, "Compact working-memory and resumability state for active work.")
@@ -218,7 +229,10 @@ function normalizeExistingRuntimeDocument(value: unknown): PersistedSharedRuntim
 
   return {
     version: typeof record.version === "number" ? record.version : 1,
+    runtimeSchemaVersion: typeof record.runtimeSchemaVersion === "number" ? record.runtimeSchemaVersion : undefined,
+    packageVersion: typeof record.packageVersion === "string" ? record.packageVersion : undefined,
     runtimeId: typeof record.runtimeId === "string" ? record.runtimeId : "workspace-runtime",
+    initializedAt: typeof record.initializedAt === "string" ? record.initializedAt : undefined,
     generatedAt: typeof record.generatedAt === "string" ? record.generatedAt : new Date().toISOString(),
     rootDir: typeof record.rootDir === "string" ? record.rootDir : RUNTIME_DIR,
     visibilityMode: record.visibilityMode === "hidden-ai-layer" ? "hidden-ai-layer" : AI_LAYER_VISIBLE_MODE,
@@ -276,10 +290,17 @@ function toPortableTarget(workspaceRoot: string, target: SharedRuntimeTarget): S
   };
 }
 
-function toPortableRuntimeDocument(workspaceRoot: string, runtime: SharedRuntimePlan): PersistedSharedRuntimeDocument {
+function toPortableRuntimeDocument(
+  workspaceRoot: string,
+  runtime: SharedRuntimePlan,
+  packageJson: { version: string }
+): PersistedSharedRuntimeDocument {
   return {
     version: 2,
+    runtimeSchemaVersion: RUNTIME_SCHEMA_VERSION,
+    packageVersion: packageJson.version,
     runtimeId: runtime.runtimeId,
+    initializedAt: new Date().toISOString(),
     generatedAt: new Date().toISOString(),
     rootDir: toWorkspaceRelative(workspaceRoot, runtime.rootDir),
     visibilityMode: runtime.visibilityMode,
@@ -329,7 +350,10 @@ function mergeRuntimeDocuments(
 
   return {
     version: 2,
+    runtimeSchemaVersion: current.runtimeSchemaVersion ?? existing?.runtimeSchemaVersion ?? RUNTIME_SCHEMA_VERSION,
+    packageVersion: current.packageVersion ?? existing?.packageVersion,
     runtimeId: current.runtimeId,
+    initializedAt: existing?.initializedAt ?? current.initializedAt ?? new Date().toISOString(),
     generatedAt: new Date().toISOString(),
     rootDir: current.rootDir,
     visibilityMode: current.visibilityMode,
@@ -437,6 +461,12 @@ function renderSharedRuntimeReadme(runtime: PersistedSharedRuntimeDocument): str
     "This workspace uses `.hforge/` as the hidden AI layer for Harness Forge.",
     "`.hforge/runtime/` is the shared intelligence runtime, while `.hforge/library/` and `.hforge/templates/` hold the canonical hidden operating content.",
     "",
+    "## Runtime Version",
+    `- schema version: \`${runtime.runtimeSchemaVersion ?? RUNTIME_SCHEMA_VERSION}\``,
+    ...(runtime.packageVersion ? [`- package version: \`${runtime.packageVersion}\``] : []),
+    ...(runtime.initializedAt ? [`- initialized at: \`${runtime.initializedAt}\``] : []),
+    `- generated at: \`${runtime.generatedAt}\``,
+    "",
     "## Visibility Policy",
     `- mode: \`${runtime.visibilityMode}\``,
     ...runtime.authoritativeSurfaces.map((surface) => `- hidden canonical: \`${surface}\``),
@@ -452,6 +482,10 @@ function renderSharedRuntimeReadme(runtime: PersistedSharedRuntimeDocument): str
     "",
     "## Durable Surfaces",
     ...runtime.durableSurfaces.map((surface) => `- \`${surface.path}/\` - ${surface.description}`),
+    `- \`.hforge/runtime/tasks/TASK-XXX/${RUNTIME_FILE_INTEREST_FILE}\` - Task-aware ranked file context for an active task`,
+    `- \`.hforge/runtime/tasks/TASK-XXX/${RUNTIME_IMPACT_ANALYSIS_FILE}\` - Derived impact analysis for an active task`,
+    `- \`.hforge/runtime/recursive/${RUNTIME_RECURSIVE_SESSIONS_DIR}/RS-XXX/${RUNTIME_RECURSIVE_SESSION_FILE}\` - Optional recursive draft session with budget, handles, and promotion state`,
+    `- \`.hforge/runtime/recursive/${RUNTIME_RECURSIVE_SESSIONS_DIR}/RS-XXX/${RUNTIME_RECURSIVE_SUMMARY_FILE}\` - Deterministic recursive handoff summary for the session`,
     "",
     "## Short-Term Cache",
     ...runtime.cacheSurfaces.map((surface) => `- \`${surface.path}/\` - ${surface.description}`),
@@ -473,6 +507,7 @@ export async function writeSharedRuntime(workspaceRoot: string, plan: InstallPla
   if (!runtime) {
     return null;
   }
+  const packageJson = await readJsonFile<{ version: string }>(path.join(PACKAGE_ROOT, "package.json"));
 
   await ensureDir(runtime.rootDir);
   for (const surface of [...runtime.durableSurfaces, ...runtime.cacheSurfaces]) {
@@ -485,7 +520,9 @@ export async function writeSharedRuntime(workspaceRoot: string, plan: InstallPla
   const existingRuntime = (await exists(runtime.indexPath))
     ? normalizeExistingRuntimeDocument(await readJsonFile<unknown>(runtime.indexPath))
     : null;
-  const mergedDocument = mergeRuntimeDocuments(existingRuntime, toPortableRuntimeDocument(workspaceRoot, runtime));
+  const portableDocument = toPortableRuntimeDocument(workspaceRoot, runtime, packageJson);
+  portableDocument.initializedAt = existingRuntime?.initializedAt ?? portableDocument.initializedAt;
+  const mergedDocument = mergeRuntimeDocuments(existingRuntime, portableDocument);
 
   await writeRuntimeBaselineArtifacts(workspaceRoot, runtime, mergedDocument);
   await writeJsonFile(runtime.indexPath, mergedDocument);

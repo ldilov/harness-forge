@@ -1,0 +1,266 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://harness-forge.dev/schemas/runtime/decision-record.schema.json",
+  "title": "Decision record",
+  "$ref": "#/$defs/decisionRecord",
+  "$defs": {
+    "architectureSignificance": {
+      "type": "string",
+      "enum": ["low", "medium", "high", "critical"]
+    },
+    "reviewStatus": {
+      "type": "string",
+      "enum": ["draft", "inferred", "confirmed", "approved", "stale", "superseded"]
+    },
+    "decisionStatus": {
+      "type": "string",
+      "enum": ["proposed", "accepted", "rejected", "deferred", "superseded"]
+    },
+    "decisionRecordBase": {
+      "type": "object",
+      "required": [
+        "id",
+        "recordType",
+        "title",
+        "status",
+        "reviewStatus",
+        "architectureSignificance",
+        "taskRefs",
+        "createdAt",
+        "updatedAt"
+      ],
+      "properties": {
+        "id": { "type": "string" },
+        "recordType": {
+          "type": "string",
+          "enum": ["asr", "adr"]
+        },
+        "title": { "type": "string" },
+        "status": { "$ref": "#/$defs/decisionStatus" },
+        "reviewStatus": { "$ref": "#/$defs/reviewStatus" },
+        "architectureSignificance": { "$ref": "#/$defs/architectureSignificance" },
+        "taskRefs": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "requirementRefs": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "fileInterestRef": { "type": "string" },
+        "impactAnalysisRef": { "type": "string" },
+        "templateId": { "type": "string" },
+        "owner": { "type": "string" },
+        "approver": { "type": "string" },
+        "provenance": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "tags": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "asrRecord": {
+      "unevaluatedProperties": false,
+      "allOf": [
+        { "$ref": "#/$defs/decisionRecordBase" },
+        {
+          "type": "object",
+          "required": [
+            "summary",
+            "problemStatement",
+            "drivers",
+            "qualityAttributes",
+            "constraints",
+            "affectedModules",
+            "affectedFiles",
+            "risks",
+            "openQuestions",
+            "optionsToEvaluate",
+            "promotionCriteria"
+          ],
+          "properties": {
+            "recordType": { "const": "asr" },
+            "summary": { "type": "string" },
+            "problemStatement": { "type": "string" },
+            "drivers": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "qualityAttributes": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "constraints": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "affectedModules": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "affectedFiles": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "risks": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "openQuestions": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "optionsToEvaluate": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "promotionCriteria": {
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          }
+        }
+      ]
+    },
+    "adrRecord": {
+      "unevaluatedProperties": false,
+      "allOf": [
+        { "$ref": "#/$defs/decisionRecordBase" },
+        {
+          "type": "object",
+          "required": [
+            "asrRef",
+            "decisionSummary",
+            "context",
+            "optionsConsidered",
+            "decision",
+            "consequences",
+            "validationPlan",
+            "rolloutPlan",
+            "risksAndMitigations",
+            "followUps",
+            "supersedes",
+            "supersededBy"
+          ],
+          "properties": {
+            "recordType": { "const": "adr" },
+            "asrRef": { "type": "string" },
+            "decisionSummary": { "type": "string" },
+            "context": { "type": "string" },
+            "optionsConsidered": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "decision": { "type": "string" },
+            "consequences": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "validationPlan": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "rolloutPlan": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "risksAndMitigations": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "followUps": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "supersedes": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "supersededBy": {
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          }
+        }
+      ]
+    },
+    "decisionRecord": {
+      "oneOf": [
+        { "$ref": "#/$defs/asrRecord" },
+        { "$ref": "#/$defs/adrRecord" }
+      ]
+    },
+    "decisionIndexEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "recordType",
+        "path",
+        "title",
+        "status",
+        "architectureSignificance",
+        "taskRefs",
+        "supersedes",
+        "supersededBy",
+        "reviewStatus",
+        "updatedAt"
+      ],
+      "properties": {
+        "id": { "type": "string" },
+        "recordType": {
+          "type": "string",
+          "enum": ["asr", "adr"]
+        },
+        "path": { "type": "string" },
+        "title": { "type": "string" },
+        "status": { "$ref": "#/$defs/decisionStatus" },
+        "architectureSignificance": { "$ref": "#/$defs/architectureSignificance" },
+        "taskRefs": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "supersedes": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "supersededBy": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "reviewStatus": { "$ref": "#/$defs/reviewStatus" },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "decisionIndex": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["version", "generatedAt", "entries"],
+      "properties": {
+        "version": { "type": "integer", "minimum": 1 },
+        "generatedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "entries": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/decisionIndexEntry" }
+        }
+      }
+    }
+  }
+}

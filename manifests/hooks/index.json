@@ -12,6 +12,8 @@
       "requiredInputs": ["workspaceRoot", "packageRoot"],
       "expectedOutputs": ["releaseValidationResult"],
       "observabilityFields": ["durationMs", "result", "target"],
+      "workflowFamilies": ["release-readiness", "engineering-assistant"],
+      "fallbackGuidance": "When native hook wiring is unavailable, run the equivalent release-validation command manually and record the outcome in the operator-facing report surface.",
       "notes": "Run before release or publish to catch packaging, template, and manifest drift.",
       "targetCompatibility": {
         "codex": "full",
@@ -32,6 +34,8 @@
       "requiredInputs": ["featureId", "currentStage"],
       "expectedOutputs": ["flowStatusSummary"],
       "observabilityFields": ["result", "featureId"],
+      "workflowFamilies": ["flow-orchestration", "engineering-assistant"],
+      "fallbackGuidance": "When a target cannot run native checkpoints, capture the same summary manually in the active flow notes or task status before continuing.",
       "notes": "Checkpoint the current implementation stage so an interrupted session can resume cleanly.",
       "targetCompatibility": {
         "codex": "full",
@@ -52,6 +56,8 @@
       "requiredInputs": ["workspaceRoot"],
       "expectedOutputs": ["repoIntelligenceResult"],
       "observabilityFields": ["repoType", "recommendationCount"],
+      "workflowFamilies": ["repo-intelligence", "engineering-assistant"],
+      "fallbackGuidance": "When a target cannot run the advisory hook automatically, surface the same scan as a documented preflight step before planning or implementation begins.",
       "notes": "Run early to capture repo shape before the install or planning surface drifts.",
       "targetCompatibility": {
         "codex": "full",

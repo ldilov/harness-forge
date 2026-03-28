@@ -21,6 +21,16 @@ export function registerDoctorCommands(program: Command): void {
         recordedAt: new Date().toISOString(),
         details: { status: result.status }
       });
-      console.log(options.json ? toJson(result) : JSON.stringify(result, null, 2));
+      if (options.json) {
+        console.log(toJson(result));
+        return;
+      }
+
+      console.log(`Workspace: ${workspaceRoot}`);
+      console.log(`Doctor status: ${result.status}`);
+      console.log(`Installed targets: ${result.audit.installedTargets.join(", ") || "none"}`);
+      console.log(`Missing managed paths: ${result.audit.missingManagedPaths.length}`);
+      console.log(`Missing bundles: ${result.audit.missingBundles.length}`);
+      console.log(`Stale task artifacts: ${result.audit.staleTaskArtifacts.length}`);
     });
 }

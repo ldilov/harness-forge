@@ -103,6 +103,7 @@ export async function buildRepoMap(root) {
   ].slice(0, 12);
 
   return {
+    generatedAt: facts.generatedAt,
     workspaceId: facts.root,
     workspaceType: facts.repoType,
     dominantLanguages: facts.dominantLanguages.map(({ id, confidence, evidence }) => ({ id, confidence, evidence })),
@@ -111,6 +112,17 @@ export async function buildRepoMap(root) {
     criticalPaths,
     highRiskPaths,
     existingInstructionSurfaces,
+    sharedRuntimeRoot: ".hforge/runtime",
+    sharedRuntimeBridges: ["AGENTS.md", "CLAUDE.md", ".hforge/runtime/index.json", ".hforge/runtime/README.md"],
+    sharedRuntimeArtifacts: [
+      ".hforge/runtime/repo/repo-map.json",
+      ".hforge/runtime/repo/recommendations.json",
+      ".hforge/runtime/repo/target-support.json",
+      ".hforge/runtime/repo/instruction-plan.json",
+      ".hforge/runtime/repo/scan-summary.json",
+      ".hforge/runtime/findings/validation-gaps.json",
+      ".hforge/runtime/findings/risk-signals.json"
+    ],
     qualityGaps: facts.missingValidationSurfaces.map(({ id, confidence, evidence }) => ({ id, confidence, evidence })),
     supportingEvidence
   };

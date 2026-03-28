@@ -2,14 +2,14 @@ import { Command } from "commander";
 
 import path from "node:path";
 
-import { loadBundleManifests, loadProfileManifests, loadTargetManifests } from "../../domain/manifests/index.js";
+import { loadBundleManifests, loadProfileManifests } from "../../domain/manifests/index.js";
 import { loadTargetAdapter } from "../../domain/targets/adapter.js";
 import { bootstrapWorkspace } from "../../application/install/bootstrap-workspace.js";
 import { createInstallPlan } from "../../application/install/plan-install.js";
 import { applyInstall } from "../../application/install/apply-install.js";
 import { validateEnvironment } from "../../application/install/validate-environment.js";
 import { formatPlanSummary, toJson } from "../../infrastructure/diagnostics/reporter.js";
-import { ensureDir, PACKAGE_ROOT, DEFAULT_WORKSPACE_ROOT, STATE_DIR } from "../../shared/index.js";
+import { PACKAGE_ROOT, DEFAULT_WORKSPACE_ROOT } from "../../shared/index.js";
 
 function collect(value: string, previous: string[]): string[] {
   previous.push(value);
@@ -17,36 +17,6 @@ function collect(value: string, previous: string[]): string[] {
 }
 
 export function registerInstallCommands(program: Command): void {
-  program
-    .command("init")
-    .option("--root <root>", "workspace root", DEFAULT_WORKSPACE_ROOT)
-    .option("--json", "json output", false)
-    .action(async (options) => {
-      const workspaceRoot = path.resolve(options.root);
-      const [profiles, targets] = await Promise.all([
-        loadProfileManifests(PACKAGE_ROOT),
-        loadTargetManifests(PACKAGE_ROOT)
-      ]);
-      const stateDir = path.join(workspaceRoot, STATE_DIR);
-      await ensureDir(stateDir);
-
-      const result = {
-        root: workspaceRoot,
-        stateDir,
-        profiles: profiles.map((profile) => profile.id),
-        targets: targets.map((target) => target.id)
-      };
-
-      if (options.json) {
-        console.log(toJson(result));
-        return;
-      }
-
-      console.log(`Initialized Harness Forge workspace at ${workspaceRoot}`);
-      console.log(`Available targets: ${result.targets.join(", ")}`);
-      console.log(`Starter profiles: ${result.profiles.join(", ")}`);
-    });
-
   program
     .command("install")
     .requiredOption("--target <target>")

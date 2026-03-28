@@ -4,6 +4,8 @@ build/
 coverage/
 .hforge/
 tmp/
+.tmp/
+*.tgz
 *.log
 .env*
 .DS_Store

@@ -1,0 +1,28 @@
+{
+  "candidateId": "ADR-CAND-001",
+  "taskId": "TASK-REC-001",
+  "linkedAsrRefs": [
+    "ASR-001"
+  ],
+  "title": "Use durable retry orchestration for billing webhooks",
+  "context": "Billing retries span the route and service boundary.",
+  "decision": "Persist retry state in the billing service.",
+  "alternatives": [
+    "Keep retries in memory",
+    "Move retries entirely into the route layer"
+  ],
+  "tradeoffs": [
+    "More operational state to manage",
+    "Stronger recovery guarantees"
+  ],
+  "evidenceRefs": [
+    ".hforge/runtime/tasks/TASK-REC-001/task-pack.json"
+  ],
+  "consequences": [
+    "Retry state survives process restarts"
+  ],
+  "openQuestions": [
+    "Should operators get visibility into retry state?"
+  ],
+  "promotionRecommendation": "promote"
+}

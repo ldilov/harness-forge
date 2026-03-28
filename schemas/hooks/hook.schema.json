@@ -38,6 +38,10 @@
       "type": "array",
       "items": { "type": "string", "minLength": 1 }
     },
+    "workflowFamilies": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
     "targetCompatibility": {
       "type": "object",
       "propertyNames": { "type": "string", "minLength": 1 },
@@ -46,6 +50,7 @@
         "enum": ["full", "partial", "emulated", "unsupported"]
       }
     },
+    "fallbackGuidance": { "type": "string", "minLength": 1 },
     "notes": { "type": "string" }
   },
   "additionalProperties": false

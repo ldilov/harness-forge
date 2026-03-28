@@ -542,6 +542,7 @@ function normalizeRecommendations(result, frameworkCatalog) {
 export async function collectRepoFacts(root) {
   const repoRoot = path.resolve(root);
   const files = [];
+  const generatedAt = new Date().toISOString();
 
   await walk(repoRoot, (relativePath) => {
     files.push(relativePath);
@@ -608,6 +609,7 @@ export async function collectRepoFacts(root) {
   const missingValidationSurfaces = detectMissingValidationSurfaces(files, testSignals, buildSignals);
 
   return {
+    generatedAt,
     root: repoRoot,
     repoType,
     dominantLanguages,

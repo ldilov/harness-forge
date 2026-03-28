@@ -1,0 +1,14 @@
+{
+  "requiredFiles": [
+    "README.md",
+    "AGENTS.md",
+    "CONTRIBUTING.md",
+    "CHANGELOG.md",
+    "docs/commands.md",
+    "docs/release-process.md",
+    "manifests/catalog/package-surface.json",
+    "targets/codex/runtime/.codex/config.toml",
+    "scripts/ci/release-smoke.mjs",
+    "scripts/ci/smoke-runner.mjs"
+  ]
+}

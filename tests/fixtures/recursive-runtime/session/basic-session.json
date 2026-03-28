@@ -1,0 +1,39 @@
+{
+  "sessionId": "RS-001",
+  "taskId": "TASK-REC-001",
+  "status": "draft",
+  "createdAt": "2026-03-27T10:00:00.000Z",
+  "updatedAt": "2026-03-27T10:00:00.000Z",
+  "rootObjective": "Investigate the cross-module billing retry flow",
+  "budgetPolicy": {
+    "policyId": "default-recursive-policy",
+    "maxDepth": 2,
+    "maxIterations": 6,
+    "maxSubcalls": 12,
+    "maxBatchWidth": 4,
+    "maxDurationMs": 300000,
+    "maxToolReads": 40,
+    "allowWritesToScratchOnly": true,
+    "allowNetwork": false,
+    "sandboxMode": "disabled",
+    "isolationLevel": "read-only-inspection"
+  },
+  "handles": [
+    {
+      "handleId": "repo-map",
+      "handleType": "summary",
+      "targetRef": ".hforge/runtime/repo/repo-map.json",
+      "label": "Repo map",
+      "summary": "Workspace repo cartography",
+      "stalenessState": "unknown",
+      "sourceArtifactType": "repo-map"
+    }
+  ],
+  "tools": [
+    "repo.read-handle",
+    "runtime.read-handle",
+    "session.write-scratch",
+    "session.append-trace"
+  ],
+  "promotionState": "draft-only"
+}

@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://harness-forge.dev/schemas/runtime/recursive-adr-candidate.schema.json",
+  "title": "Recursive ADR candidate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "candidateId",
+    "taskId",
+    "linkedAsrRefs",
+    "title",
+    "context",
+    "decision",
+    "alternatives",
+    "tradeoffs",
+    "evidenceRefs",
+    "consequences",
+    "openQuestions",
+    "promotionRecommendation"
+  ],
+  "properties": {
+    "candidateId": { "type": "string" },
+    "taskId": { "type": "string" },
+    "linkedAsrRefs": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "title": { "type": "string" },
+    "context": { "type": "string" },
+    "decision": { "type": "string" },
+    "alternatives": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "tradeoffs": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "evidenceRefs": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "consequences": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "openQuestions": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "promotionRecommendation": {
+      "type": "string",
+      "enum": ["promote", "revise", "hold"]
+    }
+  }
+}

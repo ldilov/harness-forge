@@ -46,6 +46,16 @@ describe("capability matrix contract", () => {
           expect(record.fallbackBehavior?.length ?? 0).toBeGreaterThan(0);
         }
       }
+
+      const repoIntelligence = (target.capabilities ?? []).find((record: any) => record.capabilityId === "repo-intelligence");
+      const flowOrchestration = (target.capabilities ?? []).find((record: any) => record.capabilityId === "flow-orchestration");
+
+      expect(
+        `${repoIntelligence?.notes ?? ""} ${repoIntelligence?.fallbackBehavior ?? ""}`.includes(".hforge/runtime")
+      ).toBe(true);
+      expect(
+        `${flowOrchestration?.notes ?? ""} ${flowOrchestration?.fallbackBehavior ?? ""}`.includes(".hforge/runtime")
+      ).toBe(true);
     }
   });
 });

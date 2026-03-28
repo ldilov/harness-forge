@@ -20,6 +20,7 @@ Every shipped hook manifest must declare:
 - `family`, `triggerStage`, and `mode`
 - execution ordering and failure semantics
 - required inputs and expected outputs
+- workflow families plus fallback guidance for runtimes without native parity
 - target compatibility per harness
 - observability fields that explain what happened
 
@@ -31,6 +32,8 @@ Every shipped hook manifest must declare:
 - Claude Code: full support for the shipped hook surfaces.
 - Cursor and OpenCode: portability only. We document the policies and include
   compatibility metadata, but we do not claim native parity.
+- Ported workflows such as `engineering-assistant` must explicitly label hook
+  behavior as native, translated, manual, or documentation-only.
 
 ## Operator guidance
 

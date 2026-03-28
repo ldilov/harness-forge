@@ -23,6 +23,11 @@ describe("runtime governance contract", () => {
     ) as {
       artifacts: Array<{ id: string }>;
     };
+    const packageSurface = JSON.parse(
+      await fs.readFile(path.join(root, "manifests", "catalog", "package-surface.json"), "utf8")
+    ) as {
+      requiredPaths: string[];
+    };
     const compatibilityMatrix = JSON.parse(
       await fs.readFile(path.join(root, "manifests", "catalog", "compatibility-matrix.json"), "utf8")
     ) as {
@@ -102,6 +107,15 @@ describe("runtime governance contract", () => {
     expect(flowArtifactIds.has("shared-runtime-repo-map")).toBe(true);
     expect(flowArtifactIds.has("shared-runtime-risk-signals")).toBe(true);
     expect(flowArtifactIds.has("hidden-ai-layer-skills")).toBe(true);
+    expect(flowArtifactIds.has("task-runtime-decision-record")).toBe(true);
+    expect(flowArtifactIds.has("task-runtime-decision-index")).toBe(true);
+    expect(flowArtifactIds.has("recursive-runtime-session")).toBe(true);
+    expect(flowArtifactIds.has("recursive-runtime-summary")).toBe(true);
+    expect(packageSurface.requiredPaths).toContain("schemas/runtime/architecture-significance.schema.json");
+    expect(packageSurface.requiredPaths).toContain("schemas/runtime/decision-record.schema.json");
+    expect(packageSurface.requiredPaths).toContain("schemas/runtime/decision-coverage-summary.schema.json");
+    expect(packageSurface.requiredPaths).toContain("schemas/runtime/recursive-session.schema.json");
+    expect(packageSurface.requiredPaths).toContain("schemas/templates/recursive-template-registry.schema.json");
     expect(
       compatibilityMatrix.entries.every(
         (entry) => entry.supportLevel === "full" || Boolean(entry.notes)

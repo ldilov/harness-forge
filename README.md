@@ -22,6 +22,7 @@ package content with workspace state.
 | --- | --- | --- |
 | Agent runtime surfaces | Thin visible bridges such as `AGENTS.md`, `.agents/skills/`, and target runtimes under `.codex/` and `.claude/`, backed by canonical hidden content under `.hforge/library/` and `.hforge/templates/` | Gives AI agents a predictable operating contract without exposing the full AI layer as product-root content |
 | Shared runtime state | Generated `.hforge/runtime/` summaries, baseline repo-intelligence artifacts, and runtime-state docs created during install | Keeps one shared repo-intelligence runtime visible even when targets use different native bridge files |
+| Recursive runtime state | Optional `.hforge/runtime/recursive/sessions/` session bundles for difficult investigations | Gives agents a proper durable runtime for hard tasks without turning every task into a recursive flow |
 | Spec flow | `.specify/` with spec -> plan -> tasks -> implement helpers | Supports structured delivery instead of free-form agent work |
 | Knowledge packs | `knowledge-bases/seeded/`, structured language packs, framework packs, examples, and rules | Gives agents deeper language and framework context with file-traceable sources |
 | Profiles and bundles | Target manifests, profiles, capability bundles, hooks, workflows, and catalogs | Lets operators install only the surfaces a repo needs |
@@ -115,6 +116,9 @@ If you need the full content matrix, start with:
   manifests, and target runtime surfaces.
 - It keeps discovery and execution clean: `.agents/skills/` finds the right
   flow, while `.hforge/library/` and `.hforge/templates/` hold the actual installed runtime contract and reference depth.
+- It gives custom agents one machine-readable contract in
+  `.hforge/agent-manifest.json` instead of forcing them to infer behavior from
+  prose alone.
 - It helps the agent choose relevant packs through repo-intelligence instead of
   assuming the stack from one config file.
 - It gives maintainers a way to audit, repair, diff, and validate the install
@@ -126,6 +130,20 @@ If you need the full content matrix, start with:
 
 The zero-build operator flow is the published `npx` entrypoint. It does not
 require a local clone or a manual `npm run build` first.
+
+```bash
+npx @harness-forge/cli
+```
+
+In an interactive terminal, the no-argument entrypoint now acts like a product
+front door:
+
+- first-run repos get a guided onboarding flow with folder, target, setup
+  profile, optional modules, review, and completion steps
+- repos that already contain `.hforge/` get a lightweight project hub for
+  `status`, `refresh`, `task`, `pack`, `review`, `export`, and settings
+- non-interactive environments are never left hanging; use explicit flags such
+  as `--agent`, `--yes`, and `--dry-run` instead
 
 ```bash
 npx @harness-forge/cli bootstrap --root . --yes
@@ -172,8 +190,15 @@ npm run build
 ### 3. Initialize the destination workspace
 
 ```bash
+npx @harness-forge/cli
+node dist/cli/index.js init --root /path/to/your/workspace --agent codex --setup-profile recommended --yes
 node dist/cli/index.js init --root /path/to/your/workspace --json
 ```
+
+Use the guided no-argument entrypoint when you want the CLI to walk you through
+folder choice, agent targets, quick/recommended/advanced setup depth, optional
+modules, and a mandatory review-before-write step. Use direct `init` flags
+when you need scriptable or CI-safe behavior.
 
 ### 4. Install for Codex
 
@@ -236,6 +261,55 @@ Use `bootstrap` when you want the CLI to:
 - install target runtime files, agent-facing skills, and workspace state in one
   pass
 
+## Interactive setup modes
+
+Harness Forge now exposes two setup styles on the same CLI:
+
+| Mode | Entry | Best for |
+| --- | --- | --- |
+| Guided onboarding | `npx @harness-forge/cli` or `hforge init --interactive` | First-time operators who want a polished setup flow and review before writes |
+| Direct setup | `hforge init --root <repo> --agent codex --yes` | Scripts, CI, and experienced operators who already know the target choices |
+
+The guided flow supports:
+
+- folder selection for the current directory, a custom path, or a new folder
+- one or more targets such as Codex or Claude Code
+- setup depth using `quick`, `recommended`, or `advanced`
+- optional modules such as working memory, task-pack support, decision
+  templates, export support, and recursive runtime
+- a review screen before any files are written
+
+The direct path supports:
+
+- `--agent <target>` for one or more selected runtimes
+- `--setup-profile <quick|recommended|advanced>` for the setup depth
+- `--module <module>` for explicit optional modules
+- `--yes` to apply without prompts
+- `--dry-run` to preview planned changes without writing files
+
+Once a repo already contains `.hforge/`, the no-argument CLI opens a
+project-aware hub instead of replaying first-run onboarding.
+
+After setup, Harness Forge also writes local launchers under
+`.hforge/generated/bin/`:
+
+- Windows CMD: `.hforge/generated/bin/hforge.cmd`
+- PowerShell: `.hforge/generated/bin/hforge.ps1`
+- POSIX shell: `.hforge/generated/bin/hforge`
+
+That means you do not need a global install just to reuse the CLI inside the
+workspace. If you want plain `hforge` without a path prefix, you still need a
+global npm install or a shell `PATH` alias.
+
+For custom-agent integration, use this read order:
+
+1. `AGENTS.md`
+2. `.hforge/agent-manifest.json`
+3. `.hforge/runtime/index.json`
+4. `.hforge/generated/agent-command-catalog.json`
+5. `.agents/skills/<skill>/SKILL.md`
+6. `.hforge/library/skills/<skill>/SKILL.md`
+
 ## Confirm that it is installed
 
 Use the CLI, the managed state files, and the target runtime directories
@@ -246,6 +320,7 @@ together.
 | Zero-build `npx` bootstrap | `npx @harness-forge/cli bootstrap --root . --yes` | The repo is bootstrapped without a prior local Harness Forge build |
 | Install state | `node dist/cli/index.js status --root /path/to/your/workspace --json` | `installedTargets`, `installedBundles`, timestamps, and file writes are present |
 | Agent command catalog | `/path/to/your/workspace/.hforge/generated/agent-command-catalog.json` | Agents can inspect shipped CLI commands and npm scripts without guessing |
+| Custom-agent manifest | `/path/to/your/workspace/.hforge/agent-manifest.json` | Custom agents get one machine-readable contract for bridge files, canonical roots, launchers, and safe command discovery |
 | Skill discovery layer | `/path/to/your/workspace/.agents/skills/` | Wrapper skills are present and point to the hidden canonical AI layer |
 | Canonical skill layer | `/path/to/your/workspace/.hforge/library/skills/` | Installed runtime skill contracts and `references/` packs are present without cluttering the repo root |
 | Hidden rule and knowledge layer | `/path/to/your/workspace/.hforge/library/rules/` and `/path/to/your/workspace/.hforge/library/knowledge/` | Installed rules and knowledge packs stay authoritative without looking like product code |
@@ -256,31 +331,43 @@ together.
 | Shared runtime index | `/path/to/your/workspace/.hforge/runtime/index.json` | One workspace-level runtime document records all installed targets and bridge contributions |
 | Shared runtime repo map | `/path/to/your/workspace/.hforge/runtime/repo/repo-map.json` | Baseline repo cartography is persisted for downstream runtime and operator flows |
 | Shared runtime findings | `/path/to/your/workspace/.hforge/runtime/findings/risk-signals.json` | Install writes risk-oriented findings alongside the shared runtime intelligence baseline |
+| Task runtime decision index | `/path/to/your/workspace/.hforge/runtime/decisions/index.json` | Architecture-significant work can accumulate durable ASR/ADR records in one machine-readable index |
+| Recursive runtime session | `/path/to/your/workspace/.hforge/runtime/recursive/sessions/RS-XXX/session.json` | Optional recursive-mode work persists as a durable draft session with handles, budget, and promotion state |
 | Target runtime | `/path/to/your/workspace/.codex/` or `/path/to/your/workspace/.claude/` | Target runtime files were materialized in the workspace |
 
 If you want a fast confidence check after installation:
 
 ```bash
+node dist/cli/index.js init --root /path/to/your/workspace --json
 node dist/cli/index.js status --root /path/to/your/workspace --json
+node dist/cli/index.js refresh --root /path/to/your/workspace --json
 node dist/cli/index.js commands --json
 node dist/cli/index.js doctor --root /path/to/your/workspace --json
 node dist/cli/index.js audit --root /path/to/your/workspace --json
+node dist/cli/index.js review --root /path/to/your/workspace --json
 ```
 
 ## Common operator commands
 
 | Goal | Command |
 | --- | --- |
+| Initialize the hidden runtime in a repo | `node dist/cli/index.js init --root /path/to/your/workspace --json` |
 | Autodetect targets and bootstrap the repo | `node dist/cli/index.js bootstrap --root /path/to/your/workspace --yes` |
 | Inspect the available catalog | `node dist/cli/index.js catalog --json` |
 | List commands and npm scripts that agents can use | `node dist/cli/index.js commands --json` |
-| See what is installed and recommended | `node dist/cli/index.js list --root /path/to/your/workspace --json` |
+| See what is installed and versioned | `node dist/cli/index.js status --root /path/to/your/workspace --json` |
+| Refresh shared runtime summaries after install changes | `node dist/cli/index.js refresh --root /path/to/your/workspace --json` |
+| Inspect active task-runtime folders | `node dist/cli/index.js task list --root /path/to/your/workspace --json` |
+| Inspect one task pack | `node dist/cli/index.js pack inspect TASK-001 --root /path/to/your/workspace --json` |
+| Summarize runtime health and decision coverage | `node dist/cli/index.js review --root /path/to/your/workspace --json` |
+| Export runtime state for review or handoff | `node dist/cli/index.js export --root /path/to/your/workspace --json` |
 | Generate repo-aware recommendations | `node dist/cli/index.js recommend /path/to/your/workspace --json` |
 | Build a repo map and service boundary picture | `node dist/cli/index.js cartograph /path/to/your/workspace --json` |
 | Synthesize target-aware instructions for Codex or Claude Code | `node dist/cli/index.js synthesize-instructions /path/to/your/workspace --target codex --json` |
 | Inspect what a target actually supports | `node dist/cli/index.js target inspect codex --json` |
 | Review local observability effectiveness | `node dist/cli/index.js observability summarize --json` |
 | Plan or check parallel shard work | `node dist/cli/index.js parallel plan specs/<feature>/tasks.md --json` |
+| Escalate a hard task into recursive mode | `node dist/cli/index.js recursive plan "investigate billing retry behavior" --task-id TASK-001 --root /path/to/your/workspace --json` |
 | Inspect flow recovery state | `node dist/cli/index.js flow status --root /path/to/your/workspace --json` |
 | Validate shipped templates | `node dist/cli/index.js template validate --json` |
 | Compare managed install state against the workspace | `node dist/cli/index.js diff-install --root /path/to/your/workspace --json` |
@@ -318,10 +405,24 @@ surfaces are first-class, partial, or documentation-only for their target.
 
 ## Release validation
 
+For routine contributor work, run:
+
+```bash
+npm run validate:local
+```
+
+For release or handoff, run:
+
+```bash
+npm run release:dry-run
+```
+
 Before publish or handoff, run:
 
 ```bash
 npm run build
+npm run validate:local
+npm run smoke:cli
 npm run commands:catalog
 npm run bootstrap:current
 npm run recommend:current
@@ -342,4 +443,5 @@ npm run knowledge:drift
 ```
 
 `npm run validate:release` is the front-door release gate and should be treated
-as mandatory for shipped changes.
+as mandatory for shipped changes. See `CONTRIBUTING.md`, `CHANGELOG.md`, and
+`docs/release-process.md` for the maintainer workflow around those checks.

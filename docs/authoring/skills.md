@@ -25,6 +25,10 @@ prompt fragments.
 
 ## Imported skill packs
 
+- inventory single-skill ports such as `engineering-assistant` in
+  `manifests/catalog/engineering-assistant-import-inventory.json`
+- keep maintainer-facing provenance for single-skill ports in
+  `docs/authoring/engineering-assistant-port.md`
 - inventory every imported runtime surface in
   `manifests/catalog/enhanced-skill-import-inventory.json`
 - merge overlapping responsibilities into the existing canonical skill instead

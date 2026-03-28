@@ -51,6 +51,7 @@ and modernization guidance sourced into project-owned `references/` directories.
 
 ## Operational helper skills
 
+- `skills/engineering-assistant/`
 - `skills/repo-onboarding/`
 - `skills/documentation-lookup/`
 - `skills/security-scan/`
@@ -87,3 +88,7 @@ Operational and workload skills should expose:
 
 Imported upgrades should also keep an auditable inventory record and preserve
 maintainer-facing provenance instead of shipping duplicate skill identities.
+
+Single-skill ports such as `engineering-assistant` should preserve the same
+discipline through `manifests/catalog/engineering-assistant-import-inventory.json`
+and `docs/authoring/engineering-assistant-port.md`.

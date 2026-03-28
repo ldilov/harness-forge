@@ -5,6 +5,7 @@ import { describe, expect, it } from "vitest";
 
 const root = process.cwd();
 const operationalSkills = [
+  ["engineering-assistant", "skills/engineering-assistant/references/project-notes.md"],
   ["repo-onboarding", "skills/repo-onboarding/references/output-template.md"],
   ["security-scan", "skills/security-scan/references/review-checklist.md"],
   ["release-readiness", "skills/release-readiness/references/release-report-template.md"],

@@ -21,6 +21,14 @@ export function registerDiffInstallCommands(program: Command): void {
         recordedAt: new Date().toISOString(),
         details: { missing: result.missing.length }
       });
-      console.log(options.json ? toJson(result) : JSON.stringify(result, null, 2));
+      if (options.json) {
+        console.log(toJson(result));
+        return;
+      }
+
+      console.log(`Installed tracked paths: ${result.installed.length}`);
+      console.log(`Present paths: ${result.present.length}`);
+      console.log(`Missing paths: ${result.missing.length}`);
+      console.log(`Stale task artifacts: ${result.staleTaskArtifacts.length}`);
     });
 }

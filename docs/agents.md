@@ -6,11 +6,14 @@ AI content into the hidden `.hforge/` layer.
 ## Primary surfaces
 
 - `AGENTS.md` for the thin repo-root guidance bridge
+- `.hforge/agent-manifest.json` for one machine-readable custom-agent contract
 - `agents/planner.md` for packaged planning expectations
 - `.agents/skills/` for discovery wrappers that route agent runtimes into the hidden installed canonical skills
 - `.agents/skills/*-engineering/` for language-aware activation that resolves into `.hforge/library/skills/` in installed workspaces
 - `.hforge/library/skills/` for the canonical installed skill library
 - `.hforge/library/rules/` and `.hforge/library/knowledge/` for hidden installed rule and knowledge surfaces
+- `.hforge/runtime/recursive/sessions/` for optional hard-task recursive
+  sessions that stay hidden alongside the rest of the AI layer
 - `docs/authoring/enhanced-skill-import.md` for curated research and validation provenance behind imported skill upgrades
 - `RESEARCH-SOURCES.md` and `VALIDATION.md` for optional pack-level provenance detail
 
@@ -24,6 +27,8 @@ AI content into the hidden `.hforge/` layer.
 - when implementation should follow spec, plan, task, and validation loops
 - when templates or workflow docs reference the shipped validator bundle
 - when the application repo should stay clean and treat AI-only content as a hidden support layer
+- when a task is multi-hop, ambiguous, or architecture-heavy enough to justify
+  an explicit recursive session instead of growing the prompt
 
 ## Discovery rule
 
@@ -31,4 +36,10 @@ AI content into the hidden `.hforge/` layer.
 - in installed workspaces, load `.hforge/library/skills/<skill>/SKILL.md` for the actual execution contract
 - in this package source repo, authored canonical skill sources still live under `skills/<skill>/`
 - in installed workspaces, deeper references live under `.hforge/library/skills/<skill>/references/`
+- in installed workspaces, recursive runtime state lives under
+  `.hforge/runtime/recursive/sessions/<sessionId>/` and should be treated as
+  hidden operational state rather than product code
+- for custom agents that do not want to parse prose only, load
+  `.hforge/agent-manifest.json` first and treat every surface it marks
+  `treatAsProductCode: false` as AI-layer content rather than application code
 - use `docs/authoring/enhanced-skill-import.md`, `RESEARCH-SOURCES.md`, and `VALIDATION.md` only when provenance or import rationale matters

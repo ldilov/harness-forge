@@ -17,6 +17,14 @@
       "lineageRole": "quality-gate"
     },
     {
+      "id": "interactive-cli-fixtures",
+      "stage": "validation",
+      "pathPattern": "tests/fixtures/interactive-cli/**/*",
+      "generatedBy": "interactive-cli-tests",
+      "required": false,
+      "lineageRole": "interactive-cli-fixture"
+    },
+    {
       "id": "plan",
       "stage": "plan",
       "pathPattern": "specs/*/plan.md",
@@ -71,6 +79,30 @@
       "generatedBy": "update-agent-context",
       "required": true,
       "lineageRole": "reentry-context"
+    },
+    {
+      "id": "install-state",
+      "stage": "shared",
+      "pathPattern": ".hforge/state/install-state.json",
+      "generatedBy": "hforge init",
+      "required": false,
+      "lineageRole": "install-state"
+    },
+    {
+      "id": "post-install-guidance",
+      "stage": "shared",
+      "pathPattern": ".hforge/state/post-install-guidance.txt",
+      "generatedBy": "hforge init",
+      "required": false,
+      "lineageRole": "operator-guidance"
+    },
+    {
+      "id": "agent-manifest",
+      "stage": "shared",
+      "pathPattern": ".hforge/agent-manifest.json",
+      "generatedBy": "hforge init",
+      "required": false,
+      "lineageRole": "custom-agent-manifest"
     },
     {
       "id": "shared-runtime-index",
@@ -175,6 +207,110 @@
       "generatedBy": "bootstrap-workspace",
       "required": false,
       "lineageRole": "shared-runtime-risk-signals"
+    },
+    {
+      "id": "task-runtime-file-interest",
+      "stage": "shared",
+      "pathPattern": ".hforge/runtime/tasks/*/file-interest.json",
+      "generatedBy": "task-runtime",
+      "required": false,
+      "lineageRole": "task-aware-file-interest"
+    },
+    {
+      "id": "task-runtime-impact-analysis",
+      "stage": "shared",
+      "pathPattern": ".hforge/runtime/tasks/*/impact-analysis.json",
+      "generatedBy": "task-runtime",
+      "required": false,
+      "lineageRole": "task-impact-analysis"
+    },
+    {
+      "id": "task-runtime-task-pack",
+      "stage": "shared",
+      "pathPattern": ".hforge/runtime/tasks/*/task-pack.json",
+      "generatedBy": "task-runtime",
+      "required": false,
+      "lineageRole": "task-pack"
+    },
+    {
+      "id": "task-runtime-decision-record",
+      "stage": "shared",
+      "pathPattern": ".hforge/runtime/decisions/*.json",
+      "generatedBy": "runtime-governance",
+      "required": false,
+      "lineageRole": "decision-record"
+    },
+    {
+      "id": "task-runtime-decision-index",
+      "stage": "shared",
+      "pathPattern": ".hforge/runtime/decisions/index.json",
+      "generatedBy": "runtime-governance",
+      "required": false,
+      "lineageRole": "decision-index"
+    },
+    {
+      "id": "task-runtime-decision-coverage-summary",
+      "stage": "shared",
+      "pathPattern": ".hforge/runtime/decisions/coverage-summary.json",
+      "generatedBy": "runtime-governance",
+      "required": false,
+      "lineageRole": "decision-coverage"
+    },
+    {
+      "id": "task-runtime-working-memory",
+      "stage": "shared",
+      "pathPattern": ".hforge/runtime/cache/working-memory.json",
+      "generatedBy": "task-runtime",
+      "required": false,
+      "lineageRole": "working-memory-cache"
+    },
+    {
+      "id": "runtime-template-registry",
+      "stage": "shared",
+      "pathPattern": ".hforge/templates/runtime/registry.json",
+      "generatedBy": "task-runtime",
+      "required": false,
+      "lineageRole": "runtime-template-registry"
+    },
+    {
+      "id": "task-runtime-recursive-linkage",
+      "stage": "shared",
+      "pathPattern": ".hforge/runtime/tasks/*/recursive-session.json",
+      "generatedBy": "recursive-runtime",
+      "required": false,
+      "lineageRole": "task-recursive-linkage"
+    },
+    {
+      "id": "recursive-runtime-session",
+      "stage": "shared",
+      "pathPattern": ".hforge/runtime/recursive/sessions/*/session.json",
+      "generatedBy": "recursive-runtime",
+      "required": false,
+      "lineageRole": "recursive-session"
+    },
+    {
+      "id": "recursive-runtime-memory",
+      "stage": "shared",
+      "pathPattern": ".hforge/runtime/recursive/sessions/*/memory.json",
+      "generatedBy": "recursive-runtime",
+      "required": false,
+      "lineageRole": "recursive-working-memory"
+    },
+    {
+      "id": "recursive-runtime-trace",
+      "stage": "shared",
+      "pathPattern": ".hforge/runtime/recursive/sessions/*/trace.jsonl",
+      "generatedBy": "recursive-runtime",
+      "required": false,
+      "lineageRole": "recursive-trace"
+    },
+    {
+      "id": "recursive-runtime-summary",
+      "stage": "shared",
+      "pathPattern": ".hforge/runtime/recursive/sessions/*/summary.json",
+      "generatedBy": "recursive-runtime",
+      "required": false,
+      "lineageRole": "recursive-summary"
     },
     {
       "id": "flow-state",

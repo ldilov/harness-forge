@@ -1,0 +1,172 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://harness-forge.dev/schemas/runtime/task-pack.schema.json",
+  "title": "Task pack",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "taskId",
+    "title",
+    "generatedAt",
+    "summary",
+    "requirements",
+    "implementationNotes",
+    "selectedTemplates",
+    "reviewStatus"
+  ],
+  "properties": {
+    "taskId": { "type": "string" },
+    "title": { "type": "string" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "basedOnCommit": { "type": "string" },
+    "targetId": { "type": "string" },
+    "summary": { "type": "string" },
+    "requestedOutcome": { "type": "string" },
+    "constraints": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "openQuestions": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "impactedModules": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "architectureSignificance": { "$ref": "#/$defs/architectureSignificanceAssessment" },
+    "fileInterestRef": { "type": "string" },
+    "impactAnalysisRef": { "type": "string" },
+    "decisionRefs": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "asrRefs": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "adrRefs": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "requirements": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/requirement" }
+    },
+    "implementationNotes": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/implementationNote" }
+    },
+    "acceptanceCriteria": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "suggestedSequence": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "selectedTemplates": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "provenance": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "reviewStatus": {
+      "type": "string",
+      "enum": ["draft", "inferred", "confirmed", "approved", "stale", "superseded"]
+    }
+  },
+  "$defs": {
+    "requirement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "title", "description"],
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "rationale": { "type": "string" },
+        "priority": {
+          "type": "string",
+          "enum": ["low", "medium", "high", "critical"]
+        },
+        "affectedModules": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "acceptanceCriteria": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "nonGoals": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "risks": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "testImplications": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "implementationNote": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "type", "statement"],
+      "properties": {
+        "id": { "type": "string" },
+        "type": {
+          "type": "string",
+          "enum": ["constraint", "warning", "optimization", "reuse-opportunity", "migration-note", "inconsistency", "architectural-context"]
+        },
+        "statement": { "type": "string" },
+        "evidence": { "type": "string" },
+        "affectedModules": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": ["low", "medium", "high"]
+        },
+        "source": { "type": "string" }
+      }
+    },
+    "architectureSignificanceAssessment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["taskId", "level", "signals", "confidence", "reviewStatus", "assessedAt", "assessedBy"],
+      "properties": {
+        "taskId": { "type": "string" },
+        "level": {
+          "type": "string",
+          "enum": ["low", "medium", "high", "critical"]
+        },
+        "signals": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        },
+        "sourceRefs": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": ["low", "medium", "high"]
+        },
+        "reviewStatus": {
+          "type": "string",
+          "enum": ["draft", "inferred", "confirmed", "approved", "stale", "superseded"]
+        },
+        "assessedAt": { "type": "string", "format": "date-time" },
+        "assessedBy": { "type": "string" }
+      }
+    }
+  }
+}

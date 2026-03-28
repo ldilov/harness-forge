@@ -4,6 +4,8 @@ tests/
 specs/
 tmp/
 .hforge/
+.tmp/
+*.tgz
 *.log
 *.tmp
 .vscode/

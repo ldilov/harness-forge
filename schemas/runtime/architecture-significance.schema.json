@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://harness-forge.dev/schemas/runtime/architecture-significance.schema.json",
+  "title": "Architecture significance assessment",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "taskId",
+    "level",
+    "signals",
+    "confidence",
+    "reviewStatus",
+    "assessedAt",
+    "assessedBy"
+  ],
+  "properties": {
+    "taskId": { "type": "string" },
+    "level": {
+      "type": "string",
+      "enum": ["low", "medium", "high", "critical"]
+    },
+    "signals": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "sourceRefs": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "confidence": {
+      "type": "string",
+      "enum": ["low", "medium", "high"]
+    },
+    "reviewStatus": {
+      "type": "string",
+      "enum": ["draft", "inferred", "confirmed", "approved", "stale", "superseded"]
+    },
+    "assessedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "assessedBy": { "type": "string" }
+  }
+}

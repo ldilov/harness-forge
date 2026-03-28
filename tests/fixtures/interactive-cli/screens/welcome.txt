@@ -1,0 +1,2 @@
+HARNESS FORGE SETUP
+Interactive mode never writes before the review step.

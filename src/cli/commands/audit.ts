@@ -24,6 +24,17 @@ export function registerAuditCommands(program: Command): void {
           missingBundles: result.missingBundles.length
         }
       });
-      console.log(options.json ? toJson(result) : JSON.stringify(result, null, 2));
+      if (options.json) {
+        console.log(toJson(result));
+        return;
+      }
+
+      console.log(`Workspace: ${workspaceRoot}`);
+      console.log(`Package version: ${result.packageVersion}`);
+      console.log(`Installed targets: ${result.installedTargets.join(", ") || "none"}`);
+      console.log(`Installed bundles: ${result.installedBundles.length}`);
+      console.log(`Missing managed paths: ${result.missingManagedPaths.length}`);
+      console.log(`Package surface gaps: ${result.packageSurfaceMissingPaths.length}`);
+      console.log(`Stale task artifacts: ${result.staleTaskArtifacts.length}`);
     });
 }

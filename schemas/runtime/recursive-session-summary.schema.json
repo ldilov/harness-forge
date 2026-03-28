@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://harness-forge.dev/schemas/runtime/recursive-session-summary.schema.json",
+  "title": "Recursive session summary",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "sessionId",
+    "outcome",
+    "summary",
+    "promotedArtifacts",
+    "outstandingGaps",
+    "budgetReport",
+    "followUp",
+    "generatedAt"
+  ],
+  "properties": {
+    "sessionId": { "type": "string" },
+    "taskId": { "type": "string" },
+    "outcome": {
+      "type": "string",
+      "enum": ["completed", "partial", "blocked", "failed", "draft"]
+    },
+    "summary": { "type": "string" },
+    "promotedArtifacts": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "outstandingGaps": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "budgetReport": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["policyId", "limitsHit"],
+      "properties": {
+        "policyId": { "type": "string" },
+        "limitsHit": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "notes": { "type": "string" }
+      }
+    },
+    "followUp": { "type": "string" },
+    "generatedAt": { "type": "string", "format": "date-time" }
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://harness-forge.dev/schemas/runtime/impact-analysis.schema.json",
+  "title": "Task impact analysis",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["taskId", "generatedAt", "affectedModules", "riskAreas", "suggestedTests"],
+  "properties": {
+    "taskId": { "type": "string" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "basedOnCommit": { "type": "string" },
+    "architectureSignificance": { "$ref": "#/$defs/architectureSignificanceAssessment" },
+    "affectedModules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "reason", "confidence"],
+        "properties": {
+          "id": { "type": "string" },
+          "paths": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "reason": { "type": "string" },
+          "confidence": {
+            "type": "string",
+            "enum": ["low", "medium", "high"]
+          }
+        }
+      }
+    },
+    "riskAreas": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "suggestedTests": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "relatedAdrs": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "openQuestions": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "$defs": {
+    "architectureSignificanceAssessment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["taskId", "level", "signals", "confidence", "reviewStatus", "assessedAt", "assessedBy"],
+      "properties": {
+        "taskId": { "type": "string" },
+        "level": {
+          "type": "string",
+          "enum": ["low", "medium", "high", "critical"]
+        },
+        "signals": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        },
+        "sourceRefs": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": ["low", "medium", "high"]
+        },
+        "reviewStatus": {
+          "type": "string",
+          "enum": ["draft", "inferred", "confirmed", "approved", "stale", "superseded"]
+        },
+        "assessedAt": { "type": "string", "format": "date-time" },
+        "assessedBy": { "type": "string" }
+      }
+    }
+  }
+}

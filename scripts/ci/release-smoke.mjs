@@ -7,7 +7,10 @@ const nodeCommand = process.execPath;
 const powerShellCandidates = process.platform === "win32" ? ["pwsh", "powershell"] : ["pwsh"];
 const requiredSurfaces = [
   "manifests/catalog/enhanced-skill-import-inventory.json",
-  "docs/authoring/enhanced-skill-import.md"
+  "docs/authoring/enhanced-skill-import.md",
+  "docs/release-process.md",
+  "CONTRIBUTING.md",
+  "CHANGELOG.md"
 ];
 
 function run(command, args) {
@@ -25,6 +28,7 @@ if (missingSurfaces.length > 0) {
 }
 
 const scriptRuns = [
+  ["scripts/ci/smoke-runner.mjs"],
   ["scripts/ci/validate-pack-dependencies.mjs"],
   ["scripts/ci/validate-content-metadata.mjs"],
   ["scripts/ci/validate-seeded-knowledge-coverage.mjs"],
@@ -59,6 +63,13 @@ const powerShellRuns = powerShell
 const distCliPath = path.join(root, "dist", "cli", "index.js");
 const cliRuns = fs.existsSync(distCliPath)
   ? [
+      { name: "help", result: run(nodeCommand, [distCliPath, "--help"]) },
+      { name: "init", result: run(nodeCommand, [distCliPath, "init", "--help"]) },
+      { name: "refresh", result: run(nodeCommand, [distCliPath, "refresh", "--help"]) },
+      { name: "task", result: run(nodeCommand, [distCliPath, "task", "--help"]) },
+      { name: "pack", result: run(nodeCommand, [distCliPath, "pack", "--help"]) },
+      { name: "review", result: run(nodeCommand, [distCliPath, "review", "--help"]) },
+      { name: "export", result: run(nodeCommand, [distCliPath, "export", "--help"]) },
       { name: "catalog", result: run(nodeCommand, [distCliPath, "catalog", "--json"]) },
       { name: "template-validate", result: run(nodeCommand, [distCliPath, "template", "validate", "--json"]) },
       { name: "flow-status", result: run(nodeCommand, [distCliPath, "flow", "status", "--json"]) },

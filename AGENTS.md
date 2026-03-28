@@ -3,6 +3,7 @@
 Use the thin visible bridge surfaces first in installed workspaces:
 
 - `.agents/skills/` for auto-discoverable wrappers
+- `.hforge/agent-manifest.json` for the machine-readable custom-agent contract
 - `.specify/` for spec → plan → tasks
 - `.hforge/library/skills/` for canonical installed skills
 - `.hforge/library/rules/` plus the matching language directory for implementation guidance
@@ -55,6 +56,9 @@ Use the thin visible bridge surfaces first in installed workspaces:
 - use `node dist/cli/index.js commands --json` or
   `.hforge/generated/agent-command-catalog.json` to discover the shipped CLI
   commands and npm scripts before inventing your own execution path
+- use `.hforge/agent-manifest.json` when a custom agent needs one stable
+  machine-readable file describing bridge files, canonical roots, local
+  launchers, and safe command discovery
 - use `.hforge/library/` as the canonical installed AI layer and avoid treating
   root-visible bridge files as the full source of truth
 - use `.hforge/runtime/index.json` and `.hforge/runtime/README.md` to inspect

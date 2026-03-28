@@ -5,6 +5,8 @@ import { ensureDir, exists, INSTALL_STATE_FILE, readJsonFile, STATE_DIR, writeJs
 
 export interface InstallStateRecord {
   version: number;
+  packageVersion?: string;
+  runtimeSchemaVersion?: number;
   installedTargets: string[];
   installedBundles: string[];
   appliedPlanHash: string;
@@ -19,6 +21,11 @@ export interface InstallStateRecord {
   aiLayerRoot?: string;
   hiddenCanonicalRoots?: string[];
   visibleBridgePaths?: string[];
+  preferredTargets?: string[];
+  setupProfile?: string;
+  enabledModules?: string[];
+  lastAction?: "init" | "install" | "refresh" | "bootstrap";
+  recoveryHints?: string[];
 }
 
 export async function loadInstallState(root: string): Promise<InstallStateRecord | null> {

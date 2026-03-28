@@ -1,0 +1,39 @@
+{
+  "generatedAt": "2026-03-27T09:00:00.000Z",
+  "workspaceId": "fixture-workspace",
+  "workspaceType": "typescript-service",
+  "dominantLanguages": [
+    {
+      "id": "typescript",
+      "confidence": 0.98,
+      "evidence": ["package.json"]
+    }
+  ],
+  "frameworks": [
+    {
+      "id": "express",
+      "confidence": 0.84,
+      "evidence": ["src/server.ts"]
+    }
+  ],
+  "services": [
+    {
+      "id": "billing-service",
+      "path": "src/billing",
+      "classification": "package"
+    },
+    {
+      "id": "api-service",
+      "path": "src/api",
+      "classification": "package"
+    }
+  ],
+  "criticalPaths": ["src/api/routes", "src/billing/service.ts"],
+  "highRiskPaths": ["src/billing/service.ts", "src/api/routes/billing.ts"],
+  "existingInstructionSurfaces": ["AGENTS.md"],
+  "sharedRuntimeRoot": ".hforge/runtime",
+  "sharedRuntimeBridges": ["AGENTS.md", ".hforge/runtime/index.json"],
+  "sharedRuntimeArtifacts": [".hforge/runtime/repo/repo-map.json"],
+  "qualityGaps": [],
+  "supportingEvidence": ["src/billing/service.ts"]
+}

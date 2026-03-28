@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://harness-forge.dev/schemas/runtime/file-interest.schema.json",
+  "title": "Task-aware file interest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["taskId", "generatedAt", "items"],
+  "properties": {
+    "taskId": { "type": "string" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "basedOnCommit": { "type": "string" },
+    "items": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/fileInterestItem" }
+    }
+  },
+  "$defs": {
+    "bucket": {
+      "type": "string",
+      "enum": ["must-include", "strongly-relevant", "supporting-context", "ignore-for-now"]
+    },
+    "confidenceLevel": {
+      "type": "string",
+      "enum": ["low", "medium", "high"]
+    },
+    "reviewStatus": {
+      "type": "string",
+      "enum": ["draft", "inferred", "confirmed", "approved", "stale", "superseded"]
+    },
+    "fileInterestItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "role",
+        "score",
+        "bucket",
+        "reasons",
+        "confidence",
+        "reviewStatus"
+      ],
+      "properties": {
+        "path": { "type": "string" },
+        "role": { "type": "string" },
+        "module": { "type": "string" },
+        "score": { "type": "number" },
+        "bucket": { "$ref": "#/$defs/bucket" },
+        "matchedKeywords": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "reasons": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "riskTags": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "relatedTests": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "relatedAdrs": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "evidence": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "confidence": { "$ref": "#/$defs/confidenceLevel" },
+        "reviewStatus": { "$ref": "#/$defs/reviewStatus" },
+        "lastAnalyzedCommit": { "type": "string" }
+      }
+    }
+  }
+}

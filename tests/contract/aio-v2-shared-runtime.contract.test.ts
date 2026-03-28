@@ -28,6 +28,7 @@ describe("aio v2 shared runtime contract", () => {
     ]);
 
     const artifactIds = new Set(flowArtifacts.artifacts.map((artifact) => artifact.id));
+    expect(artifactIds.has("agent-manifest")).toBe(true);
     expect(artifactIds.has("shared-runtime-index")).toBe(true);
     expect(artifactIds.has("shared-runtime-readme")).toBe(true);
     expect(artifactIds.has("shared-runtime-repo-map")).toBe(true);
@@ -61,7 +62,10 @@ describe("aio v2 shared runtime contract", () => {
       expect(content).toContain(".hforge/runtime");
     }
 
+    expect(agents).toContain(".hforge/agent-manifest.json");
     expect(agents).toContain(".hforge/library/skills/");
+    expect(readme).toContain(".hforge/agent-manifest.json");
+    expect(installation).toContain(".hforge/agent-manifest.json");
     expect(readme).toContain(".hforge/library/skills/");
     expect(installation).toContain(".hforge/library/skills/");
     expect(targets).toContain(".hforge/library/");

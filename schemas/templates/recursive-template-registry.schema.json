@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://harness-forge.dev/schemas/templates/recursive-template-registry.schema.json",
+  "title": "Recursive template registry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "entries"],
+  "properties": {
+    "version": { "type": "integer", "minimum": 1 },
+    "entries": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/entry" }
+    }
+  },
+  "$defs": {
+    "entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "file", "format", "scope", "description", "variables"],
+      "properties": {
+        "id": { "type": "string" },
+        "kind": {
+          "type": "string",
+          "enum": ["recursive-session", "asr", "adr-candidate", "review", "summary", "final-output"]
+        },
+        "file": { "type": "string" },
+        "format": {
+          "type": "string",
+          "enum": ["md", "json"]
+        },
+        "scope": {
+          "type": "string",
+          "enum": ["session", "decision", "review", "final-output"]
+        },
+        "description": { "type": "string" },
+        "variables": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    }
+  }
+}

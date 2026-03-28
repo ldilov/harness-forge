@@ -1,0 +1,215 @@
+{
+  "packId": "engineering-assistant-2026-03",
+  "sourceName": "Engineering Assistant Skill Pack",
+  "sourceVersion": "2026-03-26-import",
+  "resourceRoots": [
+    "engineering-assistant/"
+  ],
+  "summary": "Governed port record for the imported engineering-assistant archive, preserving its architecture and implementation collaboration contract while translating notes, changelog, helper-script, and metadata assumptions into project-owned Harness Forge surfaces.",
+  "validationScope": "The MVP port validates canonical skill ownership, imported artifact coverage, helper-surface planning, and packaged governance paths. Runtime wrapper parity and executable helper commands remain scheduled for later user-story slices.",
+  "researchScope": "The imported pack contributes architecture playbooks, SOLID and patterns guidance, skill-composition rules, project-memory expectations, strict change-discipline habits, and runtime metadata from its original OpenAI-oriented packaging.",
+  "entries": [
+    {
+      "artifactPath": "engineering-assistant/SKILL.md",
+      "artifactType": "skill",
+      "skillId": "engineering-assistant",
+      "existingProjectSurface": null,
+      "decision": "embed",
+      "decisionReason": "The imported pack owns a distinct orchestration responsibility that fits Harness Forge as one canonical skill instead of as a wrapper-only appendix.",
+      "destinationPath": "skills/engineering-assistant/SKILL.md",
+      "reviewStatus": "accepted"
+    },
+    {
+      "artifactPath": "engineering-assistant/references/architecture.md",
+      "artifactType": "reference",
+      "skillId": "engineering-assistant",
+      "existingProjectSurface": null,
+      "decision": "embed",
+      "decisionReason": "The architecture checklist is core operator guidance and should ship as a project-owned engineering-assistant reference.",
+      "destinationPath": "skills/engineering-assistant/references/architecture.md",
+      "reviewStatus": "accepted"
+    },
+    {
+      "artifactPath": "engineering-assistant/references/solid-and-patterns.md",
+      "artifactType": "reference",
+      "skillId": "engineering-assistant",
+      "existingProjectSurface": null,
+      "decision": "embed",
+      "decisionReason": "The practical SOLID and pattern guidance is a direct supporting reference for the canonical skill contract.",
+      "destinationPath": "skills/engineering-assistant/references/solid-and-patterns.md",
+      "reviewStatus": "accepted"
+    },
+    {
+      "artifactPath": "engineering-assistant/references/skill-composition.md",
+      "artifactType": "reference",
+      "skillId": "engineering-assistant",
+      "existingProjectSurface": null,
+      "decision": "embed",
+      "decisionReason": "The orchestration rules for composing with other skills are central to the imported workflow and should remain directly accessible.",
+      "destinationPath": "skills/engineering-assistant/references/skill-composition.md",
+      "reviewStatus": "accepted"
+    },
+    {
+      "artifactPath": "engineering-assistant/PROJECT_NOTES.md",
+      "artifactType": "notes",
+      "skillId": "engineering-assistant",
+      "existingProjectSurface": null,
+      "decision": "adapt",
+      "decisionReason": "The raw project-notes file is sample-pack state, but its structure should become reusable project-owned guidance for project memory discipline.",
+      "destinationPath": "skills/engineering-assistant/references/project-notes.md",
+      "reviewStatus": "accepted"
+    },
+    {
+      "artifactPath": "engineering-assistant/CHANGELOG.md",
+      "artifactType": "changelog",
+      "skillId": "engineering-assistant",
+      "existingProjectSurface": null,
+      "decision": "adapt",
+      "decisionReason": "The sample changelog should not ship as live package state, but its structured format belongs in project-owned change-discipline guidance.",
+      "destinationPath": "skills/engineering-assistant/references/change-discipline.md",
+      "reviewStatus": "accepted"
+    },
+    {
+      "artifactPath": "engineering-assistant/scripts/project_notes.py",
+      "artifactType": "script",
+      "skillId": "engineering-assistant",
+      "existingProjectSurface": null,
+      "decision": "adapt",
+      "decisionReason": "The helper script captures a useful deterministic update flow, but it needs later translation into package-owned runtime helpers and commands rather than shipping as an isolated Python script.",
+      "destinationPath": "docs/authoring/engineering-assistant-port.md",
+      "reviewStatus": "accepted"
+    },
+    {
+      "artifactPath": "engineering-assistant/scripts/change_log.py",
+      "artifactType": "script",
+      "skillId": "engineering-assistant",
+      "existingProjectSurface": null,
+      "decision": "adapt",
+      "decisionReason": "The helper script is valuable source material for reusable change-discipline commands, but the package should translate it into shared Harness Forge surfaces instead of preserving the pack-local implementation verbatim.",
+      "destinationPath": "docs/authoring/engineering-assistant-port.md",
+      "reviewStatus": "accepted"
+    },
+    {
+      "artifactPath": "engineering-assistant/agents/openai.yaml",
+      "artifactType": "metadata",
+      "skillId": "engineering-assistant",
+      "existingProjectSurface": null,
+      "decision": "translate",
+      "decisionReason": "The imported OpenAI-specific metadata needs to become cross-agent compatibility guidance rather than a runtime-specific source of truth.",
+      "destinationPath": "docs/authoring/engineering-assistant-port.md",
+      "reviewStatus": "accepted"
+    }
+  ],
+  "compatibilityProfiles": [
+    {
+      "targetId": "codex",
+      "supportLevel": "translated",
+      "metadataMode": "translated",
+      "hookMode": "manual",
+      "helperMode": "documentation-only",
+      "notes": "The MVP port ships the canonical skill and governance surfaces first. Codex discovery wrappers and packaged helper commands are planned in later tasks, so current support is documented rather than auto-discoverable.",
+      "currentSurfaces": [
+        "skills/engineering-assistant/SKILL.md",
+        "docs/authoring/engineering-assistant-port.md"
+      ]
+    },
+    {
+      "targetId": "claude-code",
+      "supportLevel": "translated",
+      "metadataMode": "translated",
+      "hookMode": "manual",
+      "helperMode": "documentation-only",
+      "notes": "Claude Code can consume the same canonical guidance, but the OpenAI-specific descriptor is intentionally translated into package-owned provenance and compatibility notes until wrapper rollout lands.",
+      "currentSurfaces": [
+        "skills/engineering-assistant/SKILL.md",
+        "docs/authoring/engineering-assistant-port.md"
+      ]
+    },
+    {
+      "targetId": "cursor",
+      "supportLevel": "guidance-only",
+      "metadataMode": "unsupported",
+      "hookMode": "documentation-only",
+      "helperMode": "documentation-only",
+      "notes": "Cursor parity is intentionally limited during the MVP slice. The package records fallback guidance instead of claiming a native engineering-assistant runtime surface.",
+      "currentSurfaces": [
+        "docs/authoring/engineering-assistant-port.md",
+        "docs/hooks/catalog.md"
+      ]
+    },
+    {
+      "targetId": "opencode",
+      "supportLevel": "guidance-only",
+      "metadataMode": "unsupported",
+      "hookMode": "documentation-only",
+      "helperMode": "documentation-only",
+      "notes": "OpenCode support remains guidance-first during the MVP slice. The import is governed and preserved without overstating runtime-native parity.",
+      "currentSurfaces": [
+        "docs/authoring/engineering-assistant-port.md",
+        "docs/hooks/catalog.md"
+      ]
+    }
+  ],
+  "helperSurfaces": [
+    {
+      "helperId": "engineering-assistant-project-notes",
+      "sourceArtifact": "engineering-assistant/scripts/project_notes.py",
+      "surfaceType": "documentation-plan",
+      "purpose": "Maintain a current project snapshot, open questions, glossary, and mini-ADR trail as part of the engineering-assistant workflow.",
+      "destinationPath": "skills/engineering-assistant/references/project-notes.md",
+      "targetCoverage": [
+        "codex",
+        "claude-code",
+        "cursor",
+        "opencode"
+      ],
+      "failureMode": "Until packaged helper commands land, update project notes manually using the canonical reference and port guidance."
+    },
+    {
+      "helperId": "engineering-assistant-change-discipline",
+      "sourceArtifact": "engineering-assistant/scripts/change_log.py",
+      "surfaceType": "documentation-plan",
+      "purpose": "Capture meaningful skill, script, and reference changes with a structured summary and touched-file list.",
+      "destinationPath": "skills/engineering-assistant/references/change-discipline.md",
+      "targetCoverage": [
+        "codex",
+        "claude-code",
+        "cursor",
+        "opencode"
+      ],
+      "failureMode": "Until packaged helper commands land, record the same fields manually using the canonical reference and port guidance."
+    }
+  ],
+  "portingRules": [
+    {
+      "ruleId": "preserve-one-canonical-owner",
+      "matchCriteria": "The imported pack defines a distinct engineering orchestration responsibility not already owned by another Harness Forge skill.",
+      "preferredOutcome": "embed",
+      "requiredFollowUps": [
+        "create the canonical skill under skills/",
+        "ship supporting references under the same skill directory",
+        "register the skill in catalogs and package surfaces"
+      ]
+    },
+    {
+      "ruleId": "translate-pack-state-into-guidance",
+      "matchCriteria": "The imported artifact is sample-pack state such as project notes or changelog entries rather than reusable runtime guidance.",
+      "preferredOutcome": "adapt",
+      "requiredFollowUps": [
+        "convert the structure into project-owned reference guidance",
+        "keep the original pack state described in maintainer provenance",
+        "avoid shipping stale sample data as live package state"
+      ]
+    },
+    {
+      "ruleId": "defer-runtime-specific-helpers-until-translated",
+      "matchCriteria": "The imported artifact is a helper script or agent-specific metadata file tied to one runtime model.",
+      "preferredOutcome": "translate",
+      "requiredFollowUps": [
+        "document the translation target in maintainer provenance",
+        "record fallback support modes for other runtimes",
+        "avoid claiming native parity before package-owned helpers exist"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://harness-forge.dev/schemas/runtime/recursive-budget.schema.json",
+  "title": "Recursive budget policy",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "policyId",
+    "maxDepth",
+    "maxIterations",
+    "maxSubcalls",
+    "maxBatchWidth",
+    "maxDurationMs",
+    "maxToolReads",
+    "allowWritesToScratchOnly",
+    "allowNetwork",
+    "sandboxMode",
+    "isolationLevel"
+  ],
+  "properties": {
+    "policyId": { "type": "string" },
+    "maxDepth": { "type": "integer", "minimum": 0 },
+    "maxIterations": { "type": "integer", "minimum": 1 },
+    "maxSubcalls": { "type": "integer", "minimum": 0 },
+    "maxBatchWidth": { "type": "integer", "minimum": 1 },
+    "maxDurationMs": { "type": "integer", "minimum": 1 },
+    "maxTokensApprox": { "type": "integer", "minimum": 1 },
+    "maxToolReads": { "type": "integer", "minimum": 1 },
+    "allowWritesToScratchOnly": { "type": "boolean" },
+    "allowNetwork": { "type": "boolean" },
+    "sandboxMode": {
+      "type": "string",
+      "enum": ["disabled", "restricted", "isolated"]
+    },
+    "isolationLevel": {
+      "type": "string",
+      "enum": ["metadata-only", "read-only-inspection", "read-only-repl", "isolated-execution"]
+    }
+  }
+}

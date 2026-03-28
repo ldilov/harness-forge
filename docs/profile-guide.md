@@ -41,6 +41,21 @@ risk posture.
   part
 - use `rapid-prototyping` only when speed matters more than deep validation
 
+## Interactive setup depth
+
+The interactive CLI exposes operator-facing setup depth as:
+
+| Interactive setup depth | Backing manifest profile | Intent |
+| --- | --- | --- |
+| `quick` | `core` | Smallest guided baseline with review-before-write safety |
+| `recommended` | `developer` | Best default for most repos and day-to-day work |
+| `advanced` | `ai-runtime` | Deep runtime setup with optional modules and broader AI-layer features |
+
+Optional modules in advanced setup include working memory, task-pack support,
+decision templates, export support, and recursive runtime. These modules
+change what the CLI highlights during setup and what runtime surfaces it keeps
+easy to reach after initialization.
+
 ## Machine-readable source of truth
 
 Profile manifests live under `manifests/profiles/*.json`. Each profile declares

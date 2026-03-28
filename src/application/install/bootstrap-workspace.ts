@@ -3,6 +3,7 @@ import { createInstallPlan } from "./plan-install.js";
 import { discoverWorkspaceTargets, type DiscoveredWorkspaceTarget } from "./discover-workspace-targets.js";
 import { recommendBundles } from "../recommendations/recommend-bundles.js";
 import { recommendFromIntelligence } from "../recommendations/recommend-from-intelligence.js";
+import { loadInstallState, saveInstallState } from "../../domain/state/install-state.js";
 import { loadBundleManifests, loadProfileManifests } from "../../domain/manifests/index.js";
 import { loadTargetAdapter } from "../../domain/targets/adapter.js";
 import type { InstallPlan } from "../../domain/operations/install-plan.js";
@@ -27,6 +28,7 @@ export interface BootstrapWorkspacePlan {
   recommendedProfileId: string;
   recommendedBundleIds: string[];
   plans: InstallPlan[];
+  sharedRuntimeRoots: string[];
 }
 
 export interface BootstrapWorkspaceResult extends BootstrapWorkspacePlan {
@@ -138,7 +140,12 @@ export async function planBootstrapWorkspace(options: BootstrapWorkspaceOptions)
     targetIds,
     recommendedProfileId,
     recommendedBundleIds,
-    plans
+    plans,
+    sharedRuntimeRoots: unique(
+      plans
+        .map((plan) => plan.sharedRuntime?.rootDir)
+        .filter((value): value is string => Boolean(value))
+    )
   };
 }
 
@@ -153,6 +160,18 @@ export async function bootstrapWorkspace(options: BootstrapWorkspaceOptions): Pr
         targetId: targetPlan.selection.targetId,
         messages: result.messages,
         guidancePath: result.guidancePath
+      });
+    }
+
+    const state = await loadInstallState(options.workspaceRoot);
+    if (state) {
+      await saveInstallState(options.workspaceRoot, {
+        ...state,
+        lastAction: "bootstrap",
+        timestamps: {
+          ...state.timestamps,
+          updatedAt: new Date().toISOString()
+        }
       });
     }
   }

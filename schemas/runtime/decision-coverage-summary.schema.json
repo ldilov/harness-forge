@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://harness-forge.dev/schemas/runtime/decision-coverage-summary.schema.json",
+  "title": "Decision coverage summary",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "generatedAt",
+    "significantTaskCount",
+    "taskCountWithAsr",
+    "taskCountWithAdr",
+    "missingCoverageTaskRefs",
+    "staleDecisionRefs",
+    "staleTaskRefs"
+  ],
+  "properties": {
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "significantTaskCount": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "taskCountWithAsr": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "taskCountWithAdr": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "missingCoverageTaskRefs": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "staleDecisionRefs": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "staleTaskRefs": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "pre-architecture-decision-check",
+  "name": "Pre Architecture Decision Check",
+  "description": "Example governance hook payload used to verify runtime-governance install surfaces.",
+  "command": "hooks/shared/pre-architecture-decision-check.sh",
+  "timing": "pre-command",
+  "supportLevel": "manual"
+}

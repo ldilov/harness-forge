@@ -9,6 +9,9 @@ last artifact, blockers, and next action.
 ```bash
 node scripts/runtime/flow-status.mjs --json
 node dist/cli/index.js flow status --json
+node dist/cli/index.js parallel plan specs/<feature>/tasks.md --json
+node dist/cli/index.js parallel status --json
+node dist/cli/index.js parallel merge-check --json
 ```
 
 ## Canonical state file

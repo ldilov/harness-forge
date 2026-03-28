@@ -79,7 +79,7 @@ export async function rewriteInstalledAiLayerReferences(workspaceRoot: string, p
     path.join(workspaceRoot, AI_LAYER_LIBRARY_DIR),
     path.join(workspaceRoot, AI_TEMPLATES_DIR),
     path.join(workspaceRoot, ".agents", "skills"),
-    ...plan.visibilityPolicy.visibleBridgePaths.filter((entry) =>
+    ...(plan.visibilityPolicy?.visibleBridgePaths ?? []).filter((entry) =>
       path.basename(entry).endsWith(".md") || path.basename(entry).endsWith(".txt")
     )
   ];

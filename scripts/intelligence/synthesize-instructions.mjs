@@ -55,9 +55,13 @@ if (targetId === "cursor") {
 }
 
 const instructionPlan = {
+  generatedAt: new Date().toISOString(),
   workspaceId: repoMap.workspaceId,
   targetId,
   scopeStrategy,
+  sharedRuntimeRoot: ".hforge/runtime",
+  sharedRuntimeBridges: recommendations.map((recommendation) => recommendation.path),
+  sharedRuntimeArtifacts: [".hforge/runtime/index.json", ".hforge/runtime/README.md"],
   recommendations,
   recommendedProfiles: repoMap.workspaceType === "library" ? ["core"] : ["developer", "core"],
   recommendedSkills: [

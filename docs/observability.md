@@ -18,9 +18,15 @@ flow recovery are actually working without sending data to an external service.
 ## Runtime surfaces
 
 - `.hforge/observability/effectiveness-signals.json`
+- `.hforge/observability/summary.json`
+- `.hforge/state/install-state.json`
+- `.hforge/runtime/index.json`
 - `node scripts/runtime/report-effectiveness.mjs --json`
+- `node dist/cli/index.js observability summarize --json`
+- `node dist/cli/index.js observability report . --json`
 - `node dist/cli/index.js recommend <repo> --json`
 - `node dist/cli/index.js flow status --json`
+- `node dist/cli/index.js review --root <repo> --json`
 
 ## Design constraints
 
@@ -33,5 +39,6 @@ flow recovery are actually working without sending data to an external service.
 
 - recommendation runs record accepted or rejected outcomes
 - `doctor` and `audit` runs leave a visible trace
+- `init` and `refresh` runs update the visible runtime version metadata
 - flow recovery records the active feature and stage
 - signal summaries can be inspected locally before release or handoff

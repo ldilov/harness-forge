@@ -1,0 +1,13 @@
+{
+  "policyId": "default-recursive-policy",
+  "maxDepth": 2,
+  "maxIterations": 6,
+  "maxSubcalls": 12,
+  "maxBatchWidth": 4,
+  "maxDurationMs": 300000,
+  "maxToolReads": 40,
+  "allowWritesToScratchOnly": true,
+  "allowNetwork": false,
+  "sandboxMode": "disabled",
+  "isolationLevel": "read-only-inspection"
+}

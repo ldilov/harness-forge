@@ -1,12 +1,32 @@
 # Validation
 
-## Passed on the upgraded repo copy
+## Maintainer path
 
-- `node scripts/ci/validate-skill-depth.mjs`
-- `node scripts/ci/validate-no-placeholders.mjs`
+Use this before opening a PR:
 
-## Notes on full release smoke
+```bash
+npm run validate:local
+```
 
-A full repo-wide smoke run still reports upstream issues from the uploaded archive that are outside this skills-only enhancement pack, including missing `.specify` paths referenced by the repo metadata, missing Node dependencies in the current container session, and a pre-existing Lua example filename mismatch in the shipped knowledge base.
+That path covers build, tests, package-surface checks, docs/command alignment,
+and runtime consistency.
 
-Those repo-level issues do not affect the upgraded skill folders included in this export.
+## Release path
+
+Use this before tagging or publishing:
+
+```bash
+npm run validate:release
+npm run release:dry-run
+```
+
+That path adds smoke execution of the built CLI plus the broader release-grade
+validators used by CI.
+
+## Useful targeted checks
+
+- `npm run smoke:cli`
+- `npm run validate:package-surface`
+- `npm run validate:doc-command-alignment`
+- `npm run validate:runtime-consistency`
+- `npm run validate:compatibility`

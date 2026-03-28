@@ -1,0 +1,103 @@
+{
+  "taskId": "TASK-ARCH-001",
+  "title": "Introduce billing event retry orchestration",
+  "generatedAt": "2026-03-27T10:00:00.000Z",
+  "basedOnCommit": "abc123",
+  "targetId": "codex",
+  "summary": "Coordinate billing retries across the API route and billing service so failed webhook processing can recover safely.",
+  "requestedOutcome": "Persist retry context, expose retry behavior through the billing route, and preserve operator visibility for failures.",
+  "constraints": [
+    "Keep the existing billing webhook contract stable for clients.",
+    "Do not lose failed retry attempts during rollout."
+  ],
+  "openQuestions": [
+    "Should retry state live in the billing service or a shared persistence boundary?"
+  ],
+  "impactedModules": [
+    "billing-service",
+    "api-service"
+  ],
+  "architectureSignificance": {
+    "taskId": "TASK-ARCH-001",
+    "level": "high",
+    "signals": [
+      "affects multiple modules (2)",
+      "touches architecture-sensitive boundaries or quality concerns",
+      "has multiple risk areas (2)",
+      "requires multiple explicit implementation requirements"
+    ],
+    "sourceRefs": [
+      ".hforge/runtime/tasks/TASK-ARCH-001/file-interest.json",
+      ".hforge/runtime/tasks/TASK-ARCH-001/impact-analysis.json"
+    ],
+    "confidence": "high",
+    "reviewStatus": "inferred",
+    "assessedAt": "2026-03-27T10:00:00.000Z",
+    "assessedBy": "runtime-governance"
+  },
+  "fileInterestRef": ".hforge/runtime/tasks/TASK-ARCH-001/file-interest.json",
+  "impactAnalysisRef": ".hforge/runtime/tasks/TASK-ARCH-001/impact-analysis.json",
+  "decisionRefs": [
+    "ASR-TASK-ARCH-001"
+  ],
+  "asrRefs": [
+    "ASR-TASK-ARCH-001"
+  ],
+  "adrRefs": [],
+  "requirements": [
+    {
+      "id": "REQ-001",
+      "title": "Preserve route contract",
+      "description": "Retry handling must not change the public billing webhook request shape.",
+      "priority": "high",
+      "affectedModules": ["api-service"],
+      "acceptanceCriteria": ["Existing billing clients do not need to change."],
+      "risks": ["Contract drift during rollout"]
+    },
+    {
+      "id": "REQ-002",
+      "title": "Persist retry state",
+      "description": "The system must persist enough retry context to resume failed billing events safely.",
+      "priority": "critical",
+      "affectedModules": ["billing-service"],
+      "acceptanceCriteria": ["Operators can identify and replay failed retries."],
+      "risks": ["Lost retry state"]
+    },
+    {
+      "id": "REQ-003",
+      "title": "Cover retry flow with tests",
+      "description": "The implementation must add route and service tests that prove retry behavior across the module boundary.",
+      "priority": "high",
+      "affectedModules": ["billing-service", "api-service"],
+      "acceptanceCriteria": ["Retry route and service coverage exist."],
+      "testImplications": ["Route and billing service integration coverage is required."]
+    }
+  ],
+  "implementationNotes": [
+    {
+      "id": "NOTE-001",
+      "type": "architectural-context",
+      "statement": "Retry state crosses the boundary between the billing worker and the API route, so operator visibility matters.",
+      "affectedModules": ["billing-service", "api-service"],
+      "confidence": "high",
+      "source": "runtime-governance"
+    }
+  ],
+  "acceptanceCriteria": [
+    "Billing retries can be resumed safely.",
+    "Route behavior remains stable for callers."
+  ],
+  "suggestedSequence": [
+    "Model retry persistence.",
+    "Wire retry orchestration into the billing route.",
+    "Add route and service tests."
+  ],
+  "selectedTemplates": [
+    "runtime/decision/asr-template"
+  ],
+  "provenance": [
+    "specs/009-runtime-governance-enhancement/spec.md",
+    "specs/009-runtime-governance-enhancement/plan.md"
+  ],
+  "reviewStatus": "inferred"
+}

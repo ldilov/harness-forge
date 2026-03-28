@@ -1,0 +1,10 @@
+{
+  "taskId": "TASK-001",
+  "title": "Billing retry handling",
+  "generatedAt": "2026-03-27T09:10:00.000Z",
+  "summary": "Add billing retry handling and related route coverage.",
+  "requirements": [],
+  "implementationNotes": [],
+  "selectedTemplates": [],
+  "reviewStatus": "draft"
+}

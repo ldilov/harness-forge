@@ -4,6 +4,7 @@ import path from "node:path";
 
 const root = process.cwd();
 const operationalSkills = [
+  "engineering-assistant",
   "repo-onboarding",
   "security-scan",
   "release-readiness",

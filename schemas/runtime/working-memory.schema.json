@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://harness-forge.dev/schemas/runtime/working-memory.schema.json",
+  "title": "Working memory",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "taskId",
+    "currentObjective",
+    "currentPlan",
+    "filesInFocus",
+    "confirmedFacts",
+    "openQuestions",
+    "nextStep",
+    "lastUpdated"
+  ],
+  "properties": {
+    "taskId": { "type": "string" },
+    "currentObjective": { "type": "string" },
+    "currentPlan": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "filesInFocus": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "confirmedFacts": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "inferredFacts": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "openQuestions": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "blockers": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "recentFailedAttempts": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "nextStep": { "type": "string" },
+    "lastUpdated": { "type": "string", "format": "date-time" },
+    "compactedFromVersion": { "type": "integer", "minimum": 0 }
+  }
+}

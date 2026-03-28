@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "runtimeSchemaVersion": 3,
+  "packageVersion": "0.1.0",
+  "runtimeId": "workspace-runtime",
+  "initializedAt": "2026-03-28T00:00:00.000Z",
+  "generatedAt": "2026-03-28T00:00:00.000Z",
+  "rootDir": ".hforge/runtime",
+  "visibilityMode": "hidden-ai-layer"
+}
