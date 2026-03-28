@@ -16,6 +16,6 @@ describe("interactive accessibility contract", () => {
     expect(capabilities.colorLevel).toBe("none");
     expect(capabilities.presentationTier).toBe("minimal");
     expect(welcome).not.toContain("\u001b[");
-    expect(welcome).toContain("HARNESS FORGE SETUP");
+    expect(welcome).toContain("Harness Forge Setup");
   });
 });
