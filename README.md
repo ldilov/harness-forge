@@ -261,13 +261,6 @@ AI agents make worse decisions when they have:
 - no durable task state
 - no validation feedback loop
 
-### For platform and enablement teams
-
-- standardize AI-assisted workflows across repositories
-- keep support claims explicit with a canonical capability matrix
-- hand teams a consistent install and maintenance surface
-- preserve auditability through generated runtime state and validation outputs
-
 ### Why it can reduce token usage
 Harness Forge can lower token burn because it gives the agent:
 
@@ -291,6 +284,13 @@ Harness Forge can lower token burn because it gives the agent:
 - rely on `.hforge/agent-manifest.json` instead of scraping prose
 - consume a command catalog and runtime indexes that are machine-readable
 - route discovery via `.agents/skills/` while execution points to canonical packaged surfaces
+
+### For platform and enablement teams
+
+- standardize AI-assisted workflows across repositories
+- keep support claims explicit with a canonical capability matrix
+- hand teams a consistent install and maintenance surface
+- preserve auditability through generated runtime state and validation outputs
 
 ---
 
