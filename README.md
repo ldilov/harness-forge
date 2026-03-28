@@ -714,6 +714,22 @@ When integrating a custom agent, start here:
 5. `.agents/skills/<skill>/SKILL.md`
 6. `.hforge/library/skills/<skill>/SKILL.md`
 
+## 🧠 Agent Usage Playbook
+
+If you want Claude Code, Codex, or another custom agent to use Harness Forge
+more explicitly instead of merely coexisting with it, use
+`docs/agent-usage-playbook.md`.
+
+That playbook includes:
+
+- launcher-aware command resolution when `hforge` is not on `PATH`
+- concrete operator prompts that tell agents to read the installed runtime
+- examples for task artifacts, decision records, recursive mode, and support verification
+
+In runtimes that expose packaged markdown commands, Harness Forge can also ship
+triggerable command docs such as `/hforge-analyze`, alongside supporting
+command surfaces like `commands/plan.md` and `commands/test.md`.
+
 ---
 
 ## 🙌 Acknowledgements

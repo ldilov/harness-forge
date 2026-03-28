@@ -62,6 +62,19 @@ For agents inside an installed workspace, the safest execution order is:
 2. bare `hforge`
 3. `npx @harness-forge/cli`
 
+## Markdown command entrypoints
+
+Some agent runtimes support markdown-backed command triggers in addition to the
+CLI. Harness Forge ships command docs for those environments under `commands/`.
+
+Examples:
+
+- `/hforge-analyze` to force installed-runtime inspection before coding
+- `commands/hforge-analyze.md` as the canonical packaged command surface
+- `commands/plan.md` and `commands/test.md` for broader planning and validation guidance
+
+Treat these as agent-facing prompt entrypoints, not replacements for the CLI.
+
 ```bash
 npx @harness-forge/cli
 npx @harness-forge/cli shell setup --yes
@@ -115,6 +128,9 @@ version or dist-tag, reapply managed surfaces, write an install-state backup
 under `.hforge/state/`, and intentionally preserve gathered runtime state such
 as task artifacts, decision records, recursive sessions, and observability
 signals.
+
+For agent-facing examples and prompt patterns that encourage actual runtime
+usage instead of passive installation, see `docs/agent-usage-playbook.md`.
 
 ## Maintainer source-checkout examples
 

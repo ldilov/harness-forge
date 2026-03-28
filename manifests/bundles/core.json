@@ -37,6 +37,7 @@
       "version": 1,
       "description": "Core command guidance and usage patterns.",
       "paths": [
+        "commands/hforge-analyze.md",
         "commands/plan.md",
         "commands/test.md",
         "contexts/dev.md",
@@ -59,7 +60,7 @@
       ],
       "owner": "core",
       "usageCues": [
-        "Use when starting, testing, or validating work."
+        "Use when starting, testing, validating, or analyzing work."
       ]
     },
     {

@@ -11,6 +11,8 @@ Use the thin visible bridge surfaces first in installed workspaces:
 - `.hforge/templates/` for canonical installed task and workflow templates
 - `.hforge/runtime/index.json` and `.hforge/runtime/README.md` for shared runtime state and bridge resolution
 - `.hforge/generated/agent-command-catalog.json` for safe command discovery
+- `docs/agent-usage-playbook.md` for concrete command-resolution guidance, operator prompts, and examples that promote actual Harness Forge usage
+- `commands/hforge-analyze.md` for runtimes that support slash-style markdown command entrypoints such as `/hforge-analyze`
 
 ## Mode awareness
 
@@ -117,3 +119,8 @@ Use the thin visible bridge surfaces first in installed workspaces:
 ## Release gate
 
 - run `npm run validate:release` before publish, handoff, or release-signoff work
+
+## Usage promotion
+
+- if an operator wants stronger Harness Forge usage in day-to-day agent work, use `docs/agent-usage-playbook.md`
+- prefer the playbook prompts when you want the agent to prove it is reading the installed guidance layer, use the command catalog, create task artifacts, write decision records, or escalate into recursive mode

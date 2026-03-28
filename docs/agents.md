@@ -17,6 +17,8 @@ AI content into the hidden `.hforge/` layer.
 - `.hforge/runtime/recursive/language-capabilities.json` for the canonical
   recursive structured-analysis capability map before deeper recursive
   investigation begins
+- `docs/agent-usage-playbook.md` for copy-ready prompts and examples that make
+  agents use the installed Harness Forge runtime more explicitly
 - `docs/authoring/enhanced-skill-import.md` for curated research and validation provenance behind imported skill upgrades
 - `RESEARCH-SOURCES.md` and `VALIDATION.md` for optional pack-level provenance detail
 

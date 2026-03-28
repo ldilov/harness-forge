@@ -4,6 +4,9 @@ import { fileURLToPath } from "node:url";
 
 const IGNORED_DIRS = new Set([
   ".git",
+  ".claude",
+  ".codex",
+  ".cursor",
   ".hforge",
   ".next",
   ".nuxt",
@@ -19,9 +22,47 @@ const IGNORED_DIRS = new Set([
 
 const PACKAGE_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "..");
 
-function bump(map, key, evidence) {
+function languageWeightForPath(file) {
+  const normalized = file.replaceAll("\\", "/");
+
+  if (
+    normalized.startsWith(".claude/") ||
+    normalized.startsWith(".codex/") ||
+    normalized.startsWith(".cursor/") ||
+    normalized.startsWith(".agents/") ||
+    normalized.startsWith(".github/")
+  ) {
+    return 0;
+  }
+
+  if (
+    normalized.startsWith("src/") ||
+    normalized.startsWith("app/") ||
+    normalized.startsWith("lib/") ||
+    normalized.startsWith("seed/") ||
+    normalized.startsWith("data/")
+  ) {
+    return 2;
+  }
+
+  if (
+    normalized.startsWith("scripts/") ||
+    normalized.startsWith("tools/") ||
+    normalized.startsWith("bin/")
+  ) {
+    return 0.35;
+  }
+
+  if (normalized.startsWith("tests/") || normalized.includes("/tests/")) {
+    return 0.5;
+  }
+
+  return 1;
+}
+
+function bump(map, key, evidence, amount = 1) {
   const current = map.get(key) ?? { count: 0, evidence: [] };
-  current.count += 1;
+  current.count += amount;
   if (evidence && current.evidence.length < 5 && !current.evidence.includes(evidence)) {
     current.evidence.push(evidence);
   }
@@ -105,41 +146,49 @@ function detectLanguages(files) {
   const languageCounts = new Map();
 
   for (const file of files) {
+    const weight = languageWeightForPath(file);
+    if (weight <= 0) {
+      continue;
+    }
+
     if (/\.(ts|tsx|js|jsx)$/i.test(file)) {
-      bump(languageCounts, "typescript", file);
+      bump(languageCounts, "typescript", file, weight);
     }
     if (/\.py$/i.test(file)) {
-      bump(languageCounts, "python", file);
+      bump(languageCounts, "python", file, weight);
     }
     if (/\.go$/i.test(file)) {
-      bump(languageCounts, "go", file);
+      bump(languageCounts, "go", file, weight);
     }
     if (/\.java$/i.test(file)) {
-      bump(languageCounts, "java", file);
+      bump(languageCounts, "java", file, weight);
     }
     if (/\.(kt|kts)$/i.test(file)) {
-      bump(languageCounts, "kotlin", file);
+      bump(languageCounts, "kotlin", file, weight);
     }
     if (/\.rs$/i.test(file)) {
-      bump(languageCounts, "rust", file);
+      bump(languageCounts, "rust", file, weight);
     }
     if (/\.(cpp|cxx|cc|hpp|hh|h)$/i.test(file)) {
-      bump(languageCounts, "cpp", file);
+      bump(languageCounts, "cpp", file, weight);
     }
     if (/\.php$/i.test(file)) {
-      bump(languageCounts, "php", file);
+      bump(languageCounts, "php", file, weight);
     }
     if (/\.(pl|pm)$/i.test(file)) {
-      bump(languageCounts, "perl", file);
+      bump(languageCounts, "perl", file, weight);
     }
     if (/\.swift$/i.test(file)) {
-      bump(languageCounts, "swift", file);
+      bump(languageCounts, "swift", file, weight);
+    }
+    if (/\.lua$/i.test(file)) {
+      bump(languageCounts, "lua", file, weight);
     }
     if (/\.(sh|bash|zsh)$/i.test(file)) {
-      bump(languageCounts, "shell", file);
+      bump(languageCounts, "shell", file, weight);
     }
     if (/\.(cs|csproj|sln)$/i.test(file)) {
-      bump(languageCounts, "dotnet", file);
+      bump(languageCounts, "dotnet", file, weight);
     }
   }
 
