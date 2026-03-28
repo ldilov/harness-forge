@@ -37,6 +37,12 @@ describe("docs front door contract", () => {
     expect(commands).toContain("target inspect");
     expect(commands).toContain("cartograph");
     expect(commands).toContain(".hforge/generated/bin/hforge");
+    expect(commands).toContain("/hforge-review");
+    expect(commands).toContain("commands/hforge-decide.md");
+    expect(commands).toContain("/hforge-commands");
+    expect(commands).toContain("commands/hforge-update.md");
+    expect(commands).toContain("/hforge-cartograph");
+    expect(commands).toContain("/hforge-recursive");
     expect(agents).toContain("Codex");
     expect(agents).toContain("Claude Code");
   });

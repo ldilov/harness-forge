@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-28T22:25:09.358Z",
+  "generatedAt": "2026-03-28T23:56:45.619Z",
   "entries": [
     {
       "subjectType": "language",
@@ -965,6 +965,46 @@
       "subjectId": "claude-code",
       "relationType": "supports",
       "relatedType": "skill",
+      "relatedId": "hforge-analyze",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "hforge-decide",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "hforge-init",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "hforge-refresh",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "hforge-review",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "skill",
       "relatedId": "incident-triage",
       "supportLevel": "full"
     },
@@ -1753,6 +1793,46 @@
       "relationType": "supports",
       "relatedType": "skill",
       "relatedId": "go-engineering",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "hforge-analyze",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "hforge-decide",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "hforge-init",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "hforge-refresh",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "hforge-review",
       "supportLevel": "full"
     },
     {
@@ -2596,6 +2676,51 @@
       "relatedId": "go-engineering",
       "supportLevel": "partial",
       "notes": "Cursor only provides partial skill support for go-engineering."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "hforge-analyze",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial skill support for hforge-analyze."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "hforge-decide",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial skill support for hforge-decide."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "hforge-init",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial skill support for hforge-init."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "hforge-refresh",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial skill support for hforge-refresh."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "hforge-review",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial skill support for hforge-review."
     },
     {
       "subjectType": "target",
@@ -3472,6 +3597,51 @@
       "relatedId": "go-engineering",
       "supportLevel": "partial",
       "notes": "OpenCode only provides partial skill support for go-engineering."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "hforge-analyze",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial skill support for hforge-analyze."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "hforge-decide",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial skill support for hforge-decide."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "hforge-init",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial skill support for hforge-init."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "hforge-refresh",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial skill support for hforge-refresh."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "hforge-review",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial skill support for hforge-review."
     },
     {
       "subjectType": "target",

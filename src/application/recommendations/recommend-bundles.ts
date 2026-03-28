@@ -13,11 +13,28 @@ const IGNORED_DIRS = new Set([
   "node_modules",
   "tmp",
   "temp",
+  ".tmp",
   ".next",
   ".nuxt",
   ".idea",
   ".vscode"
 ]);
+
+const LOW_SIGNAL_SEGMENTS = new Set([
+  ".tmp",
+  "tmp",
+  "temp",
+  "fixtures",
+  "__fixtures__",
+  "__snapshots__",
+  "snapshots",
+  "archive",
+  "archives"
+]);
+
+function hasLowSignalSegment(relativePath: string): boolean {
+  return relativePath.split("/").some((segment) => LOW_SIGNAL_SEGMENTS.has(segment));
+}
 
 async function walk(dir: string, visit: (relativePath: string, absolutePath: string) => void, base = dir): Promise<void> {
   let entries: Array<import("node:fs").Dirent> = [];
@@ -45,12 +62,27 @@ async function walk(dir: string, visit: (relativePath: string, absolutePath: str
 
 export async function recommendBundles(root: string): Promise<string[]> {
   const recommendations = new Set<string>();
+  let sawTypeScriptSource = false;
+  let sawTypeScriptMarker = false;
+  let sawCppSource = false;
+  let sawCppHeader = false;
 
   await walk(root, (relativePath) => {
+    if (hasLowSignalSegment(relativePath)) {
+      return;
+    }
+
     const file = relativePath;
     const base = path.basename(file);
 
-    if (file.endsWith(".ts") || file.endsWith(".tsx") || file.endsWith(".js") || file.endsWith(".jsx")) recommendations.add("lang:typescript");
+    if (file.endsWith(".ts") || file.endsWith(".tsx")) {
+      sawTypeScriptSource = true;
+      recommendations.add("lang:typescript");
+    }
+    if (base === "tsconfig.json") {
+      sawTypeScriptMarker = true;
+      recommendations.add("lang:typescript");
+    }
     if (file.endsWith(".java")) recommendations.add("lang:java");
     if (file.endsWith(".cs") || file.endsWith(".csproj") || file.endsWith(".sln")) recommendations.add("lang:dotnet");
     if (file.endsWith(".lua")) recommendations.add("lang:lua");
@@ -59,7 +91,13 @@ export async function recommendBundles(root: string): Promise<string[]> {
     if (file.endsWith(".go")) recommendations.add("lang:go");
     if (file.endsWith(".kt") || file.endsWith(".kts")) recommendations.add("lang:kotlin");
     if (file.endsWith(".rs")) recommendations.add("lang:rust");
-    if (file.endsWith(".cpp") || file.endsWith(".cxx") || file.endsWith(".cc") || file.endsWith(".hpp") || file.endsWith(".hh") || file.endsWith(".h")) recommendations.add("lang:cpp");
+    if (file.endsWith(".cpp") || file.endsWith(".cxx") || file.endsWith(".cc") || file.endsWith(".hpp") || file.endsWith(".hh")) {
+      sawCppSource = true;
+      recommendations.add("lang:cpp");
+    }
+    if (file.endsWith(".h")) {
+      sawCppHeader = true;
+    }
     if (file.endsWith(".php")) recommendations.add("lang:php");
     if (file.endsWith(".pl") || file.endsWith(".pm")) recommendations.add("lang:perl");
     if (file.endsWith(".swift")) recommendations.add("lang:swift");
@@ -80,6 +118,13 @@ export async function recommendBundles(root: string): Promise<string[]> {
       recommendations.add("capability:workflow-quality");
     }
   });
+
+  if (!sawTypeScriptSource && !sawTypeScriptMarker) {
+    recommendations.delete("lang:typescript");
+  }
+  if (!sawCppSource && sawCppHeader) {
+    recommendations.delete("lang:cpp");
+  }
 
   return [...recommendations].sort();
 }

@@ -22,8 +22,14 @@ export function registerCommandsCatalog(program: Command): void {
       const lines = [
         `Package: ${catalog.packageName}@${catalog.packageVersion}`,
         "",
-        "CLI commands:"
+        "Markdown commands:"
       ];
+
+      for (const entry of catalog.markdownCommands) {
+        lines.push(`- ${entry.trigger}: ${entry.description} (${entry.docPath})`);
+      }
+
+      lines.push("", "CLI commands:");
 
       for (const entry of catalog.cliCommands) {
         lines.push(`- ${entry.command}: ${entry.description}`);

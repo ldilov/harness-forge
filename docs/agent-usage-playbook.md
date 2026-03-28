@@ -23,10 +23,18 @@ reliably through the workspace-local launcher.
 ## Slash-style command trigger
 
 In runtimes that support markdown command entrypoints, Harness Forge can also
-be promoted through `/hforge-analyze`.
+be promoted through `/hforge-init`, `/hforge-analyze`, `/hforge-review`,
+`/hforge-refresh`, `/hforge-decide`, `/hforge-status`, `/hforge-commands`,
+`/hforge-recommend`, `/hforge-cartograph`, `/hforge-task`,
+`/hforge-recursive`, and `/hforge-update`.
 
-That command is backed by `commands/hforge-analyze.md` and is intended to make
-the agent:
+Those commands are backed by `commands/hforge-init.md`,
+`commands/hforge-analyze.md`, `commands/hforge-review.md`,
+`commands/hforge-refresh.md`, `commands/hforge-decide.md`,
+`commands/hforge-status.md`, `commands/hforge-commands.md`,
+`commands/hforge-recommend.md`, `commands/hforge-cartograph.md`,
+`commands/hforge-task.md`, `commands/hforge-recursive.md`, and
+`commands/hforge-update.md`, and are intended to make the agent:
 
 - inspect the installed Harness Forge runtime first
 - choose a safe command execution path

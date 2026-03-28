@@ -12,7 +12,7 @@ Use the thin visible bridge surfaces first in installed workspaces:
 - `.hforge/runtime/index.json` and `.hforge/runtime/README.md` for shared runtime state and bridge resolution
 - `.hforge/generated/agent-command-catalog.json` for safe command discovery
 - `docs/agent-usage-playbook.md` for concrete command-resolution guidance, operator prompts, and examples that promote actual Harness Forge usage
-- `commands/hforge-analyze.md` for runtimes that support slash-style markdown command entrypoints such as `/hforge-analyze`
+- `commands/hforge-init.md`, `commands/hforge-analyze.md`, `commands/hforge-review.md`, `commands/hforge-refresh.md`, `commands/hforge-decide.md`, `commands/hforge-status.md`, `commands/hforge-commands.md`, `commands/hforge-recommend.md`, `commands/hforge-cartograph.md`, `commands/hforge-task.md`, `commands/hforge-recursive.md`, and `commands/hforge-update.md` for runtimes that support slash-style markdown command entrypoints such as `/hforge-analyze`
 
 ## Mode awareness
 
@@ -92,7 +92,7 @@ Use the thin visible bridge surfaces first in installed workspaces:
 ## Command discovery and execution
 
 - for first use in a repo, prefer `npx @harness-forge/cli`
-- prefer `hforge commands --json` or `.hforge/generated/agent-command-catalog.json` to discover shipped CLI commands and npm scripts before inventing a command path
+- prefer `hforge commands --json` or `.hforge/generated/agent-command-catalog.json` to discover shipped CLI commands, markdown-backed agent commands, and npm scripts before inventing a command path
 - resolve CLI execution in this order inside an installed workspace: `.hforge/generated/bin/hforge(.cmd|.ps1)` first, bare `hforge` second, and `npx @harness-forge/cli` last
 - prefer `hforge status --root . --json` to inspect the installed workspace state
 - prefer `hforge catalog --json` to review installed bundles, packs, and profiles

@@ -727,8 +727,11 @@ That playbook includes:
 - examples for task artifacts, decision records, recursive mode, and support verification
 
 In runtimes that expose packaged markdown commands, Harness Forge can also ship
-triggerable command docs such as `/hforge-analyze`, alongside supporting
-command surfaces like `commands/plan.md` and `commands/test.md`.
+triggerable command docs such as `/hforge-init`, `/hforge-analyze`,
+`/hforge-review`, `/hforge-refresh`, `/hforge-decide`, `/hforge-status`,
+`/hforge-commands`, `/hforge-recommend`, `/hforge-cartograph`,
+`/hforge-task`, `/hforge-recursive`, and `/hforge-update`, alongside
+supporting command surfaces like `commands/plan.md` and `commands/test.md`.
 
 ---
 

@@ -6,6 +6,13 @@ export interface AgentCommandCatalog {
   generatedAt: string;
   packageName: string;
   packageVersion: string;
+  markdownCommands: Array<{
+    id: string;
+    trigger: string;
+    docPath: string;
+    description: string;
+    relatedCliCommandIds: string[];
+  }>;
   executionModes: Array<{
     id: string;
     platform: "any" | "windows" | "posix";
@@ -34,6 +41,14 @@ interface CatalogCommandEntry {
   id: string;
   command: string;
   description: string;
+}
+
+interface MarkdownCommandEntry {
+  id: string;
+  trigger: string;
+  docPath: string;
+  description: string;
+  relatedCliCommandIds: string[];
 }
 
 function buildExecutionModes() {
@@ -161,6 +176,103 @@ function buildCliCommands(): CatalogCommandEntry[] {
   ];
 }
 
+function buildMarkdownCommands(): MarkdownCommandEntry[] {
+  return [
+    {
+      id: "hforge-init",
+      trigger: "/hforge-init",
+      docPath: "commands/hforge-init.md",
+      description: "Bootstrap or initialize Harness Forge in the current repository before deeper work.",
+      relatedCliCommandIds: ["init-basic", "bootstrap", "refresh"]
+    },
+    {
+      id: "hforge-analyze",
+      trigger: "/hforge-analyze",
+      docPath: "commands/hforge-analyze.md",
+      description: "Inspect the installed runtime, repo intelligence, and next actions before coding.",
+      relatedCliCommandIds: ["status", "commands", "recommend", "review"]
+    },
+    {
+      id: "hforge-review",
+      trigger: "/hforge-review",
+      docPath: "commands/hforge-review.md",
+      description: "Review runtime health, drift, stale task artifacts, and decision coverage.",
+      relatedCliCommandIds: ["review", "doctor", "audit"]
+    },
+    {
+      id: "hforge-refresh",
+      trigger: "/hforge-refresh",
+      docPath: "commands/hforge-refresh.md",
+      description: "Regenerate runtime summaries and helper outputs after install or repo changes.",
+      relatedCliCommandIds: ["refresh", "status"]
+    },
+    {
+      id: "hforge-decide",
+      trigger: "/hforge-decide",
+      docPath: "commands/hforge-decide.md",
+      description: "Capture an architecture-significant choice as a durable ASR or ADR.",
+      relatedCliCommandIds: ["task-inspect", "review"]
+    },
+    {
+      id: "hforge-status",
+      trigger: "/hforge-status",
+      docPath: "commands/hforge-status.md",
+      description: "Inspect current workspace state and the most relevant runtime surfaces.",
+      relatedCliCommandIds: ["status", "commands"]
+    },
+    {
+      id: "hforge-commands",
+      trigger: "/hforge-commands",
+      docPath: "commands/hforge-commands.md",
+      description: "Inspect the shipped command catalog before inventing execution paths.",
+      relatedCliCommandIds: ["commands", "shell-status"]
+    },
+    {
+      id: "hforge-recommend",
+      trigger: "/hforge-recommend",
+      docPath: "commands/hforge-recommend.md",
+      description: "Run repo-intelligence and recommendation flows before setup or architecture work.",
+      relatedCliCommandIds: ["recommend", "cartograph", "classify-boundaries", "synthesize-instructions"]
+    },
+    {
+      id: "hforge-cartograph",
+      trigger: "/hforge-cartograph",
+      docPath: "commands/hforge-cartograph.md",
+      description: "Build and inspect repo maps, service boundaries, hotspots, and validation gaps.",
+      relatedCliCommandIds: ["cartograph", "classify-boundaries", "recommend"]
+    },
+    {
+      id: "hforge-task",
+      trigger: "/hforge-task",
+      docPath: "commands/hforge-task.md",
+      description: "Inspect task-runtime folders, packs, and linked task artifacts.",
+      relatedCliCommandIds: ["task-list", "task-inspect", "pack-inspect"]
+    },
+    {
+      id: "hforge-recursive",
+      trigger: "/hforge-recursive",
+      docPath: "commands/hforge-recursive.md",
+      description: "Escalate difficult work into recursive structured-analysis with durable session and run artifacts.",
+      relatedCliCommandIds: [
+        "recursive-plan",
+        "recursive-capabilities",
+        "recursive-run-file",
+        "recursive-run-stdin",
+        "recursive-runs",
+        "recursive-inspect-run",
+        "recursive-inspect"
+      ]
+    },
+    {
+      id: "hforge-update",
+      trigger: "/hforge-update",
+      docPath: "commands/hforge-update.md",
+      description: "Preview or apply a non-destructive Harness Forge package refresh.",
+      relatedCliCommandIds: ["update", "upgrade", "review", "export"]
+    }
+  ];
+}
+
 function buildAgentSafeCliCommands(commands: CatalogCommandEntry[]) {
   const executionModes = buildExecutionModes();
   return commands.map((entry) => {
@@ -184,12 +296,14 @@ export async function loadAgentCommandCatalog(packageRoot: string): Promise<Agen
   }>(path.join(packageRoot, "package.json"));
 
   const cliCommands = buildCliCommands();
+  const markdownCommands = buildMarkdownCommands();
   const executionModes = buildExecutionModes();
 
   return {
     generatedAt: new Date().toISOString(),
     packageName: packageJson.name,
     packageVersion: packageJson.version,
+    markdownCommands,
     executionModes,
     preferredExecutionOrder: ["workspace-launcher-windows", "workspace-launcher-powershell", "workspace-launcher-posix", "bare-hforge", "npx-package"],
     cliCommands,
@@ -234,6 +348,11 @@ export async function writeAgentCommandCatalog(workspaceRoot: string, packageRoo
       const mode = catalog.executionModes.find((entry) => entry.id === modeId)!;
       return `- \`${mode.commandPrefix}\` - ${mode.whenToUse}`;
     }),
+    "",
+    "## Markdown command entrypoints",
+    ...catalog.markdownCommands.map((entry) =>
+      `- \`${entry.trigger}\` -> \`${entry.docPath}\` - ${entry.description}`
+    ),
     "",
     "## CLI commands",
     ...catalog.cliCommands.map((entry) => `- \`${entry.command}\` - ${entry.description}`),

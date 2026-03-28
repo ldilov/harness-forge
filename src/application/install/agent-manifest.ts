@@ -14,6 +14,7 @@ import {
   exists,
   writeJsonFile
 } from "../../shared/index.js";
+import { loadAgentCommandCatalog } from "../runtime/command-catalog.js";
 
 interface RuntimeTargetSummary {
   targetId: string;
@@ -61,6 +62,7 @@ export interface AgentManifest {
     machineReadableManifest: string;
     sharedRuntimeIndex: string;
     commandCatalog: string;
+    markdownCommandRoot: string;
     installState: string;
   };
   resolutionOrder: string[];
@@ -76,6 +78,13 @@ export interface AgentManifest {
   localLaunchers: string[];
   commandExecution: {
     preferredOrder: string[];
+    markdownCommands: Array<{
+      id: string;
+      trigger: string;
+      docPath: string;
+      description: string;
+      relatedCliCommandIds: string[];
+    }>;
     modes: Array<{
       id: string;
       platform: "any" | "windows" | "posix";
@@ -141,6 +150,10 @@ function buildSurfaceIndex(runtime: RuntimeIndexDocument | null, launchers: stri
   surfaces.set(
     ".agents/skills",
     createSurface(".agents/skills", "discovery", "visible-bridge", "Discovery wrappers that route agents into the hidden canonical skill library.")
+  );
+  surfaces.set(
+    "commands",
+    createSurface("commands", "discovery", "visible-bridge", "Packaged markdown command entrypoints for runtimes that support slash-style or markdown-backed agent commands.")
   );
   surfaces.set(
     ".specify",
@@ -221,6 +234,7 @@ export async function writeAgentManifest(
     tryReadJson<RuntimeIndexDocument>(path.join(workspaceRoot, RUNTIME_DIR, RUNTIME_INDEX_FILE)),
     tryReadJson<InstallStateRecord>(path.join(workspaceRoot, STATE_DIR, "install-state.json"))
   ]);
+  const commandCatalog = await loadAgentCommandCatalog(packageRoot);
 
   const launcherPaths = getLocalLauncherPaths();
   const manifestPath = path.join(workspaceRoot, AGENT_MANIFEST_FILE);
@@ -253,6 +267,7 @@ export async function writeAgentManifest(
       machineReadableManifest: AGENT_MANIFEST_FILE,
       sharedRuntimeIndex: `${RUNTIME_DIR}/${RUNTIME_INDEX_FILE}`,
       commandCatalog: `${GENERATED_DIR}/agent-command-catalog.json`,
+      markdownCommandRoot: "commands",
       installState: `${STATE_DIR}/install-state.json`
     },
     resolutionOrder: [
@@ -260,6 +275,7 @@ export async function writeAgentManifest(
       ".hforge/agent-manifest.json",
       ".hforge/runtime/index.json",
       ".hforge/generated/agent-command-catalog.json",
+      "commands/<command>.md",
       ".agents/skills/<skill>/SKILL.md",
       ".hforge/library/skills/<skill>/SKILL.md"
     ],
@@ -281,6 +297,7 @@ export async function writeAgentManifest(
     localLaunchers: launcherPaths,
     commandExecution: {
       preferredOrder: ["workspace-launcher-windows", "workspace-launcher-powershell", "workspace-launcher-posix", "bare-hforge", "npx-package"],
+      markdownCommands: commandCatalog.markdownCommands,
       modes: [
         {
           id: "workspace-launcher-windows",
@@ -320,6 +337,7 @@ export async function writeAgentManifest(
       "Use .agents/skills/ for discovery and .hforge/library/skills/ for canonical execution contracts.",
       "Treat .hforge/library/, .hforge/templates/, .hforge/runtime/, .hforge/state/, and .hforge/generated/ as AI-layer surfaces rather than product code.",
       "Use .hforge/generated/agent-command-catalog.json to discover safe CLI commands before inventing your own execution path.",
+      "Use the markdownCommands section in .hforge/generated/agent-command-catalog.json to discover slash-style or markdown-backed agent command entrypoints.",
       "Resolve command execution in this order: workspace launcher, bare hforge on PATH, then npx @harness-forge/cli.",
       "Use .hforge/runtime/recursive/language-capabilities.json to discover recursive structured-analysis support before attempting repository-wide recursive analysis.",
       "Use hforge recursive capabilities --root . --json, hforge recursive run <sessionId> --file <snippet> --json, hforge recursive run <sessionId> --stdin --json, hforge recursive runs <sessionId> --json, and hforge recursive inspect-run <sessionId> <runId> --json as the promoted recursive structured-analysis command family.",

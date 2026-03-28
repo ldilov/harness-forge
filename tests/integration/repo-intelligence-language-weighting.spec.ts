@@ -44,4 +44,56 @@ describe("repo intelligence language weighting", () => {
       expect.arrayContaining(["seed/MetricThresholds.lua", "seed/Abilities.lua"])
     );
   });
+
+  it("keeps javascript-heavy repositories out of the typescript bundle recommendation path", async () => {
+    const workspaceRoot = await fs.mkdtemp(path.join(os.tmpdir(), "hforge-javascript-weighting-"));
+    tempRoots.push(workspaceRoot);
+
+    const filesToWrite = new Map<string, string>([
+      ["src/index.js", "export const app = true;\n"],
+      ["src/routes/dashboard.jsx", "export function Dashboard() { return null; }\n"],
+      ["package.json", JSON.stringify({ dependencies: { react: "^19.0.0" } }, null, 2)],
+      ["fixtures/tmp/example.ts", "export type Fixture = string;\n"]
+    ]);
+
+    for (const [relativePath, content] of filesToWrite) {
+      const absolutePath = path.join(workspaceRoot, relativePath);
+      await fs.mkdir(path.dirname(absolutePath), { recursive: true });
+      await fs.writeFile(absolutePath, content, "utf8");
+    }
+
+    const { collectRepoFacts } = await import("../../scripts/intelligence/shared.mjs");
+    const { recommendBundles } = await import("../../src/application/recommendations/recommend-bundles.js");
+    const facts = await collectRepoFacts(workspaceRoot);
+    const bundles = await recommendBundles(workspaceRoot);
+
+    expect(facts.dominantLanguages[0]?.id).toBe("javascript");
+    expect(facts.dominantLanguages.map((entry: { id: string }) => entry.id)).not.toContain("typescript");
+    expect(bundles).not.toContain("lang:typescript");
+  });
+
+  it("does not infer cpp from header files alone", async () => {
+    const workspaceRoot = await fs.mkdtemp(path.join(os.tmpdir(), "hforge-cpp-header-only-"));
+    tempRoots.push(workspaceRoot);
+
+    const filesToWrite = new Map<string, string>([
+      ["include/math/vector.h", "#pragma once\n"],
+      ["include/math/matrix.h", "#pragma once\n"],
+      ["README.md", "# sample\n"]
+    ]);
+
+    for (const [relativePath, content] of filesToWrite) {
+      const absolutePath = path.join(workspaceRoot, relativePath);
+      await fs.mkdir(path.dirname(absolutePath), { recursive: true });
+      await fs.writeFile(absolutePath, content, "utf8");
+    }
+
+    const { collectRepoFacts } = await import("../../scripts/intelligence/shared.mjs");
+    const { recommendBundles } = await import("../../src/application/recommendations/recommend-bundles.js");
+    const facts = await collectRepoFacts(workspaceRoot);
+    const bundles = await recommendBundles(workspaceRoot);
+
+    expect(facts.dominantLanguages.map((entry: { id: string }) => entry.id)).not.toContain("cpp");
+    expect(bundles).not.toContain("lang:cpp");
+  });
 });

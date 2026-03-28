@@ -69,8 +69,19 @@ CLI. Harness Forge ships command docs for those environments under `commands/`.
 
 Examples:
 
+- `/hforge-init` to bootstrap or refresh the project-owned Harness Forge runtime
 - `/hforge-analyze` to force installed-runtime inspection before coding
-- `commands/hforge-analyze.md` as the canonical packaged command surface
+- `/hforge-review` to inspect drift, decision coverage, and stale runtime artifacts
+- `/hforge-refresh` to regenerate runtime summaries after install or repo changes
+- `/hforge-decide` to capture durable ASR or ADR records
+- `/hforge-status` to inspect current workspace state before acting
+- `/hforge-commands` to inspect the shipped command catalog before inventing commands
+- `/hforge-recommend` to run repo-intelligence and recommendation flows
+- `/hforge-cartograph` to inspect repo topology, boundaries, and hotspots
+- `/hforge-task` to inspect task-runtime folders and task packs
+- `/hforge-recursive` to escalate difficult work into recursive structured analysis
+- `/hforge-update` to preview or apply a non-destructive package refresh
+- `commands/hforge-init.md`, `commands/hforge-analyze.md`, `commands/hforge-review.md`, `commands/hforge-refresh.md`, `commands/hforge-decide.md`, `commands/hforge-status.md`, `commands/hforge-commands.md`, `commands/hforge-recommend.md`, `commands/hforge-cartograph.md`, `commands/hforge-task.md`, `commands/hforge-recursive.md`, and `commands/hforge-update.md` as the canonical packaged command surfaces
 - `commands/plan.md` and `commands/test.md` for broader planning and validation guidance
 
 Treat these as agent-facing prompt entrypoints, not replacements for the CLI.

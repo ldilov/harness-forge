@@ -20,18 +20,47 @@ const IGNORED_DIRS = new Set([
   "vendor"
 ]);
 
+const LOW_SIGNAL_SEGMENTS = new Set([
+  ".tmp",
+  "tmp",
+  "temp",
+  "fixtures",
+  "__fixtures__",
+  "__snapshots__",
+  "snapshots",
+  "archive",
+  "archives"
+]);
+
 const PACKAGE_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "..");
+
+function hasLowSignalSegment(file) {
+  return file.split("/").some((segment) => LOW_SIGNAL_SEGMENTS.has(segment));
+}
+
+function isSupportSurface(file) {
+  return (
+    file.startsWith(".claude/") ||
+    file.startsWith(".codex/") ||
+    file.startsWith(".cursor/") ||
+    file.startsWith(".agents/") ||
+    file.startsWith(".github/") ||
+    file.startsWith(".hforge/")
+  );
+}
+
+function isDocPath(file) {
+  return /\.(md|mdx|txt|rst)$/i.test(file);
+}
+
+function isRelevantForRisk(file) {
+  return !hasLowSignalSegment(file) && !isDocPath(file) && !isSupportSurface(file);
+}
 
 function languageWeightForPath(file) {
   const normalized = file.replaceAll("\\", "/");
 
-  if (
-    normalized.startsWith(".claude/") ||
-    normalized.startsWith(".codex/") ||
-    normalized.startsWith(".cursor/") ||
-    normalized.startsWith(".agents/") ||
-    normalized.startsWith(".github/")
-  ) {
+  if (isSupportSurface(normalized) || hasLowSignalSegment(normalized)) {
     return 0;
   }
 
@@ -144,6 +173,10 @@ async function walk(root, visit, base = root) {
 
 function detectLanguages(files) {
   const languageCounts = new Map();
+  const hasCppSource = files.some((file) => {
+    const weight = languageWeightForPath(file);
+    return weight > 0 && /\.(cpp|cxx|cc|hpp|hh)$/i.test(file);
+  });
 
   for (const file of files) {
     const weight = languageWeightForPath(file);
@@ -151,8 +184,11 @@ function detectLanguages(files) {
       continue;
     }
 
-    if (/\.(ts|tsx|js|jsx)$/i.test(file)) {
+    if (/\.(ts|tsx)$/i.test(file)) {
       bump(languageCounts, "typescript", file, weight);
+    }
+    if (/\.(js|jsx)$/i.test(file)) {
+      bump(languageCounts, "javascript", file, weight);
     }
     if (/\.py$/i.test(file)) {
       bump(languageCounts, "python", file, weight);
@@ -169,7 +205,10 @@ function detectLanguages(files) {
     if (/\.rs$/i.test(file)) {
       bump(languageCounts, "rust", file, weight);
     }
-    if (/\.(cpp|cxx|cc|hpp|hh|h)$/i.test(file)) {
+    if (/\.(cpp|cxx|cc|hpp|hh)$/i.test(file)) {
+      bump(languageCounts, "cpp", file, weight);
+    }
+    if (/\.h$/i.test(file) && hasCppSource) {
       bump(languageCounts, "cpp", file, weight);
     }
     if (/\.php$/i.test(file)) {
@@ -206,7 +245,7 @@ function detectLanguages(files) {
 
 function detectBuildSignals(files, packageJson) {
   const signals = [];
-  const fileSet = new Set(files);
+  const fileSet = new Set(files.filter((file) => !hasLowSignalSegment(file)));
 
   if (packageJson) {
     const packageManager = typeof packageJson.packageManager === "string" ? packageJson.packageManager.split("@")[0] : "npm";
@@ -234,7 +273,7 @@ function detectBuildSignals(files, packageJson) {
   ];
 
   for (const [signalId, pattern] of directBuildMarkers) {
-    const evidence = files.filter((file) => pattern.test(path.posix.basename(file)));
+    const evidence = [...fileSet].filter((file) => pattern.test(path.posix.basename(file)));
     if (evidence.length > 0) {
       signals.push(createSignal(signalId, evidence, 0.8));
     }
@@ -253,8 +292,11 @@ function detectTestSignals(files, packageJson, textSources) {
     ...Object.keys(packageJson?.dependencies ?? {}),
     ...Object.keys(packageJson?.devDependencies ?? {})
   ]);
-  const javascriptTestFiles = files.filter(
-    (file) => /(^|\/)(__tests__|tests?)\//i.test(file) && /\.(m?[jt]sx?|cjs|mjs)$/i.test(file) || /\.(test|spec)\.(m?[jt]sx?)$/i.test(file)
+  const testFiles = files.filter((file) => !hasLowSignalSegment(file));
+  const javascriptTestFiles = testFiles.filter(
+    (file) =>
+      ((/(^|\/)(__tests__|tests?)\//i.test(file) && /\.(m?[jt]sx?|cjs|mjs)$/i.test(file)) ||
+        /\.(test|spec)\.(m?[jt]sx?)$/i.test(file))
   );
 
   if (dependencyNames.has("vitest")) {
@@ -266,17 +308,17 @@ function detectTestSignals(files, packageJson, textSources) {
   if (javascriptTestFiles.length > 0) {
     signals.push(createSignal("test:javascript-files", javascriptTestFiles, 0.8));
   }
-  if (files.some((file) => /^tests\/.+\.py$/i.test(file) || /test_.+\.py$/i.test(file))) {
-    signals.push(createSignal("test:pytest", files.filter((file) => /^tests\/.+\.py$/i.test(file) || /test_.+\.py$/i.test(file)), 0.8));
+  if (testFiles.some((file) => /^tests\/.+\.py$/i.test(file) || /test_.+\.py$/i.test(file))) {
+    signals.push(createSignal("test:pytest", testFiles.filter((file) => /^tests\/.+\.py$/i.test(file) || /test_.+\.py$/i.test(file)), 0.8));
   }
-  if (files.some((file) => /_test\.go$/i.test(file))) {
-    signals.push(createSignal("test:go", files.filter((file) => /_test\.go$/i.test(file)), 0.8));
+  if (testFiles.some((file) => /_test\.go$/i.test(file))) {
+    signals.push(createSignal("test:go", testFiles.filter((file) => /_test\.go$/i.test(file)), 0.8));
   }
-  if (files.some((file) => /src\/test\/java\//i.test(file))) {
-    signals.push(createSignal("test:junit", files.filter((file) => /src\/test\/java\//i.test(file)), 0.8));
+  if (testFiles.some((file) => /src\/test\/java\//i.test(file))) {
+    signals.push(createSignal("test:junit", testFiles.filter((file) => /src\/test\/java\//i.test(file)), 0.8));
   }
-  if (files.some((file) => /\.Tests?\.csproj$/i.test(file) || /tests\//i.test(file) && /\.cs$/i.test(file))) {
-    signals.push(createSignal("test:xunit", files.filter((file) => /\.Tests?\.csproj$/i.test(file) || (/tests\//i.test(file) && /\.cs$/i.test(file))), 0.8));
+  if (testFiles.some((file) => /\.Tests?\.csproj$/i.test(file) || (/tests\//i.test(file) && /\.cs$/i.test(file)))) {
+    signals.push(createSignal("test:xunit", testFiles.filter((file) => /\.Tests?\.csproj$/i.test(file) || (/tests\//i.test(file) && /\.cs$/i.test(file))), 0.8));
   }
 
   const pyproject = textSources.get("pyproject.toml") ?? "";
@@ -289,6 +331,7 @@ function detectTestSignals(files, packageJson, textSources) {
 
 function detectDeploymentSignals(files) {
   const signals = [];
+  const deploymentFiles = files.filter((file) => !hasLowSignalSegment(file));
 
   const markers = [
     ["deploy:docker", /^Dockerfile$/i],
@@ -302,7 +345,7 @@ function detectDeploymentSignals(files) {
   ];
 
   for (const [signalId, pattern] of markers) {
-    const evidence = files.filter((file) => pattern.test(file));
+    const evidence = deploymentFiles.filter((file) => pattern.test(file));
     if (evidence.length > 0) {
       signals.push(createSignal(signalId, evidence, 0.8));
     }
@@ -313,18 +356,21 @@ function detectDeploymentSignals(files) {
 
 function detectRiskSignals(files, testSignals) {
   const signals = [];
+  const riskFiles = files.filter(isRelevantForRisk);
+  const securityEvidence = files.filter(
+    (file) => !hasLowSignalSegment(file) && !isSupportSurface(file) && /(security|auth|threat|iam|permissions?)/i.test(file)
+  );
 
-  const securityEvidence = files.filter((file) => /(security|auth|threat|iam|permissions?)/i.test(file));
   if (securityEvidence.length > 0) {
     signals.push(createSignal("security", securityEvidence, 0.86));
   }
 
-  const legacyEvidence = files.filter((file) => /(legacy|deprecated|old)/i.test(file));
+  const legacyEvidence = riskFiles.filter((file) => /(legacy|deprecated|old)/i.test(file));
   if (legacyEvidence.length > 0) {
     signals.push(createSignal("legacy", legacyEvidence, 0.88));
   }
 
-  const migrationEvidence = files.filter((file) => /(migration|migrate|flyway|liquibase)/i.test(file));
+  const migrationEvidence = riskFiles.filter((file) => /(migration|migrate|flyway|liquibase)/i.test(file));
   if (migrationEvidence.length > 0) {
     signals.push(createSignal("migration", migrationEvidence, 0.82));
   }
@@ -338,7 +384,7 @@ function detectRiskSignals(files, testSignals) {
 
 function detectMissingValidationSurfaces(files, testSignals, buildSignals) {
   const missing = [];
-  const fileSet = new Set(files);
+  const fileSet = new Set(files.filter((file) => !hasLowSignalSegment(file)));
 
   if (testSignals.length === 0) {
     missing.push(
@@ -346,12 +392,15 @@ function detectMissingValidationSurfaces(files, testSignals, buildSignals) {
     );
   }
 
-  const hasCi = files.some((file) => /^\.github\/workflows\//i.test(file));
+  const hasCi = [...fileSet].some((file) => /^\.github\/workflows\//i.test(file));
   if (!hasCi) {
     missing.push(createSignal("validation:missing-ci", ["No GitHub Actions workflows detected."], 0.75));
   }
 
-  const hasLint = buildSignals.some((signal) => signal.id.startsWith("build:typescript")) || fileSet.has(".eslintrc") || fileSet.has("eslint.config.js");
+  const hasLint =
+    buildSignals.some((signal) => signal.id.startsWith("build:typescript")) ||
+    fileSet.has(".eslintrc") ||
+    fileSet.has("eslint.config.js");
   if (!hasLint) {
     missing.push(createSignal("validation:missing-lint", ["No lint configuration detected."], 0.65));
   }
@@ -367,6 +416,7 @@ function detectFrameworksFromText(facts) {
       ...Object.keys(manifest.devDependencies ?? {})
     ])
   );
+  const frameworkFiles = files.filter((file) => !hasLowSignalSegment(file));
   const frameworks = [];
   const pushMatch = (id, confidence, evidence) => {
     frameworks.push({
@@ -376,26 +426,56 @@ function detectFrameworksFromText(facts) {
     });
   };
 
-  if (packageDeps.has("react") || files.some((file) => /\.tsx$/i.test(file))) {
-    pushMatch("react", packageDeps.has("react") ? 0.96 : 0.7, packageDeps.has("react") ? ["package.json dependency react"] : files.filter((file) => /\.tsx$/i.test(file)));
+  if (packageDeps.has("react") || frameworkFiles.some((file) => /\.tsx$/i.test(file))) {
+    pushMatch(
+      "react",
+      packageDeps.has("react") ? 0.96 : 0.7,
+      packageDeps.has("react") ? ["package.json dependency react"] : frameworkFiles.filter((file) => /\.tsx$/i.test(file))
+    );
   }
-  if (packageDeps.has("vite") || files.some((file) => /^vite\.config\./i.test(path.posix.basename(file)))) {
-    pushMatch("vite", packageDeps.has("vite") ? 0.95 : 0.8, packageDeps.has("vite") ? ["package.json dependency vite"] : files.filter((file) => /^vite\.config\./i.test(path.posix.basename(file))));
+  if (packageDeps.has("vite") || frameworkFiles.some((file) => /^vite\.config\./i.test(path.posix.basename(file)))) {
+    pushMatch(
+      "vite",
+      packageDeps.has("vite") ? 0.95 : 0.8,
+      packageDeps.has("vite")
+        ? ["package.json dependency vite"]
+        : frameworkFiles.filter((file) => /^vite\.config\./i.test(path.posix.basename(file)))
+    );
   }
   if (packageDeps.has("express")) {
     pushMatch("express", 0.95, ["package.json dependency express"]);
   }
-  if (packageDeps.has("next") || files.some((file) => /^next\.config\./i.test(path.posix.basename(file)))) {
-    pushMatch("nextjs", packageDeps.has("next") ? 0.97 : 0.84, packageDeps.has("next") ? ["package.json dependency next"] : files.filter((file) => /^next\.config\./i.test(path.posix.basename(file))));
+  if (packageDeps.has("next") || frameworkFiles.some((file) => /^next\.config\./i.test(path.posix.basename(file)))) {
+    pushMatch(
+      "nextjs",
+      packageDeps.has("next") ? 0.97 : 0.84,
+      packageDeps.has("next")
+        ? ["package.json dependency next"]
+        : frameworkFiles.filter((file) => /^next\.config\./i.test(path.posix.basename(file)))
+    );
   }
 
   const pyproject = textSources.get("pyproject.toml") ?? "";
   const requirements = textSources.get("requirements.txt") ?? "";
   if (pyproject.includes("fastapi") || requirements.includes("fastapi")) {
-    pushMatch("fastapi", 0.95, [pyproject.includes("fastapi") ? "pyproject.toml dependency fastapi" : "requirements.txt dependency fastapi"]);
+    pushMatch(
+      "fastapi",
+      0.95,
+      [pyproject.includes("fastapi") ? "pyproject.toml dependency fastapi" : "requirements.txt dependency fastapi"]
+    );
   }
-  if (pyproject.includes("django") || requirements.includes("django") || files.includes("manage.py")) {
-    pushMatch("django", 0.94, [files.includes("manage.py") ? "manage.py" : pyproject.includes("django") ? "pyproject.toml dependency django" : "requirements.txt dependency django"]);
+  if (pyproject.includes("django") || requirements.includes("django") || frameworkFiles.includes("manage.py")) {
+    pushMatch(
+      "django",
+      0.94,
+      [
+        frameworkFiles.includes("manage.py")
+          ? "manage.py"
+          : pyproject.includes("django")
+            ? "pyproject.toml dependency django"
+            : "requirements.txt dependency django"
+      ]
+    );
   }
 
   const pom = textSources.get("pom.xml") ?? "";
@@ -410,7 +490,11 @@ function detectFrameworksFromText(facts) {
   const csproj = [...textSources.entries()].find(([filePath]) => /\.csproj$/i.test(filePath))?.[1] ?? "";
   const programCs = textSources.get("Program.cs") ?? "";
   if (csproj.includes("Microsoft.NET.Sdk.Web") || programCs.includes("WebApplication.CreateBuilder")) {
-    pushMatch("aspnet-core", csproj.includes("Microsoft.NET.Sdk.Web") ? 0.96 : 0.86, [csproj.includes("Microsoft.NET.Sdk.Web") ? "Api.csproj Microsoft.NET.Sdk.Web" : "Program.cs WebApplication.CreateBuilder"]);
+    pushMatch(
+      "aspnet-core",
+      csproj.includes("Microsoft.NET.Sdk.Web") ? 0.96 : 0.86,
+      [csproj.includes("Microsoft.NET.Sdk.Web") ? "Api.csproj Microsoft.NET.Sdk.Web" : "Program.cs WebApplication.CreateBuilder"]
+    );
   }
 
   const goMod = textSources.get("go.mod") ?? "";
@@ -419,15 +503,27 @@ function detectFrameworksFromText(facts) {
     .map(([, content]) => content)
     .join("\n");
   if (goMod.includes("gin-gonic/gin") || goSources.includes("gin.Default(")) {
-    pushMatch("gin", goMod.includes("gin-gonic/gin") ? 0.93 : 0.82, [goMod.includes("gin-gonic/gin") ? "go.mod gin-gonic/gin" : "gin.Default()"]);
+    pushMatch(
+      "gin",
+      goMod.includes("gin-gonic/gin") ? 0.93 : 0.82,
+      [goMod.includes("gin-gonic/gin") ? "go.mod gin-gonic/gin" : "gin.Default()"]
+    );
   }
 
   const composer = textSources.get("composer.json") ?? "";
-  if (composer.includes("symfony/") || files.includes("bin/console")) {
-    pushMatch("symfony", composer.includes("symfony/") ? 0.92 : 0.82, [composer.includes("symfony/") ? "composer.json symfony/*" : "bin/console"]);
+  if (composer.includes("symfony/") || frameworkFiles.includes("bin/console")) {
+    pushMatch(
+      "symfony",
+      composer.includes("symfony/") ? 0.92 : 0.82,
+      [composer.includes("symfony/") ? "composer.json symfony/*" : "bin/console"]
+    );
   }
-  if (composer.includes("laravel/framework") || files.includes("artisan")) {
-    pushMatch("laravel", composer.includes("laravel/framework") ? 0.96 : 0.88, [composer.includes("laravel/framework") ? "composer.json laravel/framework" : "artisan"]);
+  if (composer.includes("laravel/framework") || frameworkFiles.includes("artisan")) {
+    pushMatch(
+      "laravel",
+      composer.includes("laravel/framework") ? 0.96 : 0.88,
+      [composer.includes("laravel/framework") ? "composer.json laravel/framework" : "artisan"]
+    );
   }
 
   return sortSignals(frameworks);
@@ -435,7 +531,7 @@ function detectFrameworksFromText(facts) {
 
 function detectRepoType(facts) {
   const { files, buildSignals, frameworkMatches, riskSignals, packageJson } = facts;
-  const fileSet = new Set(files);
+  const fileSet = new Set(files.filter((file) => !hasLowSignalSegment(file)));
 
   if (buildSignals.some((signal) => signal.id.startsWith("workspace:"))) {
     return "monorepo";
@@ -443,7 +539,11 @@ function detectRepoType(facts) {
   if (frameworkMatches.some((match) => ["react", "vite", "nextjs"].includes(match.id))) {
     return "app";
   }
-  if (frameworkMatches.some((match) => ["express", "fastapi", "django", "spring-boot", "aspnet-core", "gin", "ktor", "symfony", "laravel"].includes(match.id))) {
+  if (
+    frameworkMatches.some((match) =>
+      ["express", "fastapi", "django", "spring-boot", "aspnet-core", "gin", "ktor", "symfony", "laravel"].includes(match.id)
+    )
+  ) {
     return "service";
   }
   if (fileSet.has("cmd/hforge/main.go") || packageJson?.bin) {
@@ -452,20 +552,25 @@ function detectRepoType(facts) {
   if (riskSignals.some((signal) => signal.id === "legacy")) {
     return "legacy";
   }
-  if (files.some((file) => file.startsWith("scripts/")) && files.every((file) => !file.startsWith("src/"))) {
+  if ([...fileSet].some((file) => file.startsWith("scripts/")) && [...fileSet].every((file) => !file.startsWith("src/"))) {
     return "automation";
   }
 
   return "library";
 }
 
-function normalizeRecommendations(result, frameworkCatalog) {
+function normalizeRecommendations(result, frameworkCatalog, languageCatalog) {
   const bundleRecommendations = [];
   const profileRecommendations = [];
   const skillRecommendations = [];
   const validationRecommendations = [];
+  const knownLanguageIds = new Set(Object.keys(languageCatalog.languages ?? {}));
 
   for (const language of result.dominantLanguages.slice(0, 3)) {
+    if (!knownLanguageIds.has(language.id)) {
+      continue;
+    }
+
     bundleRecommendations.push({
       id: `lang:${language.id}`,
       kind: "bundle",
@@ -509,6 +614,7 @@ function normalizeRecommendations(result, frameworkCatalog) {
   });
 
   const riskIds = new Set(result.riskSignals.map((signal) => signal.id));
+  const languageIds = new Set(result.dominantLanguages.map((language) => language.id));
   if (result.repoType === "monorepo" || result.repoType === "legacy" || result.dominantLanguages.length > 1) {
     skillRecommendations.push({
       id: "skill:repo-onboarding",
@@ -526,12 +632,29 @@ function normalizeRecommendations(result, frameworkCatalog) {
     });
   }
 
-  if (riskIds.has("security") || result.frameworkMatches.some((framework) => ["express", "fastapi", "django", "spring-boot", "aspnet-core", "gin", "ktor", "symfony", "laravel"].includes(framework.id))) {
+  if (languageIds.has("javascript")) {
+    skillRecommendations.push({
+      id: "skill:javascript-engineering",
+      kind: "skill",
+      confidence: 0.84,
+      evidence: result.dominantLanguages.find((language) => language.id === "javascript")?.evidence ?? [],
+      why: "JavaScript-heavy repositories benefit from the dedicated JavaScript engineering skill without forcing the TypeScript bundle."
+    });
+  }
+
+  if (
+    riskIds.has("security") ||
+    result.frameworkMatches.some((framework) =>
+      ["express", "fastapi", "django", "spring-boot", "aspnet-core", "gin", "ktor", "symfony", "laravel"].includes(framework.id)
+    )
+  ) {
     skillRecommendations.push({
       id: "skill:security-scan",
       kind: "skill",
       confidence: riskIds.has("security") ? 0.95 : 0.76,
-      evidence: riskIds.has("security") ? result.riskSignals.find((signal) => signal.id === "security")?.evidence ?? [] : result.frameworkMatches.map((framework) => `framework:${framework.id}`),
+      evidence: riskIds.has("security")
+        ? result.riskSignals.find((signal) => signal.id === "security")?.evidence ?? []
+        : result.frameworkMatches.map((framework) => `framework:${framework.id}`),
       why: "Service and security-sensitive repositories need an explicit security boundary review."
     });
   }
@@ -601,6 +724,10 @@ export async function collectRepoFacts(root) {
 
   const interestingFiles = new Set(
     files.filter((file) => {
+      if (hasLowSignalSegment(file)) {
+        return false;
+      }
+
       const baseName = path.posix.basename(file);
       return (
         baseName === "package.json" ||
@@ -628,7 +755,9 @@ export async function collectRepoFacts(root) {
     })
   );
 
-  const packageManifestPaths = files.filter((file) => path.posix.basename(file) === "package.json");
+  const packageManifestPaths = files.filter(
+    (file) => path.posix.basename(file) === "package.json" && !hasLowSignalSegment(file)
+  );
   const packageManifestEntries = await Promise.all(
     packageManifestPaths.map(async (relativePath) => ({
       relativePath,
@@ -677,13 +806,20 @@ export async function loadFrameworkCatalog() {
   return JSON.parse(content);
 }
 
+export async function loadLanguageCatalog() {
+  const languageCatalogPath = path.join(PACKAGE_ROOT, "manifests", "catalog", "language-assets.json");
+  const content = await fs.readFile(languageCatalogPath, "utf8");
+  return JSON.parse(content);
+}
+
 export async function scoreRecommendations(root) {
   const facts = await collectRepoFacts(root);
   const frameworkCatalog = await loadFrameworkCatalog();
+  const languageCatalog = await loadLanguageCatalog();
 
   return {
     ...facts,
-    recommendations: normalizeRecommendations(facts, frameworkCatalog)
+    recommendations: normalizeRecommendations(facts, frameworkCatalog, languageCatalog)
   };
 }
 

@@ -15,7 +15,7 @@ const generatedArtifactSchema = z.object({
 });
 
 const languageSignalSchema = evidenceSignalSchema.extend({
-  count: z.number().int().nonnegative()
+  count: z.number().nonnegative()
 });
 
 const recommendationSchema = z.object({
