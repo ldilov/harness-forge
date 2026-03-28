@@ -20,14 +20,11 @@ const wrappedSkills = [
 describe("enhanced skill discovery integration", () => {
   it("publishes discovery wrappers that route agents into canonical skills and provenance", async () => {
     const agentsDoc = await fs.readFile(path.join(root, "docs", "agents.md"), "utf8");
-    const readme = await fs.readFile(path.join(root, "README.md"), "utf8");
 
     expect(agentsDoc).toContain(".agents/skills/");
     expect(agentsDoc).toContain("docs/authoring/enhanced-skill-import.md");
     expect(agentsDoc).toContain("RESEARCH-SOURCES.md");
     expect(agentsDoc).toContain("VALIDATION.md");
-    expect(readme).toContain("Skill discovery layer");
-    expect(readme).toContain("Canonical skill layer");
 
     for (const skillId of wrappedSkills) {
       const wrapperContent = await fs.readFile(

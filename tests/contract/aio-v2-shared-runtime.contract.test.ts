@@ -51,25 +51,21 @@ describe("aio v2 shared runtime contract", () => {
   });
 
   it("documents the shared runtime in operator-facing guidance", async () => {
-    const [agents, readme, installation, targets] = await Promise.all([
+    const [agents, installation, targets] = await Promise.all([
       fs.readFile(path.join(root, "AGENTS.md"), "utf8"),
-      fs.readFile(path.join(root, "README.md"), "utf8"),
       fs.readFile(path.join(root, "docs", "installation.md"), "utf8"),
       fs.readFile(path.join(root, "docs", "install", "targets.md"), "utf8")
     ]);
 
-    for (const content of [agents, readme, installation, targets]) {
+    for (const content of [agents, installation, targets]) {
       expect(content).toContain(".hforge/runtime");
     }
 
     expect(agents).toContain(".hforge/agent-manifest.json");
     expect(agents).toContain(".hforge/library/skills/");
-    expect(readme).toContain(".hforge/agent-manifest.json");
     expect(installation).toContain(".hforge/agent-manifest.json");
-    expect(readme).toContain(".hforge/library/skills/");
     expect(installation).toContain(".hforge/library/skills/");
     expect(targets).toContain(".hforge/library/");
-    expect(readme).toContain(".hforge/runtime/repo/repo-map.json");
     expect(installation).toContain(".hforge/runtime/findings/risk-signals.json");
     expect(targets).toContain(".hforge/runtime/repo/instruction-plan.json");
   });

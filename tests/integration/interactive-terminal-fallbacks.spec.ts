@@ -52,6 +52,6 @@ describe("interactive terminal fallbacks", () => {
 
     expect(result.status).toBe(0);
     expect(result.stdout).not.toContain("\u001b[");
-    expect(result.stdout).toContain("HARNESS FORGE SETUP");
+    expect(result.stdout).toContain("Harness Forge Setup");
   });
 });

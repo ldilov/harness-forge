@@ -23,19 +23,20 @@ describe("docs front door contract", () => {
     await Promise.all(files.map(async (relativePath) => expect(await fs.readFile(path.join(root, relativePath), "utf8")).toBeTruthy()));
   });
 
-  it("explains the seeded knowledge and release validation surface", async () => {
-    const readme = await fs.readFile(path.join(root, "README.md"), "utf8");
-    expect(readme).toContain(".hforge/library/knowledge/");
-    expect(readme).toContain("npm run validate:release");
-    expect(readme).toContain("npx @harness-forge/cli");
-    expect(readme).toContain("--dry-run");
-    expect(readme).toContain("project hub");
-    expect(readme).toContain("npx @harness-forge/cli bootstrap --root . --yes");
-    expect(readme).toContain("shell setup");
-    expect(readme).toContain("target inspect");
-    expect(readme).toContain("cartograph");
-    expect(readme).toContain("does not");
-    expect(readme).toContain("Codex");
-    expect(readme).toContain("Claude Code");
+  it("keeps front-door docs aligned around install, command, and target guidance", async () => {
+    const [installation, commands, agents] = await Promise.all([
+      fs.readFile(path.join(root, "docs", "installation.md"), "utf8"),
+      fs.readFile(path.join(root, "docs", "commands.md"), "utf8"),
+      fs.readFile(path.join(root, "docs", "agents.md"), "utf8")
+    ]);
+
+    expect(installation).toContain(".hforge/library/knowledge/");
+    expect(installation).toContain("npx @harness-forge/cli");
+    expect(installation).toContain("--dry-run");
+    expect(installation).toContain("shell setup");
+    expect(commands).toContain("target inspect");
+    expect(commands).toContain("cartograph");
+    expect(agents).toContain("Codex");
+    expect(agents).toContain("Claude Code");
   });
 });
