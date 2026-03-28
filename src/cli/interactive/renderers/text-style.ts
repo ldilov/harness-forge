@@ -6,7 +6,7 @@ function canDecorate(capabilities: TerminalCapabilityProfile): boolean {
 
 export function styleHeading(capabilities: TerminalCapabilityProfile, value: string): string {
   if (!canDecorate(capabilities)) {
-    return value.toUpperCase();
+    return value;
   }
   return `\u001b[1m${value}\u001b[0m`;
 }
