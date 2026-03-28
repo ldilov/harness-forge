@@ -1,4 +1,4 @@
-# Harness Forge
+ldilov# Harness Forge
 
 <p align="center">
   <strong>Deterministic AI workspace bootstrapping for Codex, Claude Code, and adjacent agentic runtimes.</strong>
@@ -7,9 +7,8 @@
 </p>
 
 <p align="center">
-  <!-- Replace <OWNER>, <REPO>, and workflow filenames to activate repository badges -->
-  <a href="https://github.com/<OWNER>/<REPO>/actions/workflows/ci.yml">
-    <img alt="Build" src="https://img.shields.io/github/actions/workflow/status/<OWNER>/<REPO>/ci.yml?branch=main&style=for-the-badge&logo=githubactions&label=build" />
+  <a href="https://github.com/ldilov/harness-forge/actions/workflows/ci.yml">
+    <img alt="Build" src="https://img.shields.io/github/actions/workflow/status/ldilov/harness-forge/ci.yml?branch=main&style=for-the-badge&logo=githubactions&label=build" />
   </a>
   <a href="https://www.npmjs.com/package/@harness-forge/cli">
     <img alt="npm version" src="https://img.shields.io/npm/v/@harness-forge/cli?style=for-the-badge&logo=npm" />
@@ -17,11 +16,11 @@
   <a href="./LICENSE.md">
     <img alt="License: GPL-3.0" src="https://img.shields.io/badge/license-GPL--3.0-red?style=for-the-badge" />
   </a>
-  <a href="https://github.com/<OWNER>/<REPO>/stargazers">
-    <img alt="GitHub stars" src="https://img.shields.io/github/stars/<OWNER>/<REPO>?style=for-the-badge&logo=github" />
+  <a href="https://github.com/ldilov/harness-forge/stargazers">
+    <img alt="GitHub stars" src="https://img.shields.io/github/stars/ldilov/harness-forge?style=for-the-badge&logo=github" />
   </a>
-  <a href="https://github.com/<OWNER>/<REPO>/issues">
-    <img alt="GitHub issues" src="https://img.shields.io/github/issues/<OWNER>/<REPO>?style=for-the-badge&logo=github" />
+  <a href="https://github.com/ldilov/harness-forge/issues">
+    <img alt="GitHub issues" src="https://img.shields.io/github/issues/ldilov/harness-forge?style=for-the-badge&logo=github" />
   </a>
   <img alt="Node.js 22+" src="https://img.shields.io/badge/node-22%2B-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" />
 </p>
@@ -169,7 +168,7 @@ Harness Forge is strongest with **Codex** and **Claude Code** today.
 | Mode | Entry point | When to use it |
 | --- | --- | --- |
 | Guided onboarding | `npx @harness-forge/cli` | First-time setup, interactive review, and a polished onboarding experience |
-| Direct setup | `hforge init --root <repo> --agent codex --yes` | CI, scripts, automation, or operators who already know the desired target |
+| Direct setup | `hforge init --root harness-forge --agent codex --yes` | CI, scripts, automation, or operators who already know the desired target |
 | Bootstrap | `npx @harness-forge/cli bootstrap --root . --yes` | Auto-detect runtimes and install a sensible target stack in one pass |
 | Catalog expansion | `hforge catalog add ...` | Add languages, frameworks, or bundles as the repository evolves |
 
