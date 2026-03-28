@@ -142,4 +142,89 @@ describe("aio v2 install layout integration", () => {
     expect(installState?.visibilityMode).toBe("hidden-ai-layer");
     expect(installState?.hiddenCanonicalRoots).toContain(path.join(tempRoot, ".hforge", "library", "skills"));
   });
+
+  it("keeps both AGENTS.md and CLAUDE.md visible for claude installs", async () => {
+    const tempRoot = await fs.mkdtemp(path.join(os.tmpdir(), "hforge-claude-layout-"));
+    tempRoots.push(tempRoot);
+    await fs.copyFile(
+      path.join(fixtureRoot, "contained-install", "package.json"),
+      path.join(tempRoot, "package.json")
+    );
+
+    const plan = createInstallPlan(
+      repoRoot,
+      {
+        targetId: "claude-code",
+        profileId: "core",
+        bundleIds: ["baseline:agents"],
+        languageIds: [],
+        frameworkIds: [],
+        capabilityIds: [],
+        rootPath: tempRoot,
+        mode: "apply"
+      },
+      [
+        {
+          id: "baseline:agents",
+          family: "baseline",
+          version: 1,
+          description: "",
+          paths: ["AGENTS.md"],
+          targets: ["claude-code"],
+          dependencies: [],
+          conflicts: [],
+          optional: false,
+          defaultInstall: true,
+          stability: "stable",
+          tags: [],
+          owner: "core"
+        }
+      ],
+      [],
+      {
+        id: "claude-code",
+        displayName: "Claude Code",
+        installRootStrategy: "repo-root",
+        pathMappings: {
+          "AGENTS.md": "CLAUDE.md",
+          ".agents/skills": ".agents/skills",
+          ".specify": ".specify"
+        },
+        mergeRules: {
+          "AGENTS.md": "copy"
+        },
+        supportsHooks: true,
+        supportsCommands: true,
+        supportsAgents: true,
+        supportsContexts: true,
+        supportsPlugins: true,
+        capabilityMatrix: { templates: true },
+        sharedRuntimeBridge: {
+          instructionSurfaces: ["AGENTS.md", "CLAUDE.md", ".agents/skills", ".claude/settings.json"],
+          runtimeSurfaces: [".hforge/runtime/index.json", ".hforge/runtime/README.md"],
+          supportMode: "native",
+          authoritativeSurfaces: [
+            ".hforge/library/skills",
+            ".hforge/library/rules",
+            ".hforge/library/knowledge",
+            ".hforge/templates",
+            ".hforge/runtime"
+          ],
+          visibleBridgePaths: ["AGENTS.md", "CLAUDE.md", ".agents/skills", ".specify", ".claude"],
+          visibilityMode: "hidden-ai-layer"
+        }
+      },
+      { workspaceRoot: tempRoot }
+    );
+
+    await applyInstall(tempRoot, plan);
+
+    const [agentsBridge, claudeBridge] = await Promise.all([
+      fs.readFile(path.join(tempRoot, "AGENTS.md"), "utf8"),
+      fs.readFile(path.join(tempRoot, "CLAUDE.md"), "utf8")
+    ]);
+
+    expect(agentsBridge).toContain("Harness Forge");
+    expect(claudeBridge).toContain("Harness Forge");
+  });
 });

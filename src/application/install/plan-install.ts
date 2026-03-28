@@ -92,9 +92,10 @@ function createOperation(
   workspaceRoot: string,
   target: TargetAdapter,
   bundle: BundleManifest,
-  assetPath: string
+  assetPath: string,
+  destinationHint?: string
 ): InstallOperation {
-  const destinationHint = target.pathMappings[assetPath] ?? mapCanonicalAssetPath(assetPath);
+  const resolvedDestination = destinationHint ?? target.pathMappings[assetPath] ?? mapCanonicalAssetPath(assetPath);
   const mergeStrategy = target.mergeRules[assetPath] ?? "copy";
   return {
     type:
@@ -109,12 +110,33 @@ function createOperation(
               : "copy",
     bundleId: bundle.id,
     sourcePath: path.join(contentRoot, assetPath),
-    destinationPath: normalizeTargetPath(workspaceRoot, destinationHint),
+    destinationPath: normalizeTargetPath(workspaceRoot, resolvedDestination),
     mergeStrategy,
     reason: `${bundle.id}:${assetPath}`,
     riskLevel: "low",
     backupRequired: true
   };
+}
+
+function createOperationsForAsset(
+  contentRoot: string,
+  workspaceRoot: string,
+  target: TargetAdapter,
+  bundle: BundleManifest,
+  assetPath: string
+): InstallOperation[] {
+  const primaryDestination = target.pathMappings[assetPath] ?? mapCanonicalAssetPath(assetPath);
+  const operations = [createOperation(contentRoot, workspaceRoot, target, bundle, assetPath, primaryDestination)];
+
+  if (
+    assetPath === "AGENTS.md" &&
+    primaryDestination !== "AGENTS.md" &&
+    target.sharedRuntimeBridge?.visibleBridgePaths?.includes("AGENTS.md")
+  ) {
+    operations.push(createOperation(contentRoot, workspaceRoot, target, bundle, assetPath, "AGENTS.md"));
+  }
+
+  return operations;
 }
 
 export function createInstallPlan(
@@ -146,7 +168,7 @@ export function createInstallPlan(
       resolved.warnings.push(`${bundle.id} does not target ${selection.targetId} and was skipped.`);
       return [];
     }
-    return bundle.paths.map((assetPath) => createOperation(contentRoot, workspaceRoot, target, bundle, assetPath));
+    return bundle.paths.flatMap((assetPath) => createOperationsForAsset(contentRoot, workspaceRoot, target, bundle, assetPath));
   });
   const visibilityPolicy = createVisibilityPolicy(workspaceRoot, target);
   const sharedRuntime = createSharedRuntimePlan(workspaceRoot, selection.targetId, target);

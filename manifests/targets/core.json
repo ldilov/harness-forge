@@ -62,7 +62,8 @@
       "capabilitySupportRef": "manifests/catalog/harness-capability-matrix.json",
       "supportLevel": "full",
       "supportNotes": [
-        "Claude Code is a first-class target for packaged skills, hooks, repo intelligence, maintenance commands, and flow recovery."
+        "Claude Code is a first-class target for packaged skills, hooks, repo intelligence, maintenance commands, and flow recovery.",
+        "Claude installs keep both CLAUDE.md and AGENTS.md available so Claude-native and cross-agent entrypoints stay discoverable."
       ]
     },
     {

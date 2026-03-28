@@ -27,6 +27,7 @@
   },
   "sharedRuntimeBridge": {
     "instructionSurfaces": [
+      "AGENTS.md",
       "CLAUDE.md",
       ".agents/skills",
       ".claude/settings.json"
@@ -45,6 +46,7 @@
       ".hforge/runtime"
     ],
     "visibleBridgePaths": [
+      "AGENTS.md",
       "CLAUDE.md",
       ".agents/skills",
       ".specify",
