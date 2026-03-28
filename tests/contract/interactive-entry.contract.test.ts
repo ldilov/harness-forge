@@ -15,7 +15,7 @@ function createContext(overrides: Partial<CliInvocationContext>): CliInvocationC
     detectedWorkspaceRoot: process.cwd(),
     detectedRuntimeState: "absent",
     terminalProfile: detectTerminalCapabilities({
-      env: { ...process.env, HFORGE_FORCE_TTY: "1" },
+      env: { ...process.env, CI: "false", HFORGE_FORCE_TTY: "1" },
       stdinIsTTY: true,
       stdoutIsTTY: true,
       columns: 100
@@ -39,7 +39,7 @@ describe("interactive entry contract", () => {
     const route = await chooseDefaultInteractiveRoute(
       createContext({
         terminalProfile: detectTerminalCapabilities({
-          env: { ...process.env, HFORGE_FORCE_TTY: "0" },
+          env: { ...process.env, CI: "true", HFORGE_FORCE_TTY: "0" },
           stdinIsTTY: false,
           stdoutIsTTY: false,
           columns: 80

@@ -6,7 +6,7 @@ import { renderWelcomeScreen } from "../../src/cli/interactive/renderers/welcome
 describe("interactive accessibility contract", () => {
   it("degrades cleanly in no-color narrow terminal mode", () => {
     const capabilities = detectTerminalCapabilities({
-      env: { ...process.env, NO_COLOR: "1", HFORGE_FORCE_TTY: "1", HFORGE_TERM_WIDTH: "40" },
+      env: { ...process.env, CI: "false", NO_COLOR: "1", HFORGE_FORCE_TTY: "1", HFORGE_TERM_WIDTH: "40" },
       stdinIsTTY: true,
       stdoutIsTTY: true,
       columns: 40
