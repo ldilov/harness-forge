@@ -29,6 +29,7 @@
     "manifests/catalog/flow-artifacts.json",
     "manifests/catalog/engineering-assistant-import-inventory.json",
     "manifests/catalog/enhanced-skill-import-inventory.json",
+    "manifests/catalog/token-budget-optimizer-import-inventory.json",
     "manifests/catalog/package-surface.json",
     "manifests/catalog/seeded-knowledge-files.json"
   ],

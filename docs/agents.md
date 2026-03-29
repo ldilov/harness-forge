@@ -20,6 +20,7 @@ AI content into the hidden `.hforge/` layer.
 - `docs/agent-usage-playbook.md` for copy-ready prompts and examples that make
   agents use the installed Harness Forge runtime more explicitly
 - `docs/authoring/enhanced-skill-import.md` for curated research and validation provenance behind imported skill upgrades
+- `docs/authoring/token-budget-optimizer-port.md` for maintainer-facing provenance behind the promoted context-compaction skill
 - `RESEARCH-SOURCES.md` and `VALIDATION.md` for optional pack-level provenance detail
 
 ## When agents should use Harness Forge
@@ -36,6 +37,8 @@ AI content into the hidden `.hforge/` layer.
   an explicit recursive session instead of growing the prompt
 - when a recursive session needs one bounded structured analysis step with a
   durable run record instead of chat-only reasoning
+- when prompt history is growing and the next safe answer may already exist in
+  `.hforge/runtime/`, task artifacts, or decision records
 
 ## Discovery rule
 
@@ -58,3 +61,5 @@ AI content into the hidden `.hforge/` layer.
   `.hforge/agent-manifest.json` first and treat every surface it marks
   `treatAsProductCode: false` as AI-layer content rather than application code
 - use `docs/authoring/enhanced-skill-import.md`, `RESEARCH-SOURCES.md`, and `VALIDATION.md` only when provenance or import rationale matters
+- use `.agents/skills/token-budget-optimizer/SKILL.md` when the next safe step
+  depends on compacting context and reusing authoritative runtime surfaces

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-28T23:56:45.619Z",
+  "generatedAt": "2026-03-29T00:26:01.295Z",
   "entries": [
     {
       "subjectType": "language",
@@ -1269,6 +1269,14 @@
       "subjectId": "claude-code",
       "relationType": "supports",
       "relatedType": "skill",
+      "relatedId": "token-budget-optimizer",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "skill",
       "relatedId": "typescript-engineering",
       "supportLevel": "full"
     },
@@ -2097,6 +2105,14 @@
       "relationType": "supports",
       "relatedType": "skill",
       "relatedId": "test-strategy-and-coverage",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "token-budget-optimizer",
       "supportLevel": "full"
     },
     {
@@ -3024,6 +3040,15 @@
       "subjectId": "cursor",
       "relationType": "supports",
       "relatedType": "skill",
+      "relatedId": "token-budget-optimizer",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial skill support for token-budget-optimizer."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "skill",
       "relatedId": "typescript-engineering",
       "supportLevel": "partial",
       "notes": "Cursor only provides partial skill support for typescript-engineering."
@@ -3939,6 +3964,15 @@
       "relatedId": "test-strategy-and-coverage",
       "supportLevel": "partial",
       "notes": "OpenCode only provides partial skill support for test-strategy-and-coverage."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "token-budget-optimizer",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial skill support for token-budget-optimizer."
     },
     {
       "subjectType": "target",

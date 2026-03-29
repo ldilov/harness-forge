@@ -57,6 +57,7 @@ and modernization guidance sourced into project-owned `references/` directories.
 - `skills/security-scan/`
 - `skills/release-readiness/`
 - `skills/architecture-decision-records/`
+- `skills/token-budget-optimizer/`
 
 ## Workload-specialized skills
 
@@ -92,3 +93,8 @@ maintainer-facing provenance instead of shipping duplicate skill identities.
 Single-skill ports such as `engineering-assistant` should preserve the same
 discipline through `manifests/catalog/engineering-assistant-import-inventory.json`
 and `docs/authoring/engineering-assistant-port.md`.
+
+Context-compaction ports such as `token-budget-optimizer` should preserve the
+same discipline through
+`manifests/catalog/token-budget-optimizer-import-inventory.json` and
+`docs/authoring/token-budget-optimizer-port.md`.

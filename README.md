@@ -101,7 +101,7 @@ Instead of relying on one-off prompts or tribal setup knowledge, it gives you a 
 | 🎯 Runtime targets | 4 target surfaces: Codex, Claude Code, Cursor, OpenCode |
 | 🧠 Knowledge system | 14 language packs total: 5 seeded + 9 structured |
 | 🧩 Framework coverage | 12 framework packs including React, Next.js, Vite, Express, FastAPI, Django, ASP.NET Core, Spring Boot, Laravel, Symfony, Gin, and Ktor |
-| 🛠 Skills | 44 packaged skills across language engineering, workflow orchestration, operational helpers, and workload-specialized flows |
+| 🛠 Skills | 45 packaged skills across language engineering, workflow orchestration, operational helpers, and workload-specialized flows |
 | 🔁 Flow support | `.specify/` spec → plan → tasks → implement flow plus flow-state recovery |
 | 🔬 Intelligence | `scan`, `recommend`, `cartograph`, `classify-boundaries`, and `synthesize-instructions` |
 | 📊 Local observability | Effectiveness summaries, recommendation acceptance, hook runs, maintenance traces, and runtime summaries |
@@ -267,6 +267,7 @@ Harness Forge can lower token burn because it gives the agent:
 - focused runtime summaries
 - machine-readable manifests
 - curated skills
+- a promoted token-budget-optimizer skill for context compaction and reuse-first work
 - reusable task/state artifacts
 - repo-aware recommendations
 - structured entrypoints instead of blind exploration
@@ -418,7 +419,7 @@ Harness Forge is strongest with **Codex** and **Claude Code** today.
 - structured language engineering skills
 - Speckit workflow orchestration skills
 - operational helper skills
-- workload-specialized skills such as incident triage, dependency upgrade safety, profiling, API contract review, database migration review, release readiness, repo modernization, observability setup, and cloud architecture
+- workload-specialized skills such as incident triage, dependency upgrade safety, profiling, API contract review, database migration review, release readiness, repo modernization, observability setup, cloud architecture, and token-budget optimization
 
 ---
 
@@ -724,7 +725,7 @@ That playbook includes:
 
 - launcher-aware command resolution when `hforge` is not on `PATH`
 - concrete operator prompts that tell agents to read the installed runtime
-- examples for task artifacts, decision records, recursive mode, and support verification
+- examples for task artifacts, decision records, recursive mode, support verification, and token-budget compaction
 
 In runtimes that expose packaged markdown commands, Harness Forge can also ship
 triggerable command docs such as `/hforge-init`, `/hforge-analyze`,

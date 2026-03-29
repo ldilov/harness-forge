@@ -27,6 +27,7 @@ describe("package surface contract", () => {
     expect(manifest.requiredPaths).toContain(".agents/skills/hforge-analyze/SKILL.md");
     expect(manifest.requiredPaths).toContain(".agents/skills/hforge-review/SKILL.md");
     expect(manifest.requiredPaths).toContain(".agents/skills/typescript-engineering/SKILL.md");
+    expect(manifest.requiredPaths).toContain(".agents/skills/token-budget-optimizer/SKILL.md");
     expect(manifest.requiredPaths).toContain("commands/hforge-cartograph.md");
     expect(manifest.requiredPaths).toContain("commands/hforge-commands.md");
     expect(manifest.requiredPaths).toContain("commands/hforge-init.md");
@@ -37,6 +38,7 @@ describe("package surface contract", () => {
     expect(manifest.requiredPaths).toContain("rules/common/README.md");
     expect(manifest.requiredPaths).toContain("skills/hforge-analyze/SKILL.md");
     expect(manifest.requiredPaths).toContain("skills/hforge-decide/SKILL.md");
+    expect(manifest.requiredPaths).toContain("skills/token-budget-optimizer/SKILL.md");
     expect(manifest.requiredPaths).toContain("skills/typescript-engineering/SKILL.md");
     expect(manifest.requiredPaths).toContain("templates/workflows/implement-typescript-change.md");
     expect(manifest.requiredPaths).toContain("scripts/templates/README.md");

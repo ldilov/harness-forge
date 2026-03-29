@@ -1,0 +1,146 @@
+{
+  "packId": "token-budget-optimizer-2026-03",
+  "sourceName": "Harness Forge Token Budget Optimizer Skill Pack",
+  "sourceVersion": "2026-03-29-import",
+  "resourceRoots": [
+    "hforge-token-budget-optimizer/"
+  ],
+  "summary": "Governed port record for the imported token-budget-optimizer skill, preserving its context-compaction and reuse-first intent while translating the pack into project-owned canonical skill, wrapper, references, and helper surfaces.",
+  "validationScope": "The port validates canonical skill ownership, wrapper discovery coverage, package-surface registration, and front-door promotion for token-efficient agent operation. Runtime-native slash commands are intentionally not required for this skill.",
+  "researchScope": "The imported pack contributes context-compaction guidance, reuse-first operating rules, token-surface audit dimensions, a scoring model, a promotion ladder, and a deterministic helper script for identifying high-value low-cost runtime surfaces.",
+  "entries": [
+    {
+      "artifactPath": "hforge-token-budget-optimizer/SKILL.md",
+      "artifactType": "skill",
+      "skillId": "token-budget-optimizer",
+      "existingProjectSurface": null,
+      "decision": "embed",
+      "decisionReason": "The imported pack owns a distinct runtime responsibility around context compaction and reuse-first navigation, so it should ship as one canonical skill rather than being folded into a broader helper.",
+      "destinationPath": "skills/token-budget-optimizer/SKILL.md",
+      "reviewStatus": "accepted"
+    },
+    {
+      "artifactPath": "hforge-token-budget-optimizer/references/audit-dimensions.md",
+      "artifactType": "reference",
+      "skillId": "token-budget-optimizer",
+      "existingProjectSurface": null,
+      "decision": "embed",
+      "decisionReason": "The audit dimensions are direct supporting guidance for deciding which surfaces deserve active prompt space.",
+      "destinationPath": "skills/token-budget-optimizer/references/audit-dimensions.md",
+      "reviewStatus": "accepted"
+    },
+    {
+      "artifactPath": "hforge-token-budget-optimizer/references/promotion-ladder.md",
+      "artifactType": "reference",
+      "skillId": "token-budget-optimizer",
+      "existingProjectSurface": null,
+      "decision": "embed",
+      "decisionReason": "The promotion ladder turns the imported context-reuse idea into a reusable operating model for agents in installed workspaces.",
+      "destinationPath": "skills/token-budget-optimizer/references/promotion-ladder.md",
+      "reviewStatus": "accepted"
+    },
+    {
+      "artifactPath": "hforge-token-budget-optimizer/references/scoring-model.md",
+      "artifactType": "reference",
+      "skillId": "token-budget-optimizer",
+      "existingProjectSurface": null,
+      "decision": "embed",
+      "decisionReason": "The scoring model is a direct supporting heuristic for choosing low-cost high-authority context surfaces.",
+      "destinationPath": "skills/token-budget-optimizer/references/scoring-model.md",
+      "reviewStatus": "accepted"
+    },
+    {
+      "artifactPath": "hforge-token-budget-optimizer/references/report-template.md",
+      "artifactType": "reference",
+      "skillId": "token-budget-optimizer",
+      "existingProjectSurface": null,
+      "decision": "embed",
+      "decisionReason": "The report template preserves the imported pack's goal of making compaction decisions explicit and reviewable.",
+      "destinationPath": "skills/token-budget-optimizer/references/report-template.md",
+      "reviewStatus": "accepted"
+    },
+    {
+      "artifactPath": "hforge-token-budget-optimizer/scripts/inspect_token_surfaces.py",
+      "artifactType": "script",
+      "skillId": "token-budget-optimizer",
+      "existingProjectSurface": null,
+      "decision": "embed",
+      "decisionReason": "The helper script is deterministic, package-owned, and directly useful for ranking reusable context surfaces before an agent expands prompt history.",
+      "destinationPath": "skills/token-budget-optimizer/scripts/inspect_token_surfaces.py",
+      "reviewStatus": "accepted"
+    },
+    {
+      "artifactPath": "hforge-token-budget-optimizer/agents/openai.yaml",
+      "artifactType": "metadata",
+      "skillId": "token-budget-optimizer",
+      "existingProjectSurface": null,
+      "decision": "translate",
+      "decisionReason": "The source runtime metadata is treated as pack provenance while the project expresses cross-agent discovery through the canonical wrapper and maintainer-facing port note.",
+      "destinationPath": "docs/authoring/token-budget-optimizer-port.md",
+      "reviewStatus": "accepted"
+    },
+    {
+      "artifactPath": "hforge-token-budget-optimizer/.agents-wrapper",
+      "artifactType": "wrapper",
+      "skillId": "token-budget-optimizer",
+      "existingProjectSurface": null,
+      "decision": "embed",
+      "decisionReason": "The imported skill needs a visible discovery wrapper so Codex and Claude Code can find the canonical token-optimization workflow quickly.",
+      "destinationPath": ".agents/skills/token-budget-optimizer/SKILL.md",
+      "reviewStatus": "accepted"
+    }
+  ],
+  "compatibilityProfiles": [
+    {
+      "targetId": "codex",
+      "supportLevel": "translated",
+      "metadataMode": "translated",
+      "helperMode": "packaged-script",
+      "notes": "Codex consumes the canonical skill and wrapper directly, and can optionally run the helper script when a deterministic token-surface audit is useful."
+    },
+    {
+      "targetId": "claude-code",
+      "supportLevel": "translated",
+      "metadataMode": "translated",
+      "helperMode": "packaged-script",
+      "notes": "Claude Code consumes the same canonical skill and wrapper, with the helper script available when the operator wants explicit compaction evidence."
+    },
+    {
+      "targetId": "cursor",
+      "supportLevel": "guidance-only",
+      "metadataMode": "unsupported",
+      "helperMode": "documentation-first",
+      "notes": "Cursor can follow the guidance surfaces, but the primary promotion path is still the canonical skill and maintainer note."
+    },
+    {
+      "targetId": "opencode",
+      "supportLevel": "guidance-only",
+      "metadataMode": "unsupported",
+      "helperMode": "documentation-first",
+      "notes": "OpenCode receives the canonical guidance without overstating runtime-native metadata parity."
+    }
+  ],
+  "portingRules": [
+    {
+      "ruleId": "promote-reuse-first-runtime-skills",
+      "matchCriteria": "An imported skill owns a distinct responsibility for context compaction, reuse-first reasoning, or token-cost discipline.",
+      "preferredOutcome": "embed",
+      "requiredFollowUps": [
+        "create the canonical skill under skills/",
+        "ship supporting references and helper surfaces under the same skill directory",
+        "add a discovery wrapper under .agents/skills/",
+        "register the skill in package-surface and front-door docs"
+      ]
+    },
+    {
+      "ruleId": "translate-runtime-specific-metadata",
+      "matchCriteria": "The imported artifact is runtime-specific metadata rather than canonical cross-agent guidance.",
+      "preferredOutcome": "translate",
+      "requiredFollowUps": [
+        "summarize the metadata in maintainer-facing provenance",
+        "avoid claiming universal runtime-native parity",
+        "keep the canonical wrapper and skill as the active discovery path"
+      ]
+    }
+  ]
+}

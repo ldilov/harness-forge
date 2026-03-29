@@ -50,6 +50,8 @@ following:
 - uses `status`, `commands`, `recommend`, `review`, `task`, or `recursive` instead of inventing unsupported commands
 - reads `.hforge/runtime/repo/repo-map.json` or `.hforge/runtime/repo/recommendations.json` before making support claims
 - writes durable artifacts only when the workflow actually calls for them
+- compacts context by reusing runtime summaries, task artifacts, and decision
+  records instead of rereading wide repo surfaces
 
 ## Important limitation
 
@@ -90,6 +92,15 @@ If the task is hard or multi-hop:
 ```bash
 hforge recursive plan "investigate the issue" --task-id TASK-001 --root . --json
 hforge recursive capabilities --root . --json
+```
+
+If the task is large or the prompt is getting expensive:
+
+```text
+Load .agents/skills/token-budget-optimizer/SKILL.md and use the installed
+token-budget-optimizer skill before broad repo scanning. Reuse existing
+runtime summaries, task artifacts, and decision records first, then tell me
+which surfaces you will keep loaded and which ones you can compact away.
 ```
 
 ## Prompt patterns
@@ -163,6 +174,17 @@ Do not guess target or language support. Use Harness Forge capability surfaces,
 including .hforge/runtime/recursive/language-capabilities.json and target inspect
 output, before claiming that Claude Code, Codex, Cursor, or OpenCode supports a
 behavior.
+```
+
+### 8. Force context compaction and reuse
+
+Use this when the task is long-running or the agent is repeating repo scans:
+
+```text
+Use the installed Harness Forge token-budget-optimizer skill before you expand
+context further. Reuse existing runtime summaries, task artifacts, and decision
+records first. Tell me what you will keep loaded, what you will compact, and
+what new evidence still requires a focused read.
 ```
 
 ## Claude-specific examples

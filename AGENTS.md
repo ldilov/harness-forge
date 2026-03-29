@@ -60,6 +60,7 @@ Use the thin visible bridge surfaces first in installed workspaces:
 
 - prefer `.hforge/library/skills/cloud-architect/` when the task is about deployment topology, distributed systems, reliability, observability, or cloud trade-offs across services
 - prefer `.hforge/library/skills/engineering-assistant/` when the task needs architecture plus implementation orchestration, option framing, or explicit project-memory and change-discipline guidance in one surface
+- prefer `.hforge/library/skills/token-budget-optimizer/` when prompt history is growing, repo context is being repeated, or existing runtime artifacts should be reused before broader rescans
 - use `.hforge/library/manifests/catalog/framework-assets.json` and `.hforge/runtime/repo/recommendations.json` when framework or bundle matching is more reliable than guessing from file extensions
 
 ## Imported skill governance
@@ -67,8 +68,10 @@ Use the thin visible bridge surfaces first in installed workspaces:
 - treat `.hforge/library/manifests/catalog/engineering-assistant-import-inventory.json` as the review ledger for the single-skill engineering-assistant port
 - keep maintainer-facing provenance for that port in `.hforge/library/docs/authoring/engineering-assistant-port.md`
 - treat `.hforge/library/manifests/catalog/enhanced-skill-import-inventory.json` as the review ledger for embedded skill packs and use it before changing imported skill surfaces
+- treat `.hforge/library/manifests/catalog/token-budget-optimizer-import-inventory.json` as the review ledger for the token-budget-optimizer port and promotion rationale
 - treat `.agents/skills/` as the discovery layer and `.hforge/library/skills/` as the canonical installed execution layer
 - keep maintainer-facing provenance in `.hforge/library/docs/authoring/enhanced-skill-import.md`
+- keep maintainer-facing provenance for token-budget optimization in `.hforge/library/docs/authoring/token-budget-optimizer-port.md`
 - use `RESEARCH-SOURCES.md` and `VALIDATION.md` only as additional provenance, not as replacements for the canonical installed skill surfaces
 - prefer the project-owned canonical `.hforge/library/skills/` surfaces over any raw imported archive layout
 
@@ -123,4 +126,4 @@ Use the thin visible bridge surfaces first in installed workspaces:
 ## Usage promotion
 
 - if an operator wants stronger Harness Forge usage in day-to-day agent work, use `docs/agent-usage-playbook.md`
-- prefer the playbook prompts when you want the agent to prove it is reading the installed guidance layer, use the command catalog, create task artifacts, write decision records, or escalate into recursive mode
+- prefer the playbook prompts when you want the agent to prove it is reading the installed guidance layer, use the command catalog, compact context efficiently, create task artifacts, write decision records, or escalate into recursive mode
