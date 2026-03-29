@@ -6,6 +6,7 @@ import { loadInstallState, saveInstallState } from "../../domain/state/install-s
 import { PACKAGE_ROOT, RUNTIME_SCHEMA_VERSION, readJsonFile, writeTextFile } from "../../shared/index.js";
 import { writeAgentCommandCatalog } from "../runtime/command-catalog.js";
 import { writeAgentManifest } from "./agent-manifest.js";
+import { ensureInstallGitignoreEntries } from "./ensure-gitignore.js";
 import { generateGuidance } from "./generate-guidance.js";
 import { rewriteInstalledAiLayerReferences } from "./rewrite-installed-ai-layer.js";
 import { writeSharedRuntime } from "./shared-runtime.js";
@@ -28,6 +29,7 @@ export async function applyInstall(
   }
 
   const rewrittenFiles = await rewriteInstalledAiLayerReferences(root, plan);
+  const gitignorePath = await ensureInstallGitignoreEntries(root);
 
   const guidance = generateGuidance(plan);
   const guidancePath = path.join(root, ".hforge", "state", "post-install-guidance.txt");
@@ -41,6 +43,7 @@ export async function applyInstall(
     guidancePath,
     commandCatalog.jsonPath,
     commandCatalog.markdownPath,
+    ...(gitignorePath ? [gitignorePath] : []),
     ...(sharedRuntime
       ? [sharedRuntime.indexPath, sharedRuntime.readmePath, ...sharedRuntime.baselineArtifacts.map((artifact) => artifact.path)]
       : [])
@@ -88,6 +91,9 @@ export async function applyInstall(
   }
   if (rewrittenFiles.length > 0) {
     messages.push(`Rewrote ${rewrittenFiles.length} installed bridge and hidden-layer files for contained path references`);
+  }
+  if (gitignorePath) {
+    messages.push(`Updated ${gitignorePath} with local-first .hforge ignore entries`);
   }
 
   return { messages, guidancePath };
