@@ -524,14 +524,6 @@
     },
     {
       "language": "lua",
-      "archivePath": "language-knowledge-bases/lua-knowledge-base/examples/03-l#U00f6ve-gameplay-module.md",
-      "relativePath": "examples/03-l#U00f6ve-gameplay-module.md",
-      "packagePath": "knowledge-bases/seeded/lua/examples/03-l#U00f6ve-gameplay-module.md",
-      "delivery": "direct",
-      "contentKind": "example"
-    },
-    {
-      "language": "lua",
       "archivePath": "language-knowledge-bases/lua-knowledge-base/examples/04-embedded-automation-script.md",
       "relativePath": "examples/04-embedded-automation-script.md",
       "packagePath": "knowledge-bases/seeded/lua/examples/04-embedded-automation-script.md",

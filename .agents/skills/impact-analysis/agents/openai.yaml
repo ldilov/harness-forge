@@ -1,0 +1,3 @@
+interface:
+  display_name: "Impact Analysis"
+  short_description: "Assess blast radius, risk, confidence, and rollout safeguards"

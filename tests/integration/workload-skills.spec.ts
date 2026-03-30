@@ -7,6 +7,7 @@ const root = process.cwd();
 const workloadSkills = [
   "incident-triage",
   "dependency-upgrade-safety",
+  "impact-analysis",
   "performance-profiling",
   "test-strategy-and-coverage",
   "api-contract-review",

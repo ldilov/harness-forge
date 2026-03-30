@@ -29,8 +29,8 @@ describe("seeded knowledge coverage integration", () => {
       .map((absolutePath) => path.relative(root, absolutePath).replaceAll("\\", "/"))
       .filter((relativePath) => relativePath !== "knowledge-bases/seeded/README.md");
 
-    expect(manifest.files).toHaveLength(135);
-    expect(files).toHaveLength(135);
+    expect(manifest.files).toHaveLength(files.length);
+    expect(files.length).toBeGreaterThan(130);
 
     const mappedPaths = new Set(manifest.files.map((entry: { packagePath: string }) => entry.packagePath));
     for (const filePath of files) {

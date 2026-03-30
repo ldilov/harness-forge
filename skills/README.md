@@ -66,6 +66,7 @@ and modernization guidance sourced into project-owned `references/` directories.
 
 - `skills/incident-triage/`
 - `skills/dependency-upgrade-safety/`
+- `skills/impact-analysis/`
 - `skills/performance-profiling/`
 - `skills/test-strategy-and-coverage/`
 - `skills/api-contract-review/`
@@ -75,6 +76,10 @@ and modernization guidance sourced into project-owned `references/` directories.
 - `skills/parallel-worktree-supervisor/`
 - `skills/repo-modernization/`
 - `skills/cloud-architect/`
+
+`impact-analysis` complements those workload-specific skills by giving them a
+shared way to reason about blast radius, risk, confidence, validation, and
+rollback planning.
 
 ## Supplemental engineering reference skills
 

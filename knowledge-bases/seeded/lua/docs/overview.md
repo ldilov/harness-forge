@@ -35,8 +35,7 @@ Lua’s reference manual remains the canonical language definition. The pack ass
 ## Scenario routing
 - `01-neovim-plugin.md` — **Neovim plugin**. Module layout, user commands, autocmds, async/job boundaries, and non-invasive editor behavior.
 - `02-openresty-request-handler.md` — **OpenResty request handler**. ngx lifecycle, request/response rules, shared dict limits, and safe upstream access.
-- `03-love-gameplay-module.md` — **LÖVE gameplay module**. State update/draw separation, deterministic simulation, asset boundaries, and debug instrumentation.
-- `04-embedded-automation-script.md` — **Embedded automation script**. Sandbox assumptions, shell/process boundaries, and robust nil/error handling.
+- `03-embedded-automation-script.md` — **Embedded automation script**. Sandbox assumptions, shell/process boundaries, and robust nil/error handling.
 
 ## Required final pass
 

@@ -233,7 +233,17 @@
     "skills/madr-decision-log/references/review-checklist.md",
     "skills/madr-decision-log/scripts/new_adr.py",
     "skills/madr-decision-log/scripts/validate_madr.py",
-    "skills/madr-decision-log/scripts/build_log.py"
+    "skills/madr-decision-log/scripts/build_log.py",
+    ".agents/skills/impact-analysis/SKILL.md",
+    ".agents/skills/impact-analysis/agents/openai.yaml",
+    ".agents/skills/impact-analysis/agents/claude.yaml",
+    "skills/impact-analysis/SKILL.md",
+    "skills/impact-analysis/references/examples.md",
+    "skills/impact-analysis/references/impact-lenses.md",
+    "skills/impact-analysis/references/output-template.md",
+    "skills/impact-analysis/references/scoring-model.md",
+    "skills/impact-analysis/scripts/impact_score.py",
+    "skills/impact-analysis/assets/sample-scorecard.json"
   ],
   "groups": [
     {

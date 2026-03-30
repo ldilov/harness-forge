@@ -200,7 +200,6 @@
       "examples": [
         "knowledge-bases/seeded/lua/examples/01-neovim-plugin.md",
         "knowledge-bases/seeded/lua/examples/02-openresty-request-handler.md",
-        "knowledge-bases/seeded/lua/examples/03-l#U00f6ve-gameplay-module.md",
         "knowledge-bases/seeded/lua/examples/04-embedded-automation-script.md"
       ]
     },

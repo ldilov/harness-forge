@@ -1,0 +1,26 @@
+{
+  "impact": {
+    "components_touched": 3,
+    "interface_surface": 2,
+    "data_surface": 1,
+    "deployment_surface": 2,
+    "user_workflow_reach": 1,
+    "dependency_fanout": 3
+  },
+  "risk": {
+    "technical_complexity": 2,
+    "coupling": 3,
+    "business_criticality": 3,
+    "rollback_difficulty": 2,
+    "observability_gap": 1,
+    "novelty": 2,
+    "security_data_sensitivity": 1,
+    "runtime_exposure": 3
+  },
+  "confidence": {
+    "primary_evidence": 4,
+    "dependency_coverage": 3,
+    "validation_coverage": 3,
+    "observability_readiness": 4
+  }
+}

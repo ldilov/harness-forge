@@ -13,6 +13,7 @@ const operationalSkills = [
   ["architecture-decision-records", "skills/architecture-decision-records/references/adr-template.md"],
   ["incident-triage", null],
   ["dependency-upgrade-safety", null],
+  ["impact-analysis", "skills/impact-analysis/references/output-template.md"],
   ["performance-profiling", null],
   ["test-strategy-and-coverage", null],
   ["api-contract-review", null],

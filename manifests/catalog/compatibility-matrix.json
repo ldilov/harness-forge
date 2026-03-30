@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-30T21:02:27.413Z",
+  "generatedAt": "2026-03-30T22:19:26.800Z",
   "entries": [
     {
       "subjectType": "language",
@@ -1005,6 +1005,14 @@
       "subjectId": "claude-code",
       "relationType": "supports",
       "relatedType": "skill",
+      "relatedId": "impact-analysis",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "skill",
       "relatedId": "incident-triage",
       "supportLevel": "full"
     },
@@ -1849,6 +1857,14 @@
       "relationType": "supports",
       "relatedType": "skill",
       "relatedId": "hforge-review",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "impact-analysis",
       "supportLevel": "full"
     },
     {
@@ -2753,6 +2769,15 @@
       "relatedId": "hforge-review",
       "supportLevel": "partial",
       "notes": "Cursor only provides partial skill support for hforge-review."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "impact-analysis",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial skill support for impact-analysis."
     },
     {
       "subjectType": "target",
@@ -3692,6 +3717,15 @@
       "relatedId": "hforge-review",
       "supportLevel": "partial",
       "notes": "OpenCode only provides partial skill support for hforge-review."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "impact-analysis",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial skill support for impact-analysis."
     },
     {
       "subjectType": "target",
