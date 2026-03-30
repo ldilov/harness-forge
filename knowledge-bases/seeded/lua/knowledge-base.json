@@ -1,8 +1,41 @@
 {
-  "id": "lua-knowledge-base",
   "language": "lua",
-  "title": "Lua",
-  "intended_use": "starter knowledge base for language rules, examples, hooks, and review guidance",
-  "includes_common_rules": true,
-  "seeded_from_existing_package": false
+  "title": "Lua enrichment pack",
+  "version": 2,
+  "maturity": "seeded",
+  "notes": "Enriched execution-grade guidance replacing shallow placeholders. Uses currently referenced paths so existing skills and workflows can load it without structural changes.",
+  "primaryDocs": [
+    "docs/overview.md",
+    "docs/frameworks.md",
+    "docs/review-checklist.md",
+    "docs/examples-guide.md"
+  ],
+  "examples": [
+    "examples/01-neovim-plugin.md",
+    "examples/02-openresty-request-handler.md",
+    "examples/03-love-gameplay-module.md",
+    "examples/04-embedded-automation-script.md"
+  ],
+  "sourceIndex": [
+    [
+      "Lua 5.4 reference manual",
+      "https://www.lua.org/manual/5.4/"
+    ],
+    [
+      "Lua manuals index",
+      "https://www.lua.org/manual/"
+    ],
+    [
+      "L\u00d6VE wiki",
+      "https://love2d.org/wiki/Main_Page"
+    ],
+    [
+      "Neovim docs",
+      "https://neovim.io/doc/"
+    ],
+    [
+      "OpenResty docs",
+      "https://openresty.org/en/"
+    ]
+  ]
 }

@@ -5,7 +5,7 @@ title: Implement Lua Change
 summary: Deliver Lua work using the seeded Lua rules, examples, and review guidance.
 mode: sequential
 status: stable
-version: 1
+version: 2
 applies_to:
   - codex
   - claude-code
@@ -47,14 +47,16 @@ Load the Lua rules and seeded references relevant to the task.
 - `rules/common/coding-style.md`
 - `rules/lua/coding-style.md`
 - `knowledge-bases/seeded/lua/docs/overview.md`
+- `knowledge-bases/seeded/lua/docs/examples-guide.md`
 
 **Produces**
 - selected rule set
+- chosen scenario reference
 - implementation constraints
 
 **Exit Criteria**
 - required Lua constraints are identified
-- an example path is chosen if one is relevant
+- a concrete seeded scenario is chosen when one is relevant
 
 **Failure Conditions**
 - the task language is mismatched
@@ -71,11 +73,12 @@ Map the change to modules, runtime boundaries, and tests.
 **Consumes**
 - `rules/common/patterns.md`
 - `rules/lua/patterns.md`
-- `knowledge-bases/seeded/lua/examples/`
+- chosen scenario from `knowledge-bases/seeded/lua/examples/`
 
 **Produces**
 - file touch list
 - verification approach
+- boundary note tied to the chosen scenario
 
 **Exit Criteria**
 - module boundaries are explicit
@@ -146,7 +149,8 @@ Complete the workflow when verification is documented.
 ## Exit Conditions
 
 - code aligns with `rules/common/` and `rules/lua/`
-- relevant seeded examples or review notes were consulted
+- `docs/examples-guide.md` was consulted and the nearest scenario informed the change
+- relevant seeded review notes were consulted
 
 ## Failure Modes
 

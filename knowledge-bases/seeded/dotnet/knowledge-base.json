@@ -1,8 +1,33 @@
 {
-  "id": "dotnet-knowledge-base",
   "language": "dotnet",
-  "title": ".NET",
-  "intended_use": "starter knowledge base for language rules, examples, hooks, and review guidance",
-  "includes_common_rules": true,
-  "seeded_from_existing_package": true
+  "title": ".NET enrichment pack",
+  "version": 2,
+  "maturity": "seeded",
+  "notes": "Enriched execution-grade guidance replacing shallow placeholders. Uses currently referenced paths so existing skills and workflows can load it without structural changes.",
+  "primaryDocs": [
+    "docs/overview.md",
+    "docs/frameworks.md",
+    "docs/review-checklist.md",
+    "docs/examples-guide.md"
+  ],
+  "examples": [
+    "examples/01-aspnet-core-crud-api.md",
+    "examples/02-background-worker-with-queue-processing.md",
+    "examples/03-shared-domain-library.md",
+    "examples/04-cli-automation-tool.md"
+  ],
+  "sourceIndex": [
+    [
+      "ASP.NET Core overview",
+      "https://learn.microsoft.com/en-us/aspnet/core/fundamentals/choose-aspnet-framework?view=aspnetcore-9.0"
+    ],
+    [
+      "Minimal APIs quick reference",
+      "https://learn.microsoft.com/en-us/aspnet/core/fundamentals/minimal-apis?view=aspnetcore-9.0"
+    ],
+    [
+      "APIs overview",
+      "https://learn.microsoft.com/en-ie/aspnet/core/fundamentals/minimal-apis/overview?view=aspnetcore-9.0"
+    ]
+  ]
 }

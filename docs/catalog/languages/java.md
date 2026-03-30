@@ -2,59 +2,32 @@
 id: language-pack-java
 kind: language-pack
 title: Java Language Pack
-summary: Seeded Java pack for Spring Boot, libraries, and service backends.
+summary: Enriched Java pack with execution-grade docs, examples, rules, and workflow guidance.
 status: stable
 owner: core
-applies_to:
-  - codex
-  - claude-code
-  - cursor
-  - opencode
-languages:
-  - java
 generated: false
 maturity: seeded
-targets:
-  - codex
-  - claude-code
-  - cursor
-  - opencode
 ---
 # Java Language Pack
 
 ## Best fit
 
-Use this pack for Spring Boot APIs, message-driven services, libraries, and
-test-heavy enterprise backends.
+Use this pack when Java dominates the task and the answer depends on runtime boundaries, framework behavior, validation, or packaging details.
 
 ## What ships
 
 - `knowledge-bases/seeded/java/docs/overview.md`
-- `knowledge-bases/seeded/java/docs/review-checklist.md`
 - `knowledge-bases/seeded/java/docs/frameworks.md`
+- `knowledge-bases/seeded/java/docs/examples-guide.md`
+- `knowledge-bases/seeded/java/docs/review-checklist.md`
 - `knowledge-bases/seeded/java/examples/`
-- `knowledge-bases/seeded/java/rules/common/`
-- `knowledge-bases/seeded/java/rules/java/`
+- `rules/java/`
+- `templates/workflows/implement-java-change.md`
+- `skills/java-engineering/SKILL.md`
 
-## Recommended tooling
+## What changed in the enrichment pass
 
-- JDK
-- Gradle
-- Maven
-- JUnit 5
-- AssertJ
-- Testcontainers
-
-## Common pitfalls
-
-- field injection
-- framework leakage into domain logic
-- overly generic exceptions
-- hidden query inefficiency
-
-## Example scenarios
-
-- Spring Boot REST API
-- event consumer service
-- Gradle multi-module backend
-- library module with strong domain tests
+- placeholder-like summaries replaced with decision guidance
+- examples rewritten as task playbooks
+- review checklist made release-gate oriented
+- rules made operational instead of decorative

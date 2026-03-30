@@ -5,7 +5,7 @@ title: Implement .NET Change
 summary: Deliver .NET work using the seeded .NET rules, examples, and review guidance.
 mode: sequential
 status: stable
-version: 1
+version: 2
 applies_to:
   - codex
   - claude-code
@@ -47,14 +47,16 @@ Load the .NET rules and seeded references relevant to the task.
 - `rules/common/coding-style.md`
 - `rules/dotnet/coding-style.md`
 - `knowledge-bases/seeded/dotnet/docs/overview.md`
+- `knowledge-bases/seeded/dotnet/docs/examples-guide.md`
 
 **Produces**
 - selected rule set
+- chosen scenario reference
 - implementation constraints
 
 **Exit Criteria**
 - required .NET constraints are identified
-- an example path is chosen if one is relevant
+- a concrete seeded scenario is chosen when one is relevant
 
 **Failure Conditions**
 - the task language is mismatched
@@ -71,11 +73,12 @@ Map the change to services, workers, contracts, and tests.
 **Consumes**
 - `rules/common/patterns.md`
 - `rules/dotnet/patterns.md`
-- `knowledge-bases/seeded/dotnet/examples/`
+- chosen scenario from `knowledge-bases/seeded/dotnet/examples/`
 
 **Produces**
 - file touch list
 - verification approach
+- boundary note tied to the chosen scenario
 
 **Exit Criteria**
 - dependency direction is explicit
@@ -146,7 +149,8 @@ Complete the workflow when verification is documented.
 ## Exit Conditions
 
 - code aligns with `rules/common/` and `rules/dotnet/`
-- relevant seeded examples or review notes were consulted
+- `docs/examples-guide.md` was consulted and the nearest scenario informed the change
+- relevant seeded review notes were consulted
 
 ## Failure Modes
 

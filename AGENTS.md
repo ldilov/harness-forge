@@ -55,6 +55,10 @@ Use the thin visible bridge surfaces first in installed workspaces:
 - prefer `.hforge/library/knowledge/seeded/powershell/` with `.hforge/library/rules/common/` and `.hforge/library/rules/powershell/` for PowerShell and Windows automation
 - use the structured packs under `.hforge/library/knowledge/structured/` with the matching `.hforge/library/rules/<language>/` directory for Python, Go, Kotlin, Rust, C++, PHP, Perl, Swift, and Shell
 - use `.hforge/library/manifests/catalog/language-assets.json` when the installed language surface is not obvious from the repo layout alone
+- when a seeded language pack is present, load `docs/examples-guide.md` before choosing an example and then load the single closest scenario file from `examples/`
+- treat seeded language docs under `knowledge-bases/seeded/<language>/docs/` as execution guidance, not as descriptive catalog copy
+- after implementation, require a pass through `docs/review-checklist.md` for the active language pack
+- prefer the language-specific workflow under `templates/workflows/implement-<language>-change.md` over improvised plans when the task is implementation-heavy
 
 ## Specialized skills
 

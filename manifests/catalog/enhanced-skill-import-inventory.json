@@ -1,7 +1,7 @@
 {
   "packId": "enhanced-skills-2026-03",
   "sourceName": "Harness Forge Enhanced Skills Pack",
-  "sourceVersion": "2026-03-26-import",
+  "sourceVersion": "2026-03-30-imports",
   "resourceRoots": [
     "skills/",
     ".agents/skills/",
@@ -9,9 +9,9 @@
     "VALIDATION.md",
     "RESEARCH-SOURCES.md"
   ],
-  "summary": "Governed embedding record for the enhanced skills zip that deepened canonical operational, coordination, and language skill surfaces without creating a parallel runtime package.",
+  "summary": "Governed embedding record for the enhanced skills zip that deepened canonical operational, coordination, and language skill surfaces without creating a parallel runtime package. The March 2026 follow-on import also promotes a distinct MADR skill for file-oriented ADR repository workflows.",
   "validationScope": "The imported pack reported passing skill-depth and placeholder validation on the upgraded repo copy. Full release smoke remained host-repo dependent because the export environment still had unrelated upstream gaps.",
-  "researchScope": "The imported guidance drew on official docs and upstream repositories for ADRs, API governance, database migrations, worktrees, modernization, .NET, TypeScript, JavaScript, Lua, and repo-onboarding workflows.",
+  "researchScope": "The imported guidance drew on official docs and upstream repositories for ADRs, API governance, database migrations, worktrees, modernization, .NET, TypeScript, JavaScript, Lua, and repo-onboarding workflows. A follow-on user-authored skill added MADR repository conventions, ADR validation, and ADR log generation.",
   "entries": [
     {
       "resourcePath": "skills/repo-onboarding/SKILL.md",
@@ -341,6 +341,46 @@
       "decision": "provenance-only",
       "decisionReason": "The research summary informs maintainers and future imports, but runtime agents should rely on the canonical project-owned skills instead.",
       "destinationPath": "RESEARCH-SOURCES.md",
+      "reviewStatus": "accepted"
+    },
+    {
+      "resourcePath": "skills/madr-decision-log/SKILL.md",
+      "resourceType": "skill",
+      "skillId": "madr-decision-log",
+      "existingProjectSurface": null,
+      "decision": "promote",
+      "decisionReason": "The imported MADR skill owns a distinct file-oriented ADR repository workflow rather than duplicating the broader architecture-decision-records responsibility.",
+      "destinationPath": "skills/madr-decision-log/SKILL.md",
+      "reviewStatus": "accepted"
+    },
+    {
+      "resourcePath": "skills/madr-decision-log/references/",
+      "resourceType": "reference",
+      "skillId": "madr-decision-log",
+      "existingProjectSurface": null,
+      "decision": "promote",
+      "decisionReason": "The reference pack supplies the canonical MADR template, conventions, and review checklist needed by the new skill.",
+      "destinationPath": "skills/madr-decision-log/references/",
+      "reviewStatus": "accepted"
+    },
+    {
+      "resourcePath": "skills/madr-decision-log/scripts/",
+      "resourceType": "script",
+      "skillId": "madr-decision-log",
+      "existingProjectSurface": null,
+      "decision": "promote",
+      "decisionReason": "The helper scripts make ADR scaffolding, validation, and ADR-LOG generation deterministic and reusable.",
+      "destinationPath": "skills/madr-decision-log/scripts/",
+      "reviewStatus": "accepted"
+    },
+    {
+      "resourcePath": ".agents/skills/madr-decision-log/SKILL.md",
+      "resourceType": "wrapper",
+      "skillId": "madr-decision-log",
+      "existingProjectSurface": null,
+      "decision": "promote",
+      "decisionReason": "The wrapper keeps the MADR workflow discoverable while the canonical execution contract remains under skills/.",
+      "destinationPath": ".agents/skills/madr-decision-log/SKILL.md",
       "reviewStatus": "accepted"
     }
   ],

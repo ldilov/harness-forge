@@ -1,8 +1,41 @@
 {
-  "id": "typescript-knowledge-base",
   "language": "typescript",
-  "title": "TypeScript",
-  "intended_use": "starter knowledge base for language rules, examples, hooks, and review guidance",
-  "includes_common_rules": true,
-  "seeded_from_existing_package": true
+  "title": "TypeScript enrichment pack",
+  "version": 2,
+  "maturity": "seeded",
+  "notes": "Enriched execution-grade guidance replacing shallow placeholders. Uses currently referenced paths so existing skills and workflows can load it without structural changes.",
+  "primaryDocs": [
+    "docs/overview.md",
+    "docs/frameworks.md",
+    "docs/review-checklist.md",
+    "docs/examples-guide.md"
+  ],
+  "examples": [
+    "examples/01-node-api.md",
+    "examples/02-react-component-library.md",
+    "examples/03-nextjs-app.md",
+    "examples/04-monorepo-shared-types-and-validation.md"
+  ],
+  "sourceIndex": [
+    [
+      "TypeScript 5.9 release notes",
+      "https://www.typescriptlang.org/docs/handbook/release-notes/typescript-5-9.html"
+    ],
+    [
+      "TSConfig reference",
+      "https://www.typescriptlang.org/tsconfig/"
+    ],
+    [
+      "React docs",
+      "https://react.dev/"
+    ],
+    [
+      "Next.js App Router docs",
+      "https://nextjs.org/docs/app"
+    ],
+    [
+      "Next.js AI agents guide",
+      "https://nextjs.org/docs/app/guides/ai-agents"
+    ]
+  ]
 }

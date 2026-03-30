@@ -11,6 +11,7 @@ into Harness Forge.
   - operational review depth for onboarding, ADRs, APIs, and migrations
   - coordination guidance for worktrees and staged modernization
   - deeper language guidance for TypeScript, .NET, Lua, and JavaScript
+- a promoted MADR-focused ADR repository workflow with validation and log generation
 
 ## Embedding decisions
 
@@ -37,6 +38,7 @@ The imported archive upgraded these canonical skills directly:
 
 - `skills/repo-onboarding/`
 - `skills/architecture-decision-records/`
+- `skills/madr-decision-log/`
 - `skills/api-contract-review/`
 - `skills/db-migration-review/`
 - `skills/parallel-worktree-supervisor/`
@@ -87,3 +89,7 @@ bundle. Harness Forge therefore keeps release truth in its own validators.
   runtime `SKILL.md` entrypoints.
 - Treat wrapper alignment, package-surface updates, and validation updates as
   required follow-up work, not optional cleanup.
+
+## MADR skill promotion
+
+`madr-decision-log` stays distinct from `architecture-decision-records`. The existing ADR skill owns decision framing and durable rationale quality. The promoted MADR skill owns file-oriented repository operations such as `docs/decisions/` layout, ADR scaffolding, ADR-LOG generation, validation, numbering, and supersession maintenance.

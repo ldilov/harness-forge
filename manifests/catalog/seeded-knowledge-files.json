@@ -1,1094 +1,1094 @@
 {
-    "$schema":  "../../schemas/manifests/seeded-knowledge-files.schema.json",
-    "archive":  "C:/Users/lazar/Downloads/harness-forge-language-knowledge-bases.zip",
-    "generatedOn":  "2026-03-25",
-    "languages":  [
-                      "typescript",
-                      "java",
-                      "dotnet",
-                      "lua",
-                      "powershell"
-                  ],
-    "files":  [
-                  {
-                      "language":  "dotnet",
-                      "archivePath":  "language-knowledge-bases/dotnet-knowledge-base/docs/examples-guide.md",
-                      "relativePath":  "docs/examples-guide.md",
-                      "packagePath":  "knowledge-bases/seeded/dotnet/docs/examples-guide.md",
-                      "delivery":  "direct",
-                      "contentKind":  "examples-guide"
-                  },
-                  {
-                      "language":  "dotnet",
-                      "archivePath":  "language-knowledge-bases/dotnet-knowledge-base/docs/frameworks.md",
-                      "relativePath":  "docs/frameworks.md",
-                      "packagePath":  "knowledge-bases/seeded/dotnet/docs/frameworks.md",
-                      "delivery":  "direct",
-                      "contentKind":  "framework-notes"
-                  },
-                  {
-                      "language":  "dotnet",
-                      "archivePath":  "language-knowledge-bases/dotnet-knowledge-base/docs/overview.md",
-                      "relativePath":  "docs/overview.md",
-                      "packagePath":  "knowledge-bases/seeded/dotnet/docs/overview.md",
-                      "delivery":  "direct",
-                      "contentKind":  "overview"
-                  },
-                  {
-                      "language":  "dotnet",
-                      "archivePath":  "language-knowledge-bases/dotnet-knowledge-base/docs/review-checklist.md",
-                      "relativePath":  "docs/review-checklist.md",
-                      "packagePath":  "knowledge-bases/seeded/dotnet/docs/review-checklist.md",
-                      "delivery":  "direct",
-                      "contentKind":  "review-checklist"
-                  },
-                  {
-                      "language":  "dotnet",
-                      "archivePath":  "language-knowledge-bases/dotnet-knowledge-base/examples/01-aspnet-core-crud-api.md",
-                      "relativePath":  "examples/01-aspnet-core-crud-api.md",
-                      "packagePath":  "knowledge-bases/seeded/dotnet/examples/01-aspnet-core-crud-api.md",
-                      "delivery":  "direct",
-                      "contentKind":  "example"
-                  },
-                  {
-                      "language":  "dotnet",
-                      "archivePath":  "language-knowledge-bases/dotnet-knowledge-base/examples/02-background-worker-with-queue-processing.md",
-                      "relativePath":  "examples/02-background-worker-with-queue-processing.md",
-                      "packagePath":  "knowledge-bases/seeded/dotnet/examples/02-background-worker-with-queue-processing.md",
-                      "delivery":  "direct",
-                      "contentKind":  "example"
-                  },
-                  {
-                      "language":  "dotnet",
-                      "archivePath":  "language-knowledge-bases/dotnet-knowledge-base/examples/03-shared-domain-library.md",
-                      "relativePath":  "examples/03-shared-domain-library.md",
-                      "packagePath":  "knowledge-bases/seeded/dotnet/examples/03-shared-domain-library.md",
-                      "delivery":  "direct",
-                      "contentKind":  "example"
-                  },
-                  {
-                      "language":  "dotnet",
-                      "archivePath":  "language-knowledge-bases/dotnet-knowledge-base/examples/04-cli-automation-tool.md",
-                      "relativePath":  "examples/04-cli-automation-tool.md",
-                      "packagePath":  "knowledge-bases/seeded/dotnet/examples/04-cli-automation-tool.md",
-                      "delivery":  "direct",
-                      "contentKind":  "example"
-                  },
-                  {
-                      "language":  "dotnet",
-                      "archivePath":  "language-knowledge-bases/dotnet-knowledge-base/knowledge-base.json",
-                      "relativePath":  "knowledge-base.json",
-                      "packagePath":  "knowledge-bases/seeded/dotnet/knowledge-base.json",
-                      "delivery":  "direct",
-                      "contentKind":  "metadata"
-                  },
-                  {
-                      "language":  "dotnet",
-                      "archivePath":  "language-knowledge-bases/dotnet-knowledge-base/legacy-seed/csharp/coding-style.md",
-                      "relativePath":  "legacy-seed/csharp/coding-style.md",
-                      "packagePath":  "knowledge-bases/seeded/dotnet/legacy-seed/csharp/coding-style.md",
-                      "delivery":  "direct",
-                      "contentKind":  "legacy-seed"
-                  },
-                  {
-                      "language":  "dotnet",
-                      "archivePath":  "language-knowledge-bases/dotnet-knowledge-base/legacy-seed/csharp/hooks.md",
-                      "relativePath":  "legacy-seed/csharp/hooks.md",
-                      "packagePath":  "knowledge-bases/seeded/dotnet/legacy-seed/csharp/hooks.md",
-                      "delivery":  "direct",
-                      "contentKind":  "legacy-seed"
-                  },
-                  {
-                      "language":  "dotnet",
-                      "archivePath":  "language-knowledge-bases/dotnet-knowledge-base/legacy-seed/csharp/patterns.md",
-                      "relativePath":  "legacy-seed/csharp/patterns.md",
-                      "packagePath":  "knowledge-bases/seeded/dotnet/legacy-seed/csharp/patterns.md",
-                      "delivery":  "direct",
-                      "contentKind":  "legacy-seed"
-                  },
-                  {
-                      "language":  "dotnet",
-                      "archivePath":  "language-knowledge-bases/dotnet-knowledge-base/legacy-seed/csharp/security.md",
-                      "relativePath":  "legacy-seed/csharp/security.md",
-                      "packagePath":  "knowledge-bases/seeded/dotnet/legacy-seed/csharp/security.md",
-                      "delivery":  "direct",
-                      "contentKind":  "legacy-seed"
-                  },
-                  {
-                      "language":  "dotnet",
-                      "archivePath":  "language-knowledge-bases/dotnet-knowledge-base/legacy-seed/csharp/testing.md",
-                      "relativePath":  "legacy-seed/csharp/testing.md",
-                      "packagePath":  "knowledge-bases/seeded/dotnet/legacy-seed/csharp/testing.md",
-                      "delivery":  "direct",
-                      "contentKind":  "legacy-seed"
-                  },
-                  {
-                      "language":  "dotnet",
-                      "archivePath":  "language-knowledge-bases/dotnet-knowledge-base/README.md",
-                      "relativePath":  "README.md",
-                      "packagePath":  "knowledge-bases/seeded/dotnet/README.md",
-                      "delivery":  "direct",
-                      "contentKind":  "root-doc"
-                  },
-                  {
-                      "language":  "dotnet",
-                      "archivePath":  "language-knowledge-bases/dotnet-knowledge-base/rules/common/agents.md",
-                      "relativePath":  "rules/common/agents.md",
-                      "packagePath":  "knowledge-bases/seeded/dotnet/rules/common/agents.md",
-                      "delivery":  "direct",
-                      "contentKind":  "common-rule"
-                  },
-                  {
-                      "language":  "dotnet",
-                      "archivePath":  "language-knowledge-bases/dotnet-knowledge-base/rules/common/coding-style.md",
-                      "relativePath":  "rules/common/coding-style.md",
-                      "packagePath":  "knowledge-bases/seeded/dotnet/rules/common/coding-style.md",
-                      "delivery":  "direct",
-                      "contentKind":  "common-rule"
-                  },
-                  {
-                      "language":  "dotnet",
-                      "archivePath":  "language-knowledge-bases/dotnet-knowledge-base/rules/common/development-workflow.md",
-                      "relativePath":  "rules/common/development-workflow.md",
-                      "packagePath":  "knowledge-bases/seeded/dotnet/rules/common/development-workflow.md",
-                      "delivery":  "direct",
-                      "contentKind":  "common-rule"
-                  },
-                  {
-                      "language":  "dotnet",
-                      "archivePath":  "language-knowledge-bases/dotnet-knowledge-base/rules/common/git-workflow.md",
-                      "relativePath":  "rules/common/git-workflow.md",
-                      "packagePath":  "knowledge-bases/seeded/dotnet/rules/common/git-workflow.md",
-                      "delivery":  "direct",
-                      "contentKind":  "common-rule"
-                  },
-                  {
-                      "language":  "dotnet",
-                      "archivePath":  "language-knowledge-bases/dotnet-knowledge-base/rules/common/hooks.md",
-                      "relativePath":  "rules/common/hooks.md",
-                      "packagePath":  "knowledge-bases/seeded/dotnet/rules/common/hooks.md",
-                      "delivery":  "direct",
-                      "contentKind":  "common-rule"
-                  },
-                  {
-                      "language":  "dotnet",
-                      "archivePath":  "language-knowledge-bases/dotnet-knowledge-base/rules/common/patterns.md",
-                      "relativePath":  "rules/common/patterns.md",
-                      "packagePath":  "knowledge-bases/seeded/dotnet/rules/common/patterns.md",
-                      "delivery":  "direct",
-                      "contentKind":  "common-rule"
-                  },
-                  {
-                      "language":  "dotnet",
-                      "archivePath":  "language-knowledge-bases/dotnet-knowledge-base/rules/common/performance.md",
-                      "relativePath":  "rules/common/performance.md",
-                      "packagePath":  "knowledge-bases/seeded/dotnet/rules/common/performance.md",
-                      "delivery":  "direct",
-                      "contentKind":  "common-rule"
-                  },
-                  {
-                      "language":  "dotnet",
-                      "archivePath":  "language-knowledge-bases/dotnet-knowledge-base/rules/common/security.md",
-                      "relativePath":  "rules/common/security.md",
-                      "packagePath":  "knowledge-bases/seeded/dotnet/rules/common/security.md",
-                      "delivery":  "direct",
-                      "contentKind":  "common-rule"
-                  },
-                  {
-                      "language":  "dotnet",
-                      "archivePath":  "language-knowledge-bases/dotnet-knowledge-base/rules/common/testing.md",
-                      "relativePath":  "rules/common/testing.md",
-                      "packagePath":  "knowledge-bases/seeded/dotnet/rules/common/testing.md",
-                      "delivery":  "direct",
-                      "contentKind":  "common-rule"
-                  },
-                  {
-                      "language":  "dotnet",
-                      "archivePath":  "language-knowledge-bases/dotnet-knowledge-base/rules/dotnet/coding-style.md",
-                      "relativePath":  "rules/dotnet/coding-style.md",
-                      "packagePath":  "knowledge-bases/seeded/dotnet/rules/dotnet/coding-style.md",
-                      "delivery":  "direct",
-                      "contentKind":  "language-rule"
-                  },
-                  {
-                      "language":  "dotnet",
-                      "archivePath":  "language-knowledge-bases/dotnet-knowledge-base/rules/dotnet/hooks.md",
-                      "relativePath":  "rules/dotnet/hooks.md",
-                      "packagePath":  "knowledge-bases/seeded/dotnet/rules/dotnet/hooks.md",
-                      "delivery":  "direct",
-                      "contentKind":  "language-rule"
-                  },
-                  {
-                      "language":  "dotnet",
-                      "archivePath":  "language-knowledge-bases/dotnet-knowledge-base/rules/dotnet/patterns.md",
-                      "relativePath":  "rules/dotnet/patterns.md",
-                      "packagePath":  "knowledge-bases/seeded/dotnet/rules/dotnet/patterns.md",
-                      "delivery":  "direct",
-                      "contentKind":  "language-rule"
-                  },
-                  {
-                      "language":  "dotnet",
-                      "archivePath":  "language-knowledge-bases/dotnet-knowledge-base/rules/dotnet/security.md",
-                      "relativePath":  "rules/dotnet/security.md",
-                      "packagePath":  "knowledge-bases/seeded/dotnet/rules/dotnet/security.md",
-                      "delivery":  "direct",
-                      "contentKind":  "language-rule"
-                  },
-                  {
-                      "language":  "dotnet",
-                      "archivePath":  "language-knowledge-bases/dotnet-knowledge-base/rules/dotnet/testing.md",
-                      "relativePath":  "rules/dotnet/testing.md",
-                      "packagePath":  "knowledge-bases/seeded/dotnet/rules/dotnet/testing.md",
-                      "delivery":  "direct",
-                      "contentKind":  "language-rule"
-                  },
-                  {
-                      "language":  "java",
-                      "archivePath":  "language-knowledge-bases/java-knowledge-base/docs/examples-guide.md",
-                      "relativePath":  "docs/examples-guide.md",
-                      "packagePath":  "knowledge-bases/seeded/java/docs/examples-guide.md",
-                      "delivery":  "direct",
-                      "contentKind":  "examples-guide"
-                  },
-                  {
-                      "language":  "java",
-                      "archivePath":  "language-knowledge-bases/java-knowledge-base/docs/frameworks.md",
-                      "relativePath":  "docs/frameworks.md",
-                      "packagePath":  "knowledge-bases/seeded/java/docs/frameworks.md",
-                      "delivery":  "direct",
-                      "contentKind":  "framework-notes"
-                  },
-                  {
-                      "language":  "java",
-                      "archivePath":  "language-knowledge-bases/java-knowledge-base/docs/overview.md",
-                      "relativePath":  "docs/overview.md",
-                      "packagePath":  "knowledge-bases/seeded/java/docs/overview.md",
-                      "delivery":  "direct",
-                      "contentKind":  "overview"
-                  },
-                  {
-                      "language":  "java",
-                      "archivePath":  "language-knowledge-bases/java-knowledge-base/docs/review-checklist.md",
-                      "relativePath":  "docs/review-checklist.md",
-                      "packagePath":  "knowledge-bases/seeded/java/docs/review-checklist.md",
-                      "delivery":  "direct",
-                      "contentKind":  "review-checklist"
-                  },
-                  {
-                      "language":  "java",
-                      "archivePath":  "language-knowledge-bases/java-knowledge-base/examples/01-spring-boot-rest-api.md",
-                      "relativePath":  "examples/01-spring-boot-rest-api.md",
-                      "packagePath":  "knowledge-bases/seeded/java/examples/01-spring-boot-rest-api.md",
-                      "delivery":  "direct",
-                      "contentKind":  "example"
-                  },
-                  {
-                      "language":  "java",
-                      "archivePath":  "language-knowledge-bases/java-knowledge-base/examples/02-event-consumer-service.md",
-                      "relativePath":  "examples/02-event-consumer-service.md",
-                      "packagePath":  "knowledge-bases/seeded/java/examples/02-event-consumer-service.md",
-                      "delivery":  "direct",
-                      "contentKind":  "example"
-                  },
-                  {
-                      "language":  "java",
-                      "archivePath":  "language-knowledge-bases/java-knowledge-base/examples/03-gradle-multi-module-backend.md",
-                      "relativePath":  "examples/03-gradle-multi-module-backend.md",
-                      "packagePath":  "knowledge-bases/seeded/java/examples/03-gradle-multi-module-backend.md",
-                      "delivery":  "direct",
-                      "contentKind":  "example"
-                  },
-                  {
-                      "language":  "java",
-                      "archivePath":  "language-knowledge-bases/java-knowledge-base/examples/04-library-module-with-strong-domain-tests.md",
-                      "relativePath":  "examples/04-library-module-with-strong-domain-tests.md",
-                      "packagePath":  "knowledge-bases/seeded/java/examples/04-library-module-with-strong-domain-tests.md",
-                      "delivery":  "direct",
-                      "contentKind":  "example"
-                  },
-                  {
-                      "language":  "java",
-                      "archivePath":  "language-knowledge-bases/java-knowledge-base/knowledge-base.json",
-                      "relativePath":  "knowledge-base.json",
-                      "packagePath":  "knowledge-bases/seeded/java/knowledge-base.json",
-                      "delivery":  "direct",
-                      "contentKind":  "metadata"
-                  },
-                  {
-                      "language":  "java",
-                      "archivePath":  "language-knowledge-bases/java-knowledge-base/legacy-seed/java/coding-style.md",
-                      "relativePath":  "legacy-seed/java/coding-style.md",
-                      "packagePath":  "knowledge-bases/seeded/java/legacy-seed/java/coding-style.md",
-                      "delivery":  "direct",
-                      "contentKind":  "legacy-seed"
-                  },
-                  {
-                      "language":  "java",
-                      "archivePath":  "language-knowledge-bases/java-knowledge-base/legacy-seed/java/hooks.md",
-                      "relativePath":  "legacy-seed/java/hooks.md",
-                      "packagePath":  "knowledge-bases/seeded/java/legacy-seed/java/hooks.md",
-                      "delivery":  "direct",
-                      "contentKind":  "legacy-seed"
-                  },
-                  {
-                      "language":  "java",
-                      "archivePath":  "language-knowledge-bases/java-knowledge-base/legacy-seed/java/patterns.md",
-                      "relativePath":  "legacy-seed/java/patterns.md",
-                      "packagePath":  "knowledge-bases/seeded/java/legacy-seed/java/patterns.md",
-                      "delivery":  "direct",
-                      "contentKind":  "legacy-seed"
-                  },
-                  {
-                      "language":  "java",
-                      "archivePath":  "language-knowledge-bases/java-knowledge-base/legacy-seed/java/security.md",
-                      "relativePath":  "legacy-seed/java/security.md",
-                      "packagePath":  "knowledge-bases/seeded/java/legacy-seed/java/security.md",
-                      "delivery":  "direct",
-                      "contentKind":  "legacy-seed"
-                  },
-                  {
-                      "language":  "java",
-                      "archivePath":  "language-knowledge-bases/java-knowledge-base/legacy-seed/java/testing.md",
-                      "relativePath":  "legacy-seed/java/testing.md",
-                      "packagePath":  "knowledge-bases/seeded/java/legacy-seed/java/testing.md",
-                      "delivery":  "direct",
-                      "contentKind":  "legacy-seed"
-                  },
-                  {
-                      "language":  "java",
-                      "archivePath":  "language-knowledge-bases/java-knowledge-base/README.md",
-                      "relativePath":  "README.md",
-                      "packagePath":  "knowledge-bases/seeded/java/README.md",
-                      "delivery":  "direct",
-                      "contentKind":  "root-doc"
-                  },
-                  {
-                      "language":  "java",
-                      "archivePath":  "language-knowledge-bases/java-knowledge-base/rules/common/agents.md",
-                      "relativePath":  "rules/common/agents.md",
-                      "packagePath":  "knowledge-bases/seeded/java/rules/common/agents.md",
-                      "delivery":  "direct",
-                      "contentKind":  "common-rule"
-                  },
-                  {
-                      "language":  "java",
-                      "archivePath":  "language-knowledge-bases/java-knowledge-base/rules/common/coding-style.md",
-                      "relativePath":  "rules/common/coding-style.md",
-                      "packagePath":  "knowledge-bases/seeded/java/rules/common/coding-style.md",
-                      "delivery":  "direct",
-                      "contentKind":  "common-rule"
-                  },
-                  {
-                      "language":  "java",
-                      "archivePath":  "language-knowledge-bases/java-knowledge-base/rules/common/development-workflow.md",
-                      "relativePath":  "rules/common/development-workflow.md",
-                      "packagePath":  "knowledge-bases/seeded/java/rules/common/development-workflow.md",
-                      "delivery":  "direct",
-                      "contentKind":  "common-rule"
-                  },
-                  {
-                      "language":  "java",
-                      "archivePath":  "language-knowledge-bases/java-knowledge-base/rules/common/git-workflow.md",
-                      "relativePath":  "rules/common/git-workflow.md",
-                      "packagePath":  "knowledge-bases/seeded/java/rules/common/git-workflow.md",
-                      "delivery":  "direct",
-                      "contentKind":  "common-rule"
-                  },
-                  {
-                      "language":  "java",
-                      "archivePath":  "language-knowledge-bases/java-knowledge-base/rules/common/hooks.md",
-                      "relativePath":  "rules/common/hooks.md",
-                      "packagePath":  "knowledge-bases/seeded/java/rules/common/hooks.md",
-                      "delivery":  "direct",
-                      "contentKind":  "common-rule"
-                  },
-                  {
-                      "language":  "java",
-                      "archivePath":  "language-knowledge-bases/java-knowledge-base/rules/common/patterns.md",
-                      "relativePath":  "rules/common/patterns.md",
-                      "packagePath":  "knowledge-bases/seeded/java/rules/common/patterns.md",
-                      "delivery":  "direct",
-                      "contentKind":  "common-rule"
-                  },
-                  {
-                      "language":  "java",
-                      "archivePath":  "language-knowledge-bases/java-knowledge-base/rules/common/performance.md",
-                      "relativePath":  "rules/common/performance.md",
-                      "packagePath":  "knowledge-bases/seeded/java/rules/common/performance.md",
-                      "delivery":  "direct",
-                      "contentKind":  "common-rule"
-                  },
-                  {
-                      "language":  "java",
-                      "archivePath":  "language-knowledge-bases/java-knowledge-base/rules/common/security.md",
-                      "relativePath":  "rules/common/security.md",
-                      "packagePath":  "knowledge-bases/seeded/java/rules/common/security.md",
-                      "delivery":  "direct",
-                      "contentKind":  "common-rule"
-                  },
-                  {
-                      "language":  "java",
-                      "archivePath":  "language-knowledge-bases/java-knowledge-base/rules/common/testing.md",
-                      "relativePath":  "rules/common/testing.md",
-                      "packagePath":  "knowledge-bases/seeded/java/rules/common/testing.md",
-                      "delivery":  "direct",
-                      "contentKind":  "common-rule"
-                  },
-                  {
-                      "language":  "java",
-                      "archivePath":  "language-knowledge-bases/java-knowledge-base/rules/java/coding-style.md",
-                      "relativePath":  "rules/java/coding-style.md",
-                      "packagePath":  "knowledge-bases/seeded/java/rules/java/coding-style.md",
-                      "delivery":  "direct",
-                      "contentKind":  "language-rule"
-                  },
-                  {
-                      "language":  "java",
-                      "archivePath":  "language-knowledge-bases/java-knowledge-base/rules/java/hooks.md",
-                      "relativePath":  "rules/java/hooks.md",
-                      "packagePath":  "knowledge-bases/seeded/java/rules/java/hooks.md",
-                      "delivery":  "direct",
-                      "contentKind":  "language-rule"
-                  },
-                  {
-                      "language":  "java",
-                      "archivePath":  "language-knowledge-bases/java-knowledge-base/rules/java/patterns.md",
-                      "relativePath":  "rules/java/patterns.md",
-                      "packagePath":  "knowledge-bases/seeded/java/rules/java/patterns.md",
-                      "delivery":  "direct",
-                      "contentKind":  "language-rule"
-                  },
-                  {
-                      "language":  "java",
-                      "archivePath":  "language-knowledge-bases/java-knowledge-base/rules/java/security.md",
-                      "relativePath":  "rules/java/security.md",
-                      "packagePath":  "knowledge-bases/seeded/java/rules/java/security.md",
-                      "delivery":  "direct",
-                      "contentKind":  "language-rule"
-                  },
-                  {
-                      "language":  "java",
-                      "archivePath":  "language-knowledge-bases/java-knowledge-base/rules/java/testing.md",
-                      "relativePath":  "rules/java/testing.md",
-                      "packagePath":  "knowledge-bases/seeded/java/rules/java/testing.md",
-                      "delivery":  "direct",
-                      "contentKind":  "language-rule"
-                  },
-                  {
-                      "language":  "lua",
-                      "archivePath":  "language-knowledge-bases/lua-knowledge-base/docs/examples-guide.md",
-                      "relativePath":  "docs/examples-guide.md",
-                      "packagePath":  "knowledge-bases/seeded/lua/docs/examples-guide.md",
-                      "delivery":  "direct",
-                      "contentKind":  "examples-guide"
-                  },
-                  {
-                      "language":  "lua",
-                      "archivePath":  "language-knowledge-bases/lua-knowledge-base/docs/frameworks.md",
-                      "relativePath":  "docs/frameworks.md",
-                      "packagePath":  "knowledge-bases/seeded/lua/docs/frameworks.md",
-                      "delivery":  "direct",
-                      "contentKind":  "framework-notes"
-                  },
-                  {
-                      "language":  "lua",
-                      "archivePath":  "language-knowledge-bases/lua-knowledge-base/docs/overview.md",
-                      "relativePath":  "docs/overview.md",
-                      "packagePath":  "knowledge-bases/seeded/lua/docs/overview.md",
-                      "delivery":  "direct",
-                      "contentKind":  "overview"
-                  },
-                  {
-                      "language":  "lua",
-                      "archivePath":  "language-knowledge-bases/lua-knowledge-base/docs/review-checklist.md",
-                      "relativePath":  "docs/review-checklist.md",
-                      "packagePath":  "knowledge-bases/seeded/lua/docs/review-checklist.md",
-                      "delivery":  "direct",
-                      "contentKind":  "review-checklist"
-                  },
-                  {
-                      "language":  "lua",
-                      "archivePath":  "language-knowledge-bases/lua-knowledge-base/examples/01-neovim-plugin.md",
-                      "relativePath":  "examples/01-neovim-plugin.md",
-                      "packagePath":  "knowledge-bases/seeded/lua/examples/01-neovim-plugin.md",
-                      "delivery":  "direct",
-                      "contentKind":  "example"
-                  },
-                  {
-                      "language":  "lua",
-                      "archivePath":  "language-knowledge-bases/lua-knowledge-base/examples/02-openresty-request-handler.md",
-                      "relativePath":  "examples/02-openresty-request-handler.md",
-                      "packagePath":  "knowledge-bases/seeded/lua/examples/02-openresty-request-handler.md",
-                      "delivery":  "direct",
-                      "contentKind":  "example"
-                  },
-                  {
-                      "language":  "lua",
-                      "archivePath":  "language-knowledge-bases/lua-knowledge-base/examples/03-löve-gameplay-module.md",
-                      "relativePath":  "examples/03-löve-gameplay-module.md",
-                      "packagePath":  "knowledge-bases/seeded/lua/examples/03-löve-gameplay-module.md",
-                      "delivery":  "direct",
-                      "contentKind":  "example"
-                  },
-                  {
-                      "language":  "lua",
-                      "archivePath":  "language-knowledge-bases/lua-knowledge-base/examples/04-embedded-automation-script.md",
-                      "relativePath":  "examples/04-embedded-automation-script.md",
-                      "packagePath":  "knowledge-bases/seeded/lua/examples/04-embedded-automation-script.md",
-                      "delivery":  "direct",
-                      "contentKind":  "example"
-                  },
-                  {
-                      "language":  "lua",
-                      "archivePath":  "language-knowledge-bases/lua-knowledge-base/knowledge-base.json",
-                      "relativePath":  "knowledge-base.json",
-                      "packagePath":  "knowledge-bases/seeded/lua/knowledge-base.json",
-                      "delivery":  "direct",
-                      "contentKind":  "metadata"
-                  },
-                  {
-                      "language":  "lua",
-                      "archivePath":  "language-knowledge-bases/lua-knowledge-base/README.md",
-                      "relativePath":  "README.md",
-                      "packagePath":  "knowledge-bases/seeded/lua/README.md",
-                      "delivery":  "direct",
-                      "contentKind":  "root-doc"
-                  },
-                  {
-                      "language":  "lua",
-                      "archivePath":  "language-knowledge-bases/lua-knowledge-base/rules/common/agents.md",
-                      "relativePath":  "rules/common/agents.md",
-                      "packagePath":  "knowledge-bases/seeded/lua/rules/common/agents.md",
-                      "delivery":  "direct",
-                      "contentKind":  "common-rule"
-                  },
-                  {
-                      "language":  "lua",
-                      "archivePath":  "language-knowledge-bases/lua-knowledge-base/rules/common/coding-style.md",
-                      "relativePath":  "rules/common/coding-style.md",
-                      "packagePath":  "knowledge-bases/seeded/lua/rules/common/coding-style.md",
-                      "delivery":  "direct",
-                      "contentKind":  "common-rule"
-                  },
-                  {
-                      "language":  "lua",
-                      "archivePath":  "language-knowledge-bases/lua-knowledge-base/rules/common/development-workflow.md",
-                      "relativePath":  "rules/common/development-workflow.md",
-                      "packagePath":  "knowledge-bases/seeded/lua/rules/common/development-workflow.md",
-                      "delivery":  "direct",
-                      "contentKind":  "common-rule"
-                  },
-                  {
-                      "language":  "lua",
-                      "archivePath":  "language-knowledge-bases/lua-knowledge-base/rules/common/git-workflow.md",
-                      "relativePath":  "rules/common/git-workflow.md",
-                      "packagePath":  "knowledge-bases/seeded/lua/rules/common/git-workflow.md",
-                      "delivery":  "direct",
-                      "contentKind":  "common-rule"
-                  },
-                  {
-                      "language":  "lua",
-                      "archivePath":  "language-knowledge-bases/lua-knowledge-base/rules/common/hooks.md",
-                      "relativePath":  "rules/common/hooks.md",
-                      "packagePath":  "knowledge-bases/seeded/lua/rules/common/hooks.md",
-                      "delivery":  "direct",
-                      "contentKind":  "common-rule"
-                  },
-                  {
-                      "language":  "lua",
-                      "archivePath":  "language-knowledge-bases/lua-knowledge-base/rules/common/patterns.md",
-                      "relativePath":  "rules/common/patterns.md",
-                      "packagePath":  "knowledge-bases/seeded/lua/rules/common/patterns.md",
-                      "delivery":  "direct",
-                      "contentKind":  "common-rule"
-                  },
-                  {
-                      "language":  "lua",
-                      "archivePath":  "language-knowledge-bases/lua-knowledge-base/rules/common/performance.md",
-                      "relativePath":  "rules/common/performance.md",
-                      "packagePath":  "knowledge-bases/seeded/lua/rules/common/performance.md",
-                      "delivery":  "direct",
-                      "contentKind":  "common-rule"
-                  },
-                  {
-                      "language":  "lua",
-                      "archivePath":  "language-knowledge-bases/lua-knowledge-base/rules/common/security.md",
-                      "relativePath":  "rules/common/security.md",
-                      "packagePath":  "knowledge-bases/seeded/lua/rules/common/security.md",
-                      "delivery":  "direct",
-                      "contentKind":  "common-rule"
-                  },
-                  {
-                      "language":  "lua",
-                      "archivePath":  "language-knowledge-bases/lua-knowledge-base/rules/common/testing.md",
-                      "relativePath":  "rules/common/testing.md",
-                      "packagePath":  "knowledge-bases/seeded/lua/rules/common/testing.md",
-                      "delivery":  "direct",
-                      "contentKind":  "common-rule"
-                  },
-                  {
-                      "language":  "lua",
-                      "archivePath":  "language-knowledge-bases/lua-knowledge-base/rules/lua/coding-style.md",
-                      "relativePath":  "rules/lua/coding-style.md",
-                      "packagePath":  "knowledge-bases/seeded/lua/rules/lua/coding-style.md",
-                      "delivery":  "direct",
-                      "contentKind":  "language-rule"
-                  },
-                  {
-                      "language":  "lua",
-                      "archivePath":  "language-knowledge-bases/lua-knowledge-base/rules/lua/hooks.md",
-                      "relativePath":  "rules/lua/hooks.md",
-                      "packagePath":  "knowledge-bases/seeded/lua/rules/lua/hooks.md",
-                      "delivery":  "direct",
-                      "contentKind":  "language-rule"
-                  },
-                  {
-                      "language":  "lua",
-                      "archivePath":  "language-knowledge-bases/lua-knowledge-base/rules/lua/patterns.md",
-                      "relativePath":  "rules/lua/patterns.md",
-                      "packagePath":  "knowledge-bases/seeded/lua/rules/lua/patterns.md",
-                      "delivery":  "direct",
-                      "contentKind":  "language-rule"
-                  },
-                  {
-                      "language":  "lua",
-                      "archivePath":  "language-knowledge-bases/lua-knowledge-base/rules/lua/security.md",
-                      "relativePath":  "rules/lua/security.md",
-                      "packagePath":  "knowledge-bases/seeded/lua/rules/lua/security.md",
-                      "delivery":  "direct",
-                      "contentKind":  "language-rule"
-                  },
-                  {
-                      "language":  "lua",
-                      "archivePath":  "language-knowledge-bases/lua-knowledge-base/rules/lua/testing.md",
-                      "relativePath":  "rules/lua/testing.md",
-                      "packagePath":  "knowledge-bases/seeded/lua/rules/lua/testing.md",
-                      "delivery":  "direct",
-                      "contentKind":  "language-rule"
-                  },
-                  {
-                      "language":  "powershell",
-                      "archivePath":  "language-knowledge-bases/powershell-knowledge-base/docs/examples-guide.md",
-                      "relativePath":  "docs/examples-guide.md",
-                      "packagePath":  "knowledge-bases/seeded/powershell/docs/examples-guide.md",
-                      "delivery":  "direct",
-                      "contentKind":  "examples-guide"
-                  },
-                  {
-                      "language":  "powershell",
-                      "archivePath":  "language-knowledge-bases/powershell-knowledge-base/docs/frameworks.md",
-                      "relativePath":  "docs/frameworks.md",
-                      "packagePath":  "knowledge-bases/seeded/powershell/docs/frameworks.md",
-                      "delivery":  "direct",
-                      "contentKind":  "framework-notes"
-                  },
-                  {
-                      "language":  "powershell",
-                      "archivePath":  "language-knowledge-bases/powershell-knowledge-base/docs/overview.md",
-                      "relativePath":  "docs/overview.md",
-                      "packagePath":  "knowledge-bases/seeded/powershell/docs/overview.md",
-                      "delivery":  "direct",
-                      "contentKind":  "overview"
-                  },
-                  {
-                      "language":  "powershell",
-                      "archivePath":  "language-knowledge-bases/powershell-knowledge-base/docs/review-checklist.md",
-                      "relativePath":  "docs/review-checklist.md",
-                      "packagePath":  "knowledge-bases/seeded/powershell/docs/review-checklist.md",
-                      "delivery":  "direct",
-                      "contentKind":  "review-checklist"
-                  },
-                  {
-                      "language":  "powershell",
-                      "archivePath":  "language-knowledge-bases/powershell-knowledge-base/examples/01-script-module.md",
-                      "relativePath":  "examples/01-script-module.md",
-                      "packagePath":  "knowledge-bases/seeded/powershell/examples/01-script-module.md",
-                      "delivery":  "direct",
-                      "contentKind":  "example"
-                  },
-                  {
-                      "language":  "powershell",
-                      "archivePath":  "language-knowledge-bases/powershell-knowledge-base/examples/02-ci-admin-automation-script.md",
-                      "relativePath":  "examples/02-ci-admin-automation-script.md",
-                      "packagePath":  "knowledge-bases/seeded/powershell/examples/02-ci-admin-automation-script.md",
-                      "delivery":  "direct",
-                      "contentKind":  "example"
-                  },
-                  {
-                      "language":  "powershell",
-                      "archivePath":  "language-knowledge-bases/powershell-knowledge-base/examples/03-remote-fleet-maintenance-command.md",
-                      "relativePath":  "examples/03-remote-fleet-maintenance-command.md",
-                      "packagePath":  "knowledge-bases/seeded/powershell/examples/03-remote-fleet-maintenance-command.md",
-                      "delivery":  "direct",
-                      "contentKind":  "example"
-                  },
-                  {
-                      "language":  "powershell",
-                      "archivePath":  "language-knowledge-bases/powershell-knowledge-base/examples/04-developer-bootstrap-utility.md",
-                      "relativePath":  "examples/04-developer-bootstrap-utility.md",
-                      "packagePath":  "knowledge-bases/seeded/powershell/examples/04-developer-bootstrap-utility.md",
-                      "delivery":  "direct",
-                      "contentKind":  "example"
-                  },
-                  {
-                      "language":  "powershell",
-                      "archivePath":  "language-knowledge-bases/powershell-knowledge-base/knowledge-base.json",
-                      "relativePath":  "knowledge-base.json",
-                      "packagePath":  "knowledge-bases/seeded/powershell/knowledge-base.json",
-                      "delivery":  "direct",
-                      "contentKind":  "metadata"
-                  },
-                  {
-                      "language":  "powershell",
-                      "archivePath":  "language-knowledge-bases/powershell-knowledge-base/README.md",
-                      "relativePath":  "README.md",
-                      "packagePath":  "knowledge-bases/seeded/powershell/README.md",
-                      "delivery":  "direct",
-                      "contentKind":  "root-doc"
-                  },
-                  {
-                      "language":  "powershell",
-                      "archivePath":  "language-knowledge-bases/powershell-knowledge-base/rules/common/agents.md",
-                      "relativePath":  "rules/common/agents.md",
-                      "packagePath":  "knowledge-bases/seeded/powershell/rules/common/agents.md",
-                      "delivery":  "direct",
-                      "contentKind":  "common-rule"
-                  },
-                  {
-                      "language":  "powershell",
-                      "archivePath":  "language-knowledge-bases/powershell-knowledge-base/rules/common/coding-style.md",
-                      "relativePath":  "rules/common/coding-style.md",
-                      "packagePath":  "knowledge-bases/seeded/powershell/rules/common/coding-style.md",
-                      "delivery":  "direct",
-                      "contentKind":  "common-rule"
-                  },
-                  {
-                      "language":  "powershell",
-                      "archivePath":  "language-knowledge-bases/powershell-knowledge-base/rules/common/development-workflow.md",
-                      "relativePath":  "rules/common/development-workflow.md",
-                      "packagePath":  "knowledge-bases/seeded/powershell/rules/common/development-workflow.md",
-                      "delivery":  "direct",
-                      "contentKind":  "common-rule"
-                  },
-                  {
-                      "language":  "powershell",
-                      "archivePath":  "language-knowledge-bases/powershell-knowledge-base/rules/common/git-workflow.md",
-                      "relativePath":  "rules/common/git-workflow.md",
-                      "packagePath":  "knowledge-bases/seeded/powershell/rules/common/git-workflow.md",
-                      "delivery":  "direct",
-                      "contentKind":  "common-rule"
-                  },
-                  {
-                      "language":  "powershell",
-                      "archivePath":  "language-knowledge-bases/powershell-knowledge-base/rules/common/hooks.md",
-                      "relativePath":  "rules/common/hooks.md",
-                      "packagePath":  "knowledge-bases/seeded/powershell/rules/common/hooks.md",
-                      "delivery":  "direct",
-                      "contentKind":  "common-rule"
-                  },
-                  {
-                      "language":  "powershell",
-                      "archivePath":  "language-knowledge-bases/powershell-knowledge-base/rules/common/patterns.md",
-                      "relativePath":  "rules/common/patterns.md",
-                      "packagePath":  "knowledge-bases/seeded/powershell/rules/common/patterns.md",
-                      "delivery":  "direct",
-                      "contentKind":  "common-rule"
-                  },
-                  {
-                      "language":  "powershell",
-                      "archivePath":  "language-knowledge-bases/powershell-knowledge-base/rules/common/performance.md",
-                      "relativePath":  "rules/common/performance.md",
-                      "packagePath":  "knowledge-bases/seeded/powershell/rules/common/performance.md",
-                      "delivery":  "direct",
-                      "contentKind":  "common-rule"
-                  },
-                  {
-                      "language":  "powershell",
-                      "archivePath":  "language-knowledge-bases/powershell-knowledge-base/rules/common/security.md",
-                      "relativePath":  "rules/common/security.md",
-                      "packagePath":  "knowledge-bases/seeded/powershell/rules/common/security.md",
-                      "delivery":  "direct",
-                      "contentKind":  "common-rule"
-                  },
-                  {
-                      "language":  "powershell",
-                      "archivePath":  "language-knowledge-bases/powershell-knowledge-base/rules/common/testing.md",
-                      "relativePath":  "rules/common/testing.md",
-                      "packagePath":  "knowledge-bases/seeded/powershell/rules/common/testing.md",
-                      "delivery":  "direct",
-                      "contentKind":  "common-rule"
-                  },
-                  {
-                      "language":  "powershell",
-                      "archivePath":  "language-knowledge-bases/powershell-knowledge-base/rules/powershell/coding-style.md",
-                      "relativePath":  "rules/powershell/coding-style.md",
-                      "packagePath":  "knowledge-bases/seeded/powershell/rules/powershell/coding-style.md",
-                      "delivery":  "direct",
-                      "contentKind":  "language-rule"
-                  },
-                  {
-                      "language":  "powershell",
-                      "archivePath":  "language-knowledge-bases/powershell-knowledge-base/rules/powershell/hooks.md",
-                      "relativePath":  "rules/powershell/hooks.md",
-                      "packagePath":  "knowledge-bases/seeded/powershell/rules/powershell/hooks.md",
-                      "delivery":  "direct",
-                      "contentKind":  "language-rule"
-                  },
-                  {
-                      "language":  "powershell",
-                      "archivePath":  "language-knowledge-bases/powershell-knowledge-base/rules/powershell/patterns.md",
-                      "relativePath":  "rules/powershell/patterns.md",
-                      "packagePath":  "knowledge-bases/seeded/powershell/rules/powershell/patterns.md",
-                      "delivery":  "direct",
-                      "contentKind":  "language-rule"
-                  },
-                  {
-                      "language":  "powershell",
-                      "archivePath":  "language-knowledge-bases/powershell-knowledge-base/rules/powershell/security.md",
-                      "relativePath":  "rules/powershell/security.md",
-                      "packagePath":  "knowledge-bases/seeded/powershell/rules/powershell/security.md",
-                      "delivery":  "direct",
-                      "contentKind":  "language-rule"
-                  },
-                  {
-                      "language":  "powershell",
-                      "archivePath":  "language-knowledge-bases/powershell-knowledge-base/rules/powershell/testing.md",
-                      "relativePath":  "rules/powershell/testing.md",
-                      "packagePath":  "knowledge-bases/seeded/powershell/rules/powershell/testing.md",
-                      "delivery":  "direct",
-                      "contentKind":  "language-rule"
-                  },
-                  {
-                      "language":  "typescript",
-                      "archivePath":  "language-knowledge-bases/typescript-knowledge-base/docs/examples-guide.md",
-                      "relativePath":  "docs/examples-guide.md",
-                      "packagePath":  "knowledge-bases/seeded/typescript/docs/examples-guide.md",
-                      "delivery":  "direct",
-                      "contentKind":  "examples-guide"
-                  },
-                  {
-                      "language":  "typescript",
-                      "archivePath":  "language-knowledge-bases/typescript-knowledge-base/docs/frameworks.md",
-                      "relativePath":  "docs/frameworks.md",
-                      "packagePath":  "knowledge-bases/seeded/typescript/docs/frameworks.md",
-                      "delivery":  "direct",
-                      "contentKind":  "framework-notes"
-                  },
-                  {
-                      "language":  "typescript",
-                      "archivePath":  "language-knowledge-bases/typescript-knowledge-base/docs/overview.md",
-                      "relativePath":  "docs/overview.md",
-                      "packagePath":  "knowledge-bases/seeded/typescript/docs/overview.md",
-                      "delivery":  "direct",
-                      "contentKind":  "overview"
-                  },
-                  {
-                      "language":  "typescript",
-                      "archivePath":  "language-knowledge-bases/typescript-knowledge-base/docs/review-checklist.md",
-                      "relativePath":  "docs/review-checklist.md",
-                      "packagePath":  "knowledge-bases/seeded/typescript/docs/review-checklist.md",
-                      "delivery":  "direct",
-                      "contentKind":  "review-checklist"
-                  },
-                  {
-                      "language":  "typescript",
-                      "archivePath":  "language-knowledge-bases/typescript-knowledge-base/examples/01-node-api.md",
-                      "relativePath":  "examples/01-node-api.md",
-                      "packagePath":  "knowledge-bases/seeded/typescript/examples/01-node-api.md",
-                      "delivery":  "direct",
-                      "contentKind":  "example"
-                  },
-                  {
-                      "language":  "typescript",
-                      "archivePath":  "language-knowledge-bases/typescript-knowledge-base/examples/02-react-component-library.md",
-                      "relativePath":  "examples/02-react-component-library.md",
-                      "packagePath":  "knowledge-bases/seeded/typescript/examples/02-react-component-library.md",
-                      "delivery":  "direct",
-                      "contentKind":  "example"
-                  },
-                  {
-                      "language":  "typescript",
-                      "archivePath":  "language-knowledge-bases/typescript-knowledge-base/examples/03-nextjs-app.md",
-                      "relativePath":  "examples/03-nextjs-app.md",
-                      "packagePath":  "knowledge-bases/seeded/typescript/examples/03-nextjs-app.md",
-                      "delivery":  "direct",
-                      "contentKind":  "example"
-                  },
-                  {
-                      "language":  "typescript",
-                      "archivePath":  "language-knowledge-bases/typescript-knowledge-base/examples/04-monorepo-shared-types-and-validation.md",
-                      "relativePath":  "examples/04-monorepo-shared-types-and-validation.md",
-                      "packagePath":  "knowledge-bases/seeded/typescript/examples/04-monorepo-shared-types-and-validation.md",
-                      "delivery":  "direct",
-                      "contentKind":  "example"
-                  },
-                  {
-                      "language":  "typescript",
-                      "archivePath":  "language-knowledge-bases/typescript-knowledge-base/knowledge-base.json",
-                      "relativePath":  "knowledge-base.json",
-                      "packagePath":  "knowledge-bases/seeded/typescript/knowledge-base.json",
-                      "delivery":  "direct",
-                      "contentKind":  "metadata"
-                  },
-                  {
-                      "language":  "typescript",
-                      "archivePath":  "language-knowledge-bases/typescript-knowledge-base/legacy-seed/typescript/coding-style.md",
-                      "relativePath":  "legacy-seed/typescript/coding-style.md",
-                      "packagePath":  "knowledge-bases/seeded/typescript/legacy-seed/typescript/coding-style.md",
-                      "delivery":  "direct",
-                      "contentKind":  "legacy-seed"
-                  },
-                  {
-                      "language":  "typescript",
-                      "archivePath":  "language-knowledge-bases/typescript-knowledge-base/legacy-seed/typescript/hooks.md",
-                      "relativePath":  "legacy-seed/typescript/hooks.md",
-                      "packagePath":  "knowledge-bases/seeded/typescript/legacy-seed/typescript/hooks.md",
-                      "delivery":  "direct",
-                      "contentKind":  "legacy-seed"
-                  },
-                  {
-                      "language":  "typescript",
-                      "archivePath":  "language-knowledge-bases/typescript-knowledge-base/legacy-seed/typescript/patterns.md",
-                      "relativePath":  "legacy-seed/typescript/patterns.md",
-                      "packagePath":  "knowledge-bases/seeded/typescript/legacy-seed/typescript/patterns.md",
-                      "delivery":  "direct",
-                      "contentKind":  "legacy-seed"
-                  },
-                  {
-                      "language":  "typescript",
-                      "archivePath":  "language-knowledge-bases/typescript-knowledge-base/legacy-seed/typescript/security.md",
-                      "relativePath":  "legacy-seed/typescript/security.md",
-                      "packagePath":  "knowledge-bases/seeded/typescript/legacy-seed/typescript/security.md",
-                      "delivery":  "direct",
-                      "contentKind":  "legacy-seed"
-                  },
-                  {
-                      "language":  "typescript",
-                      "archivePath":  "language-knowledge-bases/typescript-knowledge-base/legacy-seed/typescript/testing.md",
-                      "relativePath":  "legacy-seed/typescript/testing.md",
-                      "packagePath":  "knowledge-bases/seeded/typescript/legacy-seed/typescript/testing.md",
-                      "delivery":  "direct",
-                      "contentKind":  "legacy-seed"
-                  },
-                  {
-                      "language":  "typescript",
-                      "archivePath":  "language-knowledge-bases/typescript-knowledge-base/README.md",
-                      "relativePath":  "README.md",
-                      "packagePath":  "knowledge-bases/seeded/typescript/README.md",
-                      "delivery":  "direct",
-                      "contentKind":  "root-doc"
-                  },
-                  {
-                      "language":  "typescript",
-                      "archivePath":  "language-knowledge-bases/typescript-knowledge-base/rules/common/agents.md",
-                      "relativePath":  "rules/common/agents.md",
-                      "packagePath":  "knowledge-bases/seeded/typescript/rules/common/agents.md",
-                      "delivery":  "direct",
-                      "contentKind":  "common-rule"
-                  },
-                  {
-                      "language":  "typescript",
-                      "archivePath":  "language-knowledge-bases/typescript-knowledge-base/rules/common/coding-style.md",
-                      "relativePath":  "rules/common/coding-style.md",
-                      "packagePath":  "knowledge-bases/seeded/typescript/rules/common/coding-style.md",
-                      "delivery":  "direct",
-                      "contentKind":  "common-rule"
-                  },
-                  {
-                      "language":  "typescript",
-                      "archivePath":  "language-knowledge-bases/typescript-knowledge-base/rules/common/development-workflow.md",
-                      "relativePath":  "rules/common/development-workflow.md",
-                      "packagePath":  "knowledge-bases/seeded/typescript/rules/common/development-workflow.md",
-                      "delivery":  "direct",
-                      "contentKind":  "common-rule"
-                  },
-                  {
-                      "language":  "typescript",
-                      "archivePath":  "language-knowledge-bases/typescript-knowledge-base/rules/common/git-workflow.md",
-                      "relativePath":  "rules/common/git-workflow.md",
-                      "packagePath":  "knowledge-bases/seeded/typescript/rules/common/git-workflow.md",
-                      "delivery":  "direct",
-                      "contentKind":  "common-rule"
-                  },
-                  {
-                      "language":  "typescript",
-                      "archivePath":  "language-knowledge-bases/typescript-knowledge-base/rules/common/hooks.md",
-                      "relativePath":  "rules/common/hooks.md",
-                      "packagePath":  "knowledge-bases/seeded/typescript/rules/common/hooks.md",
-                      "delivery":  "direct",
-                      "contentKind":  "common-rule"
-                  },
-                  {
-                      "language":  "typescript",
-                      "archivePath":  "language-knowledge-bases/typescript-knowledge-base/rules/common/patterns.md",
-                      "relativePath":  "rules/common/patterns.md",
-                      "packagePath":  "knowledge-bases/seeded/typescript/rules/common/patterns.md",
-                      "delivery":  "direct",
-                      "contentKind":  "common-rule"
-                  },
-                  {
-                      "language":  "typescript",
-                      "archivePath":  "language-knowledge-bases/typescript-knowledge-base/rules/common/performance.md",
-                      "relativePath":  "rules/common/performance.md",
-                      "packagePath":  "knowledge-bases/seeded/typescript/rules/common/performance.md",
-                      "delivery":  "direct",
-                      "contentKind":  "common-rule"
-                  },
-                  {
-                      "language":  "typescript",
-                      "archivePath":  "language-knowledge-bases/typescript-knowledge-base/rules/common/security.md",
-                      "relativePath":  "rules/common/security.md",
-                      "packagePath":  "knowledge-bases/seeded/typescript/rules/common/security.md",
-                      "delivery":  "direct",
-                      "contentKind":  "common-rule"
-                  },
-                  {
-                      "language":  "typescript",
-                      "archivePath":  "language-knowledge-bases/typescript-knowledge-base/rules/common/testing.md",
-                      "relativePath":  "rules/common/testing.md",
-                      "packagePath":  "knowledge-bases/seeded/typescript/rules/common/testing.md",
-                      "delivery":  "direct",
-                      "contentKind":  "common-rule"
-                  },
-                  {
-                      "language":  "typescript",
-                      "archivePath":  "language-knowledge-bases/typescript-knowledge-base/rules/typescript/coding-style.md",
-                      "relativePath":  "rules/typescript/coding-style.md",
-                      "packagePath":  "knowledge-bases/seeded/typescript/rules/typescript/coding-style.md",
-                      "delivery":  "direct",
-                      "contentKind":  "language-rule"
-                  },
-                  {
-                      "language":  "typescript",
-                      "archivePath":  "language-knowledge-bases/typescript-knowledge-base/rules/typescript/hooks.md",
-                      "relativePath":  "rules/typescript/hooks.md",
-                      "packagePath":  "knowledge-bases/seeded/typescript/rules/typescript/hooks.md",
-                      "delivery":  "direct",
-                      "contentKind":  "language-rule"
-                  },
-                  {
-                      "language":  "typescript",
-                      "archivePath":  "language-knowledge-bases/typescript-knowledge-base/rules/typescript/patterns.md",
-                      "relativePath":  "rules/typescript/patterns.md",
-                      "packagePath":  "knowledge-bases/seeded/typescript/rules/typescript/patterns.md",
-                      "delivery":  "direct",
-                      "contentKind":  "language-rule"
-                  },
-                  {
-                      "language":  "typescript",
-                      "archivePath":  "language-knowledge-bases/typescript-knowledge-base/rules/typescript/security.md",
-                      "relativePath":  "rules/typescript/security.md",
-                      "packagePath":  "knowledge-bases/seeded/typescript/rules/typescript/security.md",
-                      "delivery":  "direct",
-                      "contentKind":  "language-rule"
-                  },
-                  {
-                      "language":  "typescript",
-                      "archivePath":  "language-knowledge-bases/typescript-knowledge-base/rules/typescript/testing.md",
-                      "relativePath":  "rules/typescript/testing.md",
-                      "packagePath":  "knowledge-bases/seeded/typescript/rules/typescript/testing.md",
-                      "delivery":  "direct",
-                      "contentKind":  "language-rule"
-                  }
-              ]
+  "$schema": "../../schemas/manifests/seeded-knowledge-files.schema.json",
+  "archive": "C:/Users/lazar/Downloads/harness-forge-language-knowledge-bases.zip",
+  "generatedOn": "2026-03-25",
+  "languages": [
+    "typescript",
+    "java",
+    "dotnet",
+    "lua",
+    "powershell"
+  ],
+  "files": [
+    {
+      "language": "dotnet",
+      "archivePath": "language-knowledge-bases/dotnet-knowledge-base/docs/examples-guide.md",
+      "relativePath": "docs/examples-guide.md",
+      "packagePath": "knowledge-bases/seeded/dotnet/docs/examples-guide.md",
+      "delivery": "direct",
+      "contentKind": "examples-guide"
+    },
+    {
+      "language": "dotnet",
+      "archivePath": "language-knowledge-bases/dotnet-knowledge-base/docs/frameworks.md",
+      "relativePath": "docs/frameworks.md",
+      "packagePath": "knowledge-bases/seeded/dotnet/docs/frameworks.md",
+      "delivery": "direct",
+      "contentKind": "framework-notes"
+    },
+    {
+      "language": "dotnet",
+      "archivePath": "language-knowledge-bases/dotnet-knowledge-base/docs/overview.md",
+      "relativePath": "docs/overview.md",
+      "packagePath": "knowledge-bases/seeded/dotnet/docs/overview.md",
+      "delivery": "direct",
+      "contentKind": "overview"
+    },
+    {
+      "language": "dotnet",
+      "archivePath": "language-knowledge-bases/dotnet-knowledge-base/docs/review-checklist.md",
+      "relativePath": "docs/review-checklist.md",
+      "packagePath": "knowledge-bases/seeded/dotnet/docs/review-checklist.md",
+      "delivery": "direct",
+      "contentKind": "review-checklist"
+    },
+    {
+      "language": "dotnet",
+      "archivePath": "language-knowledge-bases/dotnet-knowledge-base/examples/01-aspnet-core-crud-api.md",
+      "relativePath": "examples/01-aspnet-core-crud-api.md",
+      "packagePath": "knowledge-bases/seeded/dotnet/examples/01-aspnet-core-crud-api.md",
+      "delivery": "direct",
+      "contentKind": "example"
+    },
+    {
+      "language": "dotnet",
+      "archivePath": "language-knowledge-bases/dotnet-knowledge-base/examples/02-background-worker-with-queue-processing.md",
+      "relativePath": "examples/02-background-worker-with-queue-processing.md",
+      "packagePath": "knowledge-bases/seeded/dotnet/examples/02-background-worker-with-queue-processing.md",
+      "delivery": "direct",
+      "contentKind": "example"
+    },
+    {
+      "language": "dotnet",
+      "archivePath": "language-knowledge-bases/dotnet-knowledge-base/examples/03-shared-domain-library.md",
+      "relativePath": "examples/03-shared-domain-library.md",
+      "packagePath": "knowledge-bases/seeded/dotnet/examples/03-shared-domain-library.md",
+      "delivery": "direct",
+      "contentKind": "example"
+    },
+    {
+      "language": "dotnet",
+      "archivePath": "language-knowledge-bases/dotnet-knowledge-base/examples/04-cli-automation-tool.md",
+      "relativePath": "examples/04-cli-automation-tool.md",
+      "packagePath": "knowledge-bases/seeded/dotnet/examples/04-cli-automation-tool.md",
+      "delivery": "direct",
+      "contentKind": "example"
+    },
+    {
+      "language": "dotnet",
+      "archivePath": "language-knowledge-bases/dotnet-knowledge-base/knowledge-base.json",
+      "relativePath": "knowledge-base.json",
+      "packagePath": "knowledge-bases/seeded/dotnet/knowledge-base.json",
+      "delivery": "direct",
+      "contentKind": "metadata"
+    },
+    {
+      "language": "dotnet",
+      "archivePath": "language-knowledge-bases/dotnet-knowledge-base/legacy-seed/csharp/coding-style.md",
+      "relativePath": "legacy-seed/csharp/coding-style.md",
+      "packagePath": "knowledge-bases/seeded/dotnet/legacy-seed/csharp/coding-style.md",
+      "delivery": "direct",
+      "contentKind": "legacy-seed"
+    },
+    {
+      "language": "dotnet",
+      "archivePath": "language-knowledge-bases/dotnet-knowledge-base/legacy-seed/csharp/hooks.md",
+      "relativePath": "legacy-seed/csharp/hooks.md",
+      "packagePath": "knowledge-bases/seeded/dotnet/legacy-seed/csharp/hooks.md",
+      "delivery": "direct",
+      "contentKind": "legacy-seed"
+    },
+    {
+      "language": "dotnet",
+      "archivePath": "language-knowledge-bases/dotnet-knowledge-base/legacy-seed/csharp/patterns.md",
+      "relativePath": "legacy-seed/csharp/patterns.md",
+      "packagePath": "knowledge-bases/seeded/dotnet/legacy-seed/csharp/patterns.md",
+      "delivery": "direct",
+      "contentKind": "legacy-seed"
+    },
+    {
+      "language": "dotnet",
+      "archivePath": "language-knowledge-bases/dotnet-knowledge-base/legacy-seed/csharp/security.md",
+      "relativePath": "legacy-seed/csharp/security.md",
+      "packagePath": "knowledge-bases/seeded/dotnet/legacy-seed/csharp/security.md",
+      "delivery": "direct",
+      "contentKind": "legacy-seed"
+    },
+    {
+      "language": "dotnet",
+      "archivePath": "language-knowledge-bases/dotnet-knowledge-base/legacy-seed/csharp/testing.md",
+      "relativePath": "legacy-seed/csharp/testing.md",
+      "packagePath": "knowledge-bases/seeded/dotnet/legacy-seed/csharp/testing.md",
+      "delivery": "direct",
+      "contentKind": "legacy-seed"
+    },
+    {
+      "language": "dotnet",
+      "archivePath": "language-knowledge-bases/dotnet-knowledge-base/README.md",
+      "relativePath": "README.md",
+      "packagePath": "knowledge-bases/seeded/dotnet/README.md",
+      "delivery": "direct",
+      "contentKind": "root-doc"
+    },
+    {
+      "language": "dotnet",
+      "archivePath": "language-knowledge-bases/dotnet-knowledge-base/rules/common/agents.md",
+      "relativePath": "rules/common/agents.md",
+      "packagePath": "knowledge-bases/seeded/dotnet/rules/common/agents.md",
+      "delivery": "direct",
+      "contentKind": "common-rule"
+    },
+    {
+      "language": "dotnet",
+      "archivePath": "language-knowledge-bases/dotnet-knowledge-base/rules/common/coding-style.md",
+      "relativePath": "rules/common/coding-style.md",
+      "packagePath": "knowledge-bases/seeded/dotnet/rules/common/coding-style.md",
+      "delivery": "direct",
+      "contentKind": "common-rule"
+    },
+    {
+      "language": "dotnet",
+      "archivePath": "language-knowledge-bases/dotnet-knowledge-base/rules/common/development-workflow.md",
+      "relativePath": "rules/common/development-workflow.md",
+      "packagePath": "knowledge-bases/seeded/dotnet/rules/common/development-workflow.md",
+      "delivery": "direct",
+      "contentKind": "common-rule"
+    },
+    {
+      "language": "dotnet",
+      "archivePath": "language-knowledge-bases/dotnet-knowledge-base/rules/common/git-workflow.md",
+      "relativePath": "rules/common/git-workflow.md",
+      "packagePath": "knowledge-bases/seeded/dotnet/rules/common/git-workflow.md",
+      "delivery": "direct",
+      "contentKind": "common-rule"
+    },
+    {
+      "language": "dotnet",
+      "archivePath": "language-knowledge-bases/dotnet-knowledge-base/rules/common/hooks.md",
+      "relativePath": "rules/common/hooks.md",
+      "packagePath": "knowledge-bases/seeded/dotnet/rules/common/hooks.md",
+      "delivery": "direct",
+      "contentKind": "common-rule"
+    },
+    {
+      "language": "dotnet",
+      "archivePath": "language-knowledge-bases/dotnet-knowledge-base/rules/common/patterns.md",
+      "relativePath": "rules/common/patterns.md",
+      "packagePath": "knowledge-bases/seeded/dotnet/rules/common/patterns.md",
+      "delivery": "direct",
+      "contentKind": "common-rule"
+    },
+    {
+      "language": "dotnet",
+      "archivePath": "language-knowledge-bases/dotnet-knowledge-base/rules/common/performance.md",
+      "relativePath": "rules/common/performance.md",
+      "packagePath": "knowledge-bases/seeded/dotnet/rules/common/performance.md",
+      "delivery": "direct",
+      "contentKind": "common-rule"
+    },
+    {
+      "language": "dotnet",
+      "archivePath": "language-knowledge-bases/dotnet-knowledge-base/rules/common/security.md",
+      "relativePath": "rules/common/security.md",
+      "packagePath": "knowledge-bases/seeded/dotnet/rules/common/security.md",
+      "delivery": "direct",
+      "contentKind": "common-rule"
+    },
+    {
+      "language": "dotnet",
+      "archivePath": "language-knowledge-bases/dotnet-knowledge-base/rules/common/testing.md",
+      "relativePath": "rules/common/testing.md",
+      "packagePath": "knowledge-bases/seeded/dotnet/rules/common/testing.md",
+      "delivery": "direct",
+      "contentKind": "common-rule"
+    },
+    {
+      "language": "dotnet",
+      "archivePath": "language-knowledge-bases/dotnet-knowledge-base/rules/dotnet/coding-style.md",
+      "relativePath": "rules/dotnet/coding-style.md",
+      "packagePath": "knowledge-bases/seeded/dotnet/rules/dotnet/coding-style.md",
+      "delivery": "direct",
+      "contentKind": "language-rule"
+    },
+    {
+      "language": "dotnet",
+      "archivePath": "language-knowledge-bases/dotnet-knowledge-base/rules/dotnet/hooks.md",
+      "relativePath": "rules/dotnet/hooks.md",
+      "packagePath": "knowledge-bases/seeded/dotnet/rules/dotnet/hooks.md",
+      "delivery": "direct",
+      "contentKind": "language-rule"
+    },
+    {
+      "language": "dotnet",
+      "archivePath": "language-knowledge-bases/dotnet-knowledge-base/rules/dotnet/patterns.md",
+      "relativePath": "rules/dotnet/patterns.md",
+      "packagePath": "knowledge-bases/seeded/dotnet/rules/dotnet/patterns.md",
+      "delivery": "direct",
+      "contentKind": "language-rule"
+    },
+    {
+      "language": "dotnet",
+      "archivePath": "language-knowledge-bases/dotnet-knowledge-base/rules/dotnet/security.md",
+      "relativePath": "rules/dotnet/security.md",
+      "packagePath": "knowledge-bases/seeded/dotnet/rules/dotnet/security.md",
+      "delivery": "direct",
+      "contentKind": "language-rule"
+    },
+    {
+      "language": "dotnet",
+      "archivePath": "language-knowledge-bases/dotnet-knowledge-base/rules/dotnet/testing.md",
+      "relativePath": "rules/dotnet/testing.md",
+      "packagePath": "knowledge-bases/seeded/dotnet/rules/dotnet/testing.md",
+      "delivery": "direct",
+      "contentKind": "language-rule"
+    },
+    {
+      "language": "java",
+      "archivePath": "language-knowledge-bases/java-knowledge-base/docs/examples-guide.md",
+      "relativePath": "docs/examples-guide.md",
+      "packagePath": "knowledge-bases/seeded/java/docs/examples-guide.md",
+      "delivery": "direct",
+      "contentKind": "examples-guide"
+    },
+    {
+      "language": "java",
+      "archivePath": "language-knowledge-bases/java-knowledge-base/docs/frameworks.md",
+      "relativePath": "docs/frameworks.md",
+      "packagePath": "knowledge-bases/seeded/java/docs/frameworks.md",
+      "delivery": "direct",
+      "contentKind": "framework-notes"
+    },
+    {
+      "language": "java",
+      "archivePath": "language-knowledge-bases/java-knowledge-base/docs/overview.md",
+      "relativePath": "docs/overview.md",
+      "packagePath": "knowledge-bases/seeded/java/docs/overview.md",
+      "delivery": "direct",
+      "contentKind": "overview"
+    },
+    {
+      "language": "java",
+      "archivePath": "language-knowledge-bases/java-knowledge-base/docs/review-checklist.md",
+      "relativePath": "docs/review-checklist.md",
+      "packagePath": "knowledge-bases/seeded/java/docs/review-checklist.md",
+      "delivery": "direct",
+      "contentKind": "review-checklist"
+    },
+    {
+      "language": "java",
+      "archivePath": "language-knowledge-bases/java-knowledge-base/examples/01-spring-boot-rest-api.md",
+      "relativePath": "examples/01-spring-boot-rest-api.md",
+      "packagePath": "knowledge-bases/seeded/java/examples/01-spring-boot-rest-api.md",
+      "delivery": "direct",
+      "contentKind": "example"
+    },
+    {
+      "language": "java",
+      "archivePath": "language-knowledge-bases/java-knowledge-base/examples/02-event-consumer-service.md",
+      "relativePath": "examples/02-event-consumer-service.md",
+      "packagePath": "knowledge-bases/seeded/java/examples/02-event-consumer-service.md",
+      "delivery": "direct",
+      "contentKind": "example"
+    },
+    {
+      "language": "java",
+      "archivePath": "language-knowledge-bases/java-knowledge-base/examples/03-gradle-multi-module-backend.md",
+      "relativePath": "examples/03-gradle-multi-module-backend.md",
+      "packagePath": "knowledge-bases/seeded/java/examples/03-gradle-multi-module-backend.md",
+      "delivery": "direct",
+      "contentKind": "example"
+    },
+    {
+      "language": "java",
+      "archivePath": "language-knowledge-bases/java-knowledge-base/examples/04-library-module-with-strong-domain-tests.md",
+      "relativePath": "examples/04-library-module-with-strong-domain-tests.md",
+      "packagePath": "knowledge-bases/seeded/java/examples/04-library-module-with-strong-domain-tests.md",
+      "delivery": "direct",
+      "contentKind": "example"
+    },
+    {
+      "language": "java",
+      "archivePath": "language-knowledge-bases/java-knowledge-base/knowledge-base.json",
+      "relativePath": "knowledge-base.json",
+      "packagePath": "knowledge-bases/seeded/java/knowledge-base.json",
+      "delivery": "direct",
+      "contentKind": "metadata"
+    },
+    {
+      "language": "java",
+      "archivePath": "language-knowledge-bases/java-knowledge-base/legacy-seed/java/coding-style.md",
+      "relativePath": "legacy-seed/java/coding-style.md",
+      "packagePath": "knowledge-bases/seeded/java/legacy-seed/java/coding-style.md",
+      "delivery": "direct",
+      "contentKind": "legacy-seed"
+    },
+    {
+      "language": "java",
+      "archivePath": "language-knowledge-bases/java-knowledge-base/legacy-seed/java/hooks.md",
+      "relativePath": "legacy-seed/java/hooks.md",
+      "packagePath": "knowledge-bases/seeded/java/legacy-seed/java/hooks.md",
+      "delivery": "direct",
+      "contentKind": "legacy-seed"
+    },
+    {
+      "language": "java",
+      "archivePath": "language-knowledge-bases/java-knowledge-base/legacy-seed/java/patterns.md",
+      "relativePath": "legacy-seed/java/patterns.md",
+      "packagePath": "knowledge-bases/seeded/java/legacy-seed/java/patterns.md",
+      "delivery": "direct",
+      "contentKind": "legacy-seed"
+    },
+    {
+      "language": "java",
+      "archivePath": "language-knowledge-bases/java-knowledge-base/legacy-seed/java/security.md",
+      "relativePath": "legacy-seed/java/security.md",
+      "packagePath": "knowledge-bases/seeded/java/legacy-seed/java/security.md",
+      "delivery": "direct",
+      "contentKind": "legacy-seed"
+    },
+    {
+      "language": "java",
+      "archivePath": "language-knowledge-bases/java-knowledge-base/legacy-seed/java/testing.md",
+      "relativePath": "legacy-seed/java/testing.md",
+      "packagePath": "knowledge-bases/seeded/java/legacy-seed/java/testing.md",
+      "delivery": "direct",
+      "contentKind": "legacy-seed"
+    },
+    {
+      "language": "java",
+      "archivePath": "language-knowledge-bases/java-knowledge-base/README.md",
+      "relativePath": "README.md",
+      "packagePath": "knowledge-bases/seeded/java/README.md",
+      "delivery": "direct",
+      "contentKind": "root-doc"
+    },
+    {
+      "language": "java",
+      "archivePath": "language-knowledge-bases/java-knowledge-base/rules/common/agents.md",
+      "relativePath": "rules/common/agents.md",
+      "packagePath": "knowledge-bases/seeded/java/rules/common/agents.md",
+      "delivery": "direct",
+      "contentKind": "common-rule"
+    },
+    {
+      "language": "java",
+      "archivePath": "language-knowledge-bases/java-knowledge-base/rules/common/coding-style.md",
+      "relativePath": "rules/common/coding-style.md",
+      "packagePath": "knowledge-bases/seeded/java/rules/common/coding-style.md",
+      "delivery": "direct",
+      "contentKind": "common-rule"
+    },
+    {
+      "language": "java",
+      "archivePath": "language-knowledge-bases/java-knowledge-base/rules/common/development-workflow.md",
+      "relativePath": "rules/common/development-workflow.md",
+      "packagePath": "knowledge-bases/seeded/java/rules/common/development-workflow.md",
+      "delivery": "direct",
+      "contentKind": "common-rule"
+    },
+    {
+      "language": "java",
+      "archivePath": "language-knowledge-bases/java-knowledge-base/rules/common/git-workflow.md",
+      "relativePath": "rules/common/git-workflow.md",
+      "packagePath": "knowledge-bases/seeded/java/rules/common/git-workflow.md",
+      "delivery": "direct",
+      "contentKind": "common-rule"
+    },
+    {
+      "language": "java",
+      "archivePath": "language-knowledge-bases/java-knowledge-base/rules/common/hooks.md",
+      "relativePath": "rules/common/hooks.md",
+      "packagePath": "knowledge-bases/seeded/java/rules/common/hooks.md",
+      "delivery": "direct",
+      "contentKind": "common-rule"
+    },
+    {
+      "language": "java",
+      "archivePath": "language-knowledge-bases/java-knowledge-base/rules/common/patterns.md",
+      "relativePath": "rules/common/patterns.md",
+      "packagePath": "knowledge-bases/seeded/java/rules/common/patterns.md",
+      "delivery": "direct",
+      "contentKind": "common-rule"
+    },
+    {
+      "language": "java",
+      "archivePath": "language-knowledge-bases/java-knowledge-base/rules/common/performance.md",
+      "relativePath": "rules/common/performance.md",
+      "packagePath": "knowledge-bases/seeded/java/rules/common/performance.md",
+      "delivery": "direct",
+      "contentKind": "common-rule"
+    },
+    {
+      "language": "java",
+      "archivePath": "language-knowledge-bases/java-knowledge-base/rules/common/security.md",
+      "relativePath": "rules/common/security.md",
+      "packagePath": "knowledge-bases/seeded/java/rules/common/security.md",
+      "delivery": "direct",
+      "contentKind": "common-rule"
+    },
+    {
+      "language": "java",
+      "archivePath": "language-knowledge-bases/java-knowledge-base/rules/common/testing.md",
+      "relativePath": "rules/common/testing.md",
+      "packagePath": "knowledge-bases/seeded/java/rules/common/testing.md",
+      "delivery": "direct",
+      "contentKind": "common-rule"
+    },
+    {
+      "language": "java",
+      "archivePath": "language-knowledge-bases/java-knowledge-base/rules/java/coding-style.md",
+      "relativePath": "rules/java/coding-style.md",
+      "packagePath": "knowledge-bases/seeded/java/rules/java/coding-style.md",
+      "delivery": "direct",
+      "contentKind": "language-rule"
+    },
+    {
+      "language": "java",
+      "archivePath": "language-knowledge-bases/java-knowledge-base/rules/java/hooks.md",
+      "relativePath": "rules/java/hooks.md",
+      "packagePath": "knowledge-bases/seeded/java/rules/java/hooks.md",
+      "delivery": "direct",
+      "contentKind": "language-rule"
+    },
+    {
+      "language": "java",
+      "archivePath": "language-knowledge-bases/java-knowledge-base/rules/java/patterns.md",
+      "relativePath": "rules/java/patterns.md",
+      "packagePath": "knowledge-bases/seeded/java/rules/java/patterns.md",
+      "delivery": "direct",
+      "contentKind": "language-rule"
+    },
+    {
+      "language": "java",
+      "archivePath": "language-knowledge-bases/java-knowledge-base/rules/java/security.md",
+      "relativePath": "rules/java/security.md",
+      "packagePath": "knowledge-bases/seeded/java/rules/java/security.md",
+      "delivery": "direct",
+      "contentKind": "language-rule"
+    },
+    {
+      "language": "java",
+      "archivePath": "language-knowledge-bases/java-knowledge-base/rules/java/testing.md",
+      "relativePath": "rules/java/testing.md",
+      "packagePath": "knowledge-bases/seeded/java/rules/java/testing.md",
+      "delivery": "direct",
+      "contentKind": "language-rule"
+    },
+    {
+      "language": "lua",
+      "archivePath": "language-knowledge-bases/lua-knowledge-base/docs/examples-guide.md",
+      "relativePath": "docs/examples-guide.md",
+      "packagePath": "knowledge-bases/seeded/lua/docs/examples-guide.md",
+      "delivery": "direct",
+      "contentKind": "examples-guide"
+    },
+    {
+      "language": "lua",
+      "archivePath": "language-knowledge-bases/lua-knowledge-base/docs/frameworks.md",
+      "relativePath": "docs/frameworks.md",
+      "packagePath": "knowledge-bases/seeded/lua/docs/frameworks.md",
+      "delivery": "direct",
+      "contentKind": "framework-notes"
+    },
+    {
+      "language": "lua",
+      "archivePath": "language-knowledge-bases/lua-knowledge-base/docs/overview.md",
+      "relativePath": "docs/overview.md",
+      "packagePath": "knowledge-bases/seeded/lua/docs/overview.md",
+      "delivery": "direct",
+      "contentKind": "overview"
+    },
+    {
+      "language": "lua",
+      "archivePath": "language-knowledge-bases/lua-knowledge-base/docs/review-checklist.md",
+      "relativePath": "docs/review-checklist.md",
+      "packagePath": "knowledge-bases/seeded/lua/docs/review-checklist.md",
+      "delivery": "direct",
+      "contentKind": "review-checklist"
+    },
+    {
+      "language": "lua",
+      "archivePath": "language-knowledge-bases/lua-knowledge-base/examples/01-neovim-plugin.md",
+      "relativePath": "examples/01-neovim-plugin.md",
+      "packagePath": "knowledge-bases/seeded/lua/examples/01-neovim-plugin.md",
+      "delivery": "direct",
+      "contentKind": "example"
+    },
+    {
+      "language": "lua",
+      "archivePath": "language-knowledge-bases/lua-knowledge-base/examples/02-openresty-request-handler.md",
+      "relativePath": "examples/02-openresty-request-handler.md",
+      "packagePath": "knowledge-bases/seeded/lua/examples/02-openresty-request-handler.md",
+      "delivery": "direct",
+      "contentKind": "example"
+    },
+    {
+      "language": "lua",
+      "archivePath": "language-knowledge-bases/lua-knowledge-base/examples/03-l#U00f6ve-gameplay-module.md",
+      "relativePath": "examples/03-l#U00f6ve-gameplay-module.md",
+      "packagePath": "knowledge-bases/seeded/lua/examples/03-l#U00f6ve-gameplay-module.md",
+      "delivery": "direct",
+      "contentKind": "example"
+    },
+    {
+      "language": "lua",
+      "archivePath": "language-knowledge-bases/lua-knowledge-base/examples/04-embedded-automation-script.md",
+      "relativePath": "examples/04-embedded-automation-script.md",
+      "packagePath": "knowledge-bases/seeded/lua/examples/04-embedded-automation-script.md",
+      "delivery": "direct",
+      "contentKind": "example"
+    },
+    {
+      "language": "lua",
+      "archivePath": "language-knowledge-bases/lua-knowledge-base/knowledge-base.json",
+      "relativePath": "knowledge-base.json",
+      "packagePath": "knowledge-bases/seeded/lua/knowledge-base.json",
+      "delivery": "direct",
+      "contentKind": "metadata"
+    },
+    {
+      "language": "lua",
+      "archivePath": "language-knowledge-bases/lua-knowledge-base/README.md",
+      "relativePath": "README.md",
+      "packagePath": "knowledge-bases/seeded/lua/README.md",
+      "delivery": "direct",
+      "contentKind": "root-doc"
+    },
+    {
+      "language": "lua",
+      "archivePath": "language-knowledge-bases/lua-knowledge-base/rules/common/agents.md",
+      "relativePath": "rules/common/agents.md",
+      "packagePath": "knowledge-bases/seeded/lua/rules/common/agents.md",
+      "delivery": "direct",
+      "contentKind": "common-rule"
+    },
+    {
+      "language": "lua",
+      "archivePath": "language-knowledge-bases/lua-knowledge-base/rules/common/coding-style.md",
+      "relativePath": "rules/common/coding-style.md",
+      "packagePath": "knowledge-bases/seeded/lua/rules/common/coding-style.md",
+      "delivery": "direct",
+      "contentKind": "common-rule"
+    },
+    {
+      "language": "lua",
+      "archivePath": "language-knowledge-bases/lua-knowledge-base/rules/common/development-workflow.md",
+      "relativePath": "rules/common/development-workflow.md",
+      "packagePath": "knowledge-bases/seeded/lua/rules/common/development-workflow.md",
+      "delivery": "direct",
+      "contentKind": "common-rule"
+    },
+    {
+      "language": "lua",
+      "archivePath": "language-knowledge-bases/lua-knowledge-base/rules/common/git-workflow.md",
+      "relativePath": "rules/common/git-workflow.md",
+      "packagePath": "knowledge-bases/seeded/lua/rules/common/git-workflow.md",
+      "delivery": "direct",
+      "contentKind": "common-rule"
+    },
+    {
+      "language": "lua",
+      "archivePath": "language-knowledge-bases/lua-knowledge-base/rules/common/hooks.md",
+      "relativePath": "rules/common/hooks.md",
+      "packagePath": "knowledge-bases/seeded/lua/rules/common/hooks.md",
+      "delivery": "direct",
+      "contentKind": "common-rule"
+    },
+    {
+      "language": "lua",
+      "archivePath": "language-knowledge-bases/lua-knowledge-base/rules/common/patterns.md",
+      "relativePath": "rules/common/patterns.md",
+      "packagePath": "knowledge-bases/seeded/lua/rules/common/patterns.md",
+      "delivery": "direct",
+      "contentKind": "common-rule"
+    },
+    {
+      "language": "lua",
+      "archivePath": "language-knowledge-bases/lua-knowledge-base/rules/common/performance.md",
+      "relativePath": "rules/common/performance.md",
+      "packagePath": "knowledge-bases/seeded/lua/rules/common/performance.md",
+      "delivery": "direct",
+      "contentKind": "common-rule"
+    },
+    {
+      "language": "lua",
+      "archivePath": "language-knowledge-bases/lua-knowledge-base/rules/common/security.md",
+      "relativePath": "rules/common/security.md",
+      "packagePath": "knowledge-bases/seeded/lua/rules/common/security.md",
+      "delivery": "direct",
+      "contentKind": "common-rule"
+    },
+    {
+      "language": "lua",
+      "archivePath": "language-knowledge-bases/lua-knowledge-base/rules/common/testing.md",
+      "relativePath": "rules/common/testing.md",
+      "packagePath": "knowledge-bases/seeded/lua/rules/common/testing.md",
+      "delivery": "direct",
+      "contentKind": "common-rule"
+    },
+    {
+      "language": "lua",
+      "archivePath": "language-knowledge-bases/lua-knowledge-base/rules/lua/coding-style.md",
+      "relativePath": "rules/lua/coding-style.md",
+      "packagePath": "knowledge-bases/seeded/lua/rules/lua/coding-style.md",
+      "delivery": "direct",
+      "contentKind": "language-rule"
+    },
+    {
+      "language": "lua",
+      "archivePath": "language-knowledge-bases/lua-knowledge-base/rules/lua/hooks.md",
+      "relativePath": "rules/lua/hooks.md",
+      "packagePath": "knowledge-bases/seeded/lua/rules/lua/hooks.md",
+      "delivery": "direct",
+      "contentKind": "language-rule"
+    },
+    {
+      "language": "lua",
+      "archivePath": "language-knowledge-bases/lua-knowledge-base/rules/lua/patterns.md",
+      "relativePath": "rules/lua/patterns.md",
+      "packagePath": "knowledge-bases/seeded/lua/rules/lua/patterns.md",
+      "delivery": "direct",
+      "contentKind": "language-rule"
+    },
+    {
+      "language": "lua",
+      "archivePath": "language-knowledge-bases/lua-knowledge-base/rules/lua/security.md",
+      "relativePath": "rules/lua/security.md",
+      "packagePath": "knowledge-bases/seeded/lua/rules/lua/security.md",
+      "delivery": "direct",
+      "contentKind": "language-rule"
+    },
+    {
+      "language": "lua",
+      "archivePath": "language-knowledge-bases/lua-knowledge-base/rules/lua/testing.md",
+      "relativePath": "rules/lua/testing.md",
+      "packagePath": "knowledge-bases/seeded/lua/rules/lua/testing.md",
+      "delivery": "direct",
+      "contentKind": "language-rule"
+    },
+    {
+      "language": "powershell",
+      "archivePath": "language-knowledge-bases/powershell-knowledge-base/docs/examples-guide.md",
+      "relativePath": "docs/examples-guide.md",
+      "packagePath": "knowledge-bases/seeded/powershell/docs/examples-guide.md",
+      "delivery": "direct",
+      "contentKind": "examples-guide"
+    },
+    {
+      "language": "powershell",
+      "archivePath": "language-knowledge-bases/powershell-knowledge-base/docs/frameworks.md",
+      "relativePath": "docs/frameworks.md",
+      "packagePath": "knowledge-bases/seeded/powershell/docs/frameworks.md",
+      "delivery": "direct",
+      "contentKind": "framework-notes"
+    },
+    {
+      "language": "powershell",
+      "archivePath": "language-knowledge-bases/powershell-knowledge-base/docs/overview.md",
+      "relativePath": "docs/overview.md",
+      "packagePath": "knowledge-bases/seeded/powershell/docs/overview.md",
+      "delivery": "direct",
+      "contentKind": "overview"
+    },
+    {
+      "language": "powershell",
+      "archivePath": "language-knowledge-bases/powershell-knowledge-base/docs/review-checklist.md",
+      "relativePath": "docs/review-checklist.md",
+      "packagePath": "knowledge-bases/seeded/powershell/docs/review-checklist.md",
+      "delivery": "direct",
+      "contentKind": "review-checklist"
+    },
+    {
+      "language": "powershell",
+      "archivePath": "language-knowledge-bases/powershell-knowledge-base/examples/01-script-module.md",
+      "relativePath": "examples/01-script-module.md",
+      "packagePath": "knowledge-bases/seeded/powershell/examples/01-script-module.md",
+      "delivery": "direct",
+      "contentKind": "example"
+    },
+    {
+      "language": "powershell",
+      "archivePath": "language-knowledge-bases/powershell-knowledge-base/examples/02-ci-admin-automation-script.md",
+      "relativePath": "examples/02-ci-admin-automation-script.md",
+      "packagePath": "knowledge-bases/seeded/powershell/examples/02-ci-admin-automation-script.md",
+      "delivery": "direct",
+      "contentKind": "example"
+    },
+    {
+      "language": "powershell",
+      "archivePath": "language-knowledge-bases/powershell-knowledge-base/examples/03-remote-fleet-maintenance-command.md",
+      "relativePath": "examples/03-remote-fleet-maintenance-command.md",
+      "packagePath": "knowledge-bases/seeded/powershell/examples/03-remote-fleet-maintenance-command.md",
+      "delivery": "direct",
+      "contentKind": "example"
+    },
+    {
+      "language": "powershell",
+      "archivePath": "language-knowledge-bases/powershell-knowledge-base/examples/04-developer-bootstrap-utility.md",
+      "relativePath": "examples/04-developer-bootstrap-utility.md",
+      "packagePath": "knowledge-bases/seeded/powershell/examples/04-developer-bootstrap-utility.md",
+      "delivery": "direct",
+      "contentKind": "example"
+    },
+    {
+      "language": "powershell",
+      "archivePath": "language-knowledge-bases/powershell-knowledge-base/knowledge-base.json",
+      "relativePath": "knowledge-base.json",
+      "packagePath": "knowledge-bases/seeded/powershell/knowledge-base.json",
+      "delivery": "direct",
+      "contentKind": "metadata"
+    },
+    {
+      "language": "powershell",
+      "archivePath": "language-knowledge-bases/powershell-knowledge-base/README.md",
+      "relativePath": "README.md",
+      "packagePath": "knowledge-bases/seeded/powershell/README.md",
+      "delivery": "direct",
+      "contentKind": "root-doc"
+    },
+    {
+      "language": "powershell",
+      "archivePath": "language-knowledge-bases/powershell-knowledge-base/rules/common/agents.md",
+      "relativePath": "rules/common/agents.md",
+      "packagePath": "knowledge-bases/seeded/powershell/rules/common/agents.md",
+      "delivery": "direct",
+      "contentKind": "common-rule"
+    },
+    {
+      "language": "powershell",
+      "archivePath": "language-knowledge-bases/powershell-knowledge-base/rules/common/coding-style.md",
+      "relativePath": "rules/common/coding-style.md",
+      "packagePath": "knowledge-bases/seeded/powershell/rules/common/coding-style.md",
+      "delivery": "direct",
+      "contentKind": "common-rule"
+    },
+    {
+      "language": "powershell",
+      "archivePath": "language-knowledge-bases/powershell-knowledge-base/rules/common/development-workflow.md",
+      "relativePath": "rules/common/development-workflow.md",
+      "packagePath": "knowledge-bases/seeded/powershell/rules/common/development-workflow.md",
+      "delivery": "direct",
+      "contentKind": "common-rule"
+    },
+    {
+      "language": "powershell",
+      "archivePath": "language-knowledge-bases/powershell-knowledge-base/rules/common/git-workflow.md",
+      "relativePath": "rules/common/git-workflow.md",
+      "packagePath": "knowledge-bases/seeded/powershell/rules/common/git-workflow.md",
+      "delivery": "direct",
+      "contentKind": "common-rule"
+    },
+    {
+      "language": "powershell",
+      "archivePath": "language-knowledge-bases/powershell-knowledge-base/rules/common/hooks.md",
+      "relativePath": "rules/common/hooks.md",
+      "packagePath": "knowledge-bases/seeded/powershell/rules/common/hooks.md",
+      "delivery": "direct",
+      "contentKind": "common-rule"
+    },
+    {
+      "language": "powershell",
+      "archivePath": "language-knowledge-bases/powershell-knowledge-base/rules/common/patterns.md",
+      "relativePath": "rules/common/patterns.md",
+      "packagePath": "knowledge-bases/seeded/powershell/rules/common/patterns.md",
+      "delivery": "direct",
+      "contentKind": "common-rule"
+    },
+    {
+      "language": "powershell",
+      "archivePath": "language-knowledge-bases/powershell-knowledge-base/rules/common/performance.md",
+      "relativePath": "rules/common/performance.md",
+      "packagePath": "knowledge-bases/seeded/powershell/rules/common/performance.md",
+      "delivery": "direct",
+      "contentKind": "common-rule"
+    },
+    {
+      "language": "powershell",
+      "archivePath": "language-knowledge-bases/powershell-knowledge-base/rules/common/security.md",
+      "relativePath": "rules/common/security.md",
+      "packagePath": "knowledge-bases/seeded/powershell/rules/common/security.md",
+      "delivery": "direct",
+      "contentKind": "common-rule"
+    },
+    {
+      "language": "powershell",
+      "archivePath": "language-knowledge-bases/powershell-knowledge-base/rules/common/testing.md",
+      "relativePath": "rules/common/testing.md",
+      "packagePath": "knowledge-bases/seeded/powershell/rules/common/testing.md",
+      "delivery": "direct",
+      "contentKind": "common-rule"
+    },
+    {
+      "language": "powershell",
+      "archivePath": "language-knowledge-bases/powershell-knowledge-base/rules/powershell/coding-style.md",
+      "relativePath": "rules/powershell/coding-style.md",
+      "packagePath": "knowledge-bases/seeded/powershell/rules/powershell/coding-style.md",
+      "delivery": "direct",
+      "contentKind": "language-rule"
+    },
+    {
+      "language": "powershell",
+      "archivePath": "language-knowledge-bases/powershell-knowledge-base/rules/powershell/hooks.md",
+      "relativePath": "rules/powershell/hooks.md",
+      "packagePath": "knowledge-bases/seeded/powershell/rules/powershell/hooks.md",
+      "delivery": "direct",
+      "contentKind": "language-rule"
+    },
+    {
+      "language": "powershell",
+      "archivePath": "language-knowledge-bases/powershell-knowledge-base/rules/powershell/patterns.md",
+      "relativePath": "rules/powershell/patterns.md",
+      "packagePath": "knowledge-bases/seeded/powershell/rules/powershell/patterns.md",
+      "delivery": "direct",
+      "contentKind": "language-rule"
+    },
+    {
+      "language": "powershell",
+      "archivePath": "language-knowledge-bases/powershell-knowledge-base/rules/powershell/security.md",
+      "relativePath": "rules/powershell/security.md",
+      "packagePath": "knowledge-bases/seeded/powershell/rules/powershell/security.md",
+      "delivery": "direct",
+      "contentKind": "language-rule"
+    },
+    {
+      "language": "powershell",
+      "archivePath": "language-knowledge-bases/powershell-knowledge-base/rules/powershell/testing.md",
+      "relativePath": "rules/powershell/testing.md",
+      "packagePath": "knowledge-bases/seeded/powershell/rules/powershell/testing.md",
+      "delivery": "direct",
+      "contentKind": "language-rule"
+    },
+    {
+      "language": "typescript",
+      "archivePath": "language-knowledge-bases/typescript-knowledge-base/docs/examples-guide.md",
+      "relativePath": "docs/examples-guide.md",
+      "packagePath": "knowledge-bases/seeded/typescript/docs/examples-guide.md",
+      "delivery": "direct",
+      "contentKind": "examples-guide"
+    },
+    {
+      "language": "typescript",
+      "archivePath": "language-knowledge-bases/typescript-knowledge-base/docs/frameworks.md",
+      "relativePath": "docs/frameworks.md",
+      "packagePath": "knowledge-bases/seeded/typescript/docs/frameworks.md",
+      "delivery": "direct",
+      "contentKind": "framework-notes"
+    },
+    {
+      "language": "typescript",
+      "archivePath": "language-knowledge-bases/typescript-knowledge-base/docs/overview.md",
+      "relativePath": "docs/overview.md",
+      "packagePath": "knowledge-bases/seeded/typescript/docs/overview.md",
+      "delivery": "direct",
+      "contentKind": "overview"
+    },
+    {
+      "language": "typescript",
+      "archivePath": "language-knowledge-bases/typescript-knowledge-base/docs/review-checklist.md",
+      "relativePath": "docs/review-checklist.md",
+      "packagePath": "knowledge-bases/seeded/typescript/docs/review-checklist.md",
+      "delivery": "direct",
+      "contentKind": "review-checklist"
+    },
+    {
+      "language": "typescript",
+      "archivePath": "language-knowledge-bases/typescript-knowledge-base/examples/01-node-api.md",
+      "relativePath": "examples/01-node-api.md",
+      "packagePath": "knowledge-bases/seeded/typescript/examples/01-node-api.md",
+      "delivery": "direct",
+      "contentKind": "example"
+    },
+    {
+      "language": "typescript",
+      "archivePath": "language-knowledge-bases/typescript-knowledge-base/examples/02-react-component-library.md",
+      "relativePath": "examples/02-react-component-library.md",
+      "packagePath": "knowledge-bases/seeded/typescript/examples/02-react-component-library.md",
+      "delivery": "direct",
+      "contentKind": "example"
+    },
+    {
+      "language": "typescript",
+      "archivePath": "language-knowledge-bases/typescript-knowledge-base/examples/03-nextjs-app.md",
+      "relativePath": "examples/03-nextjs-app.md",
+      "packagePath": "knowledge-bases/seeded/typescript/examples/03-nextjs-app.md",
+      "delivery": "direct",
+      "contentKind": "example"
+    },
+    {
+      "language": "typescript",
+      "archivePath": "language-knowledge-bases/typescript-knowledge-base/examples/04-monorepo-shared-types-and-validation.md",
+      "relativePath": "examples/04-monorepo-shared-types-and-validation.md",
+      "packagePath": "knowledge-bases/seeded/typescript/examples/04-monorepo-shared-types-and-validation.md",
+      "delivery": "direct",
+      "contentKind": "example"
+    },
+    {
+      "language": "typescript",
+      "archivePath": "language-knowledge-bases/typescript-knowledge-base/knowledge-base.json",
+      "relativePath": "knowledge-base.json",
+      "packagePath": "knowledge-bases/seeded/typescript/knowledge-base.json",
+      "delivery": "direct",
+      "contentKind": "metadata"
+    },
+    {
+      "language": "typescript",
+      "archivePath": "language-knowledge-bases/typescript-knowledge-base/legacy-seed/typescript/coding-style.md",
+      "relativePath": "legacy-seed/typescript/coding-style.md",
+      "packagePath": "knowledge-bases/seeded/typescript/legacy-seed/typescript/coding-style.md",
+      "delivery": "direct",
+      "contentKind": "legacy-seed"
+    },
+    {
+      "language": "typescript",
+      "archivePath": "language-knowledge-bases/typescript-knowledge-base/legacy-seed/typescript/hooks.md",
+      "relativePath": "legacy-seed/typescript/hooks.md",
+      "packagePath": "knowledge-bases/seeded/typescript/legacy-seed/typescript/hooks.md",
+      "delivery": "direct",
+      "contentKind": "legacy-seed"
+    },
+    {
+      "language": "typescript",
+      "archivePath": "language-knowledge-bases/typescript-knowledge-base/legacy-seed/typescript/patterns.md",
+      "relativePath": "legacy-seed/typescript/patterns.md",
+      "packagePath": "knowledge-bases/seeded/typescript/legacy-seed/typescript/patterns.md",
+      "delivery": "direct",
+      "contentKind": "legacy-seed"
+    },
+    {
+      "language": "typescript",
+      "archivePath": "language-knowledge-bases/typescript-knowledge-base/legacy-seed/typescript/security.md",
+      "relativePath": "legacy-seed/typescript/security.md",
+      "packagePath": "knowledge-bases/seeded/typescript/legacy-seed/typescript/security.md",
+      "delivery": "direct",
+      "contentKind": "legacy-seed"
+    },
+    {
+      "language": "typescript",
+      "archivePath": "language-knowledge-bases/typescript-knowledge-base/legacy-seed/typescript/testing.md",
+      "relativePath": "legacy-seed/typescript/testing.md",
+      "packagePath": "knowledge-bases/seeded/typescript/legacy-seed/typescript/testing.md",
+      "delivery": "direct",
+      "contentKind": "legacy-seed"
+    },
+    {
+      "language": "typescript",
+      "archivePath": "language-knowledge-bases/typescript-knowledge-base/README.md",
+      "relativePath": "README.md",
+      "packagePath": "knowledge-bases/seeded/typescript/README.md",
+      "delivery": "direct",
+      "contentKind": "root-doc"
+    },
+    {
+      "language": "typescript",
+      "archivePath": "language-knowledge-bases/typescript-knowledge-base/rules/common/agents.md",
+      "relativePath": "rules/common/agents.md",
+      "packagePath": "knowledge-bases/seeded/typescript/rules/common/agents.md",
+      "delivery": "direct",
+      "contentKind": "common-rule"
+    },
+    {
+      "language": "typescript",
+      "archivePath": "language-knowledge-bases/typescript-knowledge-base/rules/common/coding-style.md",
+      "relativePath": "rules/common/coding-style.md",
+      "packagePath": "knowledge-bases/seeded/typescript/rules/common/coding-style.md",
+      "delivery": "direct",
+      "contentKind": "common-rule"
+    },
+    {
+      "language": "typescript",
+      "archivePath": "language-knowledge-bases/typescript-knowledge-base/rules/common/development-workflow.md",
+      "relativePath": "rules/common/development-workflow.md",
+      "packagePath": "knowledge-bases/seeded/typescript/rules/common/development-workflow.md",
+      "delivery": "direct",
+      "contentKind": "common-rule"
+    },
+    {
+      "language": "typescript",
+      "archivePath": "language-knowledge-bases/typescript-knowledge-base/rules/common/git-workflow.md",
+      "relativePath": "rules/common/git-workflow.md",
+      "packagePath": "knowledge-bases/seeded/typescript/rules/common/git-workflow.md",
+      "delivery": "direct",
+      "contentKind": "common-rule"
+    },
+    {
+      "language": "typescript",
+      "archivePath": "language-knowledge-bases/typescript-knowledge-base/rules/common/hooks.md",
+      "relativePath": "rules/common/hooks.md",
+      "packagePath": "knowledge-bases/seeded/typescript/rules/common/hooks.md",
+      "delivery": "direct",
+      "contentKind": "common-rule"
+    },
+    {
+      "language": "typescript",
+      "archivePath": "language-knowledge-bases/typescript-knowledge-base/rules/common/patterns.md",
+      "relativePath": "rules/common/patterns.md",
+      "packagePath": "knowledge-bases/seeded/typescript/rules/common/patterns.md",
+      "delivery": "direct",
+      "contentKind": "common-rule"
+    },
+    {
+      "language": "typescript",
+      "archivePath": "language-knowledge-bases/typescript-knowledge-base/rules/common/performance.md",
+      "relativePath": "rules/common/performance.md",
+      "packagePath": "knowledge-bases/seeded/typescript/rules/common/performance.md",
+      "delivery": "direct",
+      "contentKind": "common-rule"
+    },
+    {
+      "language": "typescript",
+      "archivePath": "language-knowledge-bases/typescript-knowledge-base/rules/common/security.md",
+      "relativePath": "rules/common/security.md",
+      "packagePath": "knowledge-bases/seeded/typescript/rules/common/security.md",
+      "delivery": "direct",
+      "contentKind": "common-rule"
+    },
+    {
+      "language": "typescript",
+      "archivePath": "language-knowledge-bases/typescript-knowledge-base/rules/common/testing.md",
+      "relativePath": "rules/common/testing.md",
+      "packagePath": "knowledge-bases/seeded/typescript/rules/common/testing.md",
+      "delivery": "direct",
+      "contentKind": "common-rule"
+    },
+    {
+      "language": "typescript",
+      "archivePath": "language-knowledge-bases/typescript-knowledge-base/rules/typescript/coding-style.md",
+      "relativePath": "rules/typescript/coding-style.md",
+      "packagePath": "knowledge-bases/seeded/typescript/rules/typescript/coding-style.md",
+      "delivery": "direct",
+      "contentKind": "language-rule"
+    },
+    {
+      "language": "typescript",
+      "archivePath": "language-knowledge-bases/typescript-knowledge-base/rules/typescript/hooks.md",
+      "relativePath": "rules/typescript/hooks.md",
+      "packagePath": "knowledge-bases/seeded/typescript/rules/typescript/hooks.md",
+      "delivery": "direct",
+      "contentKind": "language-rule"
+    },
+    {
+      "language": "typescript",
+      "archivePath": "language-knowledge-bases/typescript-knowledge-base/rules/typescript/patterns.md",
+      "relativePath": "rules/typescript/patterns.md",
+      "packagePath": "knowledge-bases/seeded/typescript/rules/typescript/patterns.md",
+      "delivery": "direct",
+      "contentKind": "language-rule"
+    },
+    {
+      "language": "typescript",
+      "archivePath": "language-knowledge-bases/typescript-knowledge-base/rules/typescript/security.md",
+      "relativePath": "rules/typescript/security.md",
+      "packagePath": "knowledge-bases/seeded/typescript/rules/typescript/security.md",
+      "delivery": "direct",
+      "contentKind": "language-rule"
+    },
+    {
+      "language": "typescript",
+      "archivePath": "language-knowledge-bases/typescript-knowledge-base/rules/typescript/testing.md",
+      "relativePath": "rules/typescript/testing.md",
+      "packagePath": "knowledge-bases/seeded/typescript/rules/typescript/testing.md",
+      "delivery": "direct",
+      "contentKind": "language-rule"
+    }
+  ]
 }

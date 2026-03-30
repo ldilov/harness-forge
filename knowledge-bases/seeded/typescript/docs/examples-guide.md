@@ -1,15 +1,36 @@
-# Example Expansion Guide
+# TypeScript examples guide
 
-Use the starter examples in `examples/` as seeds for:
+These examples are task playbooks, not toy snippets. Use the nearest one as the default plan scaffold.
 
-- scenario docs in `examples/`
-- language-specific rule examples
-- adapter-specific setup examples
-- smoke-test projects for installer validation
+## How to use an example
 
-## Keep examples useful
+1. Select the closest scenario.
+2. Copy its touched-file thinking and validation shape.
+3. Adjust for the repo's framework and deployment assumptions.
+4. Keep the example's anti-pattern checks in your final review.
 
-- Prefer one clear scenario per example.
-- Include project shape, tooling, test strategy, and hook suggestions.
-- Show where the language pack modifies common defaults.
-- Keep generated or copied example files clearly marked.
+## Available scenarios
+
+### Node API with runtime validation
+
+- file: `01-node-api.md`
+- use when: Node services, Hono/Express/Fastify handlers, env validation, and schema-first boundaries.
+- always confirm: contracts, validation, tests, and operational impact
+
+### React component library
+
+- file: `02-react-component-library.md`
+- use when: Typed component APIs, accessibility, Storybook/test expectations, and packaging boundaries.
+- always confirm: contracts, validation, tests, and operational impact
+
+### Next.js App Router application
+
+- file: `03-nextjs-app.md`
+- use when: Server/client boundaries, data fetching, route handlers, and cache-aware mutations.
+- always confirm: contracts, validation, tests, and operational impact
+
+### Monorepo shared types and validation
+
+- file: `04-monorepo-shared-types-and-validation.md`
+- use when: Shared contracts, package exports, tsconfig references, codegen, and semver-aware changes.
+- always confirm: contracts, validation, tests, and operational impact

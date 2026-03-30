@@ -24,8 +24,16 @@ const filesToValidate = [
   "docs/style-guides/rule-style-guide.md",
   "templates/tasks/implement-feature.md",
   "templates/tasks/fix-bug.md",
+  "templates/tasks/migration-plan.md",
+  "templates/tasks/research-to-implementation-brief.md",
+  "templates/tasks/bug-repro-card.md",
+  "templates/tasks/release-gate-report.md",
+  "templates/tasks/verification-matrix.md",
+  "templates/tasks/correctness-contract.md",
+  "templates/tasks/change-brief.md",
   "templates/workflows/research-plan-implement-validate.md",
-  "templates/workflows/triage-reproduce-fix-verify.md"
+  "templates/workflows/triage-reproduce-fix-verify.md",
+  "templates/workflows/implement-change.md",
 ];
 
 const requiredSectionsByKind = {

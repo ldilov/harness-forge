@@ -29,18 +29,20 @@ Use this skill when the repository is TypeScript-first and the right answer depe
 - `templates/workflows/implement-typescript-change.md`
 - `knowledge-bases/seeded/typescript/docs/overview.md`
 - `knowledge-bases/seeded/typescript/docs/frameworks.md`
+- `knowledge-bases/seeded/typescript/docs/examples-guide.md`
+- the closest matching file in `knowledge-bases/seeded/typescript/examples/`
 - `knowledge-bases/seeded/typescript/docs/review-checklist.md`
-- `knowledge-bases/seeded/typescript/examples/`
 - `skills/typescript-engineering/references/`
 
 ## Execution Contract
 
 1. map package manager, workspace layout, module system, and tsconfig graph before changing files
 2. identify runtime boundaries and pair static types with runtime validation where untrusted data enters the system
-3. preserve local export surfaces and semver expectations unless the task explicitly authorizes a contract change
-4. prefer narrow, composable types, discriminated unions, and explicit async behavior over clever type gymnastics
-5. when the repo is multi-package, keep references, build outputs, and import paths consistent across the workspace
-6. validate both TypeScript correctness and runtime or bundler correctness before finalizing
+3. read `knowledge-bases/seeded/typescript/docs/examples-guide.md` and select the nearest scenario before broad edits
+4. preserve local export surfaces and semver expectations unless the task explicitly authorizes a contract change
+5. prefer narrow, composable types, discriminated unions, and explicit async behavior over clever type gymnastics
+6. when the repo is multi-package, keep references, build outputs, and import paths consistent across the workspace
+7. validate both TypeScript correctness and runtime or bundler correctness before finalizing
 
 ## Outputs
 

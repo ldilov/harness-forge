@@ -17,7 +17,8 @@
         "docs/catalog/languages/typescript.md",
         "knowledge-bases/seeded/typescript/docs/overview.md",
         "knowledge-bases/seeded/typescript/docs/review-checklist.md",
-        "knowledge-bases/seeded/typescript/docs/frameworks.md"
+        "knowledge-bases/seeded/typescript/docs/frameworks.md",
+        "knowledge-bases/seeded/typescript/docs/examples-guide.md"
       ],
       "rules": [
         "rules/common/README.md",
@@ -70,7 +71,8 @@
         "docs/catalog/languages/java.md",
         "knowledge-bases/seeded/java/docs/overview.md",
         "knowledge-bases/seeded/java/docs/review-checklist.md",
-        "knowledge-bases/seeded/java/docs/frameworks.md"
+        "knowledge-bases/seeded/java/docs/frameworks.md",
+        "knowledge-bases/seeded/java/docs/examples-guide.md"
       ],
       "rules": [
         "rules/common/README.md",
@@ -120,7 +122,8 @@
         "docs/catalog/languages/dotnet.md",
         "knowledge-bases/seeded/dotnet/docs/overview.md",
         "knowledge-bases/seeded/dotnet/docs/review-checklist.md",
-        "knowledge-bases/seeded/dotnet/docs/frameworks.md"
+        "knowledge-bases/seeded/dotnet/docs/frameworks.md",
+        "knowledge-bases/seeded/dotnet/docs/examples-guide.md"
       ],
       "rules": [
         "rules/common/README.md",
@@ -170,7 +173,8 @@
         "docs/catalog/languages/lua.md",
         "knowledge-bases/seeded/lua/docs/overview.md",
         "knowledge-bases/seeded/lua/docs/review-checklist.md",
-        "knowledge-bases/seeded/lua/docs/frameworks.md"
+        "knowledge-bases/seeded/lua/docs/frameworks.md",
+        "knowledge-bases/seeded/lua/docs/examples-guide.md"
       ],
       "rules": [
         "rules/common/README.md",
@@ -196,7 +200,7 @@
       "examples": [
         "knowledge-bases/seeded/lua/examples/01-neovim-plugin.md",
         "knowledge-bases/seeded/lua/examples/02-openresty-request-handler.md",
-        "knowledge-bases/seeded/lua/examples/03-löve-gameplay-module.md",
+        "knowledge-bases/seeded/lua/examples/03-l#U00f6ve-gameplay-module.md",
         "knowledge-bases/seeded/lua/examples/04-embedded-automation-script.md"
       ]
     },
@@ -217,7 +221,8 @@
         "docs/catalog/languages/powershell.md",
         "knowledge-bases/seeded/powershell/docs/overview.md",
         "knowledge-bases/seeded/powershell/docs/review-checklist.md",
-        "knowledge-bases/seeded/powershell/docs/frameworks.md"
+        "knowledge-bases/seeded/powershell/docs/frameworks.md",
+        "knowledge-bases/seeded/powershell/docs/examples-guide.md"
       ],
       "rules": [
         "rules/common/README.md",

@@ -1,6 +1,6 @@
 ---
 id: rules-powershell
-kind: rule
+kind: rule-entrypoint
 title: PowerShell Rules
 summary: Entry point for the seeded PowerShell baseline and language-specific rule set.
 status: stable
@@ -16,26 +16,22 @@ generated: false
 ---
 # PowerShell Rules
 
-## Promoted baseline guidance
+## Apply Order
 
-- `rules/common/coding-style.md`
-- `rules/common/patterns.md`
-- `rules/common/testing.md`
-- `rules/common/security.md`
-- `rules/common/hooks.md`
+1. start with `rules/common/`
+2. layer `rules/powershell/` for script ergonomics, safety, and Windows automation guidance
+3. consult `knowledge-bases/seeded/powershell/rules/powershell/` when the seeded pack has deeper runtime or host-specific cues
 
-## Promoted language-specific guidance
+## Focus Areas
 
-- `rules/powershell/coding-style.md`
-- `rules/powershell/patterns.md`
-- `rules/powershell/testing.md`
-- `rules/powershell/security.md`
-- `rules/powershell/hooks.md`
+- script safety, destructive-operation handling, and operator ergonomics
+- testing, validation, and cross-shell compatibility
+- Windows automation, module boundaries, and runtime-host behavior
 
-## Canonical seed source
+## Related Pack Assets
 
-- `knowledge-bases/seeded/powershell/rules/powershell/coding-style.md`
-- `knowledge-bases/seeded/powershell/rules/powershell/patterns.md`
-- `knowledge-bases/seeded/powershell/rules/powershell/testing.md`
-- `knowledge-bases/seeded/powershell/rules/powershell/security.md`
-- `knowledge-bases/seeded/powershell/rules/powershell/hooks.md`
+- `rules/common/`
+- `rules/powershell/`
+- `knowledge-bases/seeded/powershell/rules/powershell/`
+- `skills/powershell-engineering/SKILL.md`
+- `templates/workflows/implement-powershell-change.md`

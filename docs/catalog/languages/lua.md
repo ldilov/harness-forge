@@ -2,58 +2,32 @@
 id: language-pack-lua
 kind: language-pack
 title: Lua Language Pack
-summary: Seeded Lua pack for Neovim, OpenResty, LÖVE, and embedded scripting.
+summary: Enriched Lua pack with execution-grade docs, examples, rules, and workflow guidance.
 status: stable
 owner: core
-applies_to:
-  - codex
-  - claude-code
-  - cursor
-  - opencode
-languages:
-  - lua
 generated: false
 maturity: seeded
-targets:
-  - codex
-  - claude-code
-  - cursor
-  - opencode
 ---
 # Lua Language Pack
 
 ## Best fit
 
-Use this pack for general scripting, Neovim plugins, OpenResty request
-handling, LÖVE gameplay modules, and embedded automation.
+Use this pack when Lua dominates the task and the answer depends on runtime boundaries, framework behavior, validation, or packaging details.
 
 ## What ships
 
 - `knowledge-bases/seeded/lua/docs/overview.md`
-- `knowledge-bases/seeded/lua/docs/review-checklist.md`
 - `knowledge-bases/seeded/lua/docs/frameworks.md`
+- `knowledge-bases/seeded/lua/docs/examples-guide.md`
+- `knowledge-bases/seeded/lua/docs/review-checklist.md`
 - `knowledge-bases/seeded/lua/examples/`
-- `knowledge-bases/seeded/lua/rules/common/`
-- `knowledge-bases/seeded/lua/rules/lua/`
+- `rules/lua/`
+- `templates/workflows/implement-lua-change.md`
+- `skills/lua-engineering/SKILL.md`
 
-## Recommended tooling
+## What changed in the enrichment pass
 
-- Lua
-- LuaRocks
-- stylua
-- luacheck
-- busted
-
-## Common pitfalls
-
-- global state leakage
-- nil handling surprises
-- metatable overuse
-- unsafe shell invocation
-
-## Example scenarios
-
-- Neovim plugin
-- OpenResty request handler
-- LÖVE gameplay module
-- embedded automation script
+- placeholder-like summaries replaced with decision guidance
+- examples rewritten as task playbooks
+- review checklist made release-gate oriented
+- rules made operational instead of decorative

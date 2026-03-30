@@ -1,41 +1,31 @@
 ---
 id: rules-typescript
-kind: rule
-title: TypeScript Rules
-summary: Entry point for the seeded TypeScript baseline and language-specific rule set.
+kind: rule-entrypoint
+title: TypeScript Rules Enrichment
 status: stable
 owner: core
-applies_to:
-  - codex
-  - claude-code
-  - cursor
-  - opencode
-languages:
-  - typescript
 generated: false
 ---
-# TypeScript Rules
+# TypeScript Rules Enrichment
 
-## Promoted baseline guidance
+Use these promoted rules with the common baseline and the seeded knowledge pack.
 
-- `rules/common/coding-style.md`
-- `rules/common/patterns.md`
-- `rules/common/testing.md`
-- `rules/common/security.md`
-- `rules/common/hooks.md`
+## Apply Order
 
-## Promoted language-specific guidance
+1. start with `rules/common/` for cross-language safety, workflow, and validation defaults
+2. layer `rules/typescript/` for TypeScript-specific typing, module, and testing guidance
+3. consult `knowledge-bases/seeded/typescript/rules/typescript/` when the seeded pack has deeper examples or review cues
 
-- `rules/typescript/coding-style.md`
-- `rules/typescript/patterns.md`
-- `rules/typescript/testing.md`
-- `rules/typescript/security.md`
-- `rules/typescript/hooks.md`
+## Focus Areas
 
-## Canonical seed source
+- typing discipline, module boundaries, and public API changes
+- framework-aware testing, validation, and packaging behavior
+- Node.js, React, and Next.js execution details when they affect the task
 
-- `knowledge-bases/seeded/typescript/rules/typescript/coding-style.md`
-- `knowledge-bases/seeded/typescript/rules/typescript/patterns.md`
-- `knowledge-bases/seeded/typescript/rules/typescript/testing.md`
-- `knowledge-bases/seeded/typescript/rules/typescript/security.md`
-- `knowledge-bases/seeded/typescript/rules/typescript/hooks.md`
+## Related Pack Assets
+
+- `rules/common/`
+- `rules/typescript/`
+- `knowledge-bases/seeded/typescript/rules/typescript/`
+- `skills/typescript-engineering/SKILL.md`
+- `templates/workflows/implement-typescript-change.md`

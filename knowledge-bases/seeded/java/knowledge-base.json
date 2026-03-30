@@ -1,8 +1,37 @@
 {
-  "id": "java-knowledge-base",
   "language": "java",
-  "title": "Java",
-  "intended_use": "starter knowledge base for language rules, examples, hooks, and review guidance",
-  "includes_common_rules": true,
-  "seeded_from_existing_package": true
+  "title": "Java enrichment pack",
+  "version": 2,
+  "maturity": "seeded",
+  "notes": "Enriched execution-grade guidance replacing shallow placeholders. Uses currently referenced paths so existing skills and workflows can load it without structural changes.",
+  "primaryDocs": [
+    "docs/overview.md",
+    "docs/frameworks.md",
+    "docs/review-checklist.md",
+    "docs/examples-guide.md"
+  ],
+  "examples": [
+    "examples/01-spring-boot-rest-api.md",
+    "examples/02-event-consumer-service.md",
+    "examples/03-gradle-multi-module-backend.md",
+    "examples/04-library-module-with-strong-domain-tests.md"
+  ],
+  "sourceIndex": [
+    [
+      "Spring Boot reference",
+      "https://docs.spring.io/spring-boot/reference/index.html"
+    ],
+    [
+      "Spring Boot documentation overview",
+      "https://docs.spring.io/spring-boot/documentation.html"
+    ],
+    [
+      "JUnit 5 user guide",
+      "https://docs.junit.org/5.13.1/user-guide/index.html"
+    ],
+    [
+      "Gradle user manual",
+      "https://docs.gradle.org/current/userguide/userguide.html"
+    ]
+  ]
 }

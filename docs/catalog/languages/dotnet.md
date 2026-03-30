@@ -2,58 +2,32 @@
 id: language-pack-dotnet
 kind: language-pack
 title: .NET Language Pack
-summary: Seeded .NET pack for ASP.NET Core, worker, CLI, and library repos.
+summary: Enriched .NET pack with execution-grade docs, examples, rules, and workflow guidance.
 status: stable
 owner: core
-applies_to:
-  - codex
-  - claude-code
-  - cursor
-  - opencode
-languages:
-  - dotnet
 generated: false
 maturity: seeded
-targets:
-  - codex
-  - claude-code
-  - cursor
-  - opencode
 ---
 # .NET Language Pack
 
 ## Best fit
 
-Use this pack for backend services, APIs, worker processes, libraries, and CLI
-automation built on the modern .NET SDK.
+Use this pack when .NET dominates the task and the answer depends on runtime boundaries, framework behavior, validation, or packaging details.
 
 ## What ships
 
 - `knowledge-bases/seeded/dotnet/docs/overview.md`
-- `knowledge-bases/seeded/dotnet/docs/review-checklist.md`
 - `knowledge-bases/seeded/dotnet/docs/frameworks.md`
+- `knowledge-bases/seeded/dotnet/docs/examples-guide.md`
+- `knowledge-bases/seeded/dotnet/docs/review-checklist.md`
 - `knowledge-bases/seeded/dotnet/examples/`
-- `knowledge-bases/seeded/dotnet/rules/common/`
-- `knowledge-bases/seeded/dotnet/rules/dotnet/`
+- `rules/dotnet/`
+- `templates/workflows/implement-dotnet-change.md`
+- `skills/dotnet-engineering/SKILL.md`
 
-## Recommended tooling
+## What changed in the enrichment pass
 
-- dotnet SDK
-- dotnet format
-- xUnit
-- FluentAssertions
-- Testcontainers
-
-## Common pitfalls
-
-- sync-over-async
-- missing `CancellationToken` flow
-- static mutable state
-- secrets leaking through config defaults
-
-## Example scenarios
-
-- ASP.NET Core CRUD API
-- background worker with queue processing
-- shared domain library
-- CLI automation tool
+- placeholder-like summaries replaced with decision guidance
+- examples rewritten as task playbooks
+- review checklist made release-gate oriented
+- rules made operational instead of decorative

@@ -29,8 +29,9 @@ Use this skill when the repository is Lua-first and the safest next move depends
 - `templates/workflows/implement-lua-change.md`
 - `knowledge-bases/seeded/lua/docs/overview.md`
 - `knowledge-bases/seeded/lua/docs/frameworks.md`
+- `knowledge-bases/seeded/lua/docs/examples-guide.md`
+- the closest matching file in `knowledge-bases/seeded/lua/examples/`
 - `knowledge-bases/seeded/lua/docs/review-checklist.md`
-- `knowledge-bases/seeded/lua/examples/`
 - `skills/lua-engineering/references/`
 
 ## Execution Contract

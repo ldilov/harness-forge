@@ -58,8 +58,11 @@ and modernization guidance sourced into project-owned `references/` directories.
 - `skills/release-readiness/`
 - `skills/architecture-decision-records/`
 - `skills/token-budget-optimizer/`
+- `skills/madr-decision-log/`
 
 ## Workload-specialized skills
+
+`madr-decision-log` complements `architecture-decision-records`: the ADR skill focuses on decision quality and durable rationale, while the MADR skill owns file-oriented repository workflows such as `docs/decisions/`, ADR indexing, validation, and supersession maintenance.
 
 - `skills/incident-triage/`
 - `skills/dependency-upgrade-safety/`

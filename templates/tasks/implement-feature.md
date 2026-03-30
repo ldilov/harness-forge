@@ -79,7 +79,7 @@ Use this template when adding a new feature or major capability.
 
 ## Suggested Workflow
 
-Use `research-plan-implement-validate`.
+Use `implement-change` when you want the seven-question technology-agnostic path, or `research-plan-implement-validate` when the staged discovery flow is enough.
 
 ## Related Commands
 

@@ -1,41 +1,29 @@
 ---
 id: rules-java
-kind: rule
+kind: rule-entrypoint
 title: Java Rules
-summary: Entry point for the seeded Java baseline and language-specific rule set.
 status: stable
 owner: core
-applies_to:
-  - codex
-  - claude-code
-  - cursor
-  - opencode
-languages:
-  - java
 generated: false
 ---
 # Java Rules
 
-## Promoted baseline guidance
+## Apply Order
 
-- `rules/common/coding-style.md`
-- `rules/common/patterns.md`
-- `rules/common/testing.md`
-- `rules/common/security.md`
-- `rules/common/hooks.md`
+1. start with `rules/common/`
+2. layer `rules/java/` for package layout, API, testing, and runtime behavior guidance
+3. consult `knowledge-bases/seeded/java/rules/java/` when the seeded pack has deeper framework or review cues
 
-## Promoted language-specific guidance
+## Focus Areas
 
-- `rules/java/coding-style.md`
-- `rules/java/patterns.md`
-- `rules/java/testing.md`
-- `rules/java/security.md`
-- `rules/java/hooks.md`
+- package boundaries, API shape, and build-safe changes
+- testing, dependency management, and runtime configuration
+- service and library concerns when framework behavior matters
 
-## Canonical seed source
+## Related Pack Assets
 
-- `knowledge-bases/seeded/java/rules/java/coding-style.md`
-- `knowledge-bases/seeded/java/rules/java/patterns.md`
-- `knowledge-bases/seeded/java/rules/java/testing.md`
-- `knowledge-bases/seeded/java/rules/java/security.md`
-- `knowledge-bases/seeded/java/rules/java/hooks.md`
+- `rules/common/`
+- `rules/java/`
+- `knowledge-bases/seeded/java/rules/java/`
+- `skills/java-engineering/SKILL.md`
+- `templates/workflows/implement-java-change.md`

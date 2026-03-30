@@ -1,19 +1,29 @@
-# Python rules
+---
+id: rules-python
+kind: rule-entrypoint
+title: Python Rules
+status: stable
+owner: core
+generated: false
+---
+# Python Rules
 
 ## Apply Order
 
 1. start with `rules/common/`
-2. layer `rules/python/` on top for language-specific implementation choices
-3. consult the structured docs and examples before deviating from the promoted patterns
+2. layer `rules/python/` for Pythonic typing, packaging, and test strategy guidance
+3. consult `knowledge-bases/structured/python/docs/` and `knowledge-bases/structured/python/examples/` before deviating from the promoted patterns
 
 ## Focus Areas
 
-- typing, packaging, and module boundaries
-- testing, validation, and dependency management
-- framework overlays such as FastAPI and Django when relevant
+- typing, module boundaries, and dependency management
+- test strategy, validation, and framework-safe changes
+- automation, API, and data-workflow constraints when they affect design
 
 ## Related Pack Assets
 
+- `rules/common/`
+- `rules/python/`
 - `knowledge-bases/structured/python/docs/`
 - `knowledge-bases/structured/python/examples/`
 - `skills/python-engineering/SKILL.md`

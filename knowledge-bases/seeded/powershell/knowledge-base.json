@@ -1,8 +1,41 @@
 {
-  "id": "powershell-knowledge-base",
   "language": "powershell",
-  "title": "PowerShell",
-  "intended_use": "starter knowledge base for language rules, examples, hooks, and review guidance",
-  "includes_common_rules": true,
-  "seeded_from_existing_package": false
+  "title": "PowerShell enrichment pack",
+  "version": 2,
+  "maturity": "seeded",
+  "notes": "Enriched execution-grade guidance replacing shallow placeholders. Uses currently referenced paths so existing skills and workflows can load it without structural changes.",
+  "primaryDocs": [
+    "docs/overview.md",
+    "docs/frameworks.md",
+    "docs/review-checklist.md",
+    "docs/examples-guide.md"
+  ],
+  "examples": [
+    "examples/01-idempotent-admin-script.md",
+    "examples/02-module-command-surface.md",
+    "examples/03-pipeline-aware-data-tool.md",
+    "examples/04-ci-automation-script.md"
+  ],
+  "sourceIndex": [
+    [
+      "PowerShell docs home",
+      "https://learn.microsoft.com/en-us/powershell/"
+    ],
+    [
+      "What is new in PowerShell 7.5",
+      "https://learn.microsoft.com/en-us/powershell/scripting/whats-new/what-s-new-in-powershell-75?view=powershell-7.5"
+    ],
+    [
+      "Install PowerShell on Windows",
+      "https://learn.microsoft.com/en-us/powershell/scripting/install/install-powershell-on-windows?view=powershell-7.5"
+    ],
+    [
+      "Pester installation",
+      "https://pester.dev/docs/introduction/installation"
+    ],
+    [
+      "Pester file placement and naming",
+      "https://pester.dev/docs/usage/file-placement-and-naming"
+    ]
+  ]
 }

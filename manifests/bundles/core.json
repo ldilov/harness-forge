@@ -333,7 +333,8 @@
         "skills/db-migration-review",
         "skills/pr-triage-and-summary",
         "skills/observability-setup",
-        "skills/repo-modernization"
+        "skills/repo-modernization",
+        "skills/madr-decision-log"
       ],
       "targets": [
         "codex",

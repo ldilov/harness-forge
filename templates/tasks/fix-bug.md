@@ -78,7 +78,7 @@ identified and needs a verified fix.
 
 ## Suggested Workflow
 
-Use `triage-reproduce-fix-verify`.
+Use `triage-reproduce-fix-verify` for the narrow bug loop, then `implement-change` when the fix expands into a broader correctness or rollout change.
 
 ## Related Commands
 

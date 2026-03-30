@@ -79,7 +79,7 @@ export interface FlowArtifactManifest {
 
 export interface EnhancedSkillImportInventoryEntry {
   resourcePath: string;
-  resourceType: "skill" | "wrapper" | "reference" | "provenance";
+  resourceType: "skill" | "wrapper" | "reference" | "provenance" | "script";
   skillId: string | null;
   existingProjectSurface: string | null;
   decision: "merge" | "promote" | "provenance-only" | "unchanged" | "excluded";

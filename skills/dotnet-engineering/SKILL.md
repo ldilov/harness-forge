@@ -29,8 +29,9 @@ Use this skill when the repository or task is clearly .NET-first and the best ne
 - `templates/workflows/implement-dotnet-change.md`
 - `knowledge-bases/seeded/dotnet/docs/overview.md`
 - `knowledge-bases/seeded/dotnet/docs/frameworks.md`
+- `knowledge-bases/seeded/dotnet/docs/examples-guide.md`
+- the closest matching file in `knowledge-bases/seeded/dotnet/examples/`
 - `knowledge-bases/seeded/dotnet/docs/review-checklist.md`
-- `knowledge-bases/seeded/dotnet/examples/`
 - `skills/dotnet-engineering/references/`
 
 ## Execution Contract

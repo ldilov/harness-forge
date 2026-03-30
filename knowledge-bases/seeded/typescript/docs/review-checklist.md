@@ -1,27 +1,45 @@
-# TypeScript Review Checklist
+# TypeScript review checklist
 
-Use this when reviewing rules, examples, generated output, or agent guidance for TypeScript.
+Treat this as a release gate for changes dominated by TypeScript.
 
-## Design
+## 1. Orientation
 
-- Are boundaries explicit?
-- Is mutable shared state minimized?
-- Are framework and runtime concerns separated from domain logic?
+- Dominant runtime and host are known
+- Entry points are identified
+- Public contracts or exported commands are listed
+- The closest scenario file from `examples/` was used
 
-## Testing
+## 2. Boundary safety
 
-- Are tests behavior-focused?
-- Are failure paths covered?
-- Are integration boundaries tested where silent breakage is likely?
+- External inputs are validated
+- Serialization or deserialization seams are explicit
+- Config/env/file access is bounded and documented
+- Failure modes are safe and debuggable
 
-## Security
+## 3. Code quality
 
-- Are secrets kept out of source and logs?
-- Is untrusted input validated at the edge?
-- Are risky runtime features called out and constrained?
+- Business rules are separated from framework or host glue
+- State ownership is obvious
+- Long functions or giant modules were not expanded further
+- Public names and errors describe intent clearly
 
-## Documentation quality
+## 4. Test and verification
+- typecheck
+- unit tests
+- lint
+- runtime smoke
+- bundle/export validation
 
-- Do examples compile or run conceptually without missing context?
-- Are framework-specific assumptions clearly labeled?
-- Does the content distinguish rules from examples from optional advice?
+## 5. Operational readiness
+
+- logging/telemetry impact understood
+- retries or background work are bounded
+- compatibility or migration notes are captured
+- rollback or containment path is obvious
+
+## 6. Stop-ship conditions
+
+- input crosses a trust boundary without validation
+- public API or command behavior changed silently
+- tests cover only internals and not the changed seam
+- stateful behavior changed without documenting operational impact

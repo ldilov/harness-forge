@@ -1,0 +1,3 @@
+interface:
+  display_name: "MADR Decision Log"
+  short_description: "Create, review, and maintain markdown architectural decision records"

@@ -19,7 +19,7 @@ describe("enhanced wrapper alignment scaffolding", () => {
     };
 
     const wrapperEntries = inventory.entries.filter((entry) => entry.resourceType === "wrapper");
-    expect(wrapperEntries).toHaveLength(10);
+    expect(wrapperEntries).toHaveLength(11);
 
     for (const entry of wrapperEntries) {
       expect(entry.skillId).toBeTruthy();

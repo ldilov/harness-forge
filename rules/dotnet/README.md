@@ -1,41 +1,29 @@
 ---
 id: rules-dotnet
-kind: rule
+kind: rule-entrypoint
 title: .NET Rules
-summary: Entry point for the seeded .NET baseline and language-specific rule set.
 status: stable
 owner: core
-applies_to:
-  - codex
-  - claude-code
-  - cursor
-  - opencode
-languages:
-  - dotnet
 generated: false
 ---
 # .NET Rules
 
-## Promoted baseline guidance
+## Apply Order
 
-- `rules/common/coding-style.md`
-- `rules/common/patterns.md`
-- `rules/common/testing.md`
-- `rules/common/security.md`
-- `rules/common/hooks.md`
+1. start with `rules/common/`
+2. layer `rules/dotnet/` for solution layout, hosting, dependency injection, and testing guidance
+3. consult `knowledge-bases/seeded/dotnet/rules/dotnet/` when the seeded pack has deeper examples or framework cues
 
-## Promoted language-specific guidance
+## Focus Areas
 
-- `rules/dotnet/coding-style.md`
-- `rules/dotnet/patterns.md`
-- `rules/dotnet/testing.md`
-- `rules/dotnet/security.md`
-- `rules/dotnet/hooks.md`
+- solution structure, dependency flow, and public contract safety
+- ASP.NET Core, worker, and library validation paths
+- runtime configuration, security, and packaging expectations
 
-## Canonical seed source
+## Related Pack Assets
 
-- `knowledge-bases/seeded/dotnet/rules/dotnet/coding-style.md`
-- `knowledge-bases/seeded/dotnet/rules/dotnet/patterns.md`
-- `knowledge-bases/seeded/dotnet/rules/dotnet/testing.md`
-- `knowledge-bases/seeded/dotnet/rules/dotnet/security.md`
-- `knowledge-bases/seeded/dotnet/rules/dotnet/hooks.md`
+- `rules/common/`
+- `rules/dotnet/`
+- `knowledge-bases/seeded/dotnet/rules/dotnet/`
+- `skills/dotnet-engineering/SKILL.md`
+- `templates/workflows/implement-dotnet-change.md`

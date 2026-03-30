@@ -29,7 +29,7 @@ describe("enhanced skill import inventory", () => {
 
     for (const entry of inventory.entries) {
       expect(entry.resourcePath).toBeTruthy();
-      expect(entry.resourceType).toMatch(/^(skill|wrapper|reference|provenance)$/);
+      expect(entry.resourceType).toMatch(/^(skill|wrapper|reference|provenance|script)$/);
       expect(entry.decision).toMatch(/^(merge|promote|provenance-only|unchanged|excluded)$/);
       expect(entry.decisionReason.length).toBeGreaterThan(20);
       expect(entry.destinationPath).toBeTruthy();

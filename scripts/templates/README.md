@@ -1,6 +1,7 @@
 # Template Validator Bundle
 
-Harness Forge ships the full task and workflow validator bundle inside `scripts/templates/`.
+Harness Forge ships the full task and workflow validator bundle inside
+`scripts/templates/`.
 
 ## Included assets
 
@@ -12,6 +13,30 @@ Harness Forge ships the full task and workflow validator bundle inside `scripts/
 
 - `templates/tasks/*.md`
 - `templates/workflows/*.md`
+
+## Universal template families
+
+Harness Forge also ships technology-agnostic templates built around seven core
+questions that every change should answer:
+
+1. what is changing?
+2. why is it changing?
+3. what must remain true?
+4. what could break?
+5. how will we know it works?
+6. how do we roll it back?
+7. what should future engineers remember?
+
+Recommended starting points:
+
+- `templates/tasks/change-brief.md`
+- `templates/tasks/correctness-contract.md`
+- `templates/tasks/verification-matrix.md`
+- `templates/tasks/release-gate-report.md`
+- `templates/tasks/bug-repro-card.md`
+- `templates/tasks/research-to-implementation-brief.md`
+- `templates/tasks/migration-plan.md`
+- `templates/workflows/implement-change.md`
 
 ## Usage
 

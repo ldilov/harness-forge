@@ -223,7 +223,17 @@
     "targets/claude-code/runtime/.claude/settings.json",
     "targets/codex/runtime/.codex/config.toml",
     "targets/cursor/adapter.json",
-    "targets/opencode/adapter.json"
+    "targets/opencode/adapter.json",
+    ".agents/skills/madr-decision-log/SKILL.md",
+    ".agents/skills/madr-decision-log/agents/openai.yaml",
+    ".agents/skills/madr-decision-log/agents/claude.yaml",
+    "skills/madr-decision-log/SKILL.md",
+    "skills/madr-decision-log/references/adr-template.md",
+    "skills/madr-decision-log/references/madr-reference.md",
+    "skills/madr-decision-log/references/review-checklist.md",
+    "skills/madr-decision-log/scripts/new_adr.py",
+    "skills/madr-decision-log/scripts/validate_madr.py",
+    "skills/madr-decision-log/scripts/build_log.py"
   ],
   "groups": [
     {

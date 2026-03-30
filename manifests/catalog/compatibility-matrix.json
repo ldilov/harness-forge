@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-29T00:26:01.295Z",
+  "generatedAt": "2026-03-30T21:02:27.413Z",
   "entries": [
     {
       "subjectType": "language",
@@ -1045,6 +1045,14 @@
       "subjectId": "claude-code",
       "relationType": "supports",
       "relatedType": "skill",
+      "relatedId": "madr-decision-log",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "skill",
       "relatedId": "observability-and-eval",
       "supportLevel": "full"
     },
@@ -1881,6 +1889,14 @@
       "relationType": "supports",
       "relatedType": "skill",
       "relatedId": "lua-engineering",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "madr-decision-log",
       "supportLevel": "full"
     },
     {
@@ -2782,6 +2798,15 @@
       "relatedId": "lua-engineering",
       "supportLevel": "partial",
       "notes": "Cursor only provides partial skill support for lua-engineering."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "madr-decision-log",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial skill support for madr-decision-log."
     },
     {
       "subjectType": "target",
@@ -3718,6 +3743,15 @@
       "subjectId": "opencode",
       "relationType": "supports",
       "relatedType": "skill",
+      "relatedId": "madr-decision-log",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial skill support for madr-decision-log."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "skill",
       "relatedId": "observability-and-eval",
       "supportLevel": "partial",
       "notes": "OpenCode only provides partial skill support for observability-and-eval."
@@ -3982,6 +4016,40 @@
       "relatedId": "typescript-engineering",
       "supportLevel": "partial",
       "notes": "OpenCode only provides partial skill support for typescript-engineering."
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "claude-code",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "codex",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "cursor",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial workflow support for implement-change."
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "opencode",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial workflow support for implement-change."
     },
     {
       "subjectType": "workflow",
