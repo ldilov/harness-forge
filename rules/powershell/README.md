@@ -1,6 +1,6 @@
 ---
 id: rules-powershell
-kind: rule-entrypoint
+kind: rule
 title: PowerShell Rules
 summary: Entry point for the seeded PowerShell baseline and language-specific rule set.
 status: stable

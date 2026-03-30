@@ -5,6 +5,13 @@ title: TypeScript Language Pack
 summary: Enriched TypeScript pack with execution-grade docs, examples, rules, and workflow guidance.
 status: stable
 owner: core
+applies_to:
+  - codex
+  - claude-code
+  - cursor
+  - opencode
+languages:
+  - typescript
 generated: false
 maturity: seeded
 ---

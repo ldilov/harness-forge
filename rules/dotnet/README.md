@@ -1,9 +1,17 @@
 ---
 id: rules-dotnet
-kind: rule-entrypoint
+kind: rule
 title: .NET Rules
+summary: Entry point for the seeded .NET baseline and language-specific rule set.
 status: stable
 owner: core
+applies_to:
+  - codex
+  - claude-code
+  - cursor
+  - opencode
+languages:
+  - dotnet
 generated: false
 ---
 # .NET Rules

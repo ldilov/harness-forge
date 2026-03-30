@@ -5,6 +5,13 @@ title: PowerShell Language Pack
 summary: Enriched PowerShell pack with execution-grade docs, examples, rules, and workflow guidance.
 status: stable
 owner: core
+applies_to:
+  - codex
+  - claude-code
+  - cursor
+  - opencode
+languages:
+  - powershell
 generated: false
 maturity: seeded
 ---

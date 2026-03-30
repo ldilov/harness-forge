@@ -5,6 +5,13 @@ title: Lua Language Pack
 summary: Enriched Lua pack with execution-grade docs, examples, rules, and workflow guidance.
 status: stable
 owner: core
+applies_to:
+  - codex
+  - claude-code
+  - cursor
+  - opencode
+languages:
+  - lua
 generated: false
 maturity: seeded
 ---

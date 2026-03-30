@@ -1,9 +1,17 @@
 ---
 id: rules-java
-kind: rule-entrypoint
+kind: rule
 title: Java Rules
+summary: Entry point for the seeded Java baseline and language-specific rule set.
 status: stable
 owner: core
+applies_to:
+  - codex
+  - claude-code
+  - cursor
+  - opencode
+languages:
+  - java
 generated: false
 ---
 # Java Rules

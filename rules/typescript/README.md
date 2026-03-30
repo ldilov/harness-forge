@@ -1,9 +1,17 @@
 ---
 id: rules-typescript
-kind: rule-entrypoint
+kind: rule
 title: TypeScript Rules Enrichment
+summary: Entry point for the seeded TypeScript baseline and language-specific rule set.
 status: stable
 owner: core
+applies_to:
+  - codex
+  - claude-code
+  - cursor
+  - opencode
+languages:
+  - typescript
 generated: false
 ---
 # TypeScript Rules Enrichment

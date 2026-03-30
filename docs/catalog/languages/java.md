@@ -5,6 +5,13 @@ title: Java Language Pack
 summary: Enriched Java pack with execution-grade docs, examples, rules, and workflow guidance.
 status: stable
 owner: core
+applies_to:
+  - codex
+  - claude-code
+  - cursor
+  - opencode
+languages:
+  - java
 generated: false
 maturity: seeded
 ---

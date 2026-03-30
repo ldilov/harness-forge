@@ -1,9 +1,17 @@
 ---
 id: rules-python
-kind: rule-entrypoint
+kind: rule
 title: Python Rules
+summary: Entry point for the structured Python baseline and language-specific rule set.
 status: stable
 owner: core
+applies_to:
+  - codex
+  - claude-code
+  - cursor
+  - opencode
+languages:
+  - python
 generated: false
 ---
 # Python Rules

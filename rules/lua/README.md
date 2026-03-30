@@ -1,9 +1,17 @@
 ---
 id: rules-lua
-kind: rule-entrypoint
+kind: rule
 title: Lua Rules
+summary: Entry point for the seeded Lua baseline and language-specific rule set.
 status: stable
 owner: core
+applies_to:
+  - codex
+  - claude-code
+  - cursor
+  - opencode
+languages:
+  - lua
 generated: false
 ---
 # Lua Rules

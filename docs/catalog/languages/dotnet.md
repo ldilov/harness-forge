@@ -5,6 +5,13 @@ title: .NET Language Pack
 summary: Enriched .NET pack with execution-grade docs, examples, rules, and workflow guidance.
 status: stable
 owner: core
+applies_to:
+  - codex
+  - claude-code
+  - cursor
+  - opencode
+languages:
+  - dotnet
 generated: false
 maturity: seeded
 ---
