@@ -16,7 +16,8 @@ generated: false
 ---
 # Common Rules
 
-These files are the promoted shared baseline used by the seeded language packs.
+These files are the canonical authored shared baseline for Harness Forge rule
+surfaces.
 
 ## Included guidance
 
@@ -30,8 +31,10 @@ These files are the promoted shared baseline used by the seeded language packs.
 - `rules/common/security.md`
 - `rules/common/testing.md`
 
-## Canonical seed source
+## Canonical ownership
 
-The promoted common rules are copied from the seeded archives under
-`knowledge-bases/seeded/*/rules/common/` so assistants can consume them from a
-stable top-level path while the original source remains packaged and traceable.
+`rules/common/` is the single authored runtime-rule source for shared
+behavioral guidance. Matching files under
+`knowledge-bases/seeded/*/rules/common/` remain packaged for provenance and
+install compatibility, but they are derived archive surfaces rather than a
+second authored truth.

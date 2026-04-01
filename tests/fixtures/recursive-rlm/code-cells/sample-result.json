@@ -1,0 +1,8 @@
+{
+  "cellId": "CELL-001",
+  "verdict": "completed",
+  "summary": "service-count=1",
+  "outputRefs": ["code-cells/CELL-001/stdout.log"],
+  "diagnostics": [],
+  "completedAt": "2026-04-01T10:00:00.000Z"
+}

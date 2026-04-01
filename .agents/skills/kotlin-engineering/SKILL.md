@@ -1,21 +1,27 @@
 ---
 name: kotlin-engineering
-description: Auto-discoverable wrapper for `.hforge/library/skills/kotlin-engineering/SKILL.md`.
+description: Discovery wrapper for the canonical Kotlin engineering skill.
+generated: true
+canonical_source: skills/kotlin-engineering/SKILL.md
 ---
 
 # Kotlin Engineering
 
 ## Activation
 
-- trigger when Kotlin source or Gradle Kotlin DSL dominates the task
+- Trigger when Kotlin application, server, or multiplatform files dominate the task.
 
 ## Use These Surfaces
 
-- `.hforge/library/skills/kotlin-engineering/SKILL.md`
-- `.hforge/library/rules/common/`
-- `.hforge/library/rules/kotlin/`
-- `.hforge/templates/workflows/implement-kotlin-change.md`
+- .hforge/library/skills/kotlin-engineering/SKILL.md
+- .hforge/library/docs/authoring/enhanced-skill-import.md
+- RESEARCH-SOURCES.md
+- VALIDATION.md
+- .hforge/library/rules/common/
+- .hforge/library/rules/kotlin
+- .hforge/library/knowledge/structured/kotlin/
+- .hforge/templates/workflows/implement-kotlin-change.md
 
-## Expected Output
+## Operating Rule
 
-- a Kotlin-specific implementation and validation path grounded in the canonical skill
+Treat this wrapper as discovery-only. Load the canonical execution surface in .hforge/library/skills/kotlin-engineering/SKILL.md first, then pull deeper rules, knowledge, workflow, and provenance context only as needed to avoid duplicating pack guidance in the active agent context.

@@ -1,5 +1,6 @@
 import type { RecursiveExecutionPolicy } from "../../domain/recursive/execution-policy.js";
 import type { RecursiveLanguageCapabilities } from "../../domain/recursive/language-capabilities.js";
+import type { RecursiveWorkingMemory } from "../../domain/recursive/memory.js";
 import type { RecursiveSession, RecursiveSessionStatus } from "../../domain/recursive/session.js";
 import type { RecursiveSessionSummary } from "../../domain/recursive/session-summary.js";
 import { createDefaultRecursiveBudgetPolicy } from "../../domain/recursive/budget.js";
@@ -14,6 +15,7 @@ import {
 } from "../../infrastructure/recursive/session-store.js";
 import { persistTaskRecursiveLinkage } from "../runtime/task-runtime-store.js";
 import { buildRecursiveEnvironment } from "./build-environment.js";
+import { buildRecursiveRootFrame } from "./build-root-frame.js";
 import { deriveRecursiveLanguageCapabilities } from "./derive-language-capabilities.js";
 
 export interface PlanRecursiveTaskInput {
@@ -78,12 +80,34 @@ function createExecutionPolicy(session: RecursiveSession): RecursiveExecutionPol
     policyId: session.budgetPolicy.policyId,
     sessionId: session.sessionId,
     isolationLevel: session.budgetPolicy.isolationLevel,
+    policyLevel: "typed-rlm",
     allowStructuredRun: true,
+    allowTypedActions: true,
+    allowCodeCells: session.budgetPolicy.maxCodeCells > 0,
+    allowMetaOps: true,
+    allowPromotions: true,
     allowedInputs: ["file", "stdin"],
     restrictedBehaviors: ["write-product-code", "network"],
+    allowedOperationFamilies: [
+      "read-handle",
+      "update-memory",
+      "checkpoint",
+      "spawn-subcall",
+      "run-code-cell",
+      "propose-promotion",
+      "propose-meta-op",
+      "finalize-output"
+    ],
+    allowedLanguages: ["javascript", "typescript", "python"],
+    allowedWriteScopes: session.budgetPolicy.allowedWriteScopes,
+    networkPosture: session.budgetPolicy.allowNetwork ? "restricted-network" : "offline",
+    stopConditions: session.budgetPolicy.stopConditions,
     budgetSummary: {
       maxDurationMs: session.budgetPolicy.maxDurationMs,
       maxRuns: 10,
+      maxIterations: session.budgetPolicy.maxIterations,
+      maxSubcalls: session.budgetPolicy.maxSubcalls,
+      maxCodeCells: session.budgetPolicy.maxCodeCells,
       notes: "Structured recursive analysis remains session-scoped, read-oriented, and bounded by the recursive budget posture."
     },
     createdAt: session.createdAt,
@@ -112,6 +136,24 @@ export async function planRecursiveTask(input: PlanRecursiveTaskInput): Promise<
     taskId,
     rootObjective: input.rootObjective
   });
+  const memory: RecursiveWorkingMemory = {
+    memoryId: `${sessionId}-memory`,
+    sessionId,
+    taskId,
+    currentObjective: input.rootObjective,
+    currentPlan: ["Review the linked runtime handles.", "Decide whether deeper recursive work is warranted."],
+    filesInFocus: environment.handles
+      .filter((handle) => handle.handleType === "task-artifact" || handle.handleType === "repo-file")
+      .map((handle) => handle.targetRef),
+    confirmedFacts: [],
+    inferredFacts: [],
+    blockers: [],
+    openQuestions: ["What evidence is still missing before we escalate further?"],
+    recentFailedAttempts: [],
+    scratchRefs: [],
+    nextStep: "Inspect the linked task and shared-runtime artifacts.",
+    updatedAt: timestamp
+  };
 
   const session: RecursiveSession = {
     sessionId,
@@ -123,36 +165,39 @@ export async function planRecursiveTask(input: PlanRecursiveTaskInput): Promise<
     budgetPolicy,
     handles: environment.handles,
     tools: environment.tools,
-    promotionState: "draft-only"
+    promotionState: "draft-only",
+    policyRef: `.hforge/runtime/recursive/sessions/${sessionId}/execution-policy.json`,
+    capabilityViewRef: `.hforge/runtime/recursive/sessions/${sessionId}/capabilities.json`,
+    memoryRef: `.hforge/runtime/recursive/sessions/${sessionId}/memory.json`,
+    summaryRef: `.hforge/runtime/recursive/sessions/${sessionId}/summary.json`,
+    rootFrameRef: `.hforge/runtime/recursive/sessions/${sessionId}/root-frame.json`,
+    iterationCount: 0,
+    subcallCount: 0,
+    codeCellCount: 0,
+    checkpointCount: 0
   };
   const summary = createSummary(session);
+  const executionPolicy = createExecutionPolicy(session);
+  const rootFrame = buildRecursiveRootFrame({
+    session,
+    policy: executionPolicy,
+    memory,
+    summary
+  });
   const bundle: RecursiveSessionBundle = {
     session,
-    executionPolicy: createExecutionPolicy(session),
+    executionPolicy,
     capabilities: await createSessionCapabilities(input.workspaceRoot),
-    memory: {
-      sessionId,
-      taskId,
-      currentObjective: input.rootObjective,
-      currentPlan: ["Review the linked runtime handles.", "Decide whether deeper recursive work is warranted."],
-      filesInFocus: environment.handles
-        .filter((handle) => handle.handleType === "task-artifact" || handle.handleType === "repo-file")
-        .map((handle) => handle.targetRef),
-      confirmedFacts: [],
-      inferredFacts: [],
-      blockers: [],
-      openQuestions: ["What evidence is still missing before we escalate further?"],
-      recentFailedAttempts: [],
-      nextStep: "Inspect the linked task and shared-runtime artifacts.",
-      lastUpdated: timestamp
-    },
+    memory,
     scratch: {
       sessionId,
       updatedAt: timestamp,
       notes: []
     },
     calls: [],
-    summary
+    summary,
+    rootFrame,
+    handleInventory: environment.handles
   };
 
   const artifactPaths = await writeRecursiveSessionBundle(input.workspaceRoot, bundle);

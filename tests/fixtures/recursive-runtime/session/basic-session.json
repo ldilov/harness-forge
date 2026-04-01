@@ -10,13 +10,16 @@
     "maxDepth": 2,
     "maxIterations": 6,
     "maxSubcalls": 12,
+    "maxCodeCells": 2,
     "maxBatchWidth": 4,
     "maxDurationMs": 300000,
     "maxToolReads": 40,
     "allowWritesToScratchOnly": true,
     "allowNetwork": false,
     "sandboxMode": "disabled",
-    "isolationLevel": "read-only-inspection"
+    "isolationLevel": "read-only-inspection",
+    "allowedWriteScopes": ["scratch", "proposal-artifacts"],
+    "stopConditions": ["budget exhausted", "operator finalized output", "policy violation"]
   },
   "handles": [
     {
@@ -35,5 +38,13 @@
     "session.write-scratch",
     "session.append-trace"
   ],
-  "promotionState": "draft-only"
+  "promotionState": "draft-only",
+  "policyRef": ".hforge/runtime/recursive/sessions/RS-001/execution-policy.json",
+  "memoryRef": ".hforge/runtime/recursive/sessions/RS-001/memory.json",
+  "summaryRef": ".hforge/runtime/recursive/sessions/RS-001/session-summary.json",
+  "rootFrameRef": ".hforge/runtime/recursive/sessions/RS-001/root-frame.json",
+  "iterationCount": 0,
+  "subcallCount": 0,
+  "codeCellCount": 0,
+  "checkpointCount": 0
 }

@@ -44,6 +44,7 @@
         "commands/hforge-init.md",
         "commands/hforge-recommend.md",
         "commands/hforge-recursive.md",
+        "commands/hforge-recursive-investigate.md",
         "commands/hforge-refresh.md",
         "commands/hforge-review.md",
         "commands/hforge-status.md",

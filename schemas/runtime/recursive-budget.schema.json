@@ -9,6 +9,7 @@
     "maxDepth",
     "maxIterations",
     "maxSubcalls",
+    "maxCodeCells",
     "maxBatchWidth",
     "maxDurationMs",
     "maxToolReads",
@@ -22,6 +23,7 @@
     "maxDepth": { "type": "integer", "minimum": 0 },
     "maxIterations": { "type": "integer", "minimum": 1 },
     "maxSubcalls": { "type": "integer", "minimum": 0 },
+    "maxCodeCells": { "type": "integer", "minimum": 0 },
     "maxBatchWidth": { "type": "integer", "minimum": 1 },
     "maxDurationMs": { "type": "integer", "minimum": 1 },
     "maxTokensApprox": { "type": "integer", "minimum": 1 },
@@ -35,6 +37,14 @@
     "isolationLevel": {
       "type": "string",
       "enum": ["metadata-only", "read-only-inspection", "read-only-repl", "isolated-execution"]
+    },
+    "allowedWriteScopes": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "stopConditions": {
+      "type": "array",
+      "items": { "type": "string" }
     }
   }
 }

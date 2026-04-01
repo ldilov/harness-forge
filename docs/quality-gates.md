@@ -43,6 +43,7 @@ That path adds:
 - content metadata validation
 - seeded knowledge coverage
 - generated sync validation
+- context-surface dedup validation
 - package-surface validation
 - benchmark recommendation checks
 - docs and command alignment

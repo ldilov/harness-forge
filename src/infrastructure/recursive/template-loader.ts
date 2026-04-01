@@ -18,6 +18,16 @@ export async function loadRecursiveTemplateRegistry(workspaceRoot: string): Prom
 
   return {
     version: 1,
-    entries: []
+    entries: [
+      {
+        id: "typed-rlm-action-bundle",
+        kind: "final-output",
+        file: "templates/recursive/typed-rlm-action-bundle.json",
+        format: "json",
+        scope: "session",
+        description: "Structured bundle template for environment-first recursive execution.",
+        variables: ["sessionId", "iterationId", "intent", "actions"]
+      }
+    ]
   };
 }

@@ -26,14 +26,15 @@ In runtimes that support markdown command entrypoints, Harness Forge can also
 be promoted through `/hforge-init`, `/hforge-analyze`, `/hforge-review`,
 `/hforge-refresh`, `/hforge-decide`, `/hforge-status`, `/hforge-commands`,
 `/hforge-recommend`, `/hforge-cartograph`, `/hforge-task`,
-`/hforge-recursive`, and `/hforge-update`.
+`/hforge-recursive`, `/hforge-recursive-investigate`, and `/hforge-update`.
 
 Those commands are backed by `commands/hforge-init.md`,
 `commands/hforge-analyze.md`, `commands/hforge-review.md`,
 `commands/hforge-refresh.md`, `commands/hforge-decide.md`,
 `commands/hforge-status.md`, `commands/hforge-commands.md`,
 `commands/hforge-recommend.md`, `commands/hforge-cartograph.md`,
-`commands/hforge-task.md`, `commands/hforge-recursive.md`, and
+`commands/hforge-task.md`, `commands/hforge-recursive.md`,
+`commands/hforge-recursive-investigate.md`, and
 `commands/hforge-update.md`, and are intended to make the agent:
 
 - inspect the installed Harness Forge runtime first
@@ -162,8 +163,28 @@ Use this when the work is ambiguous or investigation-heavy:
 ```text
 This is a hard investigation task. Use Harness Forge recursive mode instead of
 chat-only reasoning. Plan a recursive session, inspect recursive capabilities,
-run one bounded structured analysis step, and return the durable run result.
+use `hforge recursive execute` for typed RLM when possible, fall back to one
+bounded structured analysis step only when needed, and return the durable
+iteration, scorecard, and run results.
 ```
+
+If you want the runtime to make that escalation more discoverable through a
+shared command surface, use `/hforge-recursive-investigate`. That command tells
+the agent to:
+
+- check recursive capabilities first
+- create a durable session
+- prefer `hforge recursive execute` for Typed RLM
+- fall back to one bounded `hforge recursive run` step only when needed
+- return iteration, scorecard, replay, and other durable artifacts instead of a
+  chat-only summary
+
+Good times to use it:
+
+- cross-module bugs
+- unclear root-cause investigations
+- policy-sensitive AI runtime work
+- tasks where prompt context would otherwise get noisy without compact artifacts
 
 ### 7. Keep the agent honest about support claims
 

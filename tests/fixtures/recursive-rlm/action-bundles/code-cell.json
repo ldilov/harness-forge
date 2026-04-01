@@ -1,0 +1,17 @@
+{
+  "intent": "Run one bounded analysis cell",
+  "actions": [
+    {
+      "actionId": "A1",
+      "kind": "run-code-cell",
+      "args": {
+        "languageId": "javascript",
+        "inputRefs": ["repo-map"],
+        "expectedOutputs": ["stdout summary"],
+        "title": "Count services",
+        "source": "console.log('service-count=1');"
+      }
+    }
+  ],
+  "modelTier": "root"
+}

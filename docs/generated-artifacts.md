@@ -13,6 +13,8 @@ explicit and recoverable.
 - mark generated markdown with `generated: true`
 - include `canonical_source` in metadata
 - keep the canonical authored or imported source in the repository
+- use manifest-declared derivation policy when archive-compatible mirrors keep
+  content that also exists in canonical authored surfaces
 
 ## Hidden AI layer families
 
@@ -140,3 +142,5 @@ When implementation tasks are exported to issues:
 - authored summaries must not be silently overwritten by import or generation
 - runtime state can be refreshed, but authored docs and manifests require
   explicit review
+- seeded archive rule mirrors may stay byte-for-byte aligned with canonical
+  rule sources only when the manifest explicitly marks them as derived

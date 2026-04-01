@@ -52,6 +52,15 @@
         "framework:vite",
         "framework:express",
         "framework:nextjs"
+      ],
+      "displayName": "TypeScript",
+      "authorshipMode": "hybrid",
+      "activationSummary": "Trigger when TypeScript, JavaScript, Node.js, React, or Next.js files dominate the task.",
+      "bestFitSummary": "Best for seeded JavaScript and TypeScript repos that need richer package, runtime-boundary, and framework guidance.",
+      "generatedSurfaces": [
+        ".agents/skills/typescript-engineering/SKILL.md",
+        "docs/catalog/languages/typescript.md",
+        "templates/workflows/implement-typescript-change.md"
       ]
     },
     "java": {
@@ -103,6 +112,15 @@
       ],
       "frameworkBundles": [
         "framework:spring-boot"
+      ],
+      "displayName": "Java",
+      "authorshipMode": "hybrid",
+      "activationSummary": "Trigger when Java files, Spring Boot, Gradle, or Maven surfaces dominate the task.",
+      "bestFitSummary": "Best for seeded Java services and libraries that need strong framework and review guidance.",
+      "generatedSurfaces": [
+        ".agents/skills/java-engineering/SKILL.md",
+        "docs/catalog/languages/java.md",
+        "templates/workflows/implement-java-change.md"
       ]
     },
     "dotnet": {
@@ -154,6 +172,15 @@
       ],
       "frameworkBundles": [
         "framework:aspnet-core"
+      ],
+      "displayName": ".NET",
+      "authorshipMode": "hybrid",
+      "activationSummary": "Trigger when .NET solutions, C# projects, ASP.NET Core, or worker services dominate the task.",
+      "bestFitSummary": "Best for seeded .NET services, libraries, and automation surfaces with framework-aware guidance.",
+      "generatedSurfaces": [
+        ".agents/skills/dotnet-engineering/SKILL.md",
+        "docs/catalog/languages/dotnet.md",
+        "templates/workflows/implement-dotnet-change.md"
       ]
     },
     "lua": {
@@ -201,6 +228,15 @@
         "knowledge-bases/seeded/lua/examples/01-neovim-plugin.md",
         "knowledge-bases/seeded/lua/examples/02-openresty-request-handler.md",
         "knowledge-bases/seeded/lua/examples/04-embedded-automation-script.md"
+      ],
+      "displayName": "Lua",
+      "authorshipMode": "hybrid",
+      "activationSummary": "Trigger when Lua sources, Neovim plugins, OpenResty, or embedded automation scripts dominate the task.",
+      "bestFitSummary": "Best for seeded Lua runtimes where host-specific review cues matter.",
+      "generatedSurfaces": [
+        ".agents/skills/lua-engineering/SKILL.md",
+        "docs/catalog/languages/lua.md",
+        "templates/workflows/implement-lua-change.md"
       ]
     },
     "powershell": {
@@ -249,6 +285,15 @@
         "knowledge-bases/seeded/powershell/examples/02-ci-admin-automation-script.md",
         "knowledge-bases/seeded/powershell/examples/03-remote-fleet-maintenance-command.md",
         "knowledge-bases/seeded/powershell/examples/04-developer-bootstrap-utility.md"
+      ],
+      "displayName": "PowerShell",
+      "authorshipMode": "hybrid",
+      "activationSummary": "Trigger when PowerShell scripts, Windows automation, or admin tooling dominate the task.",
+      "bestFitSummary": "Best for seeded PowerShell automation where Windows and host-specific guidance matters.",
+      "generatedSurfaces": [
+        ".agents/skills/powershell-engineering/SKILL.md",
+        "docs/catalog/languages/powershell.md",
+        "templates/workflows/implement-powershell-change.md"
       ]
     },
     "python": {
@@ -292,6 +337,15 @@
       "frameworkBundles": [
         "framework:fastapi",
         "framework:django"
+      ],
+      "displayName": "Python",
+      "authorshipMode": "generated",
+      "activationSummary": "Trigger when Python files, packaging metadata, APIs, automation, or data pipelines dominate the task.",
+      "bestFitSummary": "Best for structured Python repos that need concise routing into canonical rules, docs, and workflow guidance.",
+      "generatedSurfaces": [
+        ".agents/skills/python-engineering/SKILL.md",
+        "docs/catalog/languages/python.md",
+        "templates/workflows/implement-python-change.md"
       ]
     },
     "go": {
@@ -334,6 +388,15 @@
       ],
       "frameworkBundles": [
         "framework:gin"
+      ],
+      "displayName": "Go",
+      "authorshipMode": "generated",
+      "activationSummary": "Trigger when Go files or go.mod dominate the task.",
+      "bestFitSummary": "Best for structured Go repos that need concise routing into canonical rules, docs, and workflow guidance.",
+      "generatedSurfaces": [
+        ".agents/skills/go-engineering/SKILL.md",
+        "docs/catalog/languages/go.md",
+        "templates/workflows/implement-go-change.md"
       ]
     },
     "kotlin": {
@@ -376,6 +439,15 @@
       ],
       "frameworkBundles": [
         "framework:ktor"
+      ],
+      "displayName": "Kotlin",
+      "authorshipMode": "generated",
+      "activationSummary": "Trigger when Kotlin application, server, or multiplatform files dominate the task.",
+      "bestFitSummary": "Best for structured Kotlin repos that need concise routing into canonical rules, docs, and workflow guidance.",
+      "generatedSurfaces": [
+        ".agents/skills/kotlin-engineering/SKILL.md",
+        "docs/catalog/languages/kotlin.md",
+        "templates/workflows/implement-kotlin-change.md"
       ]
     },
     "rust": {
@@ -415,6 +487,15 @@
       ],
       "examples": [
         "knowledge-bases/structured/rust/examples/01-reference-scenario.md"
+      ],
+      "displayName": "Rust",
+      "authorshipMode": "generated",
+      "activationSummary": "Trigger when Rust crates, CLIs, services, or ownership-heavy code dominate the task.",
+      "bestFitSummary": "Best for structured Rust repos that need concise routing into canonical rules, docs, and workflow guidance.",
+      "generatedSurfaces": [
+        ".agents/skills/rust-engineering/SKILL.md",
+        "docs/catalog/languages/rust.md",
+        "templates/workflows/implement-rust-change.md"
       ]
     },
     "cpp": {
@@ -454,6 +535,15 @@
       ],
       "examples": [
         "knowledge-bases/structured/cpp/examples/01-reference-scenario.md"
+      ],
+      "displayName": "C++",
+      "authorshipMode": "generated",
+      "activationSummary": "Trigger when C++ source, build, or performance-sensitive native modules dominate the task.",
+      "bestFitSummary": "Best for structured C++ repos that need concise routing into canonical rules, docs, and workflow guidance.",
+      "generatedSurfaces": [
+        ".agents/skills/cpp-engineering/SKILL.md",
+        "docs/catalog/languages/cpp.md",
+        "templates/workflows/implement-cpp-change.md"
       ]
     },
     "php": {
@@ -497,6 +587,15 @@
       "frameworkBundles": [
         "framework:symfony",
         "framework:laravel"
+      ],
+      "displayName": "PHP",
+      "authorshipMode": "generated",
+      "activationSummary": "Trigger when PHP application, framework, or package files dominate the task.",
+      "bestFitSummary": "Best for structured PHP repos that need concise routing into canonical rules, docs, and workflow guidance.",
+      "generatedSurfaces": [
+        ".agents/skills/php-engineering/SKILL.md",
+        "docs/catalog/languages/php.md",
+        "templates/workflows/implement-php-change.md"
       ]
     },
     "perl": {
@@ -536,6 +635,15 @@
       ],
       "examples": [
         "knowledge-bases/structured/perl/examples/01-reference-scenario.md"
+      ],
+      "displayName": "Perl",
+      "authorshipMode": "generated",
+      "activationSummary": "Trigger when Perl scripts, modules, or automation-heavy tasks dominate the task.",
+      "bestFitSummary": "Best for structured Perl repos that need concise routing into canonical rules, docs, and workflow guidance.",
+      "generatedSurfaces": [
+        ".agents/skills/perl-engineering/SKILL.md",
+        "docs/catalog/languages/perl.md",
+        "templates/workflows/implement-perl-change.md"
       ]
     },
     "swift": {
@@ -575,6 +683,15 @@
       ],
       "examples": [
         "knowledge-bases/structured/swift/examples/01-reference-scenario.md"
+      ],
+      "displayName": "Swift",
+      "authorshipMode": "generated",
+      "activationSummary": "Trigger when Swift packages, apps, or platform-specific client code dominate the task.",
+      "bestFitSummary": "Best for structured Swift repos that need concise routing into canonical rules, docs, and workflow guidance.",
+      "generatedSurfaces": [
+        ".agents/skills/swift-engineering/SKILL.md",
+        "docs/catalog/languages/swift.md",
+        "templates/workflows/implement-swift-change.md"
       ]
     },
     "shell": {
@@ -614,6 +731,15 @@
       ],
       "examples": [
         "knowledge-bases/structured/shell/examples/01-reference-scenario.md"
+      ],
+      "displayName": "Shell",
+      "authorshipMode": "generated",
+      "activationSummary": "Trigger when shell scripts, automation, or CLI glue code dominate the task.",
+      "bestFitSummary": "Best for structured Shell repos that need concise routing into canonical rules, docs, and workflow guidance.",
+      "generatedSurfaces": [
+        ".agents/skills/shell-engineering/SKILL.md",
+        "docs/catalog/languages/shell.md",
+        "templates/workflows/implement-shell-change.md"
       ]
     }
   }

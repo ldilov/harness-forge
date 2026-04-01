@@ -12,7 +12,7 @@ Use the thin visible bridge surfaces first in installed workspaces:
 - `.hforge/runtime/index.json` and `.hforge/runtime/README.md` for shared runtime state and bridge resolution
 - `.hforge/generated/agent-command-catalog.json` for safe command discovery
 - `docs/agent-usage-playbook.md` for concrete command-resolution guidance, operator prompts, and examples that promote actual Harness Forge usage
-- `commands/hforge-init.md`, `commands/hforge-analyze.md`, `commands/hforge-review.md`, `commands/hforge-refresh.md`, `commands/hforge-decide.md`, `commands/hforge-status.md`, `commands/hforge-commands.md`, `commands/hforge-recommend.md`, `commands/hforge-cartograph.md`, `commands/hforge-task.md`, `commands/hforge-recursive.md`, and `commands/hforge-update.md` for runtimes that support slash-style markdown command entrypoints such as `/hforge-analyze`
+- `commands/hforge-init.md`, `commands/hforge-analyze.md`, `commands/hforge-review.md`, `commands/hforge-refresh.md`, `commands/hforge-decide.md`, `commands/hforge-status.md`, `commands/hforge-commands.md`, `commands/hforge-recommend.md`, `commands/hforge-cartograph.md`, `commands/hforge-task.md`, `commands/hforge-recursive.md`, `commands/hforge-recursive-investigate.md`, and `commands/hforge-update.md` for runtimes that support slash-style markdown command entrypoints such as `/hforge-analyze`
 
 ## Mode awareness
 
@@ -28,6 +28,8 @@ Use the thin visible bridge surfaces first in installed workspaces:
 - load `.hforge/agent-manifest.json` first when a machine-readable contract is preferred
 - use `.agents/skills/<skill>/SKILL.md` only for discovery
 - use `.hforge/library/skills/<skill>/SKILL.md` as the canonical execution contract in installed workspaces
+- keep `.agents/skills/*-engineering/` thin and discovery-only so wrappers do
+  not become a second authored source of language-pack guidance
 - use `.hforge/library/skills/<skill>/references/` for deeper runtime-facing heuristics and templates
 - treat `.hforge/library/`, `.hforge/templates/`, `.hforge/runtime/`, `.hforge/state/`, and `.hforge/generated/` as extracted AI-layer surfaces, not product source code
 - treat any surface marked `treatAsProductCode: false` in `.hforge/agent-manifest.json` as non-product AI-layer content
@@ -65,6 +67,7 @@ Use the thin visible bridge surfaces first in installed workspaces:
 - prefer `.hforge/library/skills/cloud-architect/` when the task is about deployment topology, distributed systems, reliability, observability, or cloud trade-offs across services
 - prefer `.hforge/library/skills/engineering-assistant/` when the task needs architecture plus implementation orchestration, option framing, or explicit project-memory and change-discipline guidance in one surface
 - prefer `.hforge/library/skills/token-budget-optimizer/` when prompt history is growing, repo context is being repeated, or existing runtime artifacts should be reused before broader rescans
+- prefer `.agents/skills/hforge-recursive-investigate/SKILL.md` or `commands/hforge-recursive-investigate.md` when the task is ambiguous, cross-module, or investigation-heavy enough to justify recursive mode and Typed RLM-first execution
 - use `.hforge/library/manifests/catalog/framework-assets.json` and `.hforge/runtime/repo/recommendations.json` when framework or bundle matching is more reliable than guessing from file extensions
 
 ## Imported skill governance

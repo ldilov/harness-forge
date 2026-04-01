@@ -1,24 +1,27 @@
 ---
 name: java-engineering
-description: Auto-discoverable Java engineering skill for Harness Forge language packs.
-origin: Harness Forge
+description: Discovery wrapper for the canonical Java engineering skill.
+generated: true
+canonical_source: skills/java-engineering/SKILL.md
 ---
 
 # Java Engineering
 
-Activate this skill when the workspace contains `.java` files or when the task
-mentions Java, Spring Boot, Gradle, or Maven.
+## Activation
 
-## Use these surfaces
+- Trigger when Java files, Spring Boot, Gradle, or Maven surfaces dominate the task.
 
-- `.hforge/library/skills/java-engineering/SKILL.md`
-- `.hforge/library/skills/java-engineering/references/`
-- `.hforge/library/rules/common/`
-- `.hforge/library/rules/java/`
-- `.hforge/library/knowledge/seeded/java/`
-- `.hforge/templates/workflows/implement-java-change.md`
+## Use These Surfaces
 
-## Operating rule
+- .hforge/library/skills/java-engineering/SKILL.md
+- .hforge/library/docs/authoring/enhanced-skill-import.md
+- RESEARCH-SOURCES.md
+- VALIDATION.md
+- .hforge/library/rules/common/
+- .hforge/library/rules/java
+- .hforge/library/knowledge/seeded/java/
+- .hforge/templates/workflows/implement-java-change.md
 
-Use the promoted root rules first, then bring in seeded examples and review
-guidance to sharpen architecture and testing decisions.
+## Operating Rule
+
+Treat this wrapper as discovery-only. Load the canonical execution surface in .hforge/library/skills/java-engineering/SKILL.md first, then pull deeper rules, knowledge, workflow, and provenance context only as needed to avoid duplicating pack guidance in the active agent context.

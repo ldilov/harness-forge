@@ -4,6 +4,7 @@ import { Command } from "commander";
 
 import { createDoctorReport } from "../../application/maintenance/doctor-workspace.js";
 import { listStaleTaskAnalysisArtifacts } from "../../application/runtime/task-runtime-store.js";
+import { listRecursiveSessionIds } from "../../infrastructure/recursive/session-store.js";
 import { loadDecisionIndex } from "../../application/runtime/decision-runtime-store.js";
 import { loadInstallState } from "../../domain/state/install-state.js";
 import { DEFAULT_WORKSPACE_ROOT, PACKAGE_ROOT, RUNTIME_DIR, RUNTIME_TASKS_DIR, exists } from "../../shared/index.js";
@@ -27,12 +28,13 @@ export function registerReviewCommands(program: Command): void {
     .option("--json", "json output", false)
     .action(async (options) => {
       const workspaceRoot = path.resolve(options.root);
-      const [state, doctor, staleTaskArtifacts, decisionIndex, taskCount] = await Promise.all([
+      const [state, doctor, staleTaskArtifacts, decisionIndex, taskCount, recursiveSessions] = await Promise.all([
         loadInstallState(workspaceRoot),
         createDoctorReport(workspaceRoot, PACKAGE_ROOT),
         listStaleTaskAnalysisArtifacts(workspaceRoot),
         loadDecisionIndex(workspaceRoot),
-        countTaskFolders(workspaceRoot)
+        countTaskFolders(workspaceRoot),
+        listRecursiveSessionIds(workspaceRoot)
       ]);
 
       const result = {
@@ -42,7 +44,8 @@ export function registerReviewCommands(program: Command): void {
         doctorStatus: doctor.status,
         taskCount,
         staleTaskArtifacts,
-        decisionRecords: decisionIndex.entries.length
+        decisionRecords: decisionIndex.entries.length,
+        recursiveSessions
       };
 
       if (options.json) {
@@ -56,5 +59,6 @@ export function registerReviewCommands(program: Command): void {
       console.log(`Task folders: ${taskCount}`);
       console.log(`Decision records: ${result.decisionRecords}`);
       console.log(`Stale task artifacts: ${staleTaskArtifacts.length}`);
+      console.log(`Recursive sessions: ${result.recursiveSessions.length}`);
     });
 }

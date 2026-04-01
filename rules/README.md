@@ -54,5 +54,7 @@ and hooks guidance, then link back to the full seeded source material under
 - `rules/common/testing.md`
 - `rules/common/security.md`
 
-The shared baseline is promoted from the seeded archive so assistants can use a
-stable top-level rule surface without skipping the canonical seed source.
+`rules/common/` and the matching `rules/<language>/` directories are the
+canonical authored runtime-rule surfaces. Seeded knowledge-pack rule trees stay
+packaged for provenance and install compatibility, but they should be treated
+as derived archive mirrors rather than competing authored sources.

@@ -1082,5 +1082,16 @@
       "delivery": "direct",
       "contentKind": "language-rule"
     }
-  ]
+  ],
+  "derivationPolicy": {
+    "derivedContentKinds": [
+      "common-rule",
+      "language-rule"
+    ],
+    "canonicalRoots": {
+      "commonRules": "rules/common",
+      "languageRules": "rules/<language>"
+    },
+    "provenanceMode": "manifest-mapped-derived-surfaces"
+  }
 }

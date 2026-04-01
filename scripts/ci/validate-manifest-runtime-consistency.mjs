@@ -84,6 +84,15 @@ for (const requiredArtifactId of [
   "recursive-runtime-language-capabilities",
   "recursive-runtime-execution-policy",
   "recursive-runtime-session-capabilities",
+  "recursive-runtime-root-frame",
+  "recursive-runtime-iteration",
+  "recursive-runtime-action-bundle",
+  "recursive-runtime-subcall",
+  "recursive-runtime-checkpoint",
+  "recursive-runtime-code-cell",
+  "recursive-runtime-promotion",
+  "recursive-runtime-meta-op",
+  "recursive-runtime-scorecard",
   "recursive-runtime-run-meta",
   "recursive-runtime-run-result"
 ]) {

@@ -15,8 +15,11 @@ Harness Forge ships the attached starter language knowledge archives as first-cl
 - `README.md` and `knowledge-base.json` metadata
 - `docs/` for overview, review checklist, examples guide, and framework notes
 - `examples/` with scenario-driven starter references
-- `rules/common/` with shared baseline guidance
-- `rules/<language>/` with language-specific style, patterns, testing, security, and hook guidance
+- `rules/common/` with shared baseline guidance preserved for provenance and
+  install compatibility
+- `rules/<language>/` with language-specific style, patterns, testing,
+  security, and hook guidance preserved for provenance and install
+  compatibility
 - `legacy-seed/` where the original archive carried forward earlier seed content
 
 ## How Harness Forge uses them
@@ -28,6 +31,10 @@ Harness Forge ships the attached starter language knowledge archives as first-cl
 
 ## Maintainer notes
 
-- Treat files in this directory as canonical imported seed content unless a manifest explicitly marks a transformed destination
+- Treat docs, examples, metadata, and legacy seed files here as canonical
+  imported seed content
+- Treat `rules/common/` and `rules/<language>/` entries here as manifest-mapped
+  derived archive surfaces; the authored runtime rule source lives under
+  top-level `rules/`
 - prefer authoring new summaries and cross-pack docs outside this folder
 - update `manifests/catalog/seeded-knowledge-files.json` whenever seeded coverage changes

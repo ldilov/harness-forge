@@ -337,6 +337,78 @@
       "lineageRole": "recursive-summary"
     },
     {
+      "id": "recursive-runtime-root-frame",
+      "stage": "shared",
+      "pathPattern": ".hforge/runtime/recursive/sessions/*/root-frame.json",
+      "generatedBy": "recursive-runtime",
+      "required": false,
+      "lineageRole": "recursive-root-frame"
+    },
+    {
+      "id": "recursive-runtime-iteration",
+      "stage": "shared",
+      "pathPattern": ".hforge/runtime/recursive/sessions/*/iterations/*/iteration.json",
+      "generatedBy": "recursive-runtime",
+      "required": false,
+      "lineageRole": "recursive-iteration"
+    },
+    {
+      "id": "recursive-runtime-action-bundle",
+      "stage": "shared",
+      "pathPattern": ".hforge/runtime/recursive/sessions/*/iterations/*/bundle.json",
+      "generatedBy": "recursive-runtime",
+      "required": false,
+      "lineageRole": "recursive-action-bundle"
+    },
+    {
+      "id": "recursive-runtime-subcall",
+      "stage": "shared",
+      "pathPattern": ".hforge/runtime/recursive/sessions/*/subcalls/*.json",
+      "generatedBy": "recursive-runtime",
+      "required": false,
+      "lineageRole": "recursive-subcall"
+    },
+    {
+      "id": "recursive-runtime-checkpoint",
+      "stage": "shared",
+      "pathPattern": ".hforge/runtime/recursive/sessions/*/checkpoints/*.json",
+      "generatedBy": "recursive-runtime",
+      "required": false,
+      "lineageRole": "recursive-checkpoint"
+    },
+    {
+      "id": "recursive-runtime-code-cell",
+      "stage": "shared",
+      "pathPattern": ".hforge/runtime/recursive/sessions/*/code-cells/*/cell.json",
+      "generatedBy": "recursive-runtime",
+      "required": false,
+      "lineageRole": "recursive-code-cell"
+    },
+    {
+      "id": "recursive-runtime-promotion",
+      "stage": "shared",
+      "pathPattern": ".hforge/runtime/recursive/sessions/*/promotions/*.json",
+      "generatedBy": "recursive-runtime",
+      "required": false,
+      "lineageRole": "recursive-promotion"
+    },
+    {
+      "id": "recursive-runtime-meta-op",
+      "stage": "shared",
+      "pathPattern": ".hforge/runtime/recursive/sessions/*/meta-ops/*.json",
+      "generatedBy": "recursive-runtime",
+      "required": false,
+      "lineageRole": "recursive-meta-op"
+    },
+    {
+      "id": "recursive-runtime-scorecard",
+      "stage": "shared",
+      "pathPattern": ".hforge/runtime/recursive/sessions/*/scorecards/latest.json",
+      "generatedBy": "recursive-runtime",
+      "required": false,
+      "lineageRole": "recursive-scorecard"
+    },
+    {
       "id": "recursive-runtime-run-meta",
       "stage": "shared",
       "pathPattern": ".hforge/runtime/recursive/sessions/*/runs/*/meta.json",

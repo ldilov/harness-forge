@@ -34,6 +34,7 @@ const scriptRuns = [
   ["scripts/ci/validate-content-metadata.mjs"],
   ["scripts/ci/validate-seeded-knowledge-coverage.mjs"],
   ["scripts/ci/validate-generated-sync.mjs"],
+  ["scripts/ci/validate-context-surface-dedup.mjs"],
   ["scripts/ci/validate-packed-install-surface.mjs"],
   ["scripts/ci/validate-capability-matrix.mjs"],
   ["scripts/ci/validate-no-placeholders.mjs"],
@@ -77,7 +78,13 @@ const cliRuns = fs.existsSync(distCliPath)
       { name: "template-validate", result: run(nodeCommand, [distCliPath, "template", "validate", "--json"]) },
       { name: "flow-status", result: run(nodeCommand, [distCliPath, "flow", "status", "--json"]) },
       { name: "recursive-capabilities", result: run(nodeCommand, [distCliPath, "recursive", "capabilities", "--help"]) },
+      { name: "recursive-execute", result: run(nodeCommand, [distCliPath, "recursive", "execute", "--help"]) },
       { name: "recursive-run", result: run(nodeCommand, [distCliPath, "recursive", "run", "--help"]) },
+      { name: "recursive-iterations", result: run(nodeCommand, [distCliPath, "recursive", "iterations", "--help"]) },
+      { name: "recursive-subcalls", result: run(nodeCommand, [distCliPath, "recursive", "subcalls", "--help"]) },
+      { name: "recursive-cells", result: run(nodeCommand, [distCliPath, "recursive", "cells", "--help"]) },
+      { name: "recursive-score", result: run(nodeCommand, [distCliPath, "recursive", "score", "--help"]) },
+      { name: "recursive-replay", result: run(nodeCommand, [distCliPath, "recursive", "replay", "--help"]) },
       { name: "doctor", result: run(nodeCommand, [distCliPath, "doctor", "--json"]) },
       { name: "audit", result: run(nodeCommand, [distCliPath, "audit", "--json"]) }
     ]

@@ -10,6 +10,8 @@ AI content into the hidden `.hforge/` layer.
 - `agents/planner.md` for packaged planning expectations
 - `.agents/skills/` for discovery wrappers that route agent runtimes into the hidden installed canonical skills
 - `.agents/skills/*-engineering/` for language-aware activation that resolves into `.hforge/library/skills/` in installed workspaces
+- treat `.agents/skills/*-engineering/` as thin discovery-only surfaces so
+  agents do not consume the same pack summary through multiple parallel files
 - `.hforge/library/skills/` for the canonical installed skill library
 - `.hforge/library/rules/` and `.hforge/library/knowledge/` for hidden installed rule and knowledge surfaces
 - `.hforge/runtime/recursive/sessions/` for optional hard-task recursive
@@ -37,6 +39,9 @@ AI content into the hidden `.hforge/` layer.
   an explicit recursive session instead of growing the prompt
 - when a recursive session needs one bounded structured analysis step with a
   durable run record instead of chat-only reasoning
+- when a recursive session should use environment-first typed action bundles,
+  durable memory, bounded code cells, or replayable scorecards instead of
+  transcript-heavy prompt growth
 - when prompt history is growing and the next safe answer may already exist in
   `.hforge/runtime/`, task artifacts, or decision records
 
@@ -52,6 +57,9 @@ AI content into the hidden `.hforge/` layer.
 - use recursive structured analysis as the promoted execution surface for
   recursive investigation, and treat the REPL as optional rather than
   authoritative
+- use Typed RLM through `hforge recursive execute` and the iteration, subcall,
+  code-cell, promotion, meta-op, score, and replay inspection surfaces when
+  the task benefits from durable environment-first recursive state
 - treat `.hforge/runtime/recursive/language-capabilities.json` as the honest
   recursive support contract before claiming a language has deep or native
   structured-analysis support

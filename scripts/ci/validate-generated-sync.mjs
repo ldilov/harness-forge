@@ -2,7 +2,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 
 const root = process.cwd();
-const scanRoots = ["docs", "commands", "agents", "contexts", "rules", "templates"];
+const scanRoots = ["docs", "commands", "agents", ".agents", "contexts", "rules", "templates"];
 
 async function listMarkdownFiles(dir) {
   const entries = await fs.readdir(dir, { withFileTypes: true });

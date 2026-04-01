@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://harness-forge.dev/schemas/runtime/recursive-promotion-proposal.schema.json",
+  "title": "Recursive promotion proposal",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["promotionId", "sessionId", "promotionKind", "sourceRefs", "targetSurface", "status", "rationale", "createdAt"],
+  "properties": {
+    "promotionId": { "type": "string" },
+    "sessionId": { "type": "string" },
+    "promotionKind": { "type": "string" },
+    "sourceRefs": { "type": "array", "items": { "type": "string" } },
+    "targetSurface": { "type": "string" },
+    "status": { "type": "string", "enum": ["draft", "proposed", "reviewed", "promoted", "rejected", "revised"] },
+    "rationale": { "type": "string" },
+    "verificationSummary": { "type": "string" },
+    "createdAt": { "type": "string", "format": "date-time" }
+  }
+}

@@ -35,6 +35,17 @@
     },
     "compactedSummary": { "type": "string" },
     "parentSessionId": { "type": "string" },
+    "policyRef": { "type": "string" },
+    "capabilityViewRef": { "type": "string" },
+    "memoryRef": { "type": "string" },
+    "summaryRef": { "type": "string" },
+    "finalOutputRef": { "type": "string" },
+    "scorecardRef": { "type": "string" },
+    "rootFrameRef": { "type": "string" },
+    "iterationCount": { "type": "integer", "minimum": 0 },
+    "subcallCount": { "type": "integer", "minimum": 0 },
+    "codeCellCount": { "type": "integer", "minimum": 0 },
+    "checkpointCount": { "type": "integer", "minimum": 0 },
     "promotionState": {
       "type": "string",
       "enum": ["draft-only", "partially-promoted", "fully-promoted"]
@@ -49,7 +60,20 @@
         "handleId": { "type": "string" },
         "handleType": {
           "type": "string",
-          "enum": ["repo-file", "repo-slice", "task-artifact", "decision-artifact", "template", "summary", "search-result"]
+          "enum": [
+            "repo-file",
+            "repo-slice",
+            "task-artifact",
+            "decision-artifact",
+            "template",
+            "summary",
+            "search-result",
+            "runtime-artifact",
+            "checkpoint",
+            "memory",
+            "scorecard",
+            "final-output"
+          ]
         },
         "targetRef": { "type": "string" },
         "label": { "type": "string" },

@@ -11,6 +11,7 @@ npm run build
 
 - `npm run validate:local` for the routine maintainer path before opening a PR
 - `npm run validate:release` for the full release-grade gate
+- `npm run validate:dedup` when changing language-pack ownership, wrappers, or generated-surface metadata
 - `npm run release:dry-run` before tagging or publishing a package candidate
 
 ## Typical contributor loop

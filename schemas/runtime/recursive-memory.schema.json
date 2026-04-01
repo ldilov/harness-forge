@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://harness-forge.dev/schemas/runtime/recursive-memory.schema.json",
+  "title": "Recursive working memory",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "memoryId",
+    "sessionId",
+    "currentObjective",
+    "currentPlan",
+    "filesInFocus",
+    "confirmedFacts",
+    "inferredFacts",
+    "blockers",
+    "openQuestions",
+    "recentFailedAttempts",
+    "scratchRefs",
+    "nextStep",
+    "updatedAt"
+  ],
+  "properties": {
+    "memoryId": { "type": "string" },
+    "sessionId": { "type": "string" },
+    "taskId": { "type": "string" },
+    "currentObjective": { "type": "string" },
+    "currentPlan": { "type": "array", "items": { "type": "string" } },
+    "filesInFocus": { "type": "array", "items": { "type": "string" } },
+    "confirmedFacts": { "type": "array", "items": { "type": "string" } },
+    "inferredFacts": { "type": "array", "items": { "type": "string" } },
+    "blockers": { "type": "array", "items": { "type": "string" } },
+    "openQuestions": { "type": "array", "items": { "type": "string" } },
+    "recentFailedAttempts": { "type": "array", "items": { "type": "string" } },
+    "scratchRefs": { "type": "array", "items": { "type": "string" } },
+    "nextStep": { "type": "string" },
+    "lastBestResult": { "type": "string" },
+    "updatedAt": { "type": "string", "format": "date-time" }
+  }
+}

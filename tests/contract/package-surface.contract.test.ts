@@ -25,6 +25,7 @@ describe("package surface contract", () => {
     expect(manifest.requiredPaths).toContain(".specify/scripts/powershell/check-prerequisites.ps1");
     expect(manifest.requiredPaths).toContain(".agents/skills/speckit-implement/SKILL.md");
     expect(manifest.requiredPaths).toContain(".agents/skills/hforge-analyze/SKILL.md");
+    expect(manifest.requiredPaths).toContain(".agents/skills/hforge-recursive-investigate/SKILL.md");
     expect(manifest.requiredPaths).toContain(".agents/skills/hforge-review/SKILL.md");
     expect(manifest.requiredPaths).toContain(".agents/skills/typescript-engineering/SKILL.md");
     expect(manifest.requiredPaths).toContain(".agents/skills/token-budget-optimizer/SKILL.md");
@@ -37,6 +38,7 @@ describe("package surface contract", () => {
     expect(manifest.requiredPaths).toContain("commands/hforge-update.md");
     expect(manifest.requiredPaths).toContain("rules/common/README.md");
     expect(manifest.requiredPaths).toContain("skills/hforge-analyze/SKILL.md");
+    expect(manifest.requiredPaths).toContain("skills/hforge-recursive-investigate/SKILL.md");
     expect(manifest.requiredPaths).toContain("skills/hforge-decide/SKILL.md");
     expect(manifest.requiredPaths).toContain("skills/token-budget-optimizer/SKILL.md");
     expect(manifest.requiredPaths).toContain("skills/typescript-engineering/SKILL.md");

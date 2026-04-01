@@ -1,0 +1,45 @@
+{
+  "intent": "Collect durable findings and finish with a compact output",
+  "actions": [
+    {
+      "actionId": "A1",
+      "kind": "read-handle",
+      "args": {
+        "handleId": "repo-map"
+      }
+    },
+    {
+      "actionId": "A2",
+      "kind": "update-memory",
+      "args": {
+        "confirmedFacts": ["repo map inspected"],
+        "currentPlan": ["Finalize the recursive result"],
+        "nextStep": "Score the session"
+      }
+    },
+    {
+      "actionId": "A3",
+      "kind": "checkpoint",
+      "args": {
+        "summary": "Stored a durable checkpoint after reading the repo map.",
+        "reason": "keep later root frames compact",
+        "evidenceRefs": ["repo-map"]
+      }
+    },
+    {
+      "actionId": "A4",
+      "kind": "finalize-output",
+      "args": {
+        "summary": "Typed RLM execution completed.",
+        "sections": ["Summary", "Evidence"],
+        "artifactRefs": ["repo-map"],
+        "terminalVerdict": "completed"
+      }
+    }
+  ],
+  "stopDirective": {
+    "kind": "finalize",
+    "reason": "typed execution reached a stable answer"
+  },
+  "modelTier": "root"
+}

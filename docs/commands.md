@@ -37,11 +37,16 @@ maintenance commands through the `hforge` CLI.
   Cursor, and OpenCode support inspection
 - `template validate` and `template suggest` for template and workflow flows
 - `flow status` for recoverable Speckit state
-- `recursive plan`, `recursive capabilities`, `recursive run`,
-  `recursive runs`, `recursive inspect-run`, `recursive inspect`,
-  `recursive adr`, `recursive resume`, `recursive finalize`,
-  `recursive compact`, and `recursive repl` for optional recursive-runtime
-  operation on difficult work
+- `recursive plan`, `recursive capabilities`, `recursive execute`,
+  `recursive run`, `recursive runs`, `recursive inspect-run`,
+  `recursive inspect`, `recursive iterations`, `recursive inspect-iteration`,
+  `recursive subcalls`, `recursive inspect-subcall`, `recursive cells`,
+  `recursive inspect-cell`, `recursive promotions`,
+  `recursive inspect-promotion`, `recursive meta-ops`,
+  `recursive inspect-meta-op`, `recursive score`, `recursive scorecards`,
+  `recursive replay`, `recursive adr`, `recursive resume`,
+  `recursive finalize`, `recursive compact`, and `recursive repl` for optional
+  recursive-runtime operation on difficult work
 - `observability summarize` and `observability report` for local metrics and
   effectiveness review
 - `parallel plan`, `parallel status`, and `parallel merge-check` for shard
@@ -80,8 +85,9 @@ Examples:
 - `/hforge-cartograph` to inspect repo topology, boundaries, and hotspots
 - `/hforge-task` to inspect task-runtime folders and task packs
 - `/hforge-recursive` to escalate difficult work into recursive structured analysis
+- `/hforge-recursive-investigate` to tell an agent to autonomously escalate hard work into a recursive investigation and prefer Typed RLM first
 - `/hforge-update` to preview or apply a non-destructive package refresh
-- `commands/hforge-init.md`, `commands/hforge-analyze.md`, `commands/hforge-review.md`, `commands/hforge-refresh.md`, `commands/hforge-decide.md`, `commands/hforge-status.md`, `commands/hforge-commands.md`, `commands/hforge-recommend.md`, `commands/hforge-cartograph.md`, `commands/hforge-task.md`, `commands/hforge-recursive.md`, and `commands/hforge-update.md` as the canonical packaged command surfaces
+- `commands/hforge-init.md`, `commands/hforge-analyze.md`, `commands/hforge-review.md`, `commands/hforge-refresh.md`, `commands/hforge-decide.md`, `commands/hforge-status.md`, `commands/hforge-commands.md`, `commands/hforge-recommend.md`, `commands/hforge-cartograph.md`, `commands/hforge-task.md`, `commands/hforge-recursive.md`, `commands/hforge-recursive-investigate.md`, and `commands/hforge-update.md` as the canonical packaged command surfaces
 - `commands/plan.md` and `commands/test.md` for broader planning and validation guidance
 
 Treat these as agent-facing prompt entrypoints, not replacements for the CLI.
@@ -117,7 +123,16 @@ hforge template suggest bugfix
 hforge flow status --json
 hforge recursive plan "investigate billing retry behavior" --task-id TASK-001 --json
 hforge recursive capabilities --root . --json
+hforge recursive execute RS-123 --file billing-bundle.json --json
 hforge recursive run RS-123 --file analyze-billing.mjs --json
+hforge recursive iterations RS-123 --json
+hforge recursive inspect-iteration RS-123 ITER-001 --json
+hforge recursive subcalls RS-123 --json
+hforge recursive cells RS-123 --json
+hforge recursive promotions RS-123 --json
+hforge recursive meta-ops RS-123 --json
+hforge recursive score RS-123 --json
+hforge recursive replay RS-123 --json
 hforge recursive runs RS-123 --json
 hforge recursive inspect-run RS-123 RUN-001 --json
 hforge recursive inspect RS-123 --json
@@ -226,13 +241,27 @@ hforge parallel merge-check --json
 ```bash
 hforge recursive plan "investigate billing retry behavior across the route and service" --task-id TASK-001 --json
 hforge recursive capabilities --root . --json
+hforge recursive execute RS-123 --file billing-bundle.json --json
 hforge recursive run RS-123 --file analyze-billing.mjs --json
+hforge recursive iterations RS-123 --json
+hforge recursive subcalls RS-123 --json
+hforge recursive cells RS-123 --json
+hforge recursive promotions RS-123 --json
+hforge recursive meta-ops RS-123 --json
+hforge recursive score RS-123 --json
+hforge recursive replay RS-123 --json
 hforge recursive runs RS-123 --json
 hforge recursive inspect-run RS-123 RUN-001 --json
 hforge recursive inspect RS-123 --json
 hforge recursive compact RS-123 --json
 hforge recursive finalize RS-123 --json
 ```
+
+If you want an agent runtime such as Codex or Claude Code to decide when to use
+the recursive flow on your behalf, use the markdown-backed command entrypoint
+`/hforge-recursive-investigate` and give it the task objective. That command is
+the packaged hint for "this task is hard enough to justify recursive mode, use
+Typed RLM first, and keep the investigation artifact-backed."
 
 The `recursive plan` entrypoint writes a durable draft session under
 `.hforge/runtime/recursive/sessions/`, reports the session id, the active
@@ -243,6 +272,11 @@ The promoted recursive structured-analysis path uses
 `.hforge/runtime/recursive/language-capabilities.json` as the canonical
 workspace capability map and records run artifacts under
 `.hforge/runtime/recursive/sessions/<sessionId>/runs/`.
+
+The promoted recursive RLM path keeps the same session substrate but adds
+compact root frames, typed action bundles, durable iterations, subcalls,
+bounded code cells, proposal artifacts, scorecards, and replayable
+trajectories under `.hforge/runtime/recursive/sessions/<sessionId>/`.
 
 ### Inspect the hidden runtime after initialization
 

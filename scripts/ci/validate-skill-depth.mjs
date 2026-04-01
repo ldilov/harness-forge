@@ -34,6 +34,22 @@ const languageSkills = [
   "shell-engineering",
   "javascript-engineering"
 ];
+const wrapperSkillIds = [
+  "typescript-engineering",
+  "java-engineering",
+  "dotnet-engineering",
+  "lua-engineering",
+  "powershell-engineering",
+  "python-engineering",
+  "go-engineering",
+  "kotlin-engineering",
+  "rust-engineering",
+  "cpp-engineering",
+  "php-engineering",
+  "perl-engineering",
+  "swift-engineering",
+  "shell-engineering"
+];
 const failures = [];
 
 for (const requiredPath of [
@@ -77,6 +93,27 @@ for (const skillId of languageSkills) {
     if (!content.includes(section)) {
       failures.push({ skillId, file: `skills/${skillId}/SKILL.md`, issue: `Missing section ${section}` });
     }
+  }
+}
+
+for (const skillId of wrapperSkillIds) {
+  const filePath = path.join(root, ".agents", "skills", skillId, "SKILL.md");
+  const content = await fs.readFile(filePath, "utf8");
+  if (!content.includes("generated: true")) {
+    failures.push({ skillId, file: `.agents/skills/${skillId}/SKILL.md`, issue: "Missing generated: true metadata." });
+  }
+  if (!content.includes("canonical_source:")) {
+    failures.push({ skillId, file: `.agents/skills/${skillId}/SKILL.md`, issue: "Missing canonical_source metadata." });
+  }
+  if (!content.includes("discovery-only")) {
+    failures.push({ skillId, file: `.agents/skills/${skillId}/SKILL.md`, issue: "Wrapper must remain discovery-only." });
+  }
+  if (!content.includes("canonical execution surface")) {
+    failures.push({
+      skillId,
+      file: `.agents/skills/${skillId}/SKILL.md`,
+      issue: "Wrapper must direct readers to the canonical execution surface."
+    });
   }
 }
 

@@ -90,6 +90,7 @@
     "validate:content-metadata": "node scripts/ci/validate-content-metadata.mjs",
     "validate:seeded-coverage": "node scripts/ci/validate-seeded-knowledge-coverage.mjs",
     "validate:generated-sync": "node scripts/ci/validate-generated-sync.mjs",
+    "validate:dedup": "node scripts/ci/validate-context-surface-dedup.mjs",
     "validate:benchmarks": "node scripts/intelligence/score-recommendations.mjs tests/fixtures/benchmarks/typescript-web-app --json",
     "validate:package-surface": "node scripts/ci/validate-packed-install-surface.mjs",
     "validate:compatibility": "node scripts/ci/generate-compatibility-matrix.mjs && node scripts/ci/validate-manifest-runtime-consistency.mjs",

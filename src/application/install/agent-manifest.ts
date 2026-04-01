@@ -340,7 +340,7 @@ export async function writeAgentManifest(
       "Use the markdownCommands section in .hforge/generated/agent-command-catalog.json to discover slash-style or markdown-backed agent command entrypoints.",
       "Resolve command execution in this order: workspace launcher, bare hforge on PATH, then npx @harness-forge/cli.",
       "Use .hforge/runtime/recursive/language-capabilities.json to discover recursive structured-analysis support before attempting repository-wide recursive analysis.",
-      "Use hforge recursive capabilities --root . --json, hforge recursive run <sessionId> --file <snippet> --json, hforge recursive run <sessionId> --stdin --json, hforge recursive runs <sessionId> --json, and hforge recursive inspect-run <sessionId> <runId> --json as the promoted recursive structured-analysis command family.",
+      "Use hforge recursive capabilities --root . --json, hforge recursive execute <sessionId> --file <bundle.json> --json, hforge recursive run <sessionId> --file <snippet> --json, hforge recursive inspect-run <sessionId> <runId> --json, hforge recursive iterations <sessionId> --json, hforge recursive subcalls <sessionId> --json, hforge recursive cells <sessionId> --json, hforge recursive promotions <sessionId> --json, hforge recursive meta-ops <sessionId> --json, hforge recursive score <sessionId> --json, hforge recursive scorecards <sessionId> --json, and hforge recursive replay <sessionId> --json as the promoted recursive RLM command family.",
       "Use hforge update --root . --yes or hforge update --root . --dry-run --yes to refresh managed Harness Forge surfaces without discarding gathered runtime state."
     ]
   };

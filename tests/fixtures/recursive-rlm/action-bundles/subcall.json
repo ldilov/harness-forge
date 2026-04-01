@@ -1,0 +1,17 @@
+{
+  "intent": "Spawn a bounded child investigation",
+  "actions": [
+    {
+      "actionId": "A1",
+      "kind": "spawn-subcall",
+      "args": {
+        "subcallType": "inspect",
+        "prompt": "Inspect retry ownership in the billing flow",
+        "inputRefs": ["repo-map"],
+        "routingTier": "child",
+        "summary": "Child branch inspected billing ownership"
+      }
+    }
+  ],
+  "modelTier": "root"
+}

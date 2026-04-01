@@ -20,3 +20,7 @@ workflow cues.
 
 Each framework pack points back to a base language pack and exposes detection
 signals in `manifests/catalog/framework-assets.json`.
+
+Framework overlays are hybrid ownership surfaces: they add higher-signal
+specialization on top of a base language pack, but they do not become a second
+owner of the shared baseline rules already authored under `rules/`.

@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://harness-forge.dev/schemas/runtime/recursive-subcall.schema.json",
+  "title": "Recursive subcall",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "subcallId",
+    "sessionId",
+    "parentIterationId",
+    "subcallType",
+    "inputRefs",
+    "routingTier",
+    "status",
+    "prompt",
+    "createdAt",
+    "updatedAt"
+  ],
+  "properties": {
+    "subcallId": { "type": "string" },
+    "sessionId": { "type": "string" },
+    "parentIterationId": { "type": "string" },
+    "subcallType": { "type": "string" },
+    "inputRefs": { "type": "array", "items": { "type": "string" } },
+    "routingTier": { "type": "string", "enum": ["root", "child", "economy"] },
+    "status": { "type": "string", "enum": ["pending", "running", "completed", "failed", "blocked"] },
+    "prompt": { "type": "string" },
+    "summary": { "type": "string" },
+    "resultRef": { "type": "string" },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "updatedAt": { "type": "string", "format": "date-time" }
+  }
+}

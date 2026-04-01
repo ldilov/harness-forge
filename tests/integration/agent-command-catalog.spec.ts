@@ -28,6 +28,7 @@ describe("agent command catalog integration", () => {
     expect(catalog.markdownCommands.some((entry) => entry.trigger === "/hforge-recommend" && entry.docPath === "commands/hforge-recommend.md")).toBe(true);
     expect(catalog.markdownCommands.some((entry) => entry.trigger === "/hforge-cartograph" && entry.docPath === "commands/hforge-cartograph.md")).toBe(true);
     expect(catalog.markdownCommands.some((entry) => entry.trigger === "/hforge-recursive" && entry.docPath === "commands/hforge-recursive.md")).toBe(true);
+    expect(catalog.markdownCommands.some((entry) => entry.trigger === "/hforge-recursive-investigate" && entry.docPath === "commands/hforge-recursive-investigate.md")).toBe(true);
     expect(catalog.markdownCommands.some((entry) => entry.trigger === "/hforge-update" && entry.docPath === "commands/hforge-update.md")).toBe(true);
     expect(catalog.executionModes.some((entry) => entry.commandPrefix.includes(".hforge/generated/bin/hforge"))).toBe(true);
     expect(catalog.preferredExecutionOrder[0]).toContain("workspace-launcher");
@@ -91,6 +92,7 @@ describe("agent command catalog integration", () => {
     expect(catalog.npmScripts["validate:local"]).toBeTruthy();
     expect(catalog.markdownCommands.some((entry: { trigger: string }) => entry.trigger === "/hforge-task")).toBe(true);
     expect(catalog.markdownCommands.some((entry: { trigger: string }) => entry.trigger === "/hforge-recursive")).toBe(true);
+    expect(catalog.markdownCommands.some((entry: { trigger: string }) => entry.trigger === "/hforge-recursive-investigate")).toBe(true);
     expect(catalog.cliCommands.some((entry: { command: string }) => entry.command.includes("commands --json"))).toBe(true);
     expect(catalog.agentSafeCliCommands.some((entry: { id: string; variants: Array<{ command: string }> }) => entry.id === "status" && entry.variants.some((variant) => variant.command.includes(".hforge")))).toBe(true);
 

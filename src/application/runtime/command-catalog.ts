@@ -264,6 +264,21 @@ function buildMarkdownCommands(): MarkdownCommandEntry[] {
       ]
     },
     {
+      id: "hforge-recursive-investigate",
+      trigger: "/hforge-recursive-investigate",
+      docPath: "commands/hforge-recursive-investigate.md",
+      description: "Autonomously escalate hard tasks into a recursive investigation, preferring Typed RLM before bounded structured-analysis fallback.",
+      relatedCliCommandIds: [
+        "recursive-plan",
+        "recursive-capabilities",
+        "recursive-inspect",
+        "recursive-run-file",
+        "recursive-run-stdin",
+        "recursive-runs",
+        "recursive-inspect-run"
+      ]
+    },
+    {
       id: "hforge-update",
       trigger: "/hforge-update",
       docPath: "commands/hforge-update.md",
@@ -323,7 +338,8 @@ export async function loadAgentCommandCatalog(packageRoot: string): Promise<Agen
       "npm run validate:compatibility",
       "npm run validate:doc-command-alignment",
       "npm run flow:status",
-      "npm run observability:report"
+      "npm run observability:report",
+      "/hforge-recursive-investigate"
     ]
   };
 }

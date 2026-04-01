@@ -9,6 +9,7 @@ describe("release gates contract", () => {
   it("ships the expected CI validators", async () => {
     const files = [
       "scripts/ci/validate-content-metadata.mjs",
+      "scripts/ci/validate-context-surface-dedup.mjs",
       "scripts/ci/validate-seeded-knowledge-coverage.mjs",
       "scripts/ci/validate-generated-sync.mjs",
       "scripts/ci/validate-pack-dependencies.mjs",
@@ -23,6 +24,7 @@ describe("release gates contract", () => {
     const packageJson = JSON.parse(await fs.readFile(path.join(root, "package.json"), "utf8"));
 
     expect(packageJson.scripts["validate:content-metadata"]).toContain("validate-content-metadata.mjs");
+    expect(packageJson.scripts["validate:dedup"]).toContain("validate-context-surface-dedup.mjs");
     expect(packageJson.scripts["validate:seeded-coverage"]).toContain("validate-seeded-knowledge-coverage.mjs");
     expect(packageJson.scripts["validate:generated-sync"]).toContain("validate-generated-sync.mjs");
     expect(packageJson.scripts["validate:package-surface"]).toContain("validate-packed-install-surface.mjs");

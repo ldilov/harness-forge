@@ -1,24 +1,27 @@
 ---
 name: powershell-engineering
-description: Auto-discoverable PowerShell engineering skill for Harness Forge language packs.
-origin: Harness Forge
+description: Discovery wrapper for the canonical PowerShell engineering skill.
+generated: true
+canonical_source: skills/powershell-engineering/SKILL.md
 ---
 
 # PowerShell Engineering
 
-Activate this skill when the workspace contains `.ps1`, `.psm1`, or `.psd1`
-files or when the task mentions PowerShell, automation, or Windows scripting.
+## Activation
 
-## Use these surfaces
+- Trigger when PowerShell scripts, Windows automation, or admin tooling dominate the task.
 
-- `.hforge/library/skills/powershell-engineering/SKILL.md`
-- `.hforge/library/skills/powershell-engineering/references/`
-- `.hforge/library/rules/common/`
-- `.hforge/library/rules/powershell/`
-- `.hforge/library/knowledge/seeded/powershell/`
-- `.hforge/templates/workflows/implement-powershell-change.md`
+## Use These Surfaces
 
-## Operating rule
+- .hforge/library/skills/powershell-engineering/SKILL.md
+- .hforge/library/docs/authoring/enhanced-skill-import.md
+- RESEARCH-SOURCES.md
+- VALIDATION.md
+- .hforge/library/rules/common/
+- .hforge/library/rules/powershell
+- .hforge/library/knowledge/seeded/powershell/
+- .hforge/templates/workflows/implement-powershell-change.md
 
-Default to the promoted rules for direct guidance and use the seeded knowledge
-pack for deeper examples, review notes, and automation patterns.
+## Operating Rule
+
+Treat this wrapper as discovery-only. Load the canonical execution surface in .hforge/library/skills/powershell-engineering/SKILL.md first, then pull deeper rules, knowledge, workflow, and provenance context only as needed to avoid duplicating pack guidance in the active agent context.

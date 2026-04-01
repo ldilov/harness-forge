@@ -15,7 +15,11 @@ export const recursiveSessionSummarySchema = z.object({
     notes: z.string().min(1).optional()
   }),
   followUp: z.string().min(1),
-  generatedAt: z.string().min(1)
+  generatedAt: z.string().min(1),
+  latestIterationRef: z.string().min(1).optional(),
+  latestCheckpointRef: z.string().min(1).optional(),
+  finalOutputRef: z.string().min(1).optional(),
+  scorecardRef: z.string().min(1).optional()
 });
 
 export type RecursiveSessionSummary = z.infer<typeof recursiveSessionSummarySchema>;

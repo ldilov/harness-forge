@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://harness-forge.dev/schemas/runtime/recursive-code-cell.schema.json",
+  "title": "Recursive code cell",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "cellId",
+    "sessionId",
+    "iterationId",
+    "languageId",
+    "inputRefs",
+    "expectedOutputs",
+    "sandboxPosture",
+    "status",
+    "createdAt",
+    "updatedAt"
+  ],
+  "properties": {
+    "cellId": { "type": "string" },
+    "sessionId": { "type": "string" },
+    "iterationId": { "type": "string" },
+    "languageId": { "type": "string", "enum": ["javascript", "typescript", "python"] },
+    "inputRefs": { "type": "array", "items": { "type": "string" } },
+    "expectedOutputs": { "type": "array", "items": { "type": "string" } },
+    "sandboxPosture": {
+      "type": "object",
+      "required": ["sandboxMode", "networkPosture", "timeoutMs", "writeScope"],
+      "properties": {
+        "sandboxMode": { "type": "string" },
+        "networkPosture": { "type": "string" },
+        "timeoutMs": { "type": "integer", "minimum": 1 },
+        "writeScope": { "type": "string" }
+      }
+    },
+    "status": { "type": "string", "enum": ["pending", "running", "completed", "blocked", "failed", "terminated"] },
+    "title": { "type": "string" },
+    "resultRef": { "type": "string" },
+    "stdoutRef": { "type": "string" },
+    "stderrRef": { "type": "string" },
+    "sourceRef": { "type": "string" },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "updatedAt": { "type": "string", "format": "date-time" }
+  }
+}

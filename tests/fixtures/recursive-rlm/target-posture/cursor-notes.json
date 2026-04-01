@@ -1,0 +1,6 @@
+{
+  "targetId": "cursor",
+  "supportLevel": "partial",
+  "supportMode": "translated",
+  "notes": "Cursor receives Typed RLM through shared-runtime surfaces rather than native parity."
+}

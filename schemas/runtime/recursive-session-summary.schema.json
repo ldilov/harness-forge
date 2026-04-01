@@ -44,6 +44,10 @@
       }
     },
     "followUp": { "type": "string" },
-    "generatedAt": { "type": "string", "format": "date-time" }
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "latestIterationRef": { "type": "string" },
+    "latestCheckpointRef": { "type": "string" },
+    "finalOutputRef": { "type": "string" },
+    "scorecardRef": { "type": "string" }
   }
 }

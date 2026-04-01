@@ -41,6 +41,8 @@
   ·
   <a href="#-why-harness-forge">Why Harness Forge</a>
   ·
+  <a href="#-recursive-rlm">Recursive RLM</a>
+  ·
   <a href="#-how-it-works">How It Works</a>
   ·
   <a href="#-supported-targets">Supported Targets</a>
@@ -72,6 +74,10 @@
 ## ✨ Why Harness Forge?
 
 Harness Forge is a packaging-friendly agentic workspace kit for teams that want a **repeatable, inspectable, and maintenance-safe AI runtime** inside real repositories.
+
+It also keeps language-pack context lean by treating top-level `rules/` as the
+canonical authored runtime-rule surface and by routing repetitive publication
+surfaces through thin wrappers and manifest-backed derivative metadata.
 
 Instead of relying on one-off prompts or tribal setup knowledge, it gives you a deterministic way to:
 
@@ -106,6 +112,99 @@ Instead of relying on one-off prompts or tribal setup knowledge, it gives you a 
 | 🔬 Intelligence | `scan`, `recommend`, `cartograph`, `classify-boundaries`, and `synthesize-instructions` |
 | 📊 Local observability | Effectiveness summaries, recommendation acceptance, hook runs, maintenance traces, and runtime summaries |
 | 🧱 Hard-task support | Recursive runtime sessions, structured recursive analysis, parallel planning, merge-checks, and decision recording |
+
+---
+
+## 🧠 Recursive RLM
+
+<p align="center">
+  <strong>When a task gets genuinely hard, Harness Forge can switch from chat-only reasoning to a durable recursive runtime.</strong>
+</p>
+
+> [!IMPORTANT]
+> The promoted entrypoint is now both explicit and auto-discoverable:
+> `commands/hforge-recursive-investigate.md`,
+> `.agents/skills/hforge-recursive-investigate/SKILL.md`, and
+> `skills/hforge-recursive-investigate/SKILL.md`.
+
+### What it gives you
+
+| Icon | Capability | Why it matters |
+| --- | --- | --- |
+| 🧭 | Environment-first session planning | The agent starts from a durable session with handles, policy, and a compact root frame instead of improvising from scratch |
+| 🧱 | Typed RLM action bundles | Hard work can be decomposed into explicit read, summarize, subcall, checkpoint, and proposal actions |
+| 🔬 | Bounded code cells | When allowed, code execution stays policy-aware and session-scoped instead of turning into unrestricted shell drift |
+| 🧠 | Working memory and checkpoints | The investigation can carry forward the useful state without polluting the normal chat context |
+| 📊 | Scorecards and replay | You can inspect what happened, judge investigation quality, and replay the trajectory from durable artifacts |
+| 🎯 | Honest target posture | Codex and Claude Code get first-class recursive support; Cursor and OpenCode stay clearly documented as translated support |
+
+### Visual flow
+
+```mermaid
+flowchart LR
+    A["Hard task detected"] --> B["/hforge-recursive-investigate"]
+    B --> C["Check recursive capabilities"]
+    C --> D["Plan session"]
+    D --> E["Prefer Typed RLM execute"]
+    E --> F["Iterations + subcalls + code cells"]
+    F --> G["Score + replay + final output"]
+    C --> H["Fallback: one bounded structured-analysis run"]
+    H --> G
+```
+
+### When agents should use it
+
+- 🔎 Cross-module bugs where the root cause is unclear
+- 🕸 Multi-service or multi-package investigations
+- 🧪 Tasks that need bounded execution, checkpoints, or proposal artifacts
+- 🧵 Long investigations where normal prompt history would get noisy
+- 📦 Work that benefits from durable evidence instead of repeated repo rescans
+
+### How agents discover it
+
+Harness Forge now exposes this flow through all three discovery channels agents
+already use:
+
+1. `AGENTS.md` points agents toward recursive investigation for ambiguous or cross-module work
+2. `.agents/skills/hforge-recursive-investigate/` makes it auto-discoverable in skill-scanning runtimes
+3. `commands/hforge-recursive-investigate.md` makes it triggerable in markdown-command runtimes such as Codex and Claude Code
+
+### Operator examples
+
+```text
+/hforge-recursive-investigate investigate the billing retry path across API, service, and worker boundaries
+```
+
+```bash
+hforge recursive capabilities --root . --json
+hforge recursive plan "investigate billing retry path across API, service, and worker boundaries" --task-id TASK-001 --root . --json
+hforge recursive execute RS-123 --file typed-bundle.json --root . --json
+hforge recursive score RS-123 --root . --json
+hforge recursive replay RS-123 --root . --json
+```
+
+### Artifact map
+
+```text
+.hforge/runtime/recursive/sessions/RS-123/
+|- session.json
+|- root-frame.json
+|- memory.json
+|- iterations/
+|- subcalls/
+|- code-cells/
+|- checkpoints/
+|- promotions/
+|- meta-ops/
+|- scorecards/
+`- final-output.json
+```
+
+### One-line mental model
+
+Think of Recursive RLM as: **plan a hard investigation, run it through typed
+steps, keep the artifacts, and summarize from evidence instead of from a giant
+chat transcript**.
 
 ---
 

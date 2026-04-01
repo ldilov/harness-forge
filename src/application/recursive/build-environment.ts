@@ -87,7 +87,7 @@ export async function buildRecursiveEnvironment(input: BuildRecursiveEnvironment
       handles.push(
         createHandle(
           artifact.id,
-          artifact.id === "decision-index" ? "decision-artifact" : "summary",
+          artifact.id === "decision-index" ? "decision-artifact" : "runtime-artifact",
           toPortablePath(input.workspaceRoot, artifact.path),
           artifact.label,
           artifact.summary,
@@ -141,6 +141,17 @@ export async function buildRecursiveEnvironment(input: BuildRecursiveEnvironment
 
   return {
     handles,
-    tools: ["repo.read-handle", "runtime.read-handle", "session.write-scratch", "session.append-trace"]
+    tools: [
+      "repo.read-handle",
+      "runtime.read-handle",
+      "session.write-scratch",
+      "session.append-trace",
+      "session.update-memory",
+      "session.create-checkpoint",
+      "session.spawn-subcall",
+      "session.propose-promotion",
+      "session.propose-meta-op",
+      "session.finalize-output"
+    ]
   };
 }

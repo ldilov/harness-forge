@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://harness-forge.dev/schemas/runtime/recursive-action-bundle.schema.json",
+  "title": "Recursive action bundle",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["bundleId", "sessionId", "iterationId", "intent", "actions", "modelTier", "createdAt"],
+  "properties": {
+    "bundleId": { "type": "string" },
+    "sessionId": { "type": "string" },
+    "iterationId": { "type": "string" },
+    "intent": { "type": "string" },
+    "actions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["actionId", "kind", "args"],
+        "properties": {
+          "actionId": { "type": "string" },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "read-handle",
+              "update-memory",
+              "checkpoint",
+              "spawn-subcall",
+              "run-code-cell",
+              "propose-promotion",
+              "propose-meta-op",
+              "finalize-output"
+            ]
+          },
+          "args": { "type": "object" }
+        }
+      }
+    },
+    "stopDirective": {
+      "type": "object",
+      "properties": {
+        "kind": { "type": "string", "enum": ["continue", "pause", "finalize"] },
+        "reason": { "type": "string" }
+      }
+    },
+    "modelTier": { "type": "string", "enum": ["root", "child", "economy"] },
+    "createdAt": { "type": "string", "format": "date-time" }
+  }
+}

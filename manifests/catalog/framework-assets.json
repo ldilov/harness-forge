@@ -6,9 +6,19 @@
       "baseLanguage": "typescript",
       "bundleId": "framework:react",
       "docPath": "docs/catalog/frameworks/react.md",
-      "supportedTargets": ["codex", "claude-code", "cursor", "opencode"],
-      "detectionSignals": ["package.json dependency react", "src/**/*.tsx"],
-      "qualityScore": 0.9
+      "supportedTargets": [
+        "codex",
+        "claude-code",
+        "cursor",
+        "opencode"
+      ],
+      "detectionSignals": [
+        "package.json dependency react",
+        "src/**/*.tsx"
+      ],
+      "qualityScore": 0.9,
+      "authorshipMode": "hybrid",
+      "ownershipNotes": "Framework overlays extend base language packs without owning shared baseline rules."
     },
     {
       "id": "vite",
@@ -16,9 +26,19 @@
       "baseLanguage": "typescript",
       "bundleId": "framework:vite",
       "docPath": "docs/catalog/frameworks/vite.md",
-      "supportedTargets": ["codex", "claude-code", "cursor", "opencode"],
-      "detectionSignals": ["package.json dependency vite", "vite.config.*"],
-      "qualityScore": 0.86
+      "supportedTargets": [
+        "codex",
+        "claude-code",
+        "cursor",
+        "opencode"
+      ],
+      "detectionSignals": [
+        "package.json dependency vite",
+        "vite.config.*"
+      ],
+      "qualityScore": 0.86,
+      "authorshipMode": "hybrid",
+      "ownershipNotes": "Framework overlays extend base language packs without owning shared baseline rules."
     },
     {
       "id": "express",
@@ -26,9 +46,19 @@
       "baseLanguage": "typescript",
       "bundleId": "framework:express",
       "docPath": "docs/catalog/frameworks/express.md",
-      "supportedTargets": ["codex", "claude-code", "cursor", "opencode"],
-      "detectionSignals": ["package.json dependency express", "src/**/*server*"],
-      "qualityScore": 0.83
+      "supportedTargets": [
+        "codex",
+        "claude-code",
+        "cursor",
+        "opencode"
+      ],
+      "detectionSignals": [
+        "package.json dependency express",
+        "src/**/*server*"
+      ],
+      "qualityScore": 0.83,
+      "authorshipMode": "hybrid",
+      "ownershipNotes": "Framework overlays extend base language packs without owning shared baseline rules."
     },
     {
       "id": "fastapi",
@@ -36,9 +66,19 @@
       "baseLanguage": "python",
       "bundleId": "framework:fastapi",
       "docPath": "docs/catalog/frameworks/fastapi.md",
-      "supportedTargets": ["codex", "claude-code", "cursor", "opencode"],
-      "detectionSignals": ["pyproject.toml dependency fastapi", "app = FastAPI("],
-      "qualityScore": 0.88
+      "supportedTargets": [
+        "codex",
+        "claude-code",
+        "cursor",
+        "opencode"
+      ],
+      "detectionSignals": [
+        "pyproject.toml dependency fastapi",
+        "app = FastAPI("
+      ],
+      "qualityScore": 0.88,
+      "authorshipMode": "hybrid",
+      "ownershipNotes": "Framework overlays extend base language packs without owning shared baseline rules."
     },
     {
       "id": "django",
@@ -46,9 +86,19 @@
       "baseLanguage": "python",
       "bundleId": "framework:django",
       "docPath": "docs/catalog/frameworks/django.md",
-      "supportedTargets": ["codex", "claude-code", "cursor", "opencode"],
-      "detectionSignals": ["pyproject.toml dependency django", "manage.py"],
-      "qualityScore": 0.85
+      "supportedTargets": [
+        "codex",
+        "claude-code",
+        "cursor",
+        "opencode"
+      ],
+      "detectionSignals": [
+        "pyproject.toml dependency django",
+        "manage.py"
+      ],
+      "qualityScore": 0.85,
+      "authorshipMode": "hybrid",
+      "ownershipNotes": "Framework overlays extend base language packs without owning shared baseline rules."
     },
     {
       "id": "spring-boot",
@@ -56,9 +106,19 @@
       "baseLanguage": "java",
       "bundleId": "framework:spring-boot",
       "docPath": "docs/catalog/frameworks/spring-boot.md",
-      "supportedTargets": ["codex", "claude-code", "cursor", "opencode"],
-      "detectionSignals": ["pom.xml spring-boot", "build.gradle spring-boot"],
-      "qualityScore": 0.89
+      "supportedTargets": [
+        "codex",
+        "claude-code",
+        "cursor",
+        "opencode"
+      ],
+      "detectionSignals": [
+        "pom.xml spring-boot",
+        "build.gradle spring-boot"
+      ],
+      "qualityScore": 0.89,
+      "authorshipMode": "hybrid",
+      "ownershipNotes": "Framework overlays extend base language packs without owning shared baseline rules."
     },
     {
       "id": "aspnet-core",
@@ -66,9 +126,19 @@
       "baseLanguage": "dotnet",
       "bundleId": "framework:aspnet-core",
       "docPath": "docs/catalog/frameworks/aspnet-core.md",
-      "supportedTargets": ["codex", "claude-code", "cursor", "opencode"],
-      "detectionSignals": ["*.csproj Microsoft.NET.Sdk.Web", "Program.cs WebApplication"],
-      "qualityScore": 0.88
+      "supportedTargets": [
+        "codex",
+        "claude-code",
+        "cursor",
+        "opencode"
+      ],
+      "detectionSignals": [
+        "*.csproj Microsoft.NET.Sdk.Web",
+        "Program.cs WebApplication"
+      ],
+      "qualityScore": 0.88,
+      "authorshipMode": "hybrid",
+      "ownershipNotes": "Framework overlays extend base language packs without owning shared baseline rules."
     },
     {
       "id": "gin",
@@ -76,9 +146,19 @@
       "baseLanguage": "go",
       "bundleId": "framework:gin",
       "docPath": "docs/catalog/frameworks/gin.md",
-      "supportedTargets": ["codex", "claude-code", "cursor", "opencode"],
-      "detectionSignals": ["go.mod gin-gonic/gin", "gin.Default()"],
-      "qualityScore": 0.81
+      "supportedTargets": [
+        "codex",
+        "claude-code",
+        "cursor",
+        "opencode"
+      ],
+      "detectionSignals": [
+        "go.mod gin-gonic/gin",
+        "gin.Default()"
+      ],
+      "qualityScore": 0.81,
+      "authorshipMode": "hybrid",
+      "ownershipNotes": "Framework overlays extend base language packs without owning shared baseline rules."
     },
     {
       "id": "ktor",
@@ -86,9 +166,19 @@
       "baseLanguage": "kotlin",
       "bundleId": "framework:ktor",
       "docPath": "docs/catalog/frameworks/ktor.md",
-      "supportedTargets": ["codex", "claude-code", "cursor", "opencode"],
-      "detectionSignals": ["build.gradle ktor", "embeddedServer("],
-      "qualityScore": 0.82
+      "supportedTargets": [
+        "codex",
+        "claude-code",
+        "cursor",
+        "opencode"
+      ],
+      "detectionSignals": [
+        "build.gradle ktor",
+        "embeddedServer("
+      ],
+      "qualityScore": 0.82,
+      "authorshipMode": "hybrid",
+      "ownershipNotes": "Framework overlays extend base language packs without owning shared baseline rules."
     },
     {
       "id": "symfony",
@@ -96,9 +186,19 @@
       "baseLanguage": "php",
       "bundleId": "framework:symfony",
       "docPath": "docs/catalog/frameworks/symfony.md",
-      "supportedTargets": ["codex", "claude-code", "cursor", "opencode"],
-      "detectionSignals": ["composer.json symfony/", "bin/console"],
-      "qualityScore": 0.8
+      "supportedTargets": [
+        "codex",
+        "claude-code",
+        "cursor",
+        "opencode"
+      ],
+      "detectionSignals": [
+        "composer.json symfony/",
+        "bin/console"
+      ],
+      "qualityScore": 0.8,
+      "authorshipMode": "hybrid",
+      "ownershipNotes": "Framework overlays extend base language packs without owning shared baseline rules."
     },
     {
       "id": "nextjs",
@@ -106,9 +206,19 @@
       "baseLanguage": "typescript",
       "bundleId": "framework:nextjs",
       "docPath": "docs/catalog/frameworks/nextjs.md",
-      "supportedTargets": ["codex", "claude-code", "cursor", "opencode"],
-      "detectionSignals": ["package.json dependency next", "next.config.*"],
-      "qualityScore": 0.9
+      "supportedTargets": [
+        "codex",
+        "claude-code",
+        "cursor",
+        "opencode"
+      ],
+      "detectionSignals": [
+        "package.json dependency next",
+        "next.config.*"
+      ],
+      "qualityScore": 0.9,
+      "authorshipMode": "hybrid",
+      "ownershipNotes": "Framework overlays extend base language packs without owning shared baseline rules."
     },
     {
       "id": "laravel",
@@ -116,9 +226,19 @@
       "baseLanguage": "php",
       "bundleId": "framework:laravel",
       "docPath": "docs/catalog/frameworks/laravel.md",
-      "supportedTargets": ["codex", "claude-code", "cursor", "opencode"],
-      "detectionSignals": ["composer.json laravel/framework", "artisan"],
-      "qualityScore": 0.88
+      "supportedTargets": [
+        "codex",
+        "claude-code",
+        "cursor",
+        "opencode"
+      ],
+      "detectionSignals": [
+        "composer.json laravel/framework",
+        "artisan"
+      ],
+      "qualityScore": 0.88,
+      "authorshipMode": "hybrid",
+      "ownershipNotes": "Framework overlays extend base language packs without owning shared baseline rules."
     }
   ]
 }

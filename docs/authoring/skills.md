@@ -17,6 +17,10 @@ prompt fragments.
 
 - start from promoted `rules/common/` and the most specific language or
   framework rules available
+- treat `.agents/skills/` wrappers as discovery-only surfaces that point back
+  to canonical `skills/` contracts instead of repeating pack summaries
+- prefer registry-owned or generated metadata for repetitive wrapper, catalog,
+  and workflow text instead of hand-maintaining parallel pack descriptions
 - keep the first inspection paths concrete so an agent can recover quickly in an
   unfamiliar repository
 - make outputs deterministic enough to review later

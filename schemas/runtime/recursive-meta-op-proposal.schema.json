@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://harness-forge.dev/schemas/runtime/recursive-meta-op-proposal.schema.json",
+  "title": "Recursive meta-op proposal",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["metaOpId", "sessionId", "targetKind", "targetRef", "rationale", "patchSummary", "status", "createdAt"],
+  "properties": {
+    "metaOpId": { "type": "string" },
+    "sessionId": { "type": "string" },
+    "targetKind": { "type": "string" },
+    "targetRef": { "type": "string" },
+    "rationale": { "type": "string" },
+    "patchSummary": { "type": "string" },
+    "status": { "type": "string", "enum": ["draft", "proposed", "reviewed", "promoted", "rejected", "revised"] },
+    "createdAt": { "type": "string", "format": "date-time" }
+  }
+}

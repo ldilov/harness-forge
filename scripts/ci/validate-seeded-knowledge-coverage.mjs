@@ -29,6 +29,17 @@ const seededFiles = (await listFiles(seededRoot))
 const manifestEntries = manifest.files ?? [];
 const manifestByPackagePath = new Map(manifestEntries.map((entry) => [entry.packagePath, entry]));
 const failures = [];
+const derivationPolicy = manifest.derivationPolicy;
+if (!derivationPolicy || typeof derivationPolicy !== "object") {
+  failures.push({ issue: "Seeded coverage manifest is missing derivationPolicy." });
+} else {
+  const derivedKinds = new Set(derivationPolicy.derivedContentKinds ?? []);
+  for (const requiredKind of ["common-rule", "language-rule"]) {
+    if (!derivedKinds.has(requiredKind)) {
+      failures.push({ issue: "Seeded derivation policy is missing a required derived content kind.", requiredKind });
+    }
+  }
+}
 const seededArchiveFiles = seededFiles.filter((filePath) => filePath !== "knowledge-bases/seeded/README.md");
 
 for (const filePath of seededArchiveFiles) {
@@ -43,6 +54,17 @@ for (const entry of manifestEntries) {
     await fs.access(absolutePath);
   } catch {
     failures.push({ issue: "Manifest entry points to a missing shipped file.", file: entry.packagePath });
+  }
+}
+
+for (const entry of manifestEntries) {
+  if ((entry.contentKind === "common-rule" || entry.contentKind === "language-rule")
+    && entry.relativePath !== entry.packagePath.replace(/^knowledge-bases\/seeded\/[^/]+\//, "")) {
+    failures.push({
+      issue: "Seeded rule entry does not point back to the canonical rule-relative path.",
+      file: entry.packagePath,
+      relativePath: entry.relativePath
+    });
   }
 }
 

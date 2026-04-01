@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://harness-forge.dev/schemas/runtime/recursive-final-output.schema.json",
+  "title": "Recursive final output",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["outputId", "sessionId", "status", "summary", "sections", "artifactRefs", "promotionRefs", "terminalVerdict", "generatedAt"],
+  "properties": {
+    "outputId": { "type": "string" },
+    "sessionId": { "type": "string" },
+    "status": { "type": "string", "enum": ["draft", "finalized"] },
+    "summary": { "type": "string" },
+    "sections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["title", "body", "artifactRefs"],
+        "properties": {
+          "title": { "type": "string" },
+          "body": { "type": "string" },
+          "artifactRefs": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "artifactRefs": { "type": "array", "items": { "type": "string" } },
+    "promotionRefs": { "type": "array", "items": { "type": "string" } },
+    "terminalVerdict": { "type": "string", "enum": ["completed", "partial", "blocked", "failed"] },
+    "generatedAt": { "type": "string", "format": "date-time" }
+  }
+}

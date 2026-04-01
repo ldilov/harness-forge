@@ -13,6 +13,7 @@ export const recursiveBudgetPolicySchema = z.object({
   maxDepth: z.number().int().min(0),
   maxIterations: z.number().int().min(1),
   maxSubcalls: z.number().int().min(0),
+  maxCodeCells: z.number().int().min(0).default(0),
   maxBatchWidth: z.number().int().min(1),
   maxDurationMs: z.number().int().min(1),
   maxTokensApprox: z.number().int().min(1).optional(),
@@ -20,7 +21,9 @@ export const recursiveBudgetPolicySchema = z.object({
   allowWritesToScratchOnly: z.boolean(),
   allowNetwork: z.boolean(),
   sandboxMode: recursiveSandboxModeSchema,
-  isolationLevel: recursiveIsolationLevelSchema
+  isolationLevel: recursiveIsolationLevelSchema,
+  allowedWriteScopes: z.array(z.string().min(1)).default(["scratch"]),
+  stopConditions: z.array(z.string().min(1)).default([])
 });
 
 export type RecursiveBudgetPolicy = z.infer<typeof recursiveBudgetPolicySchema>;
@@ -35,12 +38,15 @@ export function createDefaultRecursiveBudgetPolicy(): RecursiveBudgetPolicy {
     maxDepth: 2,
     maxIterations: 6,
     maxSubcalls: 12,
+    maxCodeCells: 2,
     maxBatchWidth: 4,
     maxDurationMs: 300000,
     maxToolReads: 40,
     allowWritesToScratchOnly: true,
     allowNetwork: false,
     sandboxMode: "disabled",
-    isolationLevel: "read-only-inspection"
+    isolationLevel: "read-only-inspection",
+    allowedWriteScopes: ["scratch", "proposal-artifacts"],
+    stopConditions: ["budget exhausted", "operator finalized output", "policy violation"]
   };
 }

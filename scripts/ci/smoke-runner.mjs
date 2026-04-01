@@ -69,6 +69,12 @@ const scenarios = [
     args: ["recursive", "capabilities", "--help"],
     expectStatus: 0,
     expectStdout: "Usage: hforge recursive capabilities"
+  },
+  {
+    name: "recursive-execute-help",
+    args: ["recursive", "execute", "--help"],
+    expectStatus: 0,
+    expectStdout: "Usage: hforge recursive execute"
   }
 ];
 

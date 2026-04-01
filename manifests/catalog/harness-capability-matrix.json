@@ -62,8 +62,8 @@
           "lastValidatedAt": "2026-03-28T00:00:00.000Z",
           "validationMethod": "recursive-runtime-and-adapter-review",
           "confidence": 0.95,
-          "notes": "Codex promotes recursive structured analysis through the shared runtime capability map, structured run commands, and durable session artifacts.",
-          "fallbackBehavior": "Use `.hforge/runtime/recursive/language-capabilities.json`, recursive session artifacts, and the promoted recursive CLI surfaces."
+          "notes": "Codex promotes recursive structured analysis and environment-first Typed RLM through the shared runtime capability map, recursive execute and run commands, compact root frames, and durable session artifacts.",
+          "fallbackBehavior": "Use `.hforge/runtime/recursive/language-capabilities.json`, recursive session artifacts, and the promoted recursive CLI surfaces for execute, inspect, score, and replay."
         },
         {
           "capabilityId": "flow-orchestration",
@@ -183,8 +183,8 @@
           "lastValidatedAt": "2026-03-28T00:00:00.000Z",
           "validationMethod": "recursive-runtime-and-adapter-review",
           "confidence": 0.96,
-          "notes": "Claude Code promotes recursive structured analysis through the shared runtime capability map, structured run commands, and durable session artifacts.",
-          "fallbackBehavior": "Use `.hforge/runtime/recursive/language-capabilities.json`, recursive session artifacts, and the promoted recursive CLI surfaces."
+          "notes": "Claude Code promotes recursive structured analysis and environment-first Typed RLM through the shared runtime capability map, recursive execute and run commands, compact root frames, and durable session artifacts.",
+          "fallbackBehavior": "Use `.hforge/runtime/recursive/language-capabilities.json`, recursive session artifacts, and the promoted recursive CLI surfaces for execute, inspect, score, and replay."
         },
         {
           "capabilityId": "flow-orchestration",
@@ -304,7 +304,7 @@
           "lastValidatedAt": "2026-03-28T00:00:00.000Z",
           "validationMethod": "shared-runtime-promotion-review",
           "confidence": 0.84,
-          "notes": "Cursor receives recursive structured-analysis promotion through shared-runtime capability maps and durable session artifacts rather than a native target runtime payload.",
+          "notes": "Cursor receives recursive structured-analysis and Typed RLM promotion through shared-runtime capability maps, compact root frames, and durable session artifacts rather than a native target runtime payload.",
           "fallbackBehavior": "Use `.hforge/runtime/recursive/language-capabilities.json` and recursive session artifacts as the honest support surface instead of claiming native Cursor parity."
         },
         {
@@ -424,7 +424,7 @@
           "lastValidatedAt": "2026-03-28T00:00:00.000Z",
           "validationMethod": "shared-runtime-promotion-review",
           "confidence": 0.84,
-          "notes": "OpenCode receives recursive structured-analysis promotion through shared-runtime capability maps and durable session artifacts rather than a native target runtime payload.",
+          "notes": "OpenCode receives recursive structured-analysis and Typed RLM promotion through shared-runtime capability maps, compact root frames, and durable session artifacts rather than a native target runtime payload.",
           "fallbackBehavior": "Use `.hforge/runtime/recursive/language-capabilities.json` and recursive session artifacts as the honest support surface instead of claiming native OpenCode parity."
         },
         {

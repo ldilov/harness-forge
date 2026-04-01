@@ -1,0 +1,11 @@
+{
+  "intent": "Invalid bundle",
+  "actions": [
+    {
+      "actionId": "A1",
+      "kind": "unknown-op",
+      "args": {}
+    }
+  ],
+  "modelTier": "root"
+}

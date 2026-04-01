@@ -8,9 +8,19 @@
     "policyId",
     "sessionId",
     "isolationLevel",
+    "policyLevel",
     "allowStructuredRun",
+    "allowTypedActions",
+    "allowCodeCells",
+    "allowMetaOps",
+    "allowPromotions",
     "allowedInputs",
     "restrictedBehaviors",
+    "allowedOperationFamilies",
+    "allowedLanguages",
+    "allowedWriteScopes",
+    "networkPosture",
+    "stopConditions",
     "budgetSummary",
     "createdAt",
     "updatedAt"
@@ -22,7 +32,15 @@
       "type": "string",
       "enum": ["metadata-only", "read-only-inspection", "read-only-repl", "isolated-execution"]
     },
+    "policyLevel": {
+      "type": "string",
+      "enum": ["metadata-only", "read-only", "typed-rlm", "bounded-code", "ai-layer-proposal", "product-proposal"]
+    },
     "allowStructuredRun": { "type": "boolean" },
+    "allowTypedActions": { "type": "boolean" },
+    "allowCodeCells": { "type": "boolean" },
+    "allowMetaOps": { "type": "boolean" },
+    "allowPromotions": { "type": "boolean" },
     "allowedInputs": {
       "type": "array",
       "items": { "type": "string" }
@@ -31,13 +49,33 @@
       "type": "array",
       "items": { "type": "string" }
     },
+    "allowedOperationFamilies": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "allowedLanguages": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "allowedWriteScopes": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "networkPosture": { "type": "string" },
+    "stopConditions": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
     "budgetSummary": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["maxDurationMs", "maxRuns", "notes"],
+      "required": ["maxDurationMs", "maxRuns", "maxIterations", "maxSubcalls", "maxCodeCells", "notes"],
       "properties": {
         "maxDurationMs": { "type": "integer", "minimum": 1 },
         "maxRuns": { "type": "integer", "minimum": 1 },
+        "maxIterations": { "type": "integer", "minimum": 1 },
+        "maxSubcalls": { "type": "integer", "minimum": 0 },
+        "maxCodeCells": { "type": "integer", "minimum": 0 },
         "notes": { "type": "string" }
       }
     },

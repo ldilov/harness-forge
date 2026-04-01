@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://harness-forge.dev/schemas/runtime/recursive-iteration.schema.json",
+  "title": "Recursive iteration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "iterationId",
+    "sessionId",
+    "sequenceNumber",
+    "frameRef",
+    "actionBundleRef",
+    "intent",
+    "resultSummary",
+    "status",
+    "operationsExecuted",
+    "diagnostics",
+    "artifactsProduced",
+    "startedAt"
+  ],
+  "properties": {
+    "iterationId": { "type": "string" },
+    "sessionId": { "type": "string" },
+    "sequenceNumber": { "type": "integer", "minimum": 1 },
+    "frameRef": { "type": "string" },
+    "actionBundleRef": { "type": "string" },
+    "intent": { "type": "string" },
+    "resultSummary": { "type": "string" },
+    "status": { "type": "string", "enum": ["success", "partial", "blocked", "failed", "interrupted"] },
+    "operationsExecuted": { "type": "array", "items": { "type": "string" } },
+    "diagnostics": { "type": "array", "items": { "type": "string" } },
+    "artifactsProduced": { "type": "array", "items": { "type": "string" } },
+    "startedAt": { "type": "string", "format": "date-time" },
+    "completedAt": { "type": "string", "format": "date-time" }
+  }
+}

@@ -9,6 +9,9 @@ npx @harness-forge/cli bootstrap --root .
 npx @harness-forge/cli init --root . --json
 hforge commands --json
 hforge recursive capabilities --root . --json
+hforge recursive plan "investigate repository-wide drift" --task-id TASK-001 --json
+hforge recursive execute RS-123 --file typed-bundle.json --json
+hforge recursive score RS-123 --json
 hforge update --root . --dry-run --yes
 npm run validate:release
 ```
@@ -39,6 +42,6 @@ npm run validate:release
 6. choose a target (`claude-code` or `codex`)
 7. preview the install plan for the language and capability bundles you need
 8. inspect an existing repository with `recommend` when the right pack is not obvious
-9. use `refresh`, `task`, `pack`, `review`, `export`, and `recursive capabilities` to inspect the hidden runtime once work is in flight
+9. use `refresh`, `task`, `pack`, `review`, `export`, `recursive capabilities`, `recursive execute`, and `recursive score` to inspect the hidden runtime once work is in flight
 10. use `update --dry-run --yes` before refreshing to the latest published Harness Forge package in place
 11. use `.specify/` and the promoted skills for real work

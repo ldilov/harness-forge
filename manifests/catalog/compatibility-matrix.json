@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-30T22:19:26.800Z",
+  "generatedAt": "2026-04-01T20:11:40.878Z",
   "entries": [
     {
       "subjectType": "language",
@@ -789,8 +789,8 @@
         "src/application/recursive/run-structured-analysis.ts",
         "targets/claude-code/adapter.json"
       ],
-      "fallbackBehavior": "Use `.hforge/runtime/recursive/language-capabilities.json`, recursive session artifacts, and the promoted recursive CLI surfaces.",
-      "notes": "Claude Code promotes recursive structured analysis through the shared runtime capability map, structured run commands, and durable session artifacts."
+      "fallbackBehavior": "Use `.hforge/runtime/recursive/language-capabilities.json`, recursive session artifacts, and the promoted recursive CLI surfaces for execute, inspect, score, and replay.",
+      "notes": "Claude Code promotes recursive structured analysis and environment-first Typed RLM through the shared runtime capability map, recursive execute and run commands, compact root frames, and durable session artifacts."
     },
     {
       "subjectType": "target",
@@ -982,6 +982,14 @@
       "relationType": "supports",
       "relatedType": "skill",
       "relatedId": "hforge-init",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "hforge-recursive-investigate",
       "supportLevel": "full"
     },
     {
@@ -1648,8 +1656,8 @@
         "src/application/recursive/run-structured-analysis.ts",
         "targets/codex/adapter.json"
       ],
-      "fallbackBehavior": "Use `.hforge/runtime/recursive/language-capabilities.json`, recursive session artifacts, and the promoted recursive CLI surfaces.",
-      "notes": "Codex promotes recursive structured analysis through the shared runtime capability map, structured run commands, and durable session artifacts."
+      "fallbackBehavior": "Use `.hforge/runtime/recursive/language-capabilities.json`, recursive session artifacts, and the promoted recursive CLI surfaces for execute, inspect, score, and replay.",
+      "notes": "Codex promotes recursive structured analysis and environment-first Typed RLM through the shared runtime capability map, recursive execute and run commands, compact root frames, and durable session artifacts."
     },
     {
       "subjectType": "target",
@@ -1841,6 +1849,14 @@
       "relationType": "supports",
       "relatedType": "skill",
       "relatedId": "hforge-init",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "hforge-recursive-investigate",
       "supportLevel": "full"
     },
     {
@@ -2542,7 +2558,7 @@
         "docs/agents.md"
       ],
       "fallbackBehavior": "Use `.hforge/runtime/recursive/language-capabilities.json` and recursive session artifacts as the honest support surface instead of claiming native Cursor parity.",
-      "notes": "Cursor receives recursive structured-analysis promotion through shared-runtime capability maps and durable session artifacts rather than a native target runtime payload."
+      "notes": "Cursor receives recursive structured-analysis and Typed RLM promotion through shared-runtime capability maps, compact root frames, and durable session artifacts rather than a native target runtime payload."
     },
     {
       "subjectType": "target",
@@ -2751,6 +2767,15 @@
       "relatedId": "hforge-init",
       "supportLevel": "partial",
       "notes": "Cursor only provides partial skill support for hforge-init."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "hforge-recursive-investigate",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial skill support for hforge-recursive-investigate."
     },
     {
       "subjectType": "target",
@@ -3490,7 +3515,7 @@
         "docs/agents.md"
       ],
       "fallbackBehavior": "Use `.hforge/runtime/recursive/language-capabilities.json` and recursive session artifacts as the honest support surface instead of claiming native OpenCode parity.",
-      "notes": "OpenCode receives recursive structured-analysis promotion through shared-runtime capability maps and durable session artifacts rather than a native target runtime payload."
+      "notes": "OpenCode receives recursive structured-analysis and Typed RLM promotion through shared-runtime capability maps, compact root frames, and durable session artifacts rather than a native target runtime payload."
     },
     {
       "subjectType": "target",
@@ -3699,6 +3724,15 @@
       "relatedId": "hforge-init",
       "supportLevel": "partial",
       "notes": "OpenCode only provides partial skill support for hforge-init."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "hforge-recursive-investigate",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial skill support for hforge-recursive-investigate."
     },
     {
       "subjectType": "target",

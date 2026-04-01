@@ -26,6 +26,7 @@ validators used by CI.
 ## Useful targeted checks
 
 - `npm run smoke:cli`
+- `npm run validate:dedup`
 - `npm run validate:package-surface`
 - `npm run validate:doc-command-alignment`
 - `npm run validate:runtime-consistency`

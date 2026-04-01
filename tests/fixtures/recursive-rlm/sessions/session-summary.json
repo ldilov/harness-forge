@@ -1,0 +1,13 @@
+{
+  "sessionId": "RS-001",
+  "outcome": "partial",
+  "summary": "Typed RLM execution is in progress.",
+  "promotedArtifacts": [],
+  "outstandingGaps": ["Final output not promoted yet."],
+  "budgetReport": {
+    "policyId": "default-recursive-policy",
+    "limitsHit": []
+  },
+  "followUp": "Inspect the latest iteration and decide whether to finalize.",
+  "generatedAt": "2026-04-01T10:00:00.000Z"
+}

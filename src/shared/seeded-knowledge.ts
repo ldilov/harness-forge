@@ -22,6 +22,23 @@ export type SeededContentKind =
   | "language-rule"
   | "legacy-seed";
 
+export function isDerivedSeededRuleKind(kind: SeededContentKind): boolean {
+  return kind === "common-rule" || kind === "language-rule";
+}
+
+export function getCanonicalRulePathForSeededRelativePath(relativePath: string): string | null {
+  const normalized = relativePath.replaceAll("\\", "/");
+  if (normalized.startsWith("rules/common/")) {
+    return normalized;
+  }
+
+  if (/^rules\/[^/]+\//.test(normalized)) {
+    return normalized;
+  }
+
+  return null;
+}
+
 export function isSeededLanguageId(value: string): value is SeededLanguageId {
   return SEEDED_LANGUAGE_IDS.includes(value as SeededLanguageId);
 }

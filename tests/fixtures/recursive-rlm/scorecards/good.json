@@ -1,0 +1,12 @@
+{
+  "scorecardId": "SCORE-001",
+  "sessionId": "RS-001",
+  "effectivenessScore": 0.92,
+  "efficiencyScore": 0.88,
+  "evidenceQualityScore": 0.95,
+  "promotionQualityScore": 0.61,
+  "safetyScore": 0.99,
+  "wasteSignals": [],
+  "recommendations": ["Keep the current typed-first posture."],
+  "generatedAt": "2026-04-01T10:00:00.000Z"
+}

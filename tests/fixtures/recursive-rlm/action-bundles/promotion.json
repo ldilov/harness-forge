@@ -1,0 +1,27 @@
+{
+  "intent": "Emit promotion and meta-op proposals",
+  "actions": [
+    {
+      "actionId": "A1",
+      "kind": "propose-promotion",
+      "args": {
+        "promotionKind": "review-artifact",
+        "sourceRefs": ["repo-map"],
+        "targetSurface": "docs/reviews/billing.md",
+        "rationale": "The findings should be reviewed by an operator",
+        "verificationSummary": "Review the generated artifact before promotion"
+      }
+    },
+    {
+      "actionId": "A2",
+      "kind": "propose-meta-op",
+      "args": {
+        "targetKind": "instruction",
+        "targetRef": ".hforge/library/skills/token-budget-optimizer/SKILL.md",
+        "rationale": "The recursive session found a repeated compression opportunity",
+        "patchSummary": "Tighten the compaction guidance around root frames"
+      }
+    }
+  ],
+  "modelTier": "root"
+}

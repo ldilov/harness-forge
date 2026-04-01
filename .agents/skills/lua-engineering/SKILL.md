@@ -1,28 +1,27 @@
 ---
 name: lua-engineering
-description: Auto-discoverable Lua engineering skill for Harness Forge language packs.
-origin: Harness Forge
+description: Discovery wrapper for the canonical Lua engineering skill.
+generated: true
+canonical_source: skills/lua-engineering/SKILL.md
 ---
 
 # Lua Engineering
 
-Activate this skill when the workspace contains `.lua` files or when the task
-mentions Neovim, OpenResty, Love2D, or embedded Lua automation.
+## Activation
 
-## Use these surfaces
+- Trigger when Lua sources, Neovim plugins, OpenResty, or embedded automation scripts dominate the task.
 
-- `.hforge/library/skills/lua-engineering/SKILL.md`
-- `.hforge/library/skills/lua-engineering/references/`
-- `.hforge/library/docs/authoring/enhanced-skill-import.md` for import provenance and the added runtime-profile and OpenResty context
-- `RESEARCH-SOURCES.md` for the pack-level research summary
-- `VALIDATION.md` for the pack-level validation notes
-- `.hforge/library/rules/common/`
-- `.hforge/library/rules/lua/`
-- `.hforge/library/knowledge/seeded/lua/`
-- `.hforge/templates/workflows/implement-lua-change.md`
+## Use These Surfaces
 
-## Operating rule
+- .hforge/library/skills/lua-engineering/SKILL.md
+- .hforge/library/docs/authoring/enhanced-skill-import.md
+- RESEARCH-SOURCES.md
+- VALIDATION.md
+- .hforge/library/rules/common/
+- .hforge/library/rules/lua
+- .hforge/library/knowledge/seeded/lua/
+- .hforge/templates/workflows/implement-lua-change.md
 
-Use the promoted rules as the execution baseline and the seeded examples as the
-reference layer for framework- and runtime-specific choices. Keep execution in
-the canonical `.hforge/library/skills/lua-engineering/` surface rather than this wrapper.
+## Operating Rule
+
+Treat this wrapper as discovery-only. Load the canonical execution surface in .hforge/library/skills/lua-engineering/SKILL.md first, then pull deeper rules, knowledge, workflow, and provenance context only as needed to avoid duplicating pack guidance in the active agent context.

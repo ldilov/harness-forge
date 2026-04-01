@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://harness-forge.dev/schemas/runtime/recursive-scorecard.schema.json",
+  "title": "Recursive trajectory scorecard",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "scorecardId",
+    "sessionId",
+    "effectivenessScore",
+    "efficiencyScore",
+    "evidenceQualityScore",
+    "promotionQualityScore",
+    "safetyScore",
+    "wasteSignals",
+    "recommendations",
+    "generatedAt"
+  ],
+  "properties": {
+    "scorecardId": { "type": "string" },
+    "sessionId": { "type": "string" },
+    "effectivenessScore": { "type": "number", "minimum": 0, "maximum": 1 },
+    "efficiencyScore": { "type": "number", "minimum": 0, "maximum": 1 },
+    "evidenceQualityScore": { "type": "number", "minimum": 0, "maximum": 1 },
+    "promotionQualityScore": { "type": "number", "minimum": 0, "maximum": 1 },
+    "safetyScore": { "type": "number", "minimum": 0, "maximum": 1 },
+    "wasteSignals": { "type": "array", "items": { "type": "string" } },
+    "recommendations": { "type": "array", "items": { "type": "string" } },
+    "generatedAt": { "type": "string", "format": "date-time" }
+  }
+}

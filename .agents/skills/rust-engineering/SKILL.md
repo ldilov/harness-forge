@@ -1,21 +1,27 @@
 ---
 name: rust-engineering
-description: Auto-discoverable wrapper for `.hforge/library/skills/rust-engineering/SKILL.md`.
+description: Discovery wrapper for the canonical Rust engineering skill.
+generated: true
+canonical_source: skills/rust-engineering/SKILL.md
 ---
 
 # Rust Engineering
 
 ## Activation
 
-- trigger when Rust source or `Cargo.toml` dominates the task
+- Trigger when Rust crates, CLIs, services, or ownership-heavy code dominate the task.
 
 ## Use These Surfaces
 
-- `.hforge/library/skills/rust-engineering/SKILL.md`
-- `.hforge/library/rules/common/`
-- `.hforge/library/rules/rust/`
-- `.hforge/templates/workflows/implement-rust-change.md`
+- .hforge/library/skills/rust-engineering/SKILL.md
+- .hforge/library/docs/authoring/enhanced-skill-import.md
+- RESEARCH-SOURCES.md
+- VALIDATION.md
+- .hforge/library/rules/common/
+- .hforge/library/rules/rust
+- .hforge/library/knowledge/structured/rust/
+- .hforge/templates/workflows/implement-rust-change.md
 
-## Expected Output
+## Operating Rule
 
-- a Rust-specific implementation and validation path grounded in the canonical skill
+Treat this wrapper as discovery-only. Load the canonical execution surface in .hforge/library/skills/rust-engineering/SKILL.md first, then pull deeper rules, knowledge, workflow, and provenance context only as needed to avoid duplicating pack guidance in the active agent context.

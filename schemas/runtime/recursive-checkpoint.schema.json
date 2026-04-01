@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://harness-forge.dev/schemas/runtime/recursive-checkpoint.schema.json",
+  "title": "Recursive checkpoint",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["checkpointId", "sessionId", "iterationId", "summary", "evidenceRefs", "reason", "createdAt"],
+  "properties": {
+    "checkpointId": { "type": "string" },
+    "sessionId": { "type": "string" },
+    "iterationId": { "type": "string" },
+    "summary": { "type": "string" },
+    "evidenceRefs": { "type": "array", "items": { "type": "string" } },
+    "reason": { "type": "string" },
+    "createdAt": { "type": "string", "format": "date-time" }
+  }
+}
