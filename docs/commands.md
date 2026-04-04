@@ -37,7 +37,8 @@ maintenance commands through the `hforge` CLI.
   Cursor, and OpenCode support inspection
 - `template validate` and `template suggest` for template and workflow flows
 - `flow status` for recoverable Speckit state
-- `recursive plan`, `recursive capabilities`, `recursive execute`,
+- `recursive plan`, `recursive capabilities`, `recursive runtimes`,
+  `recursive provision-runtime`, `recursive execute`,
   `recursive run`, `recursive runs`, `recursive inspect-run`,
   `recursive inspect`, `recursive iterations`, `recursive inspect-iteration`,
   `recursive subcalls`, `recursive inspect-subcall`, `recursive cells`,
