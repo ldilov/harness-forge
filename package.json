@@ -50,7 +50,7 @@
     "scripts/codex"
   ],
   "scripts": {
-    "build": "tsc -p tsconfig.json",
+    "build": "tsc -p tsconfig.json && node scripts/ci/rewrite-dist-imports.mjs",
     "prepare": "npm run build",
     "prepack": "npm run build",
     "prepublishOnly": "npm run build && npm run validate:release",
