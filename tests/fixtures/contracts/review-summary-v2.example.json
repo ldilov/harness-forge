@@ -1,0 +1,72 @@
+{
+  "generatedAt": "2026-04-04T10:12:00.000Z",
+  "workspaceRoot": "/workspace/harness-forge",
+  "recommendedInstall": {
+    "targets": [
+      "codex",
+      "claude-code"
+    ],
+    "profile": "recommended",
+    "modules": [
+      "working-memory",
+      "task-pack-support",
+      "export-support"
+    ]
+  },
+  "why": [
+    "Existing Codex and Claude markers suggest dual-tool continuity.",
+    "The repo has strong TypeScript and maintenance signals."
+  ],
+  "targetDifferences": [
+    "Codex is first-class for runtime and maintenance.",
+    "Claude Code offers native hook/plugin posture."
+  ],
+  "topChanges": [
+    {
+      "path": ".hforge/runtime/index.json",
+      "kind": "update",
+      "description": "Refresh shared runtime index",
+      "layer": "canonical-runtime"
+    },
+    {
+      "path": ".codex",
+      "kind": "update",
+      "description": "Refresh Codex bridge",
+      "layer": "target-bridge"
+    },
+    {
+      "path": ".claude",
+      "kind": "update",
+      "description": "Refresh Claude bridge",
+      "layer": "target-bridge"
+    }
+  ],
+  "warnings": [],
+  "fullWritePlan": [
+    {
+      "path": ".hforge/runtime/index.json",
+      "kind": "update",
+      "description": "Refresh shared runtime index",
+      "layer": "canonical-runtime"
+    },
+    {
+      "path": ".hforge/generated/agent-command-catalog.json",
+      "kind": "update",
+      "description": "Refresh command catalog",
+      "layer": "generated"
+    },
+    {
+      "path": ".codex/config.toml",
+      "kind": "update",
+      "description": "Refresh Codex bridge config",
+      "layer": "target-bridge"
+    },
+    {
+      "path": ".claude/settings.json",
+      "kind": "update",
+      "description": "Refresh Claude bridge settings",
+      "layer": "target-bridge"
+    }
+  ],
+  "directCommandPreview": "hforge init --root . --targets codex,claude-code --profile recommended"
+}

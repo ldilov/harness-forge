@@ -27,6 +27,9 @@ async function copyDirectory(sourcePath: string, destinationPath: string): Promi
 }
 
 async function copyPath(sourcePath: string, destinationPath: string): Promise<void> {
+  if (!(await exists(sourcePath))) {
+    return;
+  }
   const stats = await fs.stat(sourcePath);
   if (stats.isDirectory()) {
     await copyDirectory(sourcePath, destinationPath);
@@ -59,6 +62,9 @@ export async function applyOperation(operation: InstallOperation): Promise<strin
   }
 
   if (operation.type === "append-once") {
+    if (!(await exists(operation.sourcePath))) {
+      return `Skipped ${operation.destinationPath} (source missing)`;
+    }
     await ensureDir(path.dirname(operation.destinationPath));
     const marker = `<!-- hforge:${operation.bundleId}:${path.basename(operation.sourcePath)} -->`;
     const payload = await fs.readFile(operation.sourcePath, "utf8");
@@ -76,6 +82,9 @@ export async function applyOperation(operation: InstallOperation): Promise<strin
   }
 
   if (operation.type === "merge") {
+    if (!(await exists(operation.sourcePath))) {
+      return `Skipped ${operation.destinationPath} (source missing)`;
+    }
     if (operation.destinationPath.endsWith(".json")) {
       await mergeJsonFile(operation.sourcePath, operation.destinationPath);
       return `Merged ${operation.destinationPath}`;
@@ -85,6 +94,9 @@ export async function applyOperation(operation: InstallOperation): Promise<strin
     return `Merged ${operation.destinationPath}`;
   }
 
+  if (!(await exists(operation.sourcePath))) {
+    return `Skipped ${operation.destinationPath} (source missing)`;
+  }
   await copyPath(operation.sourcePath, operation.destinationPath);
   return `Wrote ${operation.destinationPath}`;
 }

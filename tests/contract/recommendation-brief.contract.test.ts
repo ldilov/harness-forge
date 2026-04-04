@@ -7,7 +7,7 @@ describe("recommendation brief contract", () => {
   it("parses example fixture", () => {
     const fixturePath = path.join(
       process.cwd(),
-      ".specify/features/20260404-0200-usefulness-first-cli-experience/contracts/onboarding-brief.example.json"
+      "tests/fixtures/contracts/onboarding-brief.example.json"
     );
     const fixture = JSON.parse(fs.readFileSync(fixturePath, "utf-8"));
     const result = parseRecommendationBrief(fixture);

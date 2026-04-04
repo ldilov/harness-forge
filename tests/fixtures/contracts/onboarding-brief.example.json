@@ -1,0 +1,101 @@
+{
+  "generatedAt": "2026-04-04T10:00:00.000Z",
+  "root": "/workspace/harness-forge",
+  "repoType": "typescript-cli",
+  "recommendedTargets": [
+    "codex",
+    "claude-code"
+  ],
+  "recommendedProfile": "recommended",
+  "recommendedModules": [
+    "working-memory",
+    "task-pack-support",
+    "export-support"
+  ],
+  "rationale": {
+    "targets": [
+      {
+        "id": "existing-target-markers",
+        "summary": "Existing Codex and Claude target markers were detected.",
+        "importance": "high"
+      },
+      {
+        "id": "shared-runtime-value",
+        "summary": "The repo benefits from a shared hidden runtime with thin target bridges.",
+        "importance": "high"
+      }
+    ],
+    "profile": [
+      {
+        "id": "repo-complexity",
+        "summary": "The repo has meaningful runtime and maintenance surfaces, so the recommended profile is justified.",
+        "importance": "high"
+      }
+    ],
+    "modules": [
+      {
+        "id": "work-packet-needs",
+        "summary": "Task-pack and export flows are useful in this workspace.",
+        "importance": "medium"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "id": "ev1",
+      "label": "package.json",
+      "path": "package.json",
+      "signalType": "tooling-signal",
+      "summary": "npm package metadata present"
+    },
+    {
+      "id": "ev2",
+      "label": "tsconfig",
+      "path": "tsconfig.json",
+      "signalType": "language-signal",
+      "summary": "TypeScript configuration present"
+    },
+    {
+      "id": "ev3",
+      "label": "Codex bridge",
+      "path": ".codex/config.toml",
+      "signalType": "target-marker",
+      "summary": "Codex runtime marker present"
+    },
+    {
+      "id": "ev4",
+      "label": "Claude bridge",
+      "path": ".claude/settings.json",
+      "signalType": "target-marker",
+      "summary": "Claude runtime marker present"
+    }
+  ],
+  "confidence": {
+    "targets": 0.94,
+    "profile": 0.83,
+    "modules": 0.78,
+    "overall": 0.87
+  },
+  "caveats": [
+    "Codex and Claude share the canonical runtime but differ in hook/plugin posture.",
+    "Cursor and OpenCode remain partial targets unless capability truth changes."
+  ],
+  "alternatives": [
+    {
+      "id": "codex-only-minimal",
+      "summary": "Smaller install footprint if native hook behavior is not needed.",
+      "targets": [
+        "codex"
+      ],
+      "profile": "recommended",
+      "modules": [
+        "working-memory",
+        "export-support"
+      ],
+      "tradeOffs": [
+        "Claude-native hook posture not installed",
+        "less ready for mixed-tool teams"
+      ]
+    }
+  ]
+}

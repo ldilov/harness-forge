@@ -5,7 +5,7 @@ import { readText } from "../../helpers/reasoning-template-assertions";
 describe("reasoning success metrics coverage", () => {
   it("maps SC-001..SC-010 into an operational metrics doc", async () => {
     const [spec, metrics] = await Promise.all([
-      readText(".specify/features/20260403-0948-semiformal-kit-spec/spec.md"),
+      readText("tests/fixtures/reasoning/semiformal-kit-spec.md"),
       readText("docs/reasoning/success-metrics.md")
     ]);
 

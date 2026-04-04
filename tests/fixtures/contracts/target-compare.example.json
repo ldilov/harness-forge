@@ -1,0 +1,61 @@
+{
+  "generatedAt": "2026-04-04T10:08:00.000Z",
+  "leftTargetId": "codex",
+  "rightTargetId": "claude-code",
+  "sharedStrengths": [
+    "Both support the shared hidden .hforge runtime model.",
+    "Both support commands, agents, contexts, and maintenance flows."
+  ],
+  "headlineVerdict": "Both are first-class runtime targets, but Claude Code offers stronger native hook/plugin posture.",
+  "capabilityComparisons": [
+    {
+      "capabilityId": "maintenance",
+      "capabilityName": "Maintenance",
+      "left": {
+        "supportLevel": "full",
+        "supportMode": "native",
+        "notes": "Codex is first-class for maintenance flows."
+      },
+      "right": {
+        "supportLevel": "full",
+        "supportMode": "native",
+        "notes": "Claude Code is also first-class for maintenance flows."
+      },
+      "winner": "tie",
+      "operatorImpact": "Either target can be used confidently for runtime maintenance and health workflows."
+    },
+    {
+      "capabilityId": "typed-hooks",
+      "capabilityName": "Typed hooks",
+      "left": {
+        "supportLevel": "partial",
+        "supportMode": "documentation-only",
+        "fallbackBehavior": "Use docs and packaged hook manifests, then wire manually."
+      },
+      "right": {
+        "supportLevel": "full",
+        "supportMode": "native",
+        "notes": "Claude Code offers native hook/plugin posture."
+      },
+      "winner": "right",
+      "operatorImpact": "Choose Claude Code when hook-native workflows are central; use Codex when shared runtime and maintenance are the priority."
+    }
+  ],
+  "practicalImplications": [
+    "Dual install is useful for teams that actively use both targets.",
+    "Codex-only is viable when minimal bootstrap and maintenance are more important than hook-native automation."
+  ],
+  "recommendedUsagePatterns": [
+    {
+      "id": "dual-install",
+      "label": "Dual install",
+      "whenToChoose": [
+        "Mixed-tool team",
+        "Need one shared runtime with two bridges"
+      ],
+      "caveats": [
+        "Slightly larger visible footprint"
+      ]
+    }
+  ]
+}

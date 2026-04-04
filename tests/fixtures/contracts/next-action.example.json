@@ -1,0 +1,45 @@
+{
+  "generatedAt": "2026-04-04T10:05:00.000Z",
+  "root": "/workspace/harness-forge",
+  "phase": "maintain",
+  "actionId": "maintain.refresh-runtime",
+  "title": "Refresh shared runtime",
+  "command": "hforge refresh --root .",
+  "summary": "The shared runtime appears stale and should be refreshed before review or export.",
+  "confidence": 0.91,
+  "safeToAutoApply": true,
+  "classification": "safe-auto",
+  "evidence": [
+    {
+      "id": "ev1",
+      "label": "runtime index",
+      "path": ".hforge/runtime/index.json",
+      "signalType": "runtime-signal",
+      "summary": "Runtime index older than repo intelligence inputs"
+    },
+    {
+      "id": "ev2",
+      "label": "stale task analysis",
+      "path": ".hforge/runtime/tasks",
+      "signalType": "task-signal",
+      "summary": "Two stale task analysis artifacts detected"
+    }
+  ],
+  "blockingConditions": [],
+  "followUps": [
+    {
+      "actionId": "maintain.review-health",
+      "title": "Review workspace health",
+      "command": "hforge review --root .",
+      "reason": "Review output is more trustworthy after refresh."
+    }
+  ],
+  "alternatives": [
+    {
+      "actionId": "maintain.export",
+      "title": "Export runtime summary",
+      "command": "hforge export --root . --json",
+      "reason": "Useful after runtime is refreshed."
+    }
+  ]
+}

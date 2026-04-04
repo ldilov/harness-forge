@@ -7,7 +7,7 @@ describe("next action plan contract", () => {
   it("parses example fixture", () => {
     const fixturePath = path.join(
       process.cwd(),
-      ".specify/features/20260404-0200-usefulness-first-cli-experience/contracts/next-action.example.json"
+      "tests/fixtures/contracts/next-action.example.json"
     );
     const fixture = JSON.parse(fs.readFileSync(fixturePath, "utf-8"));
     const result = parseNextActionPlan(fixture);
