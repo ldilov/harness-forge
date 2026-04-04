@@ -24,7 +24,7 @@ const block = `${markers.start}
 ${workspaceConfig.trim()}
 ${markers.end}
 `;
-const esc = (value) => value.replace(/[.*+?^${}()|[\]\]/g, "\$&");
+const esc = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 const pattern = new RegExp(`${esc(markers.start)}[\s\S]*?${esc(markers.end)}\n?`, "g");
 const next = existing.match(pattern) ? existing.replace(pattern, block) : `${existing.trimEnd()}${existing.trim() ? "\n\n" : ""}${block}`;
 

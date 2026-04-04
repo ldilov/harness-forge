@@ -20,7 +20,6 @@ export async function recommendNextAction(
     return buildFallbackPlan(input.workspaceRoot, state);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const winner = scored[0]!;
   const alternatives = scored.slice(1, 4).map((s) => ({
     actionId: s.action.actionId,

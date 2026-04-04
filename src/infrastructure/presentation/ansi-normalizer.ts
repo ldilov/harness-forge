@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-control-regex
 const ANSI_REGEX = /\x1b\[[0-9;]*[a-zA-Z]/g;
 
 export function stripAnsi(input: string): string {
