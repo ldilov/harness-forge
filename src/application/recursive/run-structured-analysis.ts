@@ -9,7 +9,7 @@ import type { RecursiveSession } from "../../domain/recursive/session.js";
 import type { RecursiveStructuredRun, RecursiveRunSubmissionMode, RecursiveRunStatus } from "../../domain/recursive/structured-run.js";
 import type { RecursiveRunOutcome, RecursiveStructuredRunResult } from "../../domain/recursive/structured-run-result.js";
 import type { RecursiveTraceEvent } from "../../domain/recursive/trace-event.js";
-import { ValidationError, ensureDir, exists, readJsonFile, readTextFile, writeJsonFile, writeTextFile } from "../../shared/index.js";
+import { ValidationError, ensureDir, exists, readJsonFile, readTextFile, writeTextFile } from "../../shared/index.js";
 import {
   appendRecursiveTraceEvent
 } from "../../infrastructure/recursive/trace-logger.js";

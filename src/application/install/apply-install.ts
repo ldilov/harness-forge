@@ -176,7 +176,7 @@ export async function applyInstall(
     const briefMdPath = await writeOnboardingBriefMarkdown(root, brief);
     const briefPath = path.join(root, RUNTIME_DIR, RUNTIME_REPO_DIR, ONBOARDING_BRIEF_FILE);
 
-    const firstRunResult = await generateFirstRunResult({
+    const _firstRunResult = await generateFirstRunResult({
       workspaceRoot: root,
       repoType: plan.selection.targetId,
       briefPath,

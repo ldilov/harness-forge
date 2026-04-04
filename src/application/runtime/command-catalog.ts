@@ -1,7 +1,7 @@
 ﻿import path from "node:path";
 
 import { GENERATED_DIR, readJsonFile, writeJsonFile, writeTextFile } from "../../shared/index.js";
-import { resolveCommandPhase, PHASE_ORDER, PHASE_LABELS, type CommandPhaseId } from "./command-phase-mapping.js";
+import { resolveCommandPhase, PHASE_ORDER, PHASE_LABELS } from "./command-phase-mapping.js";
 
 export interface AgentCommandCatalog {
   generatedAt: string;

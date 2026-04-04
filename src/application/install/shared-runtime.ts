@@ -13,7 +13,6 @@ import type {
   SharedRuntimeTarget
 } from "../../domain/operations/install-plan.js";
 import type { TargetAdapter } from "../../domain/targets/adapter.js";
-import type { RecursiveLanguageCapabilities } from "../../domain/recursive/language-capabilities.js";
 import type { RecursiveRuntimeInventory } from "../../domain/recursive/runtime-inventory.js";
 import {
   ACTIVE_POLICY_FILE,

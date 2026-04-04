@@ -59,7 +59,7 @@ describe("onboarding brief contract", () => {
   });
 
   it("rejects missing headline", () => {
-    const { headline: _, ...noHeadline } = validBrief;
+    const { headline: _unused, ...noHeadline } = validBrief;
     const result = onboardingBriefSchema.safeParse(noHeadline);
     expect(result.success).toBe(false);
   });

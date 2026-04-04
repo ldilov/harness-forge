@@ -67,7 +67,7 @@ describe("first-run result contract", () => {
   });
 
   it("rejects missing schemaVersion", () => {
-    const { schemaVersion: _, ...noVersion } = validFullSuccess;
+    const { schemaVersion: _unused, ...noVersion } = validFullSuccess;
     const result = firstRunResultSchema.safeParse(noVersion);
     expect(result.success).toBe(false);
   });

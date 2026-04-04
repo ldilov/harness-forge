@@ -59,7 +59,7 @@ function detectPhase(state: WorkspaceState): NextActionPlan["phase"] {
   return "operate";
 }
 
-function buildEvidence(state: WorkspaceState, actionId: string): EvidenceItem[] {
+function buildEvidence(state: WorkspaceState, _actionId: string): EvidenceItem[] {
   const items: EvidenceItem[] = [];
 
   if (!state.hasInstallState) {
