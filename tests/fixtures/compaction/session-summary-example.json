@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "1.0.0",
+  "summaryId": "sum_20260404_rollup_001",
+  "createdAt": "2026-04-04T15:32:47.812Z",
+  "coversEvents": ["evt_001", "evt_187"],
+  "objective": "Refactor the authentication module to use JWT-based token validation with refresh-token rotation, replacing the legacy session-cookie approach",
+  "acceptedPlan": [
+    "Extract session logic from monolith into auth-service boundary",
+    "Define JWT token schema and signing configuration",
+    "Implement refresh-token rotation with revocation list",
+    "Migrate existing endpoints from cookie auth to bearer-token auth",
+    "Add integration tests covering token lifecycle and edge cases"
+  ],
+  "decisions": [
+    {
+      "id": "dec_001",
+      "title": "Use RS256 signing algorithm for JWTs",
+      "rationale": "RS256 allows public-key verification without sharing the signing secret, enabling stateless validation in downstream services"
+    },
+    {
+      "id": "dec_002",
+      "title": "Store refresh tokens in Redis with TTL",
+      "rationale": "Redis provides atomic TTL expiration and O(1) revocation lookup, avoiding a database migration for token storage"
+    },
+    {
+      "id": "dec_003",
+      "title": "Keep legacy cookie endpoint behind feature flag",
+      "rationale": "Gradual rollout reduces blast radius; existing clients can fall back to cookies until migration is verified"
+    }
+  ],
+  "importantFindings": [
+    "Legacy session table has 2.3M active rows — migration must be non-blocking",
+    "Three downstream services depend on cookie-based auth headers and need coordinated update",
+    "Rate-limit middleware must be updated to read bearer tokens instead of session IDs"
+  ],
+  "artifacts": [
+    ".hforge/runtime/context/active-context.json",
+    ".hforge/runtime/context/delta-summary.json",
+    "src/auth/jwt-config.ts",
+    "src/auth/refresh-token-service.ts",
+    "tests/auth/token-lifecycle.spec.ts"
+  ],
+  "unresolved": [
+    "Redis cluster failover behavior under token-burst load not yet tested",
+    "OpenAPI spec for new /auth/token endpoint pending API review"
+  ]
+}

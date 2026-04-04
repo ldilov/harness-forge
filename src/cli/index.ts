@@ -5,6 +5,7 @@ import { Command } from "commander";
 
 import { registerAuditCommands } from "./commands/audit.js";
 import { registerCatalogCommands } from "./commands/catalog.js";
+import { registerCompactCommands } from "./commands/compact.js";
 import { registerCommandsCatalog } from "./commands/commands.js";
 import { registerDiffInstallCommands } from "./commands/diff-install.js";
 import { registerDoctorCommands } from "./commands/doctor.js";
@@ -24,6 +25,7 @@ import { registerRefreshCommands } from "./commands/refresh.js";
 import { registerRuntimeCommands } from "./commands/runtime.js";
 import { registerRecursiveCommands } from "./commands/recursive.js";
 import { registerRecommendCommands } from "./commands/recommend.js";
+import { registerReplayCommands } from "./commands/replay.js";
 import { registerReviewCommands } from "./commands/review.js";
 import { registerShellCommands } from "./commands/shell.js";
 import { registerStatusCommands } from "./commands/status.js";
@@ -77,6 +79,8 @@ registerRecursiveCommands(program);
 registerSyncCommands(program);
 registerDiffInstallCommands(program);
 registerUpgradeSurfaceCommands(program);
+registerCompactCommands(program);
+registerReplayCommands(program);
 registerPruneCommands(program);
 registerNextCommands(program);
 

@@ -1,0 +1,35 @@
+{
+  "objective": "Refactor authentication module from legacy session cookies to JWT-based token validation with refresh-token rotation",
+  "state": [
+    "Phase 3 of 5 in progress: implementing refresh-token rotation",
+    "JWT signing config (RS256) complete and tested",
+    "Auth-service boundary extracted from monolith",
+    "Redis integration for token TTL operational"
+  ],
+  "decisions": [
+    "RS256 for JWT signing — enables stateless downstream verification",
+    "Redis for refresh-token storage — atomic TTL expiration, O(1) revocation",
+    "Legacy cookie endpoint behind feature flag for gradual rollout"
+  ],
+  "constraints": [
+    "Migration must be non-blocking — 2.3M active session rows in legacy table",
+    "Three downstream services depend on cookie auth headers — coordinated update required",
+    "Hard cap of 4k tokens for memory surface"
+  ],
+  "blockers": [
+    "Redis cluster failover behavior under token-burst load not yet tested",
+    "OpenAPI spec for /auth/token endpoint pending API review"
+  ],
+  "nextActions": [
+    "Write integration tests for refresh-token rotation edge cases",
+    "Coordinate with payments-service team on auth header migration",
+    "Draft OpenAPI spec for /auth/token and submit for review"
+  ],
+  "references": [
+    ".hforge/runtime/context/active-context.json",
+    ".hforge/runtime/context/session-summary.json",
+    ".hforge/runtime/context/delta-summary.json",
+    "src/auth/jwt-config.ts",
+    "src/auth/refresh-token-service.ts"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "1.0.0",
+  "items": [
+    {
+      "id": "turn_042",
+      "type": "conversation-turn",
+      "importance": "high",
+      "canonicality": "canonical",
+      "redundancyScore": 0.12,
+      "recoverability": "must-preserve",
+      "recency": 0.92,
+      "targetRelevance": 1.0
+    },
+    {
+      "id": "evt_policy_deny_003",
+      "type": "event",
+      "importance": "critical",
+      "canonicality": "canonical",
+      "redundancyScore": 0.0,
+      "recoverability": "must-preserve"
+    },
+    {
+      "id": "tool_grep_output_117",
+      "type": "tool-output",
+      "importance": "low",
+      "canonicality": "non-canonical",
+      "redundancyScore": 0.85,
+      "recoverability": "recoverable"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "1.0.0",
+  "deltaId": "delta_20260404_002",
+  "createdAt": "2026-04-04T16:10:33.419Z",
+  "sinceSummaryId": "sum_20260404_rollup_001",
+  "changes": [
+    "Implemented refresh-token rotation logic in RefreshTokenService",
+    "Added Redis TTL integration for token expiration",
+    "Updated rate-limit middleware to extract bearer tokens from Authorization header"
+  ],
+  "newArtifacts": [
+    "src/auth/refresh-token-service.ts"
+  ],
+  "newBlockers": [],
+  "status": "in-progress — refresh-token rotation implemented; integration tests pending"
+}

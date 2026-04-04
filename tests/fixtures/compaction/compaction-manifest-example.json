@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "1.0.0",
+  "manifestId": "manifest_rollup_20260404_001",
+  "createdAt": "2026-04-04T15:32:47.812Z",
+  "source": {
+    "runtimeSessionId": "sess_abc123def456",
+    "taskId": "task_refactor_auth_module",
+    "coveredEventRange": ["evt_001", "evt_187"]
+  },
+  "strategy": {
+    "level": 3,
+    "reason": "Budget usage at 93.2% — rollup triggered to reduce hot-path state",
+    "profile": "standard"
+  },
+  "stats": {
+    "estimatedTokensBefore": 118000,
+    "estimatedTokensAfter": 28200,
+    "droppedLowImportanceItems": 87,
+    "summarizedMediumImportanceItems": 42,
+    "preservedCriticalItems": 14
+  },
+  "outputs": {
+    "sessionSummary": ".hforge/runtime/context/session-summary.json",
+    "deltaSummary": ".hforge/runtime/context/delta-summary.json",
+    "activeContext": ".hforge/runtime/context/active-context.json"
+  },
+  "validation": {
+    "passed": true,
+    "checks": [
+      "objective exists and is non-empty",
+      "accepted plan present with 5 steps",
+      "unresolved list present (2 items)",
+      "all referenced artifacts exist",
+      "savings ratio recorded: 76.1%",
+      "no critical events dropped"
+    ]
+  }
+}

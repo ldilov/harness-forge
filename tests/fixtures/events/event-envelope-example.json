@@ -1,0 +1,54 @@
+{
+  "eventId": "evt_20260404T1532Z_compaction_001",
+  "eventType": "context.compaction.completed",
+  "occurredAt": "2026-04-04T15:32:47.812Z",
+  "schemaVersion": "1.0.0",
+  "runtimeSessionId": "sess_abc123def456",
+  "importance": "high",
+  "retentionTier": "long",
+  "category": "context",
+  "taskId": "task_refactor_auth_module",
+  "correlationId": "corr_auth_refactor_20260404",
+  "actor": {
+    "actorType": "compaction-service",
+    "actorId": "compactor_default",
+    "label": "Context Compaction Service"
+  },
+  "target": {
+    "targetType": "runtime-context",
+    "targetId": "ctx_active_001",
+    "path": ".hforge/runtime/context/active-context.json"
+  },
+  "cost": {
+    "durationMs": 1240,
+    "tokensUsed": 3800,
+    "apiCalls": 1
+  },
+  "artifacts": [
+    {
+      "artifactType": "session-summary",
+      "path": ".hforge/runtime/context/session-summary.json",
+      "hash": "sha256:a1b2c3d4e5f6"
+    },
+    {
+      "artifactType": "delta-summary",
+      "path": ".hforge/runtime/context/delta-summary.json"
+    },
+    {
+      "artifactType": "compaction-manifest",
+      "path": ".hforge/runtime/context/compaction-manifest.json",
+      "hash": "sha256:f6e5d4c3b2a1"
+    }
+  ],
+  "payload": {
+    "level": 3,
+    "reason": "rollup triggered at 93% budget usage",
+    "tokensBefore": 118000,
+    "tokensAfter": 28200,
+    "savingsRatio": 0.761,
+    "validationPassed": true,
+    "preservedCriticalItems": 14,
+    "droppedLowImportanceItems": 87
+  },
+  "tags": ["compaction", "rollup", "budget-pressure"]
+}

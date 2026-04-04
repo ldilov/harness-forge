@@ -183,6 +183,8 @@ hforge next --root .              # What should I do next in this workspace?
 | Check workspace health | `hforge doctor --root . --json` |
 | Refresh the runtime | `hforge refresh --root . --json` |
 | Review install state | `hforge status --root . --json` |
+| Check flow status | `hforge flow status --root . --json` |
+| Inspect target details | `hforge target inspect codex --root .` |
 | Compare Codex vs Claude Code | `hforge target compare codex claude-code` |
 
 ### 🔧 Maintenance
@@ -193,6 +195,9 @@ hforge next --root .              # What should I do next in this workspace?
 | Export runtime for handoff | `hforge export --root . --json` |
 | Audit install integrity | `hforge audit --root . --json` |
 | Check what drifted | `hforge diff-install --root . --json` |
+| Validate locally before push | `npm run validate:local` |
+| Validate for release | `npm run validate:release` |
+| Dry-run a release | `npm run release:dry-run` |
 
 ---
 
@@ -232,12 +237,16 @@ hforge doctor --root . --json   # Verify it's healthy
 hforge export --root . --json   # Share the runtime state
 ```
 
-### 🧬 Scenario 5: "A task is really hard and needs structured investigation"
+### 🧬 Scenario 5: "A task is really hard and needs structured recursive analysis"
+
+Use structured recursive analysis to break down complex investigations:
 
 ```bash
 hforge recursive plan "investigate the billing retry flow" --task-id TASK-001 --json
 hforge recursive capabilities --root . --json
 ```
+
+For a full walkthrough, see [./docs/recursive-rlm-guide.md](./docs/recursive-rlm-guide.md).
 
 Or let your AI agent decide when to escalate:
 
@@ -313,7 +322,7 @@ React, Next.js, Vite, Express, FastAPI, Django, ASP.NET Core, Spring Boot, Larav
 
 ### 🛠️ Skills (45+ packaged skills)
 
-Language engineering, workflow orchestration, operational helpers, and specialized skills like incident triage, dependency upgrades, API contract review, database migration review, and release readiness.
+Language engineering, workflow orchestration, operational helpers, and specialized skills like incident triage, dependency upgrades, API contract review, database migration review, release readiness, and token-budget-optimizer for context-aware compaction.
 
 ---
 

@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "1.0.0",
+  "objective": "Refactor the authentication module to use JWT-based token validation with refresh-token rotation",
+  "acceptedPlan": [
+    "Extract session logic from monolith into auth-service boundary",
+    "Define JWT token schema and signing configuration",
+    "Implement refresh-token rotation with revocation list",
+    "Migrate existing endpoints from cookie auth to bearer-token auth",
+    "Add integration tests covering token lifecycle and edge cases"
+  ],
+  "latestDeltaRef": ".hforge/runtime/context/delta-summary.json",
+  "sessionSummaryRef": ".hforge/runtime/context/session-summary.json",
+  "authorityMapRef": ".hforge/runtime/context/authority-map.json",
+  "targetPosture": {
+    "claude": "Use RS256 JWTs; prefer bearer-token auth; legacy cookies behind feature flag",
+    "codex": "Token validation is stateless; refresh tokens stored in Redis with TTL",
+    "agents-md": "Auth refactor in progress — see delta for latest changes since rollup"
+  },
+  "unresolved": [
+    "Redis cluster failover behavior under token-burst load not yet tested",
+    "OpenAPI spec for new /auth/token endpoint pending API review"
+  ],
+  "budgetRef": ".hforge/runtime/context/context-budget.json"
+}

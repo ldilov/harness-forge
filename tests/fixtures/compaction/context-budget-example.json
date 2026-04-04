@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "1.0.0",
+  "model": {
+    "name": "claude-sonnet-4-20250514",
+    "contextWindowTokens": 200000
+  },
+  "budgets": {
+    "maxHotPathInputTokens": 120000,
+    "reservedOutputTokens": 12000,
+    "reservedToolTokens": 8000,
+    "reservedSafetyMargin": 10000
+  },
+  "thresholds": {
+    "evaluateAt": 0.70,
+    "trimAt": 0.80,
+    "summarizeAt": 0.88,
+    "rollupAt": 0.93,
+    "rolloverAt": 0.96
+  },
+  "current": {
+    "estimatedInputTokens": 104500,
+    "estimatedOutputNeed": 4200,
+    "state": "summarize"
+  }
+}
