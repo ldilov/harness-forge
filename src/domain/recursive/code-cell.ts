@@ -30,6 +30,7 @@ export const recursiveCodeCellSchema = z.object({
   stdoutRef: z.string().min(1).optional(),
   stderrRef: z.string().min(1).optional(),
   sourceRef: z.string().min(1).optional(),
+  helperRefs: z.array(z.string().min(1)).default([]),
   createdAt: z.string().min(1),
   updatedAt: z.string().min(1)
 });
@@ -40,6 +41,7 @@ export const recursiveCodeCellResultSchema = z.object({
   summary: z.string().min(1),
   outputRefs: z.array(z.string().min(1)).default([]),
   diagnostics: z.array(z.string().min(1)).default([]),
+  helperRefs: z.array(z.string().min(1)).default([]),
   completedAt: z.string().min(1)
 });
 

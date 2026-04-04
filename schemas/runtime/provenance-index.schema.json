@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://harness-forge.dev/schemas/runtime/provenance-index.schema.json",
+  "title": "Provenance Index",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["generatedAt", "records"],
+  "properties": {
+    "generatedAt": { "type": "string", "minLength": 1 },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "ownershipClass", "editPolicy", "sourceKind", "selectedBy"],
+        "properties": {
+          "path": { "type": "string", "minLength": 1 },
+          "ownershipClass": { "type": "string", "minLength": 1 },
+          "editPolicy": { "type": "string", "minLength": 1 },
+          "sourceKind": { "type": "string", "minLength": 1 },
+          "selectedBy": { "type": "string", "minLength": 1 },
+          "bundleId": { "type": "string" },
+          "installedAt": { "type": "string" },
+          "lastUpdatedAt": { "type": "string" },
+          "isModified": { "type": "boolean" }
+        }
+      }
+    }
+  }
+}

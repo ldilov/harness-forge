@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-01T20:11:40.878Z",
+  "generatedAt": "2026-04-04T00:29:08.241Z",
   "entries": [
     {
       "subjectType": "language",
@@ -127,6 +127,15 @@
       "subjectId": "ai-runtime",
       "relationType": "supports",
       "relatedType": "target",
+      "relatedId": "generic-agent",
+      "supportLevel": "unsupported",
+      "notes": "Generic Agent does not ship profile support for ai-runtime."
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "ai-runtime",
+      "relationType": "supports",
+      "relatedType": "target",
       "relatedId": "opencode",
       "supportLevel": "partial",
       "notes": "OpenCode only provides partial profile support for ai-runtime."
@@ -155,6 +164,15 @@
       "relatedId": "cursor",
       "supportLevel": "partial",
       "notes": "Cursor only provides partial profile support for core."
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "core",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "generic-agent",
+      "supportLevel": "unsupported",
+      "notes": "Generic Agent does not ship profile support for core."
     },
     {
       "subjectType": "profile",
@@ -195,9 +213,61 @@
       "subjectId": "developer",
       "relationType": "supports",
       "relatedType": "target",
+      "relatedId": "generic-agent",
+      "supportLevel": "unsupported",
+      "notes": "Generic Agent does not ship profile support for developer."
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "developer",
+      "relationType": "supports",
+      "relatedType": "target",
       "relatedId": "opencode",
       "supportLevel": "partial",
       "notes": "OpenCode only provides partial profile support for developer."
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "full",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "claude-code",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "full",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "codex",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "full",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "cursor",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial profile support for full."
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "full",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "generic-agent",
+      "supportLevel": "unsupported",
+      "notes": "Generic Agent does not ship profile support for full."
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "full",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "opencode",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial profile support for full."
     },
     {
       "subjectType": "profile",
@@ -223,6 +293,15 @@
       "relatedId": "cursor",
       "supportLevel": "partial",
       "notes": "Cursor only provides partial profile support for game-dev-native."
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "game-dev-native",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "generic-agent",
+      "supportLevel": "unsupported",
+      "notes": "Generic Agent does not ship profile support for game-dev-native."
     },
     {
       "subjectType": "profile",
@@ -263,9 +342,61 @@
       "subjectId": "legacy-modernization",
       "relationType": "supports",
       "relatedType": "target",
+      "relatedId": "generic-agent",
+      "supportLevel": "unsupported",
+      "notes": "Generic Agent does not ship profile support for legacy-modernization."
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "legacy-modernization",
+      "relationType": "supports",
+      "relatedType": "target",
       "relatedId": "opencode",
       "supportLevel": "partial",
       "notes": "OpenCode only provides partial profile support for legacy-modernization."
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "minimal",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "claude-code",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "minimal",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "codex",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "minimal",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "cursor",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial profile support for minimal."
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "minimal",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "generic-agent",
+      "supportLevel": "unsupported",
+      "notes": "Generic Agent does not ship profile support for minimal."
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "minimal",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "opencode",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial profile support for minimal."
     },
     {
       "subjectType": "profile",
@@ -297,9 +428,61 @@
       "subjectId": "rapid-prototyping",
       "relationType": "supports",
       "relatedType": "target",
+      "relatedId": "generic-agent",
+      "supportLevel": "unsupported",
+      "notes": "Generic Agent does not ship profile support for rapid-prototyping."
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "rapid-prototyping",
+      "relationType": "supports",
+      "relatedType": "target",
       "relatedId": "opencode",
       "supportLevel": "partial",
       "notes": "OpenCode only provides partial profile support for rapid-prototyping."
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "recommended",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "claude-code",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "recommended",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "codex",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "recommended",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "cursor",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial profile support for recommended."
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "recommended",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "generic-agent",
+      "supportLevel": "unsupported",
+      "notes": "Generic Agent does not ship profile support for recommended."
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "recommended",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "opencode",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial profile support for recommended."
     },
     {
       "subjectType": "profile",
@@ -325,6 +508,15 @@
       "relatedId": "cursor",
       "supportLevel": "partial",
       "notes": "Cursor only provides partial profile support for release-manager."
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "release-manager",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "generic-agent",
+      "supportLevel": "unsupported",
+      "notes": "Generic Agent does not ship profile support for release-manager."
     },
     {
       "subjectType": "profile",
@@ -365,6 +557,15 @@
       "subjectId": "research-first",
       "relationType": "supports",
       "relatedType": "target",
+      "relatedId": "generic-agent",
+      "supportLevel": "unsupported",
+      "notes": "Generic Agent does not ship profile support for research-first."
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "research-first",
+      "relationType": "supports",
+      "relatedType": "target",
       "relatedId": "opencode",
       "supportLevel": "partial",
       "notes": "OpenCode only provides partial profile support for research-first."
@@ -393,6 +594,15 @@
       "relatedId": "cursor",
       "supportLevel": "partial",
       "notes": "Cursor only provides partial profile support for reviewer."
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "reviewer",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "generic-agent",
+      "supportLevel": "unsupported",
+      "notes": "Generic Agent does not ship profile support for reviewer."
     },
     {
       "subjectType": "profile",
@@ -433,9 +643,178 @@
       "subjectId": "security",
       "relationType": "supports",
       "relatedType": "target",
+      "relatedId": "generic-agent",
+      "supportLevel": "unsupported",
+      "notes": "Generic Agent does not ship profile support for security."
+    },
+    {
+      "subjectType": "profile",
+      "subjectId": "security",
+      "relationType": "supports",
+      "relatedType": "target",
       "relatedId": "opencode",
       "supportLevel": "partial",
       "notes": "OpenCode only provides partial profile support for security."
+    },
+    {
+      "subjectType": "profile",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "claude-code",
+      "supportLevel": "unsupported",
+      "notes": "Claude Code does not ship profile support for undefined."
+    },
+    {
+      "subjectType": "profile",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "claude-code",
+      "supportLevel": "unsupported",
+      "notes": "Claude Code does not ship profile support for undefined."
+    },
+    {
+      "subjectType": "profile",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "claude-code",
+      "supportLevel": "unsupported",
+      "notes": "Claude Code does not ship profile support for undefined."
+    },
+    {
+      "subjectType": "profile",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "claude-code",
+      "supportLevel": "unsupported",
+      "notes": "Claude Code does not ship profile support for undefined."
+    },
+    {
+      "subjectType": "profile",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "codex",
+      "supportLevel": "unsupported",
+      "notes": "Codex does not ship profile support for undefined."
+    },
+    {
+      "subjectType": "profile",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "codex",
+      "supportLevel": "unsupported",
+      "notes": "Codex does not ship profile support for undefined."
+    },
+    {
+      "subjectType": "profile",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "codex",
+      "supportLevel": "unsupported",
+      "notes": "Codex does not ship profile support for undefined."
+    },
+    {
+      "subjectType": "profile",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "codex",
+      "supportLevel": "unsupported",
+      "notes": "Codex does not ship profile support for undefined."
+    },
+    {
+      "subjectType": "profile",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "cursor",
+      "supportLevel": "unsupported",
+      "notes": "Cursor does not ship profile support for undefined."
+    },
+    {
+      "subjectType": "profile",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "cursor",
+      "supportLevel": "unsupported",
+      "notes": "Cursor does not ship profile support for undefined."
+    },
+    {
+      "subjectType": "profile",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "cursor",
+      "supportLevel": "unsupported",
+      "notes": "Cursor does not ship profile support for undefined."
+    },
+    {
+      "subjectType": "profile",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "cursor",
+      "supportLevel": "unsupported",
+      "notes": "Cursor does not ship profile support for undefined."
+    },
+    {
+      "subjectType": "profile",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "generic-agent",
+      "supportLevel": "unsupported",
+      "notes": "Generic Agent does not ship profile support for undefined."
+    },
+    {
+      "subjectType": "profile",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "generic-agent",
+      "supportLevel": "unsupported",
+      "notes": "Generic Agent does not ship profile support for undefined."
+    },
+    {
+      "subjectType": "profile",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "generic-agent",
+      "supportLevel": "unsupported",
+      "notes": "Generic Agent does not ship profile support for undefined."
+    },
+    {
+      "subjectType": "profile",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "generic-agent",
+      "supportLevel": "unsupported",
+      "notes": "Generic Agent does not ship profile support for undefined."
+    },
+    {
+      "subjectType": "profile",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "opencode",
+      "supportLevel": "unsupported",
+      "notes": "OpenCode does not ship profile support for undefined."
+    },
+    {
+      "subjectType": "profile",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "opencode",
+      "supportLevel": "unsupported",
+      "notes": "OpenCode does not ship profile support for undefined."
+    },
+    {
+      "subjectType": "profile",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "opencode",
+      "supportLevel": "unsupported",
+      "notes": "OpenCode does not ship profile support for undefined."
+    },
+    {
+      "subjectType": "profile",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "opencode",
+      "supportLevel": "unsupported",
+      "notes": "OpenCode does not ship profile support for undefined."
     },
     {
       "subjectType": "target",
@@ -909,14 +1288,6 @@
       "subjectId": "claude-code",
       "relationType": "supports",
       "relatedType": "skill",
-      "relatedId": "cpp-engineering",
-      "supportLevel": "full"
-    },
-    {
-      "subjectType": "target",
-      "subjectId": "claude-code",
-      "relationType": "supports",
-      "relatedType": "skill",
       "relatedId": "db-migration-review",
       "supportLevel": "full"
     },
@@ -941,23 +1312,7 @@
       "subjectId": "claude-code",
       "relationType": "supports",
       "relatedType": "skill",
-      "relatedId": "dotnet-engineering",
-      "supportLevel": "full"
-    },
-    {
-      "subjectType": "target",
-      "subjectId": "claude-code",
-      "relationType": "supports",
-      "relatedType": "skill",
       "relatedId": "engineering-assistant",
-      "supportLevel": "full"
-    },
-    {
-      "subjectType": "target",
-      "subjectId": "claude-code",
-      "relationType": "supports",
-      "relatedType": "skill",
-      "relatedId": "go-engineering",
       "supportLevel": "full"
     },
     {
@@ -1029,23 +1384,7 @@
       "subjectId": "claude-code",
       "relationType": "supports",
       "relatedType": "skill",
-      "relatedId": "java-engineering",
-      "supportLevel": "full"
-    },
-    {
-      "subjectType": "target",
-      "subjectId": "claude-code",
-      "relationType": "supports",
-      "relatedType": "skill",
       "relatedId": "javascript-engineering",
-      "supportLevel": "full"
-    },
-    {
-      "subjectType": "target",
-      "subjectId": "claude-code",
-      "relationType": "supports",
-      "relatedType": "skill",
-      "relatedId": "kotlin-engineering",
       "supportLevel": "full"
     },
     {
@@ -1181,14 +1520,6 @@
       "subjectId": "claude-code",
       "relationType": "supports",
       "relatedType": "skill",
-      "relatedId": "rust-engineering",
-      "supportLevel": "full"
-    },
-    {
-      "subjectType": "target",
-      "subjectId": "claude-code",
-      "relationType": "supports",
-      "relatedType": "skill",
       "relatedId": "security-scan",
       "supportLevel": "full"
     },
@@ -1270,14 +1601,6 @@
       "relationType": "supports",
       "relatedType": "skill",
       "relatedId": "speckit-taskstoissues",
-      "supportLevel": "full"
-    },
-    {
-      "subjectType": "target",
-      "subjectId": "claude-code",
-      "relationType": "supports",
-      "relatedType": "skill",
-      "relatedId": "swift-engineering",
       "supportLevel": "full"
     },
     {
@@ -1776,14 +2099,6 @@
       "subjectId": "codex",
       "relationType": "supports",
       "relatedType": "skill",
-      "relatedId": "cpp-engineering",
-      "supportLevel": "full"
-    },
-    {
-      "subjectType": "target",
-      "subjectId": "codex",
-      "relationType": "supports",
-      "relatedType": "skill",
       "relatedId": "db-migration-review",
       "supportLevel": "full"
     },
@@ -1808,23 +2123,7 @@
       "subjectId": "codex",
       "relationType": "supports",
       "relatedType": "skill",
-      "relatedId": "dotnet-engineering",
-      "supportLevel": "full"
-    },
-    {
-      "subjectType": "target",
-      "subjectId": "codex",
-      "relationType": "supports",
-      "relatedType": "skill",
       "relatedId": "engineering-assistant",
-      "supportLevel": "full"
-    },
-    {
-      "subjectType": "target",
-      "subjectId": "codex",
-      "relationType": "supports",
-      "relatedType": "skill",
-      "relatedId": "go-engineering",
       "supportLevel": "full"
     },
     {
@@ -1896,23 +2195,7 @@
       "subjectId": "codex",
       "relationType": "supports",
       "relatedType": "skill",
-      "relatedId": "java-engineering",
-      "supportLevel": "full"
-    },
-    {
-      "subjectType": "target",
-      "subjectId": "codex",
-      "relationType": "supports",
-      "relatedType": "skill",
       "relatedId": "javascript-engineering",
-      "supportLevel": "full"
-    },
-    {
-      "subjectType": "target",
-      "subjectId": "codex",
-      "relationType": "supports",
-      "relatedType": "skill",
-      "relatedId": "kotlin-engineering",
       "supportLevel": "full"
     },
     {
@@ -2048,14 +2331,6 @@
       "subjectId": "codex",
       "relationType": "supports",
       "relatedType": "skill",
-      "relatedId": "rust-engineering",
-      "supportLevel": "full"
-    },
-    {
-      "subjectType": "target",
-      "subjectId": "codex",
-      "relationType": "supports",
-      "relatedType": "skill",
       "relatedId": "security-scan",
       "supportLevel": "full"
     },
@@ -2137,14 +2412,6 @@
       "relationType": "supports",
       "relatedType": "skill",
       "relatedId": "speckit-taskstoissues",
-      "supportLevel": "full"
-    },
-    {
-      "subjectType": "target",
-      "subjectId": "codex",
-      "relationType": "supports",
-      "relatedType": "skill",
-      "relatedId": "swift-engineering",
       "supportLevel": "full"
     },
     {
@@ -2683,15 +2950,6 @@
       "subjectId": "cursor",
       "relationType": "supports",
       "relatedType": "skill",
-      "relatedId": "cpp-engineering",
-      "supportLevel": "partial",
-      "notes": "Cursor only provides partial skill support for cpp-engineering."
-    },
-    {
-      "subjectType": "target",
-      "subjectId": "cursor",
-      "relationType": "supports",
-      "relatedType": "skill",
       "relatedId": "db-migration-review",
       "supportLevel": "partial",
       "notes": "Cursor only provides partial skill support for db-migration-review."
@@ -2719,27 +2977,9 @@
       "subjectId": "cursor",
       "relationType": "supports",
       "relatedType": "skill",
-      "relatedId": "dotnet-engineering",
-      "supportLevel": "partial",
-      "notes": "Cursor only provides partial skill support for dotnet-engineering."
-    },
-    {
-      "subjectType": "target",
-      "subjectId": "cursor",
-      "relationType": "supports",
-      "relatedType": "skill",
       "relatedId": "engineering-assistant",
       "supportLevel": "partial",
       "notes": "Cursor only provides partial skill support for engineering-assistant."
-    },
-    {
-      "subjectType": "target",
-      "subjectId": "cursor",
-      "relationType": "supports",
-      "relatedType": "skill",
-      "relatedId": "go-engineering",
-      "supportLevel": "partial",
-      "notes": "Cursor only provides partial skill support for go-engineering."
     },
     {
       "subjectType": "target",
@@ -2818,27 +3058,9 @@
       "subjectId": "cursor",
       "relationType": "supports",
       "relatedType": "skill",
-      "relatedId": "java-engineering",
-      "supportLevel": "partial",
-      "notes": "Cursor only provides partial skill support for java-engineering."
-    },
-    {
-      "subjectType": "target",
-      "subjectId": "cursor",
-      "relationType": "supports",
-      "relatedType": "skill",
       "relatedId": "javascript-engineering",
       "supportLevel": "partial",
       "notes": "Cursor only provides partial skill support for javascript-engineering."
-    },
-    {
-      "subjectType": "target",
-      "subjectId": "cursor",
-      "relationType": "supports",
-      "relatedType": "skill",
-      "relatedId": "kotlin-engineering",
-      "supportLevel": "partial",
-      "notes": "Cursor only provides partial skill support for kotlin-engineering."
     },
     {
       "subjectType": "target",
@@ -2989,15 +3211,6 @@
       "subjectId": "cursor",
       "relationType": "supports",
       "relatedType": "skill",
-      "relatedId": "rust-engineering",
-      "supportLevel": "partial",
-      "notes": "Cursor only provides partial skill support for rust-engineering."
-    },
-    {
-      "subjectType": "target",
-      "subjectId": "cursor",
-      "relationType": "supports",
-      "relatedType": "skill",
       "relatedId": "security-scan",
       "supportLevel": "partial",
       "notes": "Cursor only provides partial skill support for security-scan."
@@ -3097,15 +3310,6 @@
       "subjectId": "cursor",
       "relationType": "supports",
       "relatedType": "skill",
-      "relatedId": "swift-engineering",
-      "supportLevel": "partial",
-      "notes": "Cursor only provides partial skill support for swift-engineering."
-    },
-    {
-      "subjectType": "target",
-      "subjectId": "cursor",
-      "relationType": "supports",
-      "relatedType": "skill",
       "relatedId": "test-strategy-and-coverage",
       "supportLevel": "partial",
       "notes": "Cursor only provides partial skill support for test-strategy-and-coverage."
@@ -3127,6 +3331,895 @@
       "relatedId": "typescript-engineering",
       "supportLevel": "partial",
       "notes": "Cursor only provides partial skill support for typescript-engineering."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "baseline:agents",
+      "supportLevel": "unsupported",
+      "notes": "Generic Agent does not ship bundle support for baseline:agents."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "baseline:commands",
+      "supportLevel": "unsupported",
+      "notes": "Generic Agent does not ship bundle support for baseline:commands."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "capability:flow-orchestration",
+      "supportLevel": "unsupported",
+      "notes": "Generic Agent does not ship bundle support for capability:flow-orchestration."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "capability:lifecycle-governance",
+      "supportLevel": "unsupported",
+      "notes": "Generic Agent does not ship bundle support for capability:lifecycle-governance."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "capability:local-observability",
+      "supportLevel": "unsupported",
+      "notes": "Generic Agent does not ship bundle support for capability:local-observability."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "capability:repo-intelligence",
+      "supportLevel": "unsupported",
+      "notes": "Generic Agent does not ship bundle support for capability:repo-intelligence."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "capability:workflow-quality",
+      "supportLevel": "unsupported",
+      "notes": "Generic Agent does not ship bundle support for capability:workflow-quality."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "capability:workload-skills",
+      "supportLevel": "unsupported",
+      "notes": "Generic Agent does not ship bundle support for capability:workload-skills."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:aspnet-core",
+      "supportLevel": "unsupported",
+      "notes": "Generic Agent does not ship bundle support for framework:aspnet-core."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:django",
+      "supportLevel": "unsupported",
+      "notes": "Generic Agent does not ship bundle support for framework:django."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:express",
+      "supportLevel": "unsupported",
+      "notes": "Generic Agent does not ship bundle support for framework:express."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:fastapi",
+      "supportLevel": "unsupported",
+      "notes": "Generic Agent does not ship bundle support for framework:fastapi."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:gin",
+      "supportLevel": "unsupported",
+      "notes": "Generic Agent does not ship bundle support for framework:gin."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:ktor",
+      "supportLevel": "unsupported",
+      "notes": "Generic Agent does not ship bundle support for framework:ktor."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:laravel",
+      "supportLevel": "unsupported",
+      "notes": "Generic Agent does not ship bundle support for framework:laravel."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:nextjs",
+      "supportLevel": "unsupported",
+      "notes": "Generic Agent does not ship bundle support for framework:nextjs."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:react",
+      "supportLevel": "unsupported",
+      "notes": "Generic Agent does not ship bundle support for framework:react."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:spring-boot",
+      "supportLevel": "unsupported",
+      "notes": "Generic Agent does not ship bundle support for framework:spring-boot."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:symfony",
+      "supportLevel": "unsupported",
+      "notes": "Generic Agent does not ship bundle support for framework:symfony."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "framework:vite",
+      "supportLevel": "unsupported",
+      "notes": "Generic Agent does not ship bundle support for framework:vite."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:cpp",
+      "supportLevel": "unsupported",
+      "notes": "Generic Agent does not ship bundle support for lang:cpp."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:dotnet",
+      "supportLevel": "unsupported",
+      "notes": "Generic Agent does not ship bundle support for lang:dotnet."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:go",
+      "supportLevel": "unsupported",
+      "notes": "Generic Agent does not ship bundle support for lang:go."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:java",
+      "supportLevel": "unsupported",
+      "notes": "Generic Agent does not ship bundle support for lang:java."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:kotlin",
+      "supportLevel": "unsupported",
+      "notes": "Generic Agent does not ship bundle support for lang:kotlin."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:lua",
+      "supportLevel": "unsupported",
+      "notes": "Generic Agent does not ship bundle support for lang:lua."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:perl",
+      "supportLevel": "unsupported",
+      "notes": "Generic Agent does not ship bundle support for lang:perl."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:php",
+      "supportLevel": "unsupported",
+      "notes": "Generic Agent does not ship bundle support for lang:php."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:powershell",
+      "supportLevel": "unsupported",
+      "notes": "Generic Agent does not ship bundle support for lang:powershell."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:python",
+      "supportLevel": "unsupported",
+      "notes": "Generic Agent does not ship bundle support for lang:python."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:rust",
+      "supportLevel": "unsupported",
+      "notes": "Generic Agent does not ship bundle support for lang:rust."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:shell",
+      "supportLevel": "unsupported",
+      "notes": "Generic Agent does not ship bundle support for lang:shell."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:swift",
+      "supportLevel": "unsupported",
+      "notes": "Generic Agent does not ship bundle support for lang:swift."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "lang:typescript",
+      "supportLevel": "unsupported",
+      "notes": "Generic Agent does not ship bundle support for lang:typescript."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "target-runtime:claude-code",
+      "supportLevel": "unsupported",
+      "notes": "Generic Agent does not ship bundle support for target-runtime:claude-code."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "bundle",
+      "relatedId": "target-runtime:codex",
+      "supportLevel": "unsupported",
+      "notes": "Generic Agent does not ship bundle support for target-runtime:codex."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports-capability",
+      "relatedType": "capability",
+      "relatedId": "flow-orchestration",
+      "supportLevel": "unsupported",
+      "supportMode": "unsupported",
+      "confidence": 0.95,
+      "evidenceSource": [
+        "targets/generic-agent/adapter.json"
+      ],
+      "fallbackBehavior": "Do not rely on packaged flow recovery; use .hforge/runtime/index.json only.",
+      "notes": "No flow-state recovery surface is shipped for generic agents."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports-capability",
+      "relatedType": "capability",
+      "relatedId": "maintenance",
+      "supportLevel": "partial",
+      "supportMode": "contract",
+      "confidence": 0.7,
+      "evidenceSource": [
+        "targets/generic-agent/adapter.json",
+        "src/cli/commands/doctor.ts"
+      ],
+      "fallbackBehavior": "Run the maintenance commands from the repository directly.",
+      "notes": "Maintenance commands are portable but not natively wired for generic agents."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports-capability",
+      "relatedType": "capability",
+      "relatedId": "observability",
+      "supportLevel": "unsupported",
+      "supportMode": "unsupported",
+      "confidence": 0.9,
+      "evidenceSource": [
+        "targets/generic-agent/adapter.json"
+      ],
+      "fallbackBehavior": "Inspect .hforge/observability artifacts directly if available.",
+      "notes": "No observability runtime is shipped for generic agents."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports-capability",
+      "relatedType": "capability",
+      "relatedId": "recursive-structured-analysis",
+      "supportLevel": "partial",
+      "supportMode": "contract",
+      "confidence": 0.78,
+      "evidenceSource": [
+        "targets/generic-agent/adapter.json",
+        "src/cli/commands/recursive.ts"
+      ],
+      "fallbackBehavior": "Use .hforge/runtime/recursive/language-capabilities.json and recursive session artifacts.",
+      "notes": "Generic agents receive recursive structured-analysis through shared-runtime capability maps and session artifacts."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports-capability",
+      "relatedType": "capability",
+      "relatedId": "repo-intelligence",
+      "supportLevel": "partial",
+      "supportMode": "contract",
+      "confidence": 0.8,
+      "evidenceSource": [
+        "targets/generic-agent/adapter.json",
+        "scripts/intelligence/score-recommendations.mjs"
+      ],
+      "fallbackBehavior": "Inspect .hforge/runtime/index.json and .hforge/library/, then run the intelligence scripts directly.",
+      "notes": "Repo intelligence is available through portable scripts and the hidden .hforge state layer."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports-capability",
+      "relatedType": "capability",
+      "relatedId": "templates",
+      "supportLevel": "partial",
+      "supportMode": "contract",
+      "confidence": 0.85,
+      "evidenceSource": [
+        "targets/generic-agent/adapter.json",
+        "manifests/targets/core.json"
+      ],
+      "fallbackBehavior": "Use AGENTS.md, .agents/skills/, and the hidden .hforge AI layer.",
+      "notes": "Generic agents consume portable docs, manifests, and the hidden .hforge AI layer through contract-level surfaces."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports-capability",
+      "relatedType": "capability",
+      "relatedId": "typed-hooks",
+      "supportLevel": "unsupported",
+      "supportMode": "unsupported",
+      "confidence": 0.95,
+      "evidenceSource": [
+        "targets/generic-agent/adapter.json"
+      ],
+      "fallbackBehavior": "Use hook docs as references only; do not claim native hook execution.",
+      "notes": "Generic agents do not have a packaged hook runtime."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports-capability",
+      "relatedType": "capability",
+      "relatedId": "workflow-validation",
+      "supportLevel": "unsupported",
+      "supportMode": "unsupported",
+      "confidence": 0.95,
+      "evidenceSource": [
+        "targets/generic-agent/adapter.json"
+      ],
+      "fallbackBehavior": "Run the package validators directly from the repository if needed.",
+      "notes": "No workflow validation runtime is shipped for generic agents."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "hook",
+      "relatedId": "checkpoint.flow-summary",
+      "supportLevel": "unsupported",
+      "notes": "Generic Agent does not ship hook support for checkpoint.flow-summary."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "hook",
+      "relatedId": "quality-gate.release-smoke",
+      "supportLevel": "unsupported",
+      "notes": "Generic Agent does not ship hook support for quality-gate.release-smoke."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "hook",
+      "relatedId": "scan.repo-intelligence",
+      "supportLevel": "unsupported",
+      "notes": "Generic Agent does not ship hook support for scan.repo-intelligence."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "api-contract-review",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial skill support for api-contract-review."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "architecture-decision-records",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial skill support for architecture-decision-records."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "cloud-architect",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial skill support for cloud-architect."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "db-migration-review",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial skill support for db-migration-review."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "dependency-upgrade-safety",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial skill support for dependency-upgrade-safety."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "documentation-lookup",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial skill support for documentation-lookup."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "engineering-assistant",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial skill support for engineering-assistant."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "hforge-analyze",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial skill support for hforge-analyze."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "hforge-decide",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial skill support for hforge-decide."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "hforge-init",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial skill support for hforge-init."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "hforge-recursive-investigate",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial skill support for hforge-recursive-investigate."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "hforge-refresh",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial skill support for hforge-refresh."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "hforge-review",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial skill support for hforge-review."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "impact-analysis",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial skill support for impact-analysis."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "incident-triage",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial skill support for incident-triage."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "javascript-engineering",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial skill support for javascript-engineering."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "lua-engineering",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial skill support for lua-engineering."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "madr-decision-log",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial skill support for madr-decision-log."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "observability-and-eval",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial skill support for observability-and-eval."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "observability-setup",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial skill support for observability-setup."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "parallel-worktree-supervisor",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial skill support for parallel-worktree-supervisor."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "performance-profiling",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial skill support for performance-profiling."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "perl-engineering",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial skill support for perl-engineering."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "php-engineering",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial skill support for php-engineering."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "powershell-engineering",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial skill support for powershell-engineering."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "pr-triage-and-summary",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial skill support for pr-triage-and-summary."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "python-engineering",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial skill support for python-engineering."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "recursive-structured-analysis",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial skill support for recursive-structured-analysis."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "release-readiness",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial skill support for release-readiness."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "repo-cartographer",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial skill support for repo-cartographer."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "repo-modernization",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial skill support for repo-modernization."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "repo-onboarding",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial skill support for repo-onboarding."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "security-scan",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial skill support for security-scan."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "shell-engineering",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial skill support for shell-engineering."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "speckit-analyze",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial skill support for speckit-analyze."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "speckit-checklist",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial skill support for speckit-checklist."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "speckit-clarify",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial skill support for speckit-clarify."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "speckit-constitution",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial skill support for speckit-constitution."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "speckit-implement",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial skill support for speckit-implement."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "speckit-plan",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial skill support for speckit-plan."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "speckit-specify",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial skill support for speckit-specify."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "speckit-tasks",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial skill support for speckit-tasks."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "speckit-taskstoissues",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial skill support for speckit-taskstoissues."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "test-strategy-and-coverage",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial skill support for test-strategy-and-coverage."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "token-budget-optimizer",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial skill support for token-budget-optimizer."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "typescript-engineering",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial skill support for typescript-engineering."
     },
     {
       "subjectType": "target",
@@ -3640,15 +4733,6 @@
       "subjectId": "opencode",
       "relationType": "supports",
       "relatedType": "skill",
-      "relatedId": "cpp-engineering",
-      "supportLevel": "partial",
-      "notes": "OpenCode only provides partial skill support for cpp-engineering."
-    },
-    {
-      "subjectType": "target",
-      "subjectId": "opencode",
-      "relationType": "supports",
-      "relatedType": "skill",
       "relatedId": "db-migration-review",
       "supportLevel": "partial",
       "notes": "OpenCode only provides partial skill support for db-migration-review."
@@ -3676,27 +4760,9 @@
       "subjectId": "opencode",
       "relationType": "supports",
       "relatedType": "skill",
-      "relatedId": "dotnet-engineering",
-      "supportLevel": "partial",
-      "notes": "OpenCode only provides partial skill support for dotnet-engineering."
-    },
-    {
-      "subjectType": "target",
-      "subjectId": "opencode",
-      "relationType": "supports",
-      "relatedType": "skill",
       "relatedId": "engineering-assistant",
       "supportLevel": "partial",
       "notes": "OpenCode only provides partial skill support for engineering-assistant."
-    },
-    {
-      "subjectType": "target",
-      "subjectId": "opencode",
-      "relationType": "supports",
-      "relatedType": "skill",
-      "relatedId": "go-engineering",
-      "supportLevel": "partial",
-      "notes": "OpenCode only provides partial skill support for go-engineering."
     },
     {
       "subjectType": "target",
@@ -3775,27 +4841,9 @@
       "subjectId": "opencode",
       "relationType": "supports",
       "relatedType": "skill",
-      "relatedId": "java-engineering",
-      "supportLevel": "partial",
-      "notes": "OpenCode only provides partial skill support for java-engineering."
-    },
-    {
-      "subjectType": "target",
-      "subjectId": "opencode",
-      "relationType": "supports",
-      "relatedType": "skill",
       "relatedId": "javascript-engineering",
       "supportLevel": "partial",
       "notes": "OpenCode only provides partial skill support for javascript-engineering."
-    },
-    {
-      "subjectType": "target",
-      "subjectId": "opencode",
-      "relationType": "supports",
-      "relatedType": "skill",
-      "relatedId": "kotlin-engineering",
-      "supportLevel": "partial",
-      "notes": "OpenCode only provides partial skill support for kotlin-engineering."
     },
     {
       "subjectType": "target",
@@ -3946,15 +4994,6 @@
       "subjectId": "opencode",
       "relationType": "supports",
       "relatedType": "skill",
-      "relatedId": "rust-engineering",
-      "supportLevel": "partial",
-      "notes": "OpenCode only provides partial skill support for rust-engineering."
-    },
-    {
-      "subjectType": "target",
-      "subjectId": "opencode",
-      "relationType": "supports",
-      "relatedType": "skill",
       "relatedId": "security-scan",
       "supportLevel": "partial",
       "notes": "OpenCode only provides partial skill support for security-scan."
@@ -4054,15 +5093,6 @@
       "subjectId": "opencode",
       "relationType": "supports",
       "relatedType": "skill",
-      "relatedId": "swift-engineering",
-      "supportLevel": "partial",
-      "notes": "OpenCode only provides partial skill support for swift-engineering."
-    },
-    {
-      "subjectType": "target",
-      "subjectId": "opencode",
-      "relationType": "supports",
-      "relatedType": "skill",
       "relatedId": "test-strategy-and-coverage",
       "supportLevel": "partial",
       "notes": "OpenCode only provides partial skill support for test-strategy-and-coverage."
@@ -4115,6 +5145,15 @@
       "subjectId": "implement-change",
       "relationType": "supports",
       "relatedType": "target",
+      "relatedId": "generic-agent",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial workflow support for implement-change."
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-change",
+      "relationType": "supports",
+      "relatedType": "target",
       "relatedId": "opencode",
       "supportLevel": "partial",
       "notes": "OpenCode only provides partial workflow support for implement-change."
@@ -4143,6 +5182,15 @@
       "relatedId": "cursor",
       "supportLevel": "partial",
       "notes": "Cursor only provides partial workflow support for implement-cpp-change."
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-cpp-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "generic-agent",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial workflow support for implement-cpp-change."
     },
     {
       "subjectType": "workflow",
@@ -4183,6 +5231,15 @@
       "subjectId": "implement-dotnet-change",
       "relationType": "supports",
       "relatedType": "target",
+      "relatedId": "generic-agent",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial workflow support for implement-dotnet-change."
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-dotnet-change",
+      "relationType": "supports",
+      "relatedType": "target",
       "relatedId": "opencode",
       "supportLevel": "partial",
       "notes": "OpenCode only provides partial workflow support for implement-dotnet-change."
@@ -4211,6 +5268,15 @@
       "relatedId": "cursor",
       "supportLevel": "partial",
       "notes": "Cursor only provides partial workflow support for implement-go-change."
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-go-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "generic-agent",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial workflow support for implement-go-change."
     },
     {
       "subjectType": "workflow",
@@ -4251,6 +5317,15 @@
       "subjectId": "implement-java-change",
       "relationType": "supports",
       "relatedType": "target",
+      "relatedId": "generic-agent",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial workflow support for implement-java-change."
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-java-change",
+      "relationType": "supports",
+      "relatedType": "target",
       "relatedId": "opencode",
       "supportLevel": "partial",
       "notes": "OpenCode only provides partial workflow support for implement-java-change."
@@ -4279,6 +5354,15 @@
       "relatedId": "cursor",
       "supportLevel": "partial",
       "notes": "Cursor only provides partial workflow support for implement-kotlin-change."
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-kotlin-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "generic-agent",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial workflow support for implement-kotlin-change."
     },
     {
       "subjectType": "workflow",
@@ -4319,6 +5403,15 @@
       "subjectId": "implement-lua-change",
       "relationType": "supports",
       "relatedType": "target",
+      "relatedId": "generic-agent",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial workflow support for implement-lua-change."
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-lua-change",
+      "relationType": "supports",
+      "relatedType": "target",
       "relatedId": "opencode",
       "supportLevel": "partial",
       "notes": "OpenCode only provides partial workflow support for implement-lua-change."
@@ -4347,6 +5440,15 @@
       "relatedId": "cursor",
       "supportLevel": "partial",
       "notes": "Cursor only provides partial workflow support for implement-perl-change."
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-perl-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "generic-agent",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial workflow support for implement-perl-change."
     },
     {
       "subjectType": "workflow",
@@ -4387,6 +5489,15 @@
       "subjectId": "implement-php-change",
       "relationType": "supports",
       "relatedType": "target",
+      "relatedId": "generic-agent",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial workflow support for implement-php-change."
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-php-change",
+      "relationType": "supports",
+      "relatedType": "target",
       "relatedId": "opencode",
       "supportLevel": "partial",
       "notes": "OpenCode only provides partial workflow support for implement-php-change."
@@ -4415,6 +5526,15 @@
       "relatedId": "cursor",
       "supportLevel": "partial",
       "notes": "Cursor only provides partial workflow support for implement-powershell-change."
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-powershell-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "generic-agent",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial workflow support for implement-powershell-change."
     },
     {
       "subjectType": "workflow",
@@ -4455,6 +5575,15 @@
       "subjectId": "implement-python-change",
       "relationType": "supports",
       "relatedType": "target",
+      "relatedId": "generic-agent",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial workflow support for implement-python-change."
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-python-change",
+      "relationType": "supports",
+      "relatedType": "target",
       "relatedId": "opencode",
       "supportLevel": "partial",
       "notes": "OpenCode only provides partial workflow support for implement-python-change."
@@ -4483,6 +5612,15 @@
       "relatedId": "cursor",
       "supportLevel": "partial",
       "notes": "Cursor only provides partial workflow support for implement-rust-change."
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-rust-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "generic-agent",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial workflow support for implement-rust-change."
     },
     {
       "subjectType": "workflow",
@@ -4523,6 +5661,15 @@
       "subjectId": "implement-shell-change",
       "relationType": "supports",
       "relatedType": "target",
+      "relatedId": "generic-agent",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial workflow support for implement-shell-change."
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-shell-change",
+      "relationType": "supports",
+      "relatedType": "target",
       "relatedId": "opencode",
       "supportLevel": "partial",
       "notes": "OpenCode only provides partial workflow support for implement-shell-change."
@@ -4551,6 +5698,15 @@
       "relatedId": "cursor",
       "supportLevel": "partial",
       "notes": "Cursor only provides partial workflow support for implement-swift-change."
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-swift-change",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "generic-agent",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial workflow support for implement-swift-change."
     },
     {
       "subjectType": "workflow",
@@ -4591,6 +5747,15 @@
       "subjectId": "implement-typescript-change",
       "relationType": "supports",
       "relatedType": "target",
+      "relatedId": "generic-agent",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial workflow support for implement-typescript-change."
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "implement-typescript-change",
+      "relationType": "supports",
+      "relatedType": "target",
       "relatedId": "opencode",
       "supportLevel": "partial",
       "notes": "OpenCode only provides partial workflow support for implement-typescript-change."
@@ -4619,6 +5784,15 @@
       "relatedId": "cursor",
       "supportLevel": "partial",
       "notes": "Cursor only provides partial workflow support for parallel-implement-and-merge."
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "parallel-implement-and-merge",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "generic-agent",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial workflow support for parallel-implement-and-merge."
     },
     {
       "subjectType": "workflow",
@@ -4659,6 +5833,15 @@
       "subjectId": "research-plan-implement-validate",
       "relationType": "supports",
       "relatedType": "target",
+      "relatedId": "generic-agent",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial workflow support for research-plan-implement-validate."
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "research-plan-implement-validate",
+      "relationType": "supports",
+      "relatedType": "target",
       "relatedId": "opencode",
       "supportLevel": "partial",
       "notes": "OpenCode only provides partial workflow support for research-plan-implement-validate."
@@ -4687,6 +5870,15 @@
       "relatedId": "cursor",
       "supportLevel": "partial",
       "notes": "Cursor only provides partial workflow support for triage-reproduce-fix-verify."
+    },
+    {
+      "subjectType": "workflow",
+      "subjectId": "triage-reproduce-fix-verify",
+      "relationType": "supports",
+      "relatedType": "target",
+      "relatedId": "generic-agent",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial workflow support for triage-reproduce-fix-verify."
     },
     {
       "subjectType": "workflow",

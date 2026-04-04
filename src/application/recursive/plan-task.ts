@@ -1,5 +1,6 @@
 import type { RecursiveExecutionPolicy } from "../../domain/recursive/execution-policy.js";
 import type { RecursiveLanguageCapabilities } from "../../domain/recursive/language-capabilities.js";
+import type { RecursiveRuntimeInventory } from "../../domain/recursive/runtime-inventory.js";
 import type { RecursiveWorkingMemory } from "../../domain/recursive/memory.js";
 import type { RecursiveSession, RecursiveSessionStatus } from "../../domain/recursive/session.js";
 import type { RecursiveSessionSummary } from "../../domain/recursive/session-summary.js";
@@ -9,12 +10,15 @@ import { appendRecursiveTraceEvent } from "../../infrastructure/recursive/trace-
 import {
   type RecursiveSessionBundle,
   loadRecursiveLanguageCapabilities,
+  loadRecursiveRuntimeInventory,
   resolveRecursiveSessionPaths,
   writeRecursiveLanguageCapabilities,
+  writeRecursiveRuntimeInventory,
   writeRecursiveSessionBundle
 } from "../../infrastructure/recursive/session-store.js";
 import { persistTaskRecursiveLinkage } from "../runtime/task-runtime-store.js";
 import { buildRecursiveEnvironment } from "./build-environment.js";
+import { deriveRecursiveRuntimeInventory } from "./derive-runtime-inventory.js";
 import { buildRecursiveRootFrame } from "./build-root-frame.js";
 import { deriveRecursiveLanguageCapabilities } from "./derive-language-capabilities.js";
 
@@ -27,6 +31,7 @@ export interface PlanRecursiveTaskInput {
 export interface PlanRecursiveTaskResult {
   session: RecursiveSession;
   summary: RecursiveSessionSummary;
+  runtimeInventory: RecursiveRuntimeInventory;
   artifactPaths: ReturnType<typeof resolveRecursiveSessionPaths>;
   linkagePath?: string;
 }
@@ -70,8 +75,9 @@ function createSummary(session: RecursiveSession): RecursiveSessionSummary {
       limitsHit: [],
       notes: "No recursive work has consumed the budget yet."
     },
-    followUp: "Inspect the seeded handles, gather evidence, and promote durable findings only when stable.",
-    generatedAt: new Date().toISOString()
+    followUp: "Inspect runtime posture, gather evidence, and promote durable findings only when stable.",
+    generatedAt: new Date().toISOString(),
+    runtimeInventoryRef: session.runtimeInventoryRef
   };
 }
 
@@ -98,7 +104,7 @@ function createExecutionPolicy(session: RecursiveSession): RecursiveExecutionPol
       "propose-meta-op",
       "finalize-output"
     ],
-    allowedLanguages: ["javascript", "typescript", "python"],
+    allowedLanguages: ["javascript", "typescript", "python", "powershell"],
     allowedWriteScopes: session.budgetPolicy.allowedWriteScopes,
     networkPosture: session.budgetPolicy.allowNetwork ? "restricted-network" : "offline",
     stopConditions: session.budgetPolicy.stopConditions,
@@ -123,6 +129,21 @@ async function createSessionCapabilities(workspaceRoot: string): Promise<Recursi
     ...workspaceCapabilities,
     generatedAt: new Date().toISOString(),
     summary: `Session-scoped recursive structured-analysis capability view for ${workspaceCapabilities.languages.filter((language) => language.adapterStatus !== "unavailable").map((language) => language.displayName).join(", ") || "undetected languages"}.`
+  };
+}
+
+async function createRuntimeInventory(
+  workspaceRoot: string,
+  policy: RecursiveExecutionPolicy
+): Promise<RecursiveRuntimeInventory> {
+  const workspaceInventory =
+    (await loadRecursiveRuntimeInventory(workspaceRoot)) ?? (await deriveRecursiveRuntimeInventory(workspaceRoot, policy));
+  const refreshed = await deriveRecursiveRuntimeInventory(workspaceRoot, policy);
+  await writeRecursiveRuntimeInventory(workspaceRoot, refreshed);
+  return {
+    ...workspaceInventory,
+    ...refreshed,
+    generatedAt: new Date().toISOString()
   };
 }
 
@@ -168,6 +189,7 @@ export async function planRecursiveTask(input: PlanRecursiveTaskInput): Promise<
     promotionState: "draft-only",
     policyRef: `.hforge/runtime/recursive/sessions/${sessionId}/execution-policy.json`,
     capabilityViewRef: `.hforge/runtime/recursive/sessions/${sessionId}/capabilities.json`,
+    runtimeInventoryRef: `.hforge/runtime/recursive/sessions/${sessionId}/runtime-inventory.json`,
     memoryRef: `.hforge/runtime/recursive/sessions/${sessionId}/memory.json`,
     summaryRef: `.hforge/runtime/recursive/sessions/${sessionId}/summary.json`,
     rootFrameRef: `.hforge/runtime/recursive/sessions/${sessionId}/root-frame.json`,
@@ -184,10 +206,12 @@ export async function planRecursiveTask(input: PlanRecursiveTaskInput): Promise<
     memory,
     summary
   });
+  const runtimeInventory = await createRuntimeInventory(input.workspaceRoot, executionPolicy);
   const bundle: RecursiveSessionBundle = {
     session,
     executionPolicy,
     capabilities: await createSessionCapabilities(input.workspaceRoot),
+    runtimeInventory,
     memory,
     scratch: {
       sessionId,
@@ -218,6 +242,7 @@ export async function planRecursiveTask(input: PlanRecursiveTaskInput): Promise<
   return {
     session,
     summary,
+    runtimeInventory,
     artifactPaths,
     linkagePath
   };

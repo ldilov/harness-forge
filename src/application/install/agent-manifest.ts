@@ -1,4 +1,4 @@
-import path from "node:path";
+﻿import path from "node:path";
 
 import type { InstallStateRecord } from "../../domain/state/install-state.js";
 import {
@@ -130,6 +130,22 @@ function getLocalLauncherPaths(): string[] {
   ];
 }
 
+function enforceCanonicalBridgePointers(paths: string[]): string[] {
+  const required = ["AGENTS.md", ".agents/skills", ".specify"];
+  const normalized = paths
+    .map((entry) => toPortablePath(entry.trim()))
+    .filter((entry) => entry.length > 0)
+    .filter((entry) => !entry.startsWith(".hforge/"));
+
+  for (const requiredPath of required) {
+    if (!normalized.includes(requiredPath)) {
+      normalized.push(requiredPath);
+    }
+  }
+
+  return [...new Set(normalized)].sort((left, right) => left.localeCompare(right));
+}
+
 function buildSurfaceIndex(runtime: RuntimeIndexDocument | null, launchers: string[]): AgentManifestSurface[] {
   const surfaces = new Map<string, AgentManifestSurface>();
   const visibleBridges = runtime?.visibleBridgePaths ?? ["AGENTS.md", ".agents/skills", ".specify"];
@@ -206,6 +222,24 @@ function buildSurfaceIndex(runtime: RuntimeIndexDocument | null, launchers: stri
     )
   );
   surfaces.set(
+    ".hforge/runtime/recursive/runtime-inventory.json",
+    createSurface(
+      ".hforge/runtime/recursive/runtime-inventory.json",
+      "runtime-state",
+      "generated",
+      "Canonical recursive host-runtime inventory for Node.js, Python, PowerShell, and any workspace-managed aliases."
+    )
+  );
+  surfaces.set(
+    ".hforge/runtime/recursive/escalation-heuristics.json",
+    createSurface(
+      ".hforge/runtime/recursive/escalation-heuristics.json",
+      "runtime-state",
+      "generated",
+      "Machine-readable advisory triggers that nudge installed agents toward recursive mode for qualifying tasks."
+    )
+  );
+  surfaces.set(
     ".hforge/runtime/recursive/sessions",
     createSurface(
       ".hforge/runtime/recursive/sessions",
@@ -279,9 +313,7 @@ export async function writeAgentManifest(
       ".agents/skills/<skill>/SKILL.md",
       ".hforge/library/skills/<skill>/SKILL.md"
     ],
-    visibleBridgePaths:
-      runtimeIndex?.visibleBridgePaths ??
-      (installState?.visibleBridgePaths?.map((entry) => toPortablePath(path.relative(workspaceRoot, entry))) ?? ["AGENTS.md", ".agents/skills", ".specify"]),
+    visibleBridgePaths: enforceCanonicalBridgePointers(runtimeIndex?.visibleBridgePaths ?? (installState?.visibleBridgePaths?.map((entry) => toPortablePath(path.relative(workspaceRoot, entry))) ?? ["AGENTS.md", ".agents/skills", ".specify"])),
     authoritativeSurfaces:
       runtimeIndex?.authoritativeSurfaces ??
       (installState?.hiddenCanonicalRoots?.map((entry) => toPortablePath(path.relative(workspaceRoot, entry))) ?? [
@@ -339,8 +371,10 @@ export async function writeAgentManifest(
       "Use .hforge/generated/agent-command-catalog.json to discover safe CLI commands before inventing your own execution path.",
       "Use the markdownCommands section in .hforge/generated/agent-command-catalog.json to discover slash-style or markdown-backed agent command entrypoints.",
       "Resolve command execution in this order: workspace launcher, bare hforge on PATH, then npx @harness-forge/cli.",
-      "Use .hforge/runtime/recursive/language-capabilities.json to discover recursive structured-analysis support before attempting repository-wide recursive analysis.",
-      "Use hforge recursive capabilities --root . --json, hforge recursive execute <sessionId> --file <bundle.json> --json, hforge recursive run <sessionId> --file <snippet> --json, hforge recursive inspect-run <sessionId> <runId> --json, hforge recursive iterations <sessionId> --json, hforge recursive subcalls <sessionId> --json, hforge recursive cells <sessionId> --json, hforge recursive promotions <sessionId> --json, hforge recursive meta-ops <sessionId> --json, hforge recursive score <sessionId> --json, hforge recursive scorecards <sessionId> --json, and hforge recursive replay <sessionId> --json as the promoted recursive RLM command family.",
+      "Use .hforge/runtime/recursive/language-capabilities.json and .hforge/runtime/recursive/runtime-inventory.json before attempting recursive analysis or code-cell execution.",
+      "Use .hforge/runtime/recursive/escalation-heuristics.json as an advisory trigger list for when recursive mode is recommended, not mandatory.",
+      "Treat recursive mode as agent-selected rather than silently always-on; prefer it for ambiguous, cross-module, long-context, policy-sensitive, or artifact-worthy work.",
+      "Use hforge recursive capabilities --root . --json, hforge recursive runtimes --root . --json, hforge recursive provision-runtime <python|powershell> --root . --json, hforge recursive execute <sessionId> --file <bundle.json> --json, hforge recursive run <sessionId> --file <snippet> --json, hforge recursive inspect-run <sessionId> <runId> --json, hforge recursive iterations <sessionId> --json, hforge recursive subcalls <sessionId> --json, hforge recursive cells <sessionId> --json, hforge recursive promotions <sessionId> --json, hforge recursive meta-ops <sessionId> --json, hforge recursive score <sessionId> --json, hforge recursive scorecards <sessionId> --json, and hforge recursive replay <sessionId> --json as the promoted recursive RLM command family.",
       "Use hforge update --root . --yes or hforge update --root . --dry-run --yes to refresh managed Harness Forge surfaces without discarding gathered runtime state."
     ]
   };
@@ -348,3 +382,4 @@ export async function writeAgentManifest(
   await writeJsonFile(manifestPath, manifest);
   return { path: manifestPath, manifest };
 }
+

@@ -22,6 +22,8 @@ Do not use this for straightforward single-file edits where ordinary repo inspec
 - `.hforge/generated/agent-command-catalog.json`
 - `.hforge/runtime/index.json`
 - `.hforge/runtime/recursive/language-capabilities.json`
+- `.hforge/runtime/recursive/runtime-inventory.json`
+- `.hforge/runtime/recursive/escalation-heuristics.json`
 - `.hforge/runtime/recursive/sessions/`
 - `commands/hforge-recursive-investigate.md`
 
@@ -30,18 +32,20 @@ Do not use this for straightforward single-file edits where ordinary repo inspec
 1. confirm the workspace is initialized with `hforge status --root . --json`
 2. if runtime artifacts are missing, initialize first with `hforge bootstrap --root . --yes`
 3. inspect recursive support with `hforge recursive capabilities --root . --json`
-4. create a durable session with `hforge recursive plan "<objective>" --task-id <taskId> --root . --json`
-5. prefer `hforge recursive execute` with a typed bundle before using freeform structured-analysis snippets
-6. use `hforge recursive run` only for one bounded fallback step when Typed RLM is not the right fit
-7. inspect `iterations`, `subcalls`, `cells`, `promotions`, `meta-ops`, `score`, and `replay` to summarize the work from durable artifacts
-8. stay honest about support posture, especially for Cursor and OpenCode where recursive support is translated rather than native
+4. inspect host-runtime posture with `hforge recursive runtimes --root . --json`
+5. provision Python or PowerShell explicitly with `hforge recursive provision-runtime <python|powershell> --root . --json` only when a workspace-managed alias is helpful
+6. create a durable session with `hforge recursive plan "<objective>" --task-id <taskId> --root . --json`
+7. prefer `hforge recursive execute` with a typed bundle before using freeform structured-analysis snippets
+8. use `hforge recursive run` only for one bounded fallback step when Typed RLM is not the right fit
+9. inspect `iterations`, `subcalls`, `cells`, `promotions`, `meta-ops`, `score`, and `replay` to summarize the work from durable artifacts
+10. stay honest about support posture, especially for Cursor and OpenCode where recursive support is translated rather than native
 
 ## Output Contract
 
 A good recursive-investigate result should include:
 
 - the reason recursive mode was chosen
-- the session id and the posture discovered from recursive capabilities
+- the session id and the posture discovered from recursive capabilities and runtime inventory
 - whether the agent used Typed RLM, bounded structured analysis, or both
 - the most relevant iteration, scorecard, replay, or proposal artifacts
 - the next recommended action based on the durable evidence

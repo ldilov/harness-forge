@@ -14,3 +14,8 @@ Thumbs.db
 *.swp
 .vscode/
 .idea/
+.claude/
+.specify/
+specs/
+LICENSE.md
+harness-forge.zip

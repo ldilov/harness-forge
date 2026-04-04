@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "generatedAt": "2026-03-28T00:00:00.000Z",
+  "workspaceRoot": "/tmp/hforge-recursive-structured-analysis",
+  "osFamily": "linux",
+  "shellFamily": "bash",
+  "summary": "Recursive host-runtime inventory for this workspace. Healthy runtimes: Node.js, Python. Agents should prefer discovered runtimes and only use provisioned aliases when explicitly configured.",
+  "runtimes": [
+    {
+      "runtimeId": "node",
+      "displayName": "Node.js",
+      "availability": "available",
+      "healthStatus": "healthy",
+      "provisioner": "host",
+      "source": "process",
+      "managed": false,
+      "executablePath": "/usr/bin/node",
+      "command": "/usr/bin/node",
+      "args": [],
+      "version": "v22.0.0",
+      "notes": "Host Node.js runtime detected and ready for bounded recursive execution.",
+      "lastCheckedAt": "2026-03-28T00:00:00.000Z"
+    },
+    {
+      "runtimeId": "python",
+      "displayName": "Python",
+      "availability": "available",
+      "healthStatus": "healthy",
+      "provisioner": "host",
+      "source": "discovered",
+      "managed": false,
+      "executablePath": "python3",
+      "command": "python3",
+      "args": [],
+      "version": "Python 3.11.9",
+      "notes": "Host Python runtime detected and ready for bounded recursive execution.",
+      "lastCheckedAt": "2026-03-28T00:00:00.000Z"
+    },
+    {
+      "runtimeId": "powershell",
+      "displayName": "PowerShell",
+      "availability": "missing",
+      "healthStatus": "unknown",
+      "provisioner": "none",
+      "source": "none",
+      "managed": false,
+      "notes": "PowerShell is not currently healthy on this host. Use `hforge recursive provision-runtime powershell` to register a workspace-managed alias when available.",
+      "lastCheckedAt": "2026-03-28T00:00:00.000Z"
+    }
+  ]
+}

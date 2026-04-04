@@ -45,7 +45,7 @@ Load the common guidance and the Rust-specific references relevant to the task.
 
 **Consumes**
 - `rules/common/`
-- `skills/rust-engineering/SKILL.md`
+- `rules/rust/README.md`
 - `knowledge-bases/structured/rust/docs/overview.md`
 
 **Produces**

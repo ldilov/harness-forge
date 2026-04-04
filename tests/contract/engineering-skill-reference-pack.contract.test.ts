@@ -7,8 +7,6 @@ const root = process.cwd();
 
 const requiredFiles = [
   "skills/typescript-engineering/references/type-system-patterns.md",
-  "skills/dotnet-engineering/references/architecture-and-di.md",
-  "skills/java-engineering/references/spring-patterns.md",
   "skills/lua-engineering/references/game-and-addon-patterns.md",
   "skills/powershell-engineering/references/remoting-and-ops.md",
   "skills/python-engineering/references/ecosystem-guide.md",

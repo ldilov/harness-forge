@@ -1,0 +1,20 @@
+{
+  "intent": "Run one bounded powershell analysis cell",
+  "actions": [
+    {
+      "actionId": "A1",
+      "kind": "run-code-cell",
+      "args": {
+        "languageId": "powershell",
+        "inputRefs": ["repo-map"],
+        "expectedOutputs": ["stdout summary"],
+        "title": "Count services in powershell",
+        "source": "Write-Output 'powershell-service-count=1'",
+        "helper": {
+          "summary": "Reusable powershell helper for runtime inventory validation"
+        }
+      }
+    }
+  ],
+  "modelTier": "root"
+}

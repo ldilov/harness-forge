@@ -16,15 +16,19 @@ try {
 
 const bySignalType = {};
 const byResult = {};
+const byCategory = {};
 for (const signal of signals) {
   bySignalType[signal.signalType] = (bySignalType[signal.signalType] ?? 0) + 1;
   byResult[signal.result] = (byResult[signal.result] ?? 0) + 1;
+  const cat = signal.category ?? "uncategorized";
+  byCategory[cat] = (byCategory[cat] ?? 0) + 1;
 }
 
 const summary = {
   total: signals.length,
   bySignalType,
   byResult,
+  byCategory,
   latest: signals[signals.length - 1] ?? null
 };
 

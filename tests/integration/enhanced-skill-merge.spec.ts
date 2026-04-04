@@ -63,11 +63,6 @@ const mergedSkills = [
     ]
   },
   {
-    skillPath: "skills/dotnet-engineering/SKILL.md",
-    includes: ["cloud-native-and-aspire.md"],
-    references: ["skills/dotnet-engineering/references/cloud-native-and-aspire.md"]
-  },
-  {
     skillPath: "skills/lua-engineering/SKILL.md",
     includes: [
       "runtime-profiles.md",

@@ -47,6 +47,7 @@
     "generatedAt": { "type": "string", "format": "date-time" },
     "latestIterationRef": { "type": "string" },
     "latestCheckpointRef": { "type": "string" },
+    "runtimeInventoryRef": { "type": "string" },
     "finalOutputRef": { "type": "string" },
     "scorecardRef": { "type": "string" }
   }

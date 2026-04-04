@@ -45,6 +45,7 @@ export const recursiveSessionSchema = z.object({
   promotionState: recursivePromotionStateSchema,
   policyRef: z.string().min(1).optional(),
   capabilityViewRef: z.string().min(1).optional(),
+  runtimeInventoryRef: z.string().min(1).optional(),
   memoryRef: z.string().min(1).optional(),
   summaryRef: z.string().min(1).optional(),
   finalOutputRef: z.string().min(1).optional(),

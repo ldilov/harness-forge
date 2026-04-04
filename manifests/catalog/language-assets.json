@@ -72,8 +72,6 @@
           ".hforge/library/rules/common",
           ".hforge/library/rules/java"
         ],
-        "canonicalSkill": ".hforge/library/skills/java-engineering/SKILL.md",
-        "discoverySkill": ".agents/skills/java-engineering/SKILL.md",
         "workflow": ".hforge/templates/workflows/implement-java-change.md"
       },
       "docs": [
@@ -97,10 +95,7 @@
         "rules/java/security.md",
         "rules/java/hooks.md"
       ],
-      "skills": [
-        "skills/java-engineering/SKILL.md",
-        ".agents/skills/java-engineering/SKILL.md"
-      ],
+      "skills": [],
       "workflows": [
         "templates/workflows/implement-java-change.md"
       ],
@@ -118,7 +113,6 @@
       "activationSummary": "Trigger when Java files, Spring Boot, Gradle, or Maven surfaces dominate the task.",
       "bestFitSummary": "Best for seeded Java services and libraries that need strong framework and review guidance.",
       "generatedSurfaces": [
-        ".agents/skills/java-engineering/SKILL.md",
         "docs/catalog/languages/java.md",
         "templates/workflows/implement-java-change.md"
       ]
@@ -132,8 +126,6 @@
           ".hforge/library/rules/common",
           ".hforge/library/rules/dotnet"
         ],
-        "canonicalSkill": ".hforge/library/skills/dotnet-engineering/SKILL.md",
-        "discoverySkill": ".agents/skills/dotnet-engineering/SKILL.md",
         "workflow": ".hforge/templates/workflows/implement-dotnet-change.md"
       },
       "docs": [
@@ -157,10 +149,7 @@
         "rules/dotnet/security.md",
         "rules/dotnet/hooks.md"
       ],
-      "skills": [
-        "skills/dotnet-engineering/SKILL.md",
-        ".agents/skills/dotnet-engineering/SKILL.md"
-      ],
+      "skills": [],
       "workflows": [
         "templates/workflows/implement-dotnet-change.md"
       ],
@@ -178,7 +167,6 @@
       "activationSummary": "Trigger when .NET solutions, C# projects, ASP.NET Core, or worker services dominate the task.",
       "bestFitSummary": "Best for seeded .NET services, libraries, and automation surfaces with framework-aware guidance.",
       "generatedSurfaces": [
-        ".agents/skills/dotnet-engineering/SKILL.md",
         "docs/catalog/languages/dotnet.md",
         "templates/workflows/implement-dotnet-change.md"
       ]
@@ -357,8 +345,6 @@
           ".hforge/library/rules/common",
           ".hforge/library/rules/golang"
         ],
-        "canonicalSkill": ".hforge/library/skills/go-engineering/SKILL.md",
-        "discoverySkill": ".agents/skills/go-engineering/SKILL.md",
         "workflow": ".hforge/templates/workflows/implement-go-change.md"
       },
       "docs": [
@@ -376,10 +362,7 @@
         "rules/golang/security.md",
         "rules/golang/tooling.md"
       ],
-      "skills": [
-        "skills/go-engineering/SKILL.md",
-        ".agents/skills/go-engineering/SKILL.md"
-      ],
+      "skills": [],
       "workflows": [
         "templates/workflows/implement-go-change.md"
       ],
@@ -394,7 +377,6 @@
       "activationSummary": "Trigger when Go files or go.mod dominate the task.",
       "bestFitSummary": "Best for structured Go repos that need concise routing into canonical rules, docs, and workflow guidance.",
       "generatedSurfaces": [
-        ".agents/skills/go-engineering/SKILL.md",
         "docs/catalog/languages/go.md",
         "templates/workflows/implement-go-change.md"
       ]
@@ -408,8 +390,6 @@
           ".hforge/library/rules/common",
           ".hforge/library/rules/kotlin"
         ],
-        "canonicalSkill": ".hforge/library/skills/kotlin-engineering/SKILL.md",
-        "discoverySkill": ".agents/skills/kotlin-engineering/SKILL.md",
         "workflow": ".hforge/templates/workflows/implement-kotlin-change.md"
       },
       "docs": [
@@ -427,10 +407,7 @@
         "rules/kotlin/security.md",
         "rules/kotlin/tooling.md"
       ],
-      "skills": [
-        "skills/kotlin-engineering/SKILL.md",
-        ".agents/skills/kotlin-engineering/SKILL.md"
-      ],
+      "skills": [],
       "workflows": [
         "templates/workflows/implement-kotlin-change.md"
       ],
@@ -445,7 +422,6 @@
       "activationSummary": "Trigger when Kotlin application, server, or multiplatform files dominate the task.",
       "bestFitSummary": "Best for structured Kotlin repos that need concise routing into canonical rules, docs, and workflow guidance.",
       "generatedSurfaces": [
-        ".agents/skills/kotlin-engineering/SKILL.md",
         "docs/catalog/languages/kotlin.md",
         "templates/workflows/implement-kotlin-change.md"
       ]
@@ -459,8 +435,6 @@
           ".hforge/library/rules/common",
           ".hforge/library/rules/rust"
         ],
-        "canonicalSkill": ".hforge/library/skills/rust-engineering/SKILL.md",
-        "discoverySkill": ".agents/skills/rust-engineering/SKILL.md",
         "workflow": ".hforge/templates/workflows/implement-rust-change.md"
       },
       "docs": [
@@ -478,10 +452,7 @@
         "rules/rust/security.md",
         "rules/rust/tooling.md"
       ],
-      "skills": [
-        "skills/rust-engineering/SKILL.md",
-        ".agents/skills/rust-engineering/SKILL.md"
-      ],
+      "skills": [],
       "workflows": [
         "templates/workflows/implement-rust-change.md"
       ],
@@ -493,7 +464,6 @@
       "activationSummary": "Trigger when Rust crates, CLIs, services, or ownership-heavy code dominate the task.",
       "bestFitSummary": "Best for structured Rust repos that need concise routing into canonical rules, docs, and workflow guidance.",
       "generatedSurfaces": [
-        ".agents/skills/rust-engineering/SKILL.md",
         "docs/catalog/languages/rust.md",
         "templates/workflows/implement-rust-change.md"
       ]
@@ -507,8 +477,6 @@
           ".hforge/library/rules/common",
           ".hforge/library/rules/cpp"
         ],
-        "canonicalSkill": ".hforge/library/skills/cpp-engineering/SKILL.md",
-        "discoverySkill": ".agents/skills/cpp-engineering/SKILL.md",
         "workflow": ".hforge/templates/workflows/implement-cpp-change.md"
       },
       "docs": [
@@ -526,10 +494,7 @@
         "rules/cpp/security.md",
         "rules/cpp/tooling.md"
       ],
-      "skills": [
-        "skills/cpp-engineering/SKILL.md",
-        ".agents/skills/cpp-engineering/SKILL.md"
-      ],
+      "skills": [],
       "workflows": [
         "templates/workflows/implement-cpp-change.md"
       ],
@@ -541,7 +506,6 @@
       "activationSummary": "Trigger when C++ source, build, or performance-sensitive native modules dominate the task.",
       "bestFitSummary": "Best for structured C++ repos that need concise routing into canonical rules, docs, and workflow guidance.",
       "generatedSurfaces": [
-        ".agents/skills/cpp-engineering/SKILL.md",
         "docs/catalog/languages/cpp.md",
         "templates/workflows/implement-cpp-change.md"
       ]
@@ -655,8 +619,6 @@
           ".hforge/library/rules/common",
           ".hforge/library/rules/swift"
         ],
-        "canonicalSkill": ".hforge/library/skills/swift-engineering/SKILL.md",
-        "discoverySkill": ".agents/skills/swift-engineering/SKILL.md",
         "workflow": ".hforge/templates/workflows/implement-swift-change.md"
       },
       "docs": [
@@ -674,10 +636,7 @@
         "rules/swift/security.md",
         "rules/swift/tooling.md"
       ],
-      "skills": [
-        "skills/swift-engineering/SKILL.md",
-        ".agents/skills/swift-engineering/SKILL.md"
-      ],
+      "skills": [],
       "workflows": [
         "templates/workflows/implement-swift-change.md"
       ],
@@ -689,7 +648,6 @@
       "activationSummary": "Trigger when Swift packages, apps, or platform-specific client code dominate the task.",
       "bestFitSummary": "Best for structured Swift repos that need concise routing into canonical rules, docs, and workflow guidance.",
       "generatedSurfaces": [
-        ".agents/skills/swift-engineering/SKILL.md",
         "docs/catalog/languages/swift.md",
         "templates/workflows/implement-swift-change.md"
       ]

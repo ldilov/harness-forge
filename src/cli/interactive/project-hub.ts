@@ -44,13 +44,16 @@ export async function runProjectHub(workspaceRoot: string): Promise<ExecutionSum
     "hubAction",
     "Choose a project-hub action",
     [
-      { value: "status", label: "Status", description: "Summarize install state and current runtime basics." },
-      { value: "refresh", label: "Refresh", description: "Regenerate the shared runtime summary for the repo." },
-      { value: "task", label: "Task", description: "Inspect task-runtime folders currently present under .hforge/runtime/tasks/." },
-      { value: "pack", label: "Pack", description: "Inspect the canonical task pack for a task id." },
-      { value: "review", label: "Review", description: "Check doctor status, stale artifacts, and decision coverage." },
-      { value: "export", label: "Export", description: "Prepare a runtime handoff summary for review or sharing." },
-      { value: "settings", label: "Settings", description: "Show current runtime visibility and setup profile details." },
+      // Operate
+      { value: "task", label: "[Operate] Task", description: "Inspect task-runtime folders currently present under .hforge/runtime/tasks/." },
+      { value: "pack", label: "[Operate] Pack", description: "Inspect the canonical task pack for a task id." },
+      { value: "review", label: "[Operate] Review", description: "Check doctor status, stale artifacts, and decision coverage." },
+      // Maintain
+      { value: "status", label: "[Maintain] Status", description: "Summarize install state and current runtime basics." },
+      { value: "refresh", label: "[Maintain] Refresh", description: "Regenerate the shared runtime summary for the repo." },
+      { value: "export", label: "[Maintain] Export", description: "Prepare a runtime handoff summary for review or sharing." },
+      { value: "settings", label: "[Maintain] Settings", description: "Show current runtime visibility and setup profile details." },
+      // Navigation
       { value: "exit", label: "Exit", description: "Leave the interactive hub without changes." }
     ],
     doctor.status === "warning" ? "review" : "status"

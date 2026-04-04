@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://harness-forge.dev/schemas/runtime/recursive-runtime-inventory.schema.json",
+  "title": "Recursive runtime inventory",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "generatedAt", "workspaceRoot", "osFamily", "shellFamily", "summary", "runtimes"],
+  "properties": {
+    "version": { "type": "integer", "minimum": 1 },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "workspaceRoot": { "type": "string" },
+    "osFamily": { "type": "string", "enum": ["windows", "linux", "darwin", "unknown"] },
+    "shellFamily": { "type": "string", "enum": ["powershell", "cmd", "bash", "zsh", "sh", "unknown"] },
+    "summary": { "type": "string" },
+    "runtimes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["runtimeId", "displayName", "availability", "healthStatus", "provisioner", "source", "managed", "notes", "lastCheckedAt"],
+        "properties": {
+          "runtimeId": { "type": "string", "enum": ["node", "python", "powershell"] },
+          "displayName": { "type": "string" },
+          "availability": { "type": "string", "enum": ["available", "missing", "degraded"] },
+          "healthStatus": { "type": "string", "enum": ["healthy", "unhealthy", "unknown"] },
+          "provisioner": { "type": "string", "enum": ["host", "workspace-managed", "manual-managed", "none"] },
+          "source": { "type": "string", "enum": ["process", "discovered", "registry", "explicit", "none"] },
+          "managed": { "type": "boolean" },
+          "executablePath": { "type": "string" },
+          "command": { "type": "string" },
+          "args": { "type": "array", "items": { "type": "string" } },
+          "version": { "type": "string" },
+          "allowedByPolicy": { "type": "boolean" },
+          "notes": { "type": "string" },
+          "lastCheckedAt": { "type": "string", "format": "date-time" }
+        }
+      }
+    }
+  }
+}

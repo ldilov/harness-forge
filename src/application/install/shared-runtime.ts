@@ -14,14 +14,23 @@ import type {
 } from "../../domain/operations/install-plan.js";
 import type { TargetAdapter } from "../../domain/targets/adapter.js";
 import type { RecursiveLanguageCapabilities } from "../../domain/recursive/language-capabilities.js";
+import type { RecursiveRuntimeInventory } from "../../domain/recursive/runtime-inventory.js";
 import {
+  ACTIVE_POLICY_FILE,
+  AI_LAYER_MANIFESTS_DIR,
+  AI_LAYER_OVERRIDES_DIR,
   AI_LAYER_LIBRARY_DIR,
   AI_LAYER_VISIBLE_MODE,
   AI_TEMPLATES_DIR,
   AUTHORITATIVE_AI_LAYER_SURFACES,
   ensureDir,
   exists,
+  INSTALLED_PACKS_FILE,
+  INTELLIGENCE_CACHE_INDEX_FILE,
+  MATERIALIZATION_INDEX_FILE,
   PACKAGE_ROOT,
+  PROVENANCE_INDEX_FILE,
+  RECOMMENDATION_EVIDENCE_FILE,
   readJsonFile,
   RUNTIME_CACHE_DIR,
   RUNTIME_DECISIONS_DIR,
@@ -29,8 +38,11 @@ import {
   RUNTIME_DIR,
   RUNTIME_FINDINGS_DIR,
   RUNTIME_IMPACT_ANALYSIS_FILE,
+  RUNTIME_INTELLIGENCE_DIR,
   RUNTIME_INDEX_FILE,
   RUNTIME_INSTRUCTION_PLAN_FILE,
+  RUNTIME_POLICY_DIR,
+  RUNTIME_PROVENANCE_DIR,
   RUNTIME_README_FILE,
   RUNTIME_SCHEMA_VERSION,
   RUNTIME_RECOMMENDATIONS_FILE,
@@ -38,7 +50,9 @@ import {
   RUNTIME_REPO_MAP_FILE,
   RUNTIME_RISK_SIGNALS_FILE,
   RUNTIME_RECURSIVE_DIR,
+  RUNTIME_RECURSIVE_ESCALATION_HEURISTICS_FILE,
   RUNTIME_RECURSIVE_LANGUAGE_CAPABILITIES_FILE,
+  RUNTIME_RECURSIVE_RUNTIME_INVENTORY_FILE,
   RUNTIME_RECURSIVE_SESSION_FILE,
   RUNTIME_RECURSIVE_SESSIONS_DIR,
   RUNTIME_RECURSIVE_SUMMARY_FILE,
@@ -46,11 +60,15 @@ import {
   RUNTIME_TARGET_SUPPORT_FILE,
   RUNTIME_TASKS_DIR,
   RUNTIME_VALIDATION_GAPS_FILE,
+  SELECTED_PROFILE_FILE,
+  UPDATE_ACTION_PLAN_FILE,
   writeJsonFile,
   writeTextFile
 } from "../../shared/index.js";
 import { recommendFromIntelligence } from "../recommendations/recommend-from-intelligence.js";
+import { deriveRecursiveEscalationHeuristics } from "../recursive/derive-escalation-heuristics.js";
 import { deriveRecursiveLanguageCapabilities } from "../recursive/derive-language-capabilities.js";
+import { deriveRecursiveRuntimeInventory } from "../recursive/derive-runtime-inventory.js";
 
 const execFileAsync = promisify(execFile);
 
@@ -177,12 +195,17 @@ export function createSharedRuntimePlan(
       createSurface(path.join(workspaceRoot, AI_LAYER_LIBRARY_DIR), "library-skills", "skills", "Canonical hidden skill library for installed workspaces."),
       createSurface(path.join(workspaceRoot, AI_LAYER_LIBRARY_DIR), "library-rules", "rules", "Canonical hidden engineering rules and constraints."),
       createSurface(path.join(workspaceRoot, AI_LAYER_LIBRARY_DIR), "library-knowledge", "knowledge", "Canonical hidden knowledge packs and examples."),
+      createSurface(workspaceRoot, "runtime-manifests", AI_LAYER_MANIFESTS_DIR, "Pack and profile manifests persisted for the installed workspace."),
       createSurface(path.join(workspaceRoot, AI_TEMPLATES_DIR), "templates", ".", "Canonical hidden task and workflow templates."),
       createSurface(rootDir, "repo", RUNTIME_REPO_DIR, "Structured repository understanding and architecture anchors."),
       createSurface(rootDir, "findings", RUNTIME_FINDINGS_DIR, "Durable findings, risks, and evidence-backed observations."),
       createSurface(rootDir, "tasks", RUNTIME_TASKS_DIR, "Task packs, requirements, implementation notes, and review context."),
       createSurface(rootDir, "decisions", RUNTIME_DECISIONS_DIR, "Durable decision records and maintainership rationale."),
-      createSurface(rootDir, "recursive", RUNTIME_RECURSIVE_DIR, "Optional recursive session runtime for difficult work.")
+      createSurface(rootDir, "recursive", RUNTIME_RECURSIVE_DIR, "Optional recursive session runtime for difficult work."),
+      createSurface(rootDir, "provenance", RUNTIME_PROVENANCE_DIR, "Managed-surface provenance records and update planning outputs."),
+      createSurface(rootDir, "intelligence", RUNTIME_INTELLIGENCE_DIR, "Incremental intelligence cache entries and freshness tracking."),
+      createSurface(rootDir, "policy", RUNTIME_POLICY_DIR, "Active execution-policy manifests for the workspace."),
+      createSurface(workspaceRoot, "overrides", AI_LAYER_OVERRIDES_DIR, "Sanctioned override roots for bridge and extension customization.")
     ],
     cacheSurfaces: [
       createSurface(rootDir, "cache", RUNTIME_CACHE_DIR, "Compact working-memory and resumability state for active work.")
@@ -192,11 +215,19 @@ export function createSharedRuntimePlan(
     baselineArtifacts: [
       createArtifact(rootDir, "repo-map", "repo", `${RUNTIME_REPO_DIR}/${RUNTIME_REPO_MAP_FILE}`, "Structured repository map and boundary summary.", "hforge cartograph --json"),
       createArtifact(rootDir, "recommendations", "repo", `${RUNTIME_REPO_DIR}/${RUNTIME_RECOMMENDATIONS_FILE}`, "Evidence-backed bundle, profile, skill, and validation recommendations.", "hforge recommend --json"),
+      createArtifact(rootDir, "recommendation-evidence", "repo", `${RUNTIME_REPO_DIR}/${RECOMMENDATION_EVIDENCE_FILE}`, "Workspace-local evidence records explaining selected packs and profiles.", "hforge pack explain <packId> --json"),
       createArtifact(rootDir, "target-support", "support", `${RUNTIME_REPO_DIR}/${RUNTIME_TARGET_SUPPORT_FILE}`, "Portable target support summary derived from the capability matrix.", "hforge recommend --json"),
       createArtifact(rootDir, "instruction-plan", "instruction", `${RUNTIME_REPO_DIR}/${RUNTIME_INSTRUCTION_PLAN_FILE}`, "Target-aware instruction bridge plans for installed runtimes.", "hforge synthesize-instructions --json"),
       createArtifact(rootDir, "scan-summary", "repo", `${RUNTIME_REPO_DIR}/${RUNTIME_SCAN_SUMMARY_FILE}`, "Baseline repository scan signals and detected stack evidence.", "hforge scan --json"),
       createArtifact(rootDir, "validation-gaps", "finding", `${RUNTIME_FINDINGS_DIR}/${RUNTIME_VALIDATION_GAPS_FILE}`, "Detected validation gaps that should influence runtime guidance.", "hforge scan --json"),
       createArtifact(rootDir, "risk-signals", "finding", `${RUNTIME_FINDINGS_DIR}/${RUNTIME_RISK_SIGNALS_FILE}`, "Detected risk signals that should influence runtime guidance.", "hforge scan --json"),
+      createArtifact(rootDir, "installed-packs", "support", `../${AI_LAYER_MANIFESTS_DIR.split("/").slice(-1)[0]}/${INSTALLED_PACKS_FILE}`, "Installed pack manifest for the current workspace.", "hforge pack list --json"),
+      createArtifact(rootDir, "selected-profile", "support", `../${AI_LAYER_MANIFESTS_DIR.split("/").slice(-1)[0]}/${SELECTED_PROFILE_FILE}`, "Selected profile manifest for the current workspace.", "hforge profile inspect <profileId> --json"),
+      createArtifact(rootDir, "materialization-index", "support", `../${AI_LAYER_MANIFESTS_DIR.split("/").slice(-1)[0]}/${MATERIALIZATION_INDEX_FILE}`, "Materialization index for pack-owned install operations.", "hforge pack explain <packId> --json"),
+      createArtifact(rootDir, "provenance-index", "support", `${RUNTIME_PROVENANCE_DIR}/${PROVENANCE_INDEX_FILE}`, "Managed-surface provenance index for explain and review flows.", "hforge explain <path> --json"),
+      createArtifact(rootDir, "update-action-plan", "support", `${RUNTIME_PROVENANCE_DIR}/${UPDATE_ACTION_PLAN_FILE}`, "Structured dry-run and update-action planning output.", "hforge diff-install --json"),
+      createArtifact(rootDir, "active-policy", "support", `${RUNTIME_POLICY_DIR}/${ACTIVE_POLICY_FILE}`, "Active execution-policy manifest for the current workspace.", "hforge policy inspect --json"),
+      createArtifact(rootDir, "intelligence-cache", "support", `${RUNTIME_INTELLIGENCE_DIR}/${INTELLIGENCE_CACHE_INDEX_FILE}`, "Incremental intelligence cache index with freshness posture.", "hforge intelligence cache status --json"),
       createArtifact(
         rootDir,
         "recursive-language-capabilities",
@@ -204,6 +235,22 @@ export function createSharedRuntimePlan(
         `${RUNTIME_RECURSIVE_DIR}/${RUNTIME_RECURSIVE_LANGUAGE_CAPABILITIES_FILE}`,
         "Canonical recursive structured-analysis capability map for supported languages and execution posture.",
         "hforge recursive capabilities --json"
+      ),
+      createArtifact(
+        rootDir,
+        "recursive-runtime-inventory",
+        "repo",
+        `${RUNTIME_RECURSIVE_DIR}/${RUNTIME_RECURSIVE_RUNTIME_INVENTORY_FILE}`,
+        "Canonical host-runtime inventory for recursive code-cell execution and workspace-managed runtime aliases.",
+        "hforge recursive runtimes --json"
+      ),
+      createArtifact(
+        rootDir,
+        "recursive-escalation-heuristics",
+        "support",
+        `${RUNTIME_RECURSIVE_DIR}/${RUNTIME_RECURSIVE_ESCALATION_HEURISTICS_FILE}`,
+        "Advisory recursive escalation triggers and preferred investigation sequence for installed agents.",
+        "/hforge-recursive-investigate"
       )
     ]
   };
@@ -438,6 +485,10 @@ async function writeRuntimeBaselineArtifacts(
   };
   const recursiveCapabilities = await deriveRecursiveLanguageCapabilities(workspaceRoot, baselines.repoIntelligence);
   recursiveCapabilities.generatedAt = baselines.generatedAt;
+  const recursiveRuntimeInventory: RecursiveRuntimeInventory = await deriveRecursiveRuntimeInventory(workspaceRoot);
+  recursiveRuntimeInventory.generatedAt = baselines.generatedAt;
+  const recursiveEscalationHeuristics = deriveRecursiveEscalationHeuristics();
+  recursiveEscalationHeuristics.generatedAt = baselines.generatedAt;
 
   await Promise.all([
     writeJsonFile(artifactsById.get("repo-map")!.path, baselines.repoMap),
@@ -464,7 +515,9 @@ async function writeRuntimeBaselineArtifacts(
       generatedAt: baselines.generatedAt,
       items: baselines.repoIntelligence.riskSignals
     }),
-    writeJsonFile(artifactsById.get("recursive-language-capabilities")!.path, recursiveCapabilities)
+    writeJsonFile(artifactsById.get("recursive-language-capabilities")!.path, recursiveCapabilities),
+    writeJsonFile(artifactsById.get("recursive-runtime-inventory")!.path, recursiveRuntimeInventory),
+    writeJsonFile(artifactsById.get("recursive-escalation-heuristics")!.path, recursiveEscalationHeuristics)
   ]);
 }
 
@@ -505,6 +558,8 @@ function renderSharedRuntimeReadme(runtime: PersistedSharedRuntimeDocument): str
     `- \`.hforge/runtime/recursive/${RUNTIME_RECURSIVE_SESSIONS_DIR}/RS-XXX/code-cells/\` - Optional bounded analysis-cell artifacts with logs and verdicts`,
     `- \`.hforge/runtime/recursive/${RUNTIME_RECURSIVE_SESSIONS_DIR}/RS-XXX/scorecards/latest.json\` - Latest recursive trajectory scorecard for the session`,
     `- \`.hforge/runtime/recursive/${RUNTIME_RECURSIVE_LANGUAGE_CAPABILITIES_FILE}\` - Canonical recursive structured-analysis capability map for language adapter depth and execution posture`,
+    `- \`.hforge/runtime/recursive/${RUNTIME_RECURSIVE_RUNTIME_INVENTORY_FILE}\` - Canonical host-runtime inventory for Node.js, Python, PowerShell, and workspace-managed aliases`,
+    `- \`.hforge/runtime/recursive/${RUNTIME_RECURSIVE_ESCALATION_HEURISTICS_FILE}\` - Advisory heuristics that nudge installed agents toward recursive mode on qualifying tasks`,
     "",
     "## Short-Term Cache",
     ...runtime.cacheSurfaces.map((surface) => `- \`${surface.path}/\` - ${surface.description}`),

@@ -45,7 +45,7 @@ Load the common guidance and the Kotlin-specific references relevant to the task
 
 **Consumes**
 - `rules/common/`
-- `skills/kotlin-engineering/SKILL.md`
+- `rules/kotlin/README.md`
 - `knowledge-bases/structured/kotlin/docs/overview.md`
 
 **Produces**

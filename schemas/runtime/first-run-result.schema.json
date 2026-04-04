@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "FirstRunResult",
+  "type": "object",
+  "required": ["schemaVersion", "timestamp", "repoType", "targetPosture", "generatedArtifacts", "primaryNextCommand", "briefPath", "partialSuccess"],
+  "properties": {
+    "schemaVersion": { "type": "string" },
+    "timestamp": { "type": "string", "format": "date-time" },
+    "repoType": { "type": "string" },
+    "targetPosture": { "type": "string" },
+    "generatedArtifacts": { "type": "array", "items": { "type": "string" } },
+    "primaryNextCommand": { "type": "string" },
+    "briefPath": { "type": "string" },
+    "recoveryGuidance": { "type": ["string", "null"] },
+    "partialSuccess": { "type": "boolean" }
+  }
+}

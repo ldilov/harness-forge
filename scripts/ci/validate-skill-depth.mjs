@@ -24,30 +24,18 @@ const operationalSkills = [
 ];
 const languageSkills = [
   "python-engineering",
-  "go-engineering",
-  "kotlin-engineering",
-  "rust-engineering",
-  "cpp-engineering",
   "php-engineering",
   "perl-engineering",
-  "swift-engineering",
   "shell-engineering",
   "javascript-engineering"
 ];
 const wrapperSkillIds = [
   "typescript-engineering",
-  "java-engineering",
-  "dotnet-engineering",
   "lua-engineering",
   "powershell-engineering",
   "python-engineering",
-  "go-engineering",
-  "kotlin-engineering",
-  "rust-engineering",
-  "cpp-engineering",
   "php-engineering",
   "perl-engineering",
-  "swift-engineering",
   "shell-engineering"
 ];
 const failures = [];

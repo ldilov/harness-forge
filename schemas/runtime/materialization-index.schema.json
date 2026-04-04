@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://harness-forge.dev/schemas/runtime/materialization-index.schema.json",
+  "title": "Materialization Index",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["generatedAt", "entries"],
+  "properties": {
+    "generatedAt": { "type": "string", "minLength": 1 },
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["bundleId", "destinationPath", "operationType"],
+        "properties": {
+          "bundleId": { "type": "string", "minLength": 1 },
+          "destinationPath": { "type": "string", "minLength": 1 },
+          "operationType": { "type": "string", "minLength": 1 },
+          "sourcePath": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  }
+}

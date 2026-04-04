@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+﻿#!/usr/bin/env node
 import fs from "node:fs";
 import path from "node:path";
 import { Command } from "commander";
@@ -13,12 +13,15 @@ import { registerFlowCommands } from "./commands/flow.js";
 import { registerInitCommands } from "./commands/init.js";
 import { registerIntelligenceCommands } from "./commands/intelligence.js";
 import { registerInstallCommands } from "./commands/install.js";
+import { registerNextCommands } from "./commands/next.js";
 import { registerMaintenanceCommands } from "./commands/maintenance.js";
 import { registerObservabilityCommands } from "./commands/observability.js";
 import { registerParallelCommands } from "./commands/parallel.js";
 import { registerPackCommands } from "./commands/pack.js";
+import { registerProfileCommands } from "./commands/profile.js";
 import { registerPruneCommands } from "./commands/prune.js";
 import { registerRefreshCommands } from "./commands/refresh.js";
+import { registerRuntimeCommands } from "./commands/runtime.js";
 import { registerRecursiveCommands } from "./commands/recursive.js";
 import { registerRecommendCommands } from "./commands/recommend.js";
 import { registerReviewCommands } from "./commands/review.js";
@@ -31,6 +34,7 @@ import { registerTargetCommands } from "./commands/target.js";
 import { registerUpgradeSurfaceCommands } from "./commands/upgrade-surface.js";
 import { formatCliError } from "../infrastructure/diagnostics/reporter.js";
 import { PACKAGE_ROOT } from "../shared/index.js";
+import { COMMAND_PHASE_MAP, PHASE_LABELS, PHASE_ORDER, resolveCommandPhase, type CommandPhaseId } from "../application/runtime/command-phase-mapping.js";
 import { runDefaultInteractiveEntry } from "./interactive/entry-router.js";
 
 const program = new Command();
@@ -50,8 +54,10 @@ registerInitCommands(program);
 registerInstallCommands(program);
 registerStatusCommands(program);
 registerRefreshCommands(program);
+registerRuntimeCommands(program);
 registerTaskCommands(program);
 registerPackCommands(program);
+registerProfileCommands(program);
 registerReviewCommands(program);
 registerShellCommands(program);
 registerExportCommands(program);
@@ -72,6 +78,43 @@ registerSyncCommands(program);
 registerDiffInstallCommands(program);
 registerUpgradeSurfaceCommands(program);
 registerPruneCommands(program);
+registerNextCommands(program);
+
+// Custom help: group subcommands by lifecycle phase, hide advanced by default
+program.addHelpText("after", () => {
+  const subcommands = program.commands as Command[];
+  if (subcommands.length === 0) {
+    return "";
+  }
+
+  const grouped: Record<CommandPhaseId, Command[]> = {
+    setup: [],
+    operate: [],
+    maintain: [],
+    advanced: [],
+  };
+
+  for (const sub of subcommands) {
+    const mapping = resolveCommandPhase(sub.name());
+    grouped[mapping.phase].push(sub);
+  }
+
+  const padWidth = Math.max(...subcommands.map((s) => s.name().length)) + 2;
+  const lines: string[] = ["", "Commands by phase:"];
+
+  for (const phase of PHASE_ORDER) {
+    if (phase === "advanced") continue;
+    const phaseCommands = grouped[phase];
+    if (phaseCommands.length === 0) continue;
+    lines.push(`\n  ${PHASE_LABELS[phase]}:`);
+    for (const sub of phaseCommands) {
+      lines.push(`    ${sub.name().padEnd(padWidth)}${sub.description()}`);
+    }
+  }
+
+  lines.push('\nRun "hforge commands --all" to see advanced commands.');
+  return lines.join("\n");
+});
 
 async function main(): Promise<void> {
   const args = process.argv.slice(2);

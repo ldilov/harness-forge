@@ -47,17 +47,21 @@ enough.
 
 1. resolve command execution through `.hforge/generated/bin/hforge(.cmd|.ps1)` first, bare `hforge` second, and `npx @harness-forge/cli` last
 2. inspect support with `hforge recursive capabilities --root . --json`
-3. create or refresh the investigation substrate with `hforge recursive plan "<objective>" --task-id <taskId> --root . --json`
-4. prefer Typed RLM first by submitting a bundle with `hforge recursive execute <sessionId> --file <bundle.json> --root . --json` or `--stdin`
-5. fall back to `hforge recursive run <sessionId> --file <snippet>` or `--stdin` only when one bounded structured-analysis step is the right tool
-6. inspect the durable outputs with `hforge recursive inspect <sessionId> --root . --json`, `hforge recursive iterations <sessionId> --root . --json`, `hforge recursive subcalls <sessionId> --root . --json`, `hforge recursive cells <sessionId> --root . --json`, `hforge recursive promotions <sessionId> --root . --json`, `hforge recursive meta-ops <sessionId> --root . --json`, `hforge recursive score <sessionId> --root . --json`, and `hforge recursive replay <sessionId> --root . --json`
-7. summarize the investigation using the durable artifacts instead of repeating broad repo scans
+3. inspect host-runtime posture with `hforge recursive runtimes --root . --json`
+4. provision Python or PowerShell explicitly with `hforge recursive provision-runtime <python|powershell> --root . --json` only when a workspace-managed alias is useful
+5. create or refresh the investigation substrate with `hforge recursive plan "<objective>" --task-id <taskId> --root . --json`
+6. prefer Typed RLM first by submitting a bundle with `hforge recursive execute <sessionId> --file <bundle.json> --root . --json` or `--stdin`
+7. fall back to `hforge recursive run <sessionId> --file <snippet>` or `--stdin` only when one bounded structured-analysis step is the right tool
+8. inspect the durable outputs with `hforge recursive inspect <sessionId> --root . --json`, `hforge recursive iterations <sessionId> --root . --json`, `hforge recursive subcalls <sessionId> --root . --json`, `hforge recursive cells <sessionId> --root . --json`, `hforge recursive promotions <sessionId> --root . --json`, `hforge recursive meta-ops <sessionId> --root . --json`, `hforge recursive score <sessionId> --root . --json`, and `hforge recursive replay <sessionId> --root . --json`
+9. summarize the investigation using the durable artifacts instead of repeating broad repo scans
 
 ## Agent behavior hints
 
 - say explicitly when you are escalating into recursive mode
+- treat `.hforge/runtime/recursive/escalation-heuristics.json` as advisory guidance for when recursive mode is worth using
 - prefer typed bundles that read handles, create bounded subcalls, checkpoint,
   or summarize evidence before using freeform snippets
+- inspect runtime inventory before assuming Python or PowerShell code-cell support
 - treat recursive sessions as durable evidence, not as an excuse for unlimited
   exploration
 - compact context by reusing root frames, iteration results, scorecards, and

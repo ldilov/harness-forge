@@ -29,22 +29,22 @@ const recommendationSchema = z.object({
 const targetCapabilitySupportSchema = z.object({
   capabilityId: z.string().min(1),
   displayName: z.string().min(1),
-  supportLevel: z.enum(["full", "partial", "emulated", "unsupported"]),
-  supportMode: z.enum(["native", "translated", "emulated", "documentation-only", "unsupported"]),
+  supportLevel: z.enum(["full", "partial", "emulated", "unsupported", "contract"]),
+  supportMode: z.enum(["native", "translated", "emulated", "documentation-only", "unsupported", "contract", "bridged"]),
   fallbackBehavior: z.string().optional()
 });
 
 const targetSupportSummarySchema = z.object({
   targetId: z.string().min(1),
   displayName: z.string().min(1),
-  supportLevel: z.enum(["full", "partial", "emulated", "unsupported"]),
+  supportLevel: z.enum(["full", "partial", "emulated", "unsupported", "contract"]),
   degradedCapabilities: z.array(targetCapabilitySupportSchema)
 });
 
 const sharedRuntimeTargetSchema = z.object({
   targetId: z.string().min(1),
   displayName: z.string().min(1),
-  supportMode: z.enum(["native", "translated", "documentation-only", "unsupported"]),
+  supportMode: z.enum(["native", "translated", "documentation-only", "unsupported", "contract", "bridged"]),
   instructionSurfaces: z.array(z.string().min(1)),
   runtimeSurfaces: z.array(z.string().min(1)),
   notes: z.string().optional()
@@ -82,7 +82,7 @@ const sharedRuntimeSummarySchema = z.object({
         targetId: z.string().min(1),
         kind: z.enum(["instruction", "runtime", "support-doc"]),
         path: z.string().min(1),
-        supportMode: z.enum(["native", "translated", "documentation-only", "unsupported"]),
+        supportMode: z.enum(["native", "translated", "documentation-only", "unsupported", "contract", "bridged"]),
         description: z.string().min(1)
       })
     )

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "title": "DiagnosisResult",
+  "type": "object",
+  "required": ["generatedAt", "root", "repoType", "dominantLanguages", "frameworkMatches", "toolingSignals", "detectedTargets", "riskSignals", "topEvidence", "confidence"],
+  "properties": {
+    "generatedAt": { "type": "string", "minLength": 1 },
+    "root": { "type": "string", "minLength": 1 },
+    "repoType": { "type": "string", "minLength": 1 },
+    "dominantLanguages": { "type": "array", "items": { "type": "object", "required": ["language", "strength"], "properties": { "language": { "type": "string", "minLength": 1 }, "strength": { "type": "string", "enum": ["high", "medium", "low"] } } } },
+    "frameworkMatches": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "toolingSignals": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "detectedTargets": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "riskSignals": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "topEvidence": { "type": "array", "items": { "type": "object", "required": ["id", "label", "signalType", "summary"], "properties": { "id": { "type": "string", "minLength": 1 }, "label": { "type": "string", "minLength": 1 }, "path": { "type": "string" }, "signalType": { "type": "string", "enum": ["target-marker", "language-signal", "framework-signal", "tooling-signal", "runtime-signal", "capability-truth", "maintenance-signal", "task-signal", "flow-signal"] }, "summary": { "type": "string", "minLength": 1, "maxLength": 120 }, "confidence": { "type": "number", "minimum": 0, "maximum": 1 } } } },
+    "confidence": { "type": "number", "minimum": 0, "maximum": 1 }
+  }
+}

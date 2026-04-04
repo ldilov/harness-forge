@@ -10,6 +10,9 @@ export function registerDoctorCommands(program: Command): void {
   program
     .command("doctor")
     .option("--root <root>", "workspace root", DEFAULT_WORKSPACE_ROOT)
+    .option("--profile <profile>", "output profile: brief|standard|deep", "standard")
+    .option("--summary-only", "emit verdict and counts only", false)
+    .option("--max-findings <n>", "limit reported findings", parseInt)
     .option("--json", "json output", false)
     .action(async (options) => {
       const workspaceRoot = path.resolve(options.root);
@@ -19,18 +22,36 @@ export function registerDoctorCommands(program: Command): void {
         subjectId: "doctor",
         result: result.status === "clean" ? "success" : result.status === "missing" ? "skipped" : "failed",
         recordedAt: new Date().toISOString(),
-        details: { status: result.status }
+        details: { status: result.status },
+        category: "maintenance",
+        confidenceLevel: "direct"
       });
+
+      const maxFindings = options.maxFindings ?? (options.profile === "brief" ? 3 : options.profile === "deep" ? 15 : 7);
+
       if (options.json) {
-        console.log(toJson(result));
+        console.log(toJson({
+          ...result,
+          profile: options.profile,
+          summaryOnly: options.summaryOnly,
+          audit: {
+            ...result.audit,
+            missingManagedPaths: result.audit.missingManagedPaths.slice(0, maxFindings),
+            missingBundles: result.audit.missingBundles.slice(0, maxFindings),
+            staleTaskArtifacts: result.audit.staleTaskArtifacts.slice(0, maxFindings)
+          }
+        }));
         return;
       }
 
       console.log(`Workspace: ${workspaceRoot}`);
+      console.log(`Profile: ${options.profile}`);
       console.log(`Doctor status: ${result.status}`);
-      console.log(`Installed targets: ${result.audit.installedTargets.join(", ") || "none"}`);
-      console.log(`Missing managed paths: ${result.audit.missingManagedPaths.length}`);
-      console.log(`Missing bundles: ${result.audit.missingBundles.length}`);
-      console.log(`Stale task artifacts: ${result.audit.staleTaskArtifacts.length}`);
+      if (!options.summaryOnly) {
+        console.log(`Installed targets: ${result.audit.installedTargets.join(", ") || "none"}`);
+        console.log(`Missing managed paths: ${result.audit.missingManagedPaths.length}`);
+        console.log(`Missing bundles: ${result.audit.missingBundles.length}`);
+        console.log(`Stale task artifacts: ${result.audit.staleTaskArtifacts.length}`);
+      }
     });
 }

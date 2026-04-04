@@ -8,6 +8,7 @@ import type { RecursiveExecutionPolicy } from "../../domain/recursive/execution-
 import type { RecursiveFinalOutput } from "../../domain/recursive/final-output.js";
 import type { RecursiveIteration, RecursiveRootExecutionFrame } from "../../domain/recursive/iteration.js";
 import type { RecursiveLanguageCapabilities } from "../../domain/recursive/language-capabilities.js";
+import type { RecursiveRuntimeInventory } from "../../domain/recursive/runtime-inventory.js";
 import type { RecursiveWorkingMemory, RecursiveScratchRecord } from "../../domain/recursive/memory.js";
 import type { RecursiveMetaOpProposal } from "../../domain/recursive/meta-op-proposal.js";
 import type { RecursivePromotionProposal } from "../../domain/recursive/promotion-proposal.js";
@@ -24,6 +25,7 @@ import { parseRecursiveExecutionPolicy } from "../../domain/recursive/execution-
 import { parseRecursiveFinalOutput } from "../../domain/recursive/final-output.js";
 import { parseRecursiveIteration, parseRecursiveRootExecutionFrame } from "../../domain/recursive/iteration.js";
 import { parseRecursiveLanguageCapabilities } from "../../domain/recursive/language-capabilities.js";
+import { parseRecursiveRuntimeInventory } from "../../domain/recursive/runtime-inventory.js";
 import { parseRecursiveWorkingMemory, parseRecursiveScratchRecord } from "../../domain/recursive/memory.js";
 import { parseRecursiveMetaOpProposal } from "../../domain/recursive/meta-op-proposal.js";
 import { parseRecursivePromotionProposal } from "../../domain/recursive/promotion-proposal.js";
@@ -47,11 +49,14 @@ import {
   RUNTIME_RECURSIVE_DIR,
   RUNTIME_RECURSIVE_EXECUTION_POLICY_FILE,
   RUNTIME_RECURSIVE_FINAL_OUTPUT_FILE,
+  RUNTIME_RECURSIVE_HELPERS_DIR,
   RUNTIME_RECURSIVE_HANDLE_INVENTORY_FILE,
   RUNTIME_RECURSIVE_ITERATIONS_DIR,
   RUNTIME_RECURSIVE_ITERATION_BUNDLE_FILE,
   RUNTIME_RECURSIVE_ITERATION_FILE,
   RUNTIME_RECURSIVE_ITERATION_FRAME_FILE,
+  RUNTIME_RECURSIVE_RUNTIME_INVENTORY_FILE,
+  RUNTIME_RECURSIVE_RUNTIME_MANAGEMENT_FILE,
   RUNTIME_RECURSIVE_LANGUAGE_CAPABILITIES_FILE,
   RUNTIME_RECURSIVE_MEMORY_FILE,
   RUNTIME_RECURSIVE_META_OPS_DIR,
@@ -64,6 +69,7 @@ import {
   RUNTIME_RECURSIVE_SCORECARD_FILE,
   RUNTIME_RECURSIVE_SCRATCH_FILE,
   RUNTIME_RECURSIVE_SESSIONS_DIR,
+  RUNTIME_RECURSIVE_SESSION_RUNTIME_INVENTORY_FILE,
   RUNTIME_RECURSIVE_SESSION_FILE,
   RUNTIME_RECURSIVE_SUBCALLS_DIR,
   RUNTIME_RECURSIVE_SUMMARY_FILE,
@@ -80,6 +86,7 @@ export interface RecursiveSessionBundle {
   session: RecursiveSession;
   executionPolicy?: RecursiveExecutionPolicy;
   capabilities?: RecursiveLanguageCapabilities;
+  runtimeInventory?: RecursiveRuntimeInventory;
   memory: RecursiveWorkingMemory;
   scratch: RecursiveScratchRecord;
   calls: Array<Record<string, unknown>>;
@@ -129,6 +136,14 @@ export function resolveRecursiveLanguageCapabilitiesPath(workspaceRoot: string):
   return path.join(recursiveRuntimeRoot(workspaceRoot), RUNTIME_RECURSIVE_LANGUAGE_CAPABILITIES_FILE);
 }
 
+export function resolveRecursiveRuntimeInventoryPath(workspaceRoot: string): string {
+  return path.join(recursiveRuntimeRoot(workspaceRoot), RUNTIME_RECURSIVE_RUNTIME_INVENTORY_FILE);
+}
+
+export function resolveRecursiveRuntimeManagementPath(workspaceRoot: string): string {
+  return path.join(recursiveRuntimeRoot(workspaceRoot), RUNTIME_RECURSIVE_RUNTIME_MANAGEMENT_FILE);
+}
+
 export function resolveRecursiveSessionPaths(workspaceRoot: string, sessionId: string): {
   sessionsDir: string;
   sessionDir: string;
@@ -143,10 +158,12 @@ export function resolveRecursiveSessionPaths(workspaceRoot: string, sessionId: s
   finalOutputPath: string;
   rootFramePath: string;
   handleInventoryPath: string;
+  runtimeInventoryPath: string;
   runsDir: string;
   iterationsDir: string;
   subcallsDir: string;
   codeCellsDir: string;
+  helpersDir: string;
   checkpointsDir: string;
   promotionsDir: string;
   metaOpsDir: string;
@@ -169,10 +186,12 @@ export function resolveRecursiveSessionPaths(workspaceRoot: string, sessionId: s
     finalOutputPath: path.join(sessionDir, RUNTIME_RECURSIVE_FINAL_OUTPUT_FILE),
     rootFramePath: path.join(sessionDir, RUNTIME_RECURSIVE_ROOT_FRAME_FILE),
     handleInventoryPath: path.join(sessionDir, RUNTIME_RECURSIVE_HANDLE_INVENTORY_FILE),
+    runtimeInventoryPath: path.join(sessionDir, RUNTIME_RECURSIVE_SESSION_RUNTIME_INVENTORY_FILE),
     runsDir: path.join(sessionDir, RUNTIME_RECURSIVE_RUNS_DIR),
     iterationsDir: path.join(sessionDir, RUNTIME_RECURSIVE_ITERATIONS_DIR),
     subcallsDir: path.join(sessionDir, RUNTIME_RECURSIVE_SUBCALLS_DIR),
     codeCellsDir: path.join(sessionDir, RUNTIME_RECURSIVE_CODE_CELLS_DIR),
+    helpersDir: path.join(sessionDir, RUNTIME_RECURSIVE_HELPERS_DIR),
     checkpointsDir: path.join(sessionDir, RUNTIME_RECURSIVE_CHECKPOINTS_DIR),
     promotionsDir: path.join(sessionDir, RUNTIME_RECURSIVE_PROMOTIONS_DIR),
     metaOpsDir: path.join(sessionDir, RUNTIME_RECURSIVE_META_OPS_DIR),
@@ -274,6 +293,7 @@ export async function writeRecursiveSessionBundle(
     ensureDir(paths.iterationsDir),
     ensureDir(paths.subcallsDir),
     ensureDir(paths.codeCellsDir),
+    ensureDir(paths.helpersDir),
     ensureDir(paths.checkpointsDir),
     ensureDir(paths.promotionsDir),
     ensureDir(paths.metaOpsDir),
@@ -288,6 +308,7 @@ export async function writeRecursiveSessionBundle(
     writeJsonFile(paths.callsPath, bundle.calls),
     writeJsonFile(paths.summaryPath, bundle.summary),
     writeJsonFile(paths.handleInventoryPath, bundle.handleInventory ?? bundle.session.handles),
+    ...(bundle.runtimeInventory ? [writeJsonFile(paths.runtimeInventoryPath, bundle.runtimeInventory)] : []),
     ...(bundle.finalOutput ? [writeJsonFile(paths.finalOutputPath, bundle.finalOutput)] : []),
     ...(bundle.rootFrame ? [writeJsonFile(paths.rootFramePath, bundle.rootFrame)] : [])
   ]);
@@ -308,6 +329,22 @@ export async function loadRecursiveLanguageCapabilities(
   workspaceRoot: string
 ): Promise<RecursiveLanguageCapabilities | null> {
   return loadIfExists(resolveRecursiveLanguageCapabilitiesPath(workspaceRoot), parseRecursiveLanguageCapabilities);
+}
+
+export async function writeRecursiveRuntimeInventory(
+  workspaceRoot: string,
+  inventory: RecursiveRuntimeInventory
+): Promise<string> {
+  const inventoryPath = resolveRecursiveRuntimeInventoryPath(workspaceRoot);
+  await ensureDir(path.dirname(inventoryPath));
+  await writeJsonFile(inventoryPath, inventory);
+  return inventoryPath;
+}
+
+export async function loadRecursiveRuntimeInventory(
+  workspaceRoot: string
+): Promise<RecursiveRuntimeInventory | null> {
+  return loadIfExists(resolveRecursiveRuntimeInventoryPath(workspaceRoot), parseRecursiveRuntimeInventory);
 }
 
 export async function loadRecursiveSession(workspaceRoot: string, sessionId: string): Promise<RecursiveSession | null> {
@@ -342,6 +379,26 @@ export async function loadRecursiveSessionCapabilities(
   sessionId: string
 ): Promise<RecursiveLanguageCapabilities | null> {
   return loadIfExists(resolveRecursiveSessionPaths(workspaceRoot, sessionId).capabilitiesPath, parseRecursiveLanguageCapabilities);
+}
+
+export async function loadRecursiveSessionRuntimeInventory(
+  workspaceRoot: string,
+  sessionId: string
+): Promise<RecursiveRuntimeInventory | null> {
+  return loadIfExists(
+    resolveRecursiveSessionPaths(workspaceRoot, sessionId).runtimeInventoryPath,
+    parseRecursiveRuntimeInventory
+  );
+}
+
+export async function writeRecursiveSessionRuntimeInventory(
+  workspaceRoot: string,
+  sessionId: string,
+  inventory: RecursiveRuntimeInventory
+): Promise<string> {
+  const { runtimeInventoryPath } = resolveRecursiveSessionPaths(workspaceRoot, sessionId);
+  await writeJsonFile(runtimeInventoryPath, inventory);
+  return runtimeInventoryPath;
 }
 
 export async function loadRecursiveSessionSummary(

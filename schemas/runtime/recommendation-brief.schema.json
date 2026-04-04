@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "title": "RecommendationBrief",
+  "type": "object",
+  "required": ["generatedAt", "root", "repoType", "recommendedTargets", "recommendedProfile", "recommendedModules", "rationale", "evidence", "confidence", "caveats", "alternatives"],
+  "properties": {
+    "generatedAt": { "type": "string", "minLength": 1 },
+    "root": { "type": "string", "minLength": 1 },
+    "repoType": { "type": "string", "minLength": 1 },
+    "recommendedTargets": { "type": "array", "items": { "type": "string", "minLength": 1 }, "minItems": 1 },
+    "recommendedProfile": { "type": "string", "minLength": 1 },
+    "recommendedModules": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "rationale": { "type": "object", "required": ["targets", "profile", "modules"], "properties": { "targets": { "type": "array", "items": { "type": "object" } }, "profile": { "type": "array", "items": { "type": "object" } }, "modules": { "type": "array", "items": { "type": "object" } } } },
+    "evidence": { "type": "array", "items": { "type": "object" } },
+    "confidence": { "type": "object", "required": ["targets", "profile", "modules", "overall"], "properties": { "targets": { "type": "number", "minimum": 0, "maximum": 1 }, "profile": { "type": "number", "minimum": 0, "maximum": 1 }, "modules": { "type": "number", "minimum": 0, "maximum": 1 }, "overall": { "type": "number", "minimum": 0, "maximum": 1 } } },
+    "caveats": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "alternatives": { "type": "array", "items": { "type": "object" } }
+  }
+}

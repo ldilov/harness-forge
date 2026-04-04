@@ -46,6 +46,8 @@ describe("recursive plan flow integration", () => {
     expect(await fs.readFile(result.artifactPaths.sessionPath, "utf8")).toContain("\"status\": \"draft\"");
     expect(await fs.readFile(result.artifactPaths.executionPolicyPath, "utf8")).toContain("\"allowStructuredRun\": true");
     expect(await fs.readFile(result.artifactPaths.capabilitiesPath, "utf8")).toContain("\"languageId\": \"typescript\"");
+    expect(result.runtimeInventory.runtimes.map((entry) => entry.runtimeId)).toEqual(expect.arrayContaining(["node", "python", "powershell"]));
+    expect(await fs.readFile(result.artifactPaths.runtimeInventoryPath, "utf8")).toContain("\"runtimes\"");
     expect(await fs.readFile(result.artifactPaths.summaryPath, "utf8")).toContain("\"outcome\": \"draft\"");
     expect(await fs.readFile(result.artifactPaths.tracePath, "utf8")).toContain("\"eventType\":\"tool-call\"");
     expect(await fs.readFile(taskPaths.recursiveSessionLinkPath, "utf8")).toContain(result.session.sessionId);

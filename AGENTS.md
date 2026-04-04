@@ -44,6 +44,8 @@ Use the thin visible bridge surfaces first in installed workspaces:
 - use `.hforge/runtime/decisions/` for ASR and ADR records plus machine-readable decision indexes when governance support is installed
 - use `.hforge/runtime/recursive/sessions/` for recursive-session state, handles, and promotion traces when recursive mode is enabled
 - use `.hforge/runtime/recursive/language-capabilities.json` for the canonical recursive structured-analysis capability map before assuming language support
+- use `.hforge/runtime/recursive/runtime-inventory.json` for the canonical host-runtime posture before attempting bounded code cells or reusable helper scripts
+- use `.hforge/runtime/recursive/escalation-heuristics.json` as the advisory trigger list for when installed agents should prefer recursive mode
 - use `.hforge/observability/` for local-only effectiveness summaries and recommendation or maintenance signals
 - use `.hforge/generated/bin/` for workspace-local launchers when bare `hforge` is not already available on `PATH`
 
@@ -68,6 +70,7 @@ Use the thin visible bridge surfaces first in installed workspaces:
 - prefer `.hforge/library/skills/engineering-assistant/` when the task needs architecture plus implementation orchestration, option framing, or explicit project-memory and change-discipline guidance in one surface
 - prefer `.hforge/library/skills/token-budget-optimizer/` when prompt history is growing, repo context is being repeated, or existing runtime artifacts should be reused before broader rescans
 - prefer `.agents/skills/hforge-recursive-investigate/SKILL.md` or `commands/hforge-recursive-investigate.md` when the task is ambiguous, cross-module, or investigation-heavy enough to justify recursive mode and Typed RLM-first execution
+- prefer recursive mode when the task is ambiguous, cross-module, long-context, policy-sensitive, or worth preserving as durable evidence, but treat that as an agent decision rather than an always-on background policy
 - use `.hforge/library/manifests/catalog/framework-assets.json` and `.hforge/runtime/repo/recommendations.json` when framework or bundle matching is more reliable than guessing from file extensions
 
 ## Imported skill governance
@@ -109,6 +112,8 @@ Use the thin visible bridge surfaces first in installed workspaces:
 - prefer `hforge bootstrap --root . --yes` when the repository needs target autodiscovery and one-pass Harness Forge setup
 - prefer `hforge task list --root . --json`, `hforge task inspect <taskId> --root . --json`, and `hforge pack inspect <taskId> --root . --json` when task-runtime artifacts are relevant
 - prefer `hforge recursive capabilities --root . --json` before claiming recursive structured-analysis support for a language
+- prefer `hforge recursive runtimes --root . --json` before assuming Python or PowerShell code-cell availability
+- prefer `hforge recursive provision-runtime <python|powershell> --root . --json` when a healthy host runtime exists but you want a workspace-managed recursive alias
 - prefer `hforge recursive run <sessionId> --file <snippet> --root . --json`, `hforge recursive run <sessionId> --stdin --root . --json`, `hforge recursive runs <sessionId> --root . --json`, and `hforge recursive inspect-run <sessionId> <runId> --root . --json` for promoted recursive structured-analysis flows
 - prefer `hforge flow status --root . --json` when flow recovery state matters
 - prefer `hforge review --root . --json`, `hforge export --root . --json`, `hforge doctor --root . --json`, and `hforge audit --root . --json` for runtime health and handoff checks

@@ -1,0 +1,79 @@
+{
+  "profiles": [
+    {
+      "id": "minimal",
+      "displayName": "Minimal",
+      "description": "Smallest practical Harness Forge runtime for first-time adoption and bridge discovery.",
+      "bundleIds": ["baseline:agents", "baseline:commands"],
+      "recommendedTargets": ["codex", "claude-code"],
+      "recommendedLanguages": [],
+      "recommendedCapabilities": [],
+      "preferredSkills": ["repo-onboarding"],
+      "recommendedHooks": [],
+      "validationStrictness": "lenient",
+      "reviewDepth": "shallow",
+      "riskAppetite": "balanced",
+      "targetCompatibility": {
+        "codex": "full",
+        "claude-code": "full",
+        "cursor": "partial",
+        "opencode": "partial"
+      }
+    },
+    {
+      "id": "recommended",
+      "displayName": "Recommended",
+      "description": "Balanced runtime tier that adds workflow and repo-intelligence support for most active repositories.",
+      "bundleIds": [
+        "baseline:agents",
+        "baseline:commands",
+        "capability:workflow-quality",
+        "capability:repo-intelligence",
+        "capability:flow-orchestration"
+      ],
+      "recommendedTargets": ["codex", "claude-code"],
+      "recommendedLanguages": [],
+      "recommendedCapabilities": ["workflow-quality", "repo-intelligence"],
+      "preferredSkills": ["repo-onboarding"],
+      "recommendedHooks": ["checkpoint.flow-summary"],
+      "validationStrictness": "standard",
+      "reviewDepth": "standard",
+      "riskAppetite": "balanced",
+      "targetCompatibility": {
+        "codex": "full",
+        "claude-code": "full",
+        "cursor": "partial",
+        "opencode": "partial"
+      }
+    },
+    {
+      "id": "full",
+      "displayName": "Full",
+      "description": "Broadest packaged runtime tier with intelligence, governance, observability, and workload-specialized surfaces enabled.",
+      "bundleIds": [
+        "baseline:agents",
+        "baseline:commands",
+        "capability:workflow-quality",
+        "capability:repo-intelligence",
+        "capability:flow-orchestration",
+        "capability:lifecycle-governance",
+        "capability:workload-skills",
+        "capability:local-observability"
+      ],
+      "recommendedTargets": ["codex", "claude-code"],
+      "recommendedLanguages": [],
+      "recommendedCapabilities": ["workflow-quality", "repo-intelligence", "lifecycle-governance"],
+      "preferredSkills": ["repo-onboarding", "release-readiness"],
+      "recommendedHooks": ["checkpoint.flow-summary"],
+      "validationStrictness": "strict",
+      "reviewDepth": "deep",
+      "riskAppetite": "low",
+      "targetCompatibility": {
+        "codex": "full",
+        "claude-code": "full",
+        "cursor": "partial",
+        "opencode": "partial"
+      }
+    }
+  ]
+}

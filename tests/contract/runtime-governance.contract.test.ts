@@ -86,6 +86,10 @@ describe("runtime governance contract", () => {
     }
 
     for (const profile of profiles) {
+      // Skip export profiles that use a different shape (profile/include/exclude instead of id/bundleIds)
+      if (!profile.bundleIds) {
+        continue;
+      }
       for (const bundleId of profile.bundleIds) {
         expect(bundleIds.has(bundleId), `${profile.id}:${bundleId}`).toBe(true);
       }

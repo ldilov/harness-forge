@@ -1,12 +1,15 @@
-import fs from "node:fs/promises";
+﻿import fs from "node:fs/promises";
 import path from "node:path";
 import { Command } from "commander";
 
+import { summarizeRuntimeReview } from "../../application/runtime/review-workspace.js";
+import { writeRuntimeAuditArtifact } from "../../application/runtime/write-runtime-audit-artifact.js";
 import { createDoctorReport } from "../../application/maintenance/doctor-workspace.js";
 import { listStaleTaskAnalysisArtifacts } from "../../application/runtime/task-runtime-store.js";
 import { listRecursiveSessionIds } from "../../infrastructure/recursive/session-store.js";
 import { loadDecisionIndex } from "../../application/runtime/decision-runtime-store.js";
 import { loadInstallState } from "../../domain/state/install-state.js";
+import { appendEffectivenessSignal } from "../../infrastructure/observability/local-metrics-store.js";
 import { DEFAULT_WORKSPACE_ROOT, PACKAGE_ROOT, RUNTIME_DIR, RUNTIME_TASKS_DIR, exists } from "../../shared/index.js";
 import { toJson } from "../../infrastructure/diagnostics/reporter.js";
 
@@ -25,6 +28,10 @@ export function registerReviewCommands(program: Command): void {
     .command("review")
     .description("Summarize runtime health, stale task artifacts, and decision coverage.")
     .option("--root <root>", "workspace root", DEFAULT_WORKSPACE_ROOT)
+    .option("--profile <profile>", "output profile: brief|standard|deep", "standard")
+    .option("--delta-only", "show only changed findings", false)
+    .option("--summary-only", "emit verdict and counts only", false)
+    .option("--max-findings <n>", "limit reported findings", parseInt)
     .option("--json", "json output", false)
     .action(async (options) => {
       const workspaceRoot = path.resolve(options.root);
@@ -37,15 +44,54 @@ export function registerReviewCommands(program: Command): void {
         listRecursiveSessionIds(workspaceRoot)
       ]);
 
+      const findings = [
+        {
+          id: "doctor-status",
+          title: `Doctor status: ${doctor.status}`,
+          severity: doctor.status === "warning" ? "high" : "low",
+          evidence: [".hforge/runtime/index.json"]
+        },
+        {
+          id: "stale-task-artifacts",
+          title: `Stale task artifacts: ${staleTaskArtifacts.length}`,
+          severity: staleTaskArtifacts.length > 0 ? "medium" : "low",
+          evidence: staleTaskArtifacts.slice(0, 3).map((entry) => JSON.stringify(entry))
+        }
+      ];
+
+      const maxFindings = options.maxFindings ?? (options.profile === "brief" ? 3 : options.profile === "deep" ? 15 : 7);
+      const limitedFindings = findings.slice(0, maxFindings);
+
+      const summary = summarizeRuntimeReview(limitedFindings);
+      const artifactPath = await writeRuntimeAuditArtifact(workspaceRoot, `review-${Date.now()}`, {
+        ...summary,
+        profile: options.profile
+      });
+
+      await appendEffectivenessSignal(workspaceRoot, {
+        signalType: "review-run",
+        subjectId: "review",
+        result: "success",
+        recordedAt: new Date().toISOString(),
+        details: { doctorStatus: doctor.status, findingsCount: limitedFindings.length },
+        category: "runtimeUsage",
+        confidenceLevel: "direct"
+      });
+
       const result = {
         workspaceRoot,
+        profile: options.profile,
+        deltaOnly: options.deltaOnly,
+        summaryOnly: options.summaryOnly,
         installedTargets: state?.installedTargets ?? [],
         installedBundles: state?.installedBundles ?? [],
         doctorStatus: doctor.status,
         taskCount,
         staleTaskArtifacts,
         decisionRecords: decisionIndex.entries.length,
-        recursiveSessions
+        recursiveSessions,
+        summary,
+        artifactPath
       };
 
       if (options.json) {
@@ -54,11 +100,14 @@ export function registerReviewCommands(program: Command): void {
       }
 
       console.log(`Workspace: ${workspaceRoot}`);
+      console.log(`Profile: ${options.profile}`);
+      console.log(`Delta mode: ${options.deltaOnly ? "enabled" : "disabled"}`);
       console.log(`Doctor status: ${doctor.status}`);
       console.log(`Installed targets: ${result.installedTargets.join(", ") || "none"}`);
       console.log(`Task folders: ${taskCount}`);
       console.log(`Decision records: ${result.decisionRecords}`);
       console.log(`Stale task artifacts: ${staleTaskArtifacts.length}`);
       console.log(`Recursive sessions: ${result.recursiveSessions.length}`);
+      console.log(`Audit artifact: ${artifactPath}`);
     });
 }

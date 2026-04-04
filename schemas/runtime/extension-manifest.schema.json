@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://harness-forge.dev/schemas/runtime/extension-manifest.schema.json",
+  "title": "Extension Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["extensionId", "version", "compatibilityRange", "sourceType", "contributes"],
+  "properties": {
+    "extensionId": { "type": "string", "minLength": 1 },
+    "version": { "type": "string", "minLength": 1 },
+    "compatibilityRange": { "type": "string", "minLength": 1 },
+    "sourceType": { "type": "string", "minLength": 1 },
+    "dependsOn": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "overrideTargets": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "contributes": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    }
+  }
+}

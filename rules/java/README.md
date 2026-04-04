@@ -33,5 +33,5 @@ generated: false
 - `rules/common/`
 - `rules/java/`
 - `knowledge-bases/seeded/java/rules/java/`
-- `skills/java-engineering/SKILL.md`
+- `templates/workflows/implement-java-change.md`
 - `templates/workflows/implement-java-change.md`

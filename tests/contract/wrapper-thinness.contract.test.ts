@@ -6,7 +6,7 @@ import { describe, expect, it } from "vitest";
 import { validateWrapperThinness } from "../../scripts/ci/lib/context-surface-dedup.mjs";
 
 const root = process.cwd();
-const wrappers = ["typescript", "java", "dotnet", "lua", "powershell", "python", "go", "kotlin", "rust", "cpp", "php", "perl", "swift", "shell"];
+const wrappers = ["typescript", "lua", "powershell", "python", "php", "perl", "shell"];
 
 describe("wrapper thinness contract", () => {
   it("keeps language discovery wrappers routing-focused and canonical-source backed", async () => {

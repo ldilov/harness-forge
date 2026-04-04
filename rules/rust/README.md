@@ -16,4 +16,4 @@
 
 - `knowledge-bases/structured/rust/docs/`
 - `knowledge-bases/structured/rust/examples/`
-- `skills/rust-engineering/SKILL.md`
+- `templates/workflows/implement-rust-change.md`

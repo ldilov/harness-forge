@@ -1,13 +1,17 @@
-export default [
+﻿export default [
   {
     ignores: [
       "dist/**",
+      "build/**",
       "coverage/**",
       "node_modules/**",
       ".hforge/**",
       "tmp/**",
+      ".tmp/**",
       "*.log",
-      "*.tmp"
+      "*.tmp",
+      "*.min.js",
+      ".env*"
     ]
   },
   {

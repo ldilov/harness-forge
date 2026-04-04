@@ -1,6 +1,7 @@
-import path from "node:path";
+﻿import path from "node:path";
 
 import { GENERATED_DIR, readJsonFile, writeJsonFile, writeTextFile } from "../../shared/index.js";
+import { resolveCommandPhase, PHASE_ORDER, PHASE_LABELS, type CommandPhaseId } from "./command-phase-mapping.js";
 
 export interface AgentCommandCatalog {
   generatedAt: string;
@@ -24,6 +25,8 @@ export interface AgentCommandCatalog {
     id: string;
     command: string;
     description: string;
+    phase?: "setup" | "operate" | "maintain" | "advanced";
+    primaryInPhase?: boolean;
   }>;
   agentSafeCliCommands: Array<{
     id: string;
@@ -35,12 +38,20 @@ export interface AgentCommandCatalog {
   }>;
   npmScripts: Record<string, string>;
   recommendedAgentCommands: string[];
+  recursiveEscalationHeuristics?: {
+    advisoryOnly: boolean;
+    triggers: string[];
+    preferredSequence: string[];
+    operatorHintCommand: string;
+  };
 }
 
 interface CatalogCommandEntry {
   id: string;
   command: string;
   description: string;
+  phase?: "setup" | "operate" | "maintain" | "advanced";
+  primaryInPhase?: boolean;
 }
 
 interface MarkdownCommandEntry {
@@ -115,7 +126,14 @@ function buildCliCommands(): CatalogCommandEntry[] {
     },
     { id: "task-list", command: "hforge task list --root <repo> --json", description: "List task-runtime folders and the artifacts currently available for each task." },
     { id: "task-inspect", command: "hforge task inspect <taskId> --root <repo> --json", description: "Inspect file-interest, impact-analysis, task-pack, and recursive linkage for one task." },
-    { id: "pack-inspect", command: "hforge pack inspect <taskId> --root <repo> --json", description: "Inspect the canonical task-pack artifact for one task." },
+    { id: "pack-list", command: "hforge pack list --root <repo> --json", description: "List available and installed runtime packs plus footprint summaries." },
+    { id: "pack-inspect", command: "hforge pack inspect <packId> --root <repo> --json", description: "Inspect one runtime pack manifest or task pack artifact." },
+    { id: "pack-explain", command: "hforge pack explain <packId> --root <repo> --json", description: "Explain one runtime pack's dependencies, managed roots, and sample managed-surface provenance." },
+    { id: "pack-add", command: "hforge pack add <packId> --root <repo> --json", description: "Add one or more runtime packs to the current workspace install plan." },
+    { id: "pack-remove", command: "hforge pack remove <packId> --root <repo> --json", description: "Remove one or more runtime packs from workspace install state." },
+    { id: "pack-sync", command: "hforge pack sync --root <repo> --json", description: "Report pack-state synchronization posture for the current workspace." },
+    { id: "profile-list", command: "hforge profile list --root <repo> --json", description: "List available runtime profiles." },
+    { id: "profile-inspect", command: "hforge profile inspect <profileId> --json", description: "Inspect one runtime profile manifest." },
     { id: "review", command: "hforge review --root <repo> --json", description: "Summarize runtime health, decision coverage, and stale task artifacts." },
     { id: "export", command: "hforge export --root <repo> --json", description: "Export install-state, runtime index, doctor, and audit summaries for review or handoff." },
     { id: "shell-setup", command: "hforge shell setup --yes", description: "Create user-level shims and update supported shell profiles so bare hforge is available on PATH." },
@@ -138,6 +156,16 @@ function buildCliCommands(): CatalogCommandEntry[] {
       id: "recursive-capabilities",
       command: "hforge recursive capabilities --root <repo> --json",
       description: "Inspect the canonical recursive structured-analysis capability map for the current workspace."
+    },
+    {
+      id: "recursive-runtimes",
+      command: "hforge recursive runtimes --root <repo> --json",
+      description: "Inspect host and workspace-managed runtimes available for recursive code cells."
+    },
+    {
+      id: "recursive-provision-runtime",
+      command: "hforge recursive provision-runtime <python|powershell> --root <repo> --json",
+      description: "Register a workspace-managed recursive runtime alias when a healthy host runtime is available."
     },
     {
       id: "recursive-run-file",
@@ -172,7 +200,11 @@ function buildCliCommands(): CatalogCommandEntry[] {
     { id: "doctor", command: "hforge doctor --root <repo> --json", description: "Check installation health and missing managed surfaces." },
     { id: "audit", command: "hforge audit --root <repo> --json", description: "Audit install state and package surface integrity." },
     { id: "diff-install", command: "hforge diff-install --root <repo> --json", description: "Compare managed install expectations against the repo." },
-    { id: "template-validate", command: "hforge template validate --json", description: "Validate the shipped task and workflow templates." }
+    { id: "template-validate", command: "hforge template validate --json", description: "Validate the shipped task and workflow templates." },
+    { id: "runtime-orientation", command: "hforge runtime orientation --root <repo> --json", description: "Inspect first-hop orientation surfaces and budget posture." },
+    { id: "runtime-tiers", command: "hforge runtime tiers --json", description: "Inspect hot, warm, and cold surface-tier metadata." },
+    { id: "audit-duplicates", command: "hforge audit duplicates --root <repo> --json", description: "Estimate duplicate retrieval fanout and repeated token exposure." },
+    { id: "target-compliance", command: "hforge target compliance --json", description: "Validate target adapter support posture and bridge compliance." }
   ];
 }
 
@@ -256,6 +288,7 @@ function buildMarkdownCommands(): MarkdownCommandEntry[] {
       relatedCliCommandIds: [
         "recursive-plan",
         "recursive-capabilities",
+        "recursive-runtimes",
         "recursive-run-file",
         "recursive-run-stdin",
         "recursive-runs",
@@ -271,6 +304,8 @@ function buildMarkdownCommands(): MarkdownCommandEntry[] {
       relatedCliCommandIds: [
         "recursive-plan",
         "recursive-capabilities",
+        "recursive-runtimes",
+        "recursive-provision-runtime",
         "recursive-inspect",
         "recursive-run-file",
         "recursive-run-stdin",
@@ -310,7 +345,11 @@ export async function loadAgentCommandCatalog(packageRoot: string): Promise<Agen
     scripts?: Record<string, string>;
   }>(path.join(packageRoot, "package.json"));
 
-  const cliCommands = buildCliCommands();
+  const rawCliCommands = buildCliCommands();
+  const cliCommands = rawCliCommands.map((entry) => {
+    const mapping = resolveCommandPhase(entry.id);
+    return { ...entry, phase: mapping.phase, primaryInPhase: mapping.primaryInPhase };
+  });
   const markdownCommands = buildMarkdownCommands();
   const executionModes = buildExecutionModes();
 
@@ -340,7 +379,26 @@ export async function loadAgentCommandCatalog(packageRoot: string): Promise<Agen
       "npm run flow:status",
       "npm run observability:report",
       "/hforge-recursive-investigate"
-    ]
+    ],
+    recursiveEscalationHeuristics: {
+      advisoryOnly: true,
+      triggers: [
+        "cross-module investigation",
+        "ambiguous root cause",
+        "long-context pressure",
+        "policy-sensitive bounded execution",
+        "artifact-worthy investigation"
+      ],
+      preferredSequence: [
+        "inspect installed runtime surfaces",
+        "check recursive capabilities and runtimes",
+        "plan a session",
+        "prefer Typed RLM",
+        "inspect artifacts",
+        "summarize from durable evidence"
+      ],
+      operatorHintCommand: "/hforge-recursive-investigate"
+    }
   };
 }
 
@@ -371,13 +429,31 @@ export async function writeAgentCommandCatalog(workspaceRoot: string, packageRoo
     ),
     "",
     "## CLI commands",
-    ...catalog.cliCommands.map((entry) => `- \`${entry.command}\` - ${entry.description}`),
+    ...PHASE_ORDER.flatMap((phase) => {
+      const phaseCommands = catalog.cliCommands.filter((entry) => entry.phase === phase);
+      if (phaseCommands.length === 0) return [];
+      return [
+        "",
+        `### ${PHASE_LABELS[phase]}`,
+        ...phaseCommands.map((entry) =>
+          `- \`${entry.command}\` - ${entry.description}${entry.primaryInPhase ? " *(primary)*" : ""}`
+        )
+      ];
+    }),
     "",
     "## Agent-safe command variants",
     ...catalog.agentSafeCliCommands.flatMap((entry) => [
       `- \`${entry.id}\` - ${entry.description}`,
       ...entry.variants.map((variant) => `  - [${variant.modeId}] \`${variant.command}\``)
     ]),
+    "",
+    "## Recursive escalation heuristics",
+    `- advisory only: \`${catalog.recursiveEscalationHeuristics?.advisoryOnly ?? true}\``,
+    ...((catalog.recursiveEscalationHeuristics?.triggers ?? []).map((entry) => `- trigger: ${entry}`)),
+    ...((catalog.recursiveEscalationHeuristics?.preferredSequence ?? []).map((entry) => `- sequence: ${entry}`)),
+    ...(catalog.recursiveEscalationHeuristics?.operatorHintCommand
+      ? [`- operator hint: \`${catalog.recursiveEscalationHeuristics.operatorHintCommand}\``]
+      : []),
     "",
     "## Recommended npm scripts",
     ...catalog.recommendedAgentCommands.map((entry) => `- \`${entry}\``),
@@ -389,3 +465,5 @@ export async function writeAgentCommandCatalog(workspaceRoot: string, packageRoo
 
   return { jsonPath, markdownPath };
 }
+
+

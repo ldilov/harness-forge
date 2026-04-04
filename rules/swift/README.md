@@ -16,4 +16,4 @@
 
 - `knowledge-bases/structured/swift/docs/`
 - `knowledge-bases/structured/swift/examples/`
-- `skills/swift-engineering/SKILL.md`
+- `templates/workflows/implement-swift-change.md`

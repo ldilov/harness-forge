@@ -12,28 +12,21 @@ Harness Forge ships four major skill families.
 ## Seeded language skills
 
 - `skills/typescript-engineering/`
-- `skills/java-engineering/`
-- `skills/dotnet-engineering/`
 - `skills/lua-engineering/`
 - `skills/powershell-engineering/`
 
 ## Structured language skills
 
 - `skills/python-engineering/`
-- `skills/go-engineering/`
-- `skills/kotlin-engineering/`
-- `skills/rust-engineering/`
-- `skills/cpp-engineering/`
 - `skills/php-engineering/`
 - `skills/perl-engineering/`
-- `skills/swift-engineering/`
 - `skills/shell-engineering/`
 
 Several of these language skills now also ship supplemental `references/`
 packs so agents can pull repo-exploration, debugging, output-template, and
 ecosystem heuristics without leaving the project package.
 
-The March 2026 enhanced-skills import also deepened the TypeScript, .NET, Lua,
+The March 2026 enhanced-skills import also deepened the TypeScript, Lua,
 and JavaScript packs with additional runtime-boundary, packaging, onboarding,
 and modernization guidance sourced into project-owned `references/` directories.
 

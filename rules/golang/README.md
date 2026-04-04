@@ -16,4 +16,4 @@
 
 - `knowledge-bases/structured/go/docs/`
 - `knowledge-bases/structured/go/examples/`
-- `skills/go-engineering/SKILL.md`
+- `templates/workflows/implement-go-change.md`

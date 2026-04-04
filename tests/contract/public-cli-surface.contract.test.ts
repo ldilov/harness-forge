@@ -1,4 +1,4 @@
-import os from "node:os";
+﻿import os from "node:os";
 import path from "node:path";
 import fs from "node:fs/promises";
 import { spawnSync } from "node:child_process";
@@ -48,6 +48,7 @@ describe("public cli surface contract", () => {
     });
 
     expect(result.status).toBe(1);
-    expect(result.stderr).toContain("Task pack not found");
+    expect(result.stderr.toLowerCase()).toContain("task pack not found");
   });
 });
+

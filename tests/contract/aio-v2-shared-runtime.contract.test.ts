@@ -33,6 +33,7 @@ describe("aio v2 shared runtime contract", () => {
     expect(artifactIds.has("shared-runtime-readme")).toBe(true);
     expect(artifactIds.has("shared-runtime-repo-map")).toBe(true);
     expect(artifactIds.has("shared-runtime-recommendations")).toBe(true);
+    expect(artifactIds.has("shared-runtime-recommendation-evidence")).toBe(true);
     expect(artifactIds.has("shared-runtime-target-support")).toBe(true);
     expect(artifactIds.has("shared-runtime-instruction-plan")).toBe(true);
     expect(artifactIds.has("shared-runtime-scan-summary")).toBe(true);

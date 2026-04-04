@@ -9,6 +9,8 @@ import { loadTargetAdapter } from "../../domain/targets/adapter.js";
 import { ValidationError, PACKAGE_ROOT, STATE_DIR, writeJsonFile, readJsonFile } from "../../shared/index.js";
 import { createInstallPlan } from "./plan-install.js";
 import { applyInstall } from "./apply-install.js";
+import { readEffectivenessSignals, updateLastRuntimeCommandTimestamp } from "../../infrastructure/observability/local-metrics-store.js";
+import { computeEffectivenessComparison, type ComparisonWindow } from "../runtime/compute-effectiveness-comparison.js";
 
 export interface UpdateWorkspaceResult {
   workspaceRoot: string;
@@ -21,6 +23,7 @@ export interface UpdateWorkspaceResult {
   backupPath?: string;
   dryRun: boolean;
   messages: string[];
+  comparisonWindow?: ComparisonWindow;
 }
 
 interface UpdateWorkspaceOptions {
@@ -103,6 +106,7 @@ export async function updateWorkspace(options: UpdateWorkspaceOptions): Promise<
       }
     : await resolveLatestPackageRoot(packageTag);
   const backupPath = dryRun ? undefined : await writeUpdateBackup(workspaceRoot);
+  const beforeTimestamp = new Date().toISOString();
 
   try {
     const [bundles, profiles] = await Promise.all([
@@ -154,6 +158,14 @@ export async function updateWorkspace(options: UpdateWorkspaceOptions): Promise<
       }
     }
 
+    let comparisonWindow: ComparisonWindow | undefined;
+    if (!dryRun) {
+      const afterTimestamp = new Date().toISOString();
+      const signals = await readEffectivenessSignals(workspaceRoot);
+      comparisonWindow = computeEffectivenessComparison(signals, beforeTimestamp, afterTimestamp);
+      await updateLastRuntimeCommandTimestamp(workspaceRoot);
+    }
+
     return {
       workspaceRoot,
       currentPackageVersion: state.packageVersion ?? currentPackageJson.version,
@@ -164,7 +176,8 @@ export async function updateWorkspace(options: UpdateWorkspaceOptions): Promise<
       preservedStateRoots: collectPreservedStateRoots(workspaceRoot),
       ...(backupPath ? { backupPath } : {}),
       dryRun,
-      messages
+      messages,
+      ...(comparisonWindow ? { comparisonWindow } : {})
     };
   } finally {
     await latest.cleanup();

@@ -22,7 +22,9 @@ export function registerRefreshCommands(program: Command): void {
         details: {
           targets: result.targetIds.length,
           runtimeSchemaVersion: result.runtimeSchemaVersion
-        }
+        },
+        category: "maintenance",
+        confidenceLevel: "direct"
       });
 
       if (options.json) {

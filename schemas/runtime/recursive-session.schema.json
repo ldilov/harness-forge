@@ -37,6 +37,7 @@
     "parentSessionId": { "type": "string" },
     "policyRef": { "type": "string" },
     "capabilityViewRef": { "type": "string" },
+    "runtimeInventoryRef": { "type": "string" },
     "memoryRef": { "type": "string" },
     "summaryRef": { "type": "string" },
     "finalOutputRef": { "type": "string" },

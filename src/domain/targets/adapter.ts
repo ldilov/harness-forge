@@ -7,7 +7,7 @@ import type { TargetManifest } from "../manifests/index.js";
 export interface SharedRuntimeBridgeConfig {
   instructionSurfaces: string[];
   runtimeSurfaces?: string[];
-  supportMode: "native" | "translated" | "documentation-only" | "unsupported";
+  supportMode: "native" | "translated" | "documentation-only" | "unsupported" | "contract" | "bridged";
   notes?: string;
   authoritativeSurfaces?: string[];
   visibleBridgePaths?: string[];

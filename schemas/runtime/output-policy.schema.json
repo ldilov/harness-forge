@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://harness-forge.dev/schemas/runtime/output-policy.schema.json",
+  "title": "Output Policy",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "defaults", "profiles"],
+  "properties": {
+    "schemaVersion": { "type": "string", "minLength": 1 },
+    "defaults": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["topLevelHuman", "recursiveWorker", "releaseSignoff"],
+      "properties": {
+        "topLevelHuman": { "type": "string", "enum": ["brief", "standard", "deep"] },
+        "recursiveWorker": { "type": "string", "enum": ["brief", "standard", "deep"] },
+        "releaseSignoff": { "type": "string", "enum": ["brief", "standard", "deep"] }
+      }
+    },
+    "profiles": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["maxOutputTokens", "maxFindings", "deltaOnly"],
+        "properties": {
+          "maxOutputTokens": { "type": "number", "minimum": 1 },
+          "maxFindings": { "type": "number", "minimum": 1 },
+          "deltaOnly": { "type": "boolean" },
+          "artifactFirst": { "type": "boolean" }
+        }
+      }
+    }
+  }
+}

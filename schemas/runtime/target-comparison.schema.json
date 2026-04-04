@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "title": "TargetComparisonReport",
+  "type": "object",
+  "required": ["generatedAt", "leftTargetId", "rightTargetId", "sharedStrengths", "headlineVerdict", "capabilityComparisons", "practicalImplications", "recommendedUsagePatterns"],
+  "properties": {
+    "generatedAt": { "type": "string", "minLength": 1 },
+    "leftTargetId": { "type": "string", "minLength": 1 },
+    "rightTargetId": { "type": "string", "minLength": 1 },
+    "sharedStrengths": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "headlineVerdict": { "type": "string", "minLength": 1 },
+    "capabilityComparisons": { "type": "array", "items": { "type": "object", "required": ["capabilityId", "capabilityName", "left", "right", "winner", "operatorImpact"], "properties": { "capabilityId": { "type": "string", "minLength": 1 }, "capabilityName": { "type": "string", "minLength": 1 }, "left": { "type": "object" }, "right": { "type": "object" }, "winner": { "type": "string", "enum": ["left", "right", "tie", "depends"] }, "operatorImpact": { "type": "string", "minLength": 1 } } } },
+    "practicalImplications": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "recommendedUsagePatterns": { "type": "array", "items": { "type": "object", "required": ["id", "label", "whenToChoose", "caveats"], "properties": { "id": { "type": "string", "minLength": 1 }, "label": { "type": "string", "minLength": 1 }, "whenToChoose": { "type": "array", "items": { "type": "string" } }, "caveats": { "type": "array", "items": { "type": "string" } } } } }
+  }
+}

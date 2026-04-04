@@ -484,6 +484,121 @@
           "fallbackBehavior": "Inspect the local observability artifacts directly from the repository."
         }
       ]
+    },
+    {
+      "targetId": "generic-agent",
+      "displayName": "Generic Agent",
+      "supportLevel": "contract",
+      "capabilities": [
+        {
+          "capabilityId": "templates",
+          "supportLevel": "partial",
+          "supportMode": "contract",
+          "evidenceSource": [
+            "targets/generic-agent/adapter.json",
+            "manifests/targets/core.json"
+          ],
+          "lastValidatedAt": "2026-04-03T00:00:00.000Z",
+          "validationMethod": "adapter-and-manifest-review",
+          "confidence": 0.85,
+          "notes": "Generic agents consume portable docs, manifests, and the hidden .hforge AI layer through contract-level surfaces.",
+          "fallbackBehavior": "Use AGENTS.md, .agents/skills/, and the hidden .hforge AI layer."
+        },
+        {
+          "capabilityId": "workflow-validation",
+          "supportLevel": "unsupported",
+          "supportMode": "unsupported",
+          "evidenceSource": [
+            "targets/generic-agent/adapter.json"
+          ],
+          "lastValidatedAt": "2026-04-03T00:00:00.000Z",
+          "validationMethod": "adapter-review",
+          "confidence": 0.95,
+          "notes": "No workflow validation runtime is shipped for generic agents.",
+          "fallbackBehavior": "Run the package validators directly from the repository if needed."
+        },
+        {
+          "capabilityId": "repo-intelligence",
+          "supportLevel": "partial",
+          "supportMode": "contract",
+          "evidenceSource": [
+            "targets/generic-agent/adapter.json",
+            "scripts/intelligence/score-recommendations.mjs"
+          ],
+          "lastValidatedAt": "2026-04-03T00:00:00.000Z",
+          "validationMethod": "script-portability-review",
+          "confidence": 0.80,
+          "notes": "Repo intelligence is available through portable scripts and the hidden .hforge state layer.",
+          "fallbackBehavior": "Inspect .hforge/runtime/index.json and .hforge/library/, then run the intelligence scripts directly."
+        },
+        {
+          "capabilityId": "recursive-structured-analysis",
+          "supportLevel": "partial",
+          "supportMode": "contract",
+          "evidenceSource": [
+            "targets/generic-agent/adapter.json",
+            "src/cli/commands/recursive.ts"
+          ],
+          "lastValidatedAt": "2026-04-03T00:00:00.000Z",
+          "validationMethod": "shared-runtime-promotion-review",
+          "confidence": 0.78,
+          "notes": "Generic agents receive recursive structured-analysis through shared-runtime capability maps and session artifacts.",
+          "fallbackBehavior": "Use .hforge/runtime/recursive/language-capabilities.json and recursive session artifacts."
+        },
+        {
+          "capabilityId": "flow-orchestration",
+          "supportLevel": "unsupported",
+          "supportMode": "unsupported",
+          "evidenceSource": [
+            "targets/generic-agent/adapter.json"
+          ],
+          "lastValidatedAt": "2026-04-03T00:00:00.000Z",
+          "validationMethod": "runtime-gap-review",
+          "confidence": 0.95,
+          "notes": "No flow-state recovery surface is shipped for generic agents.",
+          "fallbackBehavior": "Do not rely on packaged flow recovery; use .hforge/runtime/index.json only."
+        },
+        {
+          "capabilityId": "typed-hooks",
+          "supportLevel": "unsupported",
+          "supportMode": "unsupported",
+          "evidenceSource": [
+            "targets/generic-agent/adapter.json"
+          ],
+          "lastValidatedAt": "2026-04-03T00:00:00.000Z",
+          "validationMethod": "runtime-gap-review",
+          "confidence": 0.95,
+          "notes": "Generic agents do not have a packaged hook runtime.",
+          "fallbackBehavior": "Use hook docs as references only; do not claim native hook execution."
+        },
+        {
+          "capabilityId": "maintenance",
+          "supportLevel": "partial",
+          "supportMode": "contract",
+          "evidenceSource": [
+            "targets/generic-agent/adapter.json",
+            "src/cli/commands/doctor.ts"
+          ],
+          "lastValidatedAt": "2026-04-03T00:00:00.000Z",
+          "validationMethod": "command-portability-review",
+          "confidence": 0.70,
+          "notes": "Maintenance commands are portable but not natively wired for generic agents.",
+          "fallbackBehavior": "Run the maintenance commands from the repository directly."
+        },
+        {
+          "capabilityId": "observability",
+          "supportLevel": "unsupported",
+          "supportMode": "unsupported",
+          "evidenceSource": [
+            "targets/generic-agent/adapter.json"
+          ],
+          "lastValidatedAt": "2026-04-03T00:00:00.000Z",
+          "validationMethod": "runtime-gap-review",
+          "confidence": 0.90,
+          "notes": "No observability runtime is shipped for generic agents.",
+          "fallbackBehavior": "Inspect .hforge/observability artifacts directly if available."
+        }
+      ]
     }
   ]
 }

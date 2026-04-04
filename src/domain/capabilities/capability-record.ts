@@ -1,10 +1,12 @@
-export type CapabilitySupportLevel = "full" | "partial" | "emulated" | "unsupported";
+export type CapabilitySupportLevel = "full" | "partial" | "emulated" | "unsupported" | "contract";
 export type CapabilitySupportMode =
   | "native"
   | "translated"
   | "emulated"
   | "documentation-only"
-  | "unsupported";
+  | "unsupported"
+  | "contract"
+  | "bridged";
 
 export interface CapabilityRecord {
   capabilityId: string;

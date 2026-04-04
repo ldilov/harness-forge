@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "generatedAt": "2026-03-28T00:00:00.000Z",
+  "summary": "Advisory recursive escalation triggers for installed agents. This surface nudges agents into recursive mode when ordinary chat-only reasoning is likely to lose evidence or context.",
+  "preferredSequence": [
+    "inspect installed runtime surfaces",
+    "check recursive capabilities and host runtimes",
+    "plan a recursive session",
+    "prefer Typed RLM action bundles",
+    "inspect iterations, code cells, and scorecards",
+    "summarize from durable artifacts"
+  ],
+  "operatorHintCommand": "/hforge-recursive-investigate",
+  "advisoryOnly": true,
+  "triggers": [
+    {
+      "id": "cross-module",
+      "label": "Cross-module investigation",
+      "description": "Use recursive mode when the task crosses packages, services, or ownership boundaries."
+    }
+  ],
+  "nonTriggers": [
+    "straightforward single-file edits"
+  ]
+}

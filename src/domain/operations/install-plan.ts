@@ -6,7 +6,7 @@ export type InstallOperationType =
   | "skip"
   | "remove";
 
-export type SharedRuntimeSupportMode = "native" | "translated" | "documentation-only" | "unsupported";
+export type SharedRuntimeSupportMode = "native" | "translated" | "documentation-only" | "unsupported" | "contract" | "bridged";
 export type InstallVisibilityMode = "hidden-ai-layer";
 
 export interface VisibilityPolicySummary {

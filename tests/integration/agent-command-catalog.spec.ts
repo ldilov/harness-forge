@@ -22,6 +22,8 @@ describe("agent command catalog integration", () => {
     expect(catalog.cliCommands.some((entry) => entry.command.includes("cartograph"))).toBe(true);
     expect(catalog.cliCommands.some((entry) => entry.command.includes("parallel plan"))).toBe(true);
     expect(catalog.cliCommands.some((entry) => entry.command.includes("recursive capabilities"))).toBe(true);
+    expect(catalog.cliCommands.some((entry) => entry.command.includes("recursive runtimes"))).toBe(true);
+    expect(catalog.cliCommands.some((entry) => entry.command.includes("recursive provision-runtime"))).toBe(true);
     expect(catalog.cliCommands.some((entry) => entry.command.includes("recursive inspect-run"))).toBe(true);
     expect(catalog.markdownCommands.some((entry) => entry.trigger === "/hforge-analyze" && entry.docPath === "commands/hforge-analyze.md")).toBe(true);
     expect(catalog.markdownCommands.some((entry) => entry.trigger === "/hforge-status" && entry.docPath === "commands/hforge-status.md")).toBe(true);
@@ -40,6 +42,7 @@ describe("agent command catalog integration", () => {
     expect(catalog.npmScripts["recommend:current"]).toBeTruthy();
     expect(catalog.npmScripts["target:codex"]).toBeTruthy();
     expect(catalog.npmScripts["observability:summary"]).toBeTruthy();
+    expect(catalog.recursiveEscalationHeuristics?.operatorHintCommand).toBe("/hforge-recursive-investigate");
   });
 
   it("merges installed targets across repeated installs and writes a workspace command catalog", async () => {
@@ -94,6 +97,7 @@ describe("agent command catalog integration", () => {
     expect(catalog.markdownCommands.some((entry: { trigger: string }) => entry.trigger === "/hforge-recursive")).toBe(true);
     expect(catalog.markdownCommands.some((entry: { trigger: string }) => entry.trigger === "/hforge-recursive-investigate")).toBe(true);
     expect(catalog.cliCommands.some((entry: { command: string }) => entry.command.includes("commands --json"))).toBe(true);
+    expect(catalog.recursiveEscalationHeuristics.operatorHintCommand).toBe("/hforge-recursive-investigate");
     expect(catalog.agentSafeCliCommands.some((entry: { id: string; variants: Array<{ command: string }> }) => entry.id === "status" && entry.variants.some((variant) => variant.command.includes(".hforge")))).toBe(true);
 
     const manifestPath = path.join(tempRoot, ".hforge", "agent-manifest.json");
@@ -104,6 +108,7 @@ describe("agent command catalog integration", () => {
     expect(manifest.commandExecution.preferredOrder[0]).toContain("workspace-launcher");
     expect(manifest.commandExecution.markdownCommands.some((entry: { trigger: string }) => entry.trigger === "/hforge-commands")).toBe(true);
     expect(manifest.commandExecution.modes.some((mode: { commandPrefix: string }) => mode.commandPrefix.includes(".hforge"))).toBe(true);
+    expect(manifest.guidance.some((entry: string) => entry.includes("escalation-heuristics"))).toBe(true);
     expect(manifest.installedTargets.map((entry: { targetId: string }) => entry.targetId)).toEqual(
       expect.arrayContaining(["codex", "claude-code"])
     );

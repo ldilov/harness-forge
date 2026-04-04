@@ -41,8 +41,6 @@
         "knowledge-bases/seeded/java",
         "rules/common",
         "rules/java",
-        "skills/java-engineering",
-        ".agents/skills/java-engineering",
         "templates/workflows/implement-java-change.md",
         "rules/java/README.md",
         "docs/catalog/languages/java.md"
@@ -66,8 +64,6 @@
         "knowledge-bases/seeded/dotnet",
         "rules/common",
         "rules/dotnet",
-        "skills/dotnet-engineering",
-        ".agents/skills/dotnet-engineering",
         "templates/workflows/implement-dotnet-change.md",
         "rules/dotnet/README.md",
         "docs/catalog/languages/dotnet.md"

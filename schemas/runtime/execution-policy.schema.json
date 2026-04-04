@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://harness-forge.dev/schemas/runtime/execution-policy.schema.json",
+  "title": "Execution Policy",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["policyId", "writableRoots", "networkPosture"],
+  "properties": {
+    "policyId": { "type": "string", "minLength": 1 },
+    "writableRoots": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "allowProductCodeWrites": { "type": "boolean" },
+    "allowedHelpers": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "blockedPatterns": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "networkPosture": { "type": "string", "minLength": 1 }
+  }
+}

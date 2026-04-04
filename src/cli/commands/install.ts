@@ -8,8 +8,11 @@ import { bootstrapWorkspace } from "../../application/install/bootstrap-workspac
 import { createInstallPlan } from "../../application/install/plan-install.js";
 import { applyInstall } from "../../application/install/apply-install.js";
 import { validateEnvironment } from "../../application/install/validate-environment.js";
+import { appendEffectivenessSignal } from "../../infrastructure/observability/local-metrics-store.js";
 import { formatPlanSummary, toJson } from "../../infrastructure/diagnostics/reporter.js";
-import { PACKAGE_ROOT, DEFAULT_WORKSPACE_ROOT } from "../../shared/index.js";
+import { formatPostInstallSummary } from "../../application/runtime/format-post-install-summary.js";
+import { PACKAGE_ROOT, DEFAULT_WORKSPACE_ROOT, RUNTIME_DIR, RUNTIME_REPO_DIR, ONBOARDING_BRIEF_FILE, readJsonFile, exists } from "../../shared/index.js";
+import type { OnboardingBrief } from "../../domain/runtime/onboarding-brief.js";
 
 function collect(value: string, previous: string[]): string[] {
   previous.push(value);
@@ -67,7 +70,12 @@ export function registerInstallCommands(program: Command): void {
         const result = await applyInstall(workspaceRoot, plan);
         console.log(result.messages.join("\n"));
         console.log(`Guidance written to ${result.guidancePath}`);
-        console.log('Next: npx @harness-forge/cli shell setup --yes | npm install -g @harness-forge/cli');
+        if (result.briefPath && await exists(result.briefPath)) {
+          const brief = await readJsonFile<OnboardingBrief>(result.briefPath);
+          console.log(formatPostInstallSummary(brief, result.briefPath));
+        } else {
+          console.log('Next: npx @harness-forge/cli shell setup --yes | npm install -g @harness-forge/cli');
+        }
       } else {
         console.log('Preview only. Re-run with "--yes" to apply the plan.');
       }
@@ -122,13 +130,29 @@ export function registerInstallCommands(program: Command): void {
       }
 
       if (result.applied.length > 0) {
+        await appendEffectivenessSignal(workspaceRoot, {
+          signalType: "bootstrap-run",
+          subjectId: "bootstrap",
+          result: "success",
+          recordedAt: new Date().toISOString(),
+          details: { targetCount: result.applied.length },
+          category: "firstRun",
+          confidenceLevel: "direct"
+        });
+
         for (const applied of result.applied) {
           console.log("");
           console.log(`Applied ${applied.targetId}`);
           console.log(applied.messages.join("\n"));
           console.log(`Guidance written to ${applied.guidancePath}`);
         }
-        console.log('Next: npx @harness-forge/cli shell setup --yes | npm install -g @harness-forge/cli');
+        const briefPath = path.join(workspaceRoot, RUNTIME_DIR, RUNTIME_REPO_DIR, ONBOARDING_BRIEF_FILE);
+        if (await exists(briefPath)) {
+          const brief = await readJsonFile<OnboardingBrief>(briefPath);
+          console.log(formatPostInstallSummary(brief, briefPath));
+        } else {
+          console.log('Next: npx @harness-forge/cli shell setup --yes | npm install -g @harness-forge/cli');
+        }
       } else {
         console.log('Preview only. Re-run with "--yes" to apply the bootstrap plans.');
       }

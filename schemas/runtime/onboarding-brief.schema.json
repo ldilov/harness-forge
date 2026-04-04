@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "OnboardingBrief",
+  "type": "object",
+  "required": ["schemaVersion", "generatedAt", "repoType", "detectedLanguages", "detectedFrameworks", "keyBoundaries", "selectedTargets", "selectedProfile", "recommendedBundles", "primaryWorkflowRecommendation", "nextBestCommand", "alternateCommands", "knownCautions", "headline"],
+  "properties": {
+    "schemaVersion": { "type": "string" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "repoType": { "type": "string" },
+    "detectedLanguages": { "type": "array", "items": { "type": "string" } },
+    "detectedFrameworks": { "type": "array", "items": { "type": "string" } },
+    "keyBoundaries": { "type": "array", "items": { "type": "string" } },
+    "selectedTargets": { "type": "array", "items": { "type": "string" } },
+    "selectedProfile": { "type": "string" },
+    "recommendedBundles": { "type": "array", "items": { "type": "string" } },
+    "primaryWorkflowRecommendation": { "type": "string" },
+    "nextBestCommand": { "type": "string" },
+    "alternateCommands": { "type": "array", "items": { "type": "string" }, "maxItems": 2 },
+    "knownCautions": { "type": "array", "items": { "type": "string" } },
+    "headline": { "type": "string" }
+  }
+}

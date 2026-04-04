@@ -1,0 +1,84 @@
+{
+  "profiles": [
+    {
+      "profile": "runtime-minimal",
+      "include": [
+        "AGENTS.md",
+        ".hforge/agent-manifest.json",
+        ".hforge/runtime/index.json",
+        ".hforge/runtime/authority-map.json",
+        ".hforge/runtime/context-budget.json"
+      ],
+      "exclude": [".tmp", "coverage", "tests"],
+      "requiredCanonicalPaths": [
+        ".hforge/runtime/authority-map.json",
+        ".hforge/runtime/context-budget.json"
+      ],
+      "notes": "Smallest viable orientation export."
+    },
+    {
+      "profile": "runtime-standard",
+      "include": [
+        "AGENTS.md",
+        ".hforge/agent-manifest.json",
+        ".hforge/runtime",
+        ".hforge/generated/agent-command-catalog.json",
+        ".hforge/library/skills",
+        ".hforge/library/rules",
+        ".hforge/library/knowledge",
+        ".hforge/templates"
+      ],
+      "exclude": ["coverage", ".tmp", "docs/authoring"],
+      "requiredCanonicalPaths": [
+        ".hforge/library/skills",
+        ".hforge/runtime"
+      ],
+      "notes": "Balanced runtime export profile."
+    },
+    {
+      "profile": "maintainer-full",
+      "include": [
+        "AGENTS.md",
+        ".hforge",
+        "docs",
+        "manifests",
+        "schemas",
+        "targets"
+      ],
+      "exclude": [],
+      "requiredCanonicalPaths": [
+        ".hforge/library/skills",
+        ".hforge/runtime"
+      ],
+      "notes": "Full maintainer footprint including provenance."
+    },
+    {
+      "profile": "kb-lean",
+      "include": [
+        "AGENTS.md",
+        ".hforge/agent-manifest.json",
+        ".hforge/runtime",
+        ".hforge/generated/agent-command-catalog.json",
+        ".hforge/library/skills",
+        ".hforge/library/rules",
+        ".hforge/library/knowledge",
+        ".hforge/templates",
+        "targets"
+      ],
+      "exclude": [
+        ".tmp",
+        "coverage",
+        "tests",
+        "docs/authoring",
+        ".hforge/library/docs/authoring",
+        "dist"
+      ],
+      "requiredCanonicalPaths": [
+        ".hforge/runtime/authority-map.json",
+        ".hforge/runtime/context-budget.json",
+        ".hforge/library/skills"
+      ],
+      "notes": "Retrieval-optimized export that excludes cold/provenance-heavy surfaces."
+    }
+  ]
+}

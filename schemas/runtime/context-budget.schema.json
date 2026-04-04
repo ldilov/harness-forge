@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://harness-forge.dev/schemas/runtime/context-budget.schema.json",
+  "title": "Context Budget",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "maxFirstHopTokens", "profiles"],
+  "properties": {
+    "schemaVersion": { "type": "string", "minLength": 1 },
+    "maxFirstHopTokens": { "type": "number", "minimum": 1 },
+    "hotSurfaces": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "warmSurfaces": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "coldSurfaces": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "dropOrder": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "profiles": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["maxOutputTokens", "maxFindings"],
+        "properties": {
+          "maxOutputTokens": { "type": "number", "minimum": 1 },
+          "maxFindings": { "type": "number", "minimum": 1 },
+          "deltaOnly": { "type": "boolean" }
+        }
+      }
+    }
+  }
+}

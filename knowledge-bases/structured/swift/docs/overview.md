@@ -8,5 +8,5 @@ Use this pack when the repository is primarily Swift or when the task depends on
 
 - structured docs under `knowledge-bases/structured/swift/docs/`
 - promoted rules under `rules/swift/`
-- reusable skill under `skills/swift-engineering/`
+- workflow entrypoint under `templates/workflows/implement-swift-change.md`
 - workflow template under `templates/workflows/implement-swift-change.md`

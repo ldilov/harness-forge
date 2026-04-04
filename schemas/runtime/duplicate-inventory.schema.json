@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://harness-forge.dev/schemas/runtime/duplicate-inventory.schema.json",
+  "title": "Duplicate Inventory",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["generatedAt", "duplicateGroups"],
+  "properties": {
+    "generatedAt": { "type": "string", "minLength": 1 },
+    "duplicateGroups": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["groupId", "conceptId", "canonicalPath", "duplicatePaths", "duplicateType"],
+        "properties": {
+          "groupId": { "type": "string", "minLength": 1 },
+          "conceptId": { "type": "string", "minLength": 1 },
+          "canonicalPath": { "type": "string", "minLength": 1 },
+          "duplicatePaths": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+          "duplicateType": { "type": "string", "enum": ["exact", "near"] },
+          "similarityScore": { "type": "number", "minimum": 0, "maximum": 1 },
+          "estimatedRepeatedTokens": { "type": "number", "minimum": 0 },
+          "recommendedAction": { "type": "string" }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://harness-forge.dev/schemas/runtime/recommendation-evidence.schema.json",
+  "title": "Recommendation Evidence",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["generatedAt", "records"],
+  "properties": {
+    "generatedAt": { "type": "string", "minLength": 1 },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "subjectType",
+          "subjectId",
+          "selectedBy",
+          "matchedRecommendation",
+          "evidence"
+        ],
+        "properties": {
+          "subjectType": {
+            "type": "string",
+            "enum": ["profile", "pack"]
+          },
+          "subjectId": { "type": "string", "minLength": 1 },
+          "selectedBy": {
+            "type": "string",
+            "enum": ["explicit", "profile", "recommendation", "default"]
+          },
+          "matchedRecommendation": { "type": "boolean" },
+          "confidence": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "why": { "type": "string", "minLength": 1 },
+          "evidence": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 }
+          },
+          "source": {
+            "type": "string",
+            "enum": ["repo-intelligence", "explicit-selection"]
+          }
+        }
+      }
+    }
+  }
+}

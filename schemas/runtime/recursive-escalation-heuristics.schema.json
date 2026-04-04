@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://harness-forge.dev/schemas/runtime/recursive-escalation-heuristics.schema.json",
+  "title": "Recursive escalation heuristics",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "generatedAt", "summary", "preferredSequence", "operatorHintCommand", "advisoryOnly", "triggers", "nonTriggers"],
+  "properties": {
+    "version": { "type": "integer", "minimum": 1 },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "summary": { "type": "string" },
+    "preferredSequence": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+    "operatorHintCommand": { "type": "string" },
+    "advisoryOnly": { "type": "boolean" },
+    "triggers": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "label", "description"],
+        "properties": {
+          "id": { "type": "string" },
+          "label": { "type": "string" },
+          "description": { "type": "string" }
+        }
+      }
+    },
+    "nonTriggers": { "type": "array", "minItems": 1, "items": { "type": "string" } }
+  }
+}

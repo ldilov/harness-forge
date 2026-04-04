@@ -104,8 +104,17 @@
     "knowledge:drift": "node scripts/knowledge/report-drift.mjs --json",
     "flow:status": "node scripts/runtime/flow-status.mjs --json",
     "observability:report": "node scripts/runtime/report-effectiveness.mjs --json",
-    "validate:release": "node scripts/ci/release-smoke.mjs",
-    "release:dry-run": "npm run build && npm run validate:release && npm pack --json --dry-run"
+    "validate:release": "node scripts/ci/release-smoke.mjs && npm run validate:runtime-gates",
+    "release:dry-run": "npm run build && npm run validate:release && npm pack --json --dry-run",
+    "reasoning:validate": "node scripts/ci/validate-reasoning-surfaces.mjs --summary",
+    "validate:reasoning-surfaces": "node scripts/ci/validate-reasoning-surfaces.mjs",
+    "validate:canonicality": "node scripts/ci/validate-canonicality-completeness.mjs",
+    "validate:hot-path-budget": "node scripts/ci/validate-hot-path-budget.mjs",
+    "validate:duplicate-thresholds": "node scripts/ci/validate-duplicate-thresholds.mjs",
+    "validate:bridge-size": "node scripts/ci/validate-bridge-size.mjs",
+    "validate:output-profile-coverage": "node scripts/ci/validate-output-profile-coverage.mjs",
+    "validate:target-support-honesty": "node scripts/ci/validate-target-support-honesty.mjs",
+    "validate:runtime-gates": "npm run validate:hot-path-budget && npm run validate:canonicality && npm run validate:duplicate-thresholds && npm run validate:bridge-size && npm run validate:output-profile-coverage && npm run validate:target-support-honesty"
   },
   "engines": {
     "node": ">=22"

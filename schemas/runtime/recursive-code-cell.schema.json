@@ -20,7 +20,7 @@
     "cellId": { "type": "string" },
     "sessionId": { "type": "string" },
     "iterationId": { "type": "string" },
-    "languageId": { "type": "string", "enum": ["javascript", "typescript", "python"] },
+    "languageId": { "type": "string", "enum": ["javascript", "typescript", "python", "powershell"] },
     "inputRefs": { "type": "array", "items": { "type": "string" } },
     "expectedOutputs": { "type": "array", "items": { "type": "string" } },
     "sandboxPosture": {
@@ -39,6 +39,7 @@
     "stdoutRef": { "type": "string" },
     "stderrRef": { "type": "string" },
     "sourceRef": { "type": "string" },
+    "helperRefs": { "type": "array", "items": { "type": "string" } },
     "createdAt": { "type": "string", "format": "date-time" },
     "updatedAt": { "type": "string", "format": "date-time" }
   }

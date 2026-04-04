@@ -125,6 +125,41 @@
         "No first-class runtime mapping, hook execution, or flow-state recovery is shipped for OpenCode yet.",
         "OpenCode still receives translated recursive structured-analysis promotion through the shared runtime capability map and recursive session artifacts."
       ]
+    },
+    {
+      "id": "generic-agent",
+      "displayName": "Generic Agent",
+      "installRootStrategy": "repo-root",
+      "pathMappings": {
+        "AGENTS.md": "AGENTS.md",
+        ".agents/skills": ".agents/skills"
+      },
+      "mergeRules": {
+        "AGENTS.md": "append-once"
+      },
+      "supportsHooks": false,
+      "supportsCommands": true,
+      "supportsAgents": true,
+      "supportsContexts": false,
+      "supportsPlugins": false,
+      "capabilityMatrix": {
+        "templates": true,
+        "workflow-validation": false,
+        "repo-intelligence": true,
+        "flow-orchestration": false,
+        "typed-hooks": false,
+        "maintenance": false,
+        "observability": false
+      },
+      "postInstallGuidanceStrategy": "partial",
+      "capabilitySupportRef": "manifests/catalog/harness-capability-matrix.json",
+      "supportLevel": "contract",
+      "supportNotes": [
+        "Contract-level support: portable runtime surfaces without vendor-specific directories.",
+        "Consumes AGENTS.md, agent-manifest, command catalog, runtime index, and skill wrappers.",
+        "No native hooks, plugins, or IDE-specific integrations.",
+        "Recommended for capable agentic environments without a dedicated Harness Forge adapter."
+      ]
     }
   ]
 }

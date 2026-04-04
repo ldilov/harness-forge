@@ -37,11 +37,15 @@
 <p align="center">
   <a href="#-quick-start">Quick Start</a>
   ·
+  <a href="./docs/get-started/index.md">Role Guides</a>
+  ·
   <a href="#-project-activity">Project Activity</a>
   ·
   <a href="#-why-harness-forge">Why Harness Forge</a>
   ·
   <a href="#-recursive-rlm">Recursive RLM</a>
+  ·
+  <a href="./docs/recursive-rlm-guide.md">RLM Guide</a>
   ·
   <a href="#-how-it-works">How It Works</a>
   ·
@@ -127,6 +131,9 @@ Instead of relying on one-off prompts or tribal setup knowledge, it gives you a 
 > `.agents/skills/hforge-recursive-investigate/SKILL.md`, and
 > `skills/hforge-recursive-investigate/SKILL.md`.
 
+> [!TIP]
+> Start here as an operator: [Recursive RLM Guide](./docs/recursive-rlm-guide.md). It walks through the current architecture, a minimal runtime-check example, and a realistic cross-module investigation flow from the user point of view.
+
 ### What it gives you
 
 | Icon | Capability | Why it matters |
@@ -137,6 +144,24 @@ Instead of relying on one-off prompts or tribal setup knowledge, it gives you a 
 | 🧠 | Working memory and checkpoints | The investigation can carry forward the useful state without polluting the normal chat context |
 | 📊 | Scorecards and replay | You can inspect what happened, judge investigation quality, and replay the trajectory from durable artifacts |
 | 🎯 | Honest target posture | Codex and Claude Code get first-class recursive support; Cursor and OpenCode stay clearly documented as translated support |
+
+### Start here
+
+If you want an installed agent to decide for itself when recursive mode is warranted, use:
+
+```text
+/hforge-recursive-investigate investigate the billing retry flow across API, service, and worker boundaries
+```
+
+If you want to drive it explicitly from the operator side, use:
+
+```bash
+hforge recursive capabilities --root . --json
+hforge recursive runtimes --root . --json
+hforge recursive plan "investigate the billing retry flow across API, service, and worker boundaries" --task-id TASK-BILLING-001 --root . --json
+```
+
+That gives the agent a real recursive session, a host-runtime inventory, and a compact root frame before it starts iterating.
 
 ### Visual flow
 
@@ -169,6 +194,11 @@ already use:
 2. `.agents/skills/hforge-recursive-investigate/` makes it auto-discoverable in skill-scanning runtimes
 3. `commands/hforge-recursive-investigate.md` makes it triggerable in markdown-command runtimes such as Codex and Claude Code
 
+Installed workspaces also publish:
+
+- `.hforge/runtime/recursive/escalation-heuristics.json` as the machine-readable advisory trigger list
+- `.hforge/runtime/recursive/runtime-inventory.json` as the machine-readable host-runtime posture for code cells and helper scripts
+
 ### Operator examples
 
 ```text
@@ -177,6 +207,7 @@ already use:
 
 ```bash
 hforge recursive capabilities --root . --json
+hforge recursive runtimes --root . --json
 hforge recursive plan "investigate billing retry path across API, service, and worker boundaries" --task-id TASK-001 --root . --json
 hforge recursive execute RS-123 --file typed-bundle.json --root . --json
 hforge recursive score RS-123 --root . --json
@@ -189,10 +220,12 @@ hforge recursive replay RS-123 --root . --json
 .hforge/runtime/recursive/sessions/RS-123/
 |- session.json
 |- root-frame.json
+|- runtime-inventory.json
 |- memory.json
 |- iterations/
 |- subcalls/
 |- code-cells/
+|- helpers/
 |- checkpoints/
 |- promotions/
 |- meta-ops/
@@ -209,6 +242,8 @@ chat transcript**.
 ---
 
 ## 🚀 Quick Start
+
+Role-based entrypoints live in [docs/get-started/index.md](./docs/get-started/index.md) if you want a shorter path for adopters, maintainers, pack authors, or troubleshooting.
 
 ### 1) Guided onboarding
 
@@ -708,29 +743,48 @@ resolve commands in this order:
 2. bare `hforge`
 3. `npx @harness-forge/cli`
 
+### Setup
+
 | Goal | Command |
 | --- | --- |
 | Initialize the hidden runtime in a repo | `npx @harness-forge/cli init --root /path/to/your/workspace --json` |
 | Enable bare `hforge` on PATH | `npx @harness-forge/cli shell setup --yes` |
 | Auto-detect targets and bootstrap | `npx @harness-forge/cli bootstrap --root /path/to/your/workspace --yes` |
-| Inspect the catalog | `hforge catalog --json` |
-| List commands agents can use | `hforge commands --json` |
-| Inspect what is installed | `hforge status --root /path/to/your/workspace --json` |
-| Refresh runtime summaries | `hforge refresh --root /path/to/your/workspace --json` |
-| Update Harness Forge safely in place | `hforge update --root /path/to/your/workspace --yes` |
-| Summarize runtime health | `hforge review --root /path/to/your/workspace --json` |
-| Export runtime state | `hforge export --root /path/to/your/workspace --json` |
+
+### Operate
+
+| Goal | Command |
+| --- | --- |
 | Generate repo-aware recommendations | `hforge recommend /path/to/your/workspace --json` |
+| Summarize runtime health | `hforge review --root /path/to/your/workspace --json` |
 | Build a repo map | `hforge cartograph /path/to/your/workspace --json` |
-| Inspect target capabilities | `hforge target inspect codex --json` |
-| Validate templates | `hforge template validate --json` |
-| Compare install state vs workspace | `hforge diff-install --root /path/to/your/workspace --json` |
-| Inspect flow recovery state | `hforge flow status --json` |
-| Review observability effectiveness | `hforge observability summarize --json` |
 | Inspect recursive structured-analysis support | `hforge recursive capabilities --root /path/to/your/workspace --json` |
 | Submit one structured recursive analysis run | `hforge recursive run <sessionId> --file /path/to/snippet.mjs --root /path/to/your/workspace --json` |
 | List prior structured recursive runs | `hforge recursive runs <sessionId> --root /path/to/your/workspace --json` |
 | Inspect one structured recursive run | `hforge recursive inspect-run <sessionId> <runId> --root /path/to/your/workspace --json` |
+
+### Maintain
+
+| Goal | Command |
+| --- | --- |
+| Inspect what is installed | `hforge status --root /path/to/your/workspace --json` |
+| Refresh runtime summaries | `hforge refresh --root /path/to/your/workspace --json` |
+| Update Harness Forge safely in place | `hforge update --root /path/to/your/workspace --yes` |
+| Check installation health | `hforge doctor --root /path/to/your/workspace --json` |
+| Audit install state integrity | `hforge audit --root /path/to/your/workspace --json` |
+| Export runtime state | `hforge export --root /path/to/your/workspace --json` |
+| Compare install state vs workspace | `hforge diff-install --root /path/to/your/workspace --json` |
+| Review observability effectiveness | `hforge observability summarize --json` |
+
+### Advanced
+
+| Goal | Command |
+| --- | --- |
+| Inspect the catalog | `hforge catalog --json` |
+| List commands agents can use | `hforge commands --json` |
+| Inspect target capabilities | `hforge target inspect codex --json` |
+| Validate templates | `hforge template validate --json` |
+| Inspect flow recovery state | `hforge flow status --json` |
 
 ---
 

@@ -81,6 +81,46 @@
       "lineageRole": "reentry-context"
     },
     {
+      "id": "runtime-installed-packs",
+      "stage": "shared",
+      "pathPattern": ".hforge/manifests/installed-packs.json",
+      "generatedBy": "install",
+      "required": false,
+      "lineageRole": "installed-pack-state"
+    },
+    {
+      "id": "runtime-selected-profile",
+      "stage": "shared",
+      "pathPattern": ".hforge/manifests/selected-profile.json",
+      "generatedBy": "install",
+      "required": false,
+      "lineageRole": "selected-profile-state"
+    },
+    {
+      "id": "runtime-materialization-index",
+      "stage": "shared",
+      "pathPattern": ".hforge/manifests/materialization-index.json",
+      "generatedBy": "install",
+      "required": false,
+      "lineageRole": "materialization-index"
+    },
+    {
+      "id": "runtime-provenance-index",
+      "stage": "shared",
+      "pathPattern": ".hforge/runtime/provenance/index.json",
+      "generatedBy": "install",
+      "required": false,
+      "lineageRole": "managed-surface-provenance"
+    },
+    {
+      "id": "runtime-update-action-plan",
+      "stage": "shared",
+      "pathPattern": ".hforge/runtime/provenance/update-action-plan.json",
+      "generatedBy": "install",
+      "required": false,
+      "lineageRole": "update-action-plan"
+    },
+    {
       "id": "install-state",
       "stage": "shared",
       "pathPattern": ".hforge/state/install-state.json",
@@ -167,6 +207,14 @@
       "generatedBy": "bootstrap-workspace",
       "required": false,
       "lineageRole": "shared-runtime-recommendations"
+    },
+    {
+      "id": "shared-runtime-recommendation-evidence",
+      "stage": "shared",
+      "pathPattern": ".hforge/runtime/repo/recommendation-evidence.json",
+      "generatedBy": "install",
+      "required": false,
+      "lineageRole": "shared-runtime-recommendation-evidence"
     },
     {
       "id": "shared-runtime-target-support",
@@ -295,6 +343,22 @@
       "generatedBy": "recursive-runtime",
       "required": false,
       "lineageRole": "recursive-language-capabilities"
+    },
+    {
+      "id": "recursive-runtime-runtime-inventory",
+      "stage": "shared",
+      "pathPattern": ".hforge/runtime/recursive/runtime-inventory.json",
+      "generatedBy": "recursive-runtime",
+      "required": false,
+      "lineageRole": "recursive-runtime-inventory"
+    },
+    {
+      "id": "recursive-runtime-escalation-heuristics",
+      "stage": "shared",
+      "pathPattern": ".hforge/runtime/recursive/escalation-heuristics.json",
+      "generatedBy": "recursive-runtime",
+      "required": false,
+      "lineageRole": "recursive-escalation-heuristics"
     },
     {
       "id": "recursive-runtime-execution-policy",
@@ -431,6 +495,38 @@
       "generatedBy": "hforge flow status",
       "required": false,
       "lineageRole": "flow-reentry-state"
+    },
+    {
+      "id": "shared-runtime-authority-map",
+      "stage": "shared",
+      "pathPattern": ".hforge/runtime/authority-map.json",
+      "generatedBy": "runtime-governance",
+      "required": false,
+      "lineageRole": "authority-map"
+    },
+    {
+      "id": "shared-runtime-context-budget",
+      "stage": "shared",
+      "pathPattern": ".hforge/runtime/context-budget.json",
+      "generatedBy": "runtime-governance",
+      "required": false,
+      "lineageRole": "context-budget"
+    },
+    {
+      "id": "shared-runtime-output-policy",
+      "stage": "shared",
+      "pathPattern": ".hforge/runtime/output-policy.json",
+      "generatedBy": "runtime-governance",
+      "required": false,
+      "lineageRole": "output-policy"
+    },
+    {
+      "id": "shared-runtime-surface-tiers",
+      "stage": "shared",
+      "pathPattern": ".hforge/runtime/surface-tiers.json",
+      "generatedBy": "runtime-governance",
+      "required": false,
+      "lineageRole": "surface-tier-index"
     }
   ]
 }

@@ -6,7 +6,7 @@ import { afterEach, describe, expect, it } from "vitest";
 
 import { applyInstall } from "../../src/application/install/apply-install.js";
 import { createInstallPlan } from "../../src/application/install/plan-install.js";
-import { loadRecursiveLanguageCapabilities } from "../../src/infrastructure/recursive/session-store.js";
+import { loadRecursiveLanguageCapabilities, loadRecursiveRuntimeInventory } from "../../src/infrastructure/recursive/session-store.js";
 
 const repoRoot = process.cwd();
 const fixtureRoot = path.join(repoRoot, "tests", "fixtures", "runtime");
@@ -17,7 +17,7 @@ afterEach(async () => {
 });
 
 describe("recursive capabilities flow integration", () => {
-  it("writes the canonical recursive structured-analysis capability artifact during install runtime hydration", async () => {
+  it("writes the canonical recursive structured-analysis and runtime inventory artifacts during install runtime hydration", async () => {
     const tempRoot = await fs.mkdtemp(path.join(os.tmpdir(), "hforge-recursive-capabilities-"));
     tempRoots.push(tempRoot);
     await fs.copyFile(path.join(fixtureRoot, "contained-install", "package.json"), path.join(tempRoot, "package.json"));
@@ -79,10 +79,21 @@ describe("recursive capabilities flow integration", () => {
     await applyInstall(tempRoot, plan);
 
     const capabilities = await loadRecursiveLanguageCapabilities(tempRoot);
+    const runtimeInventory = await loadRecursiveRuntimeInventory(tempRoot);
     expect(capabilities?.summary).toContain("recursive structured-analysis capability map");
     expect(capabilities?.languages.length).toBeGreaterThan(0);
+    expect(runtimeInventory?.summary).toContain("Recursive host-runtime inventory");
+    expect(runtimeInventory?.runtimes.map((entry) => entry.runtimeId)).toEqual(
+      expect.arrayContaining(["node", "python", "powershell"])
+    );
     expect(await fs.readFile(path.join(tempRoot, ".hforge", "runtime", "recursive", "language-capabilities.json"), "utf8")).toContain(
       "\"languages\""
+    );
+    expect(await fs.readFile(path.join(tempRoot, ".hforge", "runtime", "recursive", "runtime-inventory.json"), "utf8")).toContain(
+      "\"runtimes\""
+    );
+    expect(await fs.readFile(path.join(tempRoot, ".hforge", "runtime", "recursive", "escalation-heuristics.json"), "utf8")).toContain(
+      "\"operatorHintCommand\""
     );
   });
 });

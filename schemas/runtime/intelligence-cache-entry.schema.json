@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://harness-forge.dev/schemas/runtime/intelligence-cache-entry.schema.json",
+  "title": "Intelligence Cache Entry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["cacheKey", "artifactType", "fingerprint", "freshnessState", "artifactRef", "lastComputedAt"],
+  "properties": {
+    "cacheKey": { "type": "string", "minLength": 1 },
+    "artifactType": { "type": "string", "minLength": 1 },
+    "fingerprint": { "type": "string", "minLength": 1 },
+    "freshnessState": { "type": "string", "minLength": 1 },
+    "artifactRef": { "type": "string", "minLength": 1 },
+    "lastComputedAt": { "type": "string", "minLength": 1 }
+  }
+}

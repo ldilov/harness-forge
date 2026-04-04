@@ -16,12 +16,15 @@ const languageAssets = JSON.parse(await fs.readFile(path.join(root, "manifests",
 for (const [languageId, entry] of Object.entries(languageAssets.languages ?? {})) {
   failures.push(...validateLanguageAssetShape(languageId, entry));
 
-  const wrapperPath = path.join(root, ".agents", "skills", `${languageId}-engineering`, "SKILL.md");
-  try {
-    const wrapper = await fs.readFile(wrapperPath, "utf8");
-    failures.push(...validateWrapperThinness(wrapper, path.relative(root, wrapperPath).replaceAll("\\", "/")));
-  } catch {
-    failures.push({ file: path.relative(root, wrapperPath).replaceAll("\\", "/"), issue: "Missing language discovery wrapper." });
+  const discoverySkill = entry.installedSurfaces?.discoverySkill;
+  if (typeof discoverySkill === "string" && discoverySkill.trim()) {
+    const wrapperPath = path.join(root, discoverySkill);
+    try {
+      const wrapper = await fs.readFile(wrapperPath, "utf8");
+      failures.push(...validateWrapperThinness(wrapper, path.relative(root, wrapperPath).replaceAll("\\", "/")));
+    } catch {
+      failures.push({ file: path.relative(root, wrapperPath).replaceAll("\\", "/"), issue: "Missing language discovery wrapper." });
+    }
   }
 }
 

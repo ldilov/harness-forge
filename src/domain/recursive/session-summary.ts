@@ -18,6 +18,7 @@ export const recursiveSessionSummarySchema = z.object({
   generatedAt: z.string().min(1),
   latestIterationRef: z.string().min(1).optional(),
   latestCheckpointRef: z.string().min(1).optional(),
+  runtimeInventoryRef: z.string().min(1).optional(),
   finalOutputRef: z.string().min(1).optional(),
   scorecardRef: z.string().min(1).optional()
 });

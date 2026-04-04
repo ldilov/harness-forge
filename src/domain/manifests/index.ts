@@ -51,7 +51,7 @@ export interface TargetManifest {
   supportsPlugins: boolean;
   capabilityMatrix: Record<string, boolean>;
   postInstallGuidanceStrategy?: string;
-  supportLevel?: "full" | "partial" | "emulated" | "unsupported";
+  supportLevel?: "full" | "partial" | "emulated" | "unsupported" | "contract";
   supportNotes?: string[];
   capabilitySupportRef?: string;
 }

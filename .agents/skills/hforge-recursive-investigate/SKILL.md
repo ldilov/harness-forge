@@ -24,11 +24,13 @@ structured analysis when necessary.
 ## Execution
 
 1. Treat the text after `/hforge-recursive-investigate` as the investigation objective or task focus.
-2. Inspect `.hforge/agent-manifest.json`, `.hforge/runtime/index.json`, and `.hforge/runtime/recursive/language-capabilities.json` first when present.
+2. Inspect `.hforge/agent-manifest.json`, `.hforge/runtime/index.json`, `.hforge/runtime/recursive/language-capabilities.json`, `.hforge/runtime/recursive/runtime-inventory.json`, and `.hforge/runtime/recursive/escalation-heuristics.json` first when present.
 3. Run `hforge recursive capabilities --root . --json` before claiming recursive support for the active language or target.
-4. Create or inspect a session with `hforge recursive plan "<objective>" --task-id <taskId> --root . --json` or `hforge recursive inspect <sessionId> --root . --json`.
-5. Prefer Typed RLM through `hforge recursive execute <sessionId> --file <bundle.json> --root . --json` or `--stdin`.
-6. Use `hforge recursive run <sessionId> --file <snippet>` or `--stdin` only when one bounded structured-analysis step is the right tool.
-7. Inspect durable artifacts with `hforge recursive iterations`, `subcalls`, `cells`, `promotions`, `meta-ops`, `score`, and `replay`.
-8. Reuse the recursive artifacts in your summary instead of re-scanning the whole repo.
-9. Keep product code unchanged unless the user explicitly asks for edits.
+4. Run `hforge recursive runtimes --root . --json` before assuming Python or PowerShell code-cell availability.
+5. Use `hforge recursive provision-runtime <python|powershell> --root . --json` only when a workspace-managed runtime alias is genuinely useful.
+6. Create or inspect a session with `hforge recursive plan "<objective>" --task-id <taskId> --root . --json` or `hforge recursive inspect <sessionId> --root . --json`.
+7. Prefer Typed RLM through `hforge recursive execute <sessionId> --file <bundle.json> --root . --json` or `--stdin`.
+8. Use `hforge recursive run <sessionId> --file <snippet>` or `--stdin` only when one bounded structured-analysis step is the right tool.
+9. Inspect durable artifacts with `hforge recursive iterations`, `subcalls`, `cells`, `promotions`, `meta-ops`, `score`, and `replay`.
+10. Reuse the recursive artifacts in your summary instead of re-scanning the whole repo.
+11. Keep product code unchanged unless the user explicitly asks for edits.

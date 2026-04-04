@@ -2,10 +2,12 @@ import path from "node:path";
 import { Command } from "commander";
 
 import { compactRecursiveSession } from "../../application/recursive/compact-session.js";
+import { deriveRecursiveRuntimeInventory } from "../../application/recursive/derive-runtime-inventory.js";
 import { deriveRecursiveLanguageCapabilities } from "../../application/recursive/derive-language-capabilities.js";
 import { executeRecursiveLanguageModel } from "../../application/recursive/execute-rlm.js";
 import { finalizeRecursiveSession } from "../../application/recursive/finalize-session.js";
 import { planRecursiveTask } from "../../application/recursive/plan-task.js";
+import { provisionRecursiveRuntime } from "../../application/recursive/provision-runtime.js";
 import { replayRecursiveSession } from "../../application/recursive/replay-session.js";
 import { runStructuredAnalysis } from "../../application/recursive/run-structured-analysis.js";
 import { scoreRecursiveTrajectory } from "../../application/recursive/score-trajectory.js";
@@ -26,14 +28,17 @@ import {
   loadRecursiveLanguageCapabilities,
   loadRecursiveMetaOpProposal,
   loadRecursivePromotionProposal,
+  loadRecursiveRuntimeInventory,
   loadRecursiveScorecard,
   loadRecursiveSession,
+  loadRecursiveSessionRuntimeInventory,
   loadRecursiveSessionSummary,
   loadRecursiveStructuredRun,
   loadRecursiveStructuredRunResult,
   loadRecursiveSubcall,
   writeRecursiveLanguageCapabilities
 } from "../../infrastructure/recursive/session-store.js";
+import { appendEffectivenessSignal } from "../../infrastructure/observability/local-metrics-store.js";
 import { toJson } from "../../infrastructure/diagnostics/reporter.js";
 import { DEFAULT_WORKSPACE_ROOT } from "../../shared/index.js";
 
@@ -46,6 +51,7 @@ async function readFromStdin(): Promise<string> {
 }
 
 function formatPlanResult(result: Awaited<ReturnType<typeof planRecursiveTask>>): string {
+  const runtimeSummary = result.runtimeInventory.summary;
   const lines = [
     `Session: ${result.session.sessionId}`,
     `Task: ${result.session.taskId ?? "unlinked"}`,
@@ -53,6 +59,7 @@ function formatPlanResult(result: Awaited<ReturnType<typeof planRecursiveTask>>)
     `Budget: ${result.session.budgetPolicy.policyId}`,
     `Handles: ${result.session.handles.length}`,
     `Promotion: ${result.session.promotionState}`,
+    `Runtimes: ${runtimeSummary}`,
     `Session file: ${result.artifactPaths.sessionPath}`,
     `Summary file: ${result.artifactPaths.summaryPath}`
   ];
@@ -98,6 +105,7 @@ export function registerRecursiveCommands(program: Command): void {
               budgetPolicyId: result.session.budgetPolicy.policyId,
               handleCount: result.session.handles.length,
               handles: result.session.handles,
+              runtimeInventory: result.runtimeInventory,
               promotionState: result.session.promotionState,
               artifactPaths: result.artifactPaths,
               linkagePath: result.linkagePath
@@ -154,12 +162,43 @@ export function registerRecursiveCommands(program: Command): void {
     .action(async (options) => {
       const workspaceRoot = path.resolve(options.root);
       const existing = await loadRecursiveLanguageCapabilities(workspaceRoot);
+      const runtimeInventory = await deriveRecursiveRuntimeInventory(workspaceRoot);
       const capabilities =
         options.refresh || !existing ? await deriveRecursiveLanguageCapabilities(workspaceRoot) : existing;
       if (options.refresh || !existing) {
         await writeRecursiveLanguageCapabilities(workspaceRoot, capabilities);
       }
-      printPayload(options, { mode: "capabilities", ...capabilities });
+      printPayload(options, { mode: "capabilities", ...capabilities, runtimeInventory });
+    });
+
+  recursive
+    .command("runtimes")
+    .option("--root <root>", "workspace root", DEFAULT_WORKSPACE_ROOT)
+    .argument("[sessionId]", "optional recursive session id for policy-aware runtime posture")
+    .option("--json", "json output", false)
+    .action(async (sessionId: string | undefined, options) => {
+      const workspaceRoot = path.resolve(options.root);
+      const runtimeInventory = sessionId
+        ? ((await loadRecursiveSessionRuntimeInventory(workspaceRoot, sessionId)) ??
+          (await deriveRecursiveRuntimeInventory(workspaceRoot)))
+        : ((await loadRecursiveRuntimeInventory(workspaceRoot)) ?? (await deriveRecursiveRuntimeInventory(workspaceRoot)));
+      printPayload(options, { mode: "runtimes", sessionId, ...runtimeInventory });
+    });
+
+  recursive
+    .command("provision-runtime")
+    .argument("<runtimeId>", "runtime id to provision: python or powershell")
+    .option("--executable <path>", "explicit runtime executable to register")
+    .option("--root <root>", "workspace root", DEFAULT_WORKSPACE_ROOT)
+    .option("--json", "json output", false)
+    .action(async (runtimeId: "python" | "powershell", options) => {
+      const workspaceRoot = path.resolve(options.root);
+      const result = await provisionRecursiveRuntime({
+        workspaceRoot,
+        runtimeId,
+        executablePath: options.executable
+      });
+      printPayload(options, { mode: "provision-runtime", ...result });
     });
 
   recursive
@@ -200,6 +239,8 @@ export function registerRecursiveCommands(program: Command): void {
     .argument("<sessionId>", "recursive session id")
     .option("--file <file>", "structured analysis snippet file")
     .option("--stdin", "read the structured analysis snippet from stdin", false)
+    .option("--profile <profile>", "output profile: brief|standard|deep", "brief")
+    .option("--delta-only", "show only changed findings", false)
     .option("--root <root>", "workspace root", DEFAULT_WORKSPACE_ROOT)
     .option("--json", "json output", false)
     .action(async (sessionId: string, options) => {
@@ -217,9 +258,20 @@ export function registerRecursiveCommands(program: Command): void {
         sourceFile: options.file ? path.resolve(options.file) : undefined,
         stdinContent: options.stdin ? await readFromStdin() : undefined
       });
+      await appendEffectivenessSignal(workspaceRoot, {
+        signalType: "recursive-run",
+        subjectId: sessionId,
+        result: result.meta.status === "success" ? "success" : "failed",
+        recordedAt: new Date().toISOString(),
+        details: { runId: result.meta.runId, submissionMode: result.meta.submissionMode },
+        category: "runtimeUsage",
+        confidenceLevel: "direct"
+      });
       printPayload(options, {
         mode: "run",
         sessionId,
+        profile: options.profile,
+        deltaOnly: options.deltaOnly,
         runId: result.meta.runId,
         submissionMode: result.meta.submissionMode,
         status: result.meta.status,

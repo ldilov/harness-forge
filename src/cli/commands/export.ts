@@ -1,8 +1,11 @@
-import path from "node:path";
+﻿import path from "node:path";
 import { Command } from "commander";
 
 import { createAuditReport } from "../../application/maintenance/audit-install.js";
 import { createDoctorReport } from "../../application/maintenance/doctor-workspace.js";
+import { detectExportLeakage } from "../../application/runtime/detect-export-leakage.js";
+import { resolveExportProfile } from "../../application/runtime/resolve-export-profile.js";
+import { validateExportRequiredSurfaces } from "../../application/runtime/validate-export-required-surfaces.js";
 import { loadInstallState } from "../../domain/state/install-state.js";
 import { DEFAULT_WORKSPACE_ROOT, PACKAGE_ROOT, RUNTIME_DIR, RUNTIME_INDEX_FILE, exists, readJsonFile, writeJsonFile } from "../../shared/index.js";
 import { toJson } from "../../infrastructure/diagnostics/reporter.js";
@@ -12,21 +15,43 @@ export function registerExportCommands(program: Command): void {
     .command("export")
     .description("Export a workspace runtime summary for review or handoff.")
     .option("--root <root>", "workspace root", DEFAULT_WORKSPACE_ROOT)
+    .option("--profile <profile>", "export profile", "runtime-standard")
+    .option("--kb-lean", "shortcut for --profile kb-lean", false)
+    .option("--runtime-minimal", "shortcut for --profile runtime-minimal", false)
+    .option("--maintainer-full", "shortcut for --profile maintainer-full", false)
     .option("--output <file>", "write the export to a JSON file")
     .option("--json", "json output", false)
     .action(async (options) => {
       const workspaceRoot = path.resolve(options.root);
+      const profileId = options.kbLean
+        ? "kb-lean"
+        : options.runtimeMinimal
+          ? "runtime-minimal"
+          : options.maintainerFull
+            ? "maintainer-full"
+            : options.profile;
       const runtimeIndexPath = path.join(workspaceRoot, RUNTIME_DIR, RUNTIME_INDEX_FILE);
-      const [installState, doctor, audit, runtimeIndex] = await Promise.all([
+      const [installState, doctor, audit, runtimeIndex, exportProfile] = await Promise.all([
         loadInstallState(workspaceRoot),
         createDoctorReport(workspaceRoot, PACKAGE_ROOT),
         createAuditReport(workspaceRoot, PACKAGE_ROOT),
-        (async () => ((await exists(runtimeIndexPath)) ? readJsonFile(runtimeIndexPath) : null))()
+        (async () => ((await exists(runtimeIndexPath)) ? readJsonFile(runtimeIndexPath) : null))(),
+        resolveExportProfile(PACKAGE_ROOT, profileId)
       ]);
+
+      const exportValidation = exportProfile
+        ? {
+            requiredSurfaces: validateExportRequiredSurfaces(exportProfile),
+            leakage: detectExportLeakage(exportProfile, [".hforge/runtime/index.json", "AGENTS.md", "coverage/index.html"])
+          }
+        : null;
 
       const result = {
         exportedAt: new Date().toISOString(),
         workspaceRoot,
+        profile: profileId,
+        exportProfile,
+        exportValidation,
         installState,
         runtimeIndex,
         doctor,

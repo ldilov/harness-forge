@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://harness-forge.dev/schemas/runtime/target-adapter.schema.json",
+  "title": "Target Adapter",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "displayName", "supportMode", "instructionSurfaces", "runtimeSurfaces", "mergeRules"],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "displayName": { "type": "string", "minLength": 1 },
+    "supportMode": { "type": "string", "enum": ["native", "bridged", "translated", "partial"] },
+    "instructionSurfaces": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "runtimeSurfaces": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "authoritativeSurfaces": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "pathMappings": { "type": "object", "additionalProperties": { "type": "string" } },
+    "mergeRules": { "type": "object", "additionalProperties": { "type": "string", "minLength": 1 } },
+    "capabilityFlags": { "type": "object", "additionalProperties": { "type": "boolean" } }
+  }
+}

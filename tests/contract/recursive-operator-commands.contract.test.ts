@@ -17,7 +17,7 @@ describe("recursive operator commands contract", () => {
     const recursive = program.commands.find((command) => command.name() === "recursive");
     expect(recursive).toBeTruthy();
     expect(recursive?.commands.map((command) => command.name())).toEqual(
-      expect.arrayContaining(["plan", "capabilities", "run", "runs", "inspect-run", "inspect", "adr", "resume", "finalize", "compact", "repl"])
+      expect.arrayContaining(["plan", "capabilities", "runtimes", "provision-runtime", "run", "runs", "inspect-run", "inspect", "adr", "resume", "finalize", "compact", "repl"])
     );
   });
 
@@ -27,9 +27,13 @@ describe("recursive operator commands contract", () => {
 
     expect(docsCommands).toContain("recursive plan");
     expect(docsCommands).toContain("recursive capabilities");
+    expect(docsCommands).toContain("recursive runtimes");
+    expect(docsCommands).toContain("recursive provision-runtime");
     expect(docsCommands).toContain("recursive inspect");
     expect(catalog.cliCommands.some((entry) => entry.command.includes("recursive plan"))).toBe(true);
     expect(catalog.cliCommands.some((entry) => entry.command.includes("recursive capabilities"))).toBe(true);
+    expect(catalog.cliCommands.some((entry) => entry.command.includes("recursive runtimes"))).toBe(true);
+    expect(catalog.cliCommands.some((entry) => entry.command.includes("recursive provision-runtime"))).toBe(true);
     expect(catalog.cliCommands.some((entry) => entry.command.includes("recursive inspect"))).toBe(true);
   });
 });

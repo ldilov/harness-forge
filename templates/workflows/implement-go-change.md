@@ -45,7 +45,7 @@ Load the common guidance and the Go-specific references relevant to the task.
 
 **Consumes**
 - `rules/common/`
-- `skills/go-engineering/SKILL.md`
+- `rules/golang/README.md`
 - `knowledge-bases/structured/go/docs/overview.md`
 
 **Produces**

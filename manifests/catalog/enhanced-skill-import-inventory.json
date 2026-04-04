@@ -1,442 +1,412 @@
 {
-  "packId": "enhanced-skills-2026-03",
-  "sourceName": "Harness Forge Enhanced Skills Pack",
-  "sourceVersion": "2026-03-30-imports",
-  "resourceRoots": [
-    "skills/",
-    ".agents/skills/",
-    "README.md",
-    "VALIDATION.md",
-    "RESEARCH-SOURCES.md"
-  ],
-  "summary": "Governed embedding record for the enhanced skills zip that deepened canonical operational, coordination, and language skill surfaces without creating a parallel runtime package. The March 2026 follow-on import also promotes a distinct MADR skill for file-oriented ADR repository workflows.",
-  "validationScope": "The imported pack reported passing skill-depth and placeholder validation on the upgraded repo copy. Full release smoke remained host-repo dependent because the export environment still had unrelated upstream gaps.",
-  "researchScope": "The imported guidance drew on official docs and upstream repositories for ADRs, API governance, database migrations, worktrees, modernization, .NET, TypeScript, JavaScript, Lua, and repo-onboarding workflows. A follow-on user-authored skill added MADR repository conventions, ADR validation, and ADR log generation.",
-  "entries": [
-    {
-      "resourcePath": "skills/repo-onboarding/SKILL.md",
-      "resourceType": "skill",
-      "skillId": "repo-onboarding",
-      "existingProjectSurface": "skills/repo-onboarding/SKILL.md",
-      "decision": "merge",
-      "decisionReason": "The pack adds richer onboarding triggers, ownership heuristics, and command discovery without changing the canonical responsibility.",
-      "destinationPath": "skills/repo-onboarding/SKILL.md",
-      "reviewStatus": "accepted"
-    },
-    {
-      "resourcePath": "skills/repo-onboarding/references/",
-      "resourceType": "reference",
-      "skillId": "repo-onboarding",
-      "existingProjectSurface": "skills/repo-onboarding/references/",
-      "decision": "merge",
-      "decisionReason": "The new checklist, archetype, and health-signal references deepen the existing onboarding surface.",
-      "destinationPath": "skills/repo-onboarding/references/",
-      "reviewStatus": "accepted"
-    },
-    {
-      "resourcePath": ".agents/skills/repo-onboarding/SKILL.md",
-      "resourceType": "wrapper",
-      "skillId": "repo-onboarding",
-      "existingProjectSurface": ".agents/skills/repo-onboarding/SKILL.md",
-      "decision": "merge",
-      "decisionReason": "Wrapper alignment is planned against the upgraded canonical skill and tracked here so discovery drift stays explicit.",
-      "destinationPath": ".agents/skills/repo-onboarding/SKILL.md",
-      "reviewStatus": "accepted"
-    },
-    {
-      "resourcePath": "skills/architecture-decision-records/SKILL.md",
-      "resourceType": "skill",
-      "skillId": "architecture-decision-records",
-      "existingProjectSurface": "skills/architecture-decision-records/SKILL.md",
-      "decision": "merge",
-      "decisionReason": "The pack keeps the same ADR responsibility while adding stronger decision framing, supersession, and anti-pattern guidance.",
-      "destinationPath": "skills/architecture-decision-records/SKILL.md",
-      "reviewStatus": "accepted"
-    },
-    {
-      "resourcePath": "skills/architecture-decision-records/references/",
-      "resourceType": "reference",
-      "skillId": "architecture-decision-records",
-      "existingProjectSurface": "skills/architecture-decision-records/references/",
-      "decision": "merge",
-      "decisionReason": "The imported rubric, MADR guidance, and examples materially deepen the canonical ADR surface.",
-      "destinationPath": "skills/architecture-decision-records/references/",
-      "reviewStatus": "accepted"
-    },
-    {
-      "resourcePath": ".agents/skills/architecture-decision-records/SKILL.md",
-      "resourceType": "wrapper",
-      "skillId": "architecture-decision-records",
-      "existingProjectSurface": ".agents/skills/architecture-decision-records/SKILL.md",
-      "decision": "merge",
-      "decisionReason": "The wrapper remains the discovery entrypoint and will be aligned in the follow-on discovery phase.",
-      "destinationPath": ".agents/skills/architecture-decision-records/SKILL.md",
-      "reviewStatus": "accepted"
-    },
-    {
-      "resourcePath": "skills/api-contract-review/SKILL.md",
-      "resourceType": "skill",
-      "skillId": "api-contract-review",
-      "existingProjectSurface": "skills/api-contract-review/SKILL.md",
-      "decision": "merge",
-      "decisionReason": "The canonical API-review skill already existed; the import upgrades it with protocol-aware review depth and consumer-safety outputs.",
-      "destinationPath": "skills/api-contract-review/SKILL.md",
-      "reviewStatus": "accepted"
-    },
-    {
-      "resourcePath": "skills/api-contract-review/references/",
-      "resourceType": "reference",
-      "skillId": "api-contract-review",
-      "existingProjectSurface": "skills/api-contract-review/references/",
-      "decision": "merge",
-      "decisionReason": "The imported checklists, compatibility notes, and review template are runtime-facing guidance for the existing skill.",
-      "destinationPath": "skills/api-contract-review/references/",
-      "reviewStatus": "accepted"
-    },
-    {
-      "resourcePath": ".agents/skills/api-contract-review/SKILL.md",
-      "resourceType": "wrapper",
-      "skillId": "api-contract-review",
-      "existingProjectSurface": null,
-      "decision": "merge",
-      "decisionReason": "The imported wrapper should become the project discovery surface, but wrapper rollout is tracked separately from canonical MVP embedding.",
-      "destinationPath": ".agents/skills/api-contract-review/SKILL.md",
-      "reviewStatus": "accepted"
-    },
-    {
-      "resourcePath": "skills/db-migration-review/SKILL.md",
-      "resourceType": "skill",
-      "skillId": "db-migration-review",
-      "existingProjectSurface": "skills/db-migration-review/SKILL.md",
-      "decision": "merge",
-      "decisionReason": "The existing migration-review skill keeps ownership while absorbing expand-and-contract, engine-hotspot, and rollout guidance.",
-      "destinationPath": "skills/db-migration-review/SKILL.md",
-      "reviewStatus": "accepted"
-    },
-    {
-      "resourcePath": "skills/db-migration-review/references/",
-      "resourceType": "reference",
-      "skillId": "db-migration-review",
-      "existingProjectSurface": "skills/db-migration-review/references/",
-      "decision": "merge",
-      "decisionReason": "The imported risk taxonomy, rollout notes, and review template are first-class supporting references for the canonical skill.",
-      "destinationPath": "skills/db-migration-review/references/",
-      "reviewStatus": "accepted"
-    },
-    {
-      "resourcePath": ".agents/skills/db-migration-review/SKILL.md",
-      "resourceType": "wrapper",
-      "skillId": "db-migration-review",
-      "existingProjectSurface": null,
-      "decision": "merge",
-      "decisionReason": "The wrapper is reserved for the discovery-alignment phase so the new workload skill can be surfaced cleanly to agents.",
-      "destinationPath": ".agents/skills/db-migration-review/SKILL.md",
-      "reviewStatus": "accepted"
-    },
-    {
-      "resourcePath": "skills/parallel-worktree-supervisor/SKILL.md",
-      "resourceType": "skill",
-      "skillId": "parallel-worktree-supervisor",
-      "existingProjectSurface": "skills/parallel-worktree-supervisor/SKILL.md",
-      "decision": "merge",
-      "decisionReason": "Harness Forge already owned the skill identity, and the import turns the placeholder into a production-grade supervision contract.",
-      "destinationPath": "skills/parallel-worktree-supervisor/SKILL.md",
-      "reviewStatus": "accepted"
-    },
-    {
-      "resourcePath": "skills/parallel-worktree-supervisor/references/",
-      "resourceType": "reference",
-      "skillId": "parallel-worktree-supervisor",
-      "existingProjectSurface": "skills/parallel-worktree-supervisor/references/",
-      "decision": "merge",
-      "decisionReason": "The task sharding, stacked-diff, merge-readiness, and worktree-operation references are runtime-facing supervision knowledge.",
-      "destinationPath": "skills/parallel-worktree-supervisor/references/",
-      "reviewStatus": "accepted"
-    },
-    {
-      "resourcePath": ".agents/skills/parallel-worktree-supervisor/SKILL.md",
-      "resourceType": "wrapper",
-      "skillId": "parallel-worktree-supervisor",
-      "existingProjectSurface": null,
-      "decision": "merge",
-      "decisionReason": "A new wrapper is appropriate, but the wrapper rollout is tracked separately from the canonical skill merge.",
-      "destinationPath": ".agents/skills/parallel-worktree-supervisor/SKILL.md",
-      "reviewStatus": "accepted"
-    },
-    {
-      "resourcePath": "skills/repo-modernization/SKILL.md",
-      "resourceType": "skill",
-      "skillId": "repo-modernization",
-      "existingProjectSurface": "skills/repo-modernization/SKILL.md",
-      "decision": "merge",
-      "decisionReason": "The imported roadmap and seam-first modernization guidance enrich the existing project-owned skill.",
-      "destinationPath": "skills/repo-modernization/SKILL.md",
-      "reviewStatus": "accepted"
-    },
-    {
-      "resourcePath": "skills/repo-modernization/references/",
-      "resourceType": "reference",
-      "skillId": "repo-modernization",
-      "existingProjectSurface": "skills/repo-modernization/references/",
-      "decision": "merge",
-      "decisionReason": "The imported modernization layers, safety rails, automation candidates, and roadmap template are reusable runtime-facing references.",
-      "destinationPath": "skills/repo-modernization/references/",
-      "reviewStatus": "accepted"
-    },
-    {
-      "resourcePath": ".agents/skills/repo-modernization/SKILL.md",
-      "resourceType": "wrapper",
-      "skillId": "repo-modernization",
-      "existingProjectSurface": null,
-      "decision": "merge",
-      "decisionReason": "The import introduces a missing discovery wrapper and keeps the future agent entrypoint explicit in the inventory.",
-      "destinationPath": ".agents/skills/repo-modernization/SKILL.md",
-      "reviewStatus": "accepted"
-    },
-    {
-      "resourcePath": "skills/typescript-engineering/SKILL.md",
-      "resourceType": "skill",
-      "skillId": "typescript-engineering",
-      "existingProjectSurface": "skills/typescript-engineering/SKILL.md",
-      "decision": "merge",
-      "decisionReason": "The seeded TypeScript skill keeps ownership while absorbing stronger activation, validation, and workspace-boundary guidance.",
-      "destinationPath": "skills/typescript-engineering/SKILL.md",
-      "reviewStatus": "accepted"
-    },
-    {
-      "resourcePath": "skills/typescript-engineering/references/",
-      "resourceType": "reference",
-      "skillId": "typescript-engineering",
-      "existingProjectSurface": "skills/typescript-engineering/references/",
-      "decision": "merge",
-      "decisionReason": "The import adds runtime-validation and monorepo references to the existing engineering pack.",
-      "destinationPath": "skills/typescript-engineering/references/",
-      "reviewStatus": "accepted"
-    },
-    {
-      "resourcePath": ".agents/skills/typescript-engineering/SKILL.md",
-      "resourceType": "wrapper",
-      "skillId": "typescript-engineering",
-      "existingProjectSurface": ".agents/skills/typescript-engineering/SKILL.md",
-      "decision": "merge",
-      "decisionReason": "The wrapper remains the auto-discovery entrypoint and will be aligned to the upgraded language contract later in the feature.",
-      "destinationPath": ".agents/skills/typescript-engineering/SKILL.md",
-      "reviewStatus": "accepted"
-    },
-    {
-      "resourcePath": "skills/dotnet-engineering/SKILL.md",
-      "resourceType": "skill",
-      "skillId": "dotnet-engineering",
-      "existingProjectSurface": "skills/dotnet-engineering/SKILL.md",
-      "decision": "merge",
-      "decisionReason": "The seeded .NET skill already existed and now absorbs stronger solution-graph, DI, migration, and hosting guidance.",
-      "destinationPath": "skills/dotnet-engineering/SKILL.md",
-      "reviewStatus": "accepted"
-    },
-    {
-      "resourcePath": "skills/dotnet-engineering/references/",
-      "resourceType": "reference",
-      "skillId": "dotnet-engineering",
-      "existingProjectSurface": "skills/dotnet-engineering/references/",
-      "decision": "merge",
-      "decisionReason": "The import adds cloud-native and Aspire coverage plus richer supporting heuristics to the current reference pack.",
-      "destinationPath": "skills/dotnet-engineering/references/",
-      "reviewStatus": "accepted"
-    },
-    {
-      "resourcePath": ".agents/skills/dotnet-engineering/SKILL.md",
-      "resourceType": "wrapper",
-      "skillId": "dotnet-engineering",
-      "existingProjectSurface": ".agents/skills/dotnet-engineering/SKILL.md",
-      "decision": "merge",
-      "decisionReason": "The wrapper stays as the entrypoint and is tracked for later alignment with the deeper canonical skill.",
-      "destinationPath": ".agents/skills/dotnet-engineering/SKILL.md",
-      "reviewStatus": "accepted"
-    },
-    {
-      "resourcePath": "skills/lua-engineering/SKILL.md",
-      "resourceType": "skill",
-      "skillId": "lua-engineering",
-      "existingProjectSurface": "skills/lua-engineering/SKILL.md",
-      "decision": "merge",
-      "decisionReason": "The seeded Lua skill keeps ownership while the import adds runtime-flavor, editor, OpenResty, and tooling guidance.",
-      "destinationPath": "skills/lua-engineering/SKILL.md",
-      "reviewStatus": "accepted"
-    },
-    {
-      "resourcePath": "skills/lua-engineering/references/",
-      "resourceType": "reference",
-      "skillId": "lua-engineering",
-      "existingProjectSurface": "skills/lua-engineering/references/",
-      "decision": "merge",
-      "decisionReason": "The imported runtime profiles, editor patterns, OpenResty notes, and tooling guidance deepen the existing language pack.",
-      "destinationPath": "skills/lua-engineering/references/",
-      "reviewStatus": "accepted"
-    },
-    {
-      "resourcePath": ".agents/skills/lua-engineering/SKILL.md",
-      "resourceType": "wrapper",
-      "skillId": "lua-engineering",
-      "existingProjectSurface": ".agents/skills/lua-engineering/SKILL.md",
-      "decision": "merge",
-      "decisionReason": "The wrapper remains a discovery surface and is tracked for later alignment to the upgraded skill contract.",
-      "destinationPath": ".agents/skills/lua-engineering/SKILL.md",
-      "reviewStatus": "accepted"
-    },
-    {
-      "resourcePath": "skills/javascript-engineering/SKILL.md",
-      "resourceType": "skill",
-      "skillId": "javascript-engineering",
-      "existingProjectSurface": "skills/javascript-engineering/SKILL.md",
-      "decision": "promote",
-      "decisionReason": "JavaScript engineering is a distinct runtime-focused responsibility that already exists in Harness Forge and is now promoted with deeper contracts and packaging guidance.",
-      "destinationPath": "skills/javascript-engineering/SKILL.md",
-      "reviewStatus": "accepted"
-    },
-    {
-      "resourcePath": "skills/javascript-engineering/references/",
-      "resourceType": "reference",
-      "skillId": "javascript-engineering",
-      "existingProjectSurface": "skills/javascript-engineering/references/",
-      "decision": "merge",
-      "decisionReason": "The imported browser, bundler, and package-contract references deepen the promoted JavaScript skill.",
-      "destinationPath": "skills/javascript-engineering/references/",
-      "reviewStatus": "accepted"
-    },
-    {
-      "resourcePath": ".agents/skills/javascript-engineering/SKILL.md",
-      "resourceType": "wrapper",
-      "skillId": "javascript-engineering",
-      "existingProjectSurface": ".agents/skills/javascript-engineering/SKILL.md",
-      "decision": "merge",
-      "decisionReason": "The wrapper exists today and will be aligned in the discovery phase so agents see the richer JS contract.",
-      "destinationPath": ".agents/skills/javascript-engineering/SKILL.md",
-      "reviewStatus": "accepted"
-    },
-    {
-      "resourcePath": "README.md",
-      "resourceType": "provenance",
-      "skillId": null,
-      "existingProjectSurface": null,
-      "decision": "provenance-only",
-      "decisionReason": "The pack README documents the source bundle contents and intent but should not ship as a second front door.",
-      "destinationPath": "docs/authoring/enhanced-skill-import.md",
-      "reviewStatus": "accepted"
-    },
-    {
-      "resourcePath": "VALIDATION.md",
-      "resourceType": "provenance",
-      "skillId": null,
-      "existingProjectSurface": null,
-      "decision": "provenance-only",
-      "decisionReason": "Pack-local validation context matters for maintainers, but the project keeps release truth in its own validation surfaces.",
-      "destinationPath": "VALIDATION.md",
-      "reviewStatus": "accepted"
-    },
-    {
-      "resourcePath": "RESEARCH-SOURCES.md",
-      "resourceType": "provenance",
-      "skillId": null,
-      "existingProjectSurface": null,
-      "decision": "provenance-only",
-      "decisionReason": "The research summary informs maintainers and future imports, but runtime agents should rely on the canonical project-owned skills instead.",
-      "destinationPath": "RESEARCH-SOURCES.md",
-      "reviewStatus": "accepted"
-    },
-    {
-      "resourcePath": "skills/madr-decision-log/SKILL.md",
-      "resourceType": "skill",
-      "skillId": "madr-decision-log",
-      "existingProjectSurface": null,
-      "decision": "promote",
-      "decisionReason": "The imported MADR skill owns a distinct file-oriented ADR repository workflow rather than duplicating the broader architecture-decision-records responsibility.",
-      "destinationPath": "skills/madr-decision-log/SKILL.md",
-      "reviewStatus": "accepted"
-    },
-    {
-      "resourcePath": "skills/madr-decision-log/references/",
-      "resourceType": "reference",
-      "skillId": "madr-decision-log",
-      "existingProjectSurface": null,
-      "decision": "promote",
-      "decisionReason": "The reference pack supplies the canonical MADR template, conventions, and review checklist needed by the new skill.",
-      "destinationPath": "skills/madr-decision-log/references/",
-      "reviewStatus": "accepted"
-    },
-    {
-      "resourcePath": "skills/madr-decision-log/scripts/",
-      "resourceType": "script",
-      "skillId": "madr-decision-log",
-      "existingProjectSurface": null,
-      "decision": "promote",
-      "decisionReason": "The helper scripts make ADR scaffolding, validation, and ADR-LOG generation deterministic and reusable.",
-      "destinationPath": "skills/madr-decision-log/scripts/",
-      "reviewStatus": "accepted"
-    },
-    {
-      "resourcePath": ".agents/skills/madr-decision-log/SKILL.md",
-      "resourceType": "wrapper",
-      "skillId": "madr-decision-log",
-      "existingProjectSurface": null,
-      "decision": "promote",
-      "decisionReason": "The wrapper keeps the MADR workflow discoverable while the canonical execution contract remains under skills/.",
-      "destinationPath": ".agents/skills/madr-decision-log/SKILL.md",
-      "reviewStatus": "accepted"
-    }
-  ],
-  "embeddingRules": [
-    {
-      "ruleId": "merge-overlapping-skill-identities",
-      "matchCriteria": "An imported skill has the same responsibility as an existing canonical Harness Forge skill.",
-      "preferredOutcome": "merge",
-      "requiredFollowUps": [
-        "merge canonical SKILL.md guidance",
-        "merge or extend references/",
-        "record the decision in the inventory",
-        "validate section depth and reference paths"
-      ],
-      "exceptions": [
-        "Promote instead when the imported responsibility is distinct enough to deserve a first-class skill identity."
-      ]
-    },
-    {
-      "ruleId": "promote-runtime-distinct-skills",
-      "matchCriteria": "An imported runtime-facing skill fills a distinct responsibility that should be discoverable in the packaged skill catalog.",
-      "preferredOutcome": "promote",
-      "requiredFollowUps": [
-        "create or update the canonical skill directory",
-        "preserve supporting references",
-        "reflect the skill in catalogs and discovery docs"
-      ],
-      "exceptions": [
-        "Do not promote when the content is just a narrower variant of an existing project-owned responsibility."
-      ]
-    },
-    {
-      "ruleId": "track-wrapper-rollout-explicitly",
-      "matchCriteria": "An imported wrapper changes or introduces an auto-discovery surface under .agents/skills/.",
-      "preferredOutcome": "merge",
-      "requiredFollowUps": [
-        "record the wrapper destination in the inventory",
-        "align wrapper wording to the canonical skill",
-        "validate that the wrapper points at the active canonical surface"
-      ],
-      "exceptions": [
-        "Wrapper execution may be staged after canonical skill embedding, but pending rollout must stay explicit."
-      ]
-    },
-    {
-      "ruleId": "keep-provenance-maintainer-facing",
-      "matchCriteria": "Imported materials describe pack intent, research, or validation rather than runtime guidance.",
-      "preferredOutcome": "provenance-only",
-      "requiredFollowUps": [
-        "summarize the material in maintainer documentation",
-        "keep runtime-facing skills separate from provenance",
-        "reference the inventory rather than shipping a parallel package root"
-      ],
-      "exceptions": [
-        "Runtime guidance that directly improves an active canonical skill belongs in skills/ or references/ instead."
-      ]
-    }
-  ]
+    "packId":  "enhanced-skills-2026-03",
+    "sourceName":  "Harness Forge Enhanced Skills Pack",
+    "sourceVersion":  "2026-03-30-imports",
+    "resourceRoots":  [
+                          "skills/",
+                          ".agents/skills/",
+                          "README.md",
+                          "VALIDATION.md",
+                          "RESEARCH-SOURCES.md"
+                      ],
+    "summary":  "Governed embedding record for the enhanced skills zip that deepened canonical operational, coordination, and language skill surfaces without creating a parallel runtime package. The March 2026 follow-on import also promotes a distinct MADR skill for file-oriented ADR repository workflows.",
+    "validationScope":  "The imported pack reported passing skill-depth and placeholder validation on the upgraded repo copy. Full release smoke remained host-repo dependent because the export environment still had unrelated upstream gaps.",
+    "researchScope":  "The imported guidance drew on official docs and upstream repositories for ADRs, API governance, database migrations, worktrees, modernization, .NET, TypeScript, JavaScript, Lua, and repo-onboarding workflows. A follow-on user-authored skill added MADR repository conventions, ADR validation, and ADR log generation.",
+    "entries":  [
+                    {
+                        "resourcePath":  "skills/repo-onboarding/SKILL.md",
+                        "resourceType":  "skill",
+                        "skillId":  "repo-onboarding",
+                        "existingProjectSurface":  "skills/repo-onboarding/SKILL.md",
+                        "decision":  "merge",
+                        "decisionReason":  "The pack adds richer onboarding triggers, ownership heuristics, and command discovery without changing the canonical responsibility.",
+                        "destinationPath":  "skills/repo-onboarding/SKILL.md",
+                        "reviewStatus":  "accepted"
+                    },
+                    {
+                        "resourcePath":  "skills/repo-onboarding/references/",
+                        "resourceType":  "reference",
+                        "skillId":  "repo-onboarding",
+                        "existingProjectSurface":  "skills/repo-onboarding/references/",
+                        "decision":  "merge",
+                        "decisionReason":  "The new checklist, archetype, and health-signal references deepen the existing onboarding surface.",
+                        "destinationPath":  "skills/repo-onboarding/references/",
+                        "reviewStatus":  "accepted"
+                    },
+                    {
+                        "resourcePath":  ".agents/skills/repo-onboarding/SKILL.md",
+                        "resourceType":  "wrapper",
+                        "skillId":  "repo-onboarding",
+                        "existingProjectSurface":  ".agents/skills/repo-onboarding/SKILL.md",
+                        "decision":  "merge",
+                        "decisionReason":  "Wrapper alignment is planned against the upgraded canonical skill and tracked here so discovery drift stays explicit.",
+                        "destinationPath":  ".agents/skills/repo-onboarding/SKILL.md",
+                        "reviewStatus":  "accepted"
+                    },
+                    {
+                        "resourcePath":  "skills/architecture-decision-records/SKILL.md",
+                        "resourceType":  "skill",
+                        "skillId":  "architecture-decision-records",
+                        "existingProjectSurface":  "skills/architecture-decision-records/SKILL.md",
+                        "decision":  "merge",
+                        "decisionReason":  "The pack keeps the same ADR responsibility while adding stronger decision framing, supersession, and anti-pattern guidance.",
+                        "destinationPath":  "skills/architecture-decision-records/SKILL.md",
+                        "reviewStatus":  "accepted"
+                    },
+                    {
+                        "resourcePath":  "skills/architecture-decision-records/references/",
+                        "resourceType":  "reference",
+                        "skillId":  "architecture-decision-records",
+                        "existingProjectSurface":  "skills/architecture-decision-records/references/",
+                        "decision":  "merge",
+                        "decisionReason":  "The imported rubric, MADR guidance, and examples materially deepen the canonical ADR surface.",
+                        "destinationPath":  "skills/architecture-decision-records/references/",
+                        "reviewStatus":  "accepted"
+                    },
+                    {
+                        "resourcePath":  ".agents/skills/architecture-decision-records/SKILL.md",
+                        "resourceType":  "wrapper",
+                        "skillId":  "architecture-decision-records",
+                        "existingProjectSurface":  ".agents/skills/architecture-decision-records/SKILL.md",
+                        "decision":  "merge",
+                        "decisionReason":  "The wrapper remains the discovery entrypoint and will be aligned in the follow-on discovery phase.",
+                        "destinationPath":  ".agents/skills/architecture-decision-records/SKILL.md",
+                        "reviewStatus":  "accepted"
+                    },
+                    {
+                        "resourcePath":  "skills/api-contract-review/SKILL.md",
+                        "resourceType":  "skill",
+                        "skillId":  "api-contract-review",
+                        "existingProjectSurface":  "skills/api-contract-review/SKILL.md",
+                        "decision":  "merge",
+                        "decisionReason":  "The canonical API-review skill already existed; the import upgrades it with protocol-aware review depth and consumer-safety outputs.",
+                        "destinationPath":  "skills/api-contract-review/SKILL.md",
+                        "reviewStatus":  "accepted"
+                    },
+                    {
+                        "resourcePath":  "skills/api-contract-review/references/",
+                        "resourceType":  "reference",
+                        "skillId":  "api-contract-review",
+                        "existingProjectSurface":  "skills/api-contract-review/references/",
+                        "decision":  "merge",
+                        "decisionReason":  "The imported checklists, compatibility notes, and review template are runtime-facing guidance for the existing skill.",
+                        "destinationPath":  "skills/api-contract-review/references/",
+                        "reviewStatus":  "accepted"
+                    },
+                    {
+                        "resourcePath":  ".agents/skills/api-contract-review/SKILL.md",
+                        "resourceType":  "wrapper",
+                        "skillId":  "api-contract-review",
+                        "existingProjectSurface":  null,
+                        "decision":  "merge",
+                        "decisionReason":  "The imported wrapper should become the project discovery surface, but wrapper rollout is tracked separately from canonical MVP embedding.",
+                        "destinationPath":  ".agents/skills/api-contract-review/SKILL.md",
+                        "reviewStatus":  "accepted"
+                    },
+                    {
+                        "resourcePath":  "skills/db-migration-review/SKILL.md",
+                        "resourceType":  "skill",
+                        "skillId":  "db-migration-review",
+                        "existingProjectSurface":  "skills/db-migration-review/SKILL.md",
+                        "decision":  "merge",
+                        "decisionReason":  "The existing migration-review skill keeps ownership while absorbing expand-and-contract, engine-hotspot, and rollout guidance.",
+                        "destinationPath":  "skills/db-migration-review/SKILL.md",
+                        "reviewStatus":  "accepted"
+                    },
+                    {
+                        "resourcePath":  "skills/db-migration-review/references/",
+                        "resourceType":  "reference",
+                        "skillId":  "db-migration-review",
+                        "existingProjectSurface":  "skills/db-migration-review/references/",
+                        "decision":  "merge",
+                        "decisionReason":  "The imported risk taxonomy, rollout notes, and review template are first-class supporting references for the canonical skill.",
+                        "destinationPath":  "skills/db-migration-review/references/",
+                        "reviewStatus":  "accepted"
+                    },
+                    {
+                        "resourcePath":  ".agents/skills/db-migration-review/SKILL.md",
+                        "resourceType":  "wrapper",
+                        "skillId":  "db-migration-review",
+                        "existingProjectSurface":  null,
+                        "decision":  "merge",
+                        "decisionReason":  "The wrapper is reserved for the discovery-alignment phase so the new workload skill can be surfaced cleanly to agents.",
+                        "destinationPath":  ".agents/skills/db-migration-review/SKILL.md",
+                        "reviewStatus":  "accepted"
+                    },
+                    {
+                        "resourcePath":  "skills/parallel-worktree-supervisor/SKILL.md",
+                        "resourceType":  "skill",
+                        "skillId":  "parallel-worktree-supervisor",
+                        "existingProjectSurface":  "skills/parallel-worktree-supervisor/SKILL.md",
+                        "decision":  "merge",
+                        "decisionReason":  "Harness Forge already owned the skill identity, and the import turns the placeholder into a production-grade supervision contract.",
+                        "destinationPath":  "skills/parallel-worktree-supervisor/SKILL.md",
+                        "reviewStatus":  "accepted"
+                    },
+                    {
+                        "resourcePath":  "skills/parallel-worktree-supervisor/references/",
+                        "resourceType":  "reference",
+                        "skillId":  "parallel-worktree-supervisor",
+                        "existingProjectSurface":  "skills/parallel-worktree-supervisor/references/",
+                        "decision":  "merge",
+                        "decisionReason":  "The task sharding, stacked-diff, merge-readiness, and worktree-operation references are runtime-facing supervision knowledge.",
+                        "destinationPath":  "skills/parallel-worktree-supervisor/references/",
+                        "reviewStatus":  "accepted"
+                    },
+                    {
+                        "resourcePath":  ".agents/skills/parallel-worktree-supervisor/SKILL.md",
+                        "resourceType":  "wrapper",
+                        "skillId":  "parallel-worktree-supervisor",
+                        "existingProjectSurface":  null,
+                        "decision":  "merge",
+                        "decisionReason":  "A new wrapper is appropriate, but the wrapper rollout is tracked separately from the canonical skill merge.",
+                        "destinationPath":  ".agents/skills/parallel-worktree-supervisor/SKILL.md",
+                        "reviewStatus":  "accepted"
+                    },
+                    {
+                        "resourcePath":  "skills/repo-modernization/SKILL.md",
+                        "resourceType":  "skill",
+                        "skillId":  "repo-modernization",
+                        "existingProjectSurface":  "skills/repo-modernization/SKILL.md",
+                        "decision":  "merge",
+                        "decisionReason":  "The imported roadmap and seam-first modernization guidance enrich the existing project-owned skill.",
+                        "destinationPath":  "skills/repo-modernization/SKILL.md",
+                        "reviewStatus":  "accepted"
+                    },
+                    {
+                        "resourcePath":  "skills/repo-modernization/references/",
+                        "resourceType":  "reference",
+                        "skillId":  "repo-modernization",
+                        "existingProjectSurface":  "skills/repo-modernization/references/",
+                        "decision":  "merge",
+                        "decisionReason":  "The imported modernization layers, safety rails, automation candidates, and roadmap template are reusable runtime-facing references.",
+                        "destinationPath":  "skills/repo-modernization/references/",
+                        "reviewStatus":  "accepted"
+                    },
+                    {
+                        "resourcePath":  ".agents/skills/repo-modernization/SKILL.md",
+                        "resourceType":  "wrapper",
+                        "skillId":  "repo-modernization",
+                        "existingProjectSurface":  null,
+                        "decision":  "merge",
+                        "decisionReason":  "The import introduces a missing discovery wrapper and keeps the future agent entrypoint explicit in the inventory.",
+                        "destinationPath":  ".agents/skills/repo-modernization/SKILL.md",
+                        "reviewStatus":  "accepted"
+                    },
+                    {
+                        "resourcePath":  "skills/typescript-engineering/SKILL.md",
+                        "resourceType":  "skill",
+                        "skillId":  "typescript-engineering",
+                        "existingProjectSurface":  "skills/typescript-engineering/SKILL.md",
+                        "decision":  "merge",
+                        "decisionReason":  "The seeded TypeScript skill keeps ownership while absorbing stronger activation, validation, and workspace-boundary guidance.",
+                        "destinationPath":  "skills/typescript-engineering/SKILL.md",
+                        "reviewStatus":  "accepted"
+                    },
+                    {
+                        "resourcePath":  "skills/typescript-engineering/references/",
+                        "resourceType":  "reference",
+                        "skillId":  "typescript-engineering",
+                        "existingProjectSurface":  "skills/typescript-engineering/references/",
+                        "decision":  "merge",
+                        "decisionReason":  "The import adds runtime-validation and monorepo references to the existing engineering pack.",
+                        "destinationPath":  "skills/typescript-engineering/references/",
+                        "reviewStatus":  "accepted"
+                    },
+                    {
+                        "resourcePath":  ".agents/skills/typescript-engineering/SKILL.md",
+                        "resourceType":  "wrapper",
+                        "skillId":  "typescript-engineering",
+                        "existingProjectSurface":  ".agents/skills/typescript-engineering/SKILL.md",
+                        "decision":  "merge",
+                        "decisionReason":  "The wrapper remains the auto-discovery entrypoint and will be aligned to the upgraded language contract later in the feature.",
+                        "destinationPath":  ".agents/skills/typescript-engineering/SKILL.md",
+                        "reviewStatus":  "accepted"
+                    },
+                    {
+                        "resourcePath":  "skills/lua-engineering/SKILL.md",
+                        "resourceType":  "skill",
+                        "skillId":  "lua-engineering",
+                        "existingProjectSurface":  "skills/lua-engineering/SKILL.md",
+                        "decision":  "merge",
+                        "decisionReason":  "The seeded Lua skill keeps ownership while the import adds runtime-flavor, editor, OpenResty, and tooling guidance.",
+                        "destinationPath":  "skills/lua-engineering/SKILL.md",
+                        "reviewStatus":  "accepted"
+                    },
+                    {
+                        "resourcePath":  "skills/lua-engineering/references/",
+                        "resourceType":  "reference",
+                        "skillId":  "lua-engineering",
+                        "existingProjectSurface":  "skills/lua-engineering/references/",
+                        "decision":  "merge",
+                        "decisionReason":  "The imported runtime profiles, editor patterns, OpenResty notes, and tooling guidance deepen the existing language pack.",
+                        "destinationPath":  "skills/lua-engineering/references/",
+                        "reviewStatus":  "accepted"
+                    },
+                    {
+                        "resourcePath":  ".agents/skills/lua-engineering/SKILL.md",
+                        "resourceType":  "wrapper",
+                        "skillId":  "lua-engineering",
+                        "existingProjectSurface":  ".agents/skills/lua-engineering/SKILL.md",
+                        "decision":  "merge",
+                        "decisionReason":  "The wrapper remains a discovery surface and is tracked for later alignment to the upgraded skill contract.",
+                        "destinationPath":  ".agents/skills/lua-engineering/SKILL.md",
+                        "reviewStatus":  "accepted"
+                    },
+                    {
+                        "resourcePath":  "skills/javascript-engineering/SKILL.md",
+                        "resourceType":  "skill",
+                        "skillId":  "javascript-engineering",
+                        "existingProjectSurface":  "skills/javascript-engineering/SKILL.md",
+                        "decision":  "promote",
+                        "decisionReason":  "JavaScript engineering is a distinct runtime-focused responsibility that already exists in Harness Forge and is now promoted with deeper contracts and packaging guidance.",
+                        "destinationPath":  "skills/javascript-engineering/SKILL.md",
+                        "reviewStatus":  "accepted"
+                    },
+                    {
+                        "resourcePath":  "skills/javascript-engineering/references/",
+                        "resourceType":  "reference",
+                        "skillId":  "javascript-engineering",
+                        "existingProjectSurface":  "skills/javascript-engineering/references/",
+                        "decision":  "merge",
+                        "decisionReason":  "The imported browser, bundler, and package-contract references deepen the promoted JavaScript skill.",
+                        "destinationPath":  "skills/javascript-engineering/references/",
+                        "reviewStatus":  "accepted"
+                    },
+                    {
+                        "resourcePath":  ".agents/skills/javascript-engineering/SKILL.md",
+                        "resourceType":  "wrapper",
+                        "skillId":  "javascript-engineering",
+                        "existingProjectSurface":  ".agents/skills/javascript-engineering/SKILL.md",
+                        "decision":  "merge",
+                        "decisionReason":  "The wrapper exists today and will be aligned in the discovery phase so agents see the richer JS contract.",
+                        "destinationPath":  ".agents/skills/javascript-engineering/SKILL.md",
+                        "reviewStatus":  "accepted"
+                    },
+                    {
+                        "resourcePath":  "README.md",
+                        "resourceType":  "provenance",
+                        "skillId":  null,
+                        "existingProjectSurface":  null,
+                        "decision":  "provenance-only",
+                        "decisionReason":  "The pack README documents the source bundle contents and intent but should not ship as a second front door.",
+                        "destinationPath":  "docs/authoring/enhanced-skill-import.md",
+                        "reviewStatus":  "accepted"
+                    },
+                    {
+                        "resourcePath":  "VALIDATION.md",
+                        "resourceType":  "provenance",
+                        "skillId":  null,
+                        "existingProjectSurface":  null,
+                        "decision":  "provenance-only",
+                        "decisionReason":  "Pack-local validation context matters for maintainers, but the project keeps release truth in its own validation surfaces.",
+                        "destinationPath":  "VALIDATION.md",
+                        "reviewStatus":  "accepted"
+                    },
+                    {
+                        "resourcePath":  "RESEARCH-SOURCES.md",
+                        "resourceType":  "provenance",
+                        "skillId":  null,
+                        "existingProjectSurface":  null,
+                        "decision":  "provenance-only",
+                        "decisionReason":  "The research summary informs maintainers and future imports, but runtime agents should rely on the canonical project-owned skills instead.",
+                        "destinationPath":  "RESEARCH-SOURCES.md",
+                        "reviewStatus":  "accepted"
+                    },
+                    {
+                        "resourcePath":  "skills/madr-decision-log/SKILL.md",
+                        "resourceType":  "skill",
+                        "skillId":  "madr-decision-log",
+                        "existingProjectSurface":  null,
+                        "decision":  "promote",
+                        "decisionReason":  "The imported MADR skill owns a distinct file-oriented ADR repository workflow rather than duplicating the broader architecture-decision-records responsibility.",
+                        "destinationPath":  "skills/madr-decision-log/SKILL.md",
+                        "reviewStatus":  "accepted"
+                    },
+                    {
+                        "resourcePath":  "skills/madr-decision-log/references/",
+                        "resourceType":  "reference",
+                        "skillId":  "madr-decision-log",
+                        "existingProjectSurface":  null,
+                        "decision":  "promote",
+                        "decisionReason":  "The reference pack supplies the canonical MADR template, conventions, and review checklist needed by the new skill.",
+                        "destinationPath":  "skills/madr-decision-log/references/",
+                        "reviewStatus":  "accepted"
+                    },
+                    {
+                        "resourcePath":  "skills/madr-decision-log/scripts/",
+                        "resourceType":  "script",
+                        "skillId":  "madr-decision-log",
+                        "existingProjectSurface":  null,
+                        "decision":  "promote",
+                        "decisionReason":  "The helper scripts make ADR scaffolding, validation, and ADR-LOG generation deterministic and reusable.",
+                        "destinationPath":  "skills/madr-decision-log/scripts/",
+                        "reviewStatus":  "accepted"
+                    },
+                    {
+                        "resourcePath":  ".agents/skills/madr-decision-log/SKILL.md",
+                        "resourceType":  "wrapper",
+                        "skillId":  "madr-decision-log",
+                        "existingProjectSurface":  null,
+                        "decision":  "promote",
+                        "decisionReason":  "The wrapper keeps the MADR workflow discoverable while the canonical execution contract remains under skills/.",
+                        "destinationPath":  ".agents/skills/madr-decision-log/SKILL.md",
+                        "reviewStatus":  "accepted"
+                    }
+                ],
+    "embeddingRules":  [
+                           {
+                               "ruleId":  "merge-overlapping-skill-identities",
+                               "matchCriteria":  "An imported skill has the same responsibility as an existing canonical Harness Forge skill.",
+                               "preferredOutcome":  "merge",
+                               "requiredFollowUps":  [
+                                                         "merge canonical SKILL.md guidance",
+                                                         "merge or extend references/",
+                                                         "record the decision in the inventory",
+                                                         "validate section depth and reference paths"
+                                                     ],
+                               "exceptions":  [
+                                                  "Promote instead when the imported responsibility is distinct enough to deserve a first-class skill identity."
+                                              ]
+                           },
+                           {
+                               "ruleId":  "promote-runtime-distinct-skills",
+                               "matchCriteria":  "An imported runtime-facing skill fills a distinct responsibility that should be discoverable in the packaged skill catalog.",
+                               "preferredOutcome":  "promote",
+                               "requiredFollowUps":  [
+                                                         "create or update the canonical skill directory",
+                                                         "preserve supporting references",
+                                                         "reflect the skill in catalogs and discovery docs"
+                                                     ],
+                               "exceptions":  [
+                                                  "Do not promote when the content is just a narrower variant of an existing project-owned responsibility."
+                                              ]
+                           },
+                           {
+                               "ruleId":  "track-wrapper-rollout-explicitly",
+                               "matchCriteria":  "An imported wrapper changes or introduces an auto-discovery surface under .agents/skills/.",
+                               "preferredOutcome":  "merge",
+                               "requiredFollowUps":  [
+                                                         "record the wrapper destination in the inventory",
+                                                         "align wrapper wording to the canonical skill",
+                                                         "validate that the wrapper points at the active canonical surface"
+                                                     ],
+                               "exceptions":  [
+                                                  "Wrapper execution may be staged after canonical skill embedding, but pending rollout must stay explicit."
+                                              ]
+                           },
+                           {
+                               "ruleId":  "keep-provenance-maintainer-facing",
+                               "matchCriteria":  "Imported materials describe pack intent, research, or validation rather than runtime guidance.",
+                               "preferredOutcome":  "provenance-only",
+                               "requiredFollowUps":  [
+                                                         "summarize the material in maintainer documentation",
+                                                         "keep runtime-facing skills separate from provenance",
+                                                         "reference the inventory rather than shipping a parallel package root"
+                                                     ],
+                               "exceptions":  [
+                                                  "Runtime guidance that directly improves an active canonical skill belongs in skills/ or references/ instead."
+                                              ]
+                           }
+                       ]
 }

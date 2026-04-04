@@ -1,5 +1,0 @@
-{
-  "defaultFeaturePrefix": "feat",
-  "stateDir": ".specify/state",
-  "featureDir": ".specify/features"
-}

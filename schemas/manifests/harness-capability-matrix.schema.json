@@ -48,6 +48,7 @@
               "full",
               "partial",
               "emulated",
+              "contract",
               "unsupported"
             ]
           },
@@ -86,6 +87,8 @@
                     "native",
                     "translated",
                     "emulated",
+                    "bridged",
+                    "contract",
                     "documentation-only",
                     "unsupported"
                   ]

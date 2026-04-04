@@ -16,4 +16,4 @@
 
 - `knowledge-bases/structured/kotlin/docs/`
 - `knowledge-bases/structured/kotlin/examples/`
-- `skills/kotlin-engineering/SKILL.md`
+- `templates/workflows/implement-kotlin-change.md`

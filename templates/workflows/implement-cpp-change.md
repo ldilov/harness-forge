@@ -45,7 +45,7 @@ Load the common guidance and the C++-specific references relevant to the task.
 
 **Consumes**
 - `rules/common/`
-- `skills/cpp-engineering/SKILL.md`
+- `rules/cpp/README.md`
 - `knowledge-bases/structured/cpp/docs/overview.md`
 
 **Produces**

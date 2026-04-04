@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EffectivenessSignalV2",
+  "type": "object",
+  "required": ["signalType", "subjectId", "result", "recordedAt"],
+  "properties": {
+    "signalType": { "type": "string" },
+    "subjectId": { "type": "string" },
+    "context": { "type": "string" },
+    "result": { "type": "string", "enum": ["success", "skipped", "failed", "accepted", "rejected"] },
+    "recordedAt": { "type": "string", "format": "date-time" },
+    "details": { "type": "object" },
+    "category": { "type": "string", "enum": ["install", "firstRun", "guidance", "runtimeUsage", "maintenance", "recursive", "handoff", "outcomes", "heuristics"] },
+    "confidenceLevel": { "type": "string", "enum": ["direct", "inferred-high", "inferred-medium", "inferred-low"] }
+  }
+}

@@ -50,8 +50,6 @@
         "knowledge-bases/structured/go",
         "rules/golang",
         "docs/catalog/languages/go.md",
-        "skills/go-engineering",
-        ".agents/skills/go-engineering",
         "templates/workflows/implement-go-change.md"
       ],
       "targets": [
@@ -84,8 +82,6 @@
         "knowledge-bases/structured/kotlin",
         "rules/kotlin",
         "docs/catalog/languages/kotlin.md",
-        "skills/kotlin-engineering",
-        ".agents/skills/kotlin-engineering",
         "templates/workflows/implement-kotlin-change.md"
       ],
       "targets": [
@@ -118,8 +114,6 @@
         "knowledge-bases/structured/rust",
         "rules/rust",
         "docs/catalog/languages/rust.md",
-        "skills/rust-engineering",
-        ".agents/skills/rust-engineering",
         "templates/workflows/implement-rust-change.md"
       ],
       "targets": [
@@ -152,8 +146,6 @@
         "knowledge-bases/structured/cpp",
         "rules/cpp",
         "docs/catalog/languages/cpp.md",
-        "skills/cpp-engineering",
-        ".agents/skills/cpp-engineering",
         "templates/workflows/implement-cpp-change.md"
       ],
       "targets": [
@@ -254,8 +246,6 @@
         "knowledge-bases/structured/swift",
         "rules/swift",
         "docs/catalog/languages/swift.md",
-        "skills/swift-engineering",
-        ".agents/skills/swift-engineering",
         "templates/workflows/implement-swift-change.md"
       ],
       "targets": [

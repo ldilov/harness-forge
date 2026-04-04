@@ -16,4 +16,4 @@
 
 - `knowledge-bases/structured/cpp/docs/`
 - `knowledge-bases/structured/cpp/examples/`
-- `skills/cpp-engineering/SKILL.md`
+- `templates/workflows/implement-cpp-change.md`

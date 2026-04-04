@@ -1,0 +1,67 @@
+{
+  "id": "generic-agent",
+  "displayName": "Generic Agent",
+  "installRootStrategy": "repo-root",
+  "pathMappings": {
+    "AGENTS.md": "AGENTS.md",
+    ".agents/skills": ".agents/skills"
+  },
+  "mergeRules": {
+    "AGENTS.md": "append-once"
+  },
+  "supportsHooks": false,
+  "supportsCommands": true,
+  "supportsAgents": true,
+  "supportsContexts": false,
+  "supportsPlugins": false,
+  "capabilitySupportRef": "manifests/catalog/harness-capability-matrix.json",
+  "capabilityMatrix": {
+    "templates": true,
+    "workflow-validation": false,
+    "repo-intelligence": true,
+    "flow-orchestration": false,
+    "typed-hooks": false,
+    "maintenance": false,
+    "observability": false
+  },
+  "supportLevel": "contract",
+  "supportNotes": [
+    "Contract-level support: portable runtime surfaces without vendor-specific directories.",
+    "Consumes AGENTS.md, agent-manifest, command catalog, runtime index, and skill wrappers.",
+    "No native hooks, plugins, or IDE-specific integrations.",
+    "Recommended for capable agentic environments without a dedicated Harness Forge adapter."
+  ],
+  "sharedRuntimeBridge": {
+    "instructionSurfaces": ["AGENTS.md", ".agents/skills"],
+    "runtimeSurfaces": [
+      ".hforge/runtime/index.json",
+      ".hforge/runtime/authority-map.json",
+      ".hforge/runtime/context-budget.json"
+    ],
+    "supportMode": "contract",
+    "authoritativeSurfaces": [
+      ".hforge/library/skills",
+      ".hforge/library/rules",
+      ".hforge/library/knowledge",
+      ".hforge/templates",
+      ".hforge/runtime"
+    ],
+    "visibleBridgePaths": ["AGENTS.md", ".agents/skills"],
+    "visibilityMode": "hidden-ai-layer"
+  },
+  "requiredSurfaces": [
+    "AGENTS.md",
+    ".hforge/agent-manifest.json",
+    ".hforge/generated/agent-command-catalog.json",
+    ".hforge/runtime/index.json",
+    ".agents/skills"
+  ],
+  "recommendedConsumptionOrder": [
+    "AGENTS.md",
+    ".hforge/agent-manifest.json",
+    ".hforge/runtime/repo/onboarding-brief.json",
+    ".hforge/generated/agent-command-catalog.json",
+    ".hforge/runtime/index.json",
+    ".hforge/library/skills (task-relevant only)"
+  ]
+}

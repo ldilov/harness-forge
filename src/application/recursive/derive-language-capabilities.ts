@@ -5,6 +5,7 @@ import type { RepoIntelligenceResult } from "../../domain/intelligence/repo-inte
 import { loadInstallState } from "../../domain/state/install-state.js";
 import { recommendBundles } from "../recommendations/recommend-bundles.js";
 import { recommendFromIntelligence } from "../recommendations/recommend-from-intelligence.js";
+import { deriveRecursiveRuntimeInventory } from "./derive-runtime-inventory.js";
 
 interface RecursiveLanguageSeed {
   languageId: string;
@@ -157,7 +158,8 @@ function buildEntry(
   seed: RecursiveLanguageSeed,
   workspaceRoot: string,
   intelligence: RepoIntelligenceResult,
-  installedBundles: string[]
+  installedBundles: string[],
+  runtimeStatuses: Map<string, RecursiveNativeExecutionStatus>
 ) {
   const languageSignal = intelligence.dominantLanguages.find((language) => language.id === seed.languageId);
   const installedBundle = installedBundles.includes(`lang:${seed.languageId}`) ? `bundle:lang:${seed.languageId}` : null;
@@ -171,7 +173,7 @@ function buildEntry(
     displayName: seed.displayName,
     adapterStatus: seed.adapterStatus,
     analysisDepth: seed.analysisDepth,
-    nativeExecutionStatus: seed.nativeExecutionStatus,
+    nativeExecutionStatus: runtimeStatuses.get(seed.languageId) ?? seed.nativeExecutionStatus,
     notes: seed.notes,
     evidenceRefs: unique([
       ...(languageSignal?.evidence ?? []),
@@ -202,12 +204,18 @@ export async function deriveRecursiveLanguageCapabilities(
 
   const installedBundles = [...new Set([...(state?.installedBundles ?? []), ...bundleRecommendations])];
   const detectedLanguageIds = collectDetectedLanguageIds(intelligence, installedBundles);
+  const runtimeInventory = await deriveRecursiveRuntimeInventory(workspaceRoot);
+  const runtimeStatuses = new Map<string, RecursiveNativeExecutionStatus>([
+    ["typescript", runtimeInventory.runtimes.find((entry) => entry.runtimeId === "node")?.availability === "available" ? "available" : "disabled"],
+    ["python", runtimeInventory.runtimes.find((entry) => entry.runtimeId === "python")?.availability === "available" ? "available" : "unsupported"],
+    ["powershell", runtimeInventory.runtimes.find((entry) => entry.runtimeId === "powershell")?.availability === "available" ? "available" : "unsupported"]
+  ]);
 
   return {
     version: 1,
     generatedAt: new Date().toISOString(),
     workspaceRoot: workspaceRoot.replaceAll("\\", "/"),
     summary: createSummary(workspaceRoot, detectedLanguageIds),
-    languages: RECURSIVE_LANGUAGE_SEEDS.map((seed) => buildEntry(seed, workspaceRoot, intelligence, installedBundles))
+    languages: RECURSIVE_LANGUAGE_SEEDS.map((seed) => buildEntry(seed, workspaceRoot, intelligence, installedBundles, runtimeStatuses))
   };
 }

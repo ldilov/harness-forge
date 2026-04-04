@@ -33,5 +33,5 @@ generated: false
 - `rules/common/`
 - `rules/dotnet/`
 - `knowledge-bases/seeded/dotnet/rules/dotnet/`
-- `skills/dotnet-engineering/SKILL.md`
+- `templates/workflows/implement-dotnet-change.md`
 - `templates/workflows/implement-dotnet-change.md`

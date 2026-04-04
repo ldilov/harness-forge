@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "title": "ReviewSummaryV2",
+  "type": "object",
+  "required": ["generatedAt", "workspaceRoot", "recommendedInstall", "why", "targetDifferences", "topChanges", "warnings", "fullWritePlan", "directCommandPreview"],
+  "properties": {
+    "generatedAt": { "type": "string", "minLength": 1 },
+    "workspaceRoot": { "type": "string", "minLength": 1 },
+    "recommendedInstall": { "type": "object", "required": ["targets", "profile", "modules"], "properties": { "targets": { "type": "array", "items": { "type": "string" } }, "profile": { "type": "string" }, "modules": { "type": "array", "items": { "type": "string" } } } },
+    "why": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "targetDifferences": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "topChanges": { "type": "array", "items": { "type": "object", "required": ["path", "kind", "description", "layer"], "properties": { "path": { "type": "string", "minLength": 1 }, "kind": { "type": "string", "enum": ["create", "update", "preserve", "delete", "unknown"] }, "description": { "type": "string", "minLength": 1 }, "layer": { "type": "string", "enum": ["canonical-runtime", "target-bridge", "generated", "state", "unknown"] } } } },
+    "warnings": { "type": "array", "items": { "type": "string" } },
+    "fullWritePlan": { "type": "array", "items": { "type": "object" } },
+    "directCommandPreview": { "type": "string", "minLength": 1 }
+  }
+}

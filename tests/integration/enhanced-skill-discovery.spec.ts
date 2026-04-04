@@ -12,7 +12,6 @@ const wrappedSkills = [
   "parallel-worktree-supervisor",
   "repo-modernization",
   "typescript-engineering",
-  "dotnet-engineering",
   "lua-engineering",
   "javascript-engineering"
 ];

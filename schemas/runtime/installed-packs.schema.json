@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://harness-forge.dev/schemas/runtime/installed-packs.schema.json",
+  "title": "Installed Packs",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["runtimeSchemaVersion", "packageVersion", "packs"],
+  "properties": {
+    "runtimeSchemaVersion": { "type": "number" },
+    "packageVersion": { "type": "string", "minLength": 1 },
+    "profileId": { "type": "string", "minLength": 1 },
+    "packs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["packId", "selectedBy", "sourceBundleIds"],
+        "properties": {
+          "packId": { "type": "string", "minLength": 1 },
+          "selectedBy": {
+            "type": "string",
+            "enum": ["default", "recommended", "explicit", "profile"]
+          },
+          "sourceBundleIds": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 }
+          }
+        }
+      }
+    }
+  }
+}

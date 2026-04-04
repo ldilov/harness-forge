@@ -45,7 +45,7 @@ Load the common guidance and the Swift-specific references relevant to the task.
 
 **Consumes**
 - `rules/common/`
-- `skills/swift-engineering/SKILL.md`
+- `rules/swift/README.md`
 - `knowledge-bases/structured/swift/docs/overview.md`
 
 **Produces**

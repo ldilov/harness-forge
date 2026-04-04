@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EffectivenessDimensionScore",
+  "type": "object",
+  "required": ["dimensionId", "score", "evidence", "confidenceLevel", "signalCount"],
+  "properties": {
+    "dimensionId": { "type": "string", "enum": ["repoUnderstanding", "targetCorrectness", "runtimeAdoption", "maintenanceHygiene", "workContinuity", "recommendationFollowThrough"] },
+    "score": { "type": "number", "minimum": 0, "maximum": 100 },
+    "evidence": { "type": "array", "items": { "type": "string" } },
+    "confidenceLevel": { "type": "string", "enum": ["direct", "inferred-high", "inferred-medium", "inferred-low"] },
+    "signalCount": { "type": "integer", "minimum": 0 }
+  }
+}

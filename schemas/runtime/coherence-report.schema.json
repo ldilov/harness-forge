@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://harness-forge.dev/schemas/runtime/coherence-report.schema.json",
+  "title": "Coherence Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["packageVersion", "generatedAt", "checks"],
+  "properties": {
+    "packageVersion": { "type": "string", "minLength": 1 },
+    "generatedAt": { "type": "string", "minLength": 1 },
+    "versionDomains": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    },
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "status"],
+        "properties": {
+          "name": { "type": "string", "minLength": 1 },
+          "status": { "type": "string", "enum": ["pass", "warn", "fail"] },
+          "details": { "type": "string" }
+        }
+      }
+    }
+  }
+}

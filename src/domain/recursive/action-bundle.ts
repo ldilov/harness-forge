@@ -64,7 +64,7 @@ const spawnSubcallActionSchema = z.object({
   })
 });
 
-export const recursiveCodeCellLanguageSchema = z.enum(["javascript", "typescript", "python"]);
+export const recursiveCodeCellLanguageSchema = z.enum(["javascript", "typescript", "python", "powershell"]);
 
 const runCodeCellActionSchema = z.object({
   actionId: z.string().min(1),
@@ -74,7 +74,15 @@ const runCodeCellActionSchema = z.object({
     inputRefs: z.array(z.string().min(1)).default([]),
     expectedOutputs: z.array(z.string().min(1)).default([]),
     source: z.string().min(1),
-    title: z.string().min(1).optional()
+    title: z.string().min(1).optional(),
+    helper: z
+      .object({
+        helperId: z.string().min(1).optional(),
+        fileName: z.string().min(1).optional(),
+        summary: z.string().min(1),
+        publishAsReusable: z.boolean().default(true)
+      })
+      .optional()
   })
 });
 

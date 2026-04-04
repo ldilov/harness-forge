@@ -1,4 +1,5 @@
 import fs from "node:fs/promises";
+import path from "node:path";
 
 import type { RecursiveAction, RecursiveCodeCellLanguage } from "../../domain/recursive/action-bundle.js";
 import type { RecursiveExecutionPolicy } from "../../domain/recursive/execution-policy.js";
@@ -6,8 +7,16 @@ import type { RecursiveCodeCell, RecursiveCodeCellResult } from "../../domain/re
 import { ValidationError } from "../../shared/index.js";
 import { persistRecursiveCodeCell } from "../../infrastructure/recursive/cell-store.js";
 import { runNodeCell } from "../../infrastructure/recursive/sandbox/node-cell-runner.js";
+import { runPowerShellCell } from "../../infrastructure/recursive/sandbox/powershell-cell-runner.js";
 import { runPythonCell } from "../../infrastructure/recursive/sandbox/python-cell-runner.js";
-import { resolveRecursiveCodeCellPaths, toRecursiveArtifactRef } from "../../infrastructure/recursive/session-store.js";
+import {
+  loadRecursiveRuntimeInventory,
+  loadRecursiveSessionRuntimeInventory,
+  resolveRecursiveCodeCellPaths,
+  resolveRecursiveSessionPaths,
+  toRecursiveArtifactRef
+} from "../../infrastructure/recursive/session-store.js";
+import { resolveRuntimeCandidate } from "./derive-runtime-inventory.js";
 
 export interface ExecuteCodeCellInput {
   workspaceRoot: string;
@@ -25,6 +34,8 @@ function resolveCellExtension(languageId: RecursiveCodeCellLanguage): string {
       return "mjs";
     case "python":
       return "py";
+    case "powershell":
+      return "ps1";
   }
 }
 
@@ -49,6 +60,25 @@ export async function executeRecursiveCodeCell(input: ExecuteCodeCellInput): Pro
   const stdoutRef = toRecursiveArtifactRef(input.workspaceRoot, cellPaths.stdoutPath);
   const stderrRef = toRecursiveArtifactRef(input.workspaceRoot, cellPaths.stderrPath);
   const resultRef = toRecursiveArtifactRef(input.workspaceRoot, cellPaths.resultPath);
+  const runtimeInventory =
+    (await loadRecursiveSessionRuntimeInventory(input.workspaceRoot, input.sessionId)) ??
+    (await loadRecursiveRuntimeInventory(input.workspaceRoot));
+  const runtimeKey =
+    input.action.args.languageId === "javascript" || input.action.args.languageId === "typescript"
+      ? "node"
+      : input.action.args.languageId;
+  const runtimeCandidate = runtimeInventory ? resolveRuntimeCandidate(runtimeInventory, runtimeKey) : null;
+  if (input.action.args.languageId !== "powershell" && !runtimeCandidate && input.action.args.languageId !== "javascript" && input.action.args.languageId !== "typescript") {
+    throw new ValidationError(
+      `No healthy ${input.action.args.languageId} runtime is available for recursive code cell execution in session ${input.sessionId}.`
+    );
+  }
+  if (input.action.args.languageId === "powershell" && !runtimeCandidate) {
+    throw new ValidationError(
+      `No healthy PowerShell runtime is available for recursive code cell execution in session ${input.sessionId}.`
+    );
+  }
+  const helperRefs: string[] = [];
   const cell: RecursiveCodeCell = {
     cellId,
     sessionId: input.sessionId,
@@ -68,6 +98,7 @@ export async function executeRecursiveCodeCell(input: ExecuteCodeCellInput): Pro
     stdoutRef,
     stderrRef,
     resultRef,
+    helperRefs,
     createdAt: timestamp,
     updatedAt: timestamp
   };
@@ -80,6 +111,44 @@ export async function executeRecursiveCodeCell(input: ExecuteCodeCellInput): Pro
     fs.writeFile(execSourcePath, input.action.args.source, "utf8")
   ]);
 
+  if (input.action.args.helper?.publishAsReusable) {
+    const helperId = input.action.args.helper.helperId ?? `HELPER-${Date.now()}`;
+    const sessionPaths = resolveRecursiveSessionPaths(input.workspaceRoot, input.sessionId);
+    const helperDir = path.join(sessionPaths.helpersDir, helperId);
+    const fileName =
+      input.action.args.helper.fileName ??
+      `helper.${resolveCellExtension(input.action.args.languageId)}`;
+    const helperSourcePath = path.join(helperDir, fileName);
+    const helperMetadataPath = path.join(helperDir, "helper.json");
+    await fs.mkdir(helperDir, { recursive: true });
+    await Promise.all([
+      fs.writeFile(helperSourcePath, input.action.args.source, "utf8"),
+      fs.writeFile(
+        helperMetadataPath,
+        JSON.stringify(
+          {
+            helperId,
+            sessionId: input.sessionId,
+            iterationId: input.iterationId,
+            languageId: input.action.args.languageId,
+            summary: input.action.args.helper.summary,
+            sourceRef,
+            helperSourceRef: toRecursiveArtifactRef(input.workspaceRoot, helperSourcePath),
+            helperMetadataRef: toRecursiveArtifactRef(input.workspaceRoot, helperMetadataPath),
+            createdAt: timestamp
+          },
+          null,
+          2
+        ),
+        "utf8"
+      )
+    ]);
+    helperRefs.push(
+      toRecursiveArtifactRef(input.workspaceRoot, helperMetadataPath),
+      toRecursiveArtifactRef(input.workspaceRoot, helperSourcePath)
+    );
+  }
+
   let stdout = "";
   let stderr = "";
   let verdict: RecursiveCodeCellResult["verdict"] = "completed";
@@ -89,6 +158,15 @@ export async function executeRecursiveCodeCell(input: ExecuteCodeCellInput): Pro
   try {
     if (input.action.args.languageId === "python") {
       ({ stdout, stderr } = await runPythonCell({
+        command: runtimeCandidate!.command,
+        args: runtimeCandidate!.args,
+        scriptPath: execSourcePath,
+        timeoutMs: cell.sandboxPosture.timeoutMs
+      }));
+    } else if (input.action.args.languageId === "powershell") {
+      ({ stdout, stderr } = await runPowerShellCell({
+        command: runtimeCandidate!.command,
+        args: runtimeCandidate!.args,
         scriptPath: execSourcePath,
         timeoutMs: cell.sandboxPosture.timeoutMs
       }));
@@ -104,13 +182,14 @@ export async function executeRecursiveCodeCell(input: ExecuteCodeCellInput): Pro
     diagnostics.push(error instanceof Error ? error.message : String(error));
   }
 
-  const artifactRefs = [sourceRef, stdoutRef, stderrRef, resultRef];
+  const artifactRefs = [sourceRef, stdoutRef, stderrRef, resultRef, ...helperRefs];
   const result: RecursiveCodeCellResult = {
     cellId,
     verdict,
     summary,
     outputRefs: artifactRefs,
     diagnostics: stderr ? diagnostics.concat(stderr.trim()) : diagnostics,
+    helperRefs,
     completedAt: new Date().toISOString()
   };
   const completedCell: RecursiveCodeCell = {

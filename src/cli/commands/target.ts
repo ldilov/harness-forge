@@ -1,7 +1,12 @@
-import { Command } from "commander";
+﻿import { Command } from "commander";
 
+import { validateTargetAdapters } from "../../application/install/validate-target-adapters.js";
+import { compareTargets } from "../../application/targets/compare-targets.js";
+import { verifyTargetSupportMode } from "../../application/runtime/verify-target-support-mode.js";
 import { loadHarnessCapabilityMatrix, loadTargetManifests, type TargetManifest } from "../../domain/manifests/index.js";
-import { loadTargetAdapter } from "../../domain/targets/adapter.js";
+import { loadTargetAdapter, loadTargetAdapters } from "../../domain/targets/adapter.js";
+import { presentTargetComparison } from "../../infrastructure/presentation/presenters/target-comparison-presenter.js";
+import { serializeTargetComparison } from "../../infrastructure/presentation/serializers/target-comparison-json.js";
 import { PACKAGE_ROOT } from "../../shared/index.js";
 import { toJson } from "../../infrastructure/diagnostics/reporter.js";
 
@@ -82,6 +87,49 @@ export function registerTargetCommands(program: Command): void {
           ]
         )
       );
+    });
+
+  target
+    .command("compliance")
+    .description("Validate target adapter support posture and bridge metadata.")
+    .option("--json", "json output", false)
+    .action(async (options) => {
+      const adapters = await loadTargetAdapters(PACKAGE_ROOT);
+      const structural = validateTargetAdapters(adapters);
+      const modeChecks = adapters.map((adapter) =>
+        verifyTargetSupportMode({
+          targetId: adapter.id,
+          declaredMode: (adapter.sharedRuntimeBridge?.supportMode === "documentation-only" || adapter.sharedRuntimeBridge?.supportMode === "unsupported"
+            ? "partial"
+            : adapter.sharedRuntimeBridge?.supportMode ?? "partial") as "native" | "bridged" | "translated" | "partial",
+          observedSupportsHooks: adapter.supportsHooks,
+          observedSupportsCommands: adapter.supportsCommands
+        })
+      );
+
+      const result = {
+        structural,
+        modeChecks,
+        pass: structural.every((entry) => entry.valid) && modeChecks.every((entry) => entry.consistent)
+      };
+
+      console.log(options.json ? toJson(result) : JSON.stringify(result, null, 2));
+    });
+
+  target
+    .command("compare")
+    .argument("<left>", "first target id to compare")
+    .argument("<right>", "second target id to compare")
+    .option("--json", "json output", false)
+    .action(async (left: string, right: string, options) => {
+      const comparison = await compareTargets({ leftTargetId: left, rightTargetId: right, workspaceRoot: PACKAGE_ROOT });
+
+      if (options.json) {
+        console.log(serializeTargetComparison(comparison));
+        return;
+      }
+
+      console.log(presentTargetComparison(comparison));
     });
 
   program

@@ -1,1 +1,0 @@
-Feature 006 planning adds cross-agent skill porting for the imported engineering-assistant pack, including canonical skill ownership, runtime-compatibility translation across agent targets, reusable helper-surface packaging for project memory and change discipline, and validation-governance contracts for discovery, helper assets, and compatibility claims.
