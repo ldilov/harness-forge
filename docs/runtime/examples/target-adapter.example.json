@@ -1,0 +1,1 @@
+{"id":"codex","displayName":"Codex","supportMode":"native","instructionSurfaces":["AGENTS.md",".agents/skills"],"runtimeSurfaces":[".hforge/runtime/index.json"],"authoritativeSurfaces":[".hforge/library/skills"],"pathMappings":{"targets/codex/runtime/.codex":".codex"},"mergeRules":{".codex/config.toml":"merge-toml-table"},"capabilityFlags":{"supportsCommands":true}}

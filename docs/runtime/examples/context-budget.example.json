@@ -1,0 +1,1 @@
+{"schemaVersion":"1.0.0","maxFirstHopTokens":8000,"hotSurfaces":["AGENTS.md"],"warmSurfaces":[".hforge/library/skills"],"coldSurfaces":["coverage"],"dropOrder":["coverage"],"profiles":{"brief":{"maxOutputTokens":300,"maxFindings":3,"deltaOnly":true}}}

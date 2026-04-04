@@ -1,0 +1,1 @@
+{"profile":"kb-lean","include":["AGENTS.md",".hforge/runtime"],"exclude":["coverage","tests"],"requiredCanonicalPaths":[".hforge/runtime/authority-map.json"],"notes":"Lean export profile."}
