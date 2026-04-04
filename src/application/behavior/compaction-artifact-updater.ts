@@ -2,12 +2,10 @@ import path from 'node:path';
 
 import {
   RUNTIME_DIR,
-  RUNTIME_ACTIVE_CONTEXT_FILE,
-  RUNTIME_SESSION_SUMMARY_FILE,
   RUNTIME_CONTEXT_DIR,
   RUNTIME_MEMORY_FILE,
 } from '@shared/constants.js';
-import { exists, readJsonFile, readTextFile, writeJsonFile, writeTextFile } from '@shared/fs.js';
+import { exists, readTextFile, writeJsonFile } from '@shared/fs.js';
 
 /**
  * Updates behavior promotion artifacts after compaction triggers fire.

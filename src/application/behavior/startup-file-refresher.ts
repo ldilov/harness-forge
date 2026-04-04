@@ -1,4 +1,3 @@
-import fs from 'node:fs/promises';
 import path from 'node:path';
 
 import { LoadOrderSchema } from '@domain/behavior/load-order.js';
@@ -18,7 +17,7 @@ import {
 } from '@shared/constants.js';
 import { exists, writeJsonFile } from '@shared/fs.js';
 
-import { StartupFileGenerator, type GeneratedFile } from './startup-file-generator.js';
+import { StartupFileGenerator } from './startup-file-generator.js';
 
 export interface RefreshReport {
   readonly regenerated: readonly string[];

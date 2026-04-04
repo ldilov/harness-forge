@@ -41,8 +41,8 @@ export function registerSubagentsCommands(program: Command): void {
     .description('Generate and display a subagent brief for a task.')
     .option('--root <root>', 'workspace root', DEFAULT_WORKSPACE_ROOT)
     .option('--json', 'json output', false)
-    .action(async (task: string, options) => {
-      const root = path.resolve(options.root);
+    .action(async (task: string, options: { root: string; json: boolean }) => {
+      const _root = path.resolve(options.root);
       // Placeholder: in full implementation, this would call SubagentBriefGenerator
       const brief = {
         briefId: `brief-${Date.now()}`,
@@ -71,7 +71,7 @@ export function registerSubagentsCommands(program: Command): void {
     .description('Show details of an existing subagent brief.')
     .option('--root <root>', 'workspace root', DEFAULT_WORKSPACE_ROOT)
     .option('--json', 'json output', false)
-    .action(async (task: string, options) => {
+    .action(async (task: string, _options: { root: string; json: boolean }) => {
       // Placeholder: in full implementation, reads from .hforge/runtime/subagents/briefs/
       process.stdout.write(`No existing brief found for task "${task}". Use "subagents brief" to generate one.\n`);
     });

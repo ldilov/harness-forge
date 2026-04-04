@@ -1,8 +1,6 @@
 import http from 'node:http';
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { createReadStream, existsSync } from 'node:fs';
-import readline from 'node:readline';
 
 import { OBSERVABILITY_DIR, OBSERVABILITY_EVENTS_FILE, RUNTIME_DIR, RUNTIME_CONTEXT_BUDGET_FILE } from '@shared/constants.js';
 

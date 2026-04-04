@@ -6,7 +6,7 @@ import { describe, expect, it } from "vitest";
 
 const root = process.cwd();
 
-async function readJson(relativePath: string): Promise<any> {
+async function readJson(relativePath: string): Promise<Record<string, unknown>> {
   return JSON.parse(await fs.readFile(path.join(root, relativePath), "utf8"));
 }
 
@@ -24,15 +24,15 @@ describe("capability matrix contract", () => {
     const validate = ajv.compile(schema);
     expect(validate(matrix), JSON.stringify(validate.errors, null, 2)).toBe(true);
 
-    const taxonomyIds = new Set((taxonomy.capabilities ?? []).map((capability: any) => capability.id));
-    const manifestTargetIds = new Set((targetManifest.targets ?? []).map((target: any) => target.id));
+    const taxonomyIds = new Set((taxonomy.capabilities ?? []).map((capability: Record<string, unknown>) => capability.id));
+    const manifestTargetIds = new Set((targetManifest.targets ?? []).map((target: Record<string, unknown>) => target.id));
 
     expect(matrix.targets.length).toBe(manifestTargetIds.size);
     expect(taxonomyIds.size).toBe((taxonomy.capabilities ?? []).length);
 
     for (const target of matrix.targets ?? []) {
       expect(manifestTargetIds.has(target.targetId)).toBe(true);
-      expect(new Set((target.capabilities ?? []).map((capability: any) => capability.capabilityId)).size).toBe(
+      expect(new Set((target.capabilities ?? []).map((capability: Record<string, unknown>) => capability.capabilityId)).size).toBe(
         taxonomyIds.size
       );
 
@@ -47,8 +47,8 @@ describe("capability matrix contract", () => {
         }
       }
 
-      const repoIntelligence = (target.capabilities ?? []).find((record: any) => record.capabilityId === "repo-intelligence");
-      const flowOrchestration = (target.capabilities ?? []).find((record: any) => record.capabilityId === "flow-orchestration");
+      const repoIntelligence = (target.capabilities ?? []).find((record: Record<string, unknown>) => record.capabilityId === "repo-intelligence");
+      const flowOrchestration = (target.capabilities ?? []).find((record: Record<string, unknown>) => record.capabilityId === "flow-orchestration");
 
       expect(
         `${repoIntelligence?.notes ?? ""} ${repoIntelligence?.fallbackBehavior ?? ""}`.includes(".hforge/runtime")
