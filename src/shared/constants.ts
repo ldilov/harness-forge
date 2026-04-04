@@ -182,6 +182,19 @@ export const ONBOARDING_BRIEF_MD_FILE = "onboarding-brief.md";
 export const FIRST_RUN_RESULT_FILE = "first-run-result.json";
 export const VISIBLE_BRIDGE_SURFACES = ["AGENTS.md", "CLAUDE.md", ".agents/skills", ".specify", ".codex", ".claude"] as const;
 
+// Behavior promotion runtime files
+export const RUNTIME_LOAD_ORDER_FILE = "load-order.json";
+export const RUNTIME_MEMORY_POLICY_FILE = "memory-policy.json";
+export const RUNTIME_SUBAGENT_BRIEF_POLICY_DIR = "subagents";
+export const RUNTIME_SUBAGENT_BRIEF_POLICY_FILE = "default-brief-policy.json";
+export const RUNTIME_MEMORY_HISTORY_DIR = "memory-history";
+export const RUNTIME_CONTEXT_DIR = "context";
+export const RUNTIME_STARTUP_FILES_EVENT = "runtime.startup.files.generated";
+export const RUNTIME_MEMORY_FILE = "memory.md";
+export const RUNTIME_SESSION_SUMMARY_FILE = "session-summary.json";
+export const RUNTIME_ACTIVE_CONTEXT_FILE = "active-context.json";
+export const RUNTIME_CONTEXT_BUDGET_FILE = "context-budget.json";
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 

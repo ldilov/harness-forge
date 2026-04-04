@@ -1,3 +1,4 @@
+import { StartupFileGenerator } from "../behavior/startup-file-generator.js";
 import { applyInstall } from "./apply-install.js";
 import { createInstallPlan } from "./plan-install.js";
 import { discoverWorkspaceTargets, type DiscoveredWorkspaceTarget } from "./discover-workspace-targets.js";
@@ -162,6 +163,10 @@ export async function bootstrapWorkspace(options: BootstrapWorkspaceOptions): Pr
         guidancePath: result.guidancePath
       });
     }
+
+    // Generate behavior promotion startup files
+    const startupGenerator = new StartupFileGenerator(options.workspaceRoot);
+    await startupGenerator.generate();
 
     const state = await loadInstallState(options.workspaceRoot);
     if (state) {

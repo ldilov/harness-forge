@@ -25,3 +25,10 @@ export const SIZE_BUDGET = {
   hardCapTokens: 4000,
   charsPerToken: 4,
 } as const;
+
+export const SUBAGENT_FORBIDDEN_FIELDS = [
+  'fullMemory',
+  'fullSessionSummary',
+  'fullEventHistory',
+  'unrelatedArtifacts',
+] as const;

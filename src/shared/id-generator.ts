@@ -11,6 +11,7 @@ const PREFIXES = {
   compaction: 'cmp_',
   decision: 'dec_',
   manifest: 'mfst_',
+  brief: 'brf_',
 } as const;
 
 export type IdPrefix = keyof typeof PREFIXES;

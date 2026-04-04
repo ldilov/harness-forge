@@ -23,6 +23,7 @@ import {
   writeJsonFile,
   writeTextFile
 } from "../../shared/index.js";
+import { StartupFileGenerator } from "../behavior/startup-file-generator.js";
 import { writeAgentManifest } from "./agent-manifest.js";
 import { writeWorkspaceLaunchers } from "./workspace-launcher.js";
 
@@ -221,6 +222,10 @@ export async function initializeWorkspace(
     writeTextFile(guidancePath, guidance)
   ]);
   await writeAgentManifest(workspaceRoot, packageRoot);
+
+  // Generate behavior promotion startup files
+  const startupGenerator = new StartupFileGenerator(workspaceRoot);
+  await startupGenerator.generate();
 
   return {
     root: workspaceRoot,
