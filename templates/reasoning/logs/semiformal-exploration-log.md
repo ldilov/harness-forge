@@ -104,3 +104,68 @@ Do not write:
 - "looks equivalent"
 - "I think this helper does X" without evidence
 - "done" while unresolved questions still directly affect the conclusion
+
+## Purpose
+
+Provide a structured exploration format for hypothesis-led repository investigation.
+
+## When to Use
+
+Use when investigating a repository question that requires structured, hypothesis-led exploration with evidence tracking.
+
+## Inputs
+
+- Task and current question
+- Target conclusion
+- Session owner
+
+## Optional Inputs
+
+- Prior evidence from related certificates or ledgers
+- Known hypotheses to test
+
+## Constraints
+
+- Do not request or open the next file until you can state the hypothesis that justifies it
+- Do not retroactively invent the exploration record
+- Avoid anti-patterns listed above
+
+## Expected Outputs
+
+- Completed exploration log with hypothesis-led steps
+- Each step includes hypothesis, evidence held, observations, and hypothesis updates
+
+## Acceptance Criteria
+
+- Every file request is justified by a stated hypothesis
+- Observations include locations and relevance
+- Hypotheses are confirmed, refuted, or refined after each step
+- Escalation triggers are checked
+
+## Quality Gates
+
+- Evidence quality is rated per step
+- Trace completeness is rated per step
+- Unresolved questions are documented
+
+## Suggested Workflow
+
+1. Define session metadata (task, question, target)
+2. For each exploration step, state hypothesis before acting
+3. Record observations after reading
+4. Update hypothesis status
+5. Decide to continue or stop
+6. Escalate to certificate if triggers are met
+
+## Related Commands
+
+_No specific CLI commands required._
+
+## Related Agents
+
+- Code reviewer agent
+- TDD guide agent
+
+## Examples
+
+_Refer to the exploration entry template above for field-level examples._

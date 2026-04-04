@@ -5,6 +5,13 @@ title: Pre-merge Semi-formal Review Workflow
 summary: Lightweight governance workflow that applies semi-formal certificates to risky engineering changes before merge.
 status: stable
 version: 1
+supported_targets:
+  - codex
+  - claude-code
+supported_languages:
+  - any
+owner: core
+generated: false
 ---
 
 # Pre-merge Semi-formal Review Workflow
@@ -12,6 +19,8 @@ version: 1
 ## Purpose
 
 Make merge decisions depend on evidence-backed reasoning instead of persuasive prose.
+
+## When to Use
 
 ## When to trigger
 
@@ -102,3 +111,54 @@ Use this structure for review comments:
 - counterexample status:
 - merge recommendation:
 - what would change the decision fastest:
+
+## Entry Conditions
+
+- A change is proposed that meets at least one trigger criterion (correctness-sensitive, cross-cutting, security-relevant, etc.)
+- Author has prepared initial reasoning artifacts
+
+## Workflow Stages
+
+1. Problem framing - verify intended behavior, preserved invariants, and system boundary
+2. Evidence quality review - check specificity, location-backing, and code path tracing
+3. Counterexample pressure - actively search for plausible counterexamples
+4. Conclusion quality - verify recommendation matches body and assumptions are visible
+
+## Handoff Contracts
+
+- Author provides: semi-formal core contract, exploration log, and relevant certificate
+- Reviewer provides: structured review comment with strongest evidence, concerns, and recommendation
+
+## Exit Conditions
+
+- Merge recommendation is issued (safe-to-merge, safe-with-conditions, or not-yet-safe)
+- All checklist items are addressed
+- Reviewer comment pattern is complete
+
+## Failure Modes
+
+- Missing or incomplete reasoning artifacts
+- Counterexample found but not addressed
+- Conclusion does not match documented evidence
+- Evidence completeness overstated
+
+## Escalation Rules
+
+- If counterexample is found, change is blocked until addressed
+- If evidence completeness is low, additional investigation is required
+- If hidden semantics are discovered, a heavier certificate may be needed
+
+## Artifacts Produced
+
+- Completed merge checklist
+- Reviewer comment with structured recommendation
+- Updated certificates if conditions were imposed
+
+## Human Approval Points
+
+- Final merge decision requires human reviewer signoff
+- Conditions imposed in safe-with-conditions require human verification
+
+## Examples
+
+_Refer to the merge checklist and reviewer comment pattern above for usage examples._

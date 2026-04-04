@@ -67,7 +67,10 @@ if ((packed.status ?? 1) !== 0) {
     stderr: packed.stderr?.trim()
   });
 } else {
-  const output = JSON.parse(packed.stdout || "[]");
+  const rawStdout = packed.stdout || "[]";
+  const jsonStart = rawStdout.indexOf("[");
+  const jsonContent = jsonStart >= 0 ? rawStdout.slice(jsonStart) : "[]";
+  const output = JSON.parse(jsonContent);
   const packedFiles = new Set((output[0]?.files ?? []).map((entry) => entry.path));
 
   for (const requiredPath of requiredPaths) {

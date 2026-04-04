@@ -1,4 +1,21 @@
-﻿# Contract: Reasoning Artifact Interface
+---
+id: reasoning-artifact-interface
+kind: task-template
+title: Reasoning Artifact Interface
+summary: Required fields and invariants for all reasoning artifacts produced by the semiformal reasoning feature.
+category: reasoning
+status: stable
+version: 1
+supported_targets:
+  - codex
+  - claude-code
+supported_languages:
+  - any
+owner: core
+generated: false
+---
+
+# Contract: Reasoning Artifact Interface
 
 ## Purpose
 
@@ -64,3 +81,62 @@ Define required fields and invariants for all reasoning artifacts produced by th
 2. No alternative-hypothesis section on consequential decisions
 3. Formal conclusion introduces claims not established in artifact body
 4. Recommendation present without counterexample status
+
+## When to Use
+
+Use when producing or validating any reasoning artifact to ensure required fields and invariants are met.
+
+## Inputs
+
+- Task statement and scope
+- Premises and evidence ledger
+- Claims and alternative hypothesis check
+- Formal conclusion and unresolved assumptions
+
+## Optional Inputs
+
+- Certificate type and decision or answer (for certificate artifacts)
+- Recommendation (for merge-related artifacts)
+
+## Constraints
+
+- Every material claim must reference at least one premise and one evidence item
+- Every evidence item must include source and location
+- Alternative hypothesis must be evaluated for consequential decisions
+- Confidence cannot override low evidence completeness
+
+## Expected Outputs
+
+- Validated reasoning artifact conforming to required fields
+- Outcome classification (supported | supported-with-assumptions | unresolved | not-supported)
+
+## Acceptance Criteria
+
+- All required fields are present for the artifact type
+- Invariants are satisfied
+- No rejection conditions are triggered
+
+## Quality Gates
+
+- Evidence locations are present for all material claims
+- Alternative-hypothesis section exists for consequential decisions
+- Formal conclusion does not introduce claims absent from artifact body
+
+## Suggested Workflow
+
+1. Identify artifact type (core contract, log, ledger, certificate, workflow)
+2. Verify required fields are present
+3. Check invariants
+4. Validate against rejection conditions
+
+## Related Commands
+
+_No specific CLI commands required._
+
+## Related Agents
+
+- Code reviewer agent
+
+## Examples
+
+_Refer to the required fields, invariants, and rejection conditions above for validation examples._

@@ -7,6 +7,13 @@ category: reasoning
 status: stable
 version: 1
 generalization_note: Preserves the paper's certificate logic while adapting it from benchmark tasks to real engineering change review.
+supported_targets:
+  - codex
+  - claude-code
+supported_languages:
+  - any
+owner: core
+generated: false
 ---
 
 # Change Safety Certificate
@@ -196,3 +203,72 @@ If the opposite recommendation were true:
 - Were affected paths traced through real code and wiring?
 - Were regression hypotheses explored, not just listed?
 - Is the merge recommendation derivable from the evidence above?
+
+## Purpose
+
+Provide a structured, evidence-backed certificate for deciding whether a proposed change is safe enough to implement or merge.
+
+## When to Use
+
+Use when reviewing feature changes, bug fixes, refactors, config changes, migrations, middleware/lifecycle changes, or any risky edits requiring signoff.
+
+## Inputs
+
+- Change description (title, type, rationale)
+- Affected source files and paths
+- Relevant test results
+- Known invariants to preserve
+
+## Optional Inputs
+
+- Rollback trigger criteria
+- Runtime guard conditions
+- Related exploration logs
+
+## Constraints
+
+- The change must be described as behavior, not just code movement
+- Impacted paths must be traced
+- Regression risk must be tied to explicit evidence or uncertainty
+- The opposite conclusion must be examined
+
+## Expected Outputs
+
+- Completed change safety certificate with all sections filled
+- Formal conclusion with risk level and recommendation
+
+## Acceptance Criteria
+
+- All affected paths are traced through real code
+- Regression hypotheses are explored, not just listed
+- Merge recommendation is derivable from the documented evidence
+
+## Quality Gates
+
+- Evidence completeness is stated honestly
+- Alternative hypothesis check is present
+- Counterexample section is completed
+
+## Suggested Workflow
+
+1. Fill change statement and definitions
+2. Establish premises with evidence
+3. Trace affected paths
+4. Build preserved and changed behavior claims
+5. Explore regression hypotheses
+6. Search for counterexamples
+7. Check alternative hypothesis
+8. Write formal conclusion
+
+## Related Commands
+
+_No specific CLI commands required._
+
+## Related Agents
+
+- Code reviewer agent
+- Security reviewer agent
+
+## Examples
+
+_Refer to the certificate template sections above for field-level examples._

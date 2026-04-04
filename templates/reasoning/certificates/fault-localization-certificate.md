@@ -7,6 +7,13 @@ category: reasoning
 status: stable
 version: 1
 source_alignment: appendix-b
+supported_targets:
+  - codex
+  - claude-code
+supported_languages:
+  - any
+owner: core
+generated: false
 ---
 
 # Fault Localization Certificate
@@ -194,3 +201,68 @@ If Rank 1 is wrong, which other candidate best explains the failure, and what ev
 
 Use `templates/logs/semiformal-exploration-log.md` while filling this certificate.
 Do not retroactively invent the exploration record.
+
+## Purpose
+
+Provide a structured, evidence-backed certificate for localizing the most likely buggy region from failing-test behavior.
+
+## When to Use
+
+Use when a failing test exists but the buggy line is unknown, when the failure manifests in one place but may originate elsewhere, or when ranked candidate regions with evidence are needed.
+
+## Inputs
+
+- Failing test name and code
+- Available source files
+- Any known passing tests
+
+## Optional Inputs
+
+- Stack signal or symptom description
+- Related exploration logs
+
+## Constraints
+
+- Every ranked prediction must trace back through a CLAIM and that claim must trace back to a PREMISE
+- The exploration log must be written live, not retroactively
+
+## Expected Outputs
+
+- Completed fault localization certificate with ranked predictions
+- Formal conclusion with most likely root cause and ranked list
+
+## Acceptance Criteria
+
+- Test semantics are analyzed
+- Code paths are traced from test entry points
+- Divergence analysis links claims to premises
+- Ranked predictions cite supporting claims
+
+## Quality Gates
+
+- Evidence completeness is stated
+- Alternative root-cause check is present
+- Exploration log is linked
+
+## Suggested Workflow
+
+1. Analyze test semantics (Phase 1)
+2. Trace code paths (Phase 2)
+3. Perform divergence analysis (Phase 3)
+4. Rank predictions (Phase 4)
+5. Link exploration log
+6. Check alternative root cause
+7. Write formal conclusion
+
+## Related Commands
+
+_No specific CLI commands required._
+
+## Related Agents
+
+- TDD guide agent
+- Build error resolver agent
+
+## Examples
+
+_Refer to the certificate template sections above for field-level examples._

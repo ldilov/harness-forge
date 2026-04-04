@@ -5,11 +5,26 @@ title: Universal Semi-formal Investigation Workflow
 summary: Standard operating workflow for evidence-backed repository investigation using semi-formal artifacts.
 status: stable
 version: 1
+supported_targets:
+  - codex
+  - claude-code
+supported_languages:
+  - any
+owner: core
+generated: false
 ---
 
 # Universal Semi-formal Investigation Workflow
 
 This workflow turns the paper's reasoning pattern into a team-operable sequence.
+
+## Purpose
+
+Provide a team-operable sequence for structured, evidence-based investigation of code questions and change decisions.
+
+## When to Use
+
+Use when investigating a code question that requires structured reasoning, explicit premises, and evidence-backed conclusions.
 
 ## Goal
 
@@ -122,3 +137,57 @@ A reviewer should be able to answer these questions in under 5 minutes:
 - why does the conclusion follow?
 
 If not, the artifact is not ready.
+
+## Entry Conditions
+
+- A repository question, bug, or change requires evidence-backed reasoning
+- The investigator is prepared to follow hypothesis-led exploration
+
+## Workflow Stages
+
+1. Define the decision before exploring (core contract)
+2. Start hypothesis-led exploration (exploration log)
+3. Convert observations into structured evidence
+4. Build traces, not summaries
+5. Pick the right certificate
+6. Force the opposite answer to compete
+7. Write the formal conclusion last
+
+## Handoff Contracts
+
+- Investigator produces: core contract, exploration log, relevant certificate
+- Reviewer consumes: completed artifacts for review gate validation
+
+## Exit Conditions
+
+- Decisive path is traced
+- Strongest alternative is refuted or clearly bounded
+- Certificate can be completed honestly
+- Remaining blind spots are visible and do not overturn the decision
+
+## Failure Modes
+
+- Exploring without stated hypotheses
+- Claiming equivalence or safety without evidence
+- Skipping alternative hypothesis check
+- Writing conclusion before evidence is complete
+
+## Escalation Rules
+
+- If multiple root causes remain alive, continue exploring
+- If hidden semantics remain unverified, escalate to a heavier certificate
+- If the answer affects merge safety, use the pre-merge review workflow
+
+## Artifacts Produced
+
+- Semi-formal core contract
+- Exploration log
+- Task-specific certificate (patch-equivalence, fault-localization, code-QA, or change-safety)
+
+## Human Approval Points
+
+- Review gate requires a human reviewer to validate artifact completeness within 5 minutes
+
+## Examples
+
+_Refer to the workflow steps and decision gates above for usage examples._

@@ -7,6 +7,13 @@ category: reasoning
 status: stable
 version: 1
 source_alignment: appendix-a
+supported_targets:
+  - codex
+  - claude-code
+supported_languages:
+  - any
+owner: core
+generated: false
 ---
 
 # Patch Equivalence Certificate
@@ -177,3 +184,72 @@ By Definition D1:
 - Were pass-to-pass tests included when relevant?
 - Did the analysis avoid guessing from surface diff similarity?
 - Does the conclusion follow mechanically from the traced evidence?
+
+## Purpose
+
+Provide a structured, evidence-backed certificate for deciding whether two patches are equivalent modulo the existing tests.
+
+## When to Use
+
+Use when comparing two patches for identical test outcomes, verifying agent-generated patches against reference patches, or checking if two proposed fixes preserve behavior the same way.
+
+## Inputs
+
+- Repository identifier
+- Patch 1 and Patch 2 identifiers
+- Problem statement or shared intent
+- Tests in scope (FAIL_TO_PASS and PASS_TO_PASS)
+
+## Optional Inputs
+
+- Files explicitly out of scope
+- Related exploration logs
+
+## Constraints
+
+- Reason only about actual repository tests in scope
+- Distinguish fail-to-pass from pass-to-pass tests
+- Trace concrete behavior through code
+- Do not claim equivalence without a no-counterexample argument or explicit unresolved assumptions
+
+## Expected Outputs
+
+- Completed patch equivalence certificate
+- Final answer (YES/NO) with confidence and evidence completeness
+
+## Acceptance Criteria
+
+- Both patches are traced through actual definitions
+- Fail-to-pass tests are handled explicitly
+- Pass-to-pass tests are included when relevant
+- Analysis avoids guessing from surface diff similarity
+
+## Quality Gates
+
+- Counterexample section is completed (Option A or B)
+- Alternative hypothesis check is present
+- Evidence completeness and blind spots are stated
+
+## Suggested Workflow
+
+1. Define task and scope
+2. Establish definitions and premises
+3. Summarize patch behaviors
+4. Analyze FAIL_TO_PASS tests
+5. Analyze PASS_TO_PASS tests
+6. Check edge cases
+7. Complete counterexample section
+8. Check alternative hypothesis
+9. Write formal conclusion
+
+## Related Commands
+
+_No specific CLI commands required._
+
+## Related Agents
+
+- Code reviewer agent
+
+## Examples
+
+_Refer to the certificate template sections above for field-level examples._

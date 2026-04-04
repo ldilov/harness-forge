@@ -178,3 +178,66 @@ This contract is incomplete if:
 - evidence is generic or location-free
 - the alternative hypothesis was skipped on a consequential question
 - confidence is high but evidence completeness is low and unacknowledged
+
+## Inputs
+
+- Task or decision to be made
+- Repository, module, or subsystem in scope
+- Initial premises
+
+## Optional Inputs
+
+- Known test results
+- Related exploration logs
+- Prior certificates or ledgers
+
+## Constraints
+
+- Every conclusion must be reconstructable from the document
+- Every material claim must cite evidence
+- Every evidence item must identify where it came from
+- Unresolved assumptions must remain visible
+- The opposite answer must be considered before finalizing
+- Confidence may not replace evidence
+
+## Expected Outputs
+
+- Premises, evidence ledger, claims, alternative hypothesis check, formal conclusion, and unresolved assumptions
+
+## Acceptance Criteria
+
+- Premises are concrete
+- Evidence items are specific
+- Claims derive from evidence
+- Opposite answer was checked
+- Another engineer could replay the reasoning from this artifact
+
+## Quality Gates
+
+- Evidence completeness is stated
+- Alternative hypothesis is not skipped on consequential questions
+- Conclusion does not introduce new ideas not established above
+
+## Suggested Workflow
+
+1. Define task statement and scope
+2. Establish definitions
+3. State premises with tags
+4. Build evidence ledger
+5. Construct claims from premises and evidence
+6. Trace dependency paths if needed
+7. Check alternative hypothesis
+8. Document unresolved assumptions
+9. Write formal conclusion
+
+## Related Commands
+
+_No specific CLI commands required._
+
+## Related Agents
+
+- Code reviewer agent
+
+## Examples
+
+_Refer to the working template sections above for field-level examples._
