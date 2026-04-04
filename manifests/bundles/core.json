@@ -81,7 +81,6 @@
       "version": 1,
       "description": "Workflow templates and validators for quality-guided execution.",
       "paths": [
-        ".specify",
         "templates/tasks/implement-feature.md",
         "templates/tasks/fix-bug.md",
         "templates/workflows/research-plan-implement-validate.md",
@@ -232,7 +231,6 @@
       "version": 1,
       "description": "Recoverable Speckit flow state, artifact lineage, and implementation re-entry guidance.",
       "paths": [
-        ".specify/state",
         "docs/flow-orchestration.md",
         "docs/generated-artifacts.md",
         "manifests/catalog/flow-artifacts.json",

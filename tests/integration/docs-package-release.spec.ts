@@ -20,8 +20,6 @@ describe("docs and package release integration", () => {
     );
 
     expect(targets.codex).toContain(".agents/skills");
-    expect(targets.codex).toContain(".specify");
     expect(targets["claude-code"]).toContain(".agents/skills");
-    expect(targets["claude-code"]).toContain(".specify");
   });
 });

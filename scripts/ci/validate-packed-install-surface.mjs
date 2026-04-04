@@ -75,7 +75,13 @@ if ((packed.status ?? 1) !== 0) {
 
   for (const requiredPath of requiredPaths) {
     const absolutePath = path.join(root, requiredPath);
-    const stats = await fs.stat(absolutePath);
+    let stats;
+    try {
+      stats = await fs.stat(absolutePath);
+    } catch {
+      // Source path missing from repo — already flagged above; skip pack check
+      continue;
+    }
     const packedMatch = stats.isDirectory()
       ? [...packedFiles].some((filePath) => filePath.startsWith(`${requiredPath}/`))
       : packedFiles.has(requiredPath);

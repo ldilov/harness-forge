@@ -45,7 +45,7 @@ describe("aio v2 hidden ai layer contract", () => {
     expect(packageSurface.installModel?.canonicalHiddenRoots).toContain(".hforge/library/rules");
     expect(packageSurface.installModel?.canonicalHiddenRoots).toContain(".hforge/library/knowledge");
     expect(packageSurface.installModel?.visibleBridgeRoots).toContain(".agents/skills");
-    expect(packageSurface.installModel?.visibleBridgeRoots).toContain(".specify");
+    expect(packageSurface.installModel?.visibleBridgeRoots).toContain(".codex");
 
     for (const adapter of [codexAdapter, claudeAdapter, cursorAdapter, opencodeAdapter]) {
       expect(adapter.sharedRuntimeBridge?.visibilityMode).toBe("hidden-ai-layer");

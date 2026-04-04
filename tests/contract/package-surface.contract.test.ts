@@ -10,7 +10,7 @@ describe("package surface contract", () => {
     const packageJson = JSON.parse(await fs.readFile(path.join(root, "package.json"), "utf8"));
 
     expect(packageJson.files).toContain(".agents");
-    expect(packageJson.files).toContain(".specify");
+    expect(packageJson.files).toContain("skills");
     expect(packageJson.files).toContain("knowledge-bases");
     expect(packageJson.files).toContain("scripts/templates");
     expect(packageJson.files).toContain("scripts/ci");
@@ -22,7 +22,6 @@ describe("package surface contract", () => {
     const manifest = JSON.parse(await fs.readFile(path.join(root, "manifests/catalog/package-surface.json"), "utf8"));
 
     expect(manifest.requiredPaths).toContain("knowledge-bases/seeded/typescript");
-    expect(manifest.requiredPaths).toContain(".specify/scripts/powershell/check-prerequisites.ps1");
     expect(manifest.requiredPaths).toContain(".agents/skills/speckit-implement/SKILL.md");
     expect(manifest.requiredPaths).toContain(".agents/skills/hforge-analyze/SKILL.md");
     expect(manifest.requiredPaths).toContain(".agents/skills/hforge-recursive-investigate/SKILL.md");

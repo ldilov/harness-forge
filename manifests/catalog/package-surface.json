@@ -15,7 +15,6 @@
       "AGENTS.md",
       "CLAUDE.md",
       ".agents/skills",
-      ".specify",
       ".codex",
       ".claude"
     ]
@@ -29,8 +28,6 @@
     "VALIDATION.md",
     "install.sh",
     "install.ps1",
-    ".specify/scripts/powershell/check-prerequisites.ps1",
-    ".specify/templates/plan-template.md",
     ".agents/skills/speckit-implement/SKILL.md",
     ".agents/skills/speckit-plan/SKILL.md",
     ".agents/skills/speckit-specify/SKILL.md",
@@ -283,7 +280,6 @@
         "CHANGELOG.md",
         "RESEARCH-SOURCES.md",
         "VALIDATION.md",
-        ".specify",
         "docs/quickstart.md",
         "docs/installation.md",
         "docs/targets.md",
@@ -484,7 +480,6 @@
       "target": "codex",
       "paths": [
         "AGENTS.md",
-        ".specify",
         ".agents/skills",
         ".agents/skills/repo-onboarding/SKILL.md",
         ".agents/skills/hforge-analyze/SKILL.md",
@@ -515,7 +510,6 @@
       "target": "claude-code",
       "paths": [
         "AGENTS.md",
-        ".specify",
         ".agents/skills",
         ".agents/skills/repo-onboarding/SKILL.md",
         ".agents/skills/hforge-analyze/SKILL.md",
