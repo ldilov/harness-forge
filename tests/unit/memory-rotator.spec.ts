@@ -6,18 +6,6 @@ import path from 'node:path';
 import { rotateMemory } from '../../src/application/compaction/memory/memory-rotator.js';
 import { SIZE_BUDGET } from '../../src/domain/compaction/memory/memory-content-rules.js';
 
-function buildLargeMemory(sections: Record<string, string[]>): string {
-  const lines: string[] = ['# Session Memory', ''];
-  for (const [heading, items] of Object.entries(sections)) {
-    lines.push(`## ${heading}`);
-    for (const item of items) {
-      lines.push(`- ${item}`);
-    }
-    lines.push('');
-  }
-  return lines.join('\n');
-}
-
 describe('rotateMemory', () => {
   let tmpDir: string;
 
