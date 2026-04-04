@@ -34,7 +34,7 @@ import { registerTargetCommands } from "./commands/target.js";
 import { registerUpgradeSurfaceCommands } from "./commands/upgrade-surface.js";
 import { formatCliError } from "../infrastructure/diagnostics/reporter.js";
 import { PACKAGE_ROOT } from "../shared/index.js";
-import { COMMAND_PHASE_MAP, PHASE_LABELS, PHASE_ORDER, resolveCommandPhase, type CommandPhaseId } from "../application/runtime/command-phase-mapping.js";
+import { PHASE_LABELS, PHASE_ORDER, resolveCommandPhase, type CommandPhaseId } from "../application/runtime/command-phase-mapping.js";
 import { runDefaultInteractiveEntry } from "./interactive/entry-router.js";
 
 const program = new Command();

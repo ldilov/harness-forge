@@ -7,7 +7,7 @@ import { createDoctorReport } from "../../application/maintenance/doctor-workspa
 import { loadDecisionIndex } from "../../application/runtime/decision-runtime-store.js";
 import { listStaleTaskAnalysisArtifacts, resolveTaskArtifactPaths } from "../../application/runtime/task-runtime-store.js";
 import { loadInstallState } from "../../domain/state/install-state.js";
-import { DEFAULT_WORKSPACE_ROOT, PACKAGE_ROOT, RUNTIME_DIR, RUNTIME_INDEX_FILE, RUNTIME_TASKS_DIR, exists, readJsonFile } from "../../shared/index.js";
+import { PACKAGE_ROOT, RUNTIME_DIR, RUNTIME_INDEX_FILE, RUNTIME_TASKS_DIR, exists, readJsonFile } from "../../shared/index.js";
 import { createPromptSession, readScriptLabel } from "./prompt-io.js";
 import type { ExecutionSummary } from "./session-state.js";
 import { detectTerminalCapabilities } from "./terminal-capabilities.js";

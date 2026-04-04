@@ -1,5 +1,4 @@
 import { z } from "zod";
-import { actionClassificationSchema, workspacePhaseSchema } from "./next-action-plan.js";
 
 export const scoringHintsSchema = z.object({
   urgencyBase: z.number().min(0).max(1),

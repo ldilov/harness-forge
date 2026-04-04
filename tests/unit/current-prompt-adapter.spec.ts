@@ -1,5 +1,4 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
-import { Readable, Writable } from "node:stream";
 
 // Mock readline before importing the adapter
 vi.mock("node:readline", () => {

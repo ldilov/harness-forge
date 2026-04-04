@@ -4,8 +4,6 @@ import type {
   RecommendationReason,
   AlternativeRecommendation,
 } from "../../domain/onboarding/recommendation-brief.js";
-import type { EvidenceItem } from "../../domain/shared/evidence-item.js";
-
 export interface GenerateRecommendationBriefInput {
   readonly diagnosis: DiagnosisResult;
 }

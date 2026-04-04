@@ -6,7 +6,6 @@ import { appendEffectivenessSignal } from "../../infrastructure/observability/lo
 import { toJson } from "../../infrastructure/diagnostics/reporter.js";
 import { DEFAULT_WORKSPACE_ROOT, PACKAGE_ROOT, RUNTIME_DIR, RUNTIME_REPO_DIR, ONBOARDING_BRIEF_FILE, readJsonFile, exists } from "../../shared/index.js";
 import { formatPostInstallSummary } from "../../application/runtime/format-post-install-summary.js";
-import { generateOnboardingBrief } from "../../application/runtime/generate-onboarding-brief.js";
 import type { OnboardingBrief } from "../../domain/runtime/onboarding-brief.js";
 import { runInteractiveOnboarding } from "../interactive/onboarding-flow.js";
 import { applySetupIntent } from "../interactive/review-plan.js";
