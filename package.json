@@ -1,6 +1,6 @@
 {
   "name": "@harness-forge/cli",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Harness Forge: modular agentic AI workspace installer, catalog, and workflow runtime.",
   "type": "module",
   "bin": {
