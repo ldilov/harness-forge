@@ -37,7 +37,7 @@ export class StartupFileRefresher {
     const preserved: string[] = [];
     const restored: string[] = [];
 
-    // memory.md: preserve if exists, restore if missing
+    // MEMORY.md: preserve if exists, restore if missing
     const memoryPath = path.join(this.workspaceRoot, RUNTIME_MEMORY_FILE);
     if (await exists(memoryPath)) {
       preserved.push(RUNTIME_MEMORY_FILE);

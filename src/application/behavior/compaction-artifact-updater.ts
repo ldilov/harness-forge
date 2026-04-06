@@ -69,7 +69,7 @@ export class CompactionArtifactUpdater {
     await writeJsonFile(manifestPath, manifest);
     updatedFiles.push(manifestPath);
 
-    // Read current memory.md size for reporting
+    // Read current MEMORY.md size for reporting
     const memoryPath = path.join(this.workspaceRoot, RUNTIME_MEMORY_FILE);
     let memoryWordCount = 0;
     let estimatedTokens = 0;

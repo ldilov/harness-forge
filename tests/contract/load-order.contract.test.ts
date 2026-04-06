@@ -8,7 +8,7 @@ describe('load-order contract', () => {
     expect(result.conflictPolicy).toBe('runtime_wins');
     expect(result.historyPolicy).toBe('deny_by_default');
     expect(result.resumeOrder.length).toBeGreaterThanOrEqual(2);
-    expect(result.resumeOrder).toContain('memory.md');
+    expect(result.resumeOrder).toContain('MEMORY.md');
   });
 
   it('accepts runtime_wins conflict policy', () => {

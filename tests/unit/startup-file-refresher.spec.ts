@@ -17,32 +17,32 @@ afterEach(async () => {
 });
 
 describe('StartupFileRefresher', () => {
-  it('preserves operator-edited memory.md', async () => {
+  it('preserves operator-edited MEMORY.md', async () => {
     // First generate defaults
     const gen = new StartupFileGenerator(tmpDir);
     await gen.generate();
 
-    // Operator edits memory.md
-    const memoryPath = path.join(tmpDir, 'memory.md');
+    // Operator edits MEMORY.md
+    const memoryPath = path.join(tmpDir, 'MEMORY.md');
     await fs.writeFile(memoryPath, '# Custom Memory\n\nOperator content here.\n', 'utf8');
 
     // Refresh
     const refresher = new StartupFileRefresher(tmpDir);
     const report = await refresher.refresh();
 
-    // Verify memory.md was preserved
-    expect(report.preserved).toContain('memory.md');
+    // Verify MEMORY.md was preserved
+    expect(report.preserved).toContain('MEMORY.md');
     const content = await fs.readFile(memoryPath, 'utf8');
     expect(content).toContain('Operator content here.');
   });
 
-  it('restores missing memory.md', async () => {
-    // No prior generation — memory.md does not exist
+  it('restores missing MEMORY.md', async () => {
+    // No prior generation — MEMORY.md does not exist
     const refresher = new StartupFileRefresher(tmpDir);
     const report = await refresher.refresh();
 
-    expect(report.restored).toContain('memory.md');
-    const memoryPath = path.join(tmpDir, 'memory.md');
+    expect(report.restored).toContain('MEMORY.md');
+    const memoryPath = path.join(tmpDir, 'MEMORY.md');
     const content = await fs.readFile(memoryPath, 'utf8');
     expect(content).toContain('## Current Objective');
   });

@@ -30,7 +30,7 @@ export function registerContextStatusCommands(program: Command): void {
         const estimatedTokens = Math.ceil(content.length / 4);
         status.memory = { wordCount, estimatedTokens, path: memoryPath };
       } else {
-        status.memory = { error: 'memory.md not found' };
+        status.memory = { error: 'MEMORY.md not found' };
       }
 
       if (await exists(budgetPath)) {

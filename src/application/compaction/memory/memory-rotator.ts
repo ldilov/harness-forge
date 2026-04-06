@@ -85,7 +85,7 @@ export async function rotateMemory(
   basePath: string = '.hforge/runtime',
   emitter?: BehaviorEventEmitter,
 ): Promise<RotationResult> {
-  const memoryPath = path.join(workspaceRoot, 'memory.md');
+  const memoryPath = path.join(workspaceRoot, 'MEMORY.md');
 
   if (!(await exists(memoryPath))) {
     return { archived: false };

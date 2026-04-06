@@ -59,7 +59,7 @@ export async function writeMemoryMd(
   data: MemoryWriterInput,
 ): Promise<string> {
   const content = renderMemoryMd(data);
-  const destination = path.join(workspaceRoot, 'memory.md');
+  const destination = path.join(workspaceRoot, 'MEMORY.md');
   await writeTextFile(destination, content);
   return content;
 }

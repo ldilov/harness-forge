@@ -4,7 +4,7 @@ export const LoadOrderSchema = z.object({
   schemaVersion: z.string().default('1.0.0'),
   resumeOrder: z.array(z.string().min(1)).default([
     'AGENTS.md',
-    'memory.md',
+    'MEMORY.md',
     '.hforge/runtime/active-context.json',
     '.hforge/runtime/session-summary.json',
   ]),

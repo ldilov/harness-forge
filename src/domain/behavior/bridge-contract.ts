@@ -4,12 +4,12 @@ export const BridgeContractSchema = z.object({
   schemaVersion: z.string().default('1.0.0'),
   resumeOrder: z.array(z.string().min(1)).default([
     'AGENTS.md',
-    'memory.md',
+    'MEMORY.md',
     '.hforge/runtime/active-context.json',
     '.hforge/runtime/session-summary.json',
   ]),
   conflictRule: z.string().min(1).default(
-    'If memory.md conflicts with .hforge/runtime/*, trust .hforge/runtime/* as canonical.',
+    'If MEMORY.md conflicts with .hforge/runtime/*, trust .hforge/runtime/* as canonical.',
   ),
   historyRule: z.string().min(1).default(
     'Do not expand full history unless the task explicitly needs it, the required information is not recoverable from canonical runtime artifacts, or a policy override allows it.',
