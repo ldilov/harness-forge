@@ -11,3 +11,5 @@ export type {
 } from './session-trace.js';
 
 export * from './effectiveness-score.js';
+
+export * from './insight-pattern.js';
