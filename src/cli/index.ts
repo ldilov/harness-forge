@@ -36,6 +36,8 @@ import { registerTemplateCommands } from "./commands/template.js";
 import { registerTargetCommands } from "./commands/target.js";
 import { registerUpgradeSurfaceCommands } from "./commands/upgrade-surface.js";
 import { registerDashboardCommands } from "./commands/dashboard.js";
+import { registerAdaptCommands } from "./commands/adapt.js";
+import { registerLoopCommands } from "./commands/loop-cmd.js";
 import { formatCliError } from "../infrastructure/diagnostics/reporter.js";
 import { PACKAGE_ROOT } from "../shared/index.js";
 import { PHASE_LABELS, PHASE_ORDER, resolveCommandPhase, type CommandPhaseId } from "../application/runtime/command-phase-mapping.js";
@@ -88,6 +90,8 @@ registerPruneCommands(program);
 registerNextCommands(program);
 registerDashboardCommands(program);
 registerLearnCommands(program);
+registerAdaptCommands(program);
+registerLoopCommands(program);
 
 // Custom help: group subcommands by lifecycle phase, hide advanced by default
 program.addHelpText("after", () => {
