@@ -195,6 +195,13 @@ export const RUNTIME_SESSION_SUMMARY_FILE = "session-summary.json";
 export const RUNTIME_ACTIVE_CONTEXT_FILE = "active-context.json";
 export const RUNTIME_CONTEXT_BUDGET_FILE = "context-budget.json";
 
+// Dashboard
+export const DASHBOARD_PORT_RANGE_START = 4580;
+export const DASHBOARD_PORT_RANGE_END = 4599;
+export const DASHBOARD_EMBEDDED_HTML_PATH = "dashboard/embedded/dashboard.html";
+export const DASHBOARD_WS_PATH = "/ws";
+export const DASHBOARD_HEARTBEAT_INTERVAL_MS = 15_000;
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 

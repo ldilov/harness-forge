@@ -6,6 +6,7 @@ import { loadInstallState, saveInstallState } from "../../domain/state/install-s
 import { loadProfileManifests } from "../../domain/manifests/index.js";
 import { PACKAGE_ROOT, RUNTIME_SCHEMA_VERSION, readJsonFile, UPDATE_ACTION_PLAN_FILE, RUNTIME_DIR, RUNTIME_PROVENANCE_DIR, RUNTIME_REPO_DIR, ONBOARDING_BRIEF_FILE, FIRST_RUN_RESULT_FILE, writeJsonFile, writeTextFile } from "../../shared/index.js";
 import { appendEffectivenessSignal } from "../../infrastructure/observability/local-metrics-store.js";
+import type { BehaviorEventEmitter } from "../behavior/behavior-event-emitter.js";
 import { writeAgentCommandCatalog } from "../runtime/command-catalog.js";
 import { generateOnboardingBrief } from "../runtime/generate-onboarding-brief.js";
 import { generateFirstRunResult } from "../runtime/generate-first-run-result.js";
@@ -30,7 +31,8 @@ export interface ApplyInstallResult {
 export async function applyInstall(
   root: string,
   plan: InstallPlan,
-  packageRoot = PACKAGE_ROOT
+  packageRoot = PACKAGE_ROOT,
+  emitter?: BehaviorEventEmitter,
 ): Promise<ApplyInstallResult> {
   const packageJson = await readJsonFile<{ version: string }>(path.join(packageRoot, "package.json"));
   const profiles = await loadProfileManifests(packageRoot);
@@ -41,6 +43,14 @@ export async function applyInstall(
     visibleBridgePaths: []
   };
   const messages: string[] = [];
+  const installStartTime = Date.now();
+
+  emitter?.emitInstallPlanCreated({
+    operationCount: plan.operations.length,
+    targetId: plan.selection.targetId,
+    profileId: plan.selection.profileId ?? 'recommended',
+    planHash: plan.hash,
+  });
 
   try {
     await appendEffectivenessSignal(root, {
@@ -53,7 +63,15 @@ export async function applyInstall(
     });
 
     for (const operation of plan.operations) {
-      messages.push(await applyOperation(operation));
+      const opStart = Date.now();
+      const result = await applyOperation(operation);
+      messages.push(result);
+      emitter?.emitInstallOperationApplied({
+        operation: operation.type,
+        bundleId: operation.bundleId,
+        target: operation.destinationPath,
+        durationMs: Date.now() - opStart,
+      });
     }
 
     await appendEffectivenessSignal(root, {
@@ -196,6 +214,13 @@ export async function applyInstall(
       recordedAt: new Date().toISOString(),
       category: "firstRun",
       details: { briefPath, firstRunResultPath }
+    });
+
+    emitter?.emitInstallCompleted({
+      totalOperations: plan.operations.length,
+      filesWritten: plan.operations.length + rewrittenFiles.length,
+      targetId: plan.selection.targetId,
+      durationMs: Date.now() - installStartTime,
     });
 
     return { messages, guidancePath, briefPath, firstRunResultPath };

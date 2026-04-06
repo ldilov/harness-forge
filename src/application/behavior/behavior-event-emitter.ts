@@ -29,11 +29,30 @@ function generateEventId(): string {
 
 const SCHEMA_VERSION = '1.0.0';
 
+export type BehaviorEventListener = (event: BehaviorEvent) => void;
+
 export class BehaviorEventEmitter {
   private readonly runtimeSessionId: string;
+  private readonly listeners: BehaviorEventListener[] = [];
 
   constructor(runtimeSessionId: string) {
     this.runtimeSessionId = runtimeSessionId;
+  }
+
+  onEvent(listener: BehaviorEventListener): () => void {
+    this.listeners.push(listener);
+    return () => {
+      const idx = this.listeners.indexOf(listener);
+      if (idx >= 0) {
+        this.listeners.splice(idx, 1);
+      }
+    };
+  }
+
+  private notifyListeners(event: BehaviorEvent): void {
+    for (const listener of this.listeners) {
+      listener(event);
+    }
   }
 
   private buildEvent(
@@ -41,7 +60,7 @@ export class BehaviorEventEmitter {
     payload: BehaviorEventPayload,
     options?: { readonly taskId?: string; readonly correlationId?: string },
   ): BehaviorEvent {
-    return {
+    const event: BehaviorEvent = {
       eventId: generateEventId(),
       eventType,
       occurredAt: new Date().toISOString(),
@@ -51,6 +70,8 @@ export class BehaviorEventEmitter {
       ...(options?.correlationId !== undefined ? { correlationId: options.correlationId } : {}),
       payload,
     };
+    this.notifyListeners(event);
+    return event;
   }
 
   emitContextLoad(
@@ -135,5 +156,180 @@ export class BehaviorEventEmitter {
     options?: { readonly taskId?: string; readonly correlationId?: string },
   ): BehaviorEvent {
     return this.buildEvent(BEHAVIOR_EVENT_TYPES.SUBAGENT_RUN_COMPLETED, payload, options);
+  }
+
+  emitContextLoadStarted(
+    payload: BehaviorEventPayload = {},
+    options?: { readonly taskId?: string; readonly correlationId?: string },
+  ): BehaviorEvent {
+    return this.buildEvent(BEHAVIOR_EVENT_TYPES.CONTEXT_LOAD_STARTED, payload, options);
+  }
+
+  emitCompactionTriggered(
+    payload: BehaviorEventPayload = {},
+    options?: { readonly taskId?: string; readonly correlationId?: string },
+  ): BehaviorEvent {
+    return this.buildEvent(BEHAVIOR_EVENT_TYPES.CONTEXT_COMPACTION_TRIGGERED, payload, options);
+  }
+
+  emitMemoryRotationStarted(
+    payload: BehaviorEventPayload = {},
+    options?: { readonly taskId?: string; readonly correlationId?: string },
+  ): BehaviorEvent {
+    return this.buildEvent(BEHAVIOR_EVENT_TYPES.MEMORY_ROTATION_STARTED, payload, options);
+  }
+
+  emitHistoryExpansionDenied(
+    payload: BehaviorEventPayload = {},
+    options?: { readonly taskId?: string; readonly correlationId?: string },
+  ): BehaviorEvent {
+    return this.buildEvent(BEHAVIOR_EVENT_TYPES.HISTORY_EXPANSION_DENIED, payload, options);
+  }
+
+  emitSubagentBriefRewritten(
+    payload: BehaviorEventPayload = {},
+    options?: { readonly taskId?: string; readonly correlationId?: string },
+  ): BehaviorEvent {
+    return this.buildEvent(BEHAVIOR_EVENT_TYPES.SUBAGENT_BRIEF_REWRITTEN, payload, options);
+  }
+
+  emitSubagentBriefRejected(
+    payload: BehaviorEventPayload = {},
+    options?: { readonly taskId?: string; readonly correlationId?: string },
+  ): BehaviorEvent {
+    return this.buildEvent(BEHAVIOR_EVENT_TYPES.SUBAGENT_BRIEF_REJECTED, payload, options);
+  }
+
+  emitSubagentRunStarted(
+    payload: BehaviorEventPayload = {},
+    options?: { readonly taskId?: string; readonly correlationId?: string },
+  ): BehaviorEvent {
+    return this.buildEvent(BEHAVIOR_EVENT_TYPES.SUBAGENT_RUN_STARTED, payload, options);
+  }
+
+  emitArtifactPointerPromoted(
+    payload: BehaviorEventPayload = {},
+    options?: { readonly taskId?: string; readonly correlationId?: string },
+  ): BehaviorEvent {
+    return this.buildEvent(BEHAVIOR_EVENT_TYPES.ARTIFACT_POINTER_PROMOTED, payload, options);
+  }
+
+  emitResponseProfileOverridden(
+    payload: BehaviorEventPayload = {},
+    options?: { readonly taskId?: string; readonly correlationId?: string },
+  ): BehaviorEvent {
+    return this.buildEvent(BEHAVIOR_EVENT_TYPES.RESPONSE_PROFILE_OVERRIDDEN, payload, options);
+  }
+
+  emitStartupFilesGenerated(
+    payload: BehaviorEventPayload = {},
+    options?: { readonly taskId?: string; readonly correlationId?: string },
+  ): BehaviorEvent {
+    return this.buildEvent(BEHAVIOR_EVENT_TYPES.RUNTIME_STARTUP_FILES_GENERATED, payload, options);
+  }
+
+  emitWorkspaceDiscoveryCompleted(
+    payload: BehaviorEventPayload = {},
+    options?: { readonly taskId?: string; readonly correlationId?: string },
+  ): BehaviorEvent {
+    return this.buildEvent(BEHAVIOR_EVENT_TYPES.WORKSPACE_DISCOVERY_COMPLETED, payload, options);
+  }
+
+  emitWorkspaceDiagnosisCompleted(
+    payload: BehaviorEventPayload = {},
+    options?: { readonly taskId?: string; readonly correlationId?: string },
+  ): BehaviorEvent {
+    return this.buildEvent(BEHAVIOR_EVENT_TYPES.WORKSPACE_DIAGNOSIS_COMPLETED, payload, options);
+  }
+
+  emitRecommendationGenerated(
+    payload: BehaviorEventPayload = {},
+    options?: { readonly taskId?: string; readonly correlationId?: string },
+  ): BehaviorEvent {
+    return this.buildEvent(BEHAVIOR_EVENT_TYPES.RECOMMENDATION_GENERATED, payload, options);
+  }
+
+  emitInstallPlanCreated(
+    payload: BehaviorEventPayload = {},
+    options?: { readonly taskId?: string; readonly correlationId?: string },
+  ): BehaviorEvent {
+    return this.buildEvent(BEHAVIOR_EVENT_TYPES.INSTALL_PLAN_CREATED, payload, options);
+  }
+
+  emitInstallOperationApplied(
+    payload: BehaviorEventPayload = {},
+    options?: { readonly taskId?: string; readonly correlationId?: string },
+  ): BehaviorEvent {
+    return this.buildEvent(BEHAVIOR_EVENT_TYPES.INSTALL_OPERATION_APPLIED, payload, options);
+  }
+
+  emitInstallCompleted(
+    payload: BehaviorEventPayload = {},
+    options?: { readonly taskId?: string; readonly correlationId?: string },
+  ): BehaviorEvent {
+    return this.buildEvent(BEHAVIOR_EVENT_TYPES.INSTALL_COMPLETED, payload, options);
+  }
+
+  emitInstallValidationCompleted(
+    payload: BehaviorEventPayload = {},
+    options?: { readonly taskId?: string; readonly correlationId?: string },
+  ): BehaviorEvent {
+    return this.buildEvent(BEHAVIOR_EVENT_TYPES.INSTALL_VALIDATION_COMPLETED, payload, options);
+  }
+
+  emitCompactionStrategySelected(
+    payload: BehaviorEventPayload = {},
+    options?: { readonly taskId?: string; readonly correlationId?: string },
+  ): BehaviorEvent {
+    return this.buildEvent(BEHAVIOR_EVENT_TYPES.COMPACTION_STRATEGY_SELECTED, payload, options);
+  }
+
+  emitCompactionValidationCompleted(
+    payload: BehaviorEventPayload = {},
+    options?: { readonly taskId?: string; readonly correlationId?: string },
+  ): BehaviorEvent {
+    return this.buildEvent(BEHAVIOR_EVENT_TYPES.COMPACTION_VALIDATION_COMPLETED, payload, options);
+  }
+
+  emitMemoryRotationFailed(
+    payload: BehaviorEventPayload = {},
+    options?: { readonly taskId?: string; readonly correlationId?: string },
+  ): BehaviorEvent {
+    return this.buildEvent(BEHAVIOR_EVENT_TYPES.MEMORY_ROTATION_FAILED, payload, options);
+  }
+
+  emitCommandStarted(
+    payload: BehaviorEventPayload = {},
+    options?: { readonly taskId?: string; readonly correlationId?: string },
+  ): BehaviorEvent {
+    return this.buildEvent(BEHAVIOR_EVENT_TYPES.COMMAND_STARTED, payload, options);
+  }
+
+  emitCommandCompleted(
+    payload: BehaviorEventPayload = {},
+    options?: { readonly taskId?: string; readonly correlationId?: string },
+  ): BehaviorEvent {
+    return this.buildEvent(BEHAVIOR_EVENT_TYPES.COMMAND_COMPLETED, payload, options);
+  }
+
+  emitCommandFailed(
+    payload: BehaviorEventPayload = {},
+    options?: { readonly taskId?: string; readonly correlationId?: string },
+  ): BehaviorEvent {
+    return this.buildEvent(BEHAVIOR_EVENT_TYPES.COMMAND_FAILED, payload, options);
+  }
+
+  emitSessionStarted(
+    payload: BehaviorEventPayload = {},
+    options?: { readonly taskId?: string; readonly correlationId?: string },
+  ): BehaviorEvent {
+    return this.buildEvent(BEHAVIOR_EVENT_TYPES.SESSION_STARTED, payload, options);
+  }
+
+  emitSessionEnded(
+    payload: BehaviorEventPayload = {},
+    options?: { readonly taskId?: string; readonly correlationId?: string },
+  ): BehaviorEvent {
+    return this.buildEvent(BEHAVIOR_EVENT_TYPES.SESSION_ENDED, payload, options);
   }
 }

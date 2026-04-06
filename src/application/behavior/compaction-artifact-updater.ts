@@ -6,6 +6,7 @@ import {
   RUNTIME_MEMORY_FILE,
 } from '@shared/constants.js';
 import { exists, readTextFile, writeJsonFile } from '@shared/fs.js';
+import type { BehaviorEventEmitter } from './behavior-event-emitter.js';
 
 /**
  * Updates behavior promotion artifacts after compaction triggers fire.
@@ -21,9 +22,11 @@ export interface CompactionArtifactUpdate {
 
 export class CompactionArtifactUpdater {
   private readonly workspaceRoot: string;
+  private readonly emitter?: BehaviorEventEmitter;
 
-  constructor(workspaceRoot: string) {
+  constructor(workspaceRoot: string, emitter?: BehaviorEventEmitter) {
     this.workspaceRoot = workspaceRoot;
+    this.emitter = emitter;
   }
 
   /**
@@ -75,6 +78,15 @@ export class CompactionArtifactUpdater {
       memoryWordCount = content.split(/\s+/).filter(Boolean).length;
       estimatedTokens = Math.ceil(content.length / 4);
     }
+
+    this.emitter?.emitContextDelta({
+      compactionLevel: params.compactionLevel,
+      tokensBefore: params.tokensBefore,
+      tokensAfter: params.tokensAfter,
+      updatedFiles: updatedFiles.length,
+      memoryWordCount,
+      estimatedTokens,
+    });
 
     return { updatedFiles, memoryWordCount, estimatedTokens };
   }

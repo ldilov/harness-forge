@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 import fs from "node:fs";
 import path from "node:path";
 import { Command } from "commander";
@@ -34,10 +34,12 @@ import { registerTaskCommands } from "./commands/task.js";
 import { registerTemplateCommands } from "./commands/template.js";
 import { registerTargetCommands } from "./commands/target.js";
 import { registerUpgradeSurfaceCommands } from "./commands/upgrade-surface.js";
+import { registerDashboardCommands } from "./commands/dashboard.js";
 import { formatCliError } from "../infrastructure/diagnostics/reporter.js";
 import { PACKAGE_ROOT } from "../shared/index.js";
 import { PHASE_LABELS, PHASE_ORDER, resolveCommandPhase, type CommandPhaseId } from "../application/runtime/command-phase-mapping.js";
 import { runDefaultInteractiveEntry } from "./interactive/entry-router.js";
+import { cliEmitter, cliSessionId } from "./cli-emitter.js";
 
 const program = new Command();
 const packageJson = JSON.parse(fs.readFileSync(path.join(PACKAGE_ROOT, "package.json"), "utf8")) as {
@@ -83,6 +85,7 @@ registerCompactCommands(program);
 registerReplayCommands(program);
 registerPruneCommands(program);
 registerNextCommands(program);
+registerDashboardCommands(program);
 
 // Custom help: group subcommands by lifecycle phase, hide advanced by default
 program.addHelpText("after", () => {
@@ -120,11 +123,29 @@ program.addHelpText("after", () => {
   return lines.join("\n");
 });
 
+/** Re-export for backward compatibility */
+export { cliEmitter } from './cli-emitter.js';
+export { setWorkspaceRoot } from './cli-emitter.js';
+
 async function main(): Promise<void> {
   const args = process.argv.slice(2);
+  const commandName = args[0] ?? '(interactive)';
+  const commandStartTime = Date.now();
+
+  cliEmitter.emitSessionStarted({
+    sessionId: cliSessionId,
+    version: packageJson.version,
+    workspaceRoot: process.cwd(),
+    nodeVersion: process.version,
+  });
+
   if (args.length === 0) {
     const handled = await runDefaultInteractiveEntry(args, process.cwd());
     if (handled) {
+      cliEmitter.emitSessionEnded({
+        sessionId: cliSessionId,
+        totalDurationMs: Date.now() - commandStartTime,
+      });
       return;
     }
     program.outputHelp();
@@ -133,7 +154,36 @@ async function main(): Promise<void> {
     return;
   }
 
-  await program.parseAsync(process.argv);
+  cliEmitter.emitCommandStarted({
+    command: commandName,
+    args: Object.fromEntries(args.slice(1).map((a, i) => [`arg${i}`, a])),
+    workspaceRoot: process.cwd(),
+  });
+
+  try {
+    await program.parseAsync(process.argv);
+
+    cliEmitter.emitCommandCompleted({
+      command: commandName,
+      exitCode: process.exitCode ?? 0,
+      durationMs: Date.now() - commandStartTime,
+    });
+  } catch (error: unknown) {
+    cliEmitter.emitCommandFailed({
+      command: commandName,
+      error: error instanceof Error ? error.message : String(error),
+      exitCode: 1,
+      durationMs: Date.now() - commandStartTime,
+      recoverable: false,
+    });
+    throw error;
+  }
+
+  cliEmitter.emitSessionEnded({
+    sessionId: cliSessionId,
+    totalDurationMs: Date.now() - commandStartTime,
+    commandsRun: 1,
+  });
 }
 
 main().catch((error: unknown) => {

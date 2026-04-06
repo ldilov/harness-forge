@@ -10,6 +10,7 @@ import type { ActiveContext } from '../../domain/compaction/active-context.js';
 import type { TurnImportanceItem } from '../../domain/compaction/turn-importance.js';
 import { generateId } from '../../shared/id-generator.js';
 import { nowISO } from '../../shared/timestamps.js';
+import type { BehaviorEventEmitter } from '../behavior/behavior-event-emitter.js';
 import { classifyItem } from './turn-classifier.js';
 import { applyTrim } from './strategies/trim-strategy.js';
 import { applySummarize } from './strategies/summarize-strategy.js';
@@ -29,9 +30,11 @@ interface CompactOptions {
 
 export class CompactionService {
   private readonly basePath: string;
+  private readonly emitter?: BehaviorEventEmitter;
 
-  constructor(basePath: string = '.hforge/runtime/context') {
+  constructor(basePath: string = '.hforge/runtime/context', emitter?: BehaviorEventEmitter) {
     this.basePath = basePath;
+    this.emitter = emitter;
   }
 
   async compact(options: CompactOptions): Promise<CompactionManifest> {
@@ -47,6 +50,13 @@ export class CompactionService {
       runtimeSessionId,
     } = options;
 
+    const startTime = Date.now();
+
+    this.emitter?.emitCompactionTriggered({
+      level,
+      estimatedEvents: events.length,
+    }, { taskId, correlationId: runtimeSessionId });
+
     const classified = events.map((evt) =>
       classifyItem({
         id: evt.eventId,
@@ -55,6 +65,13 @@ export class CompactionService {
         isCanonical: true,
       }),
     );
+
+    this.emitter?.emitCompactionStrategySelected({
+      strategy: level,
+      reason: `Manual compaction at level ${level}`,
+      triggerType: 'manual',
+      eventsToProcess: classified.length,
+    });
 
     const filtered = this.applyStrategy(level, classified);
 
@@ -68,6 +85,13 @@ export class CompactionService {
       unresolved,
       artifacts,
       criticalEventsPreserved,
+    });
+
+    this.emitter?.emitCompactionValidationCompleted({
+      valid: validation.passed,
+      criticalEventsPreserved,
+      tokenReduction: classified.length - filtered.length,
+      violations: validation.passed ? [] : validation.failures,
     });
 
     if (!validation.passed) {
@@ -173,6 +197,27 @@ export class CompactionService {
       writeFile(contextPath, JSON.stringify(activeContext, null, 2), 'utf-8'),
       writeFile(manifestPath, JSON.stringify(manifest, null, 2), 'utf-8'),
     ]);
+
+    this.emitter?.emitCompaction({
+      tokensBeforeAfter: {
+        before: manifest.stats.estimatedTokensBefore,
+        after: manifest.stats.estimatedTokensAfter,
+      },
+      level,
+      durationMs: Date.now() - startTime,
+      droppedItems: manifest.stats.droppedLowImportanceItems,
+      preservedCritical: manifest.stats.preservedCriticalItems,
+    }, { taskId, correlationId: runtimeSessionId });
+
+    this.emitter?.emitContextSummary({
+      summaryId,
+      coveredEventRange,
+    }, { taskId });
+
+    this.emitter?.emitContextDelta({
+      deltaId,
+      sinceSummaryId: summaryId,
+    }, { taskId });
 
     return manifest;
   }

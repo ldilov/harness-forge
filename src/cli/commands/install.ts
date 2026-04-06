@@ -1,4 +1,5 @@
 import { Command } from "commander";
+import { cliEmitter, setWorkspaceRoot } from '../cli-emitter.js';
 
 import path from "node:path";
 
@@ -34,6 +35,7 @@ export function registerInstallCommands(program: Command): void {
     .option("--json", "json output", false)
     .action(async (options) => {
       const workspaceRoot = path.resolve(options.root);
+      setWorkspaceRoot(workspaceRoot);
       const warnings = await validateEnvironment(PACKAGE_ROOT, options.target);
       const [bundles, profiles, target] = await Promise.all([
         loadBundleManifests(PACKAGE_ROOT),
@@ -67,7 +69,7 @@ export function registerInstallCommands(program: Command): void {
 
       console.log(formatPlanSummary(plan));
       if (!options.dryRun && options.yes) {
-        const result = await applyInstall(workspaceRoot, plan);
+        const result = await applyInstall(workspaceRoot, plan, PACKAGE_ROOT, cliEmitter);
         console.log(result.messages.join("\n"));
         console.log(`Guidance written to ${result.guidancePath}`);
         if (result.briefPath && await exists(result.briefPath)) {
@@ -95,6 +97,7 @@ export function registerInstallCommands(program: Command): void {
     .option("--json", "json output", false)
     .action(async (options) => {
       const workspaceRoot = path.resolve(options.root);
+      setWorkspaceRoot(workspaceRoot);
       const result = await bootstrapWorkspace({
         packageRoot: PACKAGE_ROOT,
         workspaceRoot,
@@ -104,7 +107,8 @@ export function registerInstallCommands(program: Command): void {
         languageIds: options.lang,
         frameworkIds: options.framework,
         capabilityIds: options.with,
-        mode: options.yes && !options.dryRun ? "apply" : "dry-run"
+        mode: options.yes && !options.dryRun ? "apply" : "dry-run",
+        emitter: cliEmitter,
       });
 
       if (options.json) {

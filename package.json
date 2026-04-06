@@ -66,6 +66,9 @@
     "target:opencode": "node dist/cli/index.js target inspect opencode --json",
     "commands:catalog": "node dist/cli/index.js commands --json",
     "dev": "node --enable-source-maps dist/cli/index.js",
+    "build:dashboard": "cd src/dashboard && npm install && npm run build",
+    "dashboard:seed": "node scripts/dashboard/seed-demo-events.mjs",
+    "dashboard:dev": "node scripts/dashboard/seed-demo-events.mjs && node dist/cli/index.js dashboard",
     "generate:support-docs": "node scripts/ci/generate-target-support-docs.mjs",
     "intelligence:scan": "node scripts/intelligence/scan-repo.mjs . --json",
     "intelligence:cartograph": "node scripts/intelligence/cartograph-repo.mjs . --json",
@@ -122,11 +125,13 @@
     "ajv": "^8.17.1",
     "commander": "^13.1.0",
     "fast-glob": "^3.3.3",
+    "ws": "^8.20.0",
     "yaml": "^2.7.1",
     "zod": "^3.24.2"
   },
   "devDependencies": {
     "@types/node": "^22.13.14",
+    "@types/ws": "^8.18.1",
     "@vitest/coverage-v8": "^3.0.8",
     "eslint": "^9.22.0",
     "typescript": "^5.8.2",

@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://img.shields.io/badge/%F0%9F%94%A8_harness--forge-v1.4.0-6C3FC5?style=for-the-badge" alt="version" />
+  <img src="https://img.shields.io/badge/%F0%9F%94%A8_harness--forge-v1.4.1-6C3FC5?style=for-the-badge" alt="version" />
 </p>
 
 <h1 align="center">🔨 Harness Forge</h1>
@@ -44,8 +44,8 @@
   <a href="#-get-started-in-60-seconds">🚀 Get Started</a> &bull;
   <a href="#-what-does-it-do">✨ What It Does</a> &bull;
   <a href="#-everyday-commands">⌨️ Commands</a> &bull;
+  <a href="#-real-time-dashboard">📊 Dashboard</a> &bull;
   <a href="#-real-world-scenarios">💡 Scenarios</a> &bull;
-  <a href="#-updating">🔄 Updating</a> &bull;
   <a href="#-supported-targets">🎯 Targets</a> &bull;
   <a href="#-faq">❓ FAQ</a>
 </p>
@@ -64,14 +64,16 @@
 
 ## 💡 What is Harness Forge?
 
-Harness Forge turns any repository into a well-equipped workspace for AI coding agents like **Codex** and **Claude Code**.
+> **In plain English:** Harness Forge makes AI coding assistants (like Codex or Claude Code) work better in your project by giving them the right context, skills, and rules — automatically.
 
-Think of it as a setup tool that:
+Without it, your AI assistant has to guess what your project looks like. With it, the assistant knows your languages, frameworks, file structure, and coding conventions from the start.
 
-- 🔍 **Scans** your repo and figures out what languages, frameworks, and tools you use
-- 🧠 **Recommends** the right configuration for your AI agent
-- 📦 **Installs** skills, knowledge packs, and workflows that make the agent more effective
-- 🔧 **Maintains** everything organized and easy to update
+Think of it as a one-time setup that:
+
+- 🔍 **Scans** your project and figures out what languages, frameworks, and tools you use
+- 🧠 **Recommends** the best configuration for your AI assistant
+- 📦 **Installs** skills, knowledge, and workflows that help the assistant write better code
+- 🔧 **Keeps everything updated** as your project grows
 
 | | Without Harness Forge | With Harness Forge |
 |---|---|---|
@@ -141,16 +143,53 @@ hforge scan . --json             # Detect languages, frameworks, tools
 
 Harness Forge scans your codebase and recommends the right targets, profiles, and skill packs &mdash; with evidence for each recommendation.
 
-### 🧩 It equips your AI agent
+### 🧩 It equips your AI assistant
 
 After setup, your repo contains:
 
 | What gets created | What it does |
 |---|---|
-| `AGENTS.md` | Entry point that tells the AI agent how your workspace is organized |
-| `.agents/skills/` | Skills the agent can discover and use (code review, testing, debugging, etc.) |
+| `AGENTS.md` | Entry point that tells the AI assistant how your workspace is organized |
+| `.agents/skills/` | Skills the assistant can discover and use (code review, testing, debugging, etc.) |
 | `.hforge/` | Hidden runtime with knowledge packs, rules, templates, and workspace state |
-| `.codex/` or `.claude/` | Target-specific configuration for your chosen AI agent |
+| `.codex/` or `.claude/` | Target-specific configuration for your chosen AI assistant |
+
+#### Why this matters
+
+<details>
+<summary><strong>🎯 Better accuracy</strong> — fewer hallucinations, fewer wrong guesses</summary>
+
+Without context, AI assistants guess at your project structure, naming conventions, and patterns. They might suggest Express.js code in a FastAPI project, or use `var` in a TypeScript codebase that uses `const`. Harness Forge gives the assistant a map of your repo — languages, frameworks, file boundaries, coding rules — so it generates code that actually fits your project from the first try.
+
+</details>
+
+<details>
+<summary><strong>🧠 Better handling of complex logic</strong> — structured skills instead of improvisation</summary>
+
+When your assistant has packaged skills (code review checklists, debugging workflows, testing strategies), it follows a structured approach instead of improvising. For example, a "debug" skill tells the assistant to reproduce the bug first, isolate the component, check recent changes, then propose a fix — instead of jumping straight to rewriting code. This makes a real difference on tasks that span multiple files or require understanding data flow across services.
+
+</details>
+
+<details>
+<summary><strong>💰 Lower costs</strong> — less wasted context, fewer retries</summary>
+
+AI assistants charge by tokens (the text they read and write). Without good context, the assistant wastes tokens asking clarifying questions, exploring wrong paths, and regenerating code after misunderstandings. Harness Forge's **compaction system** actively manages the assistant's context window — compressing old information, rotating memory, and keeping only what's relevant. The **subagent brief system** sends focused, minimal context to sub-tasks instead of dumping everything. Less wasted context = fewer tokens = lower costs.
+
+</details>
+
+<details>
+<summary><strong>🔄 Consistency across sessions</strong> — the assistant remembers what it learned</summary>
+
+Normally, every time you start a new conversation with your AI assistant, it starts from scratch. Harness Forge maintains **persistent runtime state** — session summaries, accepted decisions, working memory — so the assistant picks up where it left off. It remembers that you decided to use Repository pattern, that the auth module is off-limits for refactoring, and that tests should use Vitest not Jest.
+
+</details>
+
+<details>
+<summary><strong>📊 Full visibility</strong> — see every decision the harness makes</summary>
+
+Run `hforge dashboard` to open a real-time browser dashboard showing memory pressure, budget usage, compaction history, and every event as it happens. No black boxes — you can see exactly why the assistant's context was compressed, when memory was rotated, and how token budget is being spent. See [docs/dashboard.md](./docs/dashboard.md).
+
+</details>
 
 ### 🛡️ It keeps things healthy over time
 
@@ -201,6 +240,37 @@ hforge next --root .              # What should I do next in this workspace?
 
 ---
 
+## 📊 Real-Time Dashboard
+
+See what the harness is doing — live, in your browser.
+
+```bash
+hforge dashboard
+```
+
+This opens a visual dashboard that shows:
+
+```mermaid
+graph LR
+    A["🔢 KPI Cards"] --> B["📈 Event Timeline"]
+    B --> C["💾 Memory & Budget"]
+    C --> D["📋 Live Event Feed"]
+    D --> E["🤖 Subagent Activity"]
+```
+
+- **Memory pressure** — how close you are to running out of context space
+- **Compaction history** — when and how aggressively context was compressed
+- **Budget gauge** — token usage with color-coded threshold zones
+- **Live event feed** — searchable, expandable table of every harness decision
+- **Subagent briefs** — what tasks were delegated and how
+- **Desktop notifications** — get alerted when something critical happens (budget exceeded, memory rotation)
+
+> **Multi-project support:** The dashboard works across all your projects. When you open it, you pick which project to monitor. Your project list is saved in the browser so you don't re-add them every time.
+
+For the full guide, see [docs/dashboard.md](./docs/dashboard.md).
+
+---
+
 ## 💡 Real-World Scenarios
 
 ### 📂 Scenario 1: "I just cloned a repo and want AI help"
@@ -208,8 +278,8 @@ hforge next --root .              # What should I do next in this workspace?
 ```bash
 cd my-project
 npx @harness-forge/cli
-# Follow the guided setup
-# Your AI agent now has full context about this repo
+# Follow the step-by-step setup
+# Done! Your AI assistant now understands this project
 ```
 
 ### 🤝 Scenario 2: "I use both Codex and Claude Code"
@@ -398,27 +468,51 @@ hforge synthesize-instructions . --target codex --json  # Generate target-specif
 
 ## ❓ FAQ
 
-**Do I need to install anything globally?**
-No. `npx @harness-forge/cli` works without any global install. Run `hforge shell setup --yes` if you want the shorter `hforge` command.
+<details>
+<summary><strong>Do I need to install anything globally?</strong></summary>
 
-**Does it modify my source code?**
-No. Harness Forge only creates its own managed files (`AGENTS.md`, `.agents/`, `.hforge/`, `.codex/`, `.claude/`). Your application code is never touched.
+No. `npx @harness-forge/cli` runs directly without installing anything. If you want the shorter `hforge` command, run `hforge shell setup --yes` once.
+</details>
 
-**Can I use it in CI?**
-Yes. Use `--yes` and `--json` flags for non-interactive, machine-readable output:
+<details>
+<summary><strong>Does it change my source code?</strong></summary>
+
+No. Harness Forge only creates its own files (`AGENTS.md`, `.agents/`, `.hforge/`, `.codex/`, `.claude/`). Your application code is never touched.
+</details>
+
+<details>
+<summary><strong>Can I use it in CI/CD pipelines?</strong></summary>
+
+Yes. Add `--yes` for non-interactive mode and `--json` for machine-readable output:
 ```bash
 hforge init --root . --agent codex --setup-profile recommended --yes
 hforge doctor --root . --json
 ```
+</details>
 
-**How do I remove it from a repo?**
-Delete the managed directories: `.hforge/`, `.agents/`, `.codex/`, `.claude/`, `AGENTS.md`.
+<details>
+<summary><strong>How do I remove it from a project?</strong></summary>
 
-**Does it send telemetry?**
-No. All observability data stays local under `.hforge/observability/`. Nothing is sent anywhere.
+Delete these directories and files: `.hforge/`, `.agents/`, `.codex/`, `.claude/`, `AGENTS.md`. Your project is back to normal.
+</details>
 
-**What Node.js version do I need?**
-Node.js 22 or newer.
+<details>
+<summary><strong>Does it send any data to the internet?</strong></summary>
+
+No. All data stays on your machine under `.hforge/observability/`. Nothing is ever sent anywhere. You can inspect, delete, or back up these files anytime.
+</details>
+
+<details>
+<summary><strong>What Node.js version do I need?</strong></summary>
+
+Node.js 22 or newer. Check with `node --version`.
+</details>
+
+<details>
+<summary><strong>What's the real-time dashboard?</strong></summary>
+
+Run `hforge dashboard` to open a browser-based view of what the harness is doing. It shows memory usage, compaction decisions, budget status, and a live event feed. See [docs/dashboard.md](./docs/dashboard.md) for details.
+</details>
 
 ---
 

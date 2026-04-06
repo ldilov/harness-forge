@@ -6,6 +6,7 @@ import { type SubagentBriefPolicy } from '@domain/behavior/subagent-brief-policy
 import { SUBAGENT_FORBIDDEN_FIELDS } from '@domain/compaction/memory/memory-content-rules.js';
 import { generateId } from '@shared/id-generator.js';
 import { nowISO } from '@shared/timestamps.js';
+import type { BehaviorEventEmitter } from './behavior-event-emitter.js';
 
 export interface BriefGenerationParams {
   readonly taskObjective: string;
@@ -22,6 +23,12 @@ export interface BriefGenerationParams {
 const CHARS_PER_TOKEN = 4;
 
 export class SubagentBriefGenerator {
+  private readonly emitter?: BehaviorEventEmitter;
+
+  constructor(emitter?: BehaviorEventEmitter) {
+    this.emitter = emitter;
+  }
+
   generate(params: BriefGenerationParams): SubagentBrief {
     const objectiveKeywords = extractKeywords(params.taskObjective);
 
@@ -55,10 +62,20 @@ export class SubagentBriefGenerator {
       sourceStateType: 'compacted',
     };
 
-    return {
+    const finalBrief = {
       ...brief,
       estimatedTokens: estimateTokens(brief),
     };
+
+    this.emitter?.emitSubagentBrief({
+      objective: finalBrief.objective,
+      estimatedTokens: finalBrief.estimatedTokens,
+      responseProfile: finalBrief.responseProfile,
+      sourceStateType: finalBrief.sourceStateType,
+      decisionsIncluded: finalBrief.relevantDecisions.length,
+    });
+
+    return finalBrief;
   }
 }
 

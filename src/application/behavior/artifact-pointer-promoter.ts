@@ -1,10 +1,4 @@
-/**
- * Promotes long inline content to artifact pointer references.
- * Implements AC-9: Artifact Pointer Promotion.
- *
- * When content exceeds a threshold, it is replaced with a reference
- * to the canonical file path rather than being pasted inline.
- */
+import type { BehaviorEventEmitter } from './behavior-event-emitter.js';
 
 export interface InlineContent {
   readonly id: string;
@@ -20,9 +14,11 @@ export interface PromotionResult {
 
 export class ArtifactPointerPromoter {
   private readonly inlineThresholdChars: number;
+  private readonly emitter?: BehaviorEventEmitter;
 
-  constructor(inlineThresholdChars = 2000) {
+  constructor(inlineThresholdChars = 2000, emitter?: BehaviorEventEmitter) {
     this.inlineThresholdChars = inlineThresholdChars;
+    this.emitter = emitter;
   }
 
   evaluate(item: InlineContent): PromotionResult {
@@ -40,6 +36,14 @@ export class ArtifactPointerPromoter {
 
     const savedChars = item.content.length - refText.length;
     const savedTokens = Math.max(0, Math.floor(savedChars / 4));
+
+    this.emitter?.emitArtifactPointerPromoted({
+      artifactId: item.id,
+      sourcePath: item.sourcePath,
+      originalChars: item.content.length,
+      estimatedTokensSaved: savedTokens,
+      reference: refText,
+    });
 
     return {
       promoted: true,

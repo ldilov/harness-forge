@@ -1,3 +1,5 @@
+import type { BehaviorEventEmitter } from './behavior-event-emitter.js';
+
 export enum EnforcementLevel {
   Guidance = 1,
   Defaults = 2,
@@ -12,12 +14,23 @@ export interface EnforcementAction {
 }
 
 export class EnforcementLadder {
+  private readonly emitter?: BehaviorEventEmitter;
+
+  constructor(emitter?: BehaviorEventEmitter) {
+    this.emitter = emitter;
+  }
+
   evaluate(
     memoryTokens: number,
     hardCap: number,
     targetMax: number,
   ): EnforcementAction {
     if (memoryTokens > hardCap) {
+      this.emitter?.emitBudgetExceeded({
+        budgetState: { estimatedTokens: memoryTokens, hardCap },
+        enforcementLevel: 'enforcement',
+        suggestedAction: 'rotate',
+      });
       return {
         level: EnforcementLevel.Enforcement,
         action: 'rotate',
@@ -26,6 +39,12 @@ export class EnforcementLadder {
     }
 
     if (memoryTokens > targetMax) {
+      this.emitter?.emitBudgetWarning({
+        budgetState: { estimatedTokens: memoryTokens, hardCap },
+        enforcementLevel: 'nudge',
+        suggestedAction: 'warn',
+        targetMax,
+      });
       return {
         level: EnforcementLevel.Nudge,
         action: 'warn',

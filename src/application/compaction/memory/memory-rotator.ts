@@ -2,6 +2,7 @@ import path from 'node:path';
 
 import { readTextFile, writeTextFile, exists } from '../../../shared/fs.js';
 import type { MemorySessionSummary } from '../../../domain/compaction/memory/memory-session-summary.js';
+import type { BehaviorEventEmitter } from '../../behavior/behavior-event-emitter.js';
 import { shouldRotateMemory } from './memory-rotation-trigger.js';
 import { archiveMemory } from './memory-archiver.js';
 
@@ -82,6 +83,7 @@ function condenseSummary(summary: MemorySessionSummary): string {
 export async function rotateMemory(
   workspaceRoot: string,
   basePath: string = '.hforge/runtime',
+  emitter?: BehaviorEventEmitter,
 ): Promise<RotationResult> {
   const memoryPath = path.join(workspaceRoot, 'memory.md');
 
@@ -95,12 +97,28 @@ export async function rotateMemory(
     return { archived: false };
   }
 
+  const startTime = Date.now();
+  const tokensBefore = Math.ceil(content.length / 4);
+  emitter?.emitMemoryRotationStarted({
+    tokensBefore,
+    memoryPath,
+  });
+
   const summary = extractSummary(content);
   const archivePath = await archiveMemory(summary, basePath);
 
   const previousText = condenseSummary(summary);
   const rotatedContent = buildRotatedContent(summary, previousText);
   await writeTextFile(memoryPath, rotatedContent);
+
+  const tokensAfter = Math.ceil(rotatedContent.length / 4);
+  emitter?.emitMemoryRotation({
+    automatic: true,
+    tokensBefore,
+    tokensAfter,
+    archivedSections: summary.decisions.length + summary.state.length,
+    durationMs: Date.now() - startTime,
+  });
 
   return { archived: true, archivePath };
 }

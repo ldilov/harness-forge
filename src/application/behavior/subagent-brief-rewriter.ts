@@ -1,4 +1,5 @@
 import { type SubagentBrief } from '@domain/behavior/subagent-brief.js';
+import type { BehaviorEventEmitter } from './behavior-event-emitter.js';
 
 export type RewriteResult =
   | { readonly rewritten: SubagentBrief; readonly truncatedDecisions: number }
@@ -7,6 +8,12 @@ export type RewriteResult =
 const CHARS_PER_TOKEN = 4;
 
 export class SubagentBriefRewriter {
+  private readonly emitter?: BehaviorEventEmitter;
+
+  constructor(emitter?: BehaviorEventEmitter) {
+    this.emitter = emitter;
+  }
+
   rewrite(brief: SubagentBrief, maxTokens: number): RewriteResult {
     let current = brief;
     let truncatedCount = 0;
@@ -36,11 +43,23 @@ export class SubagentBriefRewriter {
     const finalTokens = estimateTokens(current);
 
     if (finalTokens > maxTokens) {
+      this.emitter?.emitSubagentBriefRejected({
+        reason: `Brief still exceeds ${maxTokens} tokens (${finalTokens}) after removing all optional content`,
+        estimatedTokens: finalTokens,
+        maxTokens,
+      });
       return {
         rejected: true,
         reason: `Brief still exceeds ${maxTokens} tokens (${finalTokens}) after removing all optional content`,
       };
     }
+
+    this.emitter?.emitSubagentBriefRewritten({
+      truncatedDecisions: truncatedCount,
+      tokensBefore: estimateTokens(brief),
+      tokensAfter: finalTokens,
+      maxTokens,
+    });
 
     return {
       rewritten: {

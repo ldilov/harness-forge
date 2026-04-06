@@ -1,5 +1,6 @@
 import path from "node:path";
 import { Command } from "commander";
+import { setWorkspaceRoot } from '../cli-emitter.js';
 
 import { initializeWorkspace } from "../../application/install/initialize-workspace.js";
 import { appendEffectivenessSignal } from "../../infrastructure/observability/local-metrics-store.js";
@@ -32,6 +33,7 @@ export function registerInitCommands(program: Command): void {
     .option("--json", "json output", false)
     .action(async (options) => {
       const workspaceRoot = path.resolve(options.root);
+      setWorkspaceRoot(workspaceRoot);
       const capabilities = detectTerminalCapabilities();
       const setupProfile = options.setupProfile as SetupProfileId;
       const defaultModules = getSetupProfileDescriptor(setupProfile).defaultModules;

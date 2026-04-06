@@ -1,4 +1,5 @@
 import { type HistoryExpansionPolicy } from '@domain/behavior/history-expansion-policy.js';
+import type { BehaviorEventEmitter } from './behavior-event-emitter.js';
 
 export interface ExpansionRequest {
   readonly reason: string;
@@ -16,9 +17,11 @@ export interface ExpansionResult {
 
 export class HistoryExpansionGate {
   private readonly policy: HistoryExpansionPolicy;
+  private readonly emitter?: BehaviorEventEmitter;
 
-  constructor(policy: HistoryExpansionPolicy) {
+  constructor(policy: HistoryExpansionPolicy, emitter?: BehaviorEventEmitter) {
     this.policy = policy;
+    this.emitter = emitter;
   }
 
   evaluate(request: ExpansionRequest): ExpansionResult {
@@ -26,6 +29,10 @@ export class HistoryExpansionGate {
       request.overrideFlag &&
       this.policy.overrideConditions.includes(request.overrideFlag)
     ) {
+      this.emitter?.emitHistoryExpansion({
+        reason: `Override: ${request.overrideFlag}`,
+        overrideFlag: request.overrideFlag,
+      });
       return {
         allowed: true,
         eventType: 'history.expansion.requested',
@@ -34,6 +41,9 @@ export class HistoryExpansionGate {
     }
 
     if (this.policy.defaultAction === 'allow') {
+      this.emitter?.emitHistoryExpansion({
+        reason: 'Default policy: allow',
+      });
       return {
         allowed: true,
         eventType: 'history.expansion.requested',
@@ -41,10 +51,15 @@ export class HistoryExpansionGate {
       };
     }
 
+    const denialReason = `Denied: no valid override. Reason: ${request.reason}`;
+    this.emitter?.emitHistoryExpansionDenied({
+      reason: denialReason,
+      requestedReason: request.reason,
+    });
     return {
       allowed: false,
       eventType: 'history.expansion.denied',
-      reason: `Denied: no valid override. Reason: ${request.reason}`,
+      reason: denialReason,
     };
   }
 }

@@ -1,5 +1,6 @@
 import path from "node:path";
 import { Command } from "commander";
+import { cliEmitter, setWorkspaceRoot } from '../cli-emitter.js';
 
 import { CompactionService } from "../../application/compaction/compaction-service.js";
 import { EventReader } from "../../infrastructure/events/event-reader.js";
@@ -15,6 +16,7 @@ export function registerCompactCommands(program: Command): void {
     .option("--json", "json output", false)
     .action(async (options) => {
       const workspaceRoot = path.resolve(options.root);
+      setWorkspaceRoot(workspaceRoot);
       const level = options.level as string;
 
       const validLevels = ["trim", "summarize", "rollup", "rollover"];
@@ -44,6 +46,7 @@ export function registerCompactCommands(program: Command): void {
 
       const service = new CompactionService(
         path.join(workspaceRoot, ".hforge/runtime/context"),
+        cliEmitter,
       );
 
       try {

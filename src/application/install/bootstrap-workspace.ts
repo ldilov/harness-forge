@@ -1,4 +1,5 @@
 import { StartupFileGenerator } from "../behavior/startup-file-generator.js";
+import type { BehaviorEventEmitter } from "../behavior/behavior-event-emitter.js";
 import { applyInstall } from "./apply-install.js";
 import { createInstallPlan } from "./plan-install.js";
 import { discoverWorkspaceTargets, type DiscoveredWorkspaceTarget } from "./discover-workspace-targets.js";
@@ -20,6 +21,7 @@ interface BootstrapWorkspaceOptions {
   frameworkIds?: string[];
   capabilityIds?: string[];
   mode: "apply" | "dry-run";
+  emitter?: BehaviorEventEmitter;
 }
 
 export interface BootstrapWorkspacePlan {
@@ -83,7 +85,7 @@ function splitBundleIds(bundleIds: string[]): {
 }
 
 export async function planBootstrapWorkspace(options: BootstrapWorkspaceOptions): Promise<BootstrapWorkspacePlan> {
-  const discoveredTargets = await discoverWorkspaceTargets(options.workspaceRoot);
+  const discoveredTargets = await discoverWorkspaceTargets(options.workspaceRoot, options.emitter);
   const targetIds = unique(options.targetIds?.length ? options.targetIds : discoveredTargets.map((target) => target.targetId));
   const [bundles, profiles, lightweightRecommendations, intelligence] = await Promise.all([
     loadBundleManifests(options.packageRoot),
@@ -156,7 +158,7 @@ export async function bootstrapWorkspace(options: BootstrapWorkspaceOptions): Pr
 
   if (options.mode === "apply") {
     for (const targetPlan of plan.plans) {
-      const result = await applyInstall(options.workspaceRoot, targetPlan);
+      const result = await applyInstall(options.workspaceRoot, targetPlan, undefined, options.emitter);
       applied.push({
         targetId: targetPlan.selection.targetId,
         messages: result.messages,
@@ -165,7 +167,7 @@ export async function bootstrapWorkspace(options: BootstrapWorkspaceOptions): Pr
     }
 
     // Generate behavior promotion startup files
-    const startupGenerator = new StartupFileGenerator(options.workspaceRoot);
+    const startupGenerator = new StartupFileGenerator(options.workspaceRoot, options.emitter);
     await startupGenerator.generate();
 
     const state = await loadInstallState(options.workspaceRoot);

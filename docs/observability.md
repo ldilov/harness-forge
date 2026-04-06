@@ -1,44 +1,100 @@
 # Observability
 
-Observability in Harness Forge is local-first and diagnostic. It is meant to
-help operators understand whether recommendations, maintenance commands, and
-flow recovery are actually working without sending data to an external service.
+Harness Forge keeps track of what it does — locally, on your machine, with no data sent anywhere. This helps you understand whether the harness is actually helping and spot issues early.
 
-## Signals worth tracking
+> [!NOTE]
+> Everything stays in `.hforge/observability/` inside your project. You can inspect, delete, or back up these files anytime.
 
-- bundle use
-- skill use
-- hook runs
-- validation failures
-- recommendation acceptance
-- target mix
-- flow recovery checks
-- maintenance command usage
+---
 
-## Runtime surfaces
+## Quick Start
 
-- `.hforge/observability/effectiveness-signals.json`
-- `.hforge/observability/summary.json`
-- `.hforge/state/install-state.json`
-- `.hforge/runtime/index.json`
-- `node scripts/runtime/report-effectiveness.mjs --json`
-- `hforge observability summarize --json`
-- `hforge observability report . --json`
-- `hforge recommend <repo> --json`
-- `hforge flow status --json`
-- `hforge review --root <repo> --json`
+```bash
+# See a summary of what the harness has been doing
+hforge observability summarize --json
 
-## Design constraints
+# Open the real-time dashboard in your browser
+hforge dashboard
+```
 
-- no external service is required
-- payloads must stay actionable without backend aggregation
-- privacy-sensitive workspaces should be able to inspect or remove local signal
-  files directly
+---
 
-## What a healthy signal stream looks like
+## What Gets Tracked
 
-- recommendation runs record accepted or rejected outcomes
-- `doctor` and `audit` runs leave a visible trace
-- `init` and `refresh` runs update the visible runtime version metadata
-- flow recovery records the active feature and stage
-- signal summaries can be inspected locally before release or handoff
+### Behavior Events (23 types)
+
+Every decision the harness makes — compaction, budget warnings, subagent briefs, memory rotation — is recorded as a structured event.
+
+See the full list: **[Event Taxonomy](./observability/event-taxonomy.md)**
+
+### Effectiveness Signals
+
+Higher-level signals about whether recommendations were accepted, how often maintenance commands run, and whether the setup is healthy.
+
+---
+
+## How to See What's Happening
+
+### Option 1: Real-Time Dashboard
+
+```bash
+hforge dashboard
+```
+
+Opens a browser with live charts, event feed, and status indicators. See **[Dashboard Guide](./dashboard.md)** for details.
+
+### Option 2: Command Line
+
+```bash
+# Summary of effectiveness signals
+hforge observability summarize --json
+
+# Full report
+hforge observability report . --json
+
+# Effectiveness signal report (report-effectiveness)
+hforge observability report-effectiveness --json
+
+# Compare signals over time
+hforge observability summarize --compare-since 2026-04-01T00:00:00Z --json
+```
+
+### Option 3: Read the Files Directly
+
+```bash
+# Raw event stream
+cat .hforge/observability/events.json | python -m json.tool
+
+# Effectiveness summary
+cat .hforge/observability/summary.json | python -m json.tool
+```
+
+---
+
+## Files
+
+| File | What's in it |
+|------|-------------|
+| `.hforge/observability/events.json` | All behavior events (append-only JSON array) |
+| `.hforge/observability/summary.json` | Aggregated effectiveness metrics |
+| `.hforge/state/install-state.json` | What was installed and when |
+| `.hforge/runtime/context-budget.json` | Current token budget state |
+
+---
+
+## Design Principles
+
+- **No external services** — everything stays on your machine
+- **No opt-in required** — tracking happens automatically
+- **Inspectable** — all data is plain JSON you can read
+- **Deletable** — remove any file and the harness keeps working
+- **Streamable** — the dashboard consumes events via WebSocket for real-time visibility
+
+---
+
+## Related Docs
+
+- [Dashboard Guide](./dashboard.md) — real-time browser dashboard
+- [Event Taxonomy](./observability/event-taxonomy.md) — all 23 event types with payloads
+- [Benchmark Authoring](./observability/benchmark-authoring.md) — writing benchmark expectations
+- [Eval Model](./observability/eval-model.md) — evaluation framework

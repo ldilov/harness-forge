@@ -5,8 +5,8 @@ describe('BEHAVIOR_EVENT_TYPES contract', () => {
   const allValues = Object.values(BEHAVIOR_EVENT_TYPES);
   const allKeys = Object.keys(BEHAVIOR_EVENT_TYPES);
 
-  it('contains exactly 22 event type constants', () => {
-    expect(allKeys).toHaveLength(22);
+  it('contains exactly 37 event type constants', () => {
+    expect(allKeys).toHaveLength(37);
   });
 
   it('all values are unique strings', () => {
@@ -122,7 +122,105 @@ describe('BEHAVIOR_EVENT_TYPES contract', () => {
     });
   });
 
-  it('category counts sum to total (8 + 5 + 5 + 1 + 1 + 2 = 22)', () => {
-    expect(8 + 5 + 5 + 1 + 1 + 2).toBe(allKeys.length);
+  describe('discovery category (3 events)', () => {
+    const discoveryKeys = [
+      'WORKSPACE_DISCOVERY_COMPLETED',
+      'WORKSPACE_DIAGNOSIS_COMPLETED',
+      'RECOMMENDATION_GENERATED',
+    ] as const;
+
+    it('has all 3 discovery event types', () => {
+      for (const key of discoveryKeys) {
+        expect(BEHAVIOR_EVENT_TYPES).toHaveProperty(key);
+      }
+    });
+
+    it('discovery event values follow dotted naming convention', () => {
+      for (const key of discoveryKeys) {
+        const value = BEHAVIOR_EVENT_TYPES[key];
+        expect(value).toMatch(/^(workspace|recommendation)\.\w+(\.\w+)?$/);
+      }
+    });
+  });
+
+  describe('install category (4 events)', () => {
+    const installKeys = [
+      'INSTALL_PLAN_CREATED',
+      'INSTALL_OPERATION_APPLIED',
+      'INSTALL_COMPLETED',
+      'INSTALL_VALIDATION_COMPLETED',
+    ] as const;
+
+    it('has all 4 install event types', () => {
+      for (const key of installKeys) {
+        expect(BEHAVIOR_EVENT_TYPES).toHaveProperty(key);
+      }
+    });
+
+    it('install event values are prefixed with install.', () => {
+      for (const key of installKeys) {
+        const value = BEHAVIOR_EVENT_TYPES[key];
+        expect(value).toMatch(/^install\.\w+(\.\w+)?$/);
+      }
+    });
+  });
+
+  describe('compaction extension category (3 events)', () => {
+    const compactionExtKeys = [
+      'COMPACTION_STRATEGY_SELECTED',
+      'COMPACTION_VALIDATION_COMPLETED',
+      'MEMORY_ROTATION_FAILED',
+    ] as const;
+
+    it('has all 3 compaction extension event types', () => {
+      for (const key of compactionExtKeys) {
+        expect(BEHAVIOR_EVENT_TYPES).toHaveProperty(key);
+      }
+    });
+  });
+
+  describe('command lifecycle category (3 events)', () => {
+    const commandKeys = [
+      'COMMAND_STARTED',
+      'COMMAND_COMPLETED',
+      'COMMAND_FAILED',
+    ] as const;
+
+    it('has all 3 command lifecycle event types', () => {
+      for (const key of commandKeys) {
+        expect(BEHAVIOR_EVENT_TYPES).toHaveProperty(key);
+      }
+    });
+
+    it('command event values are prefixed with command.', () => {
+      for (const key of commandKeys) {
+        const value = BEHAVIOR_EVENT_TYPES[key];
+        expect(value).toMatch(/^command\.\w+$/);
+      }
+    });
+  });
+
+  describe('session lifecycle category (2 events)', () => {
+    const sessionKeys = [
+      'SESSION_STARTED',
+      'SESSION_ENDED',
+    ] as const;
+
+    it('has all 2 session lifecycle event types', () => {
+      for (const key of sessionKeys) {
+        expect(BEHAVIOR_EVENT_TYPES).toHaveProperty(key);
+      }
+    });
+
+    it('session event values are prefixed with session.', () => {
+      for (const key of sessionKeys) {
+        const value = BEHAVIOR_EVENT_TYPES[key];
+        expect(value).toMatch(/^session\.\w+$/);
+      }
+    });
+  });
+
+  it('category counts sum to total (8 + 5 + 5 + 1 + 1 + 2 + 3 + 4 + 3 + 3 + 2 = 37)', () => {
+    expect(8 + 5 + 5 + 1 + 1 + 2 + 3 + 4 + 3 + 3 + 2).toBe(allKeys.length);
   });
 });

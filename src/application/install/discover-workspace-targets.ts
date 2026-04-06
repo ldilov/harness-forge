@@ -1,6 +1,7 @@
 import path from "node:path";
 
 import { exists } from "../../shared/index.js";
+import type { BehaviorEventEmitter } from "../behavior/behavior-event-emitter.js";
 
 export interface DiscoveredWorkspaceTarget {
   targetId: string;
@@ -18,7 +19,7 @@ async function collectExistingPaths(root: string, candidates: string[]): Promise
   return values.filter((value): value is string => value !== null);
 }
 
-export async function discoverWorkspaceTargets(root: string): Promise<DiscoveredWorkspaceTarget[]> {
+export async function discoverWorkspaceTargets(root: string, emitter?: BehaviorEventEmitter): Promise<DiscoveredWorkspaceTarget[]> {
   const detectors: Array<{
     targetId: string;
     candidates: string[];
@@ -68,10 +69,16 @@ export async function discoverWorkspaceTargets(root: string): Promise<Discovered
   }
 
   if (discovered.length > 0) {
+    emitter?.emitWorkspaceDiscoveryCompleted({
+      targetsFound: discovered.map((d) => d.targetId),
+      confidence: Object.fromEntries(discovered.map((d) => [d.targetId, d.confidence])),
+      evidence: discovered.flatMap((d) => d.evidence),
+      detectedCount: discovered.length,
+    });
     return discovered;
   }
 
-  return [
+  const fallback: DiscoveredWorkspaceTarget[] = [
     {
       targetId: "codex",
       confidence: 0.51,
@@ -80,4 +87,14 @@ export async function discoverWorkspaceTargets(root: string): Promise<Discovered
       source: "fallback"
     }
   ];
+
+  emitter?.emitWorkspaceDiscoveryCompleted({
+    targetsFound: ["codex"],
+    confidence: { codex: 0.51 },
+    evidence: [],
+    detectedCount: 0,
+    usedFallback: true,
+  });
+
+  return fallback;
 }

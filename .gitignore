@@ -19,3 +19,6 @@ Thumbs.db
 specs/
 LICENSE.md
 harness-forge.zip
+src/dashboard/node_modules/
+src/dashboard/dist/
+src/dashboard/embedded/dashboard.html

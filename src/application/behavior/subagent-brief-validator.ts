@@ -1,5 +1,6 @@
 import { type SubagentBrief } from '@domain/behavior/subagent-brief.js';
 import { type SubagentBriefPolicy } from '@domain/behavior/subagent-brief-policy.js';
+import type { BehaviorEventEmitter } from './behavior-event-emitter.js';
 
 export interface BriefValidationResult {
   readonly valid: boolean;
@@ -18,6 +19,12 @@ const BRIEF_CONTENT_FIELDS = [
 ] as const;
 
 export class SubagentBriefValidator {
+  private readonly emitter?: BehaviorEventEmitter;
+
+  constructor(emitter?: BehaviorEventEmitter) {
+    this.emitter = emitter;
+  }
+
   validate(
     brief: SubagentBrief,
     policy: SubagentBriefPolicy,
@@ -46,9 +53,18 @@ export class SubagentBriefValidator {
       );
     }
 
-    return {
+    const result = {
       valid: violations.length === 0,
       violations,
     };
+
+    if (!result.valid) {
+      this.emitter?.emitSubagentBriefRejected({
+        reason: violations.join('; '),
+        violationCount: violations.length,
+      });
+    }
+
+    return result;
   }
 }

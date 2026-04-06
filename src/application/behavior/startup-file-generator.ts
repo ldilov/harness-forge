@@ -18,6 +18,7 @@ import {
   RUNTIME_CONTEXT_BUDGET_FILE,
 } from '@shared/constants.js';
 import { writeJsonFile, writeTextFile } from '@shared/fs.js';
+import type { BehaviorEventEmitter } from './behavior-event-emitter.js';
 
 const MEMORY_MD_TEMPLATE = `# Memory
 
@@ -59,12 +60,19 @@ export interface GeneratedFile {
 
 export class StartupFileGenerator {
   private readonly workspaceRoot: string;
+  private readonly emitter?: BehaviorEventEmitter;
 
-  constructor(workspaceRoot: string) {
+  constructor(workspaceRoot: string, emitter?: BehaviorEventEmitter) {
     this.workspaceRoot = workspaceRoot;
+    this.emitter = emitter;
   }
 
   async generate(): Promise<readonly GeneratedFile[]> {
+    const startTime = Date.now();
+    this.emitter?.emitContextLoadStarted({
+      workspaceRoot: this.workspaceRoot,
+    });
+
     const generated: GeneratedFile[] = [];
 
     const files = [
@@ -85,6 +93,18 @@ export class StartupFileGenerator {
       await fn();
       generated.push({ relativePath: rel, absolutePath: abs });
     }
+
+    this.emitter?.emitStartupFilesGenerated({
+      filesGenerated: generated.length,
+      paths: generated.map((f) => f.relativePath),
+      durationMs: Date.now() - startTime,
+    });
+
+    this.emitter?.emitContextLoad({
+      sourcesLoaded: generated.length,
+      durationMs: Date.now() - startTime,
+      loadOrder: generated.map((f) => f.relativePath),
+    });
 
     return generated;
   }

@@ -1,3 +1,5 @@
+import type { BehaviorEventEmitter } from './behavior-event-emitter.js';
+
 /**
  * Resolves the output profile for a given execution context.
  * Implements AC-6: Output Profile Defaulting.
@@ -24,8 +26,19 @@ export class OutputProfileResolver {
     review_export: 'deep',
   } as const;
 
+  private readonly emitter?: BehaviorEventEmitter;
+
+  constructor(emitter?: BehaviorEventEmitter) {
+    this.emitter = emitter;
+  }
+
   resolve(context: ExecutionContext, explicitOverride?: OutputProfile): ProfileResolution {
     if (explicitOverride) {
+      this.emitter?.emitResponseProfileOverridden({
+        profile: explicitOverride,
+        context,
+        reason: 'explicit_override',
+      });
       return {
         profile: explicitOverride,
         source: 'explicit_override',
@@ -33,8 +46,14 @@ export class OutputProfileResolver {
       };
     }
 
+    const profile = OutputProfileResolver.DEFAULTS[context];
+    this.emitter?.emitResponseProfile({
+      profile,
+      source: 'default',
+      context,
+    });
     return {
-      profile: OutputProfileResolver.DEFAULTS[context],
+      profile,
       source: 'default',
       context,
     };
