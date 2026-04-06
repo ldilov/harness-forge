@@ -12,10 +12,14 @@ export class SessionRecorder {
   private compactionStrategies: string[] = [];
   private budgetExceeded = false;
   private tokensUsed = 0;
+  private tokenBudget = 200_000;
   private subagentsSpawned = 0;
   private duplicatesSuppressed = 0;
   private commandsRun: string[] = [];
   private errorsEncountered = 0;
+  private retries = 0;
+  private userCorrections = 0;
+  private completed = true;
   private startedAt = '';
   private endedAt = '';
 
@@ -44,6 +48,13 @@ export class SessionRecorder {
 
     if (eventType === 'context.budget.exceeded') {
       this.budgetExceeded = true;
+      this.completed = false;
+      const budgetState = payload.budgetState as
+        { estimatedTokens: number; hardCap: number } | undefined;
+      if (budgetState) {
+        this.tokensUsed = budgetState.estimatedTokens;
+        this.tokenBudget = budgetState.hardCap;
+      }
     }
 
     if (eventType === 'context.budget.warning') {
@@ -51,6 +62,7 @@ export class SessionRecorder {
         { estimatedTokens: number; hardCap: number } | undefined;
       if (budgetState) {
         this.tokensUsed = budgetState.estimatedTokens;
+        this.tokenBudget = budgetState.hardCap;
       }
     }
 
@@ -105,6 +117,10 @@ export class SessionRecorder {
       compactionStrategies: [...this.compactionStrategies],
       budgetExceeded: this.budgetExceeded,
       tokensUsed: this.tokensUsed,
+      tokenBudget: this.tokenBudget,
+      completed: this.completed,
+      retries: this.retries,
+      userCorrections: this.userCorrections,
       subagentsSpawned: this.subagentsSpawned,
       duplicatesSuppressed: this.duplicatesSuppressed,
       commandsRun: [...this.commandsRun],

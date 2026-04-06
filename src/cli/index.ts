@@ -39,7 +39,7 @@ import { formatCliError } from "../infrastructure/diagnostics/reporter.js";
 import { PACKAGE_ROOT } from "../shared/index.js";
 import { PHASE_LABELS, PHASE_ORDER, resolveCommandPhase, type CommandPhaseId } from "../application/runtime/command-phase-mapping.js";
 import { runDefaultInteractiveEntry } from "./interactive/entry-router.js";
-import { cliEmitter, cliSessionId } from "./cli-emitter.js";
+import { cliEmitter, cliSessionId, initSessionRecorder, finalizeSessionTrace } from "./cli-emitter.js";
 
 const program = new Command();
 const packageJson = JSON.parse(fs.readFileSync(path.join(PACKAGE_ROOT, "package.json"), "utf8")) as {
@@ -123,6 +123,16 @@ program.addHelpText("after", () => {
   return lines.join("\n");
 });
 
+function detectTarget(workspaceRoot: string): string {
+  if (fs.existsSync(path.join(workspaceRoot, '.codex'))) {
+    return 'codex';
+  }
+  if (fs.existsSync(path.join(workspaceRoot, '.claude'))) {
+    return 'claude-code';
+  }
+  return 'unknown';
+}
+
 /** Re-export for backward compatibility */
 export { cliEmitter } from './cli-emitter.js';
 export { setWorkspaceRoot } from './cli-emitter.js';
@@ -139,9 +149,14 @@ async function main(): Promise<void> {
     nodeVersion: process.version,
   });
 
+  const target = detectTarget(process.cwd());
+  const repoName = path.basename(process.cwd());
+  initSessionRecorder(cliSessionId, target, repoName);
+
   if (args.length === 0) {
     const handled = await runDefaultInteractiveEntry(args, process.cwd());
     if (handled) {
+      await finalizeSessionTrace();
       cliEmitter.emitSessionEnded({
         sessionId: cliSessionId,
         totalDurationMs: Date.now() - commandStartTime,
@@ -179,6 +194,7 @@ async function main(): Promise<void> {
     throw error;
   }
 
+  await finalizeSessionTrace();
   cliEmitter.emitSessionEnded({
     sessionId: cliSessionId,
     totalDurationMs: Date.now() - commandStartTime,
