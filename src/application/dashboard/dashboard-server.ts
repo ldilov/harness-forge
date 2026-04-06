@@ -17,7 +17,7 @@ import {
 import { SignalBroadcaster } from './signal-broadcaster.js';
 import { SignalAggregator } from './signal-aggregator.js';
 import { SessionStore } from './session-store.js';
-import { listProjects, registerProject, type RegisteredProject } from './project-registry.js';
+import { listProjects, registerProject } from './project-registry.js';
 import type { BehaviorEvent } from '@app/behavior/behavior-event-emitter.js';
 import type { SignalMessage } from '@domain/dashboard/signal-types.js';
 import { MemoryPolicySchema } from '@domain/behavior/memory-policy.js';
@@ -97,7 +97,6 @@ export class DashboardServer {
     this.server.on('upgrade', (req: http.IncomingMessage, socket: net.Socket, head: Buffer) => {
       const url = new URL(req.url ?? '/', `http://${this.host}:${this.port}`);
       if (url.pathname === DASHBOARD_WS_PATH) {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
         const reqUrl = req.url;
         this.wss.handleUpgrade(req, socket, head, (ws: unknown) => {
           void this.handleWebSocketConnection(ws as import('ws').WebSocket, reqUrl);

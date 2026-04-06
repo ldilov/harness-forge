@@ -1,4 +1,3 @@
-import type { CSSProperties } from 'react';
 import { colors } from '../styles/theme';
 
 interface GaugeProps {

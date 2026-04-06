@@ -59,19 +59,6 @@ const titleStyle: CSSProperties = {
   letterSpacing: '0.05em',
 };
 
-const projectBadgeStyle: CSSProperties = {
-  display: 'inline-flex',
-  alignItems: 'center',
-  gap: 8,
-  padding: '4px 12px',
-  background: `${colors.accent.magenta}15`,
-  border: `1px solid ${colors.accent.magenta}40`,
-  borderRadius: 6,
-  fontSize: 12,
-  color: colors.accent.magenta,
-  cursor: 'pointer',
-  marginLeft: 12,
-};
 
 const headerRightStyle: CSSProperties = {
   display: 'flex',

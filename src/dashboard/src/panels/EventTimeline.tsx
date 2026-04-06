@@ -6,7 +6,7 @@ import { GridComponent, TooltipComponent, DataZoomComponent } from 'echarts/comp
 import { CanvasRenderer } from 'echarts/renderers';
 import { Panel } from '../components/Panel';
 import type { DashboardEvent } from '../state/types';
-import { colors, getCategoryColor, getCategoryFromEventType } from '../styles/theme';
+import { colors, getCategoryColor } from '../styles/theme';
 import { useDashboardContext } from '../state/DashboardContext';
 
 echarts.use([ScatterChart, GridComponent, TooltipComponent, DataZoomComponent, CanvasRenderer]);

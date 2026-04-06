@@ -1,4 +1,4 @@
-import { useEffect, useRef, useCallback, type Dispatch } from 'react';
+import { useEffect, useRef, type Dispatch } from 'react';
 import type { DashboardAction, SignalMessage, ProjectInfo } from '../state/types';
 import { getPersistedLastSequenceId } from './useSessionPersistence';
 

@@ -66,7 +66,6 @@ export function CommandWaterfall({ events }: CommandWaterfallProps) {
       }
     }
 
-    const now = Date.now();
     for (const [cmd, startEvt] of starts) {
       result.push({
         command: cmd,

@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, type CSSProperties, type Dispatch } from 'react';
 import type { DashboardAction, ProjectInfo } from '../state/types';
-import { colors, radius, spacing } from '../styles/theme';
+import { colors, radius } from '../styles/theme';
 
 interface ProjectSwitcherProps {
   readonly activeProject: ProjectInfo;
