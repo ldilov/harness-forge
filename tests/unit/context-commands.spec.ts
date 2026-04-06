@@ -27,7 +27,7 @@ describe('context CLI integration', () => {
   });
 
   it('memory.md exists and contains expected sections', async () => {
-    const memoryPath = path.join(tmpDir, 'memory.md');
+    const memoryPath = path.join(tmpDir, 'MEMORY.md');
     const content = await fs.readFile(memoryPath, 'utf8');
     expect(content).toContain('## Current Objective');
     expect(content).toContain('## Canonical References');
@@ -43,7 +43,7 @@ describe('context CLI integration', () => {
 
   it('context status can detect memory exceeding budget', async () => {
     // Write oversized memory
-    const memoryPath = path.join(tmpDir, 'memory.md');
+    const memoryPath = path.join(tmpDir, 'MEMORY.md');
     const bigContent = 'word '.repeat(5000);
     await fs.writeFile(memoryPath, bigContent, 'utf8');
 

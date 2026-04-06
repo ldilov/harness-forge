@@ -35,7 +35,7 @@ describe('writeMemoryMd', () => {
   it('writes memory.md file to the workspace root', async () => {
     tempDir = mkdtempSync(path.join(tmpdir(), 'hf-test-'));
     await writeMemoryMd(tempDir, baseData);
-    const written = readFileSync(path.join(tempDir, 'memory.md'), 'utf-8');
+    const written = readFileSync(path.join(tempDir, 'MEMORY.md'), 'utf-8');
     expect(written).toContain('Build the feature');
   });
 

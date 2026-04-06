@@ -18,7 +18,7 @@ describe('rotateMemory', () => {
   });
 
   it('triggers rotation when memory.md exceeds the token cap', async () => {
-    const memoryPath = path.join(tmpDir, 'memory.md');
+    const memoryPath = path.join(tmpDir, 'MEMORY.md');
     const charBudget = SIZE_BUDGET.hardCapTokens * SIZE_BUDGET.charsPerToken;
 
     // Build a large markdown that exceeds the budget
@@ -59,7 +59,7 @@ describe('rotateMemory', () => {
   });
 
   it('produces a memory.md that trims state and decisions after rotation', async () => {
-    const memoryPath = path.join(tmpDir, 'memory.md');
+    const memoryPath = path.join(tmpDir, 'MEMORY.md');
     const charBudget = SIZE_BUDGET.hardCapTokens * SIZE_BUDGET.charsPerToken;
 
     // Create many state and decision items so trimming is visible
@@ -107,7 +107,7 @@ describe('rotateMemory', () => {
   });
 
   it('returns { archived: false } when content is within budget', async () => {
-    const memoryPath = path.join(tmpDir, 'memory.md');
+    const memoryPath = path.join(tmpDir, 'MEMORY.md');
     const smallContent = [
       '# Session Memory',
       '',

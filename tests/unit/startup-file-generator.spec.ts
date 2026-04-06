@@ -35,7 +35,7 @@ describe('StartupFileGenerator', () => {
     const gen = new StartupFileGenerator(tmpDir);
     await gen.generate();
 
-    const content = await fs.readFile(path.join(tmpDir, 'memory.md'), 'utf8');
+    const content = await fs.readFile(path.join(tmpDir, 'MEMORY.md'), 'utf8');
     expect(content).toContain('## Current Objective');
     expect(content).toContain('## Accepted Decisions');
     expect(content).toContain('## Canonical References');

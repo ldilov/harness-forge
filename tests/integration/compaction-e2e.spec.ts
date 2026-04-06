@@ -134,7 +134,7 @@ describe('compaction end-to-end pipeline', () => {
       '- output.json',
     ].join('\n');
 
-    await fs.writeFile(path.join(tmpDir, 'memory.md'), largeMemory, 'utf-8');
+    await fs.writeFile(path.join(tmpDir, 'MEMORY.md'), largeMemory, 'utf-8');
 
     const runtimePath = path.join(tmpDir, '.hforge/runtime');
     const rotationResult = await rotateMemory(tmpDir, runtimePath);
