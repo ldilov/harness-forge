@@ -10,20 +10,8 @@
   One command to scan, equip, and continuously improve any AI coding agent in your repository.
 </p>
 
-<!-- HERO: Replace with animated terminal GIF when available -->
 <p align="center">
-
-```
-  $ npx @harness-forge/cli
-
-  🔍 Scanning my-app... TypeScript + React + Express
-  🧠 Recommending: codex + claude-code, advanced profile
-  📦 Installing 12 skills, 3 rule packs, 2 knowledge packs...
-  📊 Dashboard ready at http://localhost:4580
-  🔄 Living Loop: active — will self-improve after 5 sessions
-  ✅ Done in 8s
-```
-
+  <img src="./assets/demo.gif" alt="Harness Forge demo" width="700" />
 </p>
 
 <p align="center">
