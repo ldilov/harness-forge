@@ -195,6 +195,15 @@ export const RUNTIME_SESSION_SUMMARY_FILE = "session-summary.json";
 export const RUNTIME_ACTIVE_CONTEXT_FILE = "active-context.json";
 export const RUNTIME_CONTEXT_BUDGET_FILE = "context-budget.json";
 
+// Living Loop constants
+export const RUNTIME_INSIGHTS_DIR = "insights";
+export const RUNTIME_PATTERNS_FILE = "patterns.json";
+export const RUNTIME_INSIGHTS_CHANGELOG_FILE = "changelog.ndjson";
+export const RUNTIME_INSIGHTS_RECOMMENDATIONS_FILE = "recommendations.json";
+export const LOOP_CONFIDENCE_OBSERVE = 0.5;
+export const LOOP_CONFIDENCE_SUGGEST = 0.7;
+export const LOOP_PATTERN_EXTRACT_INTERVAL = 5;
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
