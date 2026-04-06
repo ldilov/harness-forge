@@ -12,6 +12,10 @@ const PREFIXES = {
   decision: 'dec_',
   manifest: 'mfst_',
   brief: 'brf_',
+  trace: 'trc_',
+  pattern: 'pat_',
+  tuning: 'tun_',
+  bundle: 'bnd_',
 } as const;
 
 export type IdPrefix = keyof typeof PREFIXES;
