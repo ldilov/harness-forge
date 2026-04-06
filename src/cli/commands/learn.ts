@@ -115,7 +115,7 @@ export function registerLearnCommands(program: Command): void {
         console.log("  " + "-".repeat(55));
         for (const s of scores) {
           const shortId = s.sessionId.slice(0, 20).padEnd(20);
-          const date = s.recordedAt.slice(0, 10);
+          const date = s.scoredAt.slice(0, 10);
           console.log(`  ${shortId}  ${s.score.toFixed(2).padStart(5)}  ${date}`);
         }
       } catch (error: unknown) {
@@ -156,14 +156,12 @@ export function registerLearnCommands(program: Command): void {
 
         console.log("Session traces (most recent first):\n");
         for (const t of traces) {
-          const durationSec = (t.durationMs / 1000).toFixed(1);
-          const scoreStr = t.score !== undefined ? t.score.toFixed(2) : "n/a";
+          const durationSec = t.durationSeconds.toFixed(1);
           console.log(`  Session:     ${t.sessionId}`);
           console.log(`  Started:     ${t.startedAt}`);
           console.log(`  Duration:    ${durationSec}s`);
-          console.log(`  Tokens:      ${t.tokenCount}`);
-          console.log(`  Compactions: ${t.compactions}`);
-          console.log(`  Score:       ${scoreStr}`);
+          console.log(`  Tokens:      ${t.metrics.tokensUsed}`);
+          console.log(`  Compactions: ${t.metrics.compactionsTriggered}`);
           console.log("");
         }
       } catch (error: unknown) {

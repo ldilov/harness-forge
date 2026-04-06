@@ -36,15 +36,14 @@ export const COMMAND_PHASE_MAP: Record<string, PhaseMapping> = {
   "observability": { phase: "maintain", primaryInPhase: false },
   "prune": { phase: "maintain", primaryInPhase: false },
   "sync": { phase: "maintain", primaryInPhase: false },
-<<<<<<< HEAD
   "learn": { phase: "maintain", primaryInPhase: false },
   "insights": { phase: "maintain", primaryInPhase: false },
   "score": { phase: "maintain", primaryInPhase: false },
   "trace": { phase: "maintain", primaryInPhase: false },
-=======
+  "adapt": { phase: "maintain", primaryInPhase: false },
+  "loop": { phase: "maintain", primaryInPhase: false },
   "import": { phase: "maintain", primaryInPhase: false },
   "share": { phase: "maintain", primaryInPhase: false },
->>>>>>> worktree-agent-a6d6dfb3
 
   // Advanced
   "catalog": { phase: "advanced", primaryInPhase: false },
