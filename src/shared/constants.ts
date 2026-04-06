@@ -202,6 +202,21 @@ export const DASHBOARD_EMBEDDED_HTML_PATH = "dashboard/embedded/dashboard.html";
 export const DASHBOARD_WS_PATH = "/ws";
 export const DASHBOARD_HEARTBEAT_INTERVAL_MS = 15_000;
 
+// Living Loop
+export const RUNTIME_TRACES_DIR = "traces";
+export const RUNTIME_INSIGHTS_DIR = "insights";
+export const RUNTIME_EFFECTIVENESS_LEDGER_FILE = "effectiveness-ledger.ndjson";
+export const RUNTIME_PATTERNS_FILE = "patterns.json";
+export const RUNTIME_INSIGHTS_RECOMMENDATIONS_FILE = "recommendations.json";
+export const RUNTIME_INSIGHTS_CHANGELOG_FILE = "changelog.ndjson";
+export const RUNTIME_TUNING_LOG_FILE = "tuning-log.ndjson";
+export const RUNTIME_MERGE_LOG_FILE = "merge-log.ndjson";
+export const LOOP_PATTERN_EXTRACT_INTERVAL = 5;
+export const LOOP_CONFIDENCE_OBSERVE = 0.5;
+export const LOOP_CONFIDENCE_SUGGEST = 0.7;
+export const LOOP_ROLLBACK_WINDOW = 3;
+export const BUNDLE_FILE_EXTENSION = ".hfb";
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
