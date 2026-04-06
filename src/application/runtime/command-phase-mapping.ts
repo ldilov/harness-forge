@@ -36,6 +36,10 @@ export const COMMAND_PHASE_MAP: Record<string, PhaseMapping> = {
   "observability": { phase: "maintain", primaryInPhase: false },
   "prune": { phase: "maintain", primaryInPhase: false },
   "sync": { phase: "maintain", primaryInPhase: false },
+  "learn": { phase: "maintain", primaryInPhase: false },
+  "insights": { phase: "maintain", primaryInPhase: false },
+  "score": { phase: "maintain", primaryInPhase: false },
+  "trace": { phase: "maintain", primaryInPhase: false },
 
   // Advanced
   "catalog": { phase: "advanced", primaryInPhase: false },
