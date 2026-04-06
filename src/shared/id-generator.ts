@@ -12,6 +12,7 @@ const PREFIXES = {
   decision: 'dec_',
   manifest: 'mfst_',
   brief: 'brf_',
+  trace: 'trc_',
 } as const;
 
 export type IdPrefix = keyof typeof PREFIXES;
