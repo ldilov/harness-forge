@@ -24,10 +24,12 @@ import { promptForSetupProfile } from "./prompts/setup-profile.js";
 import { promptForTargetSelection } from "./prompts/target-selection.js";
 import type { ExecutionSummary } from "./session-state.js";
 import { detectTerminalCapabilities } from "./terminal-capabilities.js";
+import type { TerminalCapabilityProfile } from "./terminal-capabilities.js";
 import { recommendSetupDefaults } from "./default-recommendations.js";
 import type { OptionalModuleId } from "./setup-intent.js";
 import { OPTIONAL_MODULE_LABELS } from "./setup-intent.js";
 import { renderReviewSummary } from "./review-summary.js";
+import { styleBox, styleEmoji, styleKeyValue, styleProgressBar, styleTreeList } from "./renderers/text-style.js";
 
 export async function runInteractiveOnboarding(startRoot: string): Promise<ExecutionSummary> {
   const capabilities = detectTerminalCapabilities();
@@ -191,37 +193,85 @@ export async function runInteractiveOnboarding(startRoot: string): Promise<Execu
 // --- Usefulness-first onboarding steps (20260404-0200) ---
 
 export async function showDiagnosisStep(workspaceRoot: string): Promise<DiagnosisResult> {
-  console.log("Inspecting workspace...");
-  console.log("- detecting targets");
-  console.log("- checking package and language signals");
-  console.log("- loading target capability truth");
-  console.log("- building recommendation brief");
+  const caps = detectTerminalCapabilities();
+
+  // Activity tree
+  const spinnerIcon = styleEmoji("\u23F3", caps, "...");
+  console.log(`\n  ${spinnerIcon} Inspecting workspace...`);
+  console.log(styleTreeList([
+    "detecting targets",
+    "checking language signals",
+    "loading capability truth",
+    "building recommendation brief"
+  ], caps));
   console.log("");
 
   const diagnosis = await generateDiagnosis({ workspaceRoot });
 
-  console.log("Detected");
-  console.log(`- Repo type: ${diagnosis.repoType}`);
-  for (const lang of diagnosis.dominantLanguages) {
-    console.log(`- ${lang.language} (${lang.strength})`);
-  }
-  if (diagnosis.frameworkMatches.length > 0) {
-    console.log(`- Frameworks: ${diagnosis.frameworkMatches.join(", ")}`);
-  }
-  if (diagnosis.toolingSignals.length > 0) {
-    console.log(`- Tooling: ${diagnosis.toolingSignals.join(", ")}`);
-  }
-  if (diagnosis.detectedTargets.length > 0) {
-    console.log(`- Existing targets: ${diagnosis.detectedTargets.join(", ")}`);
-  }
-  console.log(`- Confidence: ${diagnosis.confidence >= 0.8 ? "High" : diagnosis.confidence >= 0.5 ? "Medium" : "Low"}`);
+  // Build detected box content
+  const boxLines = buildDiagnosisBoxLines(diagnosis, caps);
+  const titleIcon = styleEmoji("\uD83D\uDD0D", caps, "*");
+  console.log(styleBox(boxLines, caps, `${titleIcon} Detected`));
   console.log("");
 
   return diagnosis;
 }
 
+function buildDiagnosisBoxLines(diagnosis: DiagnosisResult, caps: TerminalCapabilityProfile): string[] {
+  const lines: string[] = [];
+
+  lines.push(styleKeyValue(
+    `${styleEmoji("\uD83D\uDCE6", caps, " ")} Repo type`,
+    diagnosis.repoType,
+    caps
+  ));
+
+  for (const lang of diagnosis.dominantLanguages) {
+    lines.push(styleKeyValue(
+      `${styleEmoji("\uD83D\uDFE6", caps, " ")} ${lang.language}`,
+      `${lang.strength} confidence`,
+      caps
+    ));
+  }
+
+  if (diagnosis.frameworkMatches.length > 0) {
+    lines.push(styleKeyValue(
+      `${styleEmoji("\uD83D\uDEE0\uFE0F", caps, " ")} Frameworks`,
+      diagnosis.frameworkMatches.join(", "),
+      caps
+    ));
+  }
+
+  if (diagnosis.toolingSignals.length > 0) {
+    lines.push(styleKeyValue(
+      `${styleEmoji("\uD83D\uDD27", caps, " ")} Tooling`,
+      diagnosis.toolingSignals.join(", "),
+      caps
+    ));
+  }
+
+  if (diagnosis.detectedTargets.length > 0) {
+    lines.push(styleKeyValue(
+      `${styleEmoji("\uD83C\uDFAF", caps, " ")} Targets`,
+      `${diagnosis.detectedTargets.join(", ")} (existing)`,
+      caps
+    ));
+  }
+
+  const confPercent = Math.round(diagnosis.confidence * 100);
+  const confLabel = diagnosis.confidence >= 0.8 ? "High" : diagnosis.confidence >= 0.5 ? "Medium" : "Low";
+  lines.push(styleKeyValue(
+    `${styleEmoji("\uD83D\uDCCA", caps, " ")} Confidence`,
+    `${styleProgressBar(confPercent, 10, caps)} ${confLabel}`,
+    caps
+  ));
+
+  return lines;
+}
+
 export function showRecommendationStep(brief: RecommendationBrief): void {
-  console.log(presentRecommendationBrief(brief, "full"));
+  const caps = detectTerminalCapabilities();
+  console.log(presentRecommendationBrief(brief, "full", caps));
   console.log("");
 }
 
@@ -231,16 +281,19 @@ export function showTargetDifferencesStep(comparison: TargetComparisonReport): v
 }
 
 export function showChangePlanStep(summary: ReviewSummaryV2): void {
-  console.log("What will change");
+  const caps = detectTerminalCapabilities();
+  const titleIcon = styleEmoji("\uD83D\uDCDD", caps, "*");
+  const lines: string[] = [];
   for (const change of summary.topChanges) {
-    console.log(`- ${change.description} (${change.layer})`);
+    lines.push(`${styleEmoji("\u2022", caps, "-")} ${change.description} (${change.layer})`);
   }
   if (summary.warnings.length > 0) {
-    console.log("");
-    console.log("Warnings");
+    lines.push("");
+    lines.push(`${styleEmoji("\u26A0\uFE0F", caps, "!")} Warnings`);
     for (const warning of summary.warnings) {
-      console.log(`- ${warning}`);
+      lines.push(`  ${styleEmoji("\u2022", caps, "-")} ${warning}`);
     }
   }
+  console.log(styleBox(lines, caps, `${titleIcon} What will change`));
   console.log("");
 }
