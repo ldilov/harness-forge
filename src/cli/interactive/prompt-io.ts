@@ -3,6 +3,7 @@ import { stdin as input, stdout as output } from "node:process";
 
 import { ValidationError } from "../../shared/index.js";
 import type { TerminalCapabilityProfile } from "./terminal-capabilities.js";
+import { styleBox, styleEmoji, styleMuted } from "./renderers/text-style.js";
 
 export type PromptScriptValue = string | string[] | boolean | null;
 
@@ -65,7 +66,35 @@ function normalizeChoiceOption(choice: PromptChoiceInput): PromptChoiceOption {
   return choice;
 }
 
-function renderChoiceMenu(prompt: string, choices: PromptChoiceOption[], multi = false): string {
+function renderChoiceMenu(
+  prompt: string,
+  choices: PromptChoiceOption[],
+  multi = false,
+  caps?: TerminalCapabilityProfile
+): string {
+  // If we have capabilities, render a beautiful boxed menu
+  if (caps && !caps.prefersAsciiSafeOutput && caps.colorLevel !== "none") {
+    const choiceLines: string[] = [];
+    for (const [index, choice] of choices.entries()) {
+      const num = `${index + 1}`;
+      const arrow = styleEmoji("\u2192", caps, "->");
+      choiceLines.push(`${num}  ${arrow}  ${choice.label}`);
+      if (choice.description) {
+        choiceLines.push(`       ${styleMuted(caps, choice.description)}`);
+      }
+      if (index < choices.length - 1) {
+        choiceLines.push("");
+      }
+    }
+    const titleIcon = styleEmoji("\uD83D\uDCC2", caps, ">");
+    const box = styleBox(choiceLines, caps, `${titleIcon} ${prompt}`);
+    const inputPrompt = multi
+      ? "  Enter one or more numbers separated by commas:"
+      : "  Enter a number:";
+    return `${box}\n\n${inputPrompt}`;
+  }
+
+  // Legacy fallback
   const lines = [
     prompt,
     ...choices.map((choice, index) => {
@@ -132,7 +161,7 @@ export function createPromptSession(capabilities: TerminalCapabilityProfile): Pr
       if (!capabilities.supportsInteractiveInput) {
         return fallback;
       }
-      const answer = await askInteractive(renderChoiceMenu(prompt, normalizedChoices));
+      const answer = await askInteractive(renderChoiceMenu(prompt, normalizedChoices, false, capabilities));
       return normalizeChoice(answer, normalizedChoices, fallback);
     },
     async askMultiChoice(stepId, prompt, choices, fallback) {
@@ -158,7 +187,7 @@ export function createPromptSession(capabilities: TerminalCapabilityProfile): Pr
       if (!capabilities.supportsInteractiveInput) {
         return fallback;
       }
-      const answer = await askInteractive(renderChoiceMenu(prompt, normalizedChoices, true));
+      const answer = await askInteractive(renderChoiceMenu(prompt, normalizedChoices, true, capabilities));
       if (!answer) {
         return fallback;
       }

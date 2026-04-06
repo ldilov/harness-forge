@@ -1,7 +1,6 @@
 import type { TerminalCapabilityProfile } from "../terminal-capabilities.js";
-import { renderScreen } from "./screen-layout.js";
 import { renderProgress } from "./progress.js";
-import { styleHeading } from "./text-style.js";
+import { styleSeparator } from "./text-style.js";
 
 export function renderStepFrame(
   capabilities: TerminalCapabilityProfile,
@@ -10,5 +9,7 @@ export function renderStepFrame(
   totalSteps: number,
   body: string
 ): string {
-  return renderScreen(styleHeading(capabilities, title), [renderProgress(step, totalSteps, title, capabilities), body], capabilities);
+  const header = renderProgress(step, totalSteps, title, capabilities);
+  const separator = styleSeparator(capabilities);
+  return `\n${header}\n${separator}\n${body}\n`;
 }
