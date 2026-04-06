@@ -26,6 +26,32 @@ export interface ProjectInfo {
 
 export type AppScreen = 'project-selector' | 'dashboard';
 
+export interface LoopHealth {
+  readonly observeCount: number;
+  readonly learnCount: number;
+  readonly adaptCount: number;
+  readonly shareCount: number;
+  readonly importCount: number;
+  readonly healthScore: number;
+  readonly lastCycleAt: string | null;
+}
+
+export interface PatternEntry {
+  readonly id: string;
+  readonly type: string;
+  readonly confidence: number;
+  readonly finding: string;
+  readonly isNew: boolean;
+}
+
+export interface TuningEntry {
+  readonly id: string;
+  readonly param: string;
+  readonly oldValue: unknown;
+  readonly newValue: unknown;
+  readonly status: 'applied' | 'reverted';
+}
+
 export interface DashboardState {
   readonly screen: AppScreen;
   readonly connected: boolean;
@@ -42,6 +68,10 @@ export interface DashboardState {
   readonly sessionInfo: SessionInfo;
   readonly activeProject: ProjectInfo | null;
   readonly availableProjects: readonly ProjectInfo[];
+  readonly loopHealth: LoopHealth;
+  readonly effectivenessScores: readonly number[];
+  readonly patterns: readonly PatternEntry[];
+  readonly tunings: readonly TuningEntry[];
 }
 
 export interface SessionInfo {

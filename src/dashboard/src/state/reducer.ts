@@ -1,4 +1,4 @@
-import type { DashboardState, DashboardAction, DashboardEvent, SignalMessage } from './types';
+import type { DashboardState, DashboardAction, DashboardEvent, SignalMessage, PatternEntry, TuningEntry } from './types';
 
 const MAX_EVENTS = 1000;
 
@@ -24,6 +24,18 @@ export const initialState: DashboardState = {
   },
   activeProject: null,
   availableProjects: [],
+  loopHealth: {
+    observeCount: 0,
+    learnCount: 0,
+    adaptCount: 0,
+    shareCount: 0,
+    importCount: 0,
+    healthScore: 0,
+    lastCycleAt: null,
+  },
+  effectivenessScores: [],
+  patterns: [],
+  tunings: [],
 };
 
 function handleSignal(state: DashboardState, signal: SignalMessage): DashboardState {
@@ -45,6 +57,7 @@ function handleSignal(state: DashboardState, signal: SignalMessage): DashboardSt
 
   if (signal.type === 'state' && signal.channel === 'system.init') {
     const p = signal.payload;
+    const loopData = p.loopHealth as Record<string, unknown> | undefined;
     return {
       ...state,
       connected: true,
@@ -59,12 +72,19 @@ function handleSignal(state: DashboardState, signal: SignalMessage): DashboardSt
         harnessVersion: (p.version as string) ?? '',
         startTime: new Date().toISOString(),
       },
+      ...(loopData ? {
+        loopHealth: {
+          ...state.loopHealth,
+          healthScore: (loopData.healthScore as number) ?? state.loopHealth.healthScore,
+        },
+      } : {}),
     };
   }
 
   if (signal.type === 'state' && signal.channel === 'system.heartbeat') {
     const p = signal.payload;
     const runtimeState = p.state as Record<string, unknown> | undefined;
+    const loopData = p.loopHealth as Record<string, unknown> | undefined;
     if (runtimeState) {
       // Deterministic: use server-authoritative state, no client inference
       return {
@@ -72,6 +92,12 @@ function handleSignal(state: DashboardState, signal: SignalMessage): DashboardSt
         enforcementLevel: (runtimeState.enforcement as string) ?? state.enforcementLevel,
         compactionLevel: (runtimeState.compaction as string) ?? state.compactionLevel,
         memoryTokens: (runtimeState.memoryTokens as number) ?? state.memoryTokens,
+        ...(loopData ? {
+          loopHealth: {
+            ...state.loopHealth,
+            healthScore: (loopData.healthScore as number) ?? state.loopHealth.healthScore,
+          },
+        } : {}),
       };
     }
     return { ...state, eventRate: (p.totalEvents as number) ?? state.eventRate };
@@ -116,6 +142,83 @@ function handleSignal(state: DashboardState, signal: SignalMessage): DashboardSt
     if (name === 'events.rate') return { ...state, eventRate: value };
     if (name === 'compaction.tokens.saved') return { ...state, tokensSaved: state.tokensSaved + value };
     // Enforcement level is set by heartbeat state snapshot, not inferred from budget %
+  }
+
+  // Living Loop signal channels
+  if (signal.channel === 'loop.observe') {
+    return {
+      ...state,
+      loopHealth: {
+        ...state.loopHealth,
+        observeCount: state.loopHealth.observeCount + 1,
+        lastCycleAt: signal.timestamp,
+      },
+    };
+  }
+
+  if (signal.channel === 'loop.learn') {
+    const p = signal.payload;
+    const newPatterns = (p.patterns as PatternEntry[] | undefined) ?? [];
+    return {
+      ...state,
+      loopHealth: {
+        ...state.loopHealth,
+        learnCount: state.loopHealth.learnCount + 1,
+        lastCycleAt: signal.timestamp,
+      },
+      patterns: newPatterns.length > 0 ? newPatterns : state.patterns,
+    };
+  }
+
+  if (signal.channel === 'loop.adapt') {
+    const p = signal.payload;
+    const newTunings = (p.tunings as TuningEntry[] | undefined) ?? [];
+    const score = p.effectivenessScore as number | undefined;
+    return {
+      ...state,
+      loopHealth: {
+        ...state.loopHealth,
+        adaptCount: state.loopHealth.adaptCount + 1,
+        lastCycleAt: signal.timestamp,
+      },
+      tunings: newTunings.length > 0 ? newTunings : state.tunings,
+      effectivenessScores: score !== undefined
+        ? [...state.effectivenessScores, score].slice(-20)
+        : state.effectivenessScores,
+    };
+  }
+
+  if (signal.channel === 'loop.share') {
+    return {
+      ...state,
+      loopHealth: {
+        ...state.loopHealth,
+        shareCount: state.loopHealth.shareCount + 1,
+        lastCycleAt: signal.timestamp,
+      },
+    };
+  }
+
+  if (signal.channel === 'loop.import') {
+    return {
+      ...state,
+      loopHealth: {
+        ...state.loopHealth,
+        importCount: state.loopHealth.importCount + 1,
+        lastCycleAt: signal.timestamp,
+      },
+    };
+  }
+
+  if (signal.channel === 'loop.health') {
+    const p = signal.payload;
+    return {
+      ...state,
+      loopHealth: {
+        ...state.loopHealth,
+        healthScore: (p.healthScore as number) ?? state.loopHealth.healthScore,
+      },
+    };
   }
 
   return state;

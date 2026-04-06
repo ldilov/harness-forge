@@ -32,6 +32,13 @@ import { SessionInfo } from './panels/SessionInfo';
 import { SessionHeroCard } from './panels/SessionHeroCard';
 import { EventHeatmap } from './panels/EventHeatmap';
 import { CommandWaterfall } from './panels/CommandWaterfall';
+<<<<<<< HEAD
+=======
+import { LoopHealthRing } from './panels/LoopHealthRing';
+import { EffectivenessTrend } from './panels/EffectivenessTrend';
+import { InsightsPanel } from './panels/InsightsPanel';
+import { TuningLog } from './panels/TuningLog';
+>>>>>>> worktree-agent-a77dcdf6
 
 const layoutStyle: CSSProperties = {
   display: 'flex',
@@ -108,6 +115,26 @@ function DashboardContent({ state, dispatch }: {
   const filteredEvents = filterEventsByTimeRange(state.events, timeRange);
   const activeProject = state.activeProject;
 
+<<<<<<< HEAD
+=======
+  const handleRevert = React.useCallback((tuningId: string) => {
+    dispatch({
+      type: 'SIGNAL_RECEIVED',
+      signal: {
+        type: 'state',
+        channel: 'loop.adapt',
+        payload: {
+          tunings: state.tunings.map((t) =>
+            t.id === tuningId ? { ...t, status: 'reverted' } : t
+          ),
+        },
+        timestamp: new Date().toISOString(),
+        sequenceId: Date.now(),
+      },
+    });
+  }, [dispatch, state.tunings]);
+
+>>>>>>> worktree-agent-a77dcdf6
   return (
     <div style={layoutStyle}>
       <Sidebar />
@@ -127,6 +154,20 @@ function DashboardContent({ state, dispatch }: {
         </div>
 
         <div style={gridStyle}>
+<<<<<<< HEAD
+=======
+          {/* Living Loop Section */}
+          <div style={fullWidthStyle}>
+            <LoopHealthRing loopHealth={state.loopHealth} />
+          </div>
+          <EffectivenessTrend scores={state.effectivenessScores} />
+          <InsightsPanel patterns={state.patterns} />
+          <div style={fullWidthStyle}>
+            <TuningLog tunings={state.tunings} onRevert={handleRevert} />
+          </div>
+
+          {/* Existing panels */}
+>>>>>>> worktree-agent-a77dcdf6
           <div style={fullWidthStyle}>
             <SessionHeroCard state={state} />
           </div>
