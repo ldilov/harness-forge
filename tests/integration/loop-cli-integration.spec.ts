@@ -35,8 +35,8 @@ describe('Loop CLI Integration', () => {
       suppressionCounts: { total: 5, suppressed: 2 },
     });
     emitter.emitSubagentRunStarted({});
-    emitter.emitCommandCompleted({ command: 'install' });
-    emitter.emitCommandFailed({ command: 'build', error: 'exit 1' });
+    emitter.emitCommandCompleted({ commandName: 'install' });
+    emitter.emitCommandFailed({ commandName: 'build', error: 'exit 1' });
     emitter.emitSessionEnded({ sessionId: 'test-session-001' });
 
     const trace = recorder.buildTrace();
@@ -44,13 +44,13 @@ describe('Loop CLI Integration', () => {
     expect(trace.sessionId).toBe('test-session-001');
     expect(trace.target).toBe('claude-code');
     expect(trace.repo).toBe('my-repo');
-    expect(trace.compactionsTriggered).toBe(1);
-    expect(trace.tokensSaved).toBe(4000);
-    expect(trace.tokensUsed).toBe(80000);
-    expect(trace.duplicatesSuppressed).toBe(1);
-    expect(trace.subagentsSpawned).toBe(1);
-    expect(trace.errorsEncountered).toBe(1);
-    expect(trace.durationMs).toBeGreaterThan(0);
+    expect(trace.metrics.compactionsTriggered).toBe(1);
+    expect(trace.metrics.tokensSaved).toBe(4000);
+    expect(trace.metrics.tokensUsed).toBe(80000);
+    expect(trace.metrics.duplicatesSuppressed).toBe(1);
+    expect(trace.metrics.subagentsSpawned).toBe(1);
+    expect(trace.metrics.errorsEncountered).toBe(1);
+    expect(trace.durationSeconds).toBeGreaterThanOrEqual(0);
     expect(trace.startedAt).toBeTruthy();
     expect(trace.endedAt).toBeTruthy();
   });
@@ -82,8 +82,8 @@ describe('Loop CLI Integration', () => {
     expect(traces[0]!.sessionId).toBe('test-session-002');
     expect(traces[0]!.target).toBe('codex');
     expect(traces[0]!.repo).toBe('demo-repo');
-    expect(traces[0]!.compactionsTriggered).toBe(1);
-    expect(traces[0]!.tokensSaved).toBe(3000);
+    expect(traces[0]!.metrics.compactionsTriggered).toBe(1);
+    expect(traces[0]!.metrics.tokensSaved).toBe(3000);
 
     // Verify score was persisted
     const scores = await readScores(tmpDir);
@@ -123,9 +123,9 @@ describe('Loop CLI Integration', () => {
     const trace = recorder.buildTrace();
 
     expect(trace.sessionId).toBe('empty-session');
-    expect(trace.compactionsTriggered).toBe(0);
-    expect(trace.errorsEncountered).toBe(0);
-    expect(trace.durationMs).toBe(0);
+    expect(trace.metrics.compactionsTriggered).toBe(0);
+    expect(trace.metrics.errorsEncountered).toBe(0);
+    expect(trace.durationSeconds).toBe(0);
 
     const score = scoreSession(trace);
     expect(Number.isFinite(score.score)).toBe(true);

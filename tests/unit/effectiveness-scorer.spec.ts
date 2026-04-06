@@ -4,18 +4,29 @@ import type { SessionTrace } from '@domain/loop/session-trace.js';
 import { SCORE_WEIGHTS } from '@domain/loop/effectiveness-score.js';
 
 const baseTrace: SessionTrace = {
+  traceId: 'trc_000000000000000000000001',
   sessionId: 'test-session-1',
-  tokensUsed: 5000,
-  tokenBudget: 20000,
-  completed: true,
-  retries: 0,
-  userCorrections: 0,
-  budgetExceeded: false,
-  compactionsTriggered: 0,
-  tokensSaved: 0,
-  subagentsSpawned: 1,
-  commandsRun: ['git status', 'npm test'],
-  errorsEncountered: 0,
+  target: 'claude',
+  repo: 'test-repo',
+  startedAt: '2026-04-06T10:00:00.000Z',
+  durationSeconds: 0,
+  metrics: {
+    tokensUsed: 5000,
+    tokenBudget: 20000,
+    compactionsTriggered: 0,
+    tokensSaved: 0,
+    subagentsSpawned: 1,
+    duplicatesSuppressed: 0,
+    skillsInvoked: [],
+    commandsRun: ['git status', 'npm test'],
+    errorsEncountered: 0,
+  },
+  outcome: {
+    taskCompleted: true,
+    retries: 0,
+    userCorrections: 0,
+    budgetExceeded: false,
+  },
 };
 
 describe('scoreSession', () => {
@@ -28,8 +39,7 @@ describe('scoreSession', () => {
   it('high token usage penalizes score', () => {
     const heavy: SessionTrace = {
       ...baseTrace,
-      tokensUsed: 19000,
-      tokenBudget: 20000,
+      metrics: { ...baseTrace.metrics, tokensUsed: 19000, tokenBudget: 20000 },
     };
     const result = scoreSession(heavy);
     expect(result.breakdown.tokenEfficiency).toBeLessThan(20);
@@ -39,7 +49,7 @@ describe('scoreSession', () => {
   it('incomplete task penalizes score', () => {
     const incomplete: SessionTrace = {
       ...baseTrace,
-      completed: false,
+      outcome: { ...baseTrace.outcome, taskCompleted: false },
     };
     const result = scoreSession(incomplete);
     expect(result.breakdown.taskCompletion).toBe(0);
@@ -49,7 +59,7 @@ describe('scoreSession', () => {
   it('retries penalize score', () => {
     const retried: SessionTrace = {
       ...baseTrace,
-      retries: 3,
+      outcome: { ...baseTrace.outcome, retries: 3 },
     };
     const result = scoreSession(retried);
     expect(result.breakdown.taskCompletion).toBe(55);
@@ -58,7 +68,7 @@ describe('scoreSession', () => {
   it('user corrections penalize score', () => {
     const corrected: SessionTrace = {
       ...baseTrace,
-      userCorrections: 2,
+      outcome: { ...baseTrace.outcome, userCorrections: 2 },
     };
     const result = scoreSession(corrected);
     expect(result.breakdown.userFriction).toBe(50);
@@ -68,7 +78,7 @@ describe('scoreSession', () => {
   it('budget exceeded zeroes compaction health', () => {
     const exceeded: SessionTrace = {
       ...baseTrace,
-      budgetExceeded: true,
+      outcome: { ...baseTrace.outcome, budgetExceeded: true },
     };
     const result = scoreSession(exceeded);
     expect(result.breakdown.compactionHealth).toBe(0);
@@ -77,11 +87,8 @@ describe('scoreSession', () => {
   it('all breakdown values are 0-100', () => {
     const extreme: SessionTrace = {
       ...baseTrace,
-      tokensUsed: 100000,
-      tokenBudget: 1000,
-      retries: 20,
-      userCorrections: 10,
-      errorsEncountered: 50,
+      metrics: { ...baseTrace.metrics, tokensUsed: 100000, tokenBudget: 1000, errorsEncountered: 50 },
+      outcome: { ...baseTrace.outcome, retries: 20, userCorrections: 10 },
     };
     const result = scoreSession(extreme);
     const values = Object.values(result.breakdown);
@@ -109,10 +116,7 @@ describe('scoreSession', () => {
   it('zero-action edge case does not divide by zero', () => {
     const zeroAction: SessionTrace = {
       ...baseTrace,
-      compactionsTriggered: 0,
-      subagentsSpawned: 0,
-      commandsRun: [],
-      errorsEncountered: 0,
+      metrics: { ...baseTrace.metrics, compactionsTriggered: 0, subagentsSpawned: 0, commandsRun: [], errorsEncountered: 0 },
     };
     const result = scoreSession(zeroAction);
     expect(Number.isFinite(result.score)).toBe(true);
@@ -123,17 +127,22 @@ describe('scoreSession', () => {
   it('perfect session scores 100', () => {
     const perfect: SessionTrace = {
       ...baseTrace,
-      tokensUsed: 0,
-      tokenBudget: 20000,
-      completed: true,
-      retries: 0,
-      userCorrections: 0,
-      budgetExceeded: false,
-      compactionsTriggered: 0,
-      tokensSaved: 0,
-      subagentsSpawned: 0,
-      commandsRun: [],
-      errorsEncountered: 0,
+      metrics: {
+        ...baseTrace.metrics,
+        tokensUsed: 0,
+        tokenBudget: 20000,
+        compactionsTriggered: 0,
+        tokensSaved: 0,
+        subagentsSpawned: 0,
+        commandsRun: [],
+        errorsEncountered: 0,
+      },
+      outcome: {
+        taskCompleted: true,
+        retries: 0,
+        userCorrections: 0,
+        budgetExceeded: false,
+      },
     };
     const result = scoreSession(perfect);
     expect(result.score).toBe(100);

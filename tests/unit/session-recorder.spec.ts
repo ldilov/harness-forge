@@ -27,16 +27,16 @@ describe('SessionRecorder', () => {
     expect(trace.sessionId).toBe(SESSION_ID);
     expect(trace.target).toBe(TARGET);
     expect(trace.repo).toBe(REPO);
-    expect(trace.compactionsTriggered).toBe(0);
-    expect(trace.tokensSaved).toBe(0);
-    expect(trace.compactionStrategies).toEqual([]);
-    expect(trace.budgetExceeded).toBe(false);
-    expect(trace.tokensUsed).toBe(0);
-    expect(trace.subagentsSpawned).toBe(0);
-    expect(trace.duplicatesSuppressed).toBe(0);
-    expect(trace.commandsRun).toEqual([]);
-    expect(trace.errorsEncountered).toBe(0);
-    expect(trace.durationMs).toBe(0);
+    expect(trace.metrics.compactionsTriggered).toBe(0);
+    expect(trace.metrics.tokensSaved).toBe(0);
+    expect(trace.metrics.compactionStrategies).toEqual([]);
+    expect(trace.outcome.budgetExceeded).toBe(false);
+    expect(trace.metrics.tokensUsed).toBe(0);
+    expect(trace.metrics.subagentsSpawned).toBe(0);
+    expect(trace.metrics.duplicatesSuppressed).toBe(0);
+    expect(trace.metrics.commandsRun).toEqual([]);
+    expect(trace.metrics.errorsEncountered).toBe(0);
+    expect(trace.durationSeconds).toBe(0);
   });
 
   it('accumulates compaction metrics from compaction events', () => {
@@ -52,9 +52,9 @@ describe('SessionRecorder', () => {
     }));
 
     const trace = recorder.buildTrace();
-    expect(trace.compactionsTriggered).toBe(2);
-    expect(trace.tokensSaved).toBe(7000); // (10000-6000) + (8000-5000)
-    expect(trace.compactionStrategies).toEqual(['summarize', 'trim']);
+    expect(trace.metrics.compactionsTriggered).toBe(2);
+    expect(trace.metrics.tokensSaved).toBe(7000); // (10000-6000) + (8000-5000)
+    expect(trace.metrics.compactionStrategies).toEqual(['summarize', 'trim']);
   });
 
   it('tracks budget exceeded from budget events', () => {
@@ -65,7 +65,7 @@ describe('SessionRecorder', () => {
     }));
 
     const trace = recorder.buildTrace();
-    expect(trace.budgetExceeded).toBe(true);
+    expect(trace.outcome.budgetExceeded).toBe(true);
   });
 
   it('updates tokensUsed from budget warning events', () => {
@@ -76,7 +76,7 @@ describe('SessionRecorder', () => {
     }));
 
     const trace = recorder.buildTrace();
-    expect(trace.tokensUsed).toBe(85000);
+    expect(trace.metrics.tokensUsed).toBe(85000);
   });
 
   it('tracks commands from command events', () => {
@@ -87,8 +87,8 @@ describe('SessionRecorder', () => {
     recorder.recordEvent(makeEvent('command.failed', { commandName: 'test' }));
 
     const trace = recorder.buildTrace();
-    expect(trace.commandsRun).toEqual(['install', 'build', 'test']);
-    expect(trace.errorsEncountered).toBe(1); // command.failed
+    expect(trace.metrics.commandsRun).toEqual(['install', 'build', 'test']);
+    expect(trace.metrics.errorsEncountered).toBe(1); // command.failed
   });
 
   it('computes duration from session start/end timestamps', () => {
@@ -106,7 +106,7 @@ describe('SessionRecorder', () => {
     ));
 
     const trace = recorder.buildTrace();
-    expect(trace.durationMs).toBe(330000); // 5min 30sec
+    expect(trace.durationSeconds).toBe(330); // 5min 30sec
     expect(trace.startedAt).toBe('2026-04-06T10:00:00.000Z');
     expect(trace.endedAt).toBe('2026-04-06T10:05:30.000Z');
   });
@@ -119,7 +119,7 @@ describe('SessionRecorder', () => {
     recorder.recordEvent(makeEvent('history.expansion.denied', {}));
 
     const trace = recorder.buildTrace();
-    expect(trace.errorsEncountered).toBe(3);
+    expect(trace.metrics.errorsEncountered).toBe(3);
   });
 
   it('tracks subagent spawns', () => {
@@ -129,7 +129,7 @@ describe('SessionRecorder', () => {
     recorder.recordEvent(makeEvent('subagent.run.started', {}));
 
     const trace = recorder.buildTrace();
-    expect(trace.subagentsSpawned).toBe(2);
+    expect(trace.metrics.subagentsSpawned).toBe(2);
   });
 
   it('tracks duplicates suppressed', () => {
@@ -140,7 +140,7 @@ describe('SessionRecorder', () => {
     }));
 
     const trace = recorder.buildTrace();
-    expect(trace.duplicatesSuppressed).toBe(1);
+    expect(trace.metrics.duplicatesSuppressed).toBe(1);
   });
 
   it('accumulates multiple events correctly', () => {
@@ -163,15 +163,15 @@ describe('SessionRecorder', () => {
     recorder.recordEvent(makeEvent('session.ended', {}, '2026-04-06T09:30:00.000Z'));
 
     const trace = recorder.buildTrace();
-    expect(trace.compactionsTriggered).toBe(1);
-    expect(trace.tokensSaved).toBe(3000);
-    expect(trace.compactionStrategies).toEqual(['summarize']);
-    expect(trace.subagentsSpawned).toBe(1);
-    expect(trace.commandsRun).toEqual(['lint', 'build']);
-    expect(trace.errorsEncountered).toBe(1); // command.failed
-    expect(trace.tokensUsed).toBe(90000);
-    expect(trace.duplicatesSuppressed).toBe(1);
-    expect(trace.durationMs).toBe(1800000); // 30 min
-    expect(trace.budgetExceeded).toBe(false);
+    expect(trace.metrics.compactionsTriggered).toBe(1);
+    expect(trace.metrics.tokensSaved).toBe(3000);
+    expect(trace.metrics.compactionStrategies).toEqual(['summarize']);
+    expect(trace.metrics.subagentsSpawned).toBe(1);
+    expect(trace.metrics.commandsRun).toEqual(['lint', 'build']);
+    expect(trace.metrics.errorsEncountered).toBe(1); // command.failed
+    expect(trace.metrics.tokensUsed).toBe(90000);
+    expect(trace.metrics.duplicatesSuppressed).toBe(1);
+    expect(trace.durationSeconds).toBe(1800); // 30 min
+    expect(trace.outcome.budgetExceeded).toBe(false);
   });
 });
