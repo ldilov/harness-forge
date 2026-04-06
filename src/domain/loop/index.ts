@@ -9,3 +9,5 @@ export type {
   TraceOutcome,
   SessionTrace,
 } from './session-trace.js';
+
+export * from './effectiveness-score.js';
