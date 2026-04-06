@@ -195,6 +195,12 @@ export const RUNTIME_SESSION_SUMMARY_FILE = "session-summary.json";
 export const RUNTIME_ACTIVE_CONTEXT_FILE = "active-context.json";
 export const RUNTIME_CONTEXT_BUDGET_FILE = "context-budget.json";
 
+// Living Loop runtime paths
+export const RUNTIME_TRACES_DIR = "traces";
+export const RUNTIME_INSIGHTS_DIR = "insights";
+export const RUNTIME_EFFECTIVENESS_LEDGER_FILE = "effectiveness-ledger.ndjson";
+export const RUNTIME_CHANGELOG_FILE = "changelog.ndjson";
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
