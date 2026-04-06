@@ -1,0 +1,25 @@
+{
+  "name": "@harness-forge/dashboard",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && node -e \"const fs=require('fs');const src='dist/index.html';const dst='embedded/dashboard.html';fs.copyFileSync(src,dst);console.log('Copied to '+dst)\"",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "echarts": "^5.6.0",
+    "echarts-for-react": "^3.0.2",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "@vitejs/plugin-react": "^4.4.0",
+    "typescript": "^5.8.2",
+    "vite": "^6.3.0",
+    "vite-plugin-singlefile": "^2.0.3"
+  }
+}
