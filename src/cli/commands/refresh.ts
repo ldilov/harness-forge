@@ -2,6 +2,7 @@ import path from "node:path";
 import { Command } from "commander";
 
 import { refreshWorkspaceRuntime } from "../../application/install/refresh-workspace-runtime.js";
+import { compactLoopData } from "../../application/loop/loop-data-compactor.js";
 import { appendEffectivenessSignal } from "../../infrastructure/observability/local-metrics-store.js";
 import { toJson } from "../../infrastructure/diagnostics/reporter.js";
 import { DEFAULT_WORKSPACE_ROOT } from "../../shared/index.js";
@@ -26,6 +27,18 @@ export function registerRefreshCommands(program: Command): void {
         category: "maintenance",
         confidenceLevel: "direct"
       });
+
+      // Auto-compact loop data silently
+      try {
+        const compaction = await compactLoopData(workspaceRoot);
+        const total = compaction.tracesCompacted + compaction.tracesDeleted;
+        if (total > 0 && !options.json) {
+          const kbFreed = (compaction.bytesFreed / 1024).toFixed(1);
+          console.log(`Loop data: compacted ${total} traces, freed ${kbFreed} KB`);
+        }
+      } catch {
+        // Compaction is best-effort during refresh — do not fail the command
+      }
 
       if (options.json) {
         console.log(toJson(result));

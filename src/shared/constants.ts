@@ -217,6 +217,9 @@ export const LOOP_PATTERN_EXTRACT_INTERVAL = 5;
 export const LOOP_CONFIDENCE_OBSERVE = 0.5;
 export const LOOP_CONFIDENCE_SUGGEST = 0.7;
 export const LOOP_ROLLBACK_WINDOW = 3;
+export const RUNTIME_TRACE_DIGESTS_DIR = "digests";
+export const LOOP_DEFAULT_HOT_DAYS = 30;
+export const LOOP_DEFAULT_WARM_DAYS = 90;
 export const BUNDLE_FILE_EXTENSION = ".hfb";
 
 const __filename = fileURLToPath(import.meta.url);
