@@ -14,6 +14,7 @@ import { registerFlowCommands } from "./commands/flow.js";
 import { registerInitCommands } from "./commands/init.js";
 import { registerIntelligenceCommands } from "./commands/intelligence.js";
 import { registerInstallCommands } from "./commands/install.js";
+import { registerLearnCommands } from "./commands/learn.js";
 import { registerNextCommands } from "./commands/next.js";
 import { registerMaintenanceCommands } from "./commands/maintenance.js";
 import { registerObservabilityCommands } from "./commands/observability.js";
@@ -83,6 +84,7 @@ registerCompactCommands(program);
 registerReplayCommands(program);
 registerPruneCommands(program);
 registerNextCommands(program);
+registerLearnCommands(program);
 
 // Custom help: group subcommands by lifecycle phase, hide advanced by default
 program.addHelpText("after", () => {
