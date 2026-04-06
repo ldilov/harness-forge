@@ -44,6 +44,7 @@
   <a href="#-get-started-in-60-seconds">🚀 Get Started</a> &bull;
   <a href="#-what-does-it-do">✨ What It Does</a> &bull;
   <a href="#-everyday-commands">⌨️ Commands</a> &bull;
+  <a href="#-the-living-loop">🔄 Living Loop</a> &bull;
   <a href="#-real-time-dashboard">📊 Dashboard</a> &bull;
   <a href="#-real-world-scenarios">💡 Scenarios</a> &bull;
   <a href="#-supported-targets">🎯 Targets</a> &bull;
@@ -91,6 +92,12 @@ Think of it as a one-time setup that:
   <img src="https://img.shields.io/badge/🏗️_frameworks-12-2ea44f?style=for-the-badge" alt="12 frameworks" />
   <img src="https://img.shields.io/badge/🛠️_skills-45+-f97316?style=for-the-badge" alt="45+ skills" />
   <img src="https://img.shields.io/badge/📊_commands-50+-EF4444?style=for-the-badge" alt="50+ commands" />
+</p>
+
+<p align="center">
+  <img alt="Loop Health" src="https://img.shields.io/badge/loop-self--improving-brightgreen" />
+  <img alt="Patterns" src="https://img.shields.io/badge/patterns-auto--learned-blue" />
+  <img alt="Tunings" src="https://img.shields.io/badge/tunings-guardrailed-orange" />
 </p>
 
 ---
@@ -422,6 +429,42 @@ Your Repo
 ```
 
 The key idea: **visible bridges** where AI agents need discovery, **hidden canonical layer** where runtime content should stay authoritative.
+
+---
+
+## 🔄 The Living Loop
+
+Harness Forge gets smarter every time you use it.
+
+```
+🔍 OBSERVE  →  🧠 LEARN  →  ⚡ ADAPT  →  📤 SHARE  →  📥 IMPORT
+     ↑                                                        │
+     └────────────────────────────────────────────────────────┘
+```
+
+| Step | What happens | Example |
+|------|-------------|---------|
+| 🔍 **Observe** | Tracks how your AI agent works | "Agent hit token ceiling 3x today" |
+| 🧠 **Learn** | Finds patterns in your sessions | "Summarize saves 40% more tokens than Trim" |
+| ⚡ **Adapt** | Auto-tunes your setup | Compaction threshold lowered 75% → 65% |
+| 📤 **Share** | Export your tuned harness | `hforge export --bundle my-team.hfb` |
+| 📥 **Import** | Bootstrap anywhere instantly | `hforge import my-team.hfb` → ready in seconds |
+
+> **The more you use it, the better it gets.**
+> After ~10 sessions, Harness Forge learns your repo's patterns and tunes itself for optimal performance.
+
+### Living Loop Commands
+
+| Command | What it does |
+|---------|-------------|
+| `hforge trace` | View recent session traces |
+| `hforge score` | Show effectiveness scores |
+| `hforge learn` | Trigger pattern extraction |
+| `hforge insights` | Browse discovered patterns |
+| `hforge adapt` | Show/manage auto-tunings |
+| `hforge loop` | Show loop health summary |
+| `hforge export --bundle <file>` | Create portable bundle |
+| `hforge import <file>` | Bootstrap from bundle |
 
 ---
 
