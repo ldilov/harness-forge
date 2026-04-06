@@ -1,3 +1,4 @@
+import fs from "node:fs/promises";
 import path from "node:path";
 import { Command } from "commander";
 
@@ -23,5 +24,33 @@ export function registerSyncCommands(program: Command): void {
         details: { changed: result.changed }
       });
       console.log(options.json ? toJson(result) : JSON.stringify(result, null, 2));
+    });
+
+  program
+    .command("share")
+    .description("Push insights to a shared location")
+    .requiredOption("--to <url>", "Destination (file://path or git://origin/branch)")
+    .option("--root <root>", "workspace root", DEFAULT_WORKSPACE_ROOT)
+    .option("--bundle <file>", "Specific bundle file to share")
+    .action(async (options: { to: string; root: string; bundle?: string }) => {
+      const destination = options.to;
+
+      if (destination.startsWith("file://")) {
+        const destPath = destination.slice("file://".length);
+        if (options.bundle) {
+          await fs.copyFile(path.resolve(options.bundle), path.resolve(destPath));
+          console.log(`Bundle copied to ${destPath}`);
+        } else {
+          console.log(`Share to: ${destPath} (no bundle specified, use --bundle <file>)`);
+        }
+        return;
+      }
+
+      if (destination.startsWith("git://")) {
+        console.log(`Share to git: ${destination} (git transport not yet implemented)`);
+        return;
+      }
+
+      console.log(`Unsupported destination protocol: ${destination}`);
     });
 }
