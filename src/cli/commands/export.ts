@@ -7,7 +7,8 @@ import { detectExportLeakage } from "../../application/runtime/detect-export-lea
 import { resolveExportProfile } from "../../application/runtime/resolve-export-profile.js";
 import { validateExportRequiredSurfaces } from "../../application/runtime/validate-export-required-surfaces.js";
 import { loadInstallState } from "../../domain/state/install-state.js";
-import { DEFAULT_WORKSPACE_ROOT, PACKAGE_ROOT, RUNTIME_DIR, RUNTIME_INDEX_FILE, exists, readJsonFile, writeJsonFile } from "../../shared/index.js";
+import { DEFAULT_WORKSPACE_ROOT, PACKAGE_ROOT, RUNTIME_DIR, RUNTIME_INDEX_FILE, RUNTIME_INSIGHTS_DIR, RUNTIME_PATTERNS_FILE, exists, readJsonFile, writeJsonFile } from "../../shared/index.js";
+import type { BundleData, InsightPattern } from "../../application/loop/bundle-importer.js";
 import { toJson } from "../../infrastructure/diagnostics/reporter.js";
 
 export function registerExportCommands(program: Command): void {
@@ -20,6 +21,8 @@ export function registerExportCommands(program: Command): void {
     .option("--runtime-minimal", "shortcut for --profile runtime-minimal", false)
     .option("--maintainer-full", "shortcut for --profile maintainer-full", false)
     .option("--output <file>", "write the export to a JSON file")
+    .option("--bundle <file>", "export as a .hfb bundle file")
+    .option("--insights-only <file>", "export only insights to a .hfb bundle file")
     .option("--json", "json output", false)
     .action(async (options) => {
       const workspaceRoot = path.resolve(options.root);
@@ -57,6 +60,33 @@ export function registerExportCommands(program: Command): void {
         doctor,
         audit
       };
+
+      // Bundle export — write a .hfb bundle for import/share workflows
+      const bundleTarget: string | undefined = options.bundle ?? options.insightsOnly;
+      if (bundleTarget) {
+        const patternsPath = path.join(workspaceRoot, RUNTIME_DIR, RUNTIME_INSIGHTS_DIR, RUNTIME_PATTERNS_FILE);
+        const patterns: InsightPattern[] = (await exists(patternsPath))
+          ? await readJsonFile<InsightPattern[]>(patternsPath)
+          : [];
+
+        const bundle: BundleData = {
+          manifest: {
+            bundleId: `export-${Date.now()}`,
+            formatVersion: "1.0.0",
+            createdAt: new Date().toISOString(),
+            exportProfile: profileId,
+          },
+          insights: {
+            patterns,
+            scores: [],
+          },
+          policies: options.insightsOnly ? {} : (exportProfile ?? {}),
+        };
+
+        await writeJsonFile(path.resolve(bundleTarget), bundle);
+        console.log(`Bundle written to ${path.resolve(bundleTarget)}`);
+        return;
+      }
 
       if (options.output) {
         await writeJsonFile(path.resolve(options.output), result);

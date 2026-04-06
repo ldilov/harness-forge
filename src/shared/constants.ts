@@ -98,6 +98,11 @@ export const RUNTIME_RECURSIVE_RUNS_DIR = "runs";
 export const RUNTIME_RECURSIVE_RUN_META_FILE = "meta.json";
 export const RUNTIME_RECURSIVE_RUN_RESULT_FILE = "result.json";
 export const INSTALL_STATE_FILE = "install-state.json";
+export const RUNTIME_INSIGHTS_DIR = "insights";
+export const RUNTIME_PATTERNS_FILE = "patterns.json";
+export const RUNTIME_MERGE_LOG_FILE = "merge-log.ndjson";
+export const BUNDLE_FILE_EXTENSION = ".hfb";
+
 export const OBSERVABILITY_DIR = ".hforge/observability";
 export const EFFECTIVENESS_FILE = "effectiveness-signals.json";
 export const GENERATED_DIR = ".hforge/generated";
