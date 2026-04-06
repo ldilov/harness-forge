@@ -1,5 +1,6 @@
 import path from "node:path";
 
+import type { BehaviorEventEmitter } from "../behavior/behavior-event-emitter.js";
 import { readJsonFile, writeJsonFile, exists } from "../../shared/fs.js";
 import {
   RUNTIME_DIR,
@@ -166,6 +167,7 @@ async function loadLocalPatterns(workspaceRoot: string): Promise<readonly Insigh
 export interface ImportBundleOptions {
   readonly insightsOnly?: boolean;
   readonly dryRun?: boolean;
+  readonly emitter?: BehaviorEventEmitter;
 }
 
 export async function importBundle(
@@ -206,6 +208,12 @@ export async function importBundle(
     added: result.added,
     updated: result.updated,
     conflictCount: result.conflicts.length,
+  });
+
+  options?.emitter?.emitLoopBundleImported({
+    bundleId: bundle.manifest.bundleId,
+    patternsAdded: result.added,
+    patternsUpdated: result.updated,
   });
 
   return result;

@@ -1,5 +1,6 @@
 import path from 'node:path';
 
+import type { BehaviorEventEmitter } from '../behavior/behavior-event-emitter.js';
 import { readJsonFile, writeJsonFile, exists } from '../../shared/fs.js';
 import { generateId } from '../../shared/id-generator.js';
 import {
@@ -100,7 +101,7 @@ export async function createRepoFingerprint(
 export async function createBundle(
   workspaceRoot: string,
   outputPath: string,
-  options?: { readonly insightsOnly?: boolean },
+  options?: { readonly insightsOnly?: boolean; readonly emitter?: BehaviorEventEmitter },
 ): Promise<string> {
   const patterns = await loadPatterns(workspaceRoot);
   const scores = await readScores(workspaceRoot, { limit: MAX_RECENT_SCORES });
@@ -136,6 +137,12 @@ export async function createBundle(
   };
 
   await writeJsonFile(outputPath, bundleData);
+
+  options?.emitter?.emitLoopBundleExported({
+    bundleId: manifest.bundleId,
+    outputPath,
+  });
+
   return outputPath;
 }
 

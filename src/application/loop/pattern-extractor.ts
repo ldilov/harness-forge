@@ -1,6 +1,7 @@
 import type { EffectivenessScore } from '../../domain/loop/effectiveness-score.js';
 import type { SessionTrace } from '../../domain/loop/session-trace.js';
 import type { InsightPattern } from '../../domain/loop/insight-pattern.js';
+import type { BehaviorEventEmitter } from '../behavior/behavior-event-emitter.js';
 import { generateId } from '../../shared/id-generator.js';
 import { readScores, readTraces } from './trace-store.js';
 
@@ -342,8 +343,12 @@ export function extractPackGaps(traces: readonly SessionTrace[]): InsightPattern
 
 /**
  * Reads scores and traces, runs all extractors, filters out nulls.
+ * Accepts an optional emitter to emit loop.pattern.extracted after extraction.
  */
-export async function extractPatterns(workspaceRoot: string): Promise<readonly InsightPattern[]> {
+export async function extractPatterns(
+  workspaceRoot: string,
+  emitter?: BehaviorEventEmitter,
+): Promise<readonly InsightPattern[]> {
   const [scores, traces] = await Promise.all([
     readScores(workspaceRoot),
     readTraces(workspaceRoot),
@@ -357,5 +362,12 @@ export async function extractPatterns(workspaceRoot: string): Promise<readonly I
     extractPackGaps(traces),
   ];
 
-  return patterns.filter((p): p is InsightPattern => p !== null);
+  const result = patterns.filter((p): p is InsightPattern => p !== null);
+
+  emitter?.emitLoopPatternExtracted({
+    patternCount: result.length,
+    newPatterns: result.length,
+  });
+
+  return result;
 }

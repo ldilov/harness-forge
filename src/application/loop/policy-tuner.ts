@@ -2,6 +2,7 @@ import path from 'node:path';
 import fs from 'node:fs/promises';
 
 import type { InsightPattern } from '../../domain/loop/insight-pattern.js';
+import type { BehaviorEventEmitter } from '../behavior/behavior-event-emitter.js';
 import {
   type TunableParameter,
   type TuningRecord,
@@ -153,10 +154,12 @@ async function writeConfigValue(
 /**
  * Apply tunings for patterns whose confidence meets the threshold and that
  * carry an actionable recommendation with a recognized parameter name.
+ * Accepts an optional emitter to emit loop.tuning.applied after each tuning.
  */
 export async function applyTunings(
   workspaceRoot: string,
   patterns: readonly InsightPattern[],
+  emitter?: BehaviorEventEmitter,
 ): Promise<readonly TuningRecord[]> {
   const applied: TuningRecord[] = [];
 
@@ -210,6 +213,13 @@ export async function applyTunings(
 
     await appendNdjson(tuningLogPath(workspaceRoot), record);
     applied.push(record);
+
+    emitter?.emitLoopTuningApplied({
+      tuningId: record.id,
+      parameter: record.parameter,
+      oldValue: record.previousValue,
+      newValue: record.newValue,
+    });
   }
 
   return applied;
@@ -258,10 +268,12 @@ export async function checkRollback(workspaceRoot: string): Promise<readonly Tun
 /**
  * Revert a single tuning by its ID: restore the previous config value
  * and mark the record as rolled back.
+ * Accepts an optional emitter to emit loop.tuning.reverted after rollback.
  */
 export async function revertTuning(
   workspaceRoot: string,
   tuningId: string,
+  emitter?: BehaviorEventEmitter,
 ): Promise<TuningRecord | null> {
   const tunings = await listTunings(workspaceRoot);
   const target = tunings.find((t) => t.id === tuningId);
@@ -278,6 +290,12 @@ export async function revertTuning(
   };
 
   await appendNdjson(tuningLogPath(workspaceRoot), updated);
+
+  emitter?.emitLoopTuningReverted({
+    tuningId: updated.id,
+    parameter: updated.parameter,
+  });
+
   return updated;
 }
 
