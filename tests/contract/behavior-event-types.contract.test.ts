@@ -5,8 +5,8 @@ describe('BEHAVIOR_EVENT_TYPES contract', () => {
   const allValues = Object.values(BEHAVIOR_EVENT_TYPES);
   const allKeys = Object.keys(BEHAVIOR_EVENT_TYPES);
 
-  it('contains exactly 37 event type constants', () => {
-    expect(allKeys).toHaveLength(37);
+  it('contains exactly 43 event type constants', () => {
+    expect(allKeys).toHaveLength(43);
   });
 
   it('all values are unique strings', () => {
@@ -220,7 +220,31 @@ describe('BEHAVIOR_EVENT_TYPES contract', () => {
     });
   });
 
-  it('category counts sum to total (8 + 5 + 5 + 1 + 1 + 2 + 3 + 4 + 3 + 3 + 2 = 37)', () => {
-    expect(8 + 5 + 5 + 1 + 1 + 2 + 3 + 4 + 3 + 3 + 2).toBe(allKeys.length);
+  describe('loop category (6 events)', () => {
+    const loopKeys = [
+      'LOOP_TRACE_RECORDED',
+      'LOOP_PATTERN_EXTRACTED',
+      'LOOP_TUNING_APPLIED',
+      'LOOP_TUNING_REVERTED',
+      'LOOP_BUNDLE_EXPORTED',
+      'LOOP_BUNDLE_IMPORTED',
+    ] as const;
+
+    it('has all 6 loop event types', () => {
+      for (const key of loopKeys) {
+        expect(BEHAVIOR_EVENT_TYPES).toHaveProperty(key);
+      }
+    });
+
+    it('loop event values are prefixed with loop.', () => {
+      for (const key of loopKeys) {
+        const value = BEHAVIOR_EVENT_TYPES[key];
+        expect(value).toMatch(/^loop\.\w+\.\w+$/);
+      }
+    });
+  });
+
+  it('category counts sum to total (8 + 5 + 5 + 1 + 1 + 2 + 3 + 4 + 3 + 3 + 2 + 6 = 43)', () => {
+    expect(8 + 5 + 5 + 1 + 1 + 2 + 3 + 4 + 3 + 3 + 2 + 6).toBe(allKeys.length);
   });
 });

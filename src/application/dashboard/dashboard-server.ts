@@ -23,6 +23,9 @@ import type { SignalMessage } from '@domain/dashboard/signal-types.js';
 import { MemoryPolicySchema } from '@domain/behavior/memory-policy.js';
 import { ContextBudgetSchema } from '@domain/compaction/context-budget.js';
 import { LoadOrderSchema } from '@domain/behavior/load-order.js';
+import { readScores } from '@app/loop/trace-store.js';
+import { loadPatterns } from '@app/loop/insight-store.js';
+import { listTunings, revertTuning } from '@app/loop/policy-tuner.js';
 
 const EDITABLE_CONFIG_FILES: ReadonlyMap<string, string> = new Map([
   ['memory-policy', path.join(RUNTIME_DIR, 'memory-policy.json')],
@@ -291,6 +294,19 @@ export class DashboardServer {
       } else if (pathname === '/api/effectiveness' && req.method === 'GET') {
         const signals = await this.loadEffectivenessSignals();
         this.sendJson(res, 200, signals);
+      } else if (pathname === '/api/loop/health' && req.method === 'GET') {
+        await this.handleLoopHealth(res);
+      } else if (pathname === '/api/loop/scores' && req.method === 'GET') {
+        const scores = await readScores(this.workspaceRoot, { limit: 20 });
+        this.sendJson(res, 200, { scores });
+      } else if (pathname === '/api/loop/patterns' && req.method === 'GET') {
+        const patterns = await loadPatterns(this.workspaceRoot);
+        this.sendJson(res, 200, { patterns });
+      } else if (pathname === '/api/loop/tunings' && req.method === 'GET') {
+        const tunings = await listTunings(this.workspaceRoot);
+        this.sendJson(res, 200, { tunings });
+      } else if (pathname === '/api/loop/revert-tuning' && req.method === 'POST') {
+        await this.handleRevertTuning(req, res);
       } else if (pathname === '/sw.js') {
         this.serveServiceWorker(res);
       } else if (pathname === '/') {
@@ -411,6 +427,74 @@ export class DashboardServer {
     } catch (error: unknown) {
       const message = error instanceof Error ? error.message : 'Write failed';
       this.sendJson(res, 400, { error: message });
+    }
+  }
+
+  private async handleLoopHealth(res: http.ServerResponse): Promise<void> {
+    const events = await this.loadEvents();
+    let observeCount = 0;
+    let learnCount = 0;
+    let adaptCount = 0;
+    let shareCount = 0;
+    let importCount = 0;
+    let lastCycleAt: string | null = null;
+
+    for (const event of events) {
+      const eventType = event.eventType as string | undefined;
+      if (!eventType) continue;
+      const occurredAt = event.occurredAt as string | undefined;
+
+      if (eventType === 'loop.trace.recorded') {
+        observeCount++;
+        if (occurredAt && (!lastCycleAt || occurredAt > lastCycleAt)) lastCycleAt = occurredAt;
+      } else if (eventType === 'loop.pattern.extracted') {
+        learnCount++;
+        if (occurredAt && (!lastCycleAt || occurredAt > lastCycleAt)) lastCycleAt = occurredAt;
+      } else if (eventType === 'loop.tuning.applied' || eventType === 'loop.tuning.reverted') {
+        adaptCount++;
+        if (occurredAt && (!lastCycleAt || occurredAt > lastCycleAt)) lastCycleAt = occurredAt;
+      } else if (eventType === 'loop.bundle.exported') {
+        shareCount++;
+        if (occurredAt && (!lastCycleAt || occurredAt > lastCycleAt)) lastCycleAt = occurredAt;
+      } else if (eventType === 'loop.bundle.imported') {
+        importCount++;
+        if (occurredAt && (!lastCycleAt || occurredAt > lastCycleAt)) lastCycleAt = occurredAt;
+      }
+    }
+
+    const total = observeCount + learnCount + adaptCount + shareCount + importCount;
+    const stagesFired = [observeCount, learnCount, adaptCount, shareCount + importCount]
+      .filter((c) => c > 0).length;
+    const healthScore = total === 0 ? 0 : Math.round((stagesFired / 4) * 100);
+
+    this.sendJson(res, 200, {
+      observeCount,
+      learnCount,
+      adaptCount,
+      shareCount,
+      importCount,
+      healthScore,
+      lastCycleAt,
+    });
+  }
+
+  private async handleRevertTuning(req: http.IncomingMessage, res: http.ServerResponse): Promise<void> {
+    const body = await new Promise<string>((resolve) => {
+      let data = '';
+      req.on('data', (chunk: Buffer) => { data += chunk.toString(); });
+      req.on('end', () => resolve(data));
+    });
+
+    try {
+      const { tuningId } = JSON.parse(body) as { tuningId: string };
+      if (!tuningId) {
+        this.sendJson(res, 400, { error: 'tuningId is required' });
+        return;
+      }
+      const result = await revertTuning(this.workspaceRoot, tuningId);
+      this.sendJson(res, 200, { success: result !== null, tuning: result });
+    } catch {
+      this.sendJson(res, 400, { error: 'Invalid JSON body' });
     }
   }
 

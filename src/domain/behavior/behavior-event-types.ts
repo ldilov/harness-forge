@@ -46,6 +46,14 @@ export const COMMAND_FAILED = 'command.failed' as const;
 export const SESSION_STARTED = 'session.started' as const;
 export const SESSION_ENDED = 'session.ended' as const;
 
+// Living Loop events
+export const LOOP_TRACE_RECORDED = 'loop.trace.recorded' as const;
+export const LOOP_PATTERN_EXTRACTED = 'loop.pattern.extracted' as const;
+export const LOOP_TUNING_APPLIED = 'loop.tuning.applied' as const;
+export const LOOP_TUNING_REVERTED = 'loop.tuning.reverted' as const;
+export const LOOP_BUNDLE_EXPORTED = 'loop.bundle.exported' as const;
+export const LOOP_BUNDLE_IMPORTED = 'loop.bundle.imported' as const;
+
 export const BEHAVIOR_EVENT_TYPES = {
   CONTEXT_LOAD_STARTED,
   CONTEXT_LOAD_COMPLETED,
@@ -84,6 +92,13 @@ export const BEHAVIOR_EVENT_TYPES = {
   COMMAND_FAILED,
   SESSION_STARTED,
   SESSION_ENDED,
+  // Living Loop
+  LOOP_TRACE_RECORDED,
+  LOOP_PATTERN_EXTRACTED,
+  LOOP_TUNING_APPLIED,
+  LOOP_TUNING_REVERTED,
+  LOOP_BUNDLE_EXPORTED,
+  LOOP_BUNDLE_IMPORTED,
 } as const;
 
 export type BehaviorEventType = typeof BEHAVIOR_EVENT_TYPES[keyof typeof BEHAVIOR_EVENT_TYPES];

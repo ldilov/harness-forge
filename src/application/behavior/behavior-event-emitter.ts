@@ -332,4 +332,48 @@ export class BehaviorEventEmitter {
   ): BehaviorEvent {
     return this.buildEvent(BEHAVIOR_EVENT_TYPES.SESSION_ENDED, payload, options);
   }
+
+  // Living Loop emit methods
+
+  emitLoopTraceRecorded(
+    payload: BehaviorEventPayload & { readonly traceId: string; readonly score: number },
+    options?: { readonly taskId?: string; readonly correlationId?: string },
+  ): BehaviorEvent {
+    return this.buildEvent(BEHAVIOR_EVENT_TYPES.LOOP_TRACE_RECORDED, payload, options);
+  }
+
+  emitLoopPatternExtracted(
+    payload: BehaviorEventPayload & { readonly patternCount: number; readonly newPatterns: number },
+    options?: { readonly taskId?: string; readonly correlationId?: string },
+  ): BehaviorEvent {
+    return this.buildEvent(BEHAVIOR_EVENT_TYPES.LOOP_PATTERN_EXTRACTED, payload, options);
+  }
+
+  emitLoopTuningApplied(
+    payload: BehaviorEventPayload & { readonly tuningId: string; readonly parameter: string; readonly oldValue: unknown; readonly newValue: unknown },
+    options?: { readonly taskId?: string; readonly correlationId?: string },
+  ): BehaviorEvent {
+    return this.buildEvent(BEHAVIOR_EVENT_TYPES.LOOP_TUNING_APPLIED, payload, options);
+  }
+
+  emitLoopTuningReverted(
+    payload: BehaviorEventPayload & { readonly tuningId: string; readonly parameter: string },
+    options?: { readonly taskId?: string; readonly correlationId?: string },
+  ): BehaviorEvent {
+    return this.buildEvent(BEHAVIOR_EVENT_TYPES.LOOP_TUNING_REVERTED, payload, options);
+  }
+
+  emitLoopBundleExported(
+    payload: BehaviorEventPayload & { readonly bundleId: string; readonly outputPath: string },
+    options?: { readonly taskId?: string; readonly correlationId?: string },
+  ): BehaviorEvent {
+    return this.buildEvent(BEHAVIOR_EVENT_TYPES.LOOP_BUNDLE_EXPORTED, payload, options);
+  }
+
+  emitLoopBundleImported(
+    payload: BehaviorEventPayload & { readonly bundleId: string; readonly patternsAdded: number; readonly patternsUpdated: number },
+    options?: { readonly taskId?: string; readonly correlationId?: string },
+  ): BehaviorEvent {
+    return this.buildEvent(BEHAVIOR_EVENT_TYPES.LOOP_BUNDLE_IMPORTED, payload, options);
+  }
 }

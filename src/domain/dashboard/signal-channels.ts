@@ -1,4 +1,12 @@
 import type { SignalChannelDefinition } from './signal-types.js';
+import {
+  LOOP_TRACE_RECORDED,
+  LOOP_PATTERN_EXTRACTED,
+  LOOP_TUNING_APPLIED,
+  LOOP_TUNING_REVERTED,
+  LOOP_BUNDLE_EXPORTED,
+  LOOP_BUNDLE_IMPORTED,
+} from '../behavior/behavior-event-types.js';
 
 export const SIGNAL_CHANNELS: readonly SignalChannelDefinition[] = [
   {
@@ -157,6 +165,37 @@ export const SIGNAL_CHANNELS: readonly SignalChannelDefinition[] = [
     category: 'system',
     sourceEventTypes: [],
     aggregation: 'none',
+  },
+  // Living Loop channels
+  {
+    name: 'loop.observe',
+    category: 'loop',
+    sourceEventTypes: [LOOP_TRACE_RECORDED],
+    aggregation: 'counter',
+  },
+  {
+    name: 'loop.learn',
+    category: 'loop',
+    sourceEventTypes: [LOOP_PATTERN_EXTRACTED],
+    aggregation: 'counter',
+  },
+  {
+    name: 'loop.adapt',
+    category: 'loop',
+    sourceEventTypes: [LOOP_TUNING_APPLIED, LOOP_TUNING_REVERTED],
+    aggregation: 'counter',
+  },
+  {
+    name: 'loop.share',
+    category: 'loop',
+    sourceEventTypes: [LOOP_BUNDLE_EXPORTED, LOOP_BUNDLE_IMPORTED],
+    aggregation: 'counter',
+  },
+  {
+    name: 'loop.health',
+    category: 'loop',
+    sourceEventTypes: [LOOP_TRACE_RECORDED, LOOP_PATTERN_EXTRACTED, LOOP_TUNING_APPLIED, LOOP_BUNDLE_EXPORTED, LOOP_BUNDLE_IMPORTED],
+    aggregation: 'counter',
   },
 ] as const;
 
