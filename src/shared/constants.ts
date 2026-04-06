@@ -210,6 +210,7 @@ export const RUNTIME_PATTERNS_FILE = "patterns.json";
 export const RUNTIME_INSIGHTS_RECOMMENDATIONS_FILE = "recommendations.json";
 export const RUNTIME_INSIGHTS_CHANGELOG_FILE = "changelog.ndjson";
 export const RUNTIME_TUNING_LOG_FILE = "tuning-log.ndjson";
+export const RUNTIME_USER_LOCKS_FILE = "user-locks.json";
 export const RUNTIME_MERGE_LOG_FILE = "merge-log.ndjson";
 export const LOOP_PATTERN_EXTRACT_INTERVAL = 5;
 export const LOOP_CONFIDENCE_OBSERVE = 0.5;
