@@ -10,7 +10,7 @@ import {
   RUNTIME_TRACES_DIR,
   RUNTIME_INSIGHTS_DIR,
   RUNTIME_EFFECTIVENESS_LEDGER_FILE,
-  RUNTIME_CHANGELOG_FILE,
+  RUNTIME_INSIGHTS_CHANGELOG_FILE,
 } from "../../shared/constants.js";
 
 function tracesDir(workspaceRoot: string): string {
@@ -30,7 +30,7 @@ function ledgerFilePath(workspaceRoot: string): string {
 }
 
 function changelogFilePath(workspaceRoot: string): string {
-  return path.join(insightsDir(workspaceRoot), RUNTIME_CHANGELOG_FILE);
+  return path.join(insightsDir(workspaceRoot), RUNTIME_INSIGHTS_CHANGELOG_FILE);
 }
 
 export async function writeTrace(workspaceRoot: string, trace: SessionTrace): Promise<void> {
