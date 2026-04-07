@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://img.shields.io/badge/%F0%9F%94%A8_harness--forge-v1.5.0-6C3FC5?style=for-the-badge" alt="version" />
+  <img src="https://img.shields.io/badge/%F0%9F%94%A8_harness--forge-v1.5.1-6C3FC5?style=for-the-badge" alt="version" />
 </p>
 
 <h1 align="center">🔨 Harness Forge</h1>
