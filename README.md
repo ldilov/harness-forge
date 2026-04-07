@@ -199,7 +199,10 @@ pattern list, tuning log — live in your browser.
 
 > `hforge dashboard` — see everything, live in your browser.
 
-<!-- Replace with actual dashboard screenshot when available -->
+<p align="center">
+  <img src="./assets/dashboard.png" alt="Harness Forge Dashboard" width="700" />
+</p>
+
 <p align="center">
   <img src="https://img.shields.io/badge/📊_dashboard-20_live_panels-6C3FC5?style=for-the-badge" alt="20 panels" />
   <img src="https://img.shields.io/badge/🔔_notifications-desktop_alerts-2ea44f?style=for-the-badge" alt="notifications" />
