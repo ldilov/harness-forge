@@ -118,7 +118,7 @@ function PatternRow({ pattern }: { readonly pattern: Pattern }) {
 
 export function InsightsPanel({ patterns }: InsightsPanelProps) {
   return (
-    <Panel title={'\uD83D\uDCA1 Insights'} subtitle="Discovered patterns and findings">
+    <Panel title={'\uD83D\uDCA1 Insights'} subtitle="Discovered patterns and findings" tooltip="Patterns the harness discovered from your sessions. Higher confidence = more data supporting the finding. 'NEW' badges mean recently discovered. These drive auto-tuning decisions.">
       {patterns.length === 0 ? (
         <div style={emptyStyle}>No patterns discovered yet</div>
       ) : (

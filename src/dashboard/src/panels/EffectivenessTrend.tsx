@@ -77,7 +77,7 @@ export function EffectivenessTrend({ scores }: EffectivenessTrendProps) {
   }, [scores]);
 
   return (
-    <Panel title={'\uD83D\uDCC8 Effectiveness Trend'} subtitle="Session scores over time">
+    <Panel title={'\uD83D\uDCC8 Effectiveness Trend'} subtitle="Session scores over time" tooltip="Your session scores over time. Each dot is one session rated 0-100. The dashed line at 70 marks 'good'. Rising trend = the harness is learning. Falling trend = something changed in your workflow.">
       <ReactEChartsCore
         echarts={echarts}
         option={option}

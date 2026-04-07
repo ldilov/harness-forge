@@ -34,8 +34,8 @@ export function MemoryPolicy({ budget }: MemoryPolicyProps) {
   const thresholds = (budget?.thresholds ?? {}) as Record<string, number>;
   const model = (budget?.model ?? {}) as Record<string, unknown>;
 
-  const rows = [
-    ['Model', model.name ?? 'Unknown'],
+  const rows: readonly [string, string][] = [
+    ['Model', String(model.name ?? 'Unknown')],
     ['Context Window', `${(model.contextWindowTokens as number ?? 200000).toLocaleString()} tokens`],
     ['Max Hot Path', `${(budgets.maxHotPathInputTokens ?? 120000).toLocaleString()} tokens`],
     ['Hard Cap', `${(budgets.reservedSafetyMargin ?? 10000).toLocaleString()} tokens`],
@@ -47,7 +47,7 @@ export function MemoryPolicy({ budget }: MemoryPolicyProps) {
   ];
 
   return (
-    <Panel title="Memory Policy" subtitle="Current policy values and thresholds">
+    <Panel title="Memory Policy" subtitle="Current policy values and thresholds" tooltip="Current memory rotation rules. When memory exceeds the cap, older items are archived to .hforge/runtime/memory-history/. The agent sees a condensed summary of what was archived.">
       <table style={tableStyle}>
         <tbody>
           {rows.map(([label, value]) => (

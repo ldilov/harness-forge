@@ -81,7 +81,7 @@ export function CommandWaterfall({ events }: CommandWaterfallProps) {
 
   if (spans.length === 0) {
     return (
-      <Panel title="Command Activity" subtitle="CLI command execution timeline">
+      <Panel title="Command Activity" subtitle="CLI command execution timeline" tooltip="CLI command execution timeline. Shows when commands started and finished, how long they took, and whether they succeeded. Long bars may indicate slow operations.">
         <div style={{ padding: 20, textAlign: 'center', color: colors.text.muted, fontSize: 12 }}>
           No command events yet
         </div>

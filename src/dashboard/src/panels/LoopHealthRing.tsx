@@ -120,7 +120,7 @@ export function LoopHealthRing({ loopHealth }: LoopHealthRingProps) {
   ] as const;
 
   return (
-    <Panel title={'\uD83D\uDD04 The Living Loop'} subtitle="Observe \u2192 Learn \u2192 Adapt \u2192 Share \u2192 Import">
+    <Panel title={'\uD83D\uDD04 The Living Loop'} subtitle="Observe \u2192 Learn \u2192 Adapt \u2192 Share \u2192 Import" tooltip="The Living Loop's self-improvement status. Each stage lights up when active: Observe (tracking sessions), Learn (finding patterns), Adapt (auto-tuning), Share (exporting), Import (bootstrapping). A pulse means the loop just completed a full cycle.">
       <div style={containerStyle}>
         {stages.map((stage, i) => (
           <span key={stage.key} style={{ display: 'flex', alignItems: 'center', gap: spacing.sm }}>

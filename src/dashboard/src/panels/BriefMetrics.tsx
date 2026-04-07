@@ -46,7 +46,7 @@ export function BriefMetrics({ events }: BriefMetricsProps) {
   }, [events]);
 
   return (
-    <Panel title="Brief Metrics" subtitle="Subagent brief lifecycle counts">
+    <Panel title="Brief Metrics" subtitle="Subagent brief lifecycle counts" tooltip="Summary of sub-agent performance. Higher acceptance rate = better brief quality. Rejected briefs are rewritten automatically.">
       <div style={rowStyle}>
         <div style={counterStyle}>
           <div style={{ ...valueStyle, color: colors.accent.mint }}>{counts.generated}</div>

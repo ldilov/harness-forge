@@ -77,7 +77,7 @@ export function CompactionHistory({ events }: CompactionHistoryProps) {
   }, [events]);
 
   return (
-    <Panel title="Compaction History" subtitle="Tokens before/after each compaction">
+    <Panel title="Compaction History" subtitle="Tokens before/after each compaction" tooltip="When the harness compressed old context to free up space. The bars show tokens before (tall) and after (short) compaction. Bigger reduction = more space reclaimed. Strategies: trim (light), summarize (medium), rollup (aggressive).">
       <ReactEChartsCore echarts={echarts} option={option} style={{ height: 200 }} notMerge />
     </Panel>
   );

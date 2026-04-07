@@ -98,7 +98,7 @@ export function EventTimeline({ events }: EventTimelineProps) {
   }, [events]);
 
   return (
-    <Panel title="Event Timeline" subtitle="All events plotted over time — scroll to zoom">
+    <Panel title="Event Timeline" subtitle="All events plotted over time — scroll to zoom" tooltip="Every decision the harness makes, plotted over time. Colors represent categories: green=memory, yellow=budget, purple=compaction, teal=subagent. Click a dot to see the full event details.">
       <ReactEChartsCore
         ref={chartRef}
         echarts={echarts}

@@ -33,7 +33,7 @@ export function TokensSaved({ events }: TokensSavedProps) {
   }, [events]);
 
   return (
-    <Panel title="Artifact Promotion" subtitle="Tokens saved by promoting inline content to references">
+    <Panel title="Artifact Promotion" subtitle="Tokens saved by promoting inline content to references" tooltip="Tokens saved by converting inline content into compact references. More promotions = less context wasted on repeated or large blobs.">
       <div style={{ display: 'flex', alignItems: 'baseline', gap: 12 }}>
         <span style={valueStyle}>{saved.toLocaleString()}</span>
         <span style={subStyle}>tokens saved across {promotions} promotions</span>

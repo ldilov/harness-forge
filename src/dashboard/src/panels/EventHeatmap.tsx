@@ -116,7 +116,7 @@ export function EventHeatmap({ events }: EventHeatmapProps) {
   }, [events]);
 
   return (
-    <Panel title="Event Density" subtitle="Event activity by category over time (10s buckets)">
+    <Panel title="Event Density" subtitle="Event activity by category over time (10s buckets)" tooltip="Heatmap showing event concentration by category and time. Brighter cells mean more events in that 10-second window. Helps spot bursts of activity in specific categories.">
       <ReactEChartsCore echarts={echarts} option={option} style={{ height: 160 }} notMerge />
     </Panel>
   );

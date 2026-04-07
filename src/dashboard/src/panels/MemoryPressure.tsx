@@ -173,7 +173,7 @@ export function MemoryPressure({ events }: MemoryPressureProps) {
   }, [events, compareMode]);
 
   return (
-    <Panel title="Memory Pressure" subtitle="Token usage over time with threshold lines">
+    <Panel title="Memory Pressure" subtitle="Token usage over time with threshold lines" tooltip="How close the agent is to running out of context space. The lines show thresholds — when token usage crosses a threshold, the harness compacts (compresses) old context to make room. Lower is better.">
       <ReactEChartsCore
         ref={chartRef}
         echarts={echarts}
@@ -182,6 +182,9 @@ export function MemoryPressure({ events }: MemoryPressureProps) {
         notMerge
         onEvents={{ mousemove: onChartMouseMove, globalout: onChartMouseOut }}
       />
+      <div style={{ fontSize: 10, color: colors.text.muted, marginTop: 6 }}>
+        Thresholds: 70% evaluate | 80% trim | 88% summarize | 93% rollup | 96% rollover
+      </div>
     </Panel>
   );
 }

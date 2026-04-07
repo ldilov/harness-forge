@@ -398,7 +398,7 @@ export function LiveEventFeed({ events }: LiveEventFeedProps) {
   const allCategories = Object.keys(categoryCounts).sort();
 
   return (
-    <Panel title="Live Event Feed" subtitle={`${events.length} events`}>
+    <Panel title="Live Event Feed" subtitle={`${events.length} events`} tooltip="Every event as it happens — searchable and expandable. Click any row to see the full payload. Use the search bar to filter by event type, task ID, or keyword.">
       <div style={headerRowStyle}>
         <Sparkline data={[...sparklineData]} width={120} height={22} color={colors.accent.magenta} />
         <span style={{ color: colors.text.secondary, fontSize: 11 }}>{eventsPerMin}/min</span>
