@@ -102,7 +102,7 @@ export function ConfigEditor() {
   const isModified = content !== originalContent;
 
   return (
-    <Panel title="Configuration" subtitle="Edit runtime config files">
+    <Panel title="Configuration" subtitle="Edit runtime config files" tooltip="Edit runtime policies live. Changes take effect on the next session. Memory policy controls when old context is archived. Context budget controls token allocation. Load order controls what context loads first.">
       <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: spacing.sm }}>
         <select
           style={selectStyle}

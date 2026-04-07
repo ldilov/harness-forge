@@ -167,7 +167,7 @@ export function EventRate({ events }: EventRateProps) {
   }, [events, compareMode]);
 
   return (
-    <Panel title="Event Rate" subtitle="Events per minute">
+    <Panel title="Event Rate" subtitle="Events per minute" tooltip="Events per minute — shows how busy the harness is. Spikes during complex tasks are normal. Sustained high rates may indicate the agent is thrashing.">
       <ReactEChartsCore
         ref={chartRef}
         echarts={echarts}

@@ -129,7 +129,7 @@ function TuningRow({ tuning, onRevert }: { readonly tuning: Tuning; readonly onR
 
 export function TuningLog({ tunings, onRevert }: TuningLogProps) {
   return (
-    <Panel title={'\u2699\uFE0F Tuning Log'} subtitle="Parameter adjustments from the Adapt stage">
+    <Panel title={'\u2699\uFE0F Tuning Log'} subtitle="Parameter adjustments from the Adapt stage" tooltip="Policy changes the harness made automatically. Shows what parameter changed, old to new value, and why. Click 'Revert' to undo any change instantly. All tunings have guardrails — they auto-revert if sessions score worse.">
       {tunings.length === 0 ? (
         <div style={emptyStyle}>No tuning adjustments yet</div>
       ) : (

@@ -52,8 +52,11 @@ export function BudgetBreakdown({ budget }: BudgetBreakdownProps) {
   }, [budget]);
 
   return (
-    <Panel title="Budget Breakdown" subtitle="Token allocation by category">
+    <Panel title="Budget Breakdown" subtitle="Token allocation by category" tooltip="How the context window is divided. 'Hot Path Input' is the main conversation, 'Reserved Output' is reserved for the agent's response, 'Reserved Tools' is for tool calls, 'Safety Margin' prevents overflow. If hot-path is too high, compaction kicks in.">
       <ReactEChartsCore echarts={echarts} option={option} style={{ height: 200 }} notMerge />
+      <div style={{ fontSize: 10, color: colors.text.muted, marginTop: 6 }}>
+        Hot-path = main conversation | Output = agent response reserve | Tools = tool call budget | Safety = overflow protection
+      </div>
     </Panel>
   );
 }

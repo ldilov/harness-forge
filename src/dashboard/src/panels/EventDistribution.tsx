@@ -77,7 +77,7 @@ export function EventDistribution({ eventCounts }: EventDistributionProps) {
   }, [eventCounts, selectedCategory]);
 
   return (
-    <Panel title="Event Distribution" subtitle="Top 10 event types by count">
+    <Panel title="Event Distribution" subtitle="Top 10 event types by count" tooltip="Which event types fire most often. Click a bar to filter the timeline to that category. High compaction events may mean the context budget is too tight.">
       <ReactEChartsCore
         echarts={echarts}
         option={option}

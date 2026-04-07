@@ -45,7 +45,7 @@ export function SubagentBriefs({ events }: SubagentBriefsProps) {
   }, [events]);
 
   return (
-    <Panel title="Subagent Briefs" subtitle={`${briefs.length} recent briefs`} style={{ maxHeight: 400, overflow: 'auto' }}>
+    <Panel title="Subagent Briefs" subtitle={`${briefs.length} recent briefs`} style={{ maxHeight: 400, overflow: 'auto' }} tooltip="When the harness delegates sub-tasks to focused agents. Shows what context each sub-agent received and whether the brief was accepted or rejected.">
       {briefs.length === 0 && (
         <div style={{ color: colors.text.muted, fontSize: 12 }}>No subagent briefs yet</div>
       )}

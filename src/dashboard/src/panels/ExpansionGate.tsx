@@ -38,7 +38,7 @@ export function ExpansionGate({ events }: ExpansionGateProps) {
   }, [events]);
 
   return (
-    <Panel title="History Expansion Gate" subtitle="Expansion requests granted vs denied">
+    <Panel title="History Expansion Gate" subtitle="Expansion requests granted vs denied" tooltip="Requests to access conversation history. The harness gates history access to prevent context bloat. 'Granted' means the agent got the history, 'Denied' means it was too expensive.">
       <div style={counterRow}>
         <div style={counterStyle}>
           <div style={{ fontSize: 24, fontWeight: 700, color: colors.accent.mint }}>{granted}</div>

@@ -49,7 +49,7 @@ export function SuppressionGauge({ events }: SuppressionGaugeProps) {
   }, [events]);
 
   return (
-    <Panel title="Duplicate Suppression" subtitle={`${suppressed}/${total} sources suppressed`}>
+    <Panel title="Duplicate Suppression" subtitle={`${suppressed}/${total} sources suppressed`} tooltip="How many duplicate context items were removed before sending to the agent. Higher suppression = less wasted tokens. The harness deduplicates automatically.">
       <div style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
         <Gauge
           value={ratio}

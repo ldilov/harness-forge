@@ -55,7 +55,7 @@ export function ProfileDistribution({ events }: ProfileDistributionProps) {
   }, [events]);
 
   return (
-    <Panel title="Response Profile" subtitle="Distribution of brief / standard / deep">
+    <Panel title="Response Profile" subtitle="Distribution of brief / standard / deep" tooltip="How often each response depth is used. 'Brief' is concise, 'Standard' is normal, 'Deep' is detailed. The harness selects the profile based on task complexity.">
       <ReactEChartsCore echarts={echarts} option={option} style={{ height: 160 }} notMerge />
     </Panel>
   );

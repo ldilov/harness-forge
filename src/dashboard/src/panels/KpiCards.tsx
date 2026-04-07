@@ -2,6 +2,7 @@ import type { CSSProperties } from 'react';
 import type { DashboardState } from '../state/types';
 import { colors, spacing, radius } from '../styles/theme';
 import { Gauge } from '../components/Gauge';
+import { Panel } from '../components/Panel';
 
 interface KpiCardsProps {
   readonly state: DashboardState;
@@ -52,18 +53,20 @@ export function KpiCards({ state }: KpiCardsProps) {
     : 0;
 
   return (
-    <div style={rowStyle}>
-      <KpiCard value={state.events.length} label="Total Events" color={colors.accent.mint} />
-      <KpiCard value={state.memoryTokens} label="Memory Tokens" color={colors.accent.magenta} />
-      <div style={cardStyle}>
-        <Gauge value={budgetPct} max={100} label="Budget Usage" size={100} />
+    <Panel title="Key Metrics" tooltip="Key metrics at a glance. 'Memory Tokens' shows how much of the context window is used. The gauge shows budget usage — green is safe, yellow means compaction is near, red means the agent is running out of room.">
+      <div style={rowStyle}>
+        <KpiCard value={state.events.length} label="Total Events" color={colors.accent.mint} />
+        <KpiCard value={state.memoryTokens} label="Memory Tokens" color={colors.accent.magenta} />
+        <div style={cardStyle}>
+          <Gauge value={budgetPct} max={100} label="Budget Usage" size={100} />
+        </div>
+        <KpiCard value={state.compactionLevel} label="Compaction Level" color={colors.accent.violet} />
+        <KpiCard
+          value={state.enforcementLevel}
+          label="Enforcement"
+          color={colors.enforcement[state.enforcementLevel.toLowerCase() as keyof typeof colors.enforcement] ?? colors.text.primary}
+        />
       </div>
-      <KpiCard value={state.compactionLevel} label="Compaction Level" color={colors.accent.violet} />
-      <KpiCard
-        value={state.enforcementLevel}
-        label="Enforcement"
-        color={colors.enforcement[state.enforcementLevel.toLowerCase() as keyof typeof colors.enforcement] ?? colors.text.primary}
-      />
-    </div>
+    </Panel>
   );
 }

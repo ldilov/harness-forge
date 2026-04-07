@@ -32,13 +32,10 @@ import { SessionInfo } from './panels/SessionInfo';
 import { SessionHeroCard } from './panels/SessionHeroCard';
 import { EventHeatmap } from './panels/EventHeatmap';
 import { CommandWaterfall } from './panels/CommandWaterfall';
-<<<<<<< HEAD
-=======
 import { LoopHealthRing } from './panels/LoopHealthRing';
 import { EffectivenessTrend } from './panels/EffectivenessTrend';
 import { InsightsPanel } from './panels/InsightsPanel';
 import { TuningLog } from './panels/TuningLog';
->>>>>>> worktree-agent-a77dcdf6
 
 const layoutStyle: CSSProperties = {
   display: 'flex',
@@ -115,8 +112,6 @@ function DashboardContent({ state, dispatch }: {
   const filteredEvents = filterEventsByTimeRange(state.events, timeRange);
   const activeProject = state.activeProject;
 
-<<<<<<< HEAD
-=======
   const handleRevert = React.useCallback((tuningId: string) => {
     dispatch({
       type: 'SIGNAL_RECEIVED',
@@ -134,7 +129,6 @@ function DashboardContent({ state, dispatch }: {
     });
   }, [dispatch, state.tunings]);
 
->>>>>>> worktree-agent-a77dcdf6
   return (
     <div style={layoutStyle}>
       <Sidebar />
@@ -154,81 +148,102 @@ function DashboardContent({ state, dispatch }: {
         </div>
 
         <div style={gridStyle}>
-<<<<<<< HEAD
-=======
           {/* Living Loop Section */}
-          <div style={fullWidthStyle}>
+          <div style={fullWidthStyle} id="panel-loop-health">
             <LoopHealthRing loopHealth={state.loopHealth} />
           </div>
-          <EffectivenessTrend scores={state.effectivenessScores} />
-          <InsightsPanel patterns={state.patterns} />
-          <div style={fullWidthStyle}>
+          <div id="panel-effectiveness">
+            <EffectivenessTrend scores={state.effectivenessScores} />
+          </div>
+          <div id="panel-insights">
+            <InsightsPanel patterns={state.patterns} />
+          </div>
+          <div style={fullWidthStyle} id="panel-tuning">
             <TuningLog tunings={state.tunings} onRevert={handleRevert} />
           </div>
 
           {/* Existing panels */}
->>>>>>> worktree-agent-a77dcdf6
-          <div style={fullWidthStyle}>
+          <div style={fullWidthStyle} id="panel-session-hero">
             <SessionHeroCard state={state} />
           </div>
 
-          <div style={fullWidthStyle}>
+          <div style={fullWidthStyle} id="panel-kpi">
             <KpiCards state={state} />
           </div>
 
-          <div style={fullWidthStyle}>
+          <div style={fullWidthStyle} id="panel-commands">
             <CommandWaterfall events={filteredEvents} />
           </div>
 
-          <div style={fullWidthStyle}>
+          <div style={fullWidthStyle} id="panel-timeline">
             <EventTimeline events={filteredEvents} />
           </div>
 
-          <div style={fullWidthStyle}>
+          <div style={fullWidthStyle} id="panel-heatmap">
             <EventHeatmap events={filteredEvents} />
           </div>
 
           <div style={twoColStyle}>
-            <MemoryPressure events={filteredEvents} />
-            <CompactionHistory events={filteredEvents} />
-            <MemoryPolicy budget={state.budgetSnapshot} />
-            <BudgetBreakdown budget={state.budgetSnapshot} />
+            <div id="panel-pressure">
+              <MemoryPressure events={filteredEvents} />
+            </div>
+            <div id="panel-compaction">
+              <CompactionHistory events={filteredEvents} />
+            </div>
+            <div id="panel-policy">
+              <MemoryPolicy budget={state.budgetSnapshot} />
+            </div>
+            <div id="panel-budget">
+              <BudgetBreakdown budget={state.budgetSnapshot} />
+            </div>
           </div>
 
           <div style={twoColStyle}>
-            <LiveEventFeed events={filteredEvents} />
+            <div id="panel-live-feed">
+              <LiveEventFeed events={filteredEvents} />
+            </div>
             <div>
-              <EventDistribution eventCounts={state.eventCounts} />
-              <div style={{ marginTop: 16 }}>
+              <div id="panel-distribution">
+                <EventDistribution eventCounts={state.eventCounts} />
+              </div>
+              <div style={{ marginTop: 16 }} id="panel-rate">
                 <EventRate events={filteredEvents} />
               </div>
             </div>
           </div>
 
           <div style={twoColStyle}>
-            <SubagentBriefs events={filteredEvents} />
+            <div id="panel-briefs">
+              <SubagentBriefs events={filteredEvents} />
+            </div>
             <div>
-              <BriefMetrics events={filteredEvents} />
-              <div style={{ marginTop: 16 }}>
+              <div id="panel-brief-metrics">
+                <BriefMetrics events={filteredEvents} />
+              </div>
+              <div style={{ marginTop: 16 }} id="panel-profiles">
                 <ProfileDistribution events={filteredEvents} />
               </div>
             </div>
           </div>
 
           <div style={twoColStyle}>
-            <SuppressionGauge events={filteredEvents} />
-            <ExpansionGate events={filteredEvents} />
+            <div id="panel-suppression">
+              <SuppressionGauge events={filteredEvents} />
+            </div>
+            <div id="panel-expansion">
+              <ExpansionGate events={filteredEvents} />
+            </div>
           </div>
 
-          <div style={fullWidthStyle}>
+          <div style={fullWidthStyle} id="panel-tokens-saved">
             <TokensSaved events={filteredEvents} />
           </div>
 
-          <div style={fullWidthStyle}>
+          <div style={fullWidthStyle} id="panel-config">
             <ConfigEditor />
           </div>
 
-          <div style={fullWidthStyle}>
+          <div style={fullWidthStyle} id="panel-session-info">
             <SessionInfo state={state} />
           </div>
         </div>
