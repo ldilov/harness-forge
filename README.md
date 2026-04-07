@@ -200,7 +200,7 @@ pattern list, tuning log — live in your browser.
 > `hforge dashboard` — see everything, live in your browser.
 
 <p align="center">
-  <img src="./assets/dashboard.png" alt="Harness Forge Dashboard" width="700" />
+  <img src="./assets/dashboard.jpeg" alt="Harness Forge Dashboard" width="700" />
 </p>
 
 <p align="center">
