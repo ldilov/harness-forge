@@ -54,6 +54,12 @@ export function renderCompletionScreen(
     lines.push(`  ${bullet} ${cmd}`);
   }
 
+  lines.push("");
+  lines.push(styleMuted(
+    capabilities,
+    `Tip: Add "forge": "hforge" to your package.json scripts for a quick alias.`
+  ));
+
   const box = styleBox(lines, capabilities);
   const footer = summary.operatorMessage.length > 0
     ? `\n${styleMuted(capabilities, `  ${summary.operatorMessage}`)}\n`

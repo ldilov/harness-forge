@@ -14,6 +14,7 @@ import { writeOnboardingBriefMarkdown } from "../runtime/render-onboarding-brief
 import { writeAgentManifest } from "./agent-manifest.js";
 import { buildProvenanceIndex } from "./build-provenance-index.js";
 import { ensureInstallGitignoreEntries } from "./ensure-gitignore.js";
+import { generateClaudeMd } from "./generate-claude-md.js";
 import { generateGuidance } from "./generate-guidance.js";
 import { planWorkspaceUpdate } from "./plan-workspace-update.js";
 import { rewriteInstalledAiLayerReferences } from "./rewrite-installed-ai-layer.js";
@@ -160,6 +161,18 @@ export async function applyInstall(
     const agentManifest = await writeAgentManifest(root, packageRoot);
     messages.push(`Agent command catalog written to ${commandCatalog.jsonPath}`);
     messages.push(`Agent manifest written to ${agentManifest.path}`);
+
+    if (plan.selection.targetId === "claude-code") {
+      const claudeMdResult = await generateClaudeMd(root);
+      messages.push(`CLAUDE.md written to ${claudeMdResult.claudeMdPath}`);
+      if (claudeMdResult.commandsForgeCreated && claudeMdResult.commandsForgePath) {
+        messages.push(`Claude Code slash command written to ${claudeMdResult.commandsForgePath}`);
+      }
+      generatedFiles.push(claudeMdResult.claudeMdPath);
+      if (claudeMdResult.commandsForgePath) {
+        generatedFiles.push(claudeMdResult.commandsForgePath);
+      }
+    }
     if (sharedRuntime) {
       messages.push(`Shared runtime written to ${sharedRuntime.indexPath}`);
     }
