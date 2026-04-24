@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://img.shields.io/badge/%F0%9F%94%A8_harness--forge-v1.5.2-6C3FC5?style=for-the-badge" alt="version" />
+  <img src="https://img.shields.io/badge/%F0%9F%94%A8_harness--forge-v1.5.3-6C3FC5?style=for-the-badge" alt="version" />
 </p>
 
 <h1 align="center">🔨 Harness Forge</h1>
@@ -37,6 +37,7 @@
   <a href="#-get-started-in-60-seconds">🚀 Get Started</a> &bull;
   <a href="#-the-living-loop--your-harness-gets-smarter">🔄 Living Loop</a> &bull;
   <a href="#-real-time-dashboard">📊 Dashboard</a> &bull;
+  <a href="#-decision-timeline">🧭 Decisions</a> &bull;
   <a href="#-your-daily-workflow">⌨️ Commands</a> &bull;
   <a href="#-real-world-scenarios">💡 Scenarios</a> &bull;
   <a href="#-supported-targets">🎯 Targets</a> &bull;
@@ -83,6 +84,7 @@ token spend, and compaction — **no black boxes**
 | 🧠 **Context** | Agent guesses at project structure | Agent knows your languages, frameworks, boundaries |
 | ⚡ **Performance** | Starts fresh every session | Self-improves over time via the Living Loop |
 | 📊 **Visibility** | Black box — no idea what the agent decided | Real-time dashboard with 20 live panels |
+| 🧭 **Decisions** | ADRs get buried or forgotten | Chronological decision timeline with stale-decision checks |
 | 💰 **Cost** | Wasted tokens on retries and wrong paths | Compaction + auto-tuning saves 20-40% |
 | 📤 **Portability** | Stuck on one machine, one setup | Export & import learned patterns as `.hfb` bundles |
 
@@ -280,6 +282,70 @@ one-click revert
 
 ---
 
+## 🧭 Decision Timeline
+
+> `hforge review --root . --json` — see what your team decided, when it changed, and what needs attention.
+
+<p align="center">
+  <img src="https://img.shields.io/badge/ADR_timeline-chronological-6C3FC5?style=for-the-badge" alt="ADR timeline" />
+  <img src="https://img.shields.io/badge/stale_decisions-flagged-f97316?style=for-the-badge" alt="stale decisions" />
+  <img src="https://img.shields.io/badge/coverage_gates-architecture_ready-2ea44f?style=for-the-badge" alt="coverage gates" />
+</p>
+
+AI work moves fast. The hard part is remembering **why** the team chose a path
+three weeks later. Harness Forge now turns ASR and ADR records into a simple
+timeline:
+
+<table>
+<tr>
+<td align="center" width="33%">
+
+#### 🕒 What happened?
+
+Decisions are sorted by creation time,
+so the newest architecture choices are easy to find.
+
+</td>
+<td align="center" width="33%">
+
+#### 🔎 What changed?
+
+Superseded ADRs point to the newer decision,
+so old notes do not fight new direction.
+
+</td>
+<td align="center" width="33%">
+
+#### 🚦 What needs review?
+
+Stale proposals, broken links, and missing
+decision coverage show up in review output.
+
+</td>
+</tr>
+</table>
+
+```bash
+# Review decision health, lineage, and architecture coverage
+hforge review --root . --json
+
+# Generate a readable decision log for handoff or onboarding
+hforge runtime decision-log --root . --json
+```
+
+In plain words: if a task is architecture-significant, Harness Forge helps the
+team answer:
+
+- **Do we have a decision for this?**
+- **Is it still current?**
+- **Did another ADR replace it?**
+- **Are we shipping with an uncovered architecture change?**
+
+That makes ADRs useful day to day, not just documents people write once and
+forget.
+
+---
+
 <!-- LAYER 3: Getting started and daily use (1 minute) -->
 
 ## 🚀 Get Started in 60 Seconds
@@ -349,6 +415,8 @@ hforge doctor --root . --json
 | | Command | What it does |
 |---|---|---|
 | 📊 | `hforge dashboard` | Open the real-time browser dashboard |
+| 🧭 | `hforge review --root . --json` | Check decision health, lineage, and coverage |
+| 📝 | `hforge runtime decision-log --root . --json` | Generate a readable decision timeline |
 | 📈 | `hforge score` | Show recent session effectiveness scores |
 | 🧠 | `hforge insights` | Browse learned patterns with confidence |
 | ⚡ | `hforge adapt` | View/manage auto-tunings |

@@ -49,6 +49,7 @@
       "type": "array",
       "items": { "type": "string" }
     },
+    "noDecisionRationale": { "$ref": "#/$defs/noDecisionRationale" },
     "requirements": {
       "type": "array",
       "items": { "$ref": "#/$defs/requirement" }
@@ -135,6 +136,21 @@
           "enum": ["low", "medium", "high"]
         },
         "source": { "type": "string" }
+      }
+    },
+    "noDecisionRationale": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["taskId", "rationale", "recordedAt", "recordedBy", "reviewStatus"],
+      "properties": {
+        "taskId": { "type": "string" },
+        "rationale": { "type": "string" },
+        "recordedAt": { "type": "string", "format": "date-time" },
+        "recordedBy": { "type": "string" },
+        "reviewStatus": {
+          "type": "string",
+          "enum": ["draft", "inferred", "confirmed", "approved", "stale", "superseded"]
+        }
       }
     },
     "architectureSignificanceAssessment": {

@@ -5,9 +5,13 @@ import { Command } from "commander";
 import { summarizeRuntimeReview } from "../../application/runtime/review-workspace.js";
 import { writeRuntimeAuditArtifact } from "../../application/runtime/write-runtime-audit-artifact.js";
 import { createDoctorReport } from "../../application/maintenance/doctor-workspace.js";
-import { listStaleTaskAnalysisArtifacts } from "../../application/runtime/task-runtime-store.js";
+import { listStaleTaskAnalysisArtifacts, listTaskPacks } from "../../application/runtime/task-runtime-store.js";
 import { listRecursiveSessionIds } from "../../infrastructure/recursive/session-store.js";
-import { loadDecisionIndex } from "../../application/runtime/decision-runtime-store.js";
+import { loadDecisionIndex, loadDecisionRecords } from "../../application/runtime/decision-runtime-store.js";
+import { deriveDecisionHealth } from "../../application/runtime/derive-decision-health.js";
+import { evaluateDecisionCoverage } from "../../application/runtime/evaluate-decision-coverage.js";
+import { buildDecisionChains } from "../../application/runtime/build-decision-chain.js";
+import { buildArchitectureChangeFeed } from "../../application/runtime/build-architecture-change-feed.js";
 import { loadInstallState } from "../../domain/state/install-state.js";
 import { appendEffectivenessSignal } from "../../infrastructure/observability/local-metrics-store.js";
 import { DEFAULT_WORKSPACE_ROOT, PACKAGE_ROOT, RUNTIME_DIR, RUNTIME_TASKS_DIR, exists } from "../../shared/index.js";
@@ -23,6 +27,21 @@ async function countTaskFolders(workspaceRoot: string): Promise<number> {
   return entries.filter((entry) => entry.isDirectory()).length;
 }
 
+function countByStatus(entries: Array<{ status: string }>): Record<string, number> {
+  return entries.reduce<Record<string, number>>((counts, entry) => {
+    counts[entry.status] = (counts[entry.status] ?? 0) + 1;
+    return counts;
+  }, {});
+}
+
+function newestDecisionAgeDays(entries: Array<{ createdAt?: string }>, now = new Date()): number | null {
+  const newest = entries
+    .map((entry) => (entry.createdAt ? Date.parse(entry.createdAt) : Number.NaN))
+    .filter((time) => !Number.isNaN(time))
+    .sort((left, right) => right - left)[0];
+  return newest === undefined ? null : Math.floor((now.getTime() - newest) / 86_400_000);
+}
+
 export function registerReviewCommands(program: Command): void {
   program
     .command("review")
@@ -35,14 +54,58 @@ export function registerReviewCommands(program: Command): void {
     .option("--json", "json output", false)
     .action(async (options) => {
       const workspaceRoot = path.resolve(options.root);
-      const [state, doctor, staleTaskArtifacts, decisionIndex, taskCount, recursiveSessions] = await Promise.all([
+      const [state, doctor, staleTaskArtifacts, decisionIndex, decisionRecords, taskPacks, taskCount, recursiveSessions] = await Promise.all([
         loadInstallState(workspaceRoot),
         createDoctorReport(workspaceRoot, PACKAGE_ROOT),
         listStaleTaskAnalysisArtifacts(workspaceRoot),
         loadDecisionIndex(workspaceRoot),
+        loadDecisionRecords(workspaceRoot),
+        listTaskPacks(workspaceRoot),
         countTaskFolders(workspaceRoot),
         listRecursiveSessionIds(workspaceRoot)
       ]);
+
+      const decisionCoverageResults = evaluateDecisionCoverage(taskPacks, decisionRecords);
+      const decisionHealthFindings = deriveDecisionHealth({
+        decisions: decisionRecords,
+        taskPacks,
+        coverageResults: decisionCoverageResults
+      });
+      const decisionChains = buildDecisionChains(decisionRecords);
+      const architectureChangeFeed = buildArchitectureChangeFeed({
+        decisions: decisionRecords,
+        taskPacks,
+        healthFindings: decisionHealthFindings,
+        coverageResults: decisionCoverageResults
+      });
+      const decisionStatusCounts = countByStatus(decisionIndex.entries);
+      const decisionHealthSummary = {
+        total: decisionHealthFindings.length,
+        bySeverity: decisionHealthFindings.reduce<Record<string, number>>((counts, finding) => {
+          counts[finding.severity] = (counts[finding.severity] ?? 0) + 1;
+          return counts;
+        }, {}),
+        byCategory: decisionHealthFindings.reduce<Record<string, number>>((counts, finding) => {
+          counts[finding.category] = (counts[finding.category] ?? 0) + 1;
+          return counts;
+        }, {})
+      };
+      const decisionCoverageSummary = {
+        total: decisionCoverageResults.length,
+        byClassification: decisionCoverageResults.reduce<Record<string, number>>((counts, result) => {
+          counts[result.classification] = (counts[result.classification] ?? 0) + 1;
+          return counts;
+        }, {}),
+        blockers: decisionCoverageResults.filter((result) => result.severity === "blocker").length,
+        warnings: decisionCoverageResults.filter((result) => result.severity === "warning").length
+      };
+      const architectureFeedSummary = {
+        total: architectureChangeFeed.length,
+        byEventType: architectureChangeFeed.reduce<Record<string, number>>((counts, entry) => {
+          counts[entry.eventType] = (counts[entry.eventType] ?? 0) + 1;
+          return counts;
+        }, {})
+      };
 
       const findings = [
         {
@@ -56,7 +119,13 @@ export function registerReviewCommands(program: Command): void {
           title: `Stale task artifacts: ${staleTaskArtifacts.length}`,
           severity: staleTaskArtifacts.length > 0 ? "medium" : "low",
           evidence: staleTaskArtifacts.slice(0, 3).map((entry) => JSON.stringify(entry))
-        }
+        },
+        ...decisionHealthFindings.map((finding) => ({
+          id: finding.id,
+          title: finding.title,
+          severity: finding.severity === "blocker" ? "high" : finding.severity === "warning" ? "medium" : "low",
+          evidence: finding.evidence
+        }))
       ];
 
       const maxFindings = options.maxFindings ?? (options.profile === "brief" ? 3 : options.profile === "deep" ? 15 : 7);
@@ -65,7 +134,10 @@ export function registerReviewCommands(program: Command): void {
       const summary = summarizeRuntimeReview(limitedFindings);
       const artifactPath = await writeRuntimeAuditArtifact(workspaceRoot, `review-${Date.now()}`, {
         ...summary,
-        profile: options.profile
+        profile: options.profile,
+        decisionHealthSummary,
+        decisionCoverageSummary,
+        architectureFeedSummary
       });
 
       await appendEffectivenessSignal(workspaceRoot, {
@@ -89,6 +161,15 @@ export function registerReviewCommands(program: Command): void {
         taskCount,
         staleTaskArtifacts,
         decisionRecords: decisionIndex.entries.length,
+        decisionStatusCounts,
+        newestDecisionAgeDays: newestDecisionAgeDays(decisionIndex.entries),
+        decisionHealthSummary,
+        decisionHealthFindings,
+        decisionChains,
+        decisionCoverageSummary,
+        decisionCoverageResults,
+        architectureFeedSummary,
+        architectureChangeFeed,
         recursiveSessions,
         summary,
         artifactPath

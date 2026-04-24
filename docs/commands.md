@@ -109,6 +109,7 @@ hforge task list --root . --json
 hforge task inspect TASK-001 --root . --json
 hforge pack inspect TASK-001 --root . --json
 hforge review --root . --json
+hforge runtime orientation --root . --json
 hforge export --root . --json
 hforge commands --json
 hforge catalog --json
@@ -155,6 +156,11 @@ version or dist-tag, reapply managed surfaces, write an install-state backup
 under `.hforge/state/`, and intentionally preserve gathered runtime state such
 as task artifacts, decision records, recursive sessions, and observability
 signals.
+
+`hforge review --root . --json` includes decision-governance summaries when
+runtime decision or task artifacts exist: decision records by status, newest
+decision age, decision-health findings, ADR lineage chains, architecture change
+feed counts, and architecture-significant decision coverage results.
 
 For agent-facing examples and prompt patterns that encourage actual runtime
 usage instead of passive installation, see `docs/agent-usage-playbook.md`.

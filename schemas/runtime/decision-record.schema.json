@@ -215,6 +215,7 @@
         "supersedes",
         "supersededBy",
         "reviewStatus",
+        "createdAt",
         "updatedAt"
       ],
       "properties": {
@@ -240,9 +241,224 @@
           "items": { "type": "string" }
         },
         "reviewStatus": { "$ref": "#/$defs/reviewStatus" },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
         "updatedAt": {
           "type": "string",
           "format": "date-time"
+        }
+      }
+    },
+    "decisionHealthFinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "category", "severity", "title", "rationale", "evidence", "recommendedAction", "detectedAt"],
+      "properties": {
+        "id": { "type": "string" },
+        "category": {
+          "type": "string",
+          "enum": [
+            "timestamp-quality",
+            "stale-decision",
+            "unresolved-decision",
+            "broken-lineage",
+            "circular-lineage",
+            "conflicting-lineage",
+            "stale-reference",
+            "coverage-gap"
+          ]
+        },
+        "severity": {
+          "type": "string",
+          "enum": ["info", "warning", "blocker"]
+        },
+        "decisionId": { "type": "string" },
+        "taskId": { "type": "string" },
+        "title": { "type": "string" },
+        "rationale": { "type": "string" },
+        "evidence": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "recommendedAction": { "type": "string" },
+        "detectedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "decisionChain": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["chainId", "decisionIds", "status", "findings"],
+      "properties": {
+        "chainId": { "type": "string" },
+        "decisionIds": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "currentDecisionId": { "type": "string" },
+        "status": {
+          "type": "string",
+          "enum": ["complete", "broken", "circular", "branching", "conflicting"]
+        },
+        "findings": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/decisionHealthFinding" }
+        }
+      }
+    },
+    "noDecisionRationale": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["taskId", "rationale", "recordedAt", "recordedBy", "reviewStatus"],
+      "properties": {
+        "taskId": { "type": "string" },
+        "rationale": { "type": "string" },
+        "recordedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "recordedBy": { "type": "string" },
+        "reviewStatus": { "$ref": "#/$defs/reviewStatus" }
+      }
+    },
+    "decisionCoverageResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "taskId",
+        "architectureSignificance",
+        "classification",
+        "decisionRefs",
+        "severity",
+        "rationale",
+        "recommendedAction"
+      ],
+      "properties": {
+        "taskId": { "type": "string" },
+        "architectureSignificance": { "$ref": "#/$defs/architectureSignificance" },
+        "classification": {
+          "type": "string",
+          "enum": ["covered", "intentionally-uncovered", "missing-coverage", "not-required", "broken-reference", "stale-reference"]
+        },
+        "decisionRefs": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "noDecisionRationale": { "$ref": "#/$defs/noDecisionRationale" },
+        "severity": {
+          "type": "string",
+          "enum": ["info", "warning", "blocker"]
+        },
+        "rationale": { "type": "string" },
+        "recommendedAction": { "type": "string" }
+      }
+    },
+    "decisionLog": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["generatedAt", "grouping", "entries", "findings"],
+      "properties": {
+        "generatedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "grouping": {
+          "type": "string",
+          "enum": ["time-period", "status", "significance"]
+        },
+        "entries": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "title",
+              "recordType",
+              "status",
+              "architectureSignificance",
+              "reviewStatus",
+              "createdAt",
+              "updatedAt",
+              "taskRefs",
+              "supersessionState"
+            ],
+            "properties": {
+              "id": { "type": "string" },
+              "title": { "type": "string" },
+              "recordType": {
+                "type": "string",
+                "enum": ["asr", "adr"]
+              },
+              "status": { "$ref": "#/$defs/decisionStatus" },
+              "architectureSignificance": { "$ref": "#/$defs/architectureSignificance" },
+              "reviewStatus": { "$ref": "#/$defs/reviewStatus" },
+              "createdAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "updatedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "taskRefs": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "supersessionState": { "type": "string" },
+              "summary": { "type": "string" }
+            }
+          }
+        },
+        "findings": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/decisionHealthFinding" }
+        }
+      }
+    },
+    "architectureChangeFeedEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "occurredAt", "eventType", "decisionIds", "taskIds", "summary", "evidence"],
+      "properties": {
+        "id": { "type": "string" },
+        "occurredAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "eventType": {
+          "type": "string",
+          "enum": [
+            "decision-created",
+            "decision-updated",
+            "decision-status-changed",
+            "task-linked",
+            "impact-analysis-linked",
+            "review-status-changed",
+            "health-finding-created",
+            "coverage-classified"
+          ]
+        },
+        "decisionIds": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "taskIds": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "severity": {
+          "type": "string",
+          "enum": ["info", "warning", "blocker"]
+        },
+        "summary": { "type": "string" },
+        "evidence": {
+          "type": "array",
+          "items": { "type": "string" }
         }
       }
     },

@@ -202,6 +202,7 @@ function buildCliCommands(): CatalogCommandEntry[] {
     { id: "diff-install", command: "hforge diff-install --root <repo> --json", description: "Compare managed install expectations against the repo." },
     { id: "template-validate", command: "hforge template validate --json", description: "Validate the shipped task and workflow templates." },
     { id: "runtime-orientation", command: "hforge runtime orientation --root <repo> --json", description: "Inspect first-hop orientation surfaces and budget posture." },
+    { id: "runtime-decision-log", command: "hforge runtime decision-log --root <repo> --json", description: "Generate a chronological decision log from runtime ASR and ADR records." },
     { id: "runtime-tiers", command: "hforge runtime tiers --json", description: "Inspect hot, warm, and cold surface-tier metadata." },
     { id: "audit-duplicates", command: "hforge audit duplicates --root <repo> --json", description: "Estimate duplicate retrieval fanout and repeated token exposure." },
     { id: "target-compliance", command: "hforge target compliance --json", description: "Validate target adapter support posture and bridge compliance." }
@@ -465,5 +466,4 @@ export async function writeAgentCommandCatalog(workspaceRoot: string, packageRoo
 
   return { jsonPath, markdownPath };
 }
-
 

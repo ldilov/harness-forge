@@ -88,6 +88,12 @@ hforge classify-boundaries . --json
 hforge synthesize-instructions . --target claude-code --json
 ```
 
+When `.hforge/runtime/decisions/` or `.hforge/runtime/tasks/` contain
+governance artifacts, `hforge review --root . --json` also acts as a decision
+timeline check. It reports chronological decision metadata, stale or unresolved
+decision findings, ADR lineage issues, architecture change feed counts, and
+coverage gaps for architecture-significant task packs.
+
 If the task is hard or multi-hop:
 
 ```bash

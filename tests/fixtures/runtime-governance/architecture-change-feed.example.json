@@ -1,0 +1,9 @@
+{
+  "id": "decision-created-ASR-TASK-ARCH-001",
+  "occurredAt": "2026-03-27T10:05:00.000Z",
+  "eventType": "decision-created",
+  "decisionIds": ["ASR-TASK-ARCH-001"],
+  "taskIds": ["TASK-ARCH-001"],
+  "summary": "ASR created: Introduce billing event retry orchestration",
+  "evidence": ["ASR-TASK-ARCH-001"]
+}

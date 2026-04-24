@@ -1,7 +1,9 @@
 import path from "node:path";
+import fs from "node:fs/promises";
 
 import type { DecisionIndex, DecisionIndexEntry, DecisionRecord } from "../../domain/runtime/decision-record.js";
-import { parseDecisionIndex } from "../../domain/runtime/decision-record.js";
+import type { DecisionLog } from "../../domain/runtime/decision-log.js";
+import { parseDecisionIndex, parseDecisionRecord } from "../../domain/runtime/decision-record.js";
 import {
   RUNTIME_DECISIONS_DIR,
   RUNTIME_DECISION_INDEX_FILE,
@@ -12,6 +14,7 @@ import {
   writeJsonFile,
   writeTextFile
 } from "../../shared/index.js";
+import { compareISODesc } from "../../shared/timestamps.js";
 
 function decisionsRoot(workspaceRoot: string): string {
   return path.join(workspaceRoot, RUNTIME_DIR, RUNTIME_DECISIONS_DIR);
@@ -32,6 +35,19 @@ export function resolveDecisionArtifactPaths(workspaceRoot: string, recordId: st
   };
 }
 
+export function resolveDecisionLogArtifactPaths(workspaceRoot: string): {
+  decisionsDir: string;
+  jsonPath: string;
+  markdownPath: string;
+} {
+  const decisionsDir = decisionsRoot(workspaceRoot);
+  return {
+    decisionsDir,
+    jsonPath: path.join(decisionsDir, "decision-log.json"),
+    markdownPath: path.join(decisionsDir, "DECISION-LOG.md")
+  };
+}
+
 function toIndexEntry(record: DecisionRecord): DecisionIndexEntry {
   return {
     id: record.id,
@@ -44,8 +60,16 @@ function toIndexEntry(record: DecisionRecord): DecisionIndexEntry {
     supersedes: record.recordType === "adr" ? [...record.supersedes] : [],
     supersededBy: record.recordType === "adr" ? [...record.supersededBy] : [],
     reviewStatus: record.reviewStatus,
+    createdAt: record.createdAt,
     updatedAt: record.updatedAt
   };
+}
+
+export function sortDecisionIndexEntries(entries: readonly DecisionIndexEntry[]): DecisionIndexEntry[] {
+  return [...entries].sort((left, right) => {
+    const chronological = compareISODesc(left.createdAt, right.createdAt);
+    return chronological === 0 ? left.id.localeCompare(right.id) : chronological;
+  });
 }
 
 export async function loadDecisionIndex(workspaceRoot: string): Promise<DecisionIndex> {
@@ -61,6 +85,28 @@ export async function loadDecisionIndex(workspaceRoot: string): Promise<Decision
   return parseDecisionIndex(await readJsonFile<DecisionIndex>(indexPath));
 }
 
+export async function loadDecisionRecords(workspaceRoot: string): Promise<DecisionRecord[]> {
+  const decisionsDir = decisionsRoot(workspaceRoot);
+  if (!(await exists(decisionsDir))) {
+    return [];
+  }
+
+  const entries = await fs.readdir(decisionsDir, { withFileTypes: true });
+  const records: DecisionRecord[] = [];
+  for (const entry of entries) {
+    if (!entry.isFile() || !entry.name.endsWith(".json") || entry.name === RUNTIME_DECISION_INDEX_FILE) {
+      continue;
+    }
+    const payload = await readJsonFile<unknown>(path.join(decisionsDir, entry.name));
+    records.push(parseDecisionRecord(payload));
+  }
+
+  return records.sort((left, right) => {
+    const chronological = compareISODesc(left.createdAt, right.createdAt);
+    return chronological === 0 ? left.id.localeCompare(right.id) : chronological;
+  });
+}
+
 export async function writeDecisionRecord(
   workspaceRoot: string,
   record: DecisionRecord,
@@ -74,7 +120,7 @@ export async function writeDecisionRecord(
   const nextIndex: DecisionIndex = {
     version: 1,
     generatedAt: new Date().toISOString(),
-    entries: [...existingEntries, indexEntry].sort((left, right) => left.id.localeCompare(right.id))
+    entries: sortDecisionIndexEntries([...existingEntries, indexEntry])
   };
 
   await Promise.all([
@@ -84,4 +130,15 @@ export async function writeDecisionRecord(
   ]);
 
   return { record, indexEntry };
+}
+
+export async function writeDecisionLogArtifacts(
+  workspaceRoot: string,
+  log: DecisionLog,
+  markdown: string
+): Promise<{ jsonPath: string; markdownPath: string }> {
+  const paths = resolveDecisionLogArtifactPaths(workspaceRoot);
+  await ensureDir(paths.decisionsDir);
+  await Promise.all([writeJsonFile(paths.jsonPath, log), writeTextFile(paths.markdownPath, markdown)]);
+  return { jsonPath: paths.jsonPath, markdownPath: paths.markdownPath };
 }

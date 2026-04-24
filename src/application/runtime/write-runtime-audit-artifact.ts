@@ -7,6 +7,9 @@ export interface RuntimeAuditArtifact {
   verdict: "pass" | "warn" | "fail" | "changes-requested";
   summary: string;
   findings: Array<{ id: string; title: string; severity: string; evidence: string[] }>;
+  decisionHealthSummary?: unknown;
+  decisionCoverageSummary?: unknown;
+  architectureFeedSummary?: unknown;
   nextAction: string;
 }
 

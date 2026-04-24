@@ -1,6 +1,7 @@
 import { z } from "zod";
 
 import { architectureSignificanceAssessmentSchema } from "./architecture-significance.js";
+import { noDecisionRationaleSchema } from "./decision-coverage.js";
 import { confidenceLevelSchema, reviewStatusSchema } from "./file-interest.js";
 
 export const taskRequirementSchema = z.object({
@@ -51,6 +52,7 @@ export const taskPackSchema = z.object({
   decisionRefs: z.array(z.string().min(1)).default([]),
   asrRefs: z.array(z.string().min(1)).default([]),
   adrRefs: z.array(z.string().min(1)).default([]),
+  noDecisionRationale: noDecisionRationaleSchema.optional(),
   requirements: z.array(taskRequirementSchema),
   implementationNotes: z.array(implementationNoteSchema),
   acceptanceCriteria: z.array(z.string().min(1)).default([]),

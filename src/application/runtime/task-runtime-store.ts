@@ -150,3 +150,25 @@ export async function listStaleTaskAnalysisArtifacts(workspaceRoot: string): Pro
 
   return stale.sort((left, right) => left.path.localeCompare(right.path));
 }
+
+export async function listTaskPacks(workspaceRoot: string): Promise<TaskPack[]> {
+  const tasksRoot = path.join(workspaceRoot, RUNTIME_DIR, RUNTIME_TASKS_DIR);
+  if (!(await exists(tasksRoot))) {
+    return [];
+  }
+
+  const entries = await fs.readdir(tasksRoot, { withFileTypes: true });
+  const packs: TaskPack[] = [];
+  for (const entry of entries) {
+    if (!entry.isDirectory()) {
+      continue;
+    }
+
+    const { taskPackPath } = resolveTaskArtifactPaths(workspaceRoot, entry.name);
+    if (await exists(taskPackPath)) {
+      packs.push(await readJsonFile<TaskPack>(taskPackPath));
+    }
+  }
+
+  return packs.sort((left, right) => left.taskId.localeCompare(right.taskId));
+}

@@ -1,0 +1,11 @@
+{
+  "id": "decision-stale-proposed-ASR-TASK-ARCH-001",
+  "category": "stale-decision",
+  "severity": "warning",
+  "decisionId": "ASR-TASK-ARCH-001",
+  "title": "Proposed decision has aged past 30 days",
+  "rationale": "ASR-TASK-ARCH-001 is still proposed after 31 days.",
+  "evidence": ["2026-03-27T10:05:00.000Z"],
+  "recommendedAction": "Accept, reject, defer, or refresh the proposed decision.",
+  "detectedAt": "2026-04-28T10:05:00.000Z"
+}

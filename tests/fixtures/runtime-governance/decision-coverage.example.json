@@ -1,0 +1,9 @@
+{
+  "taskId": "TASK-ARCH-001",
+  "architectureSignificance": "high",
+  "classification": "covered",
+  "decisionRefs": ["ASR-TASK-ARCH-001"],
+  "severity": "info",
+  "rationale": "Task links to at least one active decision record.",
+  "recommendedAction": "No decision coverage action required."
+}

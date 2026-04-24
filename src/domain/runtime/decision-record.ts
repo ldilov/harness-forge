@@ -69,6 +69,7 @@ export const decisionIndexEntrySchema = z.object({
   supersedes: z.array(z.string().min(1)).default([]),
   supersededBy: z.array(z.string().min(1)).default([]),
   reviewStatus: reviewStatusSchema,
+  createdAt: z.string().min(1),
   updatedAt: z.string().min(1)
 });
 

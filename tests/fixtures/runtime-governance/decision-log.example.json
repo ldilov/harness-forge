@@ -1,20 +1,20 @@
 {
-  "version": 1,
   "generatedAt": "2026-03-27T10:05:00.000Z",
+  "grouping": "time-period",
   "entries": [
     {
       "id": "ASR-TASK-ARCH-001",
-      "recordType": "asr",
-      "path": ".hforge/runtime/decisions/ASR-TASK-ARCH-001.json",
       "title": "Introduce billing event retry orchestration",
+      "recordType": "asr",
       "status": "proposed",
       "architectureSignificance": "high",
-      "taskRefs": ["TASK-ARCH-001"],
-      "supersedes": [],
-      "supersededBy": [],
       "reviewStatus": "inferred",
       "createdAt": "2026-03-27T10:05:00.000Z",
-      "updatedAt": "2026-03-27T10:05:00.000Z"
+      "updatedAt": "2026-03-27T10:05:00.000Z",
+      "taskRefs": ["TASK-ARCH-001"],
+      "supersessionState": "not-applicable",
+      "summary": "Coordinate billing retries across the API route and billing service."
     }
-  ]
+  ],
+  "findings": []
 }
