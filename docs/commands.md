@@ -88,7 +88,9 @@ Examples:
 - `/hforge-recursive` to escalate difficult work into recursive structured analysis
 - `/hforge-recursive-investigate` to tell an agent to autonomously escalate hard work into a recursive investigation and prefer Typed RLM first
 - `/hforge-update` to preview or apply a non-destructive package refresh
-- `commands/hforge-init.md`, `commands/hforge-analyze.md`, `commands/hforge-review.md`, `commands/hforge-refresh.md`, `commands/hforge-decide.md`, `commands/hforge-status.md`, `commands/hforge-commands.md`, `commands/hforge-recommend.md`, `commands/hforge-cartograph.md`, `commands/hforge-task.md`, `commands/hforge-recursive.md`, `commands/hforge-recursive-investigate.md`, and `commands/hforge-update.md` as the canonical packaged command surfaces
+- `/hforge-double-diamond` to run a Discover -> Define -> Develop -> Deliver workflow before implementing a meaningful feature
+- `/hforge-bug-diamond` to run evidence-based bug investigation for defects, regressions, flaky tests, and incident-like failures
+- `commands/hforge-init.md`, `commands/hforge-analyze.md`, `commands/hforge-review.md`, `commands/hforge-refresh.md`, `commands/hforge-decide.md`, `commands/hforge-status.md`, `commands/hforge-commands.md`, `commands/hforge-recommend.md`, `commands/hforge-cartograph.md`, `commands/hforge-task.md`, `commands/hforge-recursive.md`, `commands/hforge-recursive-investigate.md`, `commands/hforge-update.md`, `commands/hforge-double-diamond.md`, and `commands/hforge-bug-diamond.md` as the canonical packaged command surfaces
 - `commands/plan.md` and `commands/test.md` for broader planning and validation guidance
 
 Treat these as agent-facing prompt entrypoints, not replacements for the CLI.

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-19T11:53:44.504Z",
+  "generatedAt": "2026-05-19T12:59:15.560Z",
   "entries": [
     {
       "subjectType": "language",
@@ -1280,7 +1280,23 @@
       "subjectId": "claude-code",
       "relationType": "supports",
       "relatedType": "skill",
+      "relatedId": "bug-investigation",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "skill",
       "relatedId": "cloud-architect",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "complex-task-protocol",
       "supportLevel": "full"
     },
     {
@@ -1305,6 +1321,14 @@
       "relationType": "supports",
       "relatedType": "skill",
       "relatedId": "documentation-lookup",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "claude-code",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "double-diamond-feature",
       "supportLevel": "full"
     },
     {
@@ -2091,7 +2115,23 @@
       "subjectId": "codex",
       "relationType": "supports",
       "relatedType": "skill",
+      "relatedId": "bug-investigation",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "skill",
       "relatedId": "cloud-architect",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "complex-task-protocol",
       "supportLevel": "full"
     },
     {
@@ -2116,6 +2156,14 @@
       "relationType": "supports",
       "relatedType": "skill",
       "relatedId": "documentation-lookup",
+      "supportLevel": "full"
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "codex",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "double-diamond-feature",
       "supportLevel": "full"
     },
     {
@@ -2941,9 +2989,27 @@
       "subjectId": "cursor",
       "relationType": "supports",
       "relatedType": "skill",
+      "relatedId": "bug-investigation",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial skill support for bug-investigation."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "skill",
       "relatedId": "cloud-architect",
       "supportLevel": "partial",
       "notes": "Cursor only provides partial skill support for cloud-architect."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "complex-task-protocol",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial skill support for complex-task-protocol."
     },
     {
       "subjectType": "target",
@@ -2971,6 +3037,15 @@
       "relatedId": "documentation-lookup",
       "supportLevel": "partial",
       "notes": "Cursor only provides partial skill support for documentation-lookup."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "cursor",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "double-diamond-feature",
+      "supportLevel": "partial",
+      "notes": "Cursor only provides partial skill support for double-diamond-feature."
     },
     {
       "subjectType": "target",
@@ -3830,9 +3905,27 @@
       "subjectId": "generic-agent",
       "relationType": "supports",
       "relatedType": "skill",
+      "relatedId": "bug-investigation",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial skill support for bug-investigation."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "skill",
       "relatedId": "cloud-architect",
       "supportLevel": "partial",
       "notes": "Generic Agent only provides partial skill support for cloud-architect."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "complex-task-protocol",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial skill support for complex-task-protocol."
     },
     {
       "subjectType": "target",
@@ -3860,6 +3953,15 @@
       "relatedId": "documentation-lookup",
       "supportLevel": "partial",
       "notes": "Generic Agent only provides partial skill support for documentation-lookup."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "generic-agent",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "double-diamond-feature",
+      "supportLevel": "partial",
+      "notes": "Generic Agent only provides partial skill support for double-diamond-feature."
     },
     {
       "subjectType": "target",
@@ -4724,9 +4826,27 @@
       "subjectId": "opencode",
       "relationType": "supports",
       "relatedType": "skill",
+      "relatedId": "bug-investigation",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial skill support for bug-investigation."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "skill",
       "relatedId": "cloud-architect",
       "supportLevel": "partial",
       "notes": "OpenCode only provides partial skill support for cloud-architect."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "complex-task-protocol",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial skill support for complex-task-protocol."
     },
     {
       "subjectType": "target",
@@ -4754,6 +4874,15 @@
       "relatedId": "documentation-lookup",
       "supportLevel": "partial",
       "notes": "OpenCode only provides partial skill support for documentation-lookup."
+    },
+    {
+      "subjectType": "target",
+      "subjectId": "opencode",
+      "relationType": "supports",
+      "relatedType": "skill",
+      "relatedId": "double-diamond-feature",
+      "supportLevel": "partial",
+      "notes": "OpenCode only provides partial skill support for double-diamond-feature."
     },
     {
       "subjectType": "target",

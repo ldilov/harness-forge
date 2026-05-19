@@ -162,6 +162,13 @@ individual commands.
 - if an operator wants stronger Harness Forge usage in day-to-day agent work, use `docs/agent-usage-playbook.md`
 - prefer the playbook prompts when you want the agent to prove it is reading the installed guidance layer, use the command catalog, compact context efficiently, create task artifacts, write decision records, or escalate into recursive mode
 
+## Feature and bug workflow defaults
+
+- for meaningful feature work, use the `double-diamond-feature` skill (or `/hforge-double-diamond`) before coding: Discover evidence, Define problem/non-goals/acceptance, Develop at least two options for non-trivial work, Deliver with validation and rollback notes
+- for defects, regressions, outages, or flaky tests, use `bug-investigation` (or `/hforge-bug-diamond`) instead: triage and contain, reproduce, hypothesize, test, fix the confirmed cause, verify, prevent recurrence
+- keep small low-risk tasks in Lite mode; label facts as user-provided, repository-derived, runtime-derived, external, or assumption; never claim certainty without evidence
+- these workflows are command/skill driven and host-agnostic; pause for human confirmation before high-risk auth, secrets, payments, data-migration, or production changes
+
 <!-- SPECKIT START -->
 For additional context about technologies to be used, project structure,
 shell commands, and other important information, read the current plan:

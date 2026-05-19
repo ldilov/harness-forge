@@ -79,3 +79,8 @@ AI content into the hidden `.hforge/` layer.
 - use `.agents/skills/complex-task-protocol/SKILL.md` to discover the automatic
   complex-task protocol, then load the canonical `.hforge/library/skills/complex-task-protocol/SKILL.md`
   execution contract in installed workspaces
+- use `.agents/skills/double-diamond-feature/SKILL.md` for meaningful feature work
+  before coding (Discover, Define, Develop, Deliver), and
+  `.agents/skills/bug-investigation/SKILL.md` for defects, regressions, and flaky
+  tests; both bridge to canonical skills under `.hforge/library/skills/` and stay
+  honest about Codex vs Claude Code invocation rather than claiming native parity

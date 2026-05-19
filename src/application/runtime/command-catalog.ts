@@ -320,6 +320,20 @@ function buildMarkdownCommands(): MarkdownCommandEntry[] {
       docPath: "commands/hforge-update.md",
       description: "Preview or apply a non-destructive Harness Forge package refresh.",
       relatedCliCommandIds: ["update", "upgrade", "review", "export"]
+    },
+    {
+      id: "hforge-double-diamond",
+      trigger: "/hforge-double-diamond",
+      docPath: "commands/hforge-double-diamond.md",
+      description: "Run a Discover -> Define -> Develop -> Deliver workflow before implementing a meaningful feature; switch to /hforge-bug-diamond for defects.",
+      relatedCliCommandIds: ["status", "commands", "task-list", "task-inspect", "recommend", "cartograph", "review"]
+    },
+    {
+      id: "hforge-bug-diamond",
+      trigger: "/hforge-bug-diamond",
+      docPath: "commands/hforge-bug-diamond.md",
+      description: "Run evidence-based bug investigation with triage, reproduction, hypotheses, fix verification, and recurrence prevention; switch to /hforge-double-diamond for feature work.",
+      relatedCliCommandIds: ["status", "commands", "task-list", "task-inspect", "review", "doctor", "audit"]
     }
   ];
 }
