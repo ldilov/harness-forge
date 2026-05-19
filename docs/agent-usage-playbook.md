@@ -41,6 +41,17 @@ Those commands are backed by `commands/hforge-init.md`,
 - choose a safe command execution path
 - summarize active guidance, targets, repo intelligence, and next steps before coding
 
+`/hforge-init` is also the agent-start orientation doorway after installation.
+It should read `.hforge/runtime/agent-brief.md` first when available, inspect
+the command catalog, and return a concise session briefing instead of starting
+with a broad repository scan.
+
+Complex-task behavior is not command-triggered. Agents should load the installed
+`complex-task-protocol` guidance automatically when a task has at least two
+complexity signals, or one high-signal condition such as security, release,
+cross-target, recursive, runtime, orchestration, subagent, or learning-capture
+work. Simple tasks should stay lightweight.
+
 ## What usage looks like
 
 An agent is usually using Harness Forge well when it does at least some of the
@@ -212,6 +223,31 @@ Use the installed Harness Forge token-budget-optimizer skill before you expand
 context further. Reuse existing runtime summaries, task artifacts, and decision
 records first. Tell me what you will keep loaded, what you will compact, and
 what new evidence still requires a focused read.
+```
+
+### 9. Use the automatic complex-task protocol
+
+Use this when the task is broad but you do not want a command ceremony:
+
+```text
+Classify this task before meaningful coding work. If it has at least two
+complexity signals or one high-signal condition, use the installed
+complex-task-protocol automatically. Keep the main path local, use at most two
+bounded sidecars only for independent work, verify before completion, and
+capture only durable non-duplicative learning in existing project or runtime
+surfaces.
+```
+
+### 10. Capture learning without creating noise
+
+Use this after a complex task that revealed a reusable pattern:
+
+```text
+At the end of this task, identify any reusable learning. Capture only durable
+repo conventions, verification recipes, recurring failure modes, architecture or
+runtime decisions, agent tactics, or target support caveats. Skip temporary
+task state, obvious facts, duplicate guidance, and new top-level docs unless
+there is an established destination or you ask first.
 ```
 
 ## Claude-specific examples

@@ -36,10 +36,12 @@
     "runtimeSurfaces": [
       ".hforge/runtime/index.json",
       ".hforge/runtime/README.md",
+      ".hforge/runtime/agent-brief.md",
+      ".hforge/library/skills/complex-task-protocol/SKILL.md",
       ".hforge/runtime/recursive/language-capabilities.json"
     ],
     "supportMode": "translated",
-    "notes": "Cursor relies on thin visible bridges and the hidden .hforge runtime instead of a native runtime payload or root-visible canonical content, including translated recursive structured-analysis discovery through the shared runtime capability map and durable session artifacts.",
+    "notes": "Cursor relies on thin visible bridges and the hidden .hforge runtime instead of a native runtime payload or root-visible canonical content. It can consume .hforge/runtime/agent-brief.md and .hforge/library/skills/complex-task-protocol/SKILL.md as compatible guidance, but this is partial support rather than full runtime-native parity. Complex-task behavior is translated guidance for classification, bounded review, verification, and learning capture; do not claim native parallel subagent execution for Cursor.",
     "authoritativeSurfaces": [
       ".hforge/library/skills",
       ".hforge/library/rules",

@@ -69,6 +69,7 @@ Use the thin visible bridge surfaces first in installed workspaces:
 - prefer `.hforge/library/skills/cloud-architect/` when the task is about deployment topology, distributed systems, reliability, observability, or cloud trade-offs across services
 - prefer `.hforge/library/skills/engineering-assistant/` when the task needs architecture plus implementation orchestration, option framing, or explicit project-memory and change-discipline guidance in one surface
 - prefer `.hforge/library/skills/token-budget-optimizer/` when prompt history is growing, repo context is being repeated, or existing runtime artifacts should be reused before broader rescans
+- prefer `.hforge/library/skills/complex-task-protocol/` when a task has at least two complexity signals, one high-signal condition, or explicit user interest in subagents, learning capture, recovery, orchestration, or complex-task handling
 - prefer `.agents/skills/hforge-recursive-investigate/SKILL.md` or `commands/hforge-recursive-investigate.md` when the task is ambiguous, cross-module, or investigation-heavy enough to justify recursive mode and Typed RLM-first execution
 - prefer recursive mode when the task is ambiguous, cross-module, long-context, policy-sensitive, or worth preserving as durable evidence, but treat that as an agent decision rather than an always-on background policy
 - use `.hforge/library/manifests/catalog/framework-assets.json` and `.hforge/runtime/repo/recommendations.json` when framework or bundle matching is more reliable than guessing from file extensions
@@ -123,6 +124,7 @@ Use the thin visible bridge surfaces first in installed workspaces:
 - `npm install -g @harness-forge/cli` is optional convenience, not the default requirement
 - use `.hforge/runtime/repo/repo-map.json`, `.hforge/runtime/repo/instruction-plan.json`, `.hforge/runtime/repo/recommendations.json`, and `.hforge/runtime/findings/risk-signals.json` as the extracted runtime intelligence surfaces
 - treat framework matches, recommendation evidence, and validation gaps as first-class signals, not as optional decoration
+- use the complex-task protocol automatically for qualifying work rather than waiting for a slash command; keep simple tasks light, bound sidecar agents to independent work, verify before completion, and capture only durable non-duplicative learning
 
 ## Cartographer+ project-intelligence workflow
 
@@ -159,3 +161,9 @@ individual commands.
 
 - if an operator wants stronger Harness Forge usage in day-to-day agent work, use `docs/agent-usage-playbook.md`
 - prefer the playbook prompts when you want the agent to prove it is reading the installed guidance layer, use the command catalog, compact context efficiently, create task artifacts, write decision records, or escalate into recursive mode
+
+<!-- SPECKIT START -->
+For additional context about technologies to be used, project structure,
+shell commands, and other important information, read the current plan:
+`specs/016-complex-task-protocol/plan.md`
+<!-- SPECKIT END -->
