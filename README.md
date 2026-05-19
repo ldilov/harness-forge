@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://img.shields.io/badge/%F0%9F%94%A8_harness--forge-v1.5.4-6C3FC5?style=for-the-badge" alt="version" />
+  <img src="https://img.shields.io/badge/%F0%9F%94%A8_harness--forge-v1.5.5-6C3FC5?style=for-the-badge" alt="version" />
 </p>
 
 <h1 align="center">🔨 Harness Forge</h1>
@@ -37,6 +37,7 @@
   <a href="#-get-started-in-60-seconds">🚀 Get Started</a> &bull;
   <a href="#-the-living-loop--your-harness-gets-smarter">🔄 Living Loop</a> &bull;
   <a href="#-sentinel--always-on-watcher-preview">🛡️ Sentinel (preview)</a> &bull;
+  <a href="#-double-diamond--feature--bug-workflows">🔷 Double Diamond</a> &bull;
   <a href="#-real-time-dashboard">📊 Dashboard</a> &bull;
   <a href="#-decision-timeline">🧭 Decisions</a> &bull;
   <a href="#-your-daily-workflow">⌨️ Commands</a> &bull;
@@ -288,6 +289,57 @@ one-click revert
 
 > Sentinel watches your project for you. It notices when key files change, when the build is wrong, or when an AI agent gets stuck — and writes it down. It never spends AI tokens on its own (default daily budget is **0**), and it never changes anything without your approval.
 
+<p align="center">
+  <img src="https://img.shields.io/badge/🛡️_Sentinel-always--on-6C3FC5?style=for-the-badge" alt="always on" />
+  <img src="https://img.shields.io/badge/💰_LLM_budget-0_by_default-2ea44f?style=for-the-badge" alt="zero token budget" />
+  <img src="https://img.shields.io/badge/✋_changes-approval--gated-f97316?style=for-the-badge" alt="approval gated" />
+  <img src="https://img.shields.io/badge/🧪_tests-300+-0070f3?style=for-the-badge" alt="300+ tests" />
+</p>
+
+<p align="center">
+
+```
+  ┌──────────┐   ┌──────────────┐   ┌──────────┐   ┌──────────────┐   ┌──────────┐
+  │ 👁️ WATCH  │──▶│ 📋 OBSERVE   │──▶│ 🚦 SIGNAL │──▶│ ✋ APPROVE   │──▶│ 🔧 ACT   │
+  │ drift /  │   │ dedup + log  │   │ classify │   │ authority    │   │ sandbox  │
+  │ deps /   │   │ by severity  │   │ + route  │   │ A0..A5 chain │   │ worktree │
+  │ ADR mons │   │              │   │          │   │ + denylist   │   │ +rollback│
+  └──────────┘   └──────────────┘   └──────────┘   └──────────────┘   └──────────┘
+        ▲                                                                   │
+        └────────────── side-effect ledger · panic-stop ────────────────────┘
+```
+
+</p>
+
+<table>
+<tr>
+<td align="center" width="33%">
+
+### 👁️ Watches deterministically
+
+Repo / dependency / ADR-drift monitors —
+**0 LLM tokens** by default, fully offline
+
+</td>
+<td align="center" width="33%">
+
+### ✋ Never acts unasked
+
+Tamper-evident SHA-256 approval chain,
+denied paths & commands, instant panic-stop
+
+</td>
+<td align="center" width="33%">
+
+### 🔧 Reversible by design
+
+Approved actions run in isolated git
+worktrees with a full side-effect ledger
+
+</td>
+</tr>
+</table>
+
 ```bash
 hforge monitor init-defaults     # one-time setup
 hforge monitor once              # run all watchers one tick
@@ -295,7 +347,8 @@ hforge observe                   # see what changed
 hforge monitor status            # check the cost meter
 ```
 
-What you get today (early preview):
+<details>
+<summary><strong>📋 What you get today (early preview) — full capability checklist</strong></summary>
 
 - ✅ **Repo Drift Monitor** — flags when `package.json`, lockfile, `tsconfig.json`, or your harness manifest change
 - ✅ **Deduplicated observations** — no duplicate noise across runs
@@ -333,7 +386,76 @@ What you get today (early preview):
 - ✅ **300 unit + integration tests** including full daemon lifecycle, watchdog state machine, validate-sentinel gate, and both new monitors
 - 🚧 **Coming next**: agent step types (`invoke_agent`, `write_file`, `apply_patch`, `open_pr`), GitHub releases + advisories adapter, CI Failure Monitor (needs the GitHub adapter), click-to-approve UI
 
+</details>
+
 📖 **New here?** Read [docs/sentinel/README.md](docs/sentinel/README.md) and [docs/sentinel/getting-started.md](docs/sentinel/getting-started.md) — both written in plain English with no jargon.
+
+---
+
+## 🔷 Double Diamond — feature & bug workflows
+
+> Most agents code the **first idea they have**. Double Diamond makes your agent *explore the problem before committing* and *compare options before delivering* — with just enough structure, never ceremony.
+
+<p align="center">
+  <img src="https://img.shields.io/badge/🔍_Discover-diverge-0070f3?style=for-the-badge" alt="discover" />
+  <img src="https://img.shields.io/badge/🎯_Define-converge-6C3FC5?style=for-the-badge" alt="define" />
+  <img src="https://img.shields.io/badge/🛠️_Develop-diverge-f97316?style=for-the-badge" alt="develop" />
+  <img src="https://img.shields.io/badge/✅_Deliver-converge-2ea44f?style=for-the-badge" alt="deliver" />
+</p>
+
+<p align="center">
+
+```
+        DISCOVER                 DEVELOP
+           ◆                        ◆
+          ╱ ╲                      ╱ ╲
+         ╱   ╲   defined          ╱   ╲   shipped
+  ──────▶     ◆─────────────────▶     ◆──────▶
+  request ╲   ╱   problem        ╲   ╱   change
+           ╲ ╱                    ╲ ╱
+            ◆                      ◆
+         DEFINE                  DELIVER
+     └──── PROBLEM SPACE ───┘ └─── SOLUTION SPACE ───┘
+        diverge → converge       diverge → converge
+```
+
+</p>
+
+<table>
+<tr>
+<td width="50%">
+
+#### 🔷 `/hforge-double-diamond`
+
+For **meaningful feature work**. Discover evidence →
+Define the smallest correct problem → Develop **≥2 options**
+→ Deliver with validation, acceptance mapping & rollback.
+Auto-reframes to the bug flow if the task is really a defect.
+
+</td>
+<td width="50%">
+
+#### 🐞 `/hforge-bug-diamond`
+
+For **defects, regressions, flaky tests, incidents**.
+Triage & contain → reproduce → ranked hypothesis table →
+smallest confirmed fix → verify → prevent recurrence.
+**No root-cause claims without evidence.**
+
+</td>
+</tr>
+</table>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/mode-Lite-9ca3af?style=flat-square" alt="lite" />
+  <img src="https://img.shields.io/badge/mode-Standard-0070f3?style=flat-square" alt="standard" />
+  <img src="https://img.shields.io/badge/mode-Deep-6C3FC5?style=flat-square" alt="deep" />
+  &nbsp;
+  <img src="https://img.shields.io/badge/Claude_Code-%2Fdouble--diamond--feature-6C3FC5?style=flat-square" alt="claude invocation" />
+  <img src="https://img.shields.io/badge/Codex-%24double--diamond--feature-2ea44f?style=flat-square" alt="codex invocation" />
+</p>
+
+> **Lite** keeps small changes one-liner-light · **Standard** is the default for real features · **Deep** adds option matrices and human checkpoints for risky, ambiguous, or architecture-significant work. Host-agnostic and honest about parity: native slash skill in Claude Code, `/skills` or `$skill` in Codex — no overstated capabilities.
 
 ---
 
