@@ -1,0 +1,25 @@
+id: dependency-risk
+name: Dependency Risk Monitor
+enabled: true
+source: harness.dependency_risk
+interval: 6h
+network: none
+capabilities:
+  - repo.read
+observe:
+  inputs:
+    - package.json
+    - node_modules
+    - .hforge/runtime/world/cache/npm
+classify:
+  severity:
+    default: notice
+    deprecated_direct: warning
+    deprecated_indirect: notice
+    major_direct: notice
+    major_indirect: info
+  confidence: 0.9
+dedupe:
+  fingerprint: "dep:${subject}"
+  windowSeconds: 86400
+actions: []

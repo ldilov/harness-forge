@@ -39,6 +39,18 @@ import { registerUpgradeSurfaceCommands } from "./commands/upgrade-surface.js";
 import { registerDashboardCommands } from "./commands/dashboard.js";
 import { registerAdaptCommands } from "./commands/adapt.js";
 import { registerLoopCommands } from "./commands/loop-cmd.js";
+import { registerMonitorCommands } from "./commands/monitor.js";
+import { registerObserveCommands } from "./commands/observe.js";
+import { registerGraphCommands } from "./commands/graph.js";
+import { registerContextCommands } from "./commands/context.js";
+import { registerImpactCommands } from "./commands/impact.js";
+import { registerAgentHookCommands } from "./commands/agent-hook.js";
+import { registerExplainCommands, registerPrCommands } from "./commands/explain.js";
+import { registerSignalsCommands } from "./commands/signals.js";
+import { registerActionsCommands } from "./commands/actions.js";
+import { registerAutonomyCommands } from "./commands/autonomy.js";
+import { registerWorldCommands } from "./commands/world.js";
+import { registerWatchdogCommands } from "./commands/watchdog.js";
 import { formatCliError } from "../infrastructure/diagnostics/reporter.js";
 import { PACKAGE_ROOT } from "../shared/index.js";
 import { PHASE_LABELS, PHASE_ORDER, resolveCommandPhase, type CommandPhaseId } from "../application/runtime/command-phase-mapping.js";
@@ -94,6 +106,19 @@ registerDashboardCommands(program);
 registerLearnCommands(program);
 registerAdaptCommands(program);
 registerLoopCommands(program);
+registerMonitorCommands(program);
+registerObserveCommands(program);
+registerGraphCommands(program);
+registerContextCommands(program);
+registerImpactCommands(program);
+registerAgentHookCommands(program);
+registerExplainCommands(program);
+registerPrCommands(program);
+registerSignalsCommands(program);
+registerActionsCommands(program);
+registerAutonomyCommands(program);
+registerWorldCommands(program);
+registerWatchdogCommands(program);
 
 // Custom help: group subcommands by lifecycle phase, hide advanced by default
 program.addHelpText("after", () => {

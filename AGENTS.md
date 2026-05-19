@@ -124,6 +124,26 @@ Use the thin visible bridge surfaces first in installed workspaces:
 - use `.hforge/runtime/repo/repo-map.json`, `.hforge/runtime/repo/instruction-plan.json`, `.hforge/runtime/repo/recommendations.json`, and `.hforge/runtime/findings/risk-signals.json` as the extracted runtime intelligence surfaces
 - treat framework matches, recommendation evidence, and validation gaps as first-class signals, not as optional decoration
 
+## Cartographer+ project-intelligence workflow
+
+Cartographer+ answers what exists, what is connected, what context a task needs,
+and which commands should run. Prefer one broker call over memorizing the
+individual commands.
+
+- before starting a code task: `hforge agent hook --event task.started --goal "<goal>" --json`
+- before editing files: `hforge agent hook --event files.pre_edit --files "<paths>" --json`
+- after editing files: `hforge agent hook --event files.changed --files "<paths>" --json`
+- before a PR or finishing: `hforge agent hook --event pr.prep --json` then `--event task.completed --json`
+- the broker is triage-only by default: it returns `recommendedCommands` and a `nextAction`; read them and act
+- pass `--execute` to let the broker run the auto-executable diagnostic commands in-process (graph build, context compile, impact). It never spawns a shell and is gated by `.hforge/agent-triggers.yaml` `autonomyLevel` (default `diagnostic`; `manual` disables execution)
+- repeated identical hooks within the cooldown return the cached run; do not loop on the broker
+- the underlying commands are also callable directly: `hforge graph build|status|inspect`, `hforge context compile|show|list`, `hforge impact <file>|--files|--changed|--goal`
+- read the compiled context bundle (`.hforge/cartographer/context-bundles/`) before opening unrelated files; treat its `graphFreshness`/`contextTruncated` markers as authoritative about staleness
+- treat impact `risk` as `low|medium|high|architectural`; a `--goal` impact is predicted, not observed, and is capped below architectural
+- Cartographer+ links the existing decision/ADR system through a provider; never create a competing ADR store
+- inspect broker history with `hforge agent hooks status|list`; runs are audited in `.hforge/cartographer/agent-hooks/runs.jsonl`
+- cross-platform fallbacks `scripts/cartographer/hforge-agent-hook.{py,sh,ps1,mjs}` only print a plan (dry-run); they never execute — execution goes through `hforge agent hook --execute`
+
 ## Trust and scope rules
 
 - do not treat `.hforge/` runtime state, task state, recursive state, or generated manifests as product application code unless the task is explicitly about Harness Forge itself

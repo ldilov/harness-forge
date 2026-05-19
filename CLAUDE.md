@@ -34,6 +34,16 @@ Resolve CLI execution in this order:
 | `hforge trace` | View session traces |
 | `hforge learn` | Trigger pattern extraction |
 
+### Cartographer+ project intelligence
+
+| Command | What it does |
+|---------|-------------|
+| `hforge agent hook --event <e> --json` | One call: the broker recommends the right Cartographer commands for a lifecycle event (triage-only; `--execute` runs diagnostic commands in-process) |
+| `hforge graph build \| inspect <path>` | Build/query the project knowledge graph |
+| `hforge context compile --goal "<g>"` | Compile a token-bounded task context bundle |
+| `hforge impact <file> \| --changed \| --goal "<g>"` | Predict change blast radius + verification commands |
+| `hforge explain impact\|context\|diff` · `hforge pr narrative\|checklist` | Human-readable explanations + PR narrative from graph/impact (no LLM) |
+
 ### Sharing & maintenance
 
 | Command | What it does |

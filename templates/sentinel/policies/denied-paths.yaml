@@ -1,0 +1,8 @@
+deniedPaths:
+  - .env
+  - .env.*
+  - "**/secrets/**"
+  - "**/*.pem"
+  - "**/*.key"
+  - "**/id_rsa"
+  - "**/credentials.json"

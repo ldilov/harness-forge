@@ -1,0 +1,23 @@
+id: repo-drift
+name: Repo Drift Monitor
+enabled: true
+source: harness.repo_drift
+interval: 5m
+network: none
+capabilities:
+  - repo.read
+observe:
+  inputs:
+    - package.json
+    - package-lock.json
+    - tsconfig.json
+    - .hforge/agent-manifest.json
+classify:
+  severity:
+    default: notice
+    manifest_changed: warning
+  confidence: 0.9
+dedupe:
+  fingerprint: "repo-drift:${subject}:${changes}"
+  windowSeconds: 3600
+actions: []

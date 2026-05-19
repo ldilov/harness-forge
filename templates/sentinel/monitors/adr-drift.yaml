@@ -1,0 +1,22 @@
+id: adr-drift
+name: ADR Drift Monitor
+enabled: true
+source: harness.adr_drift
+interval: 1h
+network: none
+capabilities:
+  - repo.read
+observe:
+  inputs:
+    - docs/adrs
+    - docs/adr
+    - .hforge/runtime/decisions
+classify:
+  severity:
+    default: notice
+    many_broken: warning
+  confidence: 0.9
+dedupe:
+  fingerprint: "adr:${subject}"
+  windowSeconds: 86400
+actions: []

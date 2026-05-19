@@ -18,6 +18,8 @@ import { SignalBroadcaster } from './signal-broadcaster.js';
 import { SignalAggregator } from './signal-aggregator.js';
 import { SessionStore } from './session-store.js';
 import { listProjects, registerProject } from './project-registry.js';
+import { SentinelSnapshotProvider } from './sentinel-snapshot.js';
+import { CartographerSnapshotProvider } from './cartographer-snapshot.js';
 import type { BehaviorEvent } from '@app/behavior/behavior-event-emitter.js';
 import type { SignalMessage } from '@domain/dashboard/signal-types.js';
 import { MemoryPolicySchema } from '@domain/behavior/memory-policy.js';
@@ -307,6 +309,61 @@ export class DashboardServer {
         this.sendJson(res, 200, { tunings });
       } else if (pathname === '/api/loop/revert-tuning' && req.method === 'POST') {
         await this.handleRevertTuning(req, res);
+      } else if (pathname === '/api/sentinel/status' && req.method === 'GET') {
+        const snapshot = await new SentinelSnapshotProvider(this.workspaceRoot).status();
+        this.sendJson(res, 200, snapshot);
+      } else if (pathname === '/api/sentinel/observations' && req.method === 'GET') {
+        const raw = Number.parseInt(url.searchParams.get('limit') ?? '100', 10);
+        const limit = Number.isFinite(raw) ? Math.min(1000, Math.max(1, raw)) : 100;
+        const observations = await new SentinelSnapshotProvider(this.workspaceRoot).observations(limit);
+        this.sendJson(res, 200, { observations });
+      } else if (pathname === '/api/sentinel/signals' && req.method === 'GET') {
+        const data = await new SentinelSnapshotProvider(this.workspaceRoot).signals();
+        this.sendJson(res, 200, data);
+      } else if (pathname === '/api/sentinel/actions' && req.method === 'GET') {
+        const data = await new SentinelSnapshotProvider(this.workspaceRoot).actions();
+        this.sendJson(res, 200, data);
+      } else if (pathname === '/api/sentinel/approvals' && req.method === 'GET') {
+        const actionId = url.searchParams.get('action') ?? undefined;
+        const data = await new SentinelSnapshotProvider(this.workspaceRoot).approvals(actionId);
+        this.sendJson(res, 200, data);
+      } else if (pathname === '/api/sentinel/ledger' && req.method === 'GET') {
+        const actionId = url.searchParams.get('action') ?? undefined;
+        const raw = Number.parseInt(url.searchParams.get('limit') ?? '100', 10);
+        const limit = Number.isFinite(raw) ? Math.min(1000, Math.max(1, raw)) : 100;
+        const entries = await new SentinelSnapshotProvider(this.workspaceRoot).ledger(actionId, limit);
+        this.sendJson(res, 200, { entries });
+      } else if (pathname === '/api/sentinel/verification' && req.method === 'GET') {
+        const raw = Number.parseInt(url.searchParams.get('limit') ?? '20', 10);
+        const limit = Number.isFinite(raw) ? Math.min(100, Math.max(1, raw)) : 20;
+        const data = await new SentinelSnapshotProvider(this.workspaceRoot).verifications(limit);
+        this.sendJson(res, 200, data);
+      } else if (pathname === '/api/sentinel/policy' && req.method === 'GET') {
+        const data = await new SentinelSnapshotProvider(this.workspaceRoot).policy();
+        this.sendJson(res, 200, data);
+      } else if (pathname === '/api/sentinel/watchdog' && req.method === 'GET') {
+        const raw = Number.parseInt(url.searchParams.get('limit') ?? '50', 10);
+        const limit = Number.isFinite(raw) ? Math.min(200, Math.max(1, raw)) : 50;
+        const data = await new SentinelSnapshotProvider(this.workspaceRoot).watchdog(limit);
+        this.sendJson(res, 200, data);
+      } else if (pathname === '/api/cartographer/graph' && req.method === 'GET') {
+        const data = await new CartographerSnapshotProvider(this.workspaceRoot).graph();
+        this.sendJson(res, 200, data);
+      } else if (pathname === '/api/cartographer/bundles' && req.method === 'GET') {
+        const raw = Number.parseInt(url.searchParams.get('limit') ?? '50', 10);
+        const limit = Number.isFinite(raw) ? Math.min(1000, Math.max(1, raw)) : 50;
+        const bundles = await new CartographerSnapshotProvider(this.workspaceRoot).bundles(limit);
+        this.sendJson(res, 200, { bundles });
+      } else if (pathname === '/api/cartographer/impact' && req.method === 'GET') {
+        const raw = Number.parseInt(url.searchParams.get('limit') ?? '50', 10);
+        const limit = Number.isFinite(raw) ? Math.min(1000, Math.max(1, raw)) : 50;
+        const impact = await new CartographerSnapshotProvider(this.workspaceRoot).impact(limit);
+        this.sendJson(res, 200, { impact });
+      } else if (pathname === '/api/cartographer/hooks' && req.method === 'GET') {
+        const raw = Number.parseInt(url.searchParams.get('limit') ?? '50', 10);
+        const limit = Number.isFinite(raw) ? Math.min(1000, Math.max(1, raw)) : 50;
+        const hooks = await new CartographerSnapshotProvider(this.workspaceRoot).hooks(limit);
+        this.sendJson(res, 200, { hooks });
       } else if (pathname === '/sw.js') {
         this.serveServiceWorker(res);
       } else if (pathname === '/') {

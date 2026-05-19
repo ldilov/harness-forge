@@ -1,0 +1,7 @@
+llmTokens:
+  dailyBudget: 0
+  perActionBudget: 4000
+  perMonitorBudget: 0
+externalRequests:
+  npmPerHour: 30
+  githubPerHour: 60

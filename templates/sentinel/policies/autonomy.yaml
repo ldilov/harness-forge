@@ -1,0 +1,13 @@
+profile: cautious
+defaultLevel: A1
+requireApproval:
+  - A2
+  - A3
+  - A4
+  - A5
+deny:
+  - merge
+  - deploy.production
+  - delete.remote_branch
+  - modify.secrets
+  - run.destructive_command

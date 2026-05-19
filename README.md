@@ -36,6 +36,7 @@
 <p align="center">
   <a href="#-get-started-in-60-seconds">🚀 Get Started</a> &bull;
   <a href="#-the-living-loop--your-harness-gets-smarter">🔄 Living Loop</a> &bull;
+  <a href="#-sentinel--always-on-watcher-preview">🛡️ Sentinel (preview)</a> &bull;
   <a href="#-real-time-dashboard">📊 Dashboard</a> &bull;
   <a href="#-decision-timeline">🧭 Decisions</a> &bull;
   <a href="#-your-daily-workflow">⌨️ Commands</a> &bull;
@@ -279,6 +280,59 @@ one-click revert
 > 🔔 **Desktop notifications** for critical events — budget exceeded, memory rotation, tuning applied, pattern discovered.
 
 > 🏢 **Multi-project support** — switch between projects in one dashboard. Your project list is saved in the browser.
+
+---
+
+## 🛡️ Sentinel — always-on watcher (preview)
+
+> Sentinel watches your project for you. It notices when key files change, when the build is wrong, or when an AI agent gets stuck — and writes it down. It never spends AI tokens on its own (default daily budget is **0**), and it never changes anything without your approval.
+
+```bash
+hforge monitor init-defaults     # one-time setup
+hforge monitor once              # run all watchers one tick
+hforge observe                   # see what changed
+hforge monitor status            # check the cost meter
+```
+
+What you get today (early preview):
+
+- ✅ **Repo Drift Monitor** — flags when `package.json`, lockfile, `tsconfig.json`, or your harness manifest change
+- ✅ **Deduplicated observations** — no duplicate noise across runs
+- ✅ **Hard cost ceiling** — `cadence.yaml` and `budget.yaml` cap how often watchers run and how much they may spend
+- ✅ **Per-hour run cap enforced** — `maxMonitorRunsPerHour` blocks new ticks once exhausted
+- ✅ **Severity rules in YAML** — each watcher maps `default` plus named rules (e.g. `manifest_changed: warning`)
+- ✅ **Concurrent-safe** — in-process mutex protects hot files (`fingerprints.json`, ledgers)
+- ✅ **Hardened PID file** — structured `{pid, startedAt, hostname, workspaceRoot}`, foreign-host detection, stale-PID recovery
+- ✅ **Panic stop** — set `panicStop: true` and Sentinel halts immediately
+- ✅ **Signal correlation** — `hforge signals` groups observations into prioritized signals with category routing (`maintenance`, `agent-health`, `regression`, etc.)
+- ✅ **Suppression + resolution** — `hforge signals suppress <id> --until 7d`, `--forever`, `resolve`
+- ✅ **Action queue** — `hforge actions` shows proposed plans with risk + verification + rollback declared
+- ✅ **First action template** — `refresh-harness-runtime` (drift signal → `hforge refresh` action plan)
+- ✅ **Full autonomy CLI** — `hforge autonomy status | policy | explain | set-profile | set-level | panic-stop`
+- ✅ **5 profiles** (observe → cautious → assisted → active → maintainer) with per-profile approval requirements
+- ✅ **Tamper-evident approval chain** — `hforge actions approve <id> --authority A3 --expires 2h` writes a SHA-256-chained record; tamper detected on next read
+- ✅ **Denied paths + denied commands** enforced in the policy gate (defaults block `.env`, `**/secrets/**`, `npm publish`, `git push --force`, …)
+- ✅ **Approved actions actually execute** in an isolated git worktree at `.hforge/runtime/actions/runs/<id>/worktree/`
+- ✅ **Cross-platform safe executor** — `child_process.spawn({shell: false})`, AbortController timeouts, POSIX process-group + Windows `taskkill /F /T` killtree
+- ✅ **Sandboxed env** — `HOME`/`USERPROFILE` redirected, only PATH + small allowlist passed through; secrets never leak
+- ✅ **Verification** — 4 of 5 check types (`command`, `file_exists`, `no_diff_outside`, `schema_valid`); `agent_review` correctly skipped while LLM budget=0
+- ✅ **Side-effect ledger** + **`actions diff/logs/rollback`** for forensic review and reversal
+- ✅ **`actions rollback delete_worktree`** removes the worktree and flips status to `reverted`
+- ✅ **World monitor** — `hforge world watch add npm:<pkg>` / `runtime:nodejs:lts` + `hforge world sync` fetches real npm + Node.js Release schedule with ETag caching
+- ✅ **Relevance scoring** against `package.json` drops events for unused packages and downgrades borderline ones to `info`
+- ✅ **Network policy** baked in (`none` / `package-registry-only` / `github-only` / `allowlist`) — no surprise outbound calls
+- ✅ **Long-running daemon** — `hforge monitor run` schedules each watcher on its own interval with jitter, polls panic-stop, exits cleanly on Ctrl+C / `hforge monitor stop`
+- ✅ **Crash-recovery checkpoint** — orphan runs from a killed daemon get flipped to `failed` on the next boot
+- ✅ **Panic-stop broadcast** — `autonomy panic-stop on` halts the daemon AND aborts every in-flight executor within one tick
+- ✅ **Dashboard panels (8 of 8)** — `hforge dashboard` now serves the full Sentinel section: Status, World Feed, Signals, Approval Inbox, Action Queue, Verification Results, Autonomy Posture, Agent Watchdog, Side-Effect Ledger — backed by REST endpoints with a 5s page-visibility-gated React poll
+- ✅ **Watchdog primitives** — intervention ladder (`observe → warn → constrain → pause → require_approval → terminate → rollback`), `hforge watchdog status / events / pause / resume / explain` CLI, persisted intervention ledger
+- ✅ **`validate:sentinel` runtime gate** wired into `validate:runtime-gates` (now 7 gates) — Zod-validates default monitor + policy YAMLs and scans for inline comments across all sentinel paths
+- ✅ **Dependency Risk Monitor** — flags deprecated direct/indirect dependencies and major-version-available upgrades; reads `package.json` + `node_modules` + the world-monitor cache, fully offline
+- ✅ **ADR Drift Monitor** — walks `docs/adrs/`, `docs/adr/`, and `.hforge/runtime/decisions/`; emits a signal when an ADR references files that no longer exist, escalates to warning when 3+ refs are broken
+- ✅ **300 unit + integration tests** including full daemon lifecycle, watchdog state machine, validate-sentinel gate, and both new monitors
+- 🚧 **Coming next**: agent step types (`invoke_agent`, `write_file`, `apply_patch`, `open_pr`), GitHub releases + advisories adapter, CI Failure Monitor (needs the GitHub adapter), click-to-approve UI
+
+📖 **New here?** Read [docs/sentinel/README.md](docs/sentinel/README.md) and [docs/sentinel/getting-started.md](docs/sentinel/getting-started.md) — both written in plain English with no jargon.
 
 ---
 

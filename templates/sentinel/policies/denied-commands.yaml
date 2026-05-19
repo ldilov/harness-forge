@@ -1,0 +1,10 @@
+deniedCommands:
+  - rm -rf /
+  - git push --force
+  - npm publish
+  - pnpm publish
+  - yarn publish
+  - docker system prune
+  - kubectl delete
+  - terraform apply
+  - terraform destroy

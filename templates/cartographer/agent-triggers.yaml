@@ -1,0 +1,78 @@
+# Agent trigger sample configuration
+# Intended path in a real project: .hforge/agent-triggers.yaml
+
+agentTriggers:
+  enabled: true
+  autonomyLevel: diagnostic
+  defaultJson: true
+
+  hooks:
+    task.started:
+      run:
+        - command: hforge graph build --if-stale
+          reason: Keep project graph fresh before context selection.
+          autoExecutable: true
+        - command: hforge context compile --goal "${goal}"
+          reason: Produce focused task context.
+          autoExecutable: true
+
+    task.context_needed:
+      run:
+        - command: hforge context compile --goal "${goal}"
+          reason: Agent requested focused context.
+          autoExecutable: true
+
+    files.pre_edit:
+      run:
+        - command: hforge impact --files "${files}" --json
+          reason: Estimate risk before editing files.
+          autoExecutable: true
+
+    files.changed:
+      run:
+        - command: hforge impact --files "${files}" --json
+          reason: Determine impacted modules and verification commands.
+          autoExecutable: true
+      recommend:
+        - command: hforge context refresh --files "${files}"
+          reason: Refresh context after edits.
+
+    command.failed:
+      run:
+        - command: hforge explain failure --command "${command}" --log "${log}"
+          reason: Explain failing command using project context.
+          autoExecutable: true
+        - command: hforge context compile --goal "fix failing command: ${command}"
+          reason: Generate targeted failure-fix context.
+          autoExecutable: true
+
+    tests.failed:
+      run:
+        - command: hforge explain failure --command "${command}" --log "${log}"
+          reason: Link failing tests to impacted source files.
+          autoExecutable: true
+
+    docs.changed:
+      recommend:
+        - command: hforge docs link-graph
+          reason: Update doc-to-code links in graph.
+        - command: hforge docs check
+          reason: Detect stale examples or references.
+
+    pr.prep:
+      run:
+        - command: hforge impact --changed
+          reason: Summarize changed-file impact.
+          autoExecutable: true
+        - command: hforge pr narrative --draft
+          reason: Generate PR summary and verification checklist.
+          autoExecutable: true
+
+    task.completed:
+      run:
+        - command: hforge impact --changed
+          reason: Final impact summary.
+          autoExecutable: true
+      recommend:
+        - command: hforge pr narrative --draft
+          reason: Prepare final change explanation.

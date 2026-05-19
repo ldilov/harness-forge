@@ -35,6 +35,18 @@ import { CommandWaterfall } from './panels/CommandWaterfall';
 import { LoopHealthRing } from './panels/LoopHealthRing';
 import { EffectivenessTrend } from './panels/EffectivenessTrend';
 import { InsightsPanel } from './panels/InsightsPanel';
+import { SentinelStatusPanel } from './panels/SentinelStatus';
+import { SentinelSignals } from './panels/SentinelSignals';
+import { SentinelActions } from './panels/SentinelActions';
+import { SentinelLedger } from './panels/SentinelLedger';
+import { SentinelWorldFeed } from './panels/SentinelWorldFeed';
+import { SentinelApprovalInbox } from './panels/SentinelApprovalInbox';
+import { SentinelVerification } from './panels/SentinelVerification';
+import { SentinelAuthorityMap } from './panels/SentinelAuthorityMap';
+import { SentinelAgentWatchdog } from './panels/SentinelAgentWatchdog';
+import { useSentinelData } from './hooks/useSentinelData';
+import { CartographerPanel } from './panels/CartographerPanel';
+import { useCartographerData } from './hooks/useCartographerData';
 import { TuningLog } from './panels/TuningLog';
 
 const layoutStyle: CSSProperties = {
@@ -111,6 +123,8 @@ function DashboardContent({ state, dispatch }: {
   const { timeRange } = useDashboardContext();
   const filteredEvents = filterEventsByTimeRange(state.events, timeRange);
   const activeProject = state.activeProject;
+  const sentinel = useSentinelData();
+  const cartographer = useCartographerData();
 
   const handleRevert = React.useCallback((tuningId: string) => {
     dispatch({
@@ -160,6 +174,40 @@ function DashboardContent({ state, dispatch }: {
           </div>
           <div style={fullWidthStyle} id="panel-tuning">
             <TuningLog tunings={state.tunings} onRevert={handleRevert} />
+          </div>
+
+          {/* Sentinel Section */}
+          <div style={fullWidthStyle} id="panel-sentinel-status">
+            <SentinelStatusPanel status={sentinel.status} lastUpdated={sentinel.lastUpdated} />
+          </div>
+          <div id="panel-sentinel-world-feed">
+            <SentinelWorldFeed observations={sentinel.observations} />
+          </div>
+          <div id="panel-sentinel-signals">
+            <SentinelSignals signals={sentinel.signals} suppressedIds={sentinel.suppressedIds} />
+          </div>
+          <div id="panel-sentinel-approval-inbox">
+            <SentinelApprovalInbox actions={sentinel.actions} approvals={sentinel.approvals} />
+          </div>
+          <div id="panel-sentinel-actions">
+            <SentinelActions actions={sentinel.actions} />
+          </div>
+          <div id="panel-sentinel-verification">
+            <SentinelVerification verifications={sentinel.verifications} />
+          </div>
+          <div style={fullWidthStyle} id="panel-sentinel-authority-map">
+            <SentinelAuthorityMap policy={sentinel.policy} />
+          </div>
+          <div style={fullWidthStyle} id="panel-sentinel-agent-watchdog">
+            <SentinelAgentWatchdog snapshot={sentinel.watchdog} />
+          </div>
+          <div style={fullWidthStyle} id="panel-sentinel-ledger">
+            <SentinelLedger entries={sentinel.ledger} />
+          </div>
+
+          {/* Cartographer Section */}
+          <div style={fullWidthStyle} id="panel-cartographer">
+            <CartographerPanel data={cartographer} />
           </div>
 
           {/* Existing panels */}

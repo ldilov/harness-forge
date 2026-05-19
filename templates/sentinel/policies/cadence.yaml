@@ -1,0 +1,6 @@
+globalMinIntervalSeconds: 30
+perMonitorJitterPercent: 15
+maxMonitorRunsPerHour: 240
+maxActionsPerHour: 10
+maxApprovalsPerHour: 30
+panicStop: false

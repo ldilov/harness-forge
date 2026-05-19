@@ -116,7 +116,10 @@
     "validate:bridge-size": "node scripts/ci/validate-bridge-size.mjs",
     "validate:output-profile-coverage": "node scripts/ci/validate-output-profile-coverage.mjs",
     "validate:target-support-honesty": "node scripts/ci/validate-target-support-honesty.mjs",
-    "validate:runtime-gates": "npm run validate:hot-path-budget && npm run validate:canonicality && npm run validate:duplicate-thresholds && npm run validate:bridge-size && npm run validate:output-profile-coverage && npm run validate:target-support-honesty"
+    "prevalidate:sentinel": "node scripts/sentinel/ensure-built.mjs",
+    "validate:sentinel": "node scripts/sentinel/validate-sentinel.mjs",
+    "validate:cartographer": "node scripts/cartographer/validate-cartographer.mjs",
+    "validate:runtime-gates": "npm run validate:hot-path-budget && npm run validate:canonicality && npm run validate:duplicate-thresholds && npm run validate:bridge-size && npm run validate:output-profile-coverage && npm run validate:target-support-honesty && npm run validate:sentinel && npm run validate:cartographer"
   },
   "engines": {
     "node": ">=22"
