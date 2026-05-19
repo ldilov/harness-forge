@@ -12,6 +12,7 @@ import {
   readJsonFile
 } from "../../shared/index.js";
 import { writeAgentManifest } from "./agent-manifest.js";
+import { writeAgentBrief } from "../runtime/write-agent-brief.js";
 import { createSharedRuntimePlan, writeSharedRuntime } from "./shared-runtime.js";
 
 export interface RefreshWorkspaceRuntimeResult {
@@ -73,7 +74,6 @@ export async function refreshWorkspaceRuntime(
     plan.visibilityPolicy.visibleBridgePaths = plan.sharedRuntime.visibleBridgePaths;
     await writeSharedRuntime(workspaceRoot, plan, packageRoot);
   }
-  await writeAgentManifest(workspaceRoot, packageRoot);
 
   await saveInstallState(workspaceRoot, {
     ...state,
@@ -85,6 +85,8 @@ export async function refreshWorkspaceRuntime(
       updatedAt: new Date().toISOString()
     }
   });
+  await writeAgentBrief(workspaceRoot);
+  await writeAgentManifest(workspaceRoot, packageRoot);
 
   return {
     workspaceRoot,

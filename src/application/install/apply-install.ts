@@ -8,6 +8,7 @@ import { PACKAGE_ROOT, RUNTIME_SCHEMA_VERSION, readJsonFile, UPDATE_ACTION_PLAN_
 import { appendEffectivenessSignal } from "../../infrastructure/observability/local-metrics-store.js";
 import type { BehaviorEventEmitter } from "../behavior/behavior-event-emitter.js";
 import { writeAgentCommandCatalog } from "../runtime/command-catalog.js";
+import { writeAgentBrief } from "../runtime/write-agent-brief.js";
 import { generateOnboardingBrief } from "../runtime/generate-onboarding-brief.js";
 import { generateFirstRunResult } from "../runtime/generate-first-run-result.js";
 import { writeOnboardingBriefMarkdown } from "../runtime/render-onboarding-brief-md.js";
@@ -158,9 +159,19 @@ export async function applyInstall(
           `Use "hforge refresh --root ${root}" to rewrite shared runtime summaries after install changes.`
         ]
     });
+    const agentBrief = await writeAgentBrief(root);
     const agentManifest = await writeAgentManifest(root, packageRoot);
     messages.push(`Agent command catalog written to ${commandCatalog.jsonPath}`);
+    messages.push(`Agent brief written to ${agentBrief.markdownPath}`);
     messages.push(`Agent manifest written to ${agentManifest.path}`);
+    generatedFiles.push(agentBrief.jsonPath, agentBrief.markdownPath);
+    const stateWithBrief = await loadInstallState(root);
+    if (stateWithBrief) {
+      await saveInstallState(root, {
+        ...stateWithBrief,
+        fileWrites: [...new Set([...stateWithBrief.fileWrites, agentBrief.jsonPath, agentBrief.markdownPath])]
+      });
+    }
 
     if (plan.selection.targetId === "claude-code") {
       const claudeMdResult = await generateClaudeMd(root);

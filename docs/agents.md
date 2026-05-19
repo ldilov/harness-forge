@@ -7,6 +7,9 @@ AI content into the hidden `.hforge/` layer.
 
 - `AGENTS.md` for the thin repo-root guidance bridge
 - `.hforge/agent-manifest.json` for one machine-readable custom-agent contract
+- `.hforge/runtime/agent-brief.md` for compact first-hop orientation before broad repository scans
+- `.hforge/generated/agent-command-catalog.json` for machine-readable command discovery
+- `.hforge/library/skills/complex-task-protocol/SKILL.md` for automatic complex-task classification, bounded subagent use, verification, recovery, and durable learning capture
 - `agents/planner.md` for packaged planning expectations
 - `.agents/skills/` for discovery wrappers that route agent runtimes into the hidden installed canonical skills
 - `.agents/skills/*-engineering/` for language-aware activation that resolves into `.hforge/library/skills/` in installed workspaces
@@ -44,6 +47,8 @@ AI content into the hidden `.hforge/` layer.
   transcript-heavy prompt growth
 - when prompt history is growing and the next safe answer may already exist in
   `.hforge/runtime/`, task artifacts, or decision records
+- when a task has two complexity signals or one high-signal condition and should
+  automatically use the complex-task-protocol without waiting for a slash command
 
 ## Discovery rule
 
@@ -71,3 +76,6 @@ AI content into the hidden `.hforge/` layer.
 - use `docs/authoring/enhanced-skill-import.md`, `RESEARCH-SOURCES.md`, and `VALIDATION.md` only when provenance or import rationale matters
 - use `.agents/skills/token-budget-optimizer/SKILL.md` when the next safe step
   depends on compacting context and reusing authoritative runtime surfaces
+- use `.agents/skills/complex-task-protocol/SKILL.md` to discover the automatic
+  complex-task protocol, then load the canonical `.hforge/library/skills/complex-task-protocol/SKILL.md`
+  execution contract in installed workspaces

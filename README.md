@@ -85,6 +85,7 @@ token spend, and compaction — **no black boxes**
 | ⚡ **Performance** | Starts fresh every session | Self-improves over time via the Living Loop |
 | 📊 **Visibility** | Black box — no idea what the agent decided | Real-time dashboard with 20 live panels |
 | 🧭 **Decisions** | ADRs get buried or forgotten | Chronological decision timeline with stale-decision checks |
+| 🧩 **Complex tasks** | Agent wanders or over-delegates without clear thresholds | Automatic complex-task protocol keeps simple work light, bounds sidecars, verifies results, and captures durable learning |
 | 💰 **Cost** | Wasted tokens on retries and wrong paths | Compaction + auto-tuning saves 20-40% |
 | 📤 **Portability** | Stuck on one machine, one setup | Export & import learned patterns as `.hfb` bundles |
 
@@ -405,6 +406,7 @@ hforge doctor --root . --json
 
 | | Command | What it does |
 |---|---|---|
+| 🧭 | `/hforge-init` | Ask the agent to read the compact Harness Forge brief and orient itself |
 | 💡 | `hforge next` | Recommends the single most useful action right now |
 | 🏥 | `hforge doctor` | Full health check with evidence |
 | 🔄 | `hforge refresh` | Regenerate runtime after code changes |

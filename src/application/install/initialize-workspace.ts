@@ -24,6 +24,7 @@ import {
   writeTextFile
 } from "../../shared/index.js";
 import { StartupFileGenerator } from "../behavior/startup-file-generator.js";
+import { writeAgentBrief } from "../runtime/write-agent-brief.js";
 import { writeAgentManifest } from "./agent-manifest.js";
 import { writeWorkspaceLaunchers } from "./workspace-launcher.js";
 
@@ -205,6 +206,7 @@ export async function initializeWorkspace(
     "Next steps:",
     '- run "hforge install --target codex --root <repo> --yes" for an explicit target install',
     '- or run "hforge bootstrap --root <repo> --yes" to autodetect and install recommended surfaces',
+    '- read ".hforge/runtime/agent-brief.md" or invoke "/hforge-init" in your agent to start from the compact Harness Forge orientation',
     '- use the generated local launcher when you do not want a global npm install',
     '- run "hforge shell setup --yes" if you want bare hforge available on PATH without a global install',
     '- or run "npm install -g @harness-forge/cli" if you prefer a global npm-managed install',
@@ -221,6 +223,7 @@ export async function initializeWorkspace(
     writeTextFile(runtimeReadmePath, renderRuntimeReadme(runtimeIndex)),
     writeTextFile(guidancePath, guidance)
   ]);
+  const agentBrief = await writeAgentBrief(workspaceRoot);
   await writeAgentManifest(workspaceRoot, packageRoot);
 
   // Generate behavior promotion startup files
@@ -237,7 +240,16 @@ export async function initializeWorkspace(
     guidancePath,
     agentManifestPath,
     launcherPaths,
-    changedFiles: [statePath, runtimeIndexPath, runtimeReadmePath, guidancePath, agentManifestPath, ...launcherPaths],
+    changedFiles: [
+      statePath,
+      runtimeIndexPath,
+      runtimeReadmePath,
+      guidancePath,
+      agentBrief.jsonPath,
+      agentBrief.markdownPath,
+      agentManifestPath,
+      ...launcherPaths
+    ],
     installState
   };
 }

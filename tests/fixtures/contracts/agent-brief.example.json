@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "1.0.0",
+  "workspace": {
+    "root": "D:/Workspace/example",
+    "label": "example"
+  },
+  "generatedAt": "2026-04-24T00:00:00.000Z",
+  "sourceRefs": [
+    ".hforge/runtime/index.json",
+    ".hforge/agent-manifest.json",
+    ".hforge/generated/agent-command-catalog.json"
+  ],
+  "detectedStack": [
+    "TypeScript",
+    "Node.js"
+  ],
+  "targets": [
+    {
+      "targetId": "codex",
+      "displayName": "Codex",
+      "supportMode": "first-class",
+      "bridgeSurfaces": [
+        "AGENTS.md",
+        ".codex"
+      ],
+      "caveats": [],
+      "recommendedBehavior": "Use the agent brief and command catalog before meaningful coding work."
+    },
+    {
+      "targetId": "cursor",
+      "displayName": "Cursor",
+      "supportMode": "partial",
+      "bridgeSurfaces": [
+        "AGENTS.md"
+      ],
+      "caveats": [
+        "Cursor consumes compatible guidance and does not have full runtime-native parity."
+      ],
+      "recommendedBehavior": "Use the shared brief as compatible guidance and avoid claiming first-class support."
+    }
+  ],
+  "authoritativeSurfaces": [
+    "AGENTS.md",
+    ".hforge/agent-manifest.json",
+    ".hforge/runtime/agent-brief.md"
+  ],
+  "commandResolution": [
+    ".hforge/generated/bin/hforge",
+    "hforge",
+    "npx @harness-forge/cli"
+  ],
+  "recommendedNextActions": [
+    "Read the agent brief.",
+    "Inspect the command catalog.",
+    "Run hforge status when state is unclear."
+  ],
+  "freshness": {
+    "status": "current",
+    "reason": "Generated from current initialization state.",
+    "recommendedAction": "Use this brief before broad repository scans."
+  },
+  "fallbackGuidance": [
+    "If the brief is missing, run hforge refresh --root . --json."
+  ],
+  "orientation": {
+    "firstRun": "Harness Forge is active for this workspace.",
+    "sessionStart": "Use the generated brief and command catalog before editing.",
+    "deeperWork": "For ambiguous work, prefer hforge review, recommend, task, or recursive commands."
+  }
+}

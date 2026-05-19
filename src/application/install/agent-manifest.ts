@@ -213,6 +213,24 @@ function buildSurfaceIndex(runtime: RuntimeIndexDocument | null, launchers: stri
     createSurface(AGENT_MANIFEST_FILE, "generated", "generated", "Machine-readable custom-agent manifest describing bridges, canonical roots, and safe command discovery.")
   );
   surfaces.set(
+    ".hforge/runtime/agent-brief.md",
+    createSurface(
+      ".hforge/runtime/agent-brief.md",
+      "runtime-state",
+      "generated",
+      "Compact agent start brief for first-run and session-start orientation before broad repository scans."
+    )
+  );
+  surfaces.set(
+    ".hforge/runtime/agent-brief.json",
+    createSurface(
+      ".hforge/runtime/agent-brief.json",
+      "runtime-state",
+      "generated",
+      "Structured agent start brief used by validation and future tooling."
+    )
+  );
+  surfaces.set(
     ".hforge/runtime/recursive/language-capabilities.json",
     createSurface(
       ".hforge/runtime/recursive/language-capabilities.json",
@@ -369,6 +387,7 @@ export async function writeAgentManifest(
       "Use .agents/skills/ for discovery and .hforge/library/skills/ for canonical execution contracts.",
       "Treat .hforge/library/, .hforge/templates/, .hforge/runtime/, .hforge/state/, and .hforge/generated/ as AI-layer surfaces rather than product code.",
       "Use .hforge/generated/agent-command-catalog.json to discover safe CLI commands before inventing your own execution path.",
+      "Use .hforge/runtime/agent-brief.md as the compact first-hop orientation before broad repository scans or long bridge-file reads.",
       "Use the markdownCommands section in .hforge/generated/agent-command-catalog.json to discover slash-style or markdown-backed agent command entrypoints.",
       "Resolve command execution in this order: workspace launcher, bare hforge on PATH, then npx @harness-forge/cli.",
       "Use .hforge/runtime/recursive/language-capabilities.json and .hforge/runtime/recursive/runtime-inventory.json before attempting recursive analysis or code-cell execution.",

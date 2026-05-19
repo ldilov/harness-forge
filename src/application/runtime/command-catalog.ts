@@ -215,8 +215,8 @@ function buildMarkdownCommands(): MarkdownCommandEntry[] {
       id: "hforge-init",
       trigger: "/hforge-init",
       docPath: "commands/hforge-init.md",
-      description: "Bootstrap or initialize Harness Forge in the current repository before deeper work.",
-      relatedCliCommandIds: ["init-basic", "bootstrap", "refresh"]
+      description: "Initialize the agent's Harness Forge working posture from the compact brief, or bootstrap Harness Forge before deeper work; complex-task protocol activation remains automatic when thresholds are met.",
+      relatedCliCommandIds: ["init-basic", "status", "commands", "bootstrap", "refresh"]
     },
     {
       id: "hforge-analyze",
@@ -466,4 +466,3 @@ export async function writeAgentCommandCatalog(workspaceRoot: string, packageRoo
 
   return { jsonPath, markdownPath };
 }
-
